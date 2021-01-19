@@ -38,7 +38,7 @@ class DevicesController:
         v = DevicesView()
         v.showDevices(devices)
 
-    def filterDevices(self, filter):
-        devices = Device.filterDevices(filter)
+    # def filterDevices(self, filter):
+    #     devices = Device.filterDevices(filter)
 
 c = DevicesController()
