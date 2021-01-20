@@ -1,0 +1,8 @@
+---
+ANumber: 315
+AFloat: 19.8085
+AString: Hello there Daniel!\n
+
+         This is the second line of my string
+AQuotedString: "Quotes are perfectly Acceptable.\nThat"
+Active: true

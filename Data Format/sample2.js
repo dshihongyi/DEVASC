@@ -1,5 +1,4 @@
-myObj = {"People" : 
-[
+myObj = [
  {
      "id": 1,
      "FirstName": "Benjamin",
@@ -9,22 +8,18 @@ myObj = {"People" :
  },
  {
      "id": 2,
-     "FirstName": "Daniel",
-     "LastName": "Shi",
+     "Name": {"FirstName": "Daniel", "Lastname": "Shi"},
      "Email": "Daniel.Shi@hotmail.com",
      "Active": false
  },
  {
     "id": 3,
-    "FirstName": "Sally",
-    "LastName": "Anderson",
+    "Name": ["Sally", "Anderson"],
     "Email": "Sally.and@hotmail.com",
     "Active": true
  }
 ]
-}
 
-console.log(myObj.People[2].Email)
-console.log(typeof myObj.People[2].Email)
-console.log(myObj.People[1])
-console.log(myObj.People[0].LastName)
+console.log(myObj[0].Email)
+console.log(myObj[1].Name)
+console.log(myObj[2].Name)
