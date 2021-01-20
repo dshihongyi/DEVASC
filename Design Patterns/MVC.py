@@ -41,4 +41,7 @@ class DevicesController:
     # def filterDevices(self, filter):
     #     devices = Device.filterDevices(filter)
 
+
 c = DevicesController()
+
+Print("Submit")
