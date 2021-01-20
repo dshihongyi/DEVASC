@@ -44,8 +44,5 @@ class DevicesController:
 
 c = DevicesController()
 
-<<<<<<< HEAD
 print("Submit", "WorldHello")
-=======
-print("Submit", "HelloWorld")
->>>>>>> featureX
+
