@@ -44,4 +44,4 @@ class DevicesController:
 
 c = DevicesController()
 
-Print("Submit")
+print("Submit", "HelloWorld")
