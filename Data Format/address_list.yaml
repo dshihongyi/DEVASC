@@ -6,3 +6,4 @@ addresses:
   netmask: 255.255.255.0
 - ip: 172.16.0.4
   netmask: 255.255.255.0
+...
