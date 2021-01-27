@@ -1,0 +1,8 @@
+
+netconf_filter = """
+<filter>
+  <routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing">
+    <ribs>
+    </ribs>
+  </routing>
+</filter>
