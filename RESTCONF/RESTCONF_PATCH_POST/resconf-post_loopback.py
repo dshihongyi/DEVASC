@@ -18,12 +18,12 @@ def post_configured_interfaces():
     payload = """ 
     {
     "Cisco-IOS-XE-native:Loopback": {
-            "name": 401,
+            "name": 101,
             "description": "RESTCONF TEST - DS2",
             "ip": {
                 "address": {
                     "primary": {
-                        "address": "4.4.4.4",
+                        "address": "1.1.1.1",
                         "mask": "255.255.255.0"
                     }
                 }
@@ -39,11 +39,11 @@ def post_configured_interfaces():
     # this statement performs a GET on the specified url
     response = requests.post(url, auth=(router['username'],router['password']), 
                 headers=headers, data=payload, verify=False )
-    print(response.status_code)
-    if response.status_code in [200, 201, 204]:
-        print("Seccussful")
-    else: 
-        print("False to Connect")
+    # print(response.status_code)
+    # if response.status_code in [200, 201, 204]:
+    #     print("Seccussful")
+    # else: 
+    #     print("False to Connect")
 
     return response
 
@@ -61,7 +61,7 @@ def get_configured_interfaces():
                 headers=headers, verify=False )
     print(response.status_code)
     if response.status_code in [200, 202, 204]:
-        print("Print output")
+        print("This lookback interface has been created")
     else: 
         print("False to Connect")
 
@@ -69,9 +69,9 @@ def get_configured_interfaces():
 
 def main():
     post = post_configured_interfaces()
-    pprint(post.json())
+    print(post.status_code)
+    print('*' * 50)
     interfaces = get_configured_interfaces()
-    print("This lookback interface has been created")
     print('*' * 50)
     pprint(interfaces.json())
     

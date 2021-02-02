@@ -11,7 +11,7 @@ router = {"host": "ios-xe-mgmt.cisco.com", "port": "9443",
 
 def get_configured_interfaces():
     # url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native"
-    # url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet"
+    # url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native/interface"
     # url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2"
     url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback"
     # url = f"https://{router['host']}:{router['port']}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2/ip/address"
