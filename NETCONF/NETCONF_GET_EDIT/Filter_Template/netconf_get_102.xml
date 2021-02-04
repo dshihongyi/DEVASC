@@ -1,0 +1,8 @@
+<filter>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface>
+        <GigabitEthernet> 
+        </GigabitEthernet> 
+    </interface>
+  </native>
+</filter>

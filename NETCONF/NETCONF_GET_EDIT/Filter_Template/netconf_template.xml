@@ -1,0 +1,146 @@
+
+
+
+# # String Option 0
+# xml_filter_running = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   </native>
+# </filter>
+# """
+
+# # String Option 101
+# xml_filter_interface = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <interface>
+#   </interface>
+#   </native>
+# </filter>
+# """
+
+# # String Option 102
+# xml_filter_gbinterface = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#     <interface>
+#         <GigabitEthernet> 
+#         </GigabitEthernet> 
+#     </interface>
+#   </native>
+# </filter>
+# """
+
+# # String Option 103
+# xml_filter_lpinterface = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#     <interface>
+#         <Loopback>
+#         </Loopback>
+#     </interface>
+#   </native>
+# </filter>
+# """
+
+# # String Option 104
+# xml_filter_ipinterface = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#     <interface>
+#         <GigabitEthernet>
+#             <ip>
+#                 <address>
+#                 </address>
+#             </ip>
+#         </GigabitEthernet> 
+#     </interface>
+#   </native>
+# </filter>
+# """
+# # String Option 201
+# xml_filter_router = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <router>
+#   </router>
+#   </native>
+# </filter>
+# """
+
+# # String Option 301
+# xml_filter_host = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <hostname>
+#   </hostname>
+#   </native>
+# </filter>
+# """
+
+# # String Option 302
+# xml_filter_user = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <username>
+#   </username>
+#   </native>
+# </filter>
+# """
+
+# # String Option 303
+# xml_filter_lic = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <license>
+#   </license>
+#   </native>
+# </filter>
+# """
+
+# # String Option 304
+# xml_filter_mgmt = """
+# <filter>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#   <line>
+#   </line>
+#   </native>
+# </filter>
+# """
+
+
+
+## String Option 501
+# xml_filter_post_lpinterface = """
+# <config>
+#   <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+#     <interface>
+#         <Loopback>
+#             <name>{ide}</name>
+#             <description>{desc}</description>
+#             <ip>
+#                 <address>
+#                     <primary>
+#                         <address>{ip}</address>
+#                         <mask>{prefix}</mask>
+#                     </primary>
+#                 </address>
+#             </ip>
+#         </Loopback>
+#     </interface>
+#   </native>
+# </config>
+# """.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+
+
+xml_filter_del_lpinter = """
+<config>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface>
+        <Loopback operation="delete">
+            <name>{ide}</name>
+        </Loopback>
+    </interface>
+  </native>
+</config>
+""".format(ide = ide)
