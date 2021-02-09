@@ -1,6 +1,8 @@
 from lxml import etree
 from ncclient import manager
+from pprint import pprint
 import xml.dom.minidom
+import xmltodict
 import sys
 import json
 
@@ -18,11 +20,13 @@ def get_request(xmlstring):
                         password=router["password"], hostkey_verify=False) as device:
 
         get_reply = device.get(xmlstring)
-        xmlDom = xml.dom.minidom.parseString(str(get_reply))
+        # xmlDom = xml.dom.minidom.parseString(str(get_reply))
+        get_reply_dic = xmltodict.parse(get_reply.xml)["rpc-reply"]["data"]
 
    
     print("NETCONF RESPONSE")
-    print(xmlDom.toprettyxml(indent=" "))
+    # print(xmlDom.toprettyxml(indent=" "))
+    pprint(get_reply_dic)
     print("=" * 80)
     print("=" * 80)
 
@@ -237,6 +241,7 @@ def result():
 
 def main():
     result()
+    
 
 if __name__ == '__main__':
     sys.exit(main())
