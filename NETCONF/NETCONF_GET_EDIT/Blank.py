@@ -5,9 +5,6 @@ class Device():
         self.description = description
         self.ipaddress = ipaddress
         self.prefix = prefix
- 
-    def show_full_name(self):
-        return self.id, self.description
 
     @classmethod
     def device_info(self):

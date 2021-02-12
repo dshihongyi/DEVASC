@@ -193,13 +193,40 @@ def View_Edit_Menu ():
         option = input("Please Enter the Number of option (1-5): ")
         if option.isdigit() and 1 <= int(option) <= 5:
             if option == "1":
-                print("option equal to 1")
+                View_Edit_Interface_Menu ()
             elif option == "2":
                 print("option equal to 2")
             elif option == "3":
                 print("option equal to 3")
             elif option == "4":
                 print("option equal to 4")
+            elif option == "5":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Edit_Menu ()
+
+def View_Edit_Interface_Menu ():
+    print("\n\nCSR1000 EDIT CONFIGURE PAGE")
+    print("\n" + "-" * 93)
+    print("| INTERFACE CONFIGURE MENU -> Select Your Desired Option" + ' ' * 36 + '|' + "\n|" + ' ' * 91+ '|' 
+    "\n|   1. Create New Loopback       3. Modify Loopback Interface    5. Create VLAN Interface   |" 
+    "\n|   2. Remove Current Loopback   4. Modify Gigabit Interface     6. Back to Main            |")
+    print("-" * 93)
+
+    while True:
+        option = input("Please Enter the Number of option (1-5): ")
+        if option.isdigit() and 1 <= int(option) <= 5:
+            if option == "1":
+                Results.create_lp()
+            elif option == "2":
+                Results.delete_lp()
+            elif option == "3":
+                Results.put_lp()
+            elif option == "4":
+                Results.put_gb()
             elif option == "5":
                 print("\n\nReturn to Main Menu !!!")
                 View_Main_Menu ()
@@ -220,6 +247,63 @@ xml_filter_host    = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Temp
 xml_filter_user    = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_302.xml").read()
 xml_filter_lic     = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_303.xml").read()
 xml_filter_mgmt    = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_304.xml").read()
+
+class Filters():
+    
+    def __init__(self, ide, description, ipaddress, prefix):
+        self.ide = ide
+        self.description = description
+        self.ipaddress = ipaddress
+        self.prefix = prefix
+
+    @classmethod
+    def post_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Input Loopback Number: ")
+        desc = input("Input Loopback Description: ")
+        ip = input("Input Loopback IP Address: ")
+        prefix = input("Input Loopback Subnet Mask: ")
+        # String Option 501 - Create Loopback Interface
+        netconf_edit_501 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_501.xml").read()
+        xml_filter_post_lpinter = netconf_edit_501.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+
+        return xml_filter_post_lpinter
+    
+    @classmethod
+    def del_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Input Loopback Number: ")
+        # String Option 502 - Delete Loopback Interface
+        netconf_edit_502 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_delete_502.xml").read()
+        xml_filter_del_lpinter = netconf_edit_502.format(ide = ide)
+
+        return xml_filter_del_lpinter
+
+    @classmethod
+    def put_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Modify Loopback Number: ")
+        desc = input("New Description: ")
+        ip = input("New IP Address: ")
+        prefix = input("New Subnet Mask: ")
+        # String Option 503 - Edit Loopback Interface
+        netconf_edit_503 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_503.xml").read()
+        xml_filter_put_lpinter = netconf_edit_503.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+
+        return xml_filter_put_lpinter
+
+    @classmethod
+    def put_gbinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Modify Gigabit Number: ")
+        desc = input("New Description: ")
+        # String Option 504 - Edit Gigabit Interface
+        netconf_edit_504 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_504.xml").read()
+        xml_filter_put_gpinter = netconf_edit_504.format(ide = ide, desc = desc)
+
+        return xml_filter_put_gpinter
+
+
 
 class Results():
 
@@ -253,6 +337,17 @@ class Results():
     def show_line():
         get_request(xml_filter_mgmt)
 
+    def create_lp():
+        edit_request(Filters.post_lpinter())
+
+    def delete_lp():
+        edit_request(Filters.del_lpinter())
+
+    def put_lp():
+        edit_request(Filters.put_lpinter())
+
+    def put_gb():
+        edit_request(Filters.put_gbinter())
 
 
 def main():
