@@ -9,7 +9,6 @@ import json
 router = {"host": "ios-xe-mgmt.cisco.com", "port": "10000", 
         "username": "developer", "password": "C1sco12345"}
 
-# loopback = {"id": "98", "desc":"mytest", "ip": "10.98.98.1", "prefix": "255.255.255.0"}
 
 # Function of Get request
 def get_request(xmlstring):
@@ -29,6 +28,7 @@ def get_request(xmlstring):
     pprint(get_reply_dic)
     print("=" * 80)
     print("=" * 80)
+    main()
 
 # Function of Edit request
 def edit_request(xmlstring):
@@ -45,147 +45,196 @@ def edit_request(xmlstring):
     print(xmlDom.toprettyxml(indent=" "))
     print("=" * 80)
     print("=" * 80)
+    main()
 
 
+def View_Main_Menu ():
+    print("\nWELCOME TO THE CSR1000 CONFIGURE PAGE")
+    print("\n" + "-" * 72)
+    print("| MAIN MENU -> Select Your Desired Option" + ' ' * 30 + '|' + "\n|" + ' ' * 70 + '|' 
+    "\n|   1. Show Configuration  2. Change Configuration  3. Exit Control    |")
+    print("-" * 72)
 
-def display_main_menu ():
-    print("\nWELCOME TO THE CONFIGURE PAGE")
-    print("\n" + "-" * 90)
-    print("""| Fecthing Data From CSR1000                                                             |
-|   > 0.Show Running   > 1.Show Interface  > 2. Show Routing  > 3. Show System           |""")
-    print("-" * 90)
+    while True:
+        option = input("Please Enter the Number of option (1-3): ")
+        if option.isdigit() and 1 <= int(option) <= 3:
+            if option == "1":
+                View_Show_Menu ()
+            elif option == "2":
+                View_Edit_Menu ()
+            elif option == "3":
+                print("\nGood Bye !!!")
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Main_Menu ()
 
-def options ():
-    getlist = [101,102,103,104,201,202,203,204,301,302,303,304,501,502,503,504]
-    print("\nWELCOME TO THE CONFIGURE PAGE")
-    print("\n" + "-" * 90)
-    print("""| Fecthing Data From CSR1000                                                             |
-|   > 0.Show Running   > 1.Show Interface  > 2. Show Routing  > 3. Show System           |""")
-    print("-" * 90)
+def View_Show_Menu ():
+    print("\n\nCSR1000 SHOW CONFIGURE PAGE")
+    print("\n" + "-" * 92)
+    print("| SHOW MENU -> Select Your Desired Option" + ' ' * 50 + '|' + "\n|" + ' ' * 90 + '|' 
+    "\n|   1. Show Running  2. Show Interface  3. Show Routing  4. Show System  5. Back to Main   |")
+    print("-" * 92)
 
-    print("\n" + "-" * 90)
-    print("""| Modifying Data From CSR1000                                                            |
-|   > 5.EDIT Inteface  > 6.EDIT Routing    > 7. EDIT System   > 8. EDIT Miscellaneous    |""")
-    print("-" * 90)
-    option = input("Choose your Option: ")
-    print("Your Option is " + str(option))
+    while True:
+        option = input("Please Enter the Number of option (1-5): ")
+        if option.isdigit() and 1 <= int(option) <= 5:
+            if option == "1":
+                Results.show_run()
+            elif option == "2":
+                View_Show_Inter_Menu ()
+            elif option == "3":
+                View_Show_Routing_Menu ()
+            elif option == "4":
+                View_Show_System_Menu ()
+            elif option == "5":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Show_Menu ()
 
-    if option == "0":
-        print("-" * 80)
-        print("NETCONF GET - RUNNING CONFIGURE")
-        print("-" * 80)
-        return [option,0,0,0,0]
+def View_Show_Inter_Menu ():
+    print("\n\nCSR1000 SHOW INTERFACE CONFIGURE PAGE")
+    print("\n" + "-" * 73)
+    print("| INTERFACE MENU -> Select Your Desired Option" + ' ' *26 + '|' + "\n|" + ' ' * 71+ '|' 
+    "\n|   1. General Interface   2. Gigabit Interface     3. VLAN Interface   |" 
+    "\n|   4. Loopback Interface  5. Interface IP Address  6. Back to Main     |")
+    print("-" * 73)
 
-    elif option == "1":
-        print("-" * 80)
-        print("\n > NETCONF GET - INTERFACES CONFIGURE")
-        print("-" * 35)
-        print("""| Fecthing INTERFACE Configure    |
-|   1. General Interface          | 
-|   2. Gigabit Interface          | 
-|   3. Loopback Interface         | 
-|   4. Interface IP Address       |""")
-        print("-" * 35)
-        option = int(input("Choose your Option: ")) + 100
-        print("-" * 80)
-        if option in getlist:
-            return [option,0,0,0,0]
+    while True:
+        option = input("Please Enter the Number of option (1-6): ")
+        if option.isdigit() and 1 <= int(option) <= 6:
+            if option == "1":
+                Results.show_inter()
+            elif option == "2":
+                Results.show_gbinter()
+            elif option == "3":
+                print("\nShow VLAN Interface Waiting for update!")
+            elif option == "4":
+                Results.show_lpinter()
+            elif option == "5":
+                Results.show_ipinter()
+            elif option == "6":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Show_Menu ()
 
-    elif option == "2":
-        print("-" * 80)
-        print("\nNETCONF GET - ROUTING CONFIGURE")
-        print("-" * 42)
-        print("""| Fecthing INTERFACE Configure           |
-|   1. General All    2. Static Routing  |  
-|   3. OSPF Routing   4. BGP Routing     |""")
-        print("-" * 42)
-        option = int(input("Choose your Option: ")) + 200
-        print("-" * 80)
-        if option in getlist:
-            return [option,0,0,0,0]
+def View_Show_Routing_Menu ():
+    print("\n\nCSR1000 SHOW Routing CONFIGURE PAGE")
+    print("\n" + "-" * 61)
+    print("| ROUTING MENU -> Select Your Desired Option" + ' ' *16 + '|' + "\n|" + ' ' * 59+ '|' 
+    "\n|   1. General All   2. Static Routing   3. OSPF Routing    |" 
+    "\n|   4. BGP Routing   5. EIGRP Routing    6. Back to Main    |")
+    print("-" * 61)
 
-    elif option == "3":
-        print("-" * 80)
-        print("\nNETCONF GET - SYSTEM CONFIGURE")
-        print("-" * 50)
-        print("""| Fecthing SYSTEM Configure                      |
-|   1. Hostname       2. User Infomation         |  
-|   3. License        4. Terminal & Management   |""")
-        print("-" * 50)
-        option = int(input("Choose your Option: ")) + 300
-        print("-" * 80)
-        if option in getlist:
-            return [option,0,0,0,0]
-        
-    elif option == "5":
-        print("-" * 80)
-        print("\nNETCONF EDIT - INTERFACE CONFIGURE")
-        print("-" * 65)
-        print("""| MODIFYING Interface Configure                                 |
-|   1. Create New Loopback        3. Modify Exist Loopback      |  
-|   2. Remove Exist Loopback      4. Modify Gigabit Interface   |""")
-        print("-" * 65)
-        option = int(input("Choose your Option: ")) + 500
-        print("-" * 80)
-        if option == 501:
-            print("\n" + "-" * 80)
-            id = int(input("Input Loopback Number: "))
-            desc = input("Input Loopback Description: ")
-            ip = input("Input Loopback IP Address: ")
-            prefix = input("Input Loopback Subnet Mask: ")
-            if option in getlist:
-                return [option, id, desc, ip, prefix]
-        
-        if option == 501:
-            print("\n" + "-" * 80)
-            id = int(input("Input Loopback Number: "))
-            desc = input("Input Loopback Description: ")
-            ip = input("Input Loopback IP Address: ")
-            prefix = input("Input Loopback Subnet Mask: ")
-            if option in getlist:
-                return [option, id, desc, ip, prefix] 
+    while True:
+        option = input("Please Enter the Number of option (1-6): ")
+        if option.isdigit() and 1 <= int(option) <= 6:
+            if option == "1":
+                Results.show_route_all()
+            elif option == "2":
+                print("option equal to 2")
+            elif option == "3":
+                print("option equal to 3")
+            elif option == "4":
+                print("option equal to 4")
+            elif option == "5":
+                print("option equal to 5")
+            elif option == "6":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Show_Menu ()
 
-        if option == 502:
-            print("\n" + "-" * 80)
-            id = int(input("Remove Loopback Number: ") or "0")
-            if id == 0:
-                options()
-            elif option in getlist:
-                return [option, id, 0,0,0]
+def View_Show_System_Menu ():
+    print("\n\nCSR1000 SHOW System CONFIGURE PAGE")
+    print("\n" + "-" * 68)
+    print("| SYSTEM MENU -> Select Your Desired Option" + ' ' *24 + '|' + "\n|" + ' ' * 66+ '|' 
+    "\n|   1. Hostname   2. User Infomation   3. Terminal & Management    |" 
+    "\n|   4. Licenses   5. Authentication    6. Back to Main             |")
+    print("-" * 68)
 
-        if option == 503:
-            print("\n" + "-" * 80)
-            id = int(input("Modify Loopback Number: ") or "0")
-            desc = input("New Description: ")
-            ip = input("New IP Address: ")
-            prefix = input("New Subnet Mask: ")
-            if id == 0:
-                options()
-            elif option in getlist:
-                return [option, id, desc, ip, prefix]
+    while True:
+        option = input("Please Enter the Number of option (1-6): ")
+        if option.isdigit() and 1 <= int(option) <= 6:
+            if option == "1":
+                Results.show_host()
+            elif option == "2":
+                Results.show_user()
+            elif option == "3":
+                Results.show_line()
+            elif option == "4":
+                Results.show_license()
+            elif option == "5":
+                print("Show AAA pending for update")
+            elif option == "6":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Show_Menu ()
 
-        if option == 504:
-            print("\n" + "-" * 80)
-            id = int(input("Modify Gigabit Number: ") or "0")
-            desc = input("New Description: ")
-            # ip = input("New IP Address: ")
-            # prefix = input("New Subnet Mask: ")
-            if id == 0:
-                options()
-            elif option in getlist:
-                return [option, id, desc, 0,0]
-            
-    else:
-        print("INPUT WRONG VALUE!!! LET'S CHOOSE AGAIN\n")
-    options()
+def View_Edit_Menu ():
+    print("\n\nCSR1000 EDIT CONFIGURE PAGE")
+    print("\n" + "-" * 98)
+    print("| EDIT MENU -> Select Your Desired Option" + ' ' * 56 + '|' + "\n|" + ' ' * 96 + '|' 
+    "\n|   1. Edit Interface  2. Edit Routing  3. Edit System  4. EDIT Miscellaneous  5. Back to Main   |")
+    print("-" * 98)
 
+    while True:
+        option = input("Please Enter the Number of option (1-5): ")
+        if option.isdigit() and 1 <= int(option) <= 5:
+            if option == "1":
+                View_Edit_Interface_Menu ()
+            elif option == "2":
+                print("option equal to 2")
+            elif option == "3":
+                print("option equal to 3")
+            elif option == "4":
+                print("option equal to 4")
+            elif option == "5":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Edit_Menu ()
 
-number = options()
-str_number = [str(int) for int in number]
-ide = str_number[1]
-desc = str_number[2]
-ip = str_number[3]
-prefix = str_number[4]
+def View_Edit_Interface_Menu ():
+    print("\n\nCSR1000 EDIT CONFIGURE PAGE")
+    print("\n" + "-" * 93)
+    print("| INTERFACE CONFIGURE MENU -> Select Your Desired Option" + ' ' * 36 + '|' + "\n|" + ' ' * 91+ '|' 
+    "\n|   1. Create New Loopback       3. Modify Loopback Interface    5. Create VLAN Interface   |" 
+    "\n|   2. Remove Current Loopback   4. Modify Gigabit Interface     6. Back to Main            |")
+    print("-" * 93)
+
+    while True:
+        option = input("Please Enter the Number of option (1-5): ")
+        if option.isdigit() and 1 <= int(option) <= 5:
+            if option == "1":
+                Results.create_lp()
+            elif option == "2":
+                Results.delete_lp()
+            elif option == "3":
+                Results.put_lp()
+            elif option == "4":
+                Results.put_gb()
+            elif option == "5":
+                print("\n\nReturn to Main Menu !!!")
+                View_Main_Menu ()
+            break
+        else:
+           print("\n\n\nYour Input is Invalid, Try Again !!!")
+           View_Edit_Menu ()
+
 
 # String Option - Fetch Data - Filter Template
 xml_filter_running = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_0.xml").read()
@@ -199,58 +248,103 @@ xml_filter_user    = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Temp
 xml_filter_lic     = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_303.xml").read()
 xml_filter_mgmt    = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_get_304.xml").read()
 
-# String Option 501 - Create Loopback Interface
-netconf_edit_501 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_501.xml").read()
-xml_filter_post_lpinter = netconf_edit_501.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+class Filters():
 
-# String Option 502 - Delete Loopback Interface
-netconf_edit_502 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_delete_502.xml").read()
-xml_filter_del_lpinter = netconf_edit_502.format(ide = ide)
+    @classmethod
+    def post_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Input Loopback Number: ")
+        desc = input("Input Loopback Description: ")
+        ip = input("Input Loopback IP Address: ")
+        prefix = input("Input Loopback Subnet Mask: ")
+        # String Option 501 - Create Loopback Interface
+        netconf_edit_501 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_501.xml").read()
+        xml_filter_post_lpinter = netconf_edit_501.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
 
-# String Option 503 - Edit Loopback Interface
-netconf_edit_503 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_503.xml").read()
-xml_filter_put_lpinter = netconf_edit_503.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+        return xml_filter_post_lpinter
+    
+    @classmethod
+    def del_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Input Loopback Number: ")
+        # String Option 502 - Delete Loopback Interface
+        netconf_edit_502 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_delete_502.xml").read()
+        xml_filter_del_lpinter = netconf_edit_502.format(ide = ide)
 
-# String Option 504 - Edit Gigabit Interface
-netconf_edit_504 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_504.xml").read()
-xml_filter_put_gpinter = netconf_edit_504.format(ide = ide, desc = desc)
+        return xml_filter_del_lpinter
+
+    @classmethod
+    def put_lpinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Modify Loopback Number: ")
+        desc = input("New Description: ")
+        ip = input("New IP Address: ")
+        prefix = input("New Subnet Mask: ")
+        # String Option 503 - Edit Loopback Interface
+        netconf_edit_503 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_503.xml").read()
+        xml_filter_put_lpinter = netconf_edit_503.format(ide = ide, desc = desc, ip = ip, prefix = prefix)
+
+        return xml_filter_put_lpinter
+
+    @classmethod
+    def put_gbinter(self):
+        print("\n" + "-" * 80)
+        ide = input("Modify Gigabit Number: ")
+        desc = input("New Description: ")
+        # String Option 504 - Edit Gigabit Interface
+        netconf_edit_504 = open("e:/Github/DEVASC/NETCONF/NETCONF_GET_EDIT/Filter_Template/netconf_edit_504.xml").read()
+        xml_filter_put_gpinter = netconf_edit_504.format(ide = ide, desc = desc)
+
+        return xml_filter_put_gpinter
 
 
-def result():
-    if   str_number[0] == "0":
+class Results():
+
+    def show_run():
         get_request(xml_filter_running)
-    elif str_number[0] == "101":
+    
+    def show_inter():
         get_request(xml_filter_inter)
-    elif str_number[0] == "102":
+    
+    def show_gbinter():
         get_request(xml_filter_gbinter)
-    elif str_number[0] == "103":
-        get_request(xml_filter_lpinter)
-    elif str_number[0] == "104":
-        get_request(xml_filter_ipinter)
-    elif str_number[0] == "201":
+
+    def show_lpinter():
+        get_request(xml_filter_lpinter)   
+
+    def show_ipinter():
+        get_request(xml_filter_ipinter) 
+
+    def show_route_all():
         get_request(xml_filter_router)
-    elif str_number[0] == "301":
-        get_request(xml_filter_host)
-    elif str_number[0] == "302":
-        get_request(xml_filter_user)
-    elif str_number[0] == "303":
+
+    def show_host():
+        get_request(xml_filter_host) 
+
+    def show_user():
+        get_request(xml_filter_user) 
+
+    def show_license():
         get_request(xml_filter_lic)
-    elif str_number[0] == "304":
+
+    def show_line():
         get_request(xml_filter_mgmt)
-    elif str_number[0] == "501":
-        edit_request(xml_filter_post_lpinter)
-    elif str_number[0] == "502":
-        edit_request(xml_filter_del_lpinter)
-    elif str_number[0] == "503":
-        edit_request(xml_filter_put_lpinter)
-    else:
-        print("\nInvalid Option - Do Again!!!")
-        main()
+
+    def create_lp():
+        edit_request(Filters.post_lpinter())
+
+    def delete_lp():
+        edit_request(Filters.del_lpinter())
+
+    def put_lp():
+        edit_request(Filters.put_lpinter())
+
+    def put_gb():
+        edit_request(Filters.put_gbinter())
 
 
 def main():
-    result()
-    
+    View_Main_Menu ()
 
 if __name__ == '__main__':
     sys.exit(main())

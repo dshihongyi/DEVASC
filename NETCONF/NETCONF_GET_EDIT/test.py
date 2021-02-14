@@ -304,7 +304,6 @@ class Filters():
         return xml_filter_put_gpinter
 
 
-
 class Results():
 
     def show_run():
