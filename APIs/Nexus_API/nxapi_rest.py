@@ -19,7 +19,7 @@ cookies['APIC-cookie'] = token
 
 url = "https://sbx-nxos-mgmt.cisco.com//api/node/mo/sys/intf/phys-[eth1/33].json"
 
-payload="{\r\n\"l1PhysIf\":{\r\n\"attributes\":{\r\n\"descr\":\"Test-123\"\r\n}\r\n}\r\n}"
+payload={"l1PhysIf":{"attributes":{"descr":"Test-123"}}}
 headers = {
    'Authorization': 'Basic YWRtaW46QWRtaW5fMTIzNCE=',
   'Content-Type': 'text/plain',
