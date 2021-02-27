@@ -1,0 +1,1094 @@
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-ABC_Tanent",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2021-02-23T05:49:49.150+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "ABC_Tanent",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374"
+                },
+                "children": [
+                    {
+                        "vnsSvcCont": {
+                            "attributes": {
+                                "annotation": "",
+                                "childAction": "",
+                                "extMngdBy": "",
+                                "lcOwn": "local",
+                                "modTs": "2021-02-23T05:49:49.150+00:00",
+                                "monPolDn": "uni/tn-common/monepg-default",
+                                "rn": "svcCont",
+                                "status": "",
+                                "uid": "0"
+                            }
+                        }
+                    },
+                    {
+                        "l3extOut": {
+                            "attributes": {
+                                "annotation": "",
+                                "childAction": "",
+                                "descr": "",
+                                "enforceRtctrl": "export",
+                                "extMngdBy": "",
+                                "lcOwn": "local",
+                                "modTs": "2021-02-23T05:57:02.566+00:00",
+                                "monPolDn": "uni/tn-common/monepg-default",
+                                "name": "ABC_L3_BGP",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "rn": "out-ABC_L3_BGP",
+                                "status": "",
+                                "targetDscp": "unspecified",
+                                "uid": "15374"
+                            },
+                            "children": [
+                                {
+                                    "l3extExtEncapAllocator": {
+                                        "attributes": {
+                                            "bcastP": "225.1.110.32",
+                                            "childAction": "deleteNonPresent",
+                                            "descr": "",
+                                            "encap": "vlan-192",
+                                            "encapScope": "local",
+                                            "extEncap": "vxlan-14909413",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.598+00:00",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "rn": "encap-[vlan-192]",
+                                            "status": ""
+                                        }
+                                    }
+                                },
+                                {
+                                    "l3extRsL3DomAtt": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.603+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsl3DomAtt",
+                                            "state": "formed",
+                                            "stateQual": "none",
+                                            "status": "",
+                                            "tCl": "l3extDomP",
+                                            "tDn": "uni/l3dom-ABC_L3Domain",
+                                            "tType": "mo",
+                                            "uid": "15374"
+                                        }
+                                    }
+                                },
+                                {
+                                    "l3extRsEctx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.566+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsectx",
+                                            "state": "formed",
+                                            "stateQual": "none",
+                                            "status": "",
+                                            "tCl": "fvCtx",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-ABC_Tanent/ctx-ABC_Main",
+                                            "tRn": "ctx-ABC_Main",
+                                            "tType": "name",
+                                            "tnFvCtxName": "ABC_Main",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "l3extLNodeP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "configIssues": "",
+                                            "descr": "",
+                                            "extMngdBy": "",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.566+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "name": "ABC_Node_Interface",
+                                            "nameAlias": "",
+                                            "ownerKey": "",
+                                            "ownerTag": "",
+                                            "rn": "lnodep-ABC_Node_Interface",
+                                            "status": "",
+                                            "tag": "yellow-green",
+                                            "targetDscp": "unspecified",
+                                            "uid": "15374"
+                                        },
+                                        "children": [
+                                            {
+                                                "l3extRsNodeL3OutAtt": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "configIssues": "",
+                                                        "extMngdBy": "",
+                                                        "forceResolve": "yes",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "rType": "mo",
+                                                        "rn": "rsnodeL3OutAtt-[topology/pod-1/node-101]",
+                                                        "rtrId": "10.10.10.10",
+                                                        "rtrIdLoopBack": "yes",
+                                                        "state": "unformed",
+                                                        "stateQual": "none",
+                                                        "status": "",
+                                                        "tCl": "fabricNode",
+                                                        "tDn": "topology/pod-1/node-101",
+                                                        "tType": "mo",
+                                                        "uid": "15374"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "l3extRsNodeL3OutAtt": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "configIssues": "",
+                                                        "extMngdBy": "",
+                                                        "forceResolve": "yes",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "rType": "mo",
+                                                        "rn": "rsnodeL3OutAtt-[topology/pod-1/node-102]",
+                                                        "rtrId": "20.20.20.20",
+                                                        "rtrIdLoopBack": "yes",
+                                                        "state": "unformed",
+                                                        "stateQual": "none",
+                                                        "status": "",
+                                                        "tCl": "fabricNode",
+                                                        "tDn": "topology/pod-1/node-102",
+                                                        "tType": "mo",
+                                                        "uid": "15374"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "l3extLIfP": {
+                                                    "attributes": {
+                                                        "addr": "0.0.0.0",
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "descr": "",
+                                                        "encap": "unknown",
+                                                        "extMngdBy": "",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "name": "ABC_Interface",
+                                                        "nameAlias": "",
+                                                        "ownerKey": "",
+                                                        "ownerTag": "",
+                                                        "prio": "unspecified",
+                                                        "rn": "lifp-ABC_Interface",
+                                                        "status": "",
+                                                        "tag": "yellow-green",
+                                                        "targetDscp": "unspecified",
+                                                        "uid": "15374"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "l3extRsPathL3OutAtt": {
+                                                                "attributes": {
+                                                                    "addr": "0.0.0.0",
+                                                                    "annotation": "",
+                                                                    "autostate": "disabled",
+                                                                    "childAction": "",
+                                                                    "descr": "",
+                                                                    "encap": "vlan-192",
+                                                                    "encapScope": "local",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "ifInstT": "ext-svi",
+                                                                    "ipv6Dad": "enabled",
+                                                                    "lcOwn": "local",
+                                                                    "llAddr": "::",
+                                                                    "mac": "00:22:BD:F8:19:FF",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "mode": "regular",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "mtu": "inherit",
+                                                                    "rType": "mo",
+                                                                    "rn": "rspathL3OutAtt-[topology/pod-1/protpaths-101-102/pathep-[Heroes_FI-2A]]",
+                                                                    "state": "unformed",
+                                                                    "stateQual": "none",
+                                                                    "status": "",
+                                                                    "tCl": "fabricPathEp",
+                                                                    "tDn": "topology/pod-1/protpaths-101-102/pathep-[Heroes_FI-2A]",
+                                                                    "tType": "mo",
+                                                                    "targetDscp": "unspecified",
+                                                                    "uid": "15374"
+                                                                },
+                                                                "children": [
+                                                                    {
+                                                                        "l3extMember": {
+                                                                            "attributes": {
+                                                                                "addr": "10.1.1.1/24",
+                                                                                "annotation": "",
+                                                                                "childAction": "",
+                                                                                "descr": "",
+                                                                                "extMngdBy": "",
+                                                                                "ipv6Dad": "enabled",
+                                                                                "lcOwn": "local",
+                                                                                "llAddr": "::",
+                                                                                "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                                "monPolDn": "uni/tn-common/monepg-default",
+                                                                                "name": "",
+                                                                                "nameAlias": "",
+                                                                                "rn": "mem-A",
+                                                                                "side": "A",
+                                                                                "status": "",
+                                                                                "uid": "15374"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "l3extMember": {
+                                                                            "attributes": {
+                                                                                "addr": "10.1.1.2/24",
+                                                                                "annotation": "",
+                                                                                "childAction": "",
+                                                                                "descr": "",
+                                                                                "extMngdBy": "",
+                                                                                "ipv6Dad": "enabled",
+                                                                                "lcOwn": "local",
+                                                                                "llAddr": "::",
+                                                                                "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                                "monPolDn": "uni/tn-common/monepg-default",
+                                                                                "name": "",
+                                                                                "nameAlias": "",
+                                                                                "rn": "mem-B",
+                                                                                "side": "B",
+                                                                                "status": "",
+                                                                                "uid": "15374"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsNdIfPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rsNdIfPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "ndIfPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/ndifpol-default",
+                                                                    "tRn": "ndifpol-default",
+                                                                    "tType": "name",
+                                                                    "tnNdIfPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsLIfPCustQosPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rslIfPCustQosPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "qosCustomPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/qoscustom-default",
+                                                                    "tRn": "qoscustom-default",
+                                                                    "tType": "name",
+                                                                    "tnQosCustomPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsIngressQosDppPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rsingressQosDppPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "qosDppPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/qosdpppol-default",
+                                                                    "tRn": "qosdpppol-default",
+                                                                    "tType": "name",
+                                                                    "tnQosDppPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsEgressQosDppPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rsegressQosDppPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "qosDppPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/qosdpppol-default",
+                                                                    "tRn": "qosdpppol-default",
+                                                                    "tType": "name",
+                                                                    "tnQosDppPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "l3extRsArpIfPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rsArpIfPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "arpIfPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/arpifpol-default",
+                                                                    "tRn": "arpifpol-default",
+                                                                    "tType": "name",
+                                                                    "tnArpIfPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "bgpPeerP": {
+                                                    "attributes": {
+                                                        "ConfigIssues": "",
+                                                        "addr": "10.1.1.5",
+                                                        "addrTCtrl": "af-ucast",
+                                                        "allowedSelfAsCnt": "3",
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "ctrl": "",
+                                                        "descr": "",
+                                                        "extMngdBy": "",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "name": "",
+                                                        "nameAlias": "",
+                                                        "peerCtrl": "",
+                                                        "privateASctrl": "",
+                                                        "rn": "peerP-[10.1.1.5]",
+                                                        "sessionT": "peer",
+                                                        "status": "",
+                                                        "ttl": "5",
+                                                        "uid": "15374",
+                                                        "weight": "0"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "bgpRsPeerPfxPol": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "childAction": "",
+                                                                    "extMngdBy": "",
+                                                                    "forceResolve": "yes",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "rType": "mo",
+                                                                    "rn": "rspeerPfxPol",
+                                                                    "state": "formed",
+                                                                    "stateQual": "default-target",
+                                                                    "status": "",
+                                                                    "tCl": "bgpPeerPfxPol",
+                                                                    "tContextDn": "",
+                                                                    "tDn": "uni/tn-common/bgpPfxP-default",
+                                                                    "tRn": "bgpPfxP-default",
+                                                                    "tType": "name",
+                                                                    "tnBgpPeerPfxPolName": "",
+                                                                    "uid": "0"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "bgpLocalAsnP": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "asnPropagate": "none",
+                                                                    "childAction": "",
+                                                                    "descr": "",
+                                                                    "extMngdBy": "",
+                                                                    "lcOwn": "local",
+                                                                    "localAsn": "63403",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "name": "",
+                                                                    "nameAlias": "",
+                                                                    "rn": "localasn",
+                                                                    "status": "",
+                                                                    "uid": "15374"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "bgpAsP": {
+                                                                "attributes": {
+                                                                    "annotation": "",
+                                                                    "asn": "64005",
+                                                                    "childAction": "",
+                                                                    "descr": "",
+                                                                    "extMngdBy": "",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:57:02.566+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "name": "",
+                                                                    "nameAlias": "",
+                                                                    "rn": "as",
+                                                                    "status": "",
+                                                                    "uid": "15374"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "bgpExtP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "descr": "",
+                                            "extMngdBy": "",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.566+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "name": "bgp",
+                                            "nameAlias": "",
+                                            "rn": "bgpExtP",
+                                            "status": "",
+                                            "uid": "15374"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "fvCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "bdEnforcedEnable": "no",
+                                "childAction": "",
+                                "descr": "",
+                                "extMngdBy": "",
+                                "ipDataPlaneLearning": "enabled",
+                                "knwMcastAct": "permit",
+                                "lcOwn": "local",
+                                "modTs": "2021-02-23T05:49:49.191+00:00",
+                                "monPolDn": "uni/tn-common/monepg-default",
+                                "name": "ABC_Main",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "pcEnfDir": "ingress",
+                                "pcEnfDirUpdated": "yes",
+                                "pcEnfPref": "enforced",
+                                "pcTag": "16386",
+                                "rn": "ctx-ABC_Main",
+                                "scope": "2949122",
+                                "seg": "2949122",
+                                "status": "",
+                                "uid": "15374"
+                            },
+                            "children": [
+                                {
+                                    "fvRtEctx": {
+                                        "attributes": {
+                                            "childAction": "",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:57:02.566+00:00",
+                                            "rn": "rtl3extEctx-[uni/tn-ABC_Tanent/out-ABC_L3_BGP]",
+                                            "status": "",
+                                            "tCl": "l3extOut",
+                                            "tDn": "uni/tn-ABC_Tanent/out-ABC_L3_BGP"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsVrfValidationPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsvrfValidationPol",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "l3extVrfValidationPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/vrfvalidationpol-default",
+                                            "tRn": "vrfvalidationpol-default",
+                                            "tType": "name",
+                                            "tnL3extVrfValidationPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "vzAny": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "configSt": "not-applied",
+                                            "descr": "",
+                                            "extMngdBy": "",
+                                            "lcOwn": "local",
+                                            "matchT": "AtleastOne",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "pcTag": "any",
+                                            "prefGrMemb": "disabled",
+                                            "rn": "any",
+                                            "status": "",
+                                            "txId": "24566",
+                                            "uid": "0",
+                                            "useAnyDef": "yes"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRtCtx": {
+                                        "attributes": {
+                                            "childAction": "",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "rn": "rtctx-[uni/tn-ABC_Tanent/BD-ABC_BD_L3]",
+                                            "status": "",
+                                            "tCl": "fvBD",
+                                            "tDn": "uni/tn-ABC_Tanent/BD-ABC_BD_L3"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsOspfCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsospfCtxPol",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "ospfCtxPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/ospfCtxP-default",
+                                            "tRn": "ospfCtxP-default",
+                                            "tType": "name",
+                                            "tnOspfCtxPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtxToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsctxToEpRet",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "fvEpRetPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/epRPol-default",
+                                            "tRn": "epRPol-default",
+                                            "tType": "name",
+                                            "tnFvEpRetPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtxToExtRouteTagPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsctxToExtRouteTagPol",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "l3extRouteTagPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/rttag-default",
+                                            "tRn": "rttag-default",
+                                            "tType": "name",
+                                            "tnL3extRouteTagPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBgpCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:49:49.150+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsbgpCtxPol",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "bgpCtxPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/bgpCtxP-default",
+                                            "tRn": "bgpCtxP-default",
+                                            "tType": "name",
+                                            "tnBgpCtxPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "fvBD": {
+                            "attributes": {
+                                "OptimizeWanBandwidth": "no",
+                                "annotation": "",
+                                "arpFlood": "no",
+                                "bcastP": "225.1.167.48",
+                                "childAction": "",
+                                "configIssues": "",
+                                "descr": "",
+                                "epClear": "no",
+                                "epMoveDetectMode": "",
+                                "extMngdBy": "",
+                                "hostBasedRouting": "no",
+                                "intersiteBumTrafficAllow": "no",
+                                "intersiteL2Stretch": "no",
+                                "ipLearning": "yes",
+                                "lcOwn": "local",
+                                "limitIpLearnToSubnets": "yes",
+                                "llAddr": "::",
+                                "mac": "00:22:BD:F8:19:FF",
+                                "mcastAllow": "no",
+                                "modTs": "2021-02-23T05:50:25.628+00:00",
+                                "monPolDn": "uni/tn-common/monepg-default",
+                                "mtu": "inherit",
+                                "multiDstPktAct": "bd-flood",
+                                "name": "ABC_BD_L3",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "pcTag": "16387",
+                                "rn": "BD-ABC_BD_L3",
+                                "scope": "2949122",
+                                "seg": "16056270",
+                                "status": "",
+                                "type": "regular",
+                                "uid": "15374",
+                                "unicastRoute": "yes",
+                                "unkMacUcastAct": "proxy",
+                                "unkMcastAct": "flood",
+                                "v6unkMcastAct": "flood",
+                                "vmac": "not-applicable"
+                            },
+                            "children": [
+                                {
+                                    "fvRtBd": {
+                                        "attributes": {
+                                            "childAction": "",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:51:12.435+00:00",
+                                            "rn": "rtbd-[uni/tn-ABC_Tanent/ap-ABC_APP_P/epg-ABC_EPG_L3]",
+                                            "status": "",
+                                            "tCl": "fvAEPg",
+                                            "tDn": "uni/tn-ABC_Tanent/ap-ABC_APP_P/epg-ABC_EPG_L3"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsMldsn": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsmldsn",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "mldSnoopPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/mldsnoopPol-default",
+                                            "tRn": "mldsnoopPol-default",
+                                            "tType": "name",
+                                            "tnMldSnoopPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsIgmpsn": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsigmpsn",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "igmpSnoopPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/snPol-default",
+                                            "tRn": "snPol-default",
+                                            "tType": "name",
+                                            "tnIgmpSnoopPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsctx",
+                                            "state": "formed",
+                                            "stateQual": "none",
+                                            "status": "",
+                                            "tCl": "fvCtx",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-ABC_Tanent/ctx-ABC_Main",
+                                            "tRn": "ctx-ABC_Main",
+                                            "tType": "name",
+                                            "tnFvCtxName": "ABC_Main",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBdToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "resolveAct": "resolve",
+                                            "rn": "rsbdToEpRet",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "fvEpRetPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/epRPol-default",
+                                            "tRn": "epRPol-default",
+                                            "tType": "name",
+                                            "tnFvEpRetPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "fvRsBDToNdP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "extMngdBy": "",
+                                            "forceResolve": "yes",
+                                            "lcOwn": "local",
+                                            "modTs": "2021-02-23T05:50:25.594+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "rType": "mo",
+                                            "rn": "rsBDToNdP",
+                                            "state": "formed",
+                                            "stateQual": "default-target",
+                                            "status": "",
+                                            "tCl": "ndIfPol",
+                                            "tContextDn": "",
+                                            "tDn": "uni/tn-common/ndifpol-default",
+                                            "tRn": "ndifpol-default",
+                                            "tType": "name",
+                                            "tnNdIfPolName": "",
+                                            "uid": "0"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "fvRsTenantMonPol": {
+                            "attributes": {
+                                "annotation": "",
+                                "childAction": "",
+                                "extMngdBy": "",
+                                "forceResolve": "yes",
+                                "lcOwn": "local",
+                                "modTs": "2021-02-23T05:49:49.150+00:00",
+                                "monPolDn": "",
+                                "rType": "mo",
+                                "rn": "rsTenantMonPol",
+                                "state": "formed",
+                                "stateQual": "default-target",
+                                "status": "",
+                                "tCl": "monEPGPol",
+                                "tContextDn": "",
+                                "tDn": "uni/tn-common/monepg-default",
+                                "tRn": "monepg-default",
+                                "tType": "name",
+                                "tnMonEPGPolName": "",
+                                "uid": "0"
+                            }
+                        }
+                    },
+                    {
+                        "fvAp": {
+                            "attributes": {
+                                "annotation": "",
+                                "childAction": "",
+                                "descr": "",
+                                "extMngdBy": "",
+                                "lcOwn": "local",
+                                "modTs": "2021-02-23T05:50:49.106+00:00",
+                                "monPolDn": "uni/tn-common/monepg-default",
+                                "name": "ABC_APP_P",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "prio": "unspecified",
+                                "rn": "ap-ABC_APP_P",
+                                "status": "",
+                                "uid": "15374"
+                            },
+                            "children": [
+                                {
+                                    "fvAEPg": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "childAction": "",
+                                            "configIssues": "",
+                                            "configSt": "applied",
+                                            "descr": "",
+                                            "exceptionTag": "",
+                                            "extMngdBy": "",
+                                            "floodOnEncap": "disabled",
+                                            "fwdCtrl": "",
+                                            "hasMcastSource": "no",
+                                            "isAttrBasedEPg": "no",
+                                            "isSharedSrvMsiteEPg": "no",
+                                            "lcOwn": "local",
+                                            "matchT": "AtleastOne",
+                                            "modTs": "2021-02-23T05:51:12.460+00:00",
+                                            "monPolDn": "uni/tn-common/monepg-default",
+                                            "name": "ABC_EPG_L3",
+                                            "nameAlias": "",
+                                            "pcEnfPref": "unenforced",
+                                            "pcTag": "32770",
+                                            "prefGrMemb": "exclude",
+                                            "prio": "unspecified",
+                                            "rn": "epg-ABC_EPG_L3",
+                                            "scope": "2949122",
+                                            "shutdown": "no",
+                                            "status": "",
+                                            "triggerSt": "triggerable",
+                                            "txId": "24634",
+                                            "uid": "15374"
+                                        },
+                                        "children": [
+                                            {
+                                                "fvRsCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "extMngdBy": "",
+                                                        "forceResolve": "yes",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:51:12.435+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "rType": "mo",
+                                                        "rn": "rscustQosPol",
+                                                        "state": "formed",
+                                                        "stateQual": "default-target",
+                                                        "status": "",
+                                                        "tCl": "qosCustomPol",
+                                                        "tContextDn": "",
+                                                        "tDn": "uni/tn-common/qoscustom-default",
+                                                        "tRn": "qoscustom-default",
+                                                        "tType": "name",
+                                                        "tnQosCustomPolName": "",
+                                                        "uid": "0"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "fvRsBd": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "childAction": "",
+                                                        "extMngdBy": "",
+                                                        "forceResolve": "yes",
+                                                        "lcOwn": "local",
+                                                        "modTs": "2021-02-23T05:51:12.435+00:00",
+                                                        "monPolDn": "uni/tn-common/monepg-default",
+                                                        "rType": "mo",
+                                                        "rn": "rsbd",
+                                                        "state": "formed",
+                                                        "stateQual": "none",
+                                                        "status": "",
+                                                        "tCl": "fvBD",
+                                                        "tContextDn": "",
+                                                        "tDn": "uni/tn-ABC_Tanent/BD-ABC_BD_L3",
+                                                        "tRn": "BD-ABC_BD_L3",
+                                                        "tType": "name",
+                                                        "tnFvBDName": "ABC_BD_L3",
+                                                        "uid": "0"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "fvSubnetBDDefCont": {
+                                                                "attributes": {
+                                                                    "bddefDn": "uni/bd-[uni/tn-ABC_Tanent/BD-ABC_BD_L3]-isSvc-no",
+                                                                    "childAction": "deleteNonPresent",
+                                                                    "lcOwn": "local",
+                                                                    "modTs": "2021-02-23T05:51:12.435+00:00",
+                                                                    "monPolDn": "uni/tn-common/monepg-default",
+                                                                    "name": "",
+                                                                    "nameAlias": "",
+                                                                    "rn": "subnetBddefDn-[uni/bd-[uni/tn-ABC_Tanent/BD-ABC_BD_L3]-isSvc-no]",
+                                                                    "status": ""
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

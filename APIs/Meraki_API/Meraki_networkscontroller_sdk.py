@@ -17,7 +17,7 @@ for org in orgs:
 params = {}
 params['organization_id'] = orgId
 networks = network_controller.get_organization_networks(params) 
-pprint(networks)
+# pprint(networks)
 
 ##Get speicific Network ID Ouput
 for network in networks:
@@ -25,11 +25,24 @@ for network in networks:
         netId = network['id']
 
 network_result = network_controller.get_network(netId)
-pprint(network_result)
+# pprint(network_result)
 
 
 
 ##Get speicific Network VLAN Ouput
-vlan = meraki.vlans.get_network_vlans(netId)
-pprint(vlan)
+vlans = meraki.vlans.get_network_vlans(netId)
 
+
+
+vlan = vlans[0]
+vlan['name'] = 'DSVLAN111'
+
+updated_vlan = {}
+updated_vlan['network_id'] = netId
+updated_vlan['vlan_id'] = vlan['id']
+updated_vlan['update_network_vlan'] = vlan
+
+result = meraki.vlans.update_network_vlan(updated_vlan)
+
+vlans = meraki.vlans.get_network_vlans(netId)
+pprint(vlans)
