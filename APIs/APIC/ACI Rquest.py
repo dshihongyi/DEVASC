@@ -41,7 +41,7 @@ print(json.dumps(get_response, indent=2, sort_keys=True))
 post_payload =  {
     "fvAp": {
         "attributes": {
-            "descr": "TEST",
+            "descr": "",
             "dn": "uni/tn-Heroes/ap-Save_The_Planet"
         }
     }
@@ -49,7 +49,7 @@ post_payload =  {
 
 post_response = requests.post(
     url, headers=headers, cookies=cookie, data=json.dumps(post_payload), verify=False).json()
-    
+
 get_response = requests.get(
     url, headers=headers, cookies=cookie, verify=False).json()
 
