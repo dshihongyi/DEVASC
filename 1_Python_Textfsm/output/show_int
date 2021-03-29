@@ -1,0 +1,629 @@
+101-0767-DUD-AS061#sh int | includ Gigabit|Last input|Description
+  Last input never, output never, output hang never
+  Description: TaaS Management
+  Last input 00:00:00, output 00:00:00, output hang never
+  Last input never, output never, output hang never
+GigabitEthernet1/0/1 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a781 (bia 0087.641a.a781)
+  Description: Agency voice/data port
+  Last input 09:31:20, output 09:25:13, output hang never
+GigabitEthernet1/0/2 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a782 (bia 0087.641a.a782)
+  Description: Wireless - 101-0767-dud-61ap
+  Last input 00:00:19, output 00:00:00, output hang never
+GigabitEthernet1/0/3 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a783 (bia 0087.641a.a783)
+  Description: Agency voice/data port
+  Last input 05:59:09, output 05:52:53, output hang never
+GigabitEthernet1/0/4 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a784 (bia 0087.641a.a784)
+  Description: Agency voice/data port
+  Last input 00:10:55, output 00:00:00, output hang never
+GigabitEthernet1/0/5 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a785 (bia 0087.641a.a785)
+  Description: Agency voice/data port
+  Last input 10:07:23, output 10:04:46, output hang never
+GigabitEthernet1/0/6 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a786 (bia 0087.641a.a786)
+  Description: Agency voice/data port
+  Last input 00:11:26, output 00:00:00, output hang never
+GigabitEthernet1/0/7 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a787 (bia 0087.641a.a787)
+  Description: Agency voice/data port
+  Last input 09:41:31, output 09:35:11, output hang never
+GigabitEthernet1/0/8 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a788 (bia 0087.641a.a788)
+  Description: Agency voice/data port
+  Last input 36w5d, output 36w5d, output hang never
+GigabitEthernet1/0/9 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a789 (bia 0087.641a.a789)
+  Description: Agency voice/data port
+  Last input 12:07:49, output 11:57:27, output hang never
+GigabitEthernet1/0/10 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78a (bia 0087.641a.a78a)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet1/0/11 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78b (bia 0087.641a.a78b)
+  Description: Agency voice/data port
+  Last input 00:09:27, output 00:00:00, output hang never
+GigabitEthernet1/0/12 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78c (bia 0087.641a.a78c)
+  Description: Agency voice/data port
+  Last input 00:08:42, output 00:00:00, output hang never
+GigabitEthernet1/0/13 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78d (bia 0087.641a.a78d)
+  Description: Agency voice/data port
+  Last input 00:05:46, output 00:00:00, output hang never
+GigabitEthernet1/0/14 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78e (bia 0087.641a.a78e)
+  Description: Agency voice/data port
+  Last input 3d07h, output 00:00:00, output hang never
+GigabitEthernet1/0/15 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a78f (bia 0087.641a.a78f)
+  Description: Agency voice/data port
+  Last input 08:51:52, output 00:00:00, output hang never
+GigabitEthernet1/0/16 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a790 (bia 0087.641a.a790)
+  Description: Agency voice/data port
+  Last input 00:10:26, output 00:00:00, output hang never
+GigabitEthernet1/0/17 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a791 (bia 0087.641a.a791)
+  Description: Agency voice/data port
+  Last input 00:08:45, output 00:00:00, output hang never
+GigabitEthernet1/0/18 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a792 (bia 0087.641a.a792)
+  Description: Agency voice/data port
+  Last input 08:44:37, output 08:44:38, output hang never
+GigabitEthernet1/0/19 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a793 (bia 0087.641a.a793)
+  Description: Agency voice/data port
+  Last input 3d06h, output 3d06h, output hang never
+GigabitEthernet1/0/20 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a794 (bia 0087.641a.a794)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet1/0/21 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a795 (bia 0087.641a.a795)
+  Description: Agency voice/data port
+  Last input 00:04:57, output 00:00:00, output hang never
+GigabitEthernet1/0/22 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a796 (bia 0087.641a.a796)
+  Description: Agency voice/data port
+  Last input 07:35:44, output 00:00:00, output hang never
+GigabitEthernet1/0/23 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a797 (bia 0087.641a.a797)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet1/0/24 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a798 (bia 0087.641a.a798)
+  Description: Agency voice/data port
+  Last input 10:14:23, output 10:03:40, output hang never
+GigabitEthernet1/0/25 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a799 (bia 0087.641a.a799)
+  Description: Kofax Firewall
+  Last input 08:45:00, output 08:35:24, output hang never
+GigabitEthernet1/0/26 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79a (bia 0087.641a.a79a)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet1/0/27 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79b (bia 0087.641a.a79b)
+  Description: Trunk to Training switch
+  Last input never, output never, output hang never
+GigabitEthernet1/0/28 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79c (bia 0087.641a.a79c)
+  Description: Agency voice/data port
+  Last input 08:51:52, output 08:38:17, output hang never
+GigabitEthernet1/0/29 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79d (bia 0087.641a.a79d)
+  Description: Agency voice/data port
+  Last input 11:22:53, output 11:08:01, output hang never
+GigabitEthernet1/0/30 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79e (bia 0087.641a.a79e)
+  Description: Agency voice/data port
+  Last input 10:54:31, output 10:46:34, output hang never
+GigabitEthernet1/0/31 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a79f (bia 0087.641a.a79f)
+  Description: Agency Video conference
+  Last input never, output never, output hang never
+GigabitEthernet1/0/32 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a0 (bia 0087.641a.a7a0)
+  Description: Agency voice/data port
+  Last input 4d06h, output 4d06h, output hang never
+GigabitEthernet1/0/33 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a1 (bia 0087.641a.a7a1)
+  Description: Agency voice/data port
+  Last input 00:02:53, output 00:00:01, output hang never
+GigabitEthernet1/0/34 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a2 (bia 0087.641a.a7a2)
+  Description: Agency voice/data port
+  Last input 10:07:10, output 00:00:01, output hang never
+GigabitEthernet1/0/35 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a3 (bia 0087.641a.a7a3)
+  Description: Agency voice/data port
+  Last input 12:25:48, output 12:09:13, output hang never
+GigabitEthernet1/0/36 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a4 (bia 0087.641a.a7a4)
+  Description: Agency voice/data port
+  Last input 00:04:13, output 00:00:01, output hang never
+GigabitEthernet1/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a5 (bia 0087.641a.a7a5)
+  Description: Agency voice/data port
+  Last input 1w4d, output 1w4d, output hang never
+GigabitEthernet1/0/38 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a6 (bia 0087.641a.a7a6)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet1/0/39 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a7 (bia 0087.641a.a7a7)
+  Description: Agency voice/data port
+  Last input 00:12:03, output 00:00:01, output hang never
+GigabitEthernet1/0/40 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a8 (bia 0087.641a.a7a8)
+  Description: Agency voice/data port
+  Last input 00:08:18, output 00:00:01, output hang never
+GigabitEthernet1/0/41 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7a9 (bia 0087.641a.a7a9)
+  Description: *** Printer DUNHSP100410.17.106.205 0026.73f5.6455 ***
+  Last input never, output 00:00:01, output hang never
+GigabitEthernet1/0/42 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7aa (bia 0087.641a.a7aa)
+  Description: Wireless - 101-0767-dud-62ap
+  Last input 00:00:09, output 00:00:00, output hang never
+GigabitEthernet1/0/43 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7ab (bia 0087.641a.a7ab)
+  Description: Agency voice/data port
+  Last input 00:14:34, output 00:00:01, output hang never
+GigabitEthernet1/0/44 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7ac (bia 0087.641a.a7ac)
+  Description: Agency voice/data port
+  Last input 10:28:59, output 00:00:00, output hang never
+GigabitEthernet1/0/45 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7ad (bia 0087.641a.a7ad)
+  Description: Agency voice/data port
+  Last input 1w4d, output 1w4d, output hang never
+GigabitEthernet1/0/46 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7ae (bia 0087.641a.a7ae)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet1/0/47 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7af (bia 0087.641a.a7af)
+  Description: Agency voice/data port
+  Last input 00:01:33, output 00:00:01, output hang never
+GigabitEthernet1/0/48 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7b0 (bia 0087.641a.a7b0)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet1/0/49 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7b1 (bia 0087.641a.a7b1)
+  Description: Trunk to S017-7-CS38-01 - Gi1/1/1
+  Last input 00:00:00, output 00:00:00, output hang never
+GigabitEthernet1/0/50 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7b2 (bia 0087.641a.a7b2)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet1/0/51 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7b3 (bia 0087.641a.a7b3)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet1/0/52 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.641a.a7b4 (bia 0087.641a.a7b4)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet2/0/1 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b881 (bia 0cd0.f8a8.b881)
+  Description: *** Printer DUNHSP100110.17.106.202 0026.73ea.9e3d ***
+  Last input never, output 00:00:11, output hang never
+GigabitEthernet2/0/2 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b882 (bia 0cd0.f8a8.b882)
+  Description: *** Printer DUNHSP100310.17.106.204 0026.73ea.c2d8 ***
+  Last input never, output 00:00:14, output hang never
+GigabitEthernet2/0/3 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b883 (bia 0cd0.f8a8.b883)
+  Description: *** Printer DUNHSP100210.17.106.203 0026.73f5.2b22 ***
+  Last input never, output 00:00:14, output hang never
+GigabitEthernet2/0/4 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b884 (bia 0cd0.f8a8.b884)
+  Description: Wireless - 101-0767-dud-63ap
+  Last input 00:00:13, output 00:00:07, output hang never
+GigabitEthernet2/0/5 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b885 (bia 0cd0.f8a8.b885)
+  Description: Agency voice/data port
+  Last input 1w4d, output 1w4d, output hang never
+GigabitEthernet2/0/6 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b886 (bia 0cd0.f8a8.b886)
+  Description: Agency voice/data port
+  Last input 00:01:12, output 00:00:11, output hang never
+GigabitEthernet2/0/7 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b887 (bia 0cd0.f8a8.b887)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/8 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b888 (bia 0cd0.f8a8.b888)
+  Description: Agency voice/data port
+  Last input 00:09:47, output 00:00:14, output hang never
+GigabitEthernet2/0/9 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b889 (bia 0cd0.f8a8.b889)
+  Description: Agency voice/data port
+  Last input 1w3d, output 1w3d, output hang never
+GigabitEthernet2/0/10 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88a (bia 0cd0.f8a8.b88a)
+  Description: Agency voice/data port
+  Last input 07:30:56, output 00:00:09, output hang never
+GigabitEthernet2/0/11 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88b (bia 0cd0.f8a8.b88b)
+  Description: Agency voice/data port
+  Last input 00:06:58, output 00:00:13, output hang never
+GigabitEthernet2/0/12 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88c (bia 0cd0.f8a8.b88c)
+  Description: Agency voice/data port
+  Last input 06:27:05, output 06:18:57, output hang never
+GigabitEthernet2/0/13 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88d (bia 0cd0.f8a8.b88d)
+  Description: Agency voice/data port
+  Last input never, output 00:00:19, output hang never
+GigabitEthernet2/0/14 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88e (bia 0cd0.f8a8.b88e)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/15 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b88f (bia 0cd0.f8a8.b88f)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/16 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b890 (bia 0cd0.f8a8.b890)
+  Description: Agency voice/data port
+  Last input 06:54:42, output 06:42:49, output hang never
+GigabitEthernet2/0/17 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b891 (bia 0cd0.f8a8.b891)
+  Description: Agency voice/data port
+  Last input 00:00:13, output 00:00:07, output hang never
+GigabitEthernet2/0/18 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b892 (bia 0cd0.f8a8.b892)
+  Description: Agency voice/data port
+  Last input 00:15:43, output 00:00:09, output hang never
+GigabitEthernet2/0/19 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b893 (bia 0cd0.f8a8.b893)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/20 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b894 (bia 0cd0.f8a8.b894)
+  Description: Agency voice/data port
+  Last input 11:06:17, output 10:56:35, output hang never
+GigabitEthernet2/0/21 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b895 (bia 0cd0.f8a8.b895)
+  Description: Agency voice/data port
+  Last input 07:25:33, output 00:00:26, output hang never
+GigabitEthernet2/0/22 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b896 (bia 0cd0.f8a8.b896)
+  Description: Agency voice/data port
+  Last input 00:08:53, output 00:00:10, output hang never
+GigabitEthernet2/0/23 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b897 (bia 0cd0.f8a8.b897)
+  Description: Agency voice/data port
+  Last input 13:39:00, output 13:27:27, output hang never
+GigabitEthernet2/0/24 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b898 (bia 0cd0.f8a8.b898)
+  Description: Agency voice/data port
+  Last input 07:27:42, output 07:27:58, output hang never
+GigabitEthernet2/0/25 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b899 (bia 0cd0.f8a8.b899)
+  Description: Agency voice/data port
+  Last input 00:02:03, output 00:00:08, output hang never
+GigabitEthernet2/0/26 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89a (bia 0cd0.f8a8.b89a)
+  Description: Agency voice/data port
+  Last input 3d12h, output 3d12h, output hang never
+GigabitEthernet2/0/27 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89b (bia 0cd0.f8a8.b89b)
+  Description: Agency voice/data port
+  Last input 00:15:41, output 00:00:14, output hang never
+GigabitEthernet2/0/28 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89c (bia 0cd0.f8a8.b89c)
+  Description: Agency voice/data port
+  Last input 06:28:36, output 00:00:18, output hang never
+GigabitEthernet2/0/29 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89d (bia 0cd0.f8a8.b89d)
+  Description: Agency voice/data port
+  Last input 08:40:51, output 08:31:22, output hang never
+GigabitEthernet2/0/30 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89e (bia 0cd0.f8a8.b89e)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/31 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b89f (bia 0cd0.f8a8.b89f)
+  Description: Agency voice/data port
+  Last input 00:03:54, output 00:00:23, output hang never
+GigabitEthernet2/0/32 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a0 (bia 0cd0.f8a8.b8a0)
+  Description: Agency voice/data port
+  Last input 00:10:23, output 00:00:09, output hang never
+GigabitEthernet2/0/33 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a1 (bia 0cd0.f8a8.b8a1)
+  Description: Agency voice/data port
+  Last input 26w0d, output 26w0d, output hang never
+GigabitEthernet2/0/34 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a2 (bia 0cd0.f8a8.b8a2)
+  Description: Agency voice/data port
+  Last input 00:01:56, output 00:00:08, output hang never
+GigabitEthernet2/0/35 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a3 (bia 0cd0.f8a8.b8a3)
+  Description: Agency voice/data port
+  Last input 00:01:40, output 00:00:14, output hang never
+GigabitEthernet2/0/36 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a4 (bia 0cd0.f8a8.b8a4)
+  Description: Agency voice/data port
+  Last input 06:28:28, output 00:00:05, output hang never
+GigabitEthernet2/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a5 (bia 0cd0.f8a8.b8a5)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/38 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a6 (bia 0cd0.f8a8.b8a6)
+  Description: Trunk to S062-6-CS38-02 - Gi0/48
+  Last input never, output never, output hang never
+GigabitEthernet2/0/39 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a7 (bia 0cd0.f8a8.b8a7)
+  Description: Agency voice/data port
+  Last input 00:05:21, output 00:00:02, output hang never
+GigabitEthernet2/0/40 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a8 (bia 0cd0.f8a8.b8a8)
+  Description: Agency voice/data port
+  Last input 13:16:36, output 13:16:14, output hang never
+GigabitEthernet2/0/41 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8a9 (bia 0cd0.f8a8.b8a9)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/42 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8aa (bia 0cd0.f8a8.b8aa)
+  Description: Agency voice/data port
+  Last input 38w6d, output 38w6d, output hang never
+GigabitEthernet2/0/43 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8ab (bia 0cd0.f8a8.b8ab)
+  Description: Agency voice/data port
+  Last input 1w4d, output 1w4d, output hang never
+GigabitEthernet2/0/44 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8ac (bia 0cd0.f8a8.b8ac)
+  Description: Wireless - 101-0767-dud-64ap
+  Last input 00:00:08, output 00:00:11, output hang never
+GigabitEthernet2/0/45 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8ad (bia 0cd0.f8a8.b8ad)
+  Description: Agency voice/data port
+  Last input 00:00:00, output 00:00:03, output hang never
+GigabitEthernet2/0/46 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8ae (bia 0cd0.f8a8.b8ae)
+  Description: Agency voice/data port
+  Last input 07:30:06, output 07:30:16, output hang never
+GigabitEthernet2/0/47 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8af (bia 0cd0.f8a8.b8af)
+  Description: Agency voice/data port
+  Last input 3d07h, output 3d07h, output hang never
+GigabitEthernet2/0/48 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8b0 (bia 0cd0.f8a8.b8b0)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet2/0/49 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8b1 (bia 0cd0.f8a8.b8b1)
+  Description: Trunk to S017-7-CS38-01 - Gi2/1/1
+  Last input never, output 00:00:07, output hang never
+GigabitEthernet2/0/50 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8b2 (bia 0cd0.f8a8.b8b2)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet2/0/51 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8b3 (bia 0cd0.f8a8.b8b3)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet2/0/52 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f8a8.b8b4 (bia 0cd0.f8a8.b8b4)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/1 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7901 (bia 0087.642a.7901)
+  Description: Agency voice/data port
+  Last input 18w0d, output 18w0d, output hang never
+GigabitEthernet3/0/2 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7902 (bia 0087.642a.7902)
+  Description: Agency voice/data port
+  Last input 00:01:24, output 00:00:14, output hang never
+GigabitEthernet3/0/3 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7903 (bia 0087.642a.7903)
+  Description: Agency voice/data port
+  Last input 06:27:54, output 06:19:46, output hang never
+GigabitEthernet3/0/4 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7904 (bia 0087.642a.7904)
+  Description: Agency voice/data port
+  Last input 00:00:02, output 00:00:26, output hang never
+GigabitEthernet3/0/5 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7905 (bia 0087.642a.7905)
+  Description: Agency voice/data port
+  Last input 00:12:29, output 00:00:03, output hang never
+GigabitEthernet3/0/6 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7906 (bia 0087.642a.7906)
+  Description: Agency voice/data port
+  Last input 00:04:41, output 00:00:09, output hang never
+GigabitEthernet3/0/7 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7907 (bia 0087.642a.7907)
+  Description: Agency voice/data port
+  Last input 07:37:51, output 00:00:07, output hang never
+GigabitEthernet3/0/8 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7908 (bia 0087.642a.7908)
+  Description: Agency voice/data port
+  Last input 00:00:44, output 00:00:25, output hang never
+GigabitEthernet3/0/9 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7909 (bia 0087.642a.7909)
+  Description: Agency voice/data port
+  Last input 00:04:11, output 00:00:16, output hang never
+GigabitEthernet3/0/10 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790a (bia 0087.642a.790a)
+  Description: *** Printer DUNMFD100810.17.106.201 0026.73f1.c904 ***
+  Last input never, output 00:00:04, output hang never
+GigabitEthernet3/0/11 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790b (bia 0087.642a.790b)
+  Description: Agency voice/data port
+  Last input 00:01:38, output 00:00:10, output hang never
+GigabitEthernet3/0/12 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790c (bia 0087.642a.790c)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/13 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790d (bia 0087.642a.790d)
+  Description: Agency voice/data port
+  Last input 00:02:38, output 00:00:27, output hang never
+GigabitEthernet3/0/14 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790e (bia 0087.642a.790e)
+  Description: Agency voice/data port
+  Last input 07:27:47, output 07:21:32, output hang never
+GigabitEthernet3/0/15 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.790f (bia 0087.642a.790f)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/16 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7910 (bia 0087.642a.7910)
+  Description: Agency voice/data port
+  Last input 10:36:50, output 10:33:33, output hang never
+GigabitEthernet3/0/17 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7911 (bia 0087.642a.7911)
+  Description: Agency voice/data port
+  Last input 06:30:01, output 06:29:40, output hang never
+GigabitEthernet3/0/18 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7912 (bia 0087.642a.7912)
+  Description: Agency voice/data port
+  Last input 00:04:51, output 00:00:21, output hang never
+GigabitEthernet3/0/19 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7913 (bia 0087.642a.7913)
+  Description: Agency Video conference
+  Last input 1w0d, output 1w0d, output hang never
+GigabitEthernet3/0/20 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7914 (bia 0087.642a.7914)
+  Description: Agency voice/data port
+  Last input 09:30:16, output 09:25:02, output hang never
+GigabitEthernet3/0/21 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7915 (bia 0087.642a.7915)
+  Description: Agency voice/data port
+  Last input 00:00:21, output 00:00:19, output hang never
+GigabitEthernet3/0/22 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7916 (bia 0087.642a.7916)
+  Description: Agency voice/data port
+  Last input 00:13:15, output 00:00:11, output hang never
+GigabitEthernet3/0/23 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7917 (bia 0087.642a.7917)
+  Description: Agency voice/data port
+  Last input 00:11:05, output 00:00:22, output hang never
+GigabitEthernet3/0/24 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7918 (bia 0087.642a.7918)
+  Description: Agency voice/data port
+  Last input 00:05:09, output 00:00:09, output hang never
+GigabitEthernet3/0/25 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7919 (bia 0087.642a.7919)
+  Description: Agency voice/data port
+  Last input 00:03:25, output 00:00:18, output hang never
+GigabitEthernet3/0/26 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791a (bia 0087.642a.791a)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/27 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791b (bia 0087.642a.791b)
+  Description: Agency voice/data port
+  Last input 00:00:01, output 00:00:14, output hang never
+GigabitEthernet3/0/28 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791c (bia 0087.642a.791c)
+  Description: Agency voice/data port
+  Last input 14w6d, output 14w6d, output hang never
+GigabitEthernet3/0/29 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791d (bia 0087.642a.791d)
+  Description: Agency voice/data port
+  Last input 00:09:42, output 00:00:07, output hang never
+GigabitEthernet3/0/30 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791e (bia 0087.642a.791e)
+  Description: Agency voice/data port
+  Last input 00:06:12, output 00:00:07, output hang never
+GigabitEthernet3/0/31 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.791f (bia 0087.642a.791f)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/32 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7920 (bia 0087.642a.7920)
+  Description: Agency voice/data port
+  Last input 09:18:54, output 09:07:41, output hang never
+GigabitEthernet3/0/33 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7921 (bia 0087.642a.7921)
+  Description: Agency voice/data port
+  Last input 07:49:58, output 00:00:01, output hang never
+GigabitEthernet3/0/34 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7922 (bia 0087.642a.7922)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/35 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7923 (bia 0087.642a.7923)
+  Description: Agency voice/data port
+  Last input never, output 11w0d, output hang never
+GigabitEthernet3/0/36 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7924 (bia 0087.642a.7924)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7925 (bia 0087.642a.7925)
+  Description: Agency voice/data port
+  Last input 1w6d, output 1w6d, output hang never
+GigabitEthernet3/0/38 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7926 (bia 0087.642a.7926)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/39 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7927 (bia 0087.642a.7927)
+  Description: Agency voice/data port
+  Last input 00:05:29, output 00:00:06, output hang never
+GigabitEthernet3/0/40 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7928 (bia 0087.642a.7928)
+  Description: Agency voice/data port
+  Last input 2w0d, output 2w0d, output hang never
+GigabitEthernet3/0/41 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7929 (bia 0087.642a.7929)
+  Description: Agency voice/data port
+  Last input 00:02:18, output 00:00:06, output hang never
+GigabitEthernet3/0/42 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792a (bia 0087.642a.792a)
+  Description: Agency voice/data port
+  Last input 07:36:25, output 00:00:09, output hang never
+GigabitEthernet3/0/43 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792b (bia 0087.642a.792b)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/44 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792c (bia 0087.642a.792c)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/45 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792d (bia 0087.642a.792d)
+  Description: Agency voice/data port
+  Last input 00:04:08, output 00:00:28, output hang never
+GigabitEthernet3/0/46 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792e (bia 0087.642a.792e)
+  Description: Agency voice/data port
+  Last input 00:00:00, output 00:00:00, output hang never
+GigabitEthernet3/0/47 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.792f (bia 0087.642a.792f)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/48 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7930 (bia 0087.642a.7930)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/49 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7931 (bia 0087.642a.7931)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/50 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7932 (bia 0087.642a.7932)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/51 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7933 (bia 0087.642a.7933)
+  Description: not in use
+  Last input never, output never, output hang never
+GigabitEthernet3/0/52 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 0087.642a.7934 (bia 0087.642a.7934)
+  Description: not in use
+  Last input never, output never, output hang never
