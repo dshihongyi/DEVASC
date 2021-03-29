@@ -6,7 +6,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 url = "https://sandboxsdwan.cisco.com:8443/j_security_check"
 
 login_body={'j_username':'devnetuser', 
-            'j_password':'Cisco123!'}
+            'j_password':'Cisco123!'
+            }
 
 session = requests.session()
 response = session.post(url, data=login_body, verify=False)
@@ -17,7 +18,7 @@ if not response.ok or response.text:
     sys.exit(1)
 
 else: 
-    print("Login Success!!!")
+    print("Login Success!!!\n")
 
 
 ### Get Device ###
