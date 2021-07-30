@@ -14,5 +14,5 @@ with open(template) as f, open(output_file) as output:
 
 ## Print the result ##
 ##  $ python output/Cisco_IOS_Parsing.py output/cisco_ios_show_interfaces.template output/show_int  ##
-##  $ python output/Cisco_IOS_Parsing.py output/cisco_ios_show_interfaces.template output/show_int > parse.csv ##
+#  $ python output/Cisco_IOS_Parsing.py output/cisco_ios_show_interfaces.template output/show_int > parse.csv ##
 ## https://pyneng.readthedocs.io/en/latest/book/21_textfsm/textfsm_examples.html ##
