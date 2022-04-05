@@ -3,10 +3,10 @@ import json
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-url = "https://sandboxsdwan.cisco.com:8443/j_security_check"
+url = "https://192.168.61.100:8444/j_security_check"
 
-login_body={'j_username':'devnetuser', 
-            'j_password':'Cisco123!'}
+login_body={'j_username':'admin', 
+            'j_password':'admin'}
 
 session = requests.session()
 response = session.post(url, data=login_body, verify=False)
@@ -21,7 +21,7 @@ else:
 
 
 ### Get Device ###
-url = "https://sandboxsdwan.cisco.com:8443/dataservice/device/monitor"
+url = "https://192.168.61.100:8444/dataservice/device/monitor"
 
 device_response = session.get(url, verify=False).json()['data']
 # print(device_response)
