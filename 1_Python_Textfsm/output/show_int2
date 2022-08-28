@@ -1,827 +1,626 @@
-
 GigabitEthernet1/0/1 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f81 (bia 5486.bcff.7f81)
-  Description: Wireless - 116-0075-wlg-712ap
-  Last input 00:00:02, output 00:00:11, output hang never
-GigabitEthernet1/0/2 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f82 (bia 5486.bcff.7f82)
-  Description: Wireless - 116-0075-wlg-708ap
-  Last input 00:00:28, output 00:00:05, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c681 (bia 0cd0.f822.c681)
+  Description: 101-0754-DUD-WR01 Gi0/0/4
+  Last input never, output 00:00:03, output hang never
+GigabitEthernet1/0/2 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c682 (bia 0cd0.f822.c682)
+  Description: Agency UPS
+  Last input never, output never, output hang never
 GigabitEthernet1/0/3 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f83 (bia 5486.bcff.7f83)
-  Description: Wireless - 116-0075-wlg-702ap
-  Last input 00:00:27, output 00:00:24, output hang never
-GigabitEthernet1/0/4 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f84 (bia 5486.bcff.7f84)
-  Description: Wireless - 116-0075-wlg-705ap
-  Last input 00:00:03, output 00:00:05, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c683 (bia 0cd0.f822.c683)
+  Description: Agency Video conference 10.90.131.80
+  Last input never, output 00:00:12, output hang never
+GigabitEthernet1/0/4 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c684 (bia 0cd0.f822.c684)
+  Description: Agency voice/data port
+  Last input 01:11:56, output 01:00:24, output hang never
 GigabitEthernet1/0/5 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f85 (bia 5486.bcff.7f85)
-  Description: Wireless - 116-0075-wlg-709ap
-  Last input 00:00:26, output 00:00:16, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c685 (bia 0cd0.f822.c685)
+  Description: Wireless AP - 101-0754-dud-01ap
+  Last input 00:00:11, output 00:00:19, output hang never
 GigabitEthernet1/0/6 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f86 (bia 5486.bcff.7f86)
-  Description: Wireless - 116-0075-wlg-715ap
-  Last input 00:00:12, output 00:00:04, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c686 (bia 0cd0.f822.c686)
+  Description: Agency CCTV Server (10.90.134.21)
+  Last input never, output 00:00:23, output hang never
 GigabitEthernet1/0/7 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f87 (bia 5486.bcff.7f87)
-  Description: Wireless - 116-0075-wlg-714ap
-  Last input 00:00:17, output 00:00:03, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c687 (bia 0cd0.f822.c687)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:17, output hang never
 GigabitEthernet1/0/8 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f88 (bia 5486.bcff.7f88)
-  Description: Wireless - 116-0075-wlg-701ap
-  Last input 00:00:20, output 00:00:08, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c688 (bia 0cd0.f822.c688)
+  Description: Agency Access Server
+  Last input never, output 00:00:10, output hang never
 GigabitEthernet1/0/9 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f89 (bia 5486.bcff.7f89)
-  Description: Printer
-  Last input 21w5d, output 00:00:12, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c689 (bia 0cd0.f822.c689)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:16, output hang never
 GigabitEthernet1/0/10 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8a (bia 5486.bcff.7f8a)
-  Description: Printer
-  Last input 20w4d, output 00:00:27, output hang never
-GigabitEthernet1/0/11 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8b (bia 5486.bcff.7f8b)
-  Description: Kiosk
-  Last input 00:04:51, output 00:00:10, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68a (bia 0cd0.f822.c68a)
+  Description: Agency Zintel Music cube (10.90.1.180)
+  Last input never, output 00:00:12, output hang never
+GigabitEthernet1/0/11 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68b (bia 0cd0.f822.c68b)
+  Description: Agency voice/data port
+  Last input 21:25:07, output 21:15:13, output hang never
 GigabitEthernet1/0/12 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8c (bia 5486.bcff.7f8c)
-  Description: Security 
-  Last input never, output 00:00:17, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68c (bia 0cd0.f822.c68c)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:05, output hang never
 GigabitEthernet1/0/13 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8d (bia 5486.bcff.7f8d)
-  Description: Security 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68d (bia 0cd0.f822.c68d)
+  Description: Agency CCTV Security Camera
   Last input never, output 00:00:17, output hang never
-GigabitEthernet1/0/14 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8e (bia 5486.bcff.7f8e)
-  Description: Security 
-  Last input 21w0d, output 20w4d, output hang never
-GigabitEthernet1/0/15 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f8f (bia 5486.bcff.7f8f)
-  Description: Security 
-  Last input 20w1d, output 20w1d, output hang never
-GigabitEthernet1/0/16 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f90 (bia 5486.bcff.7f90)
-  Description: User_Lvl_7_Wired_Data
-  Last input 02:10:12, output 02:06:46, output hang never
+GigabitEthernet1/0/14 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68e (bia 0cd0.f822.c68e)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:10, output hang never
+GigabitEthernet1/0/15 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c68f (bia 0cd0.f822.c68f)
+  Description: Agency voice/data port
+  Last input 00:07:03, output 00:00:15, output hang never
+GigabitEthernet1/0/16 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c690 (bia 0cd0.f822.c690)
+  Description: Agency voice/data port
+  Last input 00:00:00, output 00:00:00, output hang never
 GigabitEthernet1/0/17 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f91 (bia 5486.bcff.7f91)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w5d, output 1w5d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c691 (bia 0cd0.f822.c691)
+  Description: Agency voice/data port
+  Last input 4d21h, output 4d20h, output hang never
 GigabitEthernet1/0/18 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f92 (bia 5486.bcff.7f92)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w0d, output 2w0d, output hang never
-GigabitEthernet1/0/19 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f93 (bia 5486.bcff.7f93)
-  Description: User_Lvl_7_Wired_Data
-  Last input 21w4d, output 00:00:01, output hang never
-GigabitEthernet1/0/20 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f94 (bia 5486.bcff.7f94)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d20h, output 00:00:04, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c692 (bia 0cd0.f822.c692)
+  Description: Agency voice/data port
+  Last input 05:43:11, output 05:31:54, output hang never
+GigabitEthernet1/0/19 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c693 (bia 0cd0.f822.c693)
+  Description: Agency voice/data port
+  Last input 5d20h, output 5d20h, output hang never
+GigabitEthernet1/0/20 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c694 (bia 0cd0.f822.c694)
+  Description: Agency voice/data port
+  Last input 21:31:46, output 21:31:59, output hang never
 GigabitEthernet1/0/21 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f95 (bia 5486.bcff.7f95)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1d03h, output 00:00:19, output hang never
-GigabitEthernet1/0/22 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f96 (bia 5486.bcff.7f96)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w3d, output 5w3d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c695 (bia 0cd0.f822.c695)
+  Description: Agency voice/data port
+  Last input 2w5d, output 00:00:01, output hang never
+GigabitEthernet1/0/22 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c696 (bia 0cd0.f822.c696)
+  Description: Agency voice/data port
+  Last input 00:00:18, output 00:00:20, output hang never
 GigabitEthernet1/0/23 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f97 (bia 5486.bcff.7f97)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:14:47, output 00:00:18, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c697 (bia 0cd0.f822.c697)
+  Description: Agency voice/data port
+  Last input 2w1d, output 00:00:19, output hang never
 GigabitEthernet1/0/24 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f98 (bia 5486.bcff.7f98)
-  Description: User_Lvl_7_Wired_Data
-  Last input 6w0d, output 6w0d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c698 (bia 0cd0.f822.c698)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet1/0/25 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f99 (bia 5486.bcff.7f99)
-  Description: User_Lvl_7_Wired_Data
-  Last input 3w4d, output 00:00:21, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c699 (bia 0cd0.f822.c699)
+  Description: Agency voice/data port
+  Last input 00:08:38, output 00:00:09, output hang never
 GigabitEthernet1/0/26 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9a (bia 5486.bcff.7f9a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 3d19h, output 3d19h, output hang never
-GigabitEthernet1/0/27 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9b (bia 5486.bcff.7f9b)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19w0d, output 19w0d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69a (bia 0cd0.f822.c69a)
+  Description: Agency voice/data port
+  Last input 44w0d, output 36w4d, output hang never
+GigabitEthernet1/0/27 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69b (bia 0cd0.f822.c69b)
+  Description: Agency voice/data port
+  Last input 00:00:00, output 00:00:01, output hang never
 GigabitEthernet1/0/28 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9c (bia 5486.bcff.7f9c)
-  Description: User_Lvl_7_Wired_Data
-  Last input 21w0d, output 21w0d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69c (bia 0cd0.f822.c69c)
+  Description: Agency voice/data port
+  Last input 13w6d, output 13w6d, output hang never
 GigabitEthernet1/0/29 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9d (bia 5486.bcff.7f9d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 18w3d, output 14w5d, output hang never
-GigabitEthernet1/0/30 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9e (bia 5486.bcff.7f9e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w5d, output 1w5d, output hang never
-GigabitEthernet1/0/31 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7f9f (bia 5486.bcff.7f9f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4d21h, output 00:00:25, output hang never
-GigabitEthernet1/0/32 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa0 (bia 5486.bcff.7fa0)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1d03h, output 00:00:02, output hang never
-GigabitEthernet1/0/33 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa1 (bia 5486.bcff.7fa1)
-  Description: User_Lvl_7_Wired_Data
-  Last input 10w1d, output 10w1d, output hang never
-GigabitEthernet1/0/34 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa2 (bia 5486.bcff.7fa2)
-  Description: User_Lvl_7_Wired_Data
-  Last input 21w0d, output 21w0d, output hang never
-GigabitEthernet1/0/35 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa3 (bia 5486.bcff.7fa3)
-  Description: User_Lvl_7_Wired_Data
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69d (bia 0cd0.f822.c69d)
+  Description: Agency voice/data port
   Last input 2w3d, output 2w3d, output hang never
-GigabitEthernet1/0/36 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa4 (bia 5486.bcff.7fa4)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w4d, output 1w4d, output hang never
-GigabitEthernet1/0/37 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa5 (bia 5486.bcff.7fa5)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w6d, output 00:00:01, output hang never
-GigabitEthernet1/0/38 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa6 (bia 5486.bcff.7fa6)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w5d, output 00:00:15, output hang never
+GigabitEthernet1/0/30 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69e (bia 0cd0.f822.c69e)
+  Description: Agency voice/data port
+  Last input never, output 6d01h, output hang never
+GigabitEthernet1/0/31 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c69f (bia 0cd0.f822.c69f)
+  Description: Agency voice/data port
+  Last input 2w4d, output 2w3d, output hang never
+GigabitEthernet1/0/32 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a0 (bia 0cd0.f822.c6a0)
+  Description: Agency voice/data port
+  Last input 21:57:03, output 00:00:11, output hang never
+GigabitEthernet1/0/33 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a1 (bia 0cd0.f822.c6a1)
+  Description: Agency voice/data port
+  Last input 6d21h, output 6d21h, output hang never
+GigabitEthernet1/0/34 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a2 (bia 0cd0.f822.c6a2)
+  Description: Agency voice/data port
+  Last input 00:14:50, output 00:00:00, output hang never
+GigabitEthernet1/0/35 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a3 (bia 0cd0.f822.c6a3)
+  Description: Agency voice/data port
+  Last input 00:07:45, output 00:00:14, output hang never
+GigabitEthernet1/0/36 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a4 (bia 0cd0.f822.c6a4)
+  Description: Agency voice/data port
+  Last input 00:14:18, output 00:00:21, output hang never
+GigabitEthernet1/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a5 (bia 0cd0.f822.c6a5)
+  Description: Agency voice/data port
+  Last input 21:39:08, output 21:26:35, output hang never
+GigabitEthernet1/0/38 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a6 (bia 0cd0.f822.c6a6)
+  Description: Agency voice/data port
+  Last input 1d04h, output 1d04h, output hang never
 GigabitEthernet1/0/39 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa7 (bia 5486.bcff.7fa7)
-  Description: User_Lvl_7_Wired_Data
-  Last input 11w4d, output 11w4d, output hang never
-GigabitEthernet1/0/40 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa8 (bia 5486.bcff.7fa8)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d21h, output 00:00:13, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a7 (bia 0cd0.f822.c6a7)
+  Description: Agency voice/data port
+  Last input 21:27:14, output 21:27:12, output hang never
+GigabitEthernet1/0/40 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a8 (bia 0cd0.f822.c6a8)
+  Description: Agency voice/data port
+  Last input never, output 6d01h, output hang never
 GigabitEthernet1/0/41 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fa9 (bia 5486.bcff.7fa9)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w3d, output 00:00:04, output hang never
-GigabitEthernet1/0/42 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7faa (bia 5486.bcff.7faa)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4d01h, output 00:00:23, output hang never
-GigabitEthernet1/0/43 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fab (bia 5486.bcff.7fab)
-  Description: User_Lvl_7_Wired_Data
-  Last input 20:28:15, output 00:00:01, output hang never
-GigabitEthernet1/0/44 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fac (bia 5486.bcff.7fac)
-  Description: User_Lvl_7_Wired_Data
-  Last input 3d19h, output 00:00:04, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6a9 (bia 0cd0.f822.c6a9)
+  Description: Agency voice/data port
+  Last input 20:41:56, output 00:00:26, output hang never
+GigabitEthernet1/0/42 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6aa (bia 0cd0.f822.c6aa)
+  Description: Agency voice/data port
+  Last input 00:00:35, output 00:00:17, output hang never
+GigabitEthernet1/0/43 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6ab (bia 0cd0.f822.c6ab)
+  Description: Agency voice/data port
+  Last input 4d20h, output 4d20h, output hang never
+GigabitEthernet1/0/44 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6ac (bia 0cd0.f822.c6ac)
+  Description: Agency voice/data port
+  Last input 2w4d, output 6d01h, output hang never
 GigabitEthernet1/0/45 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fad (bia 5486.bcff.7fad)
-  Description: User_Lvl_7_Wired_Data
-  Last input 6d01h, output 6d01h, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6ad (bia 0cd0.f822.c6ad)
+  Description: Agency voice/data port
+  Last input 1d03h, output 1d03h, output hang never
 GigabitEthernet1/0/46 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fae (bia 5486.bcff.7fae)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w6d, output 5w6d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6ae (bia 0cd0.f822.c6ae)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet1/0/47 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7faf (bia 5486.bcff.7faf)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w0d, output 1w0d, output hang never
-GigabitEthernet1/0/48 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fb0 (bia 5486.bcff.7fb0)
-  Description: Trunk to 116-0075-WLG-WR01 1 Gi0/0/5
-  Last input never, output 00:00:07, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6af (bia 0cd0.f822.c6af)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet1/0/48 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6b0 (bia 0cd0.f822.c6b0)
+  Description: Agency Avaya Gateway
+  Last input never, output never, output hang never
 GigabitEthernet1/0/49 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fb1 (bia 5486.bcff.7fb1)
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6b1 (bia 0cd0.f822.c6b1)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet1/0/50 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fb2 (bia 5486.bcff.7fb2)
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6b2 (bia 0cd0.f822.c6b2)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet1/0/51 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fb3 (bia 5486.bcff.7fb3)
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6b3 (bia 0cd0.f822.c6b3)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet1/0/52 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7fb4 (bia 5486.bcff.7fb4)
+  Hardware is Gigabit Ethernet, address is 0cd0.f822.c6b4 (bia 0cd0.f822.c6b4)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet2/0/1 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7201 (bia 5486.bcff.7201)
-  Description: Wireless - 116-0075-wlg-710ap
-  Last input 00:00:15, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b201 (bia 700b.4ff1.b201)
+  Description: 101-0754-DUD-WR01 Gi0/0/5
+  Last input never, output 00:00:09, output hang never
 GigabitEthernet2/0/2 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7202 (bia 5486.bcff.7202)
-  Description: Wireless - 116-0075-wlg-716ap
-  Last input 00:00:07, output 00:00:00, output hang never
-GigabitEthernet2/0/3 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7203 (bia 5486.bcff.7203)
-  Description: Wireless - 116-0075-wlg-703ap
-  Last input 00:00:26, output 00:00:00, output hang never
-GigabitEthernet2/0/4 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7204 (bia 5486.bcff.7204)
-  Description: Wireless - 116-0075-wlg-706ap
-  Last input 00:00:13, output 00:00:00, output hang never
-GigabitEthernet2/0/5 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7205 (bia 5486.bcff.7205)
-  Description: Wireless - 116-0075-wlg-713ap
-  Last input 00:00:25, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b202 (bia 700b.4ff1.b202)
+  Description: Agency voice/data port
+  Last input 00:05:56, output 00:00:20, output hang never
+GigabitEthernet2/0/3 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b203 (bia 700b.4ff1.b203)
+  Description: Agency voice/data port
+  Last input 3d20h, output 3d20h, output hang never
+GigabitEthernet2/0/4 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b204 (bia 700b.4ff1.b204)
+  Description: Agency voice/data port
+  Last input 9w5d, output 9w5d, output hang never
+GigabitEthernet2/0/5 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b205 (bia 700b.4ff1.b205)
+  Description: Agency voice/data port
+  Last input 21:57:03, output 21:42:12, output hang never
 GigabitEthernet2/0/6 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7206 (bia 5486.bcff.7206)
-  Description: Wireless - 116-0075-wlg-717ap
-  Last input 00:00:28, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b206 (bia 700b.4ff1.b206)
+  Description: Agency voice/data port
+  Last input 00:07:23, output 00:00:16, output hang never
 GigabitEthernet2/0/7 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7207 (bia 5486.bcff.7207)
-  Description: Wireless - 116-0075-wlg-707ap
-  Last input 00:00:05, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b207 (bia 700b.4ff1.b207)
+  Description: Agency voice/data port
+  Last input 3d21h, output 00:00:08, output hang never
 GigabitEthernet2/0/8 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7208 (bia 5486.bcff.7208)
-  Description: Wireless - 116-0075-wlg-711ap
-  Last input 00:00:12, output 00:00:00, output hang never
-GigabitEthernet2/0/9 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7209 (bia 5486.bcff.7209)
-  Description: Printer
-  Last input never, output never, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b208 (bia 700b.4ff1.b208)
+  Description: Agency voice/data port
+  Last input 21:03:33, output 00:00:12, output hang never
+GigabitEthernet2/0/9 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b209 (bia 700b.4ff1.b209)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:06, output hang never
 GigabitEthernet2/0/10 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720a (bia 5486.bcff.720a)
-  Description: Printer
-  Last input never, output never, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20a (bia 700b.4ff1.b20a)
+  Description: Agency voice/data port
+  Last input 16w1d, output 16w1d, output hang never
 GigabitEthernet2/0/11 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720b (bia 5486.bcff.720b)
-  Description: Voice Gateway
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20b (bia 700b.4ff1.b20b)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet2/0/12 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720c (bia 5486.bcff.720c)
-  Description: Voice Gateway
-  Last input never, output never, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20c (bia 700b.4ff1.b20c)
+  Description: Agency voice/data port
+  Last input 3d21h, output 3d20h, output hang never
 GigabitEthernet2/0/13 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720d (bia 5486.bcff.720d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w6d, output 2w6d, output hang never
-GigabitEthernet2/0/14 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720e (bia 5486.bcff.720e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 14w0d, output 14w0d, output hang never
-GigabitEthernet2/0/15 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.720f (bia 5486.bcff.720f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w3d, output 2w3d, output hang never
-GigabitEthernet2/0/16 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7210 (bia 5486.bcff.7210)
-  Description: User_Lvl_7_Wired_Data
-  Last input 13w4d, output 13w1d, output hang never
-GigabitEthernet2/0/17 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7211 (bia 5486.bcff.7211)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w4d, output 1w4d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20d (bia 700b.4ff1.b20d)
+  Description: Agency voice/data port
+  Last input 01:38:33, output 01:23:24, output hang never
+GigabitEthernet2/0/14 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20e (bia 700b.4ff1.b20e)
+  Description: Agency voice/data port
+  Last input 2w0d, output 00:00:28, output hang never
+GigabitEthernet2/0/15 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b20f (bia 700b.4ff1.b20f)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:09, output hang never
+GigabitEthernet2/0/16 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b210 (bia 700b.4ff1.b210)
+  Description: Agency voice/data port
+  Last input 00:00:06, output 00:00:21, output hang never
+GigabitEthernet2/0/17 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b211 (bia 700b.4ff1.b211)
+  Description: Agency CCTV Security Camera
+  Last input never, output 00:00:05, output hang never
 GigabitEthernet2/0/18 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7212 (bia 5486.bcff.7212)
-  Description: User_Lvl_7_Wired_Data
-  Last input 22w4d, output 20w4d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b212 (bia 700b.4ff1.b212)
+  Description: *** Printer DUDMFD100410.90.1.2040026.73f1.c467 ***
+  Last input never, output 37w5d, output hang never
 GigabitEthernet2/0/19 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7213 (bia 5486.bcff.7213)
-  Description: User_Lvl_7_Wired_Data
-  Last input 10w6d, output 10w6d, output hang never
-GigabitEthernet2/0/20 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7214 (bia 5486.bcff.7214)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19w4d, output 19w4d, output hang never
-GigabitEthernet2/0/21 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7215 (bia 5486.bcff.7215)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w3d, output 2w3d, output hang never
-GigabitEthernet2/0/22 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7216 (bia 5486.bcff.7216)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d19h, output 00:00:01, output hang never
-GigabitEthernet2/0/23 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7217 (bia 5486.bcff.7217)
-  Description: User_Lvl_7_Wired_Data
-  Last input 01:10:57, output 01:10:53, output hang never
-GigabitEthernet2/0/24 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7218 (bia 5486.bcff.7218)
-  Description: User_Lvl_7_Wired_Data
-  Last input 17w3d, output 17w1d, output hang never
-GigabitEthernet2/0/25 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7219 (bia 5486.bcff.7219)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:13:19, output 00:00:00, output hang never
-GigabitEthernet2/0/26 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721a (bia 5486.bcff.721a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19w3d, output 11w6d, output hang never
-GigabitEthernet2/0/27 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721b (bia 5486.bcff.721b)
-  Description: User_Lvl_7_Wired_Data
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b213 (bia 700b.4ff1.b213)
+  Description: Agency voice/data port
   Last input 1w4d, output 1w4d, output hang never
+GigabitEthernet2/0/20 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b214 (bia 700b.4ff1.b214)
+  Description: Agency voice/data port
+  Last input 2w3d, output 2w3d, output hang never
+GigabitEthernet2/0/21 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b215 (bia 700b.4ff1.b215)
+  Description: Agency voice/data port
+  Last input 31w5d, output 31w5d, output hang never
+GigabitEthernet2/0/22 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b216 (bia 700b.4ff1.b216)
+  Description: Agency voice/data port
+  Last input 00:08:00, output 00:00:00, output hang never
+GigabitEthernet2/0/23 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b217 (bia 700b.4ff1.b217)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/24 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b218 (bia 700b.4ff1.b218)
+  Description: Agency voice/data port
+  Last input 00:05:37, output 00:00:18, output hang never
+GigabitEthernet2/0/25 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b219 (bia 700b.4ff1.b219)
+  Description: Agency voice/data port
+  Last input 01:51:37, output 00:00:05, output hang never
+GigabitEthernet2/0/26 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21a (bia 700b.4ff1.b21a)
+  Description: Agency voice/data port
+  Last input 00:02:36, output 00:00:19, output hang never
+GigabitEthernet2/0/27 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21b (bia 700b.4ff1.b21b)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet2/0/28 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721c (bia 5486.bcff.721c)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:14:49, output 00:00:01, output hang never
-GigabitEthernet2/0/29 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721d (bia 5486.bcff.721d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4d20h, output 00:00:01, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21c (bia 700b.4ff1.b21c)
+  Description: *** Printer DUDMFD100310.90.1.2035838.7904.d16b ***
+  Last input never, output 00:00:14, output hang never
+GigabitEthernet2/0/29 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21d (bia 700b.4ff1.b21d)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet2/0/30 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721e (bia 5486.bcff.721e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:01:16, output 00:00:01, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21e (bia 700b.4ff1.b21e)
+  Description: Agency voice/data port
+  Last input 00:07:59, output 00:00:13, output hang never
 GigabitEthernet2/0/31 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.721f (bia 5486.bcff.721f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:02:37, output 00:00:01, output hang never
-GigabitEthernet2/0/32 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7220 (bia 5486.bcff.7220)
-  Description: User_Lvl_7_Wired_Data
-  Last input 20:23:25, output 20:23:23, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b21f (bia 700b.4ff1.b21f)
+  Description: Agency voice/data port
+  Last input 00:07:26, output 00:00:04, output hang never
+GigabitEthernet2/0/32 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b220 (bia 700b.4ff1.b220)
+  Description: Agency voice/data port
+  Last input 00:26:12, output 00:00:10, output hang never
 GigabitEthernet2/0/33 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7221 (bia 5486.bcff.7221)
-  Description: User_Lvl_7_Wired_Data
-  Last input 28w1d, output 28w1d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b221 (bia 700b.4ff1.b221)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet2/0/34 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7222 (bia 5486.bcff.7222)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:10:19, output 00:00:01, output hang never
-GigabitEthernet2/0/35 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7223 (bia 5486.bcff.7223)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w4d, output 5w4d, output hang never
-GigabitEthernet2/0/36 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7224 (bia 5486.bcff.7224)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w5d, output 5w5d, output hang never
-GigabitEthernet2/0/37 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7225 (bia 5486.bcff.7225)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d19h, output 00:00:01, output hang never
-GigabitEthernet2/0/38 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7226 (bia 5486.bcff.7226)
-  Description: User_Lvl_7_Wired_Data
-  Last input 12w5d, output 11w6d, output hang never
-GigabitEthernet2/0/39 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7227 (bia 5486.bcff.7227)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:11:46, output 00:00:00, output hang never
-GigabitEthernet2/0/40 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7228 (bia 5486.bcff.7228)
-  Description: User_Lvl_7_Wired_Data
-  Last input 12w5d, output 12w5d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b222 (bia 700b.4ff1.b222)
+  Description: Agency voice/data port
+  Last input 00:00:19, output 00:00:01, output hang never
+GigabitEthernet2/0/35 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b223 (bia 700b.4ff1.b223)
+  Description: Agency voice/data port
+  Last input 00:00:21, output 00:00:09, output hang never
+GigabitEthernet2/0/36 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b224 (bia 700b.4ff1.b224)
+  Description: Agency voice/data port
+  Last input 00:00:12, output 00:00:08, output hang never
+GigabitEthernet2/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b225 (bia 700b.4ff1.b225)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet2/0/38 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b226 (bia 700b.4ff1.b226)
+  Description: Agency voice/data port
+  Last input 1w5d, output 00:00:13, output hang never
+GigabitEthernet2/0/39 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b227 (bia 700b.4ff1.b227)
+  Description: Agency voice/data port
+  Last input 21:33:53, output 21:33:13, output hang never
+GigabitEthernet2/0/40 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b228 (bia 700b.4ff1.b228)
+  Description: Agency voice/data port
+  Last input 00:00:02, output 00:00:00, output hang never
 GigabitEthernet2/0/41 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7229 (bia 5486.bcff.7229)
-  Description: User_Lvl_7_Wired_Data
-  Last input 3d16h, output 00:00:00, output hang never
-GigabitEthernet2/0/42 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722a (bia 5486.bcff.722a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d21h, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b229 (bia 700b.4ff1.b229)
+  Description: Agency voice/data port
+  Last input 00:10:32, output 00:00:05, output hang never
+GigabitEthernet2/0/42 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22a (bia 700b.4ff1.b22a)
+  Description: *** Printer DDUDMFD1002 10.90.1.202 0026.73f9.ae46 ***
+  Last input never, output 37w5d, output hang never
 GigabitEthernet2/0/43 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722b (bia 5486.bcff.722b)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:02:10, output 00:00:00, output hang never
-GigabitEthernet2/0/44 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722c (bia 5486.bcff.722c)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w5d, output 2w5d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22b (bia 700b.4ff1.b22b)
+  Description: Agency voice/data port
+  Last input 00:14:03, output 00:00:19, output hang never
+GigabitEthernet2/0/44 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22c (bia 700b.4ff1.b22c)
+  Description: Agency voice/data port
+  Last input 00:05:37, output 00:00:00, output hang never
 GigabitEthernet2/0/45 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722d (bia 5486.bcff.722d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 23w0d, output 23w0d, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22d (bia 700b.4ff1.b22d)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet2/0/46 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722e (bia 5486.bcff.722e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w5d, output 00:00:00, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22e (bia 700b.4ff1.b22e)
+  Description: *** Printer DUDMFD100110.90.1.201 0026.73f9.ae40 ***
+  Last input never, output 00:00:18, output hang never
 GigabitEthernet2/0/47 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.722f (bia 5486.bcff.722f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4d19h, output 4d19h, output hang never
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b22f (bia 700b.4ff1.b22f)
+  Description: Agency voice/data port
+  Last input never, output 6d01h, output hang never
 GigabitEthernet2/0/48 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7230 (bia 5486.bcff.7230)
-  Description: Trunk to 116-0075-WLG-WR02 1 Gi0/0/5
-  Last input 28w0d, output 00:00:00, output hang never
-GigabitEthernet2/0/49 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7231 (bia 5486.bcff.7231)
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b230 (bia 700b.4ff1.b230)
+  Description: Wireless AP - 101-0754-dud-02ap
+  Last input 00:00:23, output 00:00:21, output hang never
+GigabitEthernet2/0/49 is administratively down, line protocol is down (disabled) 
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b231 (bia 700b.4ff1.b231)
+  Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet2/0/50 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7232 (bia 5486.bcff.7232)
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b232 (bia 700b.4ff1.b232)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet2/0/51 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7233 (bia 5486.bcff.7233)
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b233 (bia 700b.4ff1.b233)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet2/0/52 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 5486.bcff.7234 (bia 5486.bcff.7234)
+  Hardware is Gigabit Ethernet, address is 700b.4ff1.b234 (bia 700b.4ff1.b234)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
-GigabitEthernet3/0/1 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8481 (bia 4cbc.4818.8481)
-  Description: Wireless - 116-0075-wlg-704ap
-  Last input 00:00:17, output 00:00:13, output hang never
-GigabitEthernet3/0/2 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8482 (bia 4cbc.4818.8482)
-  Description: Wireless - Reserved
+GigabitEthernet3/0/1 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8981 (bia 0cd0.f811.8981)
+  Description: Trunk to 101-745-DUD-AS012 - Gi1/0/48
   Last input never, output never, output hang never
+GigabitEthernet3/0/2 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8982 (bia 0cd0.f811.8982)
+  Description: Agency voice/data port
+  Last input 24w6d, output 00:00:00, output hang never
 GigabitEthernet3/0/3 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8483 (bia 4cbc.4818.8483)
-  Description: Wireless - Reserved
-  Last input never, output never, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8983 (bia 0cd0.f811.8983)
+  Description: Trunk to 101-745-DUD-AS013 - Gi1/0/48
+  Last input 2w0d, output 2w0d, output hang never
 GigabitEthernet3/0/4 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8484 (bia 4cbc.4818.8484)
-  Description: Wireless - Reserved
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8984 (bia 0cd0.f811.8984)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/5 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8485 (bia 4cbc.4818.8485)
-  Description: Wireless - Reserved
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8985 (bia 0cd0.f811.8985)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/6 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8486 (bia 4cbc.4818.8486)
-  Description: Wireless - Reserved
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8986 (bia 0cd0.f811.8986)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/7 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8487 (bia 4cbc.4818.8487)
-  Description: Wireless - Reserved
-  Last input never, output never, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8987 (bia 0cd0.f811.8987)
+  Description: Agency voice/data port
+  Last input 1w0d, output 1w0d, output hang never
 GigabitEthernet3/0/8 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8488 (bia 4cbc.4818.8488)
-  Description: Wireless - Reserved
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8988 (bia 0cd0.f811.8988)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/9 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8489 (bia 4cbc.4818.8489)
-  Description: Printer
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8989 (bia 0cd0.f811.8989)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/10 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848a (bia 4cbc.4818.848a)
-  Description: Printer
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898a (bia 0cd0.f811.898a)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/11 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848b (bia 4cbc.4818.848b)
-  Description: Voice Gateway
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898b (bia 0cd0.f811.898b)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/12 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848c (bia 4cbc.4818.848c)
-  Description: Voice Gateway
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898c (bia 0cd0.f811.898c)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
 GigabitEthernet3/0/13 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848d (bia 4cbc.4818.848d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w5d, output 2w5d, output hang never
-GigabitEthernet3/0/14 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848e (bia 4cbc.4818.848e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 20:43:02, output 00:00:14, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898d (bia 0cd0.f811.898d)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/14 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898e (bia 0cd0.f811.898e)
+  Description: Agency voice/data port
+  Last input 4d00h, output 4d00h, output hang never
 GigabitEthernet3/0/15 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.848f (bia 4cbc.4818.848f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 28w1d, output 28w1d, output hang never
-GigabitEthernet3/0/16 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8490 (bia 4cbc.4818.8490)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w4d, output 1w4d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.898f (bia 0cd0.f811.898f)
+  Description: Agency voice/data port
+  Last input 5d01h, output 5d01h, output hang never
+GigabitEthernet3/0/16 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8990 (bia 0cd0.f811.8990)
+  Description: Agency voice/data port
+  Last input 00:05:15, output 00:00:00, output hang never
 GigabitEthernet3/0/17 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8491 (bia 4cbc.4818.8491)
-  Description: User_Lvl_7_Wired_Data
-  Last input 10w3d, output 3w5d, output hang never
-GigabitEthernet3/0/18 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8492 (bia 4cbc.4818.8492)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:00:30, output 00:00:01, output hang never
-GigabitEthernet3/0/19 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8493 (bia 4cbc.4818.8493)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w5d, output 00:00:05, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8991 (bia 0cd0.f811.8991)
+  Description: Agency voice/data port
+  Last input 3d21h, output 3d21h, output hang never
+GigabitEthernet3/0/18 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8992 (bia 0cd0.f811.8992)
+  Description: Agency voice/data port
+  Last input 4d21h, output 4d21h, output hang never
+GigabitEthernet3/0/19 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8993 (bia 0cd0.f811.8993)
+  Description: Agency voice/data port
+  Last input 25w6d, output 4d00h, output hang never
 GigabitEthernet3/0/20 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8494 (bia 4cbc.4818.8494)
-  Description: User_Lvl_7_Wired_Data
-  Last input 13w3d, output 6w6d, output hang never
-GigabitEthernet3/0/21 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8495 (bia 4cbc.4818.8495)
-  Description: User_Lvl_7_Wired_Data
-  Last input 6d18h, output 00:00:04, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8994 (bia 0cd0.f811.8994)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/21 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8995 (bia 0cd0.f811.8995)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet3/0/22 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8496 (bia 4cbc.4818.8496)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5w5d, output 5w5d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8996 (bia 0cd0.f811.8996)
+  Description: Agency voice/data port
+  Last input 31w6d, output 4d00h, output hang never
 GigabitEthernet3/0/23 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8497 (bia 4cbc.4818.8497)
-  Description: User_Lvl_7_Wired_Data
-  Last input 28w0d, output 19w4d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8997 (bia 0cd0.f811.8997)
+  Description: Agency voice/data port
+  Last input 25w6d, output 2w0d, output hang never
 GigabitEthernet3/0/24 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8498 (bia 4cbc.4818.8498)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:05:07, output 00:00:06, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8998 (bia 0cd0.f811.8998)
+  Description: Agency voice/data port
+  Last input 00:00:08, output 00:00:00, output hang never
 GigabitEthernet3/0/25 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.8499 (bia 4cbc.4818.8499)
-  Description: User_Lvl_7_Wired_Data
-  Last input 28w1d, output 28w1d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.8999 (bia 0cd0.f811.8999)
+  Description: Agency voice/data port
+  Last input 4d20h, output 4d20h, output hang never
 GigabitEthernet3/0/26 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849a (bia 4cbc.4818.849a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4w5d, output 4w5d, output hang never
-GigabitEthernet3/0/27 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849b (bia 4cbc.4818.849b)
-  Description: User_Lvl_7_Wired_Data
-  Last input 28w3d, output 28w1d, output hang never
-GigabitEthernet3/0/28 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849c (bia 4cbc.4818.849c)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w4d, output 00:00:08, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899a (bia 0cd0.f811.899a)
+  Description: Agency voice/data port
+  Last input 21:10:34, output 21:10:35, output hang never
+GigabitEthernet3/0/27 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899b (bia 0cd0.f811.899b)
+  Description: Agency voice/data port
+  Last input 00:09:52, output 00:00:00, output hang never
+GigabitEthernet3/0/28 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899c (bia 0cd0.f811.899c)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet3/0/29 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849d (bia 4cbc.4818.849d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w3d, output 2w3d, output hang never
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899d (bia 0cd0.f811.899d)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet3/0/30 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849e (bia 4cbc.4818.849e)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19w6d, output 00:00:06, output hang never
-GigabitEthernet3/0/31 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.849f (bia 4cbc.4818.849f)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w3d, output 2w3d, output hang never
-GigabitEthernet3/0/32 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a0 (bia 4cbc.4818.84a0)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:05:28, output 00:00:07, output hang never
-GigabitEthernet3/0/33 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a1 (bia 4cbc.4818.84a1)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d20h, output 00:00:00, output hang never
-GigabitEthernet3/0/34 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a2 (bia 4cbc.4818.84a2)
-  Description: User_Lvl_7_Wired_Data
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899e (bia 0cd0.f811.899e)
+  Description: Agency voice/data port
+  Last input 21:35:34, output 00:00:00, output hang never
+GigabitEthernet3/0/31 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.899f (bia 0cd0.f811.899f)
+  Description: Agency voice/data port
+  Last input 00:12:01, output 00:00:00, output hang never
+GigabitEthernet3/0/32 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a0 (bia 0cd0.f811.89a0)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
-GigabitEthernet3/0/35 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a3 (bia 4cbc.4818.84a3)
-  Description: User_Lvl_7_Wired_Data
-  Last input 17w6d, output 00:00:07, output hang never
+GigabitEthernet3/0/33 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a1 (bia 0cd0.f811.89a1)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/34 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a2 (bia 0cd0.f811.89a2)
+  Description: Agency voice/data port
+  Last input 1w6d, output 00:00:00, output hang never
+GigabitEthernet3/0/35 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a3 (bia 0cd0.f811.89a3)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
 GigabitEthernet3/0/36 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a4 (bia 4cbc.4818.84a4)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w5d, output 2w4d, output hang never
-GigabitEthernet3/0/37 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a5 (bia 4cbc.4818.84a5)
-  Description: User_Lvl_7_Wired_Data
-  Last input 16w6d, output 16w5d, output hang never
-GigabitEthernet3/0/38 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a6 (bia 4cbc.4818.84a6)
-  Description: User_Lvl_7_Wired_Data
-  Last input 4d19h, output 00:00:02, output hang never
-GigabitEthernet3/0/39 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a7 (bia 4cbc.4818.84a7)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19:54:54, output 00:00:18, output hang never
-GigabitEthernet3/0/40 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a8 (bia 4cbc.4818.84a8)
-  Description: User_Lvl_7_Wired_Data
-  Last input 3w6d, output 00:00:11, output hang never
-GigabitEthernet3/0/41 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84a9 (bia 4cbc.4818.84a9)
-  Description: User_Lvl_7_Wired_Data
-  Last input 10w3d, output 00:00:21, output hang never
-GigabitEthernet3/0/42 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84aa (bia 4cbc.4818.84aa)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w4d, output 2w4d, output hang never
-GigabitEthernet3/0/43 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84ab (bia 4cbc.4818.84ab)
-  Description: User_Lvl_7_Wired_Data
-  Last input 5d19h, output 5d19h, output hang never
-GigabitEthernet3/0/44 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84ac (bia 4cbc.4818.84ac)
-  Description: User_Lvl_7_Wired_Data
-  Last input 2w0d, output 2w0d, output hang never
-GigabitEthernet3/0/45 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84ad (bia 4cbc.4818.84ad)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19:30:33, output 19:30:48, output hang never
-GigabitEthernet3/0/46 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84ae (bia 4cbc.4818.84ae)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1d00h, output 00:00:13, output hang never
-GigabitEthernet3/0/47 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84af (bia 4cbc.4818.84af)
-  Description: User_Lvl_7_Wired_Data
-  Last input 02:49:11, output 02:49:12, output hang never
-GigabitEthernet3/0/48 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84b0 (bia 4cbc.4818.84b0)
-  Description: Trunk to 116-0075-WLG-WR02 1 Gi0/0/5
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a4 (bia 0cd0.f811.89a4)
+  Description: Agency voice/data port
   Last input never, output never, output hang never
+GigabitEthernet3/0/37 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a5 (bia 0cd0.f811.89a5)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/38 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a6 (bia 0cd0.f811.89a6)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/39 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a7 (bia 0cd0.f811.89a7)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/40 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a8 (bia 0cd0.f811.89a8)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/41 is up, line protocol is up (connected) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89a9 (bia 0cd0.f811.89a9)
+  Description: Agency voice/data port
+  Last input 00:04:14, output 00:00:00, output hang never
+GigabitEthernet3/0/42 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89aa (bia 0cd0.f811.89aa)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/43 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89ab (bia 0cd0.f811.89ab)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/44 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89ac (bia 0cd0.f811.89ac)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/45 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89ad (bia 0cd0.f811.89ad)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/46 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89ae (bia 0cd0.f811.89ae)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/47 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89af (bia 0cd0.f811.89af)
+  Description: Agency voice/data port
+  Last input never, output never, output hang never
+GigabitEthernet3/0/48 is down, line protocol is down (notconnect) 
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89b0 (bia 0cd0.f811.89b0)
+  Description: Agency voice/data port
+  Last input never, output 6d01h, output hang never
 GigabitEthernet3/0/49 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84b1 (bia 4cbc.4818.84b1)
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89b1 (bia 0cd0.f811.89b1)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet3/0/50 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84b2 (bia 4cbc.4818.84b2)
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89b2 (bia 0cd0.f811.89b2)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet3/0/51 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84b3 (bia 4cbc.4818.84b3)
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89b3 (bia 0cd0.f811.89b3)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
 GigabitEthernet3/0/52 is administratively down, line protocol is down (disabled) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4818.84b4 (bia 4cbc.4818.84b4)
+  Hardware is Gigabit Ethernet, address is 0cd0.f811.89b4 (bia 0cd0.f811.89b4)
   Description: Reserved / not in use SFP slot
   Last input never, output never, output hang never
-GigabitEthernet4/0/1 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de01 (bia 4cbc.4819.de01)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/2 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de02 (bia 4cbc.4819.de02)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/3 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de03 (bia 4cbc.4819.de03)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/4 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de04 (bia 4cbc.4819.de04)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/5 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de05 (bia 4cbc.4819.de05)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/6 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de06 (bia 4cbc.4819.de06)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/7 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de07 (bia 4cbc.4819.de07)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/8 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de08 (bia 4cbc.4819.de08)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/9 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de09 (bia 4cbc.4819.de09)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/10 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0a (bia 4cbc.4819.de0a)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/11 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0b (bia 4cbc.4819.de0b)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/12 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0c (bia 4cbc.4819.de0c)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/13 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0d (bia 4cbc.4819.de0d)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/14 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0e (bia 4cbc.4819.de0e)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/15 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de0f (bia 4cbc.4819.de0f)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/16 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de10 (bia 4cbc.4819.de10)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/17 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de11 (bia 4cbc.4819.de11)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/18 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de12 (bia 4cbc.4819.de12)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/19 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de13 (bia 4cbc.4819.de13)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/20 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de14 (bia 4cbc.4819.de14)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/21 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de15 (bia 4cbc.4819.de15)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/22 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de16 (bia 4cbc.4819.de16)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/23 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de17 (bia 4cbc.4819.de17)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/24 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de18 (bia 4cbc.4819.de18)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/25 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de19 (bia 4cbc.4819.de19)
-  Description: User_Lvl_7_Wired_Data
-  Last input 19w5d, output 19w5d, output hang never
-GigabitEthernet4/0/26 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1a (bia 4cbc.4819.de1a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 00:00:56, output 00:00:07, output hang never
-GigabitEthernet4/0/27 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1b (bia 4cbc.4819.de1b)
-  Description: User_Lvl_7_Wired_Data
-  Last input 14w5d, output 00:00:05, output hang never
-GigabitEthernet4/0/28 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1c (bia 4cbc.4819.de1c)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/29 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1d (bia 4cbc.4819.de1d)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w3d, output 00:00:28, output hang never
-GigabitEthernet4/0/30 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1e (bia 4cbc.4819.de1e)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/31 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de1f (bia 4cbc.4819.de1f)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/32 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de20 (bia 4cbc.4819.de20)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/33 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de21 (bia 4cbc.4819.de21)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/34 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de22 (bia 4cbc.4819.de22)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/35 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de23 (bia 4cbc.4819.de23)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/36 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de24 (bia 4cbc.4819.de24)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/37 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de25 (bia 4cbc.4819.de25)
-  Description: User_Lvl_7_Wired_Data
-  Last input 1w4d, output 00:00:19, output hang never
-GigabitEthernet4/0/38 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de26 (bia 4cbc.4819.de26)
-  Description: User_Lvl_7_Wired_Data
-  Last input 15w5d, output 15w5d, output hang never
-GigabitEthernet4/0/39 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de27 (bia 4cbc.4819.de27)
-  Description: User_Lvl_7_Wired_Data
-  Last input 14w0d, output 14w0d, output hang never
-GigabitEthernet4/0/40 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de28 (bia 4cbc.4819.de28)
-  Description: User_Lvl_7_Wired_Data
-  Last input 6w5d, output 6w5d, output hang never
-GigabitEthernet4/0/41 is up, line protocol is up (connected) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de29 (bia 4cbc.4819.de29)
-  Description: User_Lvl_7_Wired_Data
-  Last input 6d03h, output 00:00:00, output hang never
-GigabitEthernet4/0/42 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2a (bia 4cbc.4819.de2a)
-  Description: User_Lvl_7_Wired_Data
-  Last input 13w5d, output 13w5d, output hang never
-GigabitEthernet4/0/43 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2b (bia 4cbc.4819.de2b)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/44 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2c (bia 4cbc.4819.de2c)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/45 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2d (bia 4cbc.4819.de2d)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/46 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2e (bia 4cbc.4819.de2e)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/47 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de2f (bia 4cbc.4819.de2f)
-  Description: User_Lvl_7_Wired_Data
-  Last input never, output never, output hang never
-GigabitEthernet4/0/48 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de30 (bia 4cbc.4819.de30)
-  Last input 12w6d, output 12w6d, output hang never
-GigabitEthernet4/0/49 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de31 (bia 4cbc.4819.de31)
-  Last input never, output never, output hang never
-GigabitEthernet4/0/50 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de32 (bia 4cbc.4819.de32)
-  Last input never, output never, output hang never
-GigabitEthernet4/0/51 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de33 (bia 4cbc.4819.de33)
-  Last input never, output never, output hang never
-GigabitEthernet4/0/52 is down, line protocol is down (notconnect) 
-  Hardware is Gigabit Ethernet, address is 4cbc.4819.de34 (bia 4cbc.4819.de34)
-  Last input never, output never, output hang never
+  Description: Trunk_to_CLNE 101-0754-DUD-WR01 - Interface Po1
+  Last input never, output 00:00:00, output hang never

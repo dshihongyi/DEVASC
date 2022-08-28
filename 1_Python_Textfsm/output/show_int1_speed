@@ -1,421 +1,526 @@
-101-0749-NPL-AS01# sh int | includ Gigabit|Last input|Description
-  Last input 00:00:02, output never, output hang never
+
+101-0749-NPL-AS01#sh int | includ Gigabit|Last input|Description|media
+  Last input 00:00:24, output never, output hang never
   Description: TaaS Management
   Last input 00:00:00, output 00:00:00, output hang never
   Last input never, output never, output hang never
 GigabitEthernet1/0/1 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd01 (bia 700b.4ff1.bd01)
   Description: Trunk_to_CLNE 101-0749-NPL-WR01 - Interface Gi0
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
   Last input never, output 00:00:06, output hang never
 GigabitEthernet1/0/2 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd02 (bia 700b.4ff1.bd02)
   Description: Agency UPS
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output 44w4d, output hang never
 GigabitEthernet1/0/3 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd03 (bia 700b.4ff1.bd03)
   Description: Agency Video conference 10.67.131.80
-  Last input never, output 00:00:28, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:18, output hang never
 GigabitEthernet1/0/4 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd04 (bia 700b.4ff1.bd04)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/5 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd05 (bia 700b.4ff1.bd05)
   Description: Agency CCTV Server (10.67.134.21)
-  Last input never, output 00:00:18, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:09, output hang never
 GigabitEthernet1/0/6 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd06 (bia 700b.4ff1.bd06)
   Description: Agency CCTV Security Camera (10.67.134.31)
-  Last input never, output 00:00:27, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:02, output hang never
 GigabitEthernet1/0/7 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd07 (bia 700b.4ff1.bd07)
   Description: Agency Access Server (10.67.134.41)
-  Last input never, output 00:00:07, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:09, output hang never
 GigabitEthernet1/0/8 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd08 (bia 700b.4ff1.bd08)
   Description: Agency CCTV Security Camera
-  Last input never, output 00:00:00, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:01, output hang never
 GigabitEthernet1/0/9 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd09 (bia 700b.4ff1.bd09)
   Description: Wireless AP - 101-0749-npl-01ap
-  Last input 00:00:01, output 00:00:09, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:01, output 00:00:11, output hang never
 GigabitEthernet1/0/10 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0a (bia 700b.4ff1.bd0a)
   Description: Agency voice/data port
-  Last input 5d21h, output 00:00:28, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 5d21h, output 00:00:00, output hang never
 GigabitEthernet1/0/11 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0b (bia 700b.4ff1.bd0b)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/12 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0c (bia 700b.4ff1.bd0c)
   Description: Agency voice/data port
-  Last input 4d19h, output 4d19h, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 4d20h, output 4d20h, output hang never
 GigabitEthernet1/0/13 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0d (bia 700b.4ff1.bd0d)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output 4w0d, output hang never
 GigabitEthernet1/0/14 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0e (bia 700b.4ff1.bd0e)
   Description: Agency voice/data port
-  Last input never, output 00:00:23, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:25, output hang never
 GigabitEthernet1/0/15 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd0f (bia 700b.4ff1.bd0f)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/16 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd10 (bia 700b.4ff1.bd10)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/17 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd11 (bia 700b.4ff1.bd11)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/18 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd12 (bia 700b.4ff1.bd12)
   Description: Agency voice/data port
-  Last input 39w0d, output 00:00:02, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 39w0d, output 00:00:04, output hang never
 GigabitEthernet1/0/19 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd13 (bia 700b.4ff1.bd13)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/20 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd14 (bia 700b.4ff1.bd14)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/21 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd15 (bia 700b.4ff1.bd15)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/22 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd16 (bia 700b.4ff1.bd16)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/23 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd17 (bia 700b.4ff1.bd17)
   Description: Agency voice/data port
-  Last input 00:00:12, output 00:00:21, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:10, output 00:00:22, output hang never
 GigabitEthernet1/0/24 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd18 (bia 700b.4ff1.bd18)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/25 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd19 (bia 700b.4ff1.bd19)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/26 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1a (bia 700b.4ff1.bd1a)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/27 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1b (bia 700b.4ff1.bd1b)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/28 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1c (bia 700b.4ff1.bd1c)
   Description: Agency voice/data port
-  Last input 00:00:23, output 00:00:06, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:22, output 00:00:21, output hang never
 GigabitEthernet1/0/29 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1d (bia 700b.4ff1.bd1d)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/30 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1e (bia 700b.4ff1.bd1e)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/31 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd1f (bia 700b.4ff1.bd1f)
   Description: Agency voice/data port
-  Last input 00:15:41, output 00:02:52, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:24:10, output 00:11:20, output hang never
 GigabitEthernet1/0/32 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd20 (bia 700b.4ff1.bd20)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 1w5d, output 1w5d, output hang never
 GigabitEthernet1/0/33 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd21 (bia 700b.4ff1.bd21)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/34 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd22 (bia 700b.4ff1.bd22)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/35 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd23 (bia 700b.4ff1.bd23)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/36 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd24 (bia 700b.4ff1.bd24)
   Description: Agency voice/data port
-  Last input 00:03:10, output 00:00:08, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:11:38, output 00:00:09, output hang never
 GigabitEthernet1/0/37 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd25 (bia 700b.4ff1.bd25)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/38 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd26 (bia 700b.4ff1.bd26)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 35w6d, output 35w6d, output hang never
 GigabitEthernet1/0/39 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd27 (bia 700b.4ff1.bd27)
   Description: Agency voice/data port
-  Last input 00:00:29, output 00:00:29, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:28, output 00:00:00, output hang never
 GigabitEthernet1/0/40 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd28 (bia 700b.4ff1.bd28)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/41 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd29 (bia 700b.4ff1.bd29)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/42 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2a (bia 700b.4ff1.bd2a)
   Description: *** Printer NEWMFD100210.67.1.202 0026.73f1.c65c ***
-  Last input never, output 00:00:08, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:04, output hang never
 GigabitEthernet1/0/43 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2b (bia 700b.4ff1.bd2b)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/44 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2c (bia 700b.4ff1.bd2c)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output 4w0d, output hang never
 GigabitEthernet1/0/45 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2d (bia 700b.4ff1.bd2d)
   Description: Agency voice/data port
-  Last input 00:00:40, output 00:00:03, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:09:08, output 00:00:04, output hang never
 GigabitEthernet1/0/46 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2e (bia 700b.4ff1.bd2e)
   Description: Agency voice/data port
-  Last input 00:07:06, output 00:00:29, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:15:34, output 00:00:00, output hang never
 GigabitEthernet1/0/47 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd2f (bia 700b.4ff1.bd2f)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/48 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd30 (bia 700b.4ff1.bd30)
   Description: Agency Avaya Gateway
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet1/0/49 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd31 (bia 700b.4ff1.bd31)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet1/0/50 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd32 (bia 700b.4ff1.bd32)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet1/0/51 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd33 (bia 700b.4ff1.bd33)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet1/0/52 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 700b.4ff1.bd34 (bia 700b.4ff1.bd34)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet2/0/1 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf01 (bia 0cd0.f811.bf01)
   Description: Trunk_to_CLNE 101-0749-NPL-WR01 - Interface Gi1
-  Last input 00:00:26, output 00:00:00, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:25, output 00:00:00, output hang never
 GigabitEthernet2/0/2 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf02 (bia 0cd0.f811.bf02)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 30w3d, output 30w3d, output hang never
 GigabitEthernet2/0/3 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf03 (bia 0cd0.f811.bf03)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/4 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf04 (bia 0cd0.f811.bf04)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/5 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf05 (bia 0cd0.f811.bf05)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 38w1d, output 26w4d, output hang never
 GigabitEthernet2/0/6 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf06 (bia 0cd0.f811.bf06)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/7 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf07 (bia 0cd0.f811.bf07)
   Description: Agency CCTV Security Camera
-  Last input never, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:00, output hang never
 GigabitEthernet2/0/8 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf08 (bia 0cd0.f811.bf08)
   Description: Agency CCTV Security Camera
-  Last input never, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:00, output hang never
 GigabitEthernet2/0/9 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf09 (bia 0cd0.f811.bf09)
   Description: Wireless AP - 101-0749-npl-02ap
-  Last input 00:00:09, output 00:00:01, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:16, output 00:00:00, output hang never
 GigabitEthernet2/0/10 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0a (bia 0cd0.f811.bf0a)
   Description: Agency voice/data port
-  Last input 3d17h, output 3d16h, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 3d17h, output 3d17h, output hang never
 GigabitEthernet2/0/11 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0b (bia 0cd0.f811.bf0b)
   Description: Agency voice/data port
-  Last input 00:06:10, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:14:39, output 00:00:00, output hang never
 GigabitEthernet2/0/12 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0c (bia 0cd0.f811.bf0c)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/13 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0d (bia 0cd0.f811.bf0d)
   Description: Agency voice/data port
-  Last input 00:04:53, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:13:21, output 00:00:00, output hang never
 GigabitEthernet2/0/14 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0e (bia 0cd0.f811.bf0e)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/15 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf0f (bia 0cd0.f811.bf0f)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 4w0d, output 4w0d, output hang never
 GigabitEthernet2/0/16 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf10 (bia 0cd0.f811.bf10)
   Description: Agency voice/data port
-  Last input 3d17h, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 3d17h, output 00:00:00, output hang never
 GigabitEthernet2/0/17 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf11 (bia 0cd0.f811.bf11)
   Description: Agency voice/data port
-  Last input 00:06:50, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:15:19, output 00:00:00, output hang never
 GigabitEthernet2/0/18 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf12 (bia 0cd0.f811.bf12)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/19 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf13 (bia 0cd0.f811.bf13)
   Description: *** Printer NEWMFD100310.67.1.2030026.73f9.ae68 ***
-  Last input never, output 00:00:01, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:00, output hang never
 GigabitEthernet2/0/20 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf14 (bia 0cd0.f811.bf14)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/21 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf15 (bia 0cd0.f811.bf15)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/22 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf16 (bia 0cd0.f811.bf16)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/23 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf17 (bia 0cd0.f811.bf17)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/24 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf18 (bia 0cd0.f811.bf18)
   Description: Agency voice/data port
-  Last input 00:00:29, output 00:00:00, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:58, output 00:00:00, output hang never
 GigabitEthernet2/0/25 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf19 (bia 0cd0.f811.bf19)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/26 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1a (bia 0cd0.f811.bf1a)
   Description: Agency voice/data port
-  Last input 00:03:32, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:12:00, output 00:00:00, output hang never
 GigabitEthernet2/0/27 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1b (bia 0cd0.f811.bf1b)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/28 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1c (bia 0cd0.f811.bf1c)
   Description: Agency voice/data port
-  Last input 3d18h, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 3d18h, output 00:00:00, output hang never
 GigabitEthernet2/0/29 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1d (bia 0cd0.f811.bf1d)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 4w0d, output 4w0d, output hang never
 GigabitEthernet2/0/30 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1e (bia 0cd0.f811.bf1e)
   Description: Agency voice/data port
-  Last input 00:01:39, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:10:08, output 00:00:00, output hang never
 GigabitEthernet2/0/31 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf1f (bia 0cd0.f811.bf1f)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/32 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf20 (bia 0cd0.f811.bf20)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 30w1d, output 30w0d, output hang never
 GigabitEthernet2/0/33 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf21 (bia 0cd0.f811.bf21)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 38w1d, output 38w1d, output hang never
 GigabitEthernet2/0/34 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf22 (bia 0cd0.f811.bf22)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/35 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf23 (bia 0cd0.f811.bf23)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/36 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf24 (bia 0cd0.f811.bf24)
   Description: Agency voice/data port
-  Last input 3d21h, output 3d20h, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 3d21h, output 3d21h, output hang never
 GigabitEthernet2/0/37 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf25 (bia 0cd0.f811.bf25)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 45w0d, output 45w0d, output hang never
 GigabitEthernet2/0/38 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf26 (bia 0cd0.f811.bf26)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/39 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf27 (bia 0cd0.f811.bf27)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/40 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf28 (bia 0cd0.f811.bf28)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/41 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf29 (bia 0cd0.f811.bf29)
   Description: Agency voice/data port
-  Last input 00:14:38, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:07:21, output 00:00:00, output hang never
 GigabitEthernet2/0/42 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2a (bia 0cd0.f811.bf2a)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 26w0d, output 26w0d, output hang never
 GigabitEthernet2/0/43 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2b (bia 0cd0.f811.bf2b)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/44 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2c (bia 0cd0.f811.bf2c)
   Description: Agency voice/data port
-  Last input 00:00:44, output 00:00:01, output hang never
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+  Last input 00:00:13, output 00:00:00, output hang never
 GigabitEthernet2/0/45 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2d (bia 0cd0.f811.bf2d)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input 26w6d, output 26w4d, output hang never
 GigabitEthernet2/0/46 is up, line protocol is up (connected) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2e (bia 0cd0.f811.bf2e)
   Description: *** Printer NEWMFD100110.67.1.2010026.73f1.c8b6 ***
-  Last input never, output 00:00:01, output hang never
+  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX
+  Last input never, output 00:00:00, output hang never
 GigabitEthernet2/0/47 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf2f (bia 0cd0.f811.bf2f)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/48 is down, line protocol is down (notconnect) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf30 (bia 0cd0.f811.bf30)
   Description: Agency voice/data port
+  Full-duplex, 100Mb/s, media type is 10/100/1000BaseTX
   Last input never, output never, output hang never
 GigabitEthernet2/0/49 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf31 (bia 0cd0.f811.bf31)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet2/0/50 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf32 (bia 0cd0.f811.bf32)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet2/0/51 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf33 (bia 0cd0.f811.bf33)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
 GigabitEthernet2/0/52 is administratively down, line protocol is down (disabled) 
   Hardware is Gigabit Ethernet, address is 0cd0.f811.bf34 (bia 0cd0.f811.bf34)
   Description: Reserved / not in use SFP slot
+  Auto-duplex, Auto-speed, link type is auto, media type is Not Present
   Last input never, output never, output hang never
