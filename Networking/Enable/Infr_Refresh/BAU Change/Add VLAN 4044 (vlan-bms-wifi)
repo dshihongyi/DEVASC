@@ -1,0 +1,66 @@
+ // ~~~~~ Core Switch ~~~~~
+
+
+     -- OLD CONFIG FOR VLAN 4044 WEX --
+
+        set vlans vlan-wxc-sip vlan-id 4044
+        set vlans vlan-wxc-sip l3-interface irb.4044
+        set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-wxc-sip
+        set interfaces ae0 unit 0 family ethernet-switching vlan-rewrite translate 2044 4044
+	    set interfaces irb unit 4044 family inet address 58.28.145.2/29
+	    set routing-instances vr-internet interface irb.4044
+
+    -- OLD CONFIG FOR VLAN 4044 WEX --
+
+dsadmin@ena-sw-core>
+
+delete vlans vlan-wxc-sip vlan-id 4044
+delete vlans vlan-wxc-sip l3-interface irb.4044
+delete interfaces ae0 unit 0 family ethernet-switching vlan members vlan-wxc-sip
+delete interfaces ae0 unit 0 family ethernet-switching vlan-rewrite translate 2044 4044
+delete interfaces irb unit 4044 family inet address 58.28.145.2/29
+delete routing-instances vr-internet interface irb.4044
+
+set vlans vlan-bms-wifi vlan-id 4044
+set vlans vlan-bms-wifi l3-interface irb.4044
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-bms-wifi
+set interfaces interface-range range-remote-co-uplinks unit 0 family ethernet-switching vlan members vlan-bms-wifi
+set interfaces ae10 unit 0 family ethernet-switching vlan members vlan-bms-wifi
+set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-bms-wifi
+set interfaces ae16 unit 0 family ethernet-switching vlan members vlan-bms-wifi
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-bms-wifi
+
+
+
+(commit confirmed 4 comment "Project Refresh Infra: Create new vlan 3143 for vCenter Daniel Shi")
+
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 4044 description vlan-bms-wifi
+set interfaces reth1 unit 4044 vlan-id 4044
+set interfaces reth1 unit 4044 family inet address 10.130.44.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4044 passive
+
+set security zones security-zone zone-bms-wifi interfaces reth1.4044 host-inbound-traffic system-services ping
+
+set security address-book zone-bms-wifi address addr-bms-wifi 10.130.44.0/24
+set security address-book zone-bms-wifi attach zone zone-bms-wifi
+
+
+set security nat source rule-set nat-bms-wifi-to-internet from zone zone-bms-wifi
+set security nat source rule-set nat-bms-wifi-to-internet to zone zone-internet
+set security nat source rule-set nat-bms-wifi-to-internet rule rule-bms-wifi match source-address 10.130.44.0/24
+set security nat source rule-set nat-bms-wifi-to-internet rule rule-bms-wifi then source-nat interface
+
+
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out match source-address addr-bms-wifi
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out match destination-address any
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out match application junos-http
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out match application junos-https
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out match application junos-icmp-ping
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out then permit
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out then log session-init
+set security policies from-zone zone-bms-wifi to-zone zone-internet policy policy-bms-wifi-out then log session-close

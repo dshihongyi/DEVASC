@@ -1,0 +1,114 @@
+~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-l2x-admin vlan-id 4067
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-l2x-admin
+
+
+@REM ---VLAN 4067-L2X-admin---
+
+set interfaces reth1 unit 4067 description "vlan-l2x-admin"
+set interfaces reth1 unit 4067 vlan-id 4067
+set interfaces reth1 unit 4067 family inet address 10.130.67.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4067 passive
+set security zones security-zone zone-l2x-admin interfaces reth1.4067 host-inbound-traffic system-services ping
+set security address-book zone-l2x-admin address addr-enajump12 10.130.67.10/32
+set security address-book zone-l2x-admin attach zone zone-l2x-admin
+
+
+
+@REM ---Interface St0.27---
+
+set interfaces st0 unit 27 description "L2X VPN"
+set interfaces st0 unit 27 family inet mtu 1436
+set interfaces st0 unit 27 family inet 
+
+
+@REM ---Security Zone---
+
+set security zones security-zone zone-l2x-vpn host-inbound-traffic system-services ike
+set security zones security-zone zone-l2x-vpn interfaces st0.27 host-inbound-traffic system-services ike
+set security zones security-zone zone-l2x-vpn interfaces st0.27 host-inbound-traffic system-services ping
+
+
+@REM --- Address Book ---
+
+set security address-book zone-l2x-vpn address subnet-vpn-l2x 10.202.254.0/24
+set security address-book zone-l2x-vpn attach zone zone-l2x-vpn
+
+
+@REM --- SECURITY Policy ---
+
+set security policies from-zone zone-l2x-vpn to-zone zone-servers-ad apply-groups allow-ad-dns-template
+
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost match source-address subnet-vpn-l2x
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost match destination-address addr-enajump12
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost match application junos-https
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost match application junos-ssh
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost match application junos-ping
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost then permit
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost then log session-init
+set security policies from-zone zone-l2x-vpn to-zone zone-l2x-admin policy policy-vpn-l2x-jumphost then log session-close
+
+
+~~~~~~ PHASE 1 ~~~~~~~~~ 
+
+--- IKE Proposal ---
+set security ike policy vpn-ike-pol-l2x mode main
+set security ike policy vpn-ike-pol-l2x proposals pre-g20-aes256-sha256
+set security ike policy vpn-ike-pol-l2x pre-shared-key ascii-text "1nt3!n8s0203s#_l2x"
+
+--- IKE Gateway ---
+set security ike gateway vpn-ike-gw-l2x ike-policy vpn-ike-pol-l2x
+set security ike gateway vpn-ike-gw-l2x address 51.162.17.1
+set security ike gateway vpn-ike-gw-l2x dead-peer-detection interval 10
+set security ike gateway vpn-ike-gw-l2x dead-peer-detection threshold 3
+set security ike gateway vpn-ike-gw-l2x local-identity inet 202.36.221.23
+set security ike gateway vpn-ike-gw-l2x external-interface reth1.4083
+set security ike gateway vpn-ike-gw-l2x version v2-only
+
+
+~~~~~~ PHASE 2 ~~~~~~~~~ 
+
+--- IPsec Proposal ---
+set security ipsec proposal vpn-ipsec-prop-l2x protocol esp
+set security ipsec proposal vpn-ipsec-prop-l2x authentication-algorithm hmac-sha-256-128
+set security ipsec proposal vpn-ipsec-prop-l2x encryption-algorithm aes-256-cbc
+set security ipsec proposal vpn-ipsec-prop-l2x lifetime-seconds 3600
+
+--- IPsec Policy ---
+set security ipsec policy vpn-ipsec-pol-l2x proposals vpn-ipsec-prop-l2x
+set security ipsec policy vpn-ipsec-pol-l2x perfect-forward-secrecy keys group20
+
+--- IPsec VPN ---
+set security ipsec vpn vpn-ipsec-l2x bind-interface st0.27
+set security ipsec vpn vpn-ipsec-l2x df-bit clear
+set security ipsec vpn vpn-ipsec-l2x ike gateway vpn-ike-gw-l2x
+set security ipsec vpn vpn-ipsec-l2x ike proxy-identity local 10.130.67.0/24
+set security ipsec vpn vpn-ipsec-l2x ike proxy-identity remote 10.202.254.0/24
+set security ipsec vpn vpn-ipsec-l2x ike proxy-identity service any
+set security ipsec vpn vpn-ipsec-l2x ike ipsec-policy vpn-ipsec-pol-l2x
+set security ipsec vpn vpn-ipsec-l2x establish-tunnels immediately
+
+
+set routing-options static route 10.202.254.0/24 next-hop st0.27
+
+
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+
+interface vlan4067
+ vlan-name vlan_l2x-mgmt
+ description ena_4067_l2x-mgmt
+ mtu 9216
+ no shutdown
+
+
+interface port-channel1
+switchport trunk allowed vlan 4067
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4067
+

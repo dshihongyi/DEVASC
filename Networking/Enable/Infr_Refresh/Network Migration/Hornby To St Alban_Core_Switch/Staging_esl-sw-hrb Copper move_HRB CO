@@ -1,0 +1,26 @@
+@REM ~~~ Core Change ~~~
+
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-dcn2-interconnect
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-servers-itfservices
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-servers-devops
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-dcn-backbone
+set interfaces ae3 unit 0 family ethernet-switching vlan members vlan-servers-u2000-pri
+
+
+
+@REM ~~~ esl-sw-hrb Change ~~~
+
+
+set vlans vlan-dcn2-interconnect vlan-id 3299
+set vlans vlan-dcn-environmental vlan-id 4063
+set vlans vlan-dcn-backbone vlan-id 4093
+set vlans vlan-servers-u2000-pri vlan-id 4056
+
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-dcn2-interconnect
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-dcn-backbone
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-servers-u2000-pri

@@ -1,0 +1,20 @@
+{% for int_unit, details in interfaces.items() %}
+{% if delete_config %}
+delete interfaces reth1 unit {{ int_unit }}
+{% else %}
+{% set hostservices = details['host_inbound']['services'] %}
+{% set hostprotocols = details['host_inbound']['protocols'] %}
+{% set int_desc = details['description'] %}
+{% set int_addr = details['inet_addr'] %}
+{% for hostservice in hostservices %}
+set security zones security-zone {{ zone }} interfaces reth1.{{ int_unit }} host-inbound-traffic system-services {{ hostservice }}
+{% endfor %}
+{% for hostprotocol in hostprotcols %}
+set security zones security-zone {{ zone }} interfaces reth1.{{ int_unit }} host-inbound-traffic protocols {{ hostprotocol }}
+{% endfor %}
+set interfaces reth1 unit {{ int_unit }} description "{{ int_desc }}"
+set interfaces reth1 unit {{ int_unit }} vlan-id {{ int_unit }}
+set interfaces reth1 unit {{ int_unit }} family inet address {{ int_addr }}
+
+{% endif %}
+{% endfor %}

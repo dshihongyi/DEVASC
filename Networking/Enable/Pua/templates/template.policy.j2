@@ -1,0 +1,18 @@
+{% if delete_config %}
+delete security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }}
+{% else %}
+{% for source_address in source_addresses %}
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} match source-address {{ source_address}}
+{% endfor %}
+{% for destination_address in destination_addresses %}
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} match destination-address {{ destination_address }}
+{% endfor %}
+{% for app in apps %}
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} match application {{ app }}
+{% endfor %}
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} then {{ action }}
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} then log session-init
+set security policies from-zone {{ from_zone }} to-zone {{ to_zone }} policy policy-{{ policy_name }} then log session-close
+
+
+{% endif %}

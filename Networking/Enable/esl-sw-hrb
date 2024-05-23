@@ -1,0 +1,2058 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.09.18 21:12:14 =~=~=~=~=~=~=~=~=~=~=~=
+show | display set | no-more 
+set version 12.3R12-S21
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching port-mode trunk
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-vmotion
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching port-mode trunk
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-ad
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-gis-sandbox
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-legacy-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-dev
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-dev-sandbox
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-lan
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-ccl-ibss
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-secservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-f5-hsl
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-hrb-lab
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-f5-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-itfservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-devops
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-enable-backbone
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-infra-playpen
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-internet-dmz
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-digitalsignage
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-data
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-prod
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-test
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-workstation-admin
+set groups group-interface-infra-san-mgmt interfaces <*> unit 0 family ethernet-switching port-mode access
+set groups group-interface-infra-san-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching port-mode access
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set system host-name esl-sw-hrb
+set system time-zone Pacific/Auckland
+set system root-authentication encrypted-password "$1$5L.DDY7n$MbZeFBY5QdDHT0T2DnPz4."
+set system login class cfg-view permissions secret
+set system login class cfg-view permissions view-configuration
+set system login class cfg-view allow-commands "(show)|(set cli screen-length)|(set cli screen-width)"
+set system login class cfg-view deny-commands "(clear)|(file)|(file show)|(help)|(load)|(monitor)|(op)|(request)|(save)|(set)|(start)|(test)"
+set system login class cfg-view deny-configuration all
+set system login user CraigReynolds full-name "Craig Reynolds"
+set system login user CraigReynolds uid 2000
+set system login user CraigReynolds class operator
+set system login user CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user DavidRichards full-name "David Richards"
+set system login user DavidRichards uid 2001
+set system login user DavidRichards class operator
+set system login user DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user Jeremy.Crestani full-name "Jeremy Crestani (Read Only)"
+set system login user Jeremy.Crestani uid 2011
+set system login user Jeremy.Crestani class cfg-view
+set system login user Jeremy.Crestani authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNFzTgHHVVWgrJdLSxGq8Ux4wZImCXqL+6mGxUnozLFW1TuD4EttsIrX53m3cj8NczVQqOIoSENQjIkDOsY0U++BuDHL7CZQVesp45C/xLRhe4Zjp2SeIdi+yx0poHkoKadKgzgKBgfIkh/+cmQx7jjy6J91SCzBOuxq28z8zpCf5G5v23WTARTn2xV0fkQfLTfza2RkkTXZhRsu3Xw9rnYYyHK8dLmxwqprWO5BqBrHCmeaTvMMoqumMoGylMuSkrHmSc2SSUQod8LgTuNmXKg/iAEe72EHNa1LkEq+ZzLRFGbrC+WAPlOkYlPDtYSjMCkMUT9fkq/LiE3U+PahI7"
+set system login user Peter.Fowler full-name "Peter Fowler"
+set system login user Peter.Fowler uid 2201
+set system login user Peter.Fowler class operator
+set system login user Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user acadmin full-name "Aaron Christensen - CCL"
+set system login user acadmin uid 2012
+set system login user acadmin class super-user
+set system login user acadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWljKUH9LJKqdYriT8UNtIyYjp/HXH+qQtDGe6i0hazmkUIwtLD3bNuCeHkDCQjel1OST51QgZ97hmbLvRbVmpXMFnsmjFbMrw8PYfXut5iSahYIodjTnR4jpX1LBW2m5rsu+ChsgcOKcbcfLt2/+O+6u4iryCoDLShMnDhKMO0uvCCZaEdpcZTB23n12DuOL/4mTUNXScrYli/3r5EfFf6/QGJgI9eXSbj8/+62mXmlcvi8gO/eP/7GCC2ZMi7B3h2YgWpfek9HzIRIL4Sh+0GWmyhETYFs9CGZgTzMXE9U6HwxrFBMpo3MUASM4yalMVTakCSDS5snMejfXJcKTn"
+set system login user asadmin full-name "CCL Aaron Sixtus"
+set system login user asadmin uid 2103
+set system login user asadmin class super-user
+set system login user asadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbOUAljwEUpjIvquRy7dNp/z15lC27+tPl/2zw5k7Tq9ds78V01G6uAOBpGV9cjZ9ZUWN2tizfMXUPtdOuKMlcdbfAMuIdnQMcsQig5ReJnN5GqR361LffW+YZWY4d3vLZ2xcWgP6OwUARSZjrLUZSoZMn36Pq8NvPZKdaeUlPJbAzhLZvTiyQ0C8Ya94Ceoz8Pb842Uj09l30UkrUjecUG1HNgtOgUdHFVLow06F0WJF7UNr/MSdljmSgZ2hgR4KBt/+rkwyi2H3blCRu72s1eL/bqTTNOTR7LKiPTOTsuSYsP1ZvZUSXEal7uuQf3hb7p4A3dGaksbGOTCGfcEbj cclchc\asixtus@WSJDK8HR2"
+set system login user azadmin full-name "Alin Zahn - CCL"
+set system login user azadmin uid 2008
+set system login user azadmin class super-user
+set system login user azadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA5pJiqXVQJGqQhWIGf/bavCWfMZJOdBuwna4S4cVtHqO9UPIdbVY/cDivAU+kI0f4m8+qmnFF0pyTOAGXoO9UddPAs+yqkrT+QeAJTortvMoY1xi573gDpFKo5hQjzBmfJ7x1KAebmzTSmRzlVRs22uB163KFqZxbhc3GQxAbBa5MjqiHwOH1PAgHnqjr6071gQvn2HH1aEx7G767/uLWVYrhj9gRv3t2/kNOLrkYyw4hOD2yt5GwXXi1GwzlwyRTAxlsxeFT36wcxo78crQ1m/0qRrgux7GDaJTF6HkF0iUN5J4CuB3MTFYiiFNlKkZzdkoRals0jU/YxlSumwCc9Q=="
+set system login user dsadmin full-name "Daniel Shi - CCL"
+set system login user dsadmin uid 2009
+set system login user dsadmin class super-user
+set system login user dsadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"
+set system login user jlaundry full-name "Jed Laundry"
+set system login user jlaundry uid 2002
+set system login user jlaundry class operator
+set system login user jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"
+set system login user lbadmin full-name "CCL Leon Broadbent"
+set system login user lbadmin uid 2105
+set system login user lbadmin class super-user
+set system login user lbadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA2aC7Zyv2v6eBiuLONOQCN1AsXIJaYtDs/ePRY2ByCK2sDYtiQKSjOuYT03ZBCXyPlsgIegxbVCtJqItbuAh6VZEcpbQAoDg0hUOUApm74qj2K5HN9WiZydS8aFMYBmSwPyJf6cLqaz7o1rjSR67p+iCQvbZwkHpYAKBT0EJNedIPgKSApqfFsaH91JBqKnKwUBuNfSx5ypbGu3gfjOhojTZMS7iVF7C6NELAnUYECgTkcS4TWFQw5gZ5DtbgmKye1JCWatZqLBs89yuMAF7P1Nbj7U/zPIDAZrd3VLuv7MdV/aOM5Vh/DN+MMR6o3aXLX/0nG0CTnv4zymyP/r7KgQ=="
+set system login user mtadmin full-name "CCL Mike Taylor"
+set system login user mtadmin uid 2101
+set system login user mtadmin class super-user
+set system login user mtadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Mqj1haDez2+piqiq0tvWYWREHU+V0TskA81bmSP7M2R0qD30AAA1aFEI45mHM8+nc0anGOnFXa2XLs9nQEGhNZ8wN9LCkisxq/OzAUTy9fJ8l7AvyfOGLlkMg/jmopHkCZFJW42PTr4I1alZIY5QnB6tvf1/sTVR9ULStRpJq36aq0+KbplRUQ2moPEWgD+zH2CShBkKPXCPvR6ZmodtS2D0FIwCajfm5PjPZ2WnIOSKB0qF64Rsrp8Wmudmqy/CJu4d6JPY6t0P2uPbLTCbXpzJ/ZS7227QgrZAQDHJ2FkT7hfqt5m3rzXVDp4Rq33Lz8TNPdg7phTMrxKZ0A5D cclchc\mtaylor2@WS6S8SYW2-W"
+set system login user mtadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAnJExDB0JgopHhosc7784s74o9WRMVSDtEHGZQOx10HEeCKS2VHlNBVMrZHrgQwbGIo4x8oK3j9lrw1piRcOWSe17s2+c2RB3Up0b4gvh/tVZhC6Vu7c1TfQZ6jRXQ+4d2yzb3vuGrXiKJEkIZg8ADXDKJrIuvNJfxtRNGU28Zzj08kK2d6JI8HnA9/bWaIUOeRSFFkGuQpG2YlqSfo0Rr+QNTJ6Vv6BGYrdHMGRHhi++bW1AHNhATwECfi54MuNOJViDLowB4JJPWykfM8/bc8aYBggbl5HmrhxnFSUIls4c9WTz++kdbRNqc+HsCGQ9ZPuNxRJeQVJiucfdClJm5Q== enable\mtadmin@enajump01-rsa-key-20191213"
+set system login user oxidized uid 2006
+set system login user oxidized class cfg-view
+set system login user oxidized authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu1PhVHugQvH19ZYL12XerKkTl4Z75GZCvOxy7XDKCtc/hxE1QcB7FKKw/uWatst6Mm3pSeJh8dJsrNK/nseF7zoxXtI0jH/acy9VAGNgV1/v79TOkvuG8sWb/7eHubiWNo/yecrZ3T0Vg3Hb1VDU45Pep1x19gEhFoTz0JwagbM5uwSb68cDQObbey35maD3wlTymrsnpjnQnbKgHRn5rj6xoh61VjSmRzvsZ1YGM2m8gApDdhfocNGHJ0xZZq55mBKa6r0Bp1rM4iBdbUk9UVXyjnXOu7uWSFlna3nug0hZE0eZbZYZJ2wISA9BNuC940hBW1wQ4P6+r+k2CKoQyG2gDA7EcA5Hl3MarX7tKNnMug5HHMg7qgc6EOgBGe1NFxbQtqWolkoze0L0u7Oe5nIXItKItBJtxDCqD7o919NhiXOsIfPaaKnDa6C2dhzKwHtyeok/DUzLb8LBwqVS5u1PM9Ap7MYlp11kHC4l/D0GB0WyAo5DzTWMrv4xooN8= oxidised@d11-netback"
+set system login user pa-CraigReynolds full-name "Craig Reynolds"
+set system login user pa-CraigReynolds uid 2003
+set system login user pa-CraigReynolds class super-user
+set system login user pa-CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user pa-DavidRichards full-name "David Richards"
+set system login user pa-DavidRichards uid 2004
+set system login user pa-DavidRichards class super-user
+set system login user pa-DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user pa-Peter.Fowler full-name "Peter Fowler (Admin)"
+set system login user pa-Peter.Fowler uid 2200
+set system login user pa-Peter.Fowler class super-user
+set system login user pa-Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user pa-jlaundry full-name "Jed Laundry"
+set system login user pa-jlaundry uid 2005
+set system login user pa-jlaundry class super-user
+set system login user pa-jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"
+set system login user pa-jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAueYhY1iRfeXi9CCM694lq9q62s4+5imRYMMbq0OztU9dP8EH9jGk9Og8tmvwf4HA8+nT/VE1eK42WtSrqlYhkVOAi9CsYTMm2R0a0TW9Imh90XHCrQ0oizUOhFD+q+y96XBTi30pFNrNkea8rhuZ7aD7SxtT+lEwL8J94OEaKOQrTgr2xwkB23EuRc9bJVM8EP3EmyIkFARp3uZGF+I7Cff1/p4Sc5grRosiBLdrE90mSve2x+5sMP64bX+/u/G/L6SS8fjxYt4cT4Id1qREbUnPUAcusQQxUnJnzS5YgWxjSPsv6RcTmGU/TBjxWNHmaPTy5lGNf6J6nbFn9WDJlw== jlaundry@aqua"
+set system login user pa-jlaundry authentication ssh-ecdsa "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBBE39BXdLmjqhRScczU9NUHPkT4d8lDNh6S3OoS/WMCyjky2eKszC1GxfODXGHCR8hwIXs+nVuOjlGLd3NB/jrvKoGwp6LH/nOWg5kXSs08apBS7PY5oHNLwY4hJ4RnpRw== jlaundry@orange"
+set system login user pa-mike.taylor full-name "Mike Taylor"
+set system login user pa-mike.taylor uid 2007
+set system login user pa-mike.taylor class super-user
+set system login user pa-mike.taylor authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"
+set system login user pmadmin full-name "CCL Patrick McGirr"
+set system login user pmadmin uid 2100
+set system login user pmadmin class super-user
+set system login user pmadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDElzQ5wKTAdwZKukG/eUppXwDNPIgZHbp2gi1fw0B4pEGQuXBQmoTGWs1YxXGaNB6DK3MzR+r/lGxMG6JiumMuR60JAOP2GBZjNV4RjqkLe4u1fCEhFZNyUKYzjRKb4nwVQLs4lQVVgyGBbhCyUgprqK8sLvFmErf0u5YLCnqduilcRn+xNHtMJ+NBFNob6KpY2tf0dNgTIxhzdjYm+ivbYmWoV7gKfzCN2sSTH+t19PHAOg5RudPzxn7EPr6bUZ2O+MiikI7ipfAw387TwEJFva4TMkoCti3ZdSRIfL/U5Yy40fnbFJI5TWcNqqGF+mqfSqQBf7gSHOGHku2GByuJ cclchc\pmcgirr@PMCLAPTOP"
+set system login user rk2admin full-name "CCL Rohan Kaminski"
+set system login user rk2admin uid 2104
+set system login user rk2admin class super-user
+set system login user rk2admin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsu12z/mqXHsNV13b5+DHFyaRpBGXjrpd1IdvrPJnYrH/IvgRDxBpMQzodQeS+Mz0E5AVAeB1Zqhw8dNvQ6tThJt1SVzMfe96UP1fCyDxHTzGpbLqq78dTeIwcOow4xLm0Ncs9Av301IA6PwW5ZXHzF/8XSb8UgosYcuU1qrI14m8e9JO7pOrqudXVbFRVXoB+9SDo34kTrS8XVbKjv3T/d14PXfpLzxN4ZOb5s7hHy5SGIMv661nPOZL4bhT8lkJybckP81mZrvXOcamKhZP8OnN52ALPv79zKKGm8fDTOyl0mxGUO3omqS9kXf2fxhhEKpP7+WIMEbehPxLHYI61 cclchc\rkaminski@WSFQ0VF2"
+set system login user taadmin full-name "CCL Trevor Alder"
+set system login user taadmin uid 2102
+set system login user taadmin class super-user
+set system login user taadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCp1UOnKuMImnGW/+pbiIYO2h0evMAeF68WrAYMu4oLanLrhKGPjARaoObl/fbsJnzX67eyquEGL57OWHRlJFi0+VO1qMyvWL4vtX4tgoOfu+Hwe3uRkx82Y2v0zz8XCxPvr0/Wi1H3OpOpzjDc8rFsxTl2B9SRf/MkEWhCCaWFAk6is8diwILpPslRHIEwv0/40pPhsS1rQlgpLCv/0iww+HtCIOI2wlbL8Tc5SmlztehAnBsNGrzzwwlfqE3uAJAvZJXOK5cl7EMcyB8FwU3Erjj1joOy40XFLdiheEamJJwaPvbhS5VDsofCEa9n52/MWS7dgv5J9JQhE3SLEsNz cclchc\talder@CHC-LAPT0P-TA-1"
+set system services ssh
+set system services dhcp traceoptions file dhcp_logfile
+set system services dhcp traceoptions level all
+set system services dhcp traceoptions flag all
+set system syslog user * any emergency
+set system syslog host 10.130.37.16 any info
+set system syslog host 10.130.37.16 security any
+set system syslog host 10.130.37.16 firewall any
+set system syslog host 10.130.37.16 interactive-commands any
+set system syslog host 10.130.37.16 source-address 10.130.160.9
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system ntp server 10.130.37.121
+set system ntp server 10.130.37.122
+set system ntp server 10.130.37.123
+set chassis aggregated-devices ethernet device-count 2
+set chassis alarm management-ethernet link-down ignore
+set chassis auto-image-upgrade
+set interfaces interface-range range-disabled-ports member-range ge-0/0/5 to ge-0/0/25
+set interfaces interface-range range-disabled-ports member-range ge-0/0/33 to ge-0/0/43
+set interfaces interface-range range-disabled-ports disable
+set interfaces ge-0/0/0 disable
+set interfaces ge-0/0/1 disable
+set interfaces ge-0/0/2 description "ESLHRBAGW001 mgmt"
+set interfaces ge-0/0/2 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/3 description "ESLRICAGW001 mgmt"
+set interfaces ge-0/0/3 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/4 description "iDRAC for new ESLHRBSEC002 server"
+set interfaces ge-0/0/4 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set interfaces ge-0/0/26 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/27 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/28 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/29 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/30 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/31 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/32 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/44 description "Temp Legacy LAN for new ESLHRBSEC002"
+set interfaces ge-0/0/44 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/44 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ge-0/0/45 description "Temp Legacy LAN for new ESLHRBSEC002"
+set interfaces ge-0/0/45 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/45 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ge-0/0/46 description "NTP3 server"
+set interfaces ge-0/0/46 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+set interfaces ge-0/0/47 description ena-wi-hrb
+set interfaces ge-0/0/47 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ge-0/1/0 description "esl-sw-core ge-0/0/16"
+set interfaces ge-0/1/0 ether-options 802.3ad ae0
+set interfaces ae0 apply-groups group-interface-esx-data
+set interfaces ae0 apply-groups group-interface-esx-mgmt
+set interfaces ae0 description "esl-sw-core ae3"
+set interfaces ae0 aggregated-ether-options lacp active
+set interfaces ae0 aggregated-ether-options lacp periodic fast
+set interfaces ae0 unit 0 family ethernet-switching port-mode trunk
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-infra-3par-repl
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces me0 unit 0 family inet dhcp vendor-id Juniper-ex3300-48t
+set interfaces vlan unit 1900 family inet address 10.130.160.9/24
+set snmp community readOnlyCacti authorization read-only
+set snmp trap-group trap-enanmsp03 version v2
+set snmp trap-group trap-enanmsp03 categories authentication
+set snmp trap-group trap-enanmsp03 categories chassis
+set snmp trap-group trap-enanmsp03 categories link
+set snmp trap-group trap-enanmsp03 categories remote-operations
+set snmp trap-group trap-enanmsp03 categories routing
+set snmp trap-group trap-enanmsp03 categories startup
+set snmp trap-group trap-enanmsp03 categories vrrp-events
+set snmp trap-group trap-enanmsp03 categories configuration
+set snmp trap-group trap-enanmsp03 categories services
+set snmp trap-group trap-enanmsp03 targets 10.130.160.40
+set snmp health-monitor
+set routing-options static route 10.128.24.4/32 next-hop 10.130.160.1
+set routing-options static route 0.0.0.0/0 next-hop 10.130.160.1
+set protocols igmp-snooping vlan all
+set protocols rstp
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+set protocols lldp-med interface all
+set ethernet-switching-options storm-control interface all
+set vlans vlan-aerohive-mgmt vlan-id 4046
+set vlans vlan-bob-mgmt vlan-id 4080
+set vlans vlan-ccl-ibss vlan-id 4041
+set vlans vlan-dcn2-servers description "Servers for NextGen NMS EPNM"
+set vlans vlan-dcn2-servers vlan-id 4064
+set vlans vlan-dev-sandbox vlan-id 4043
+set vlans vlan-digitalsignage vlan-id 4077
+set vlans vlan-enable-backbone vlan-id 4092
+set vlans vlan-f5-hsl vlan-id 4034
+set vlans vlan-f5-mgmt vlan-id 4036
+set vlans vlan-guest vlan-id 4085
+set vlans vlan-guest-stuff vlan-id 3085
+set vlans vlan-hrb-lab vlan-id 4035
+set vlans vlan-infra-3par-repl vlan-id 4014
+set vlans vlan-infra-esx-mgmt vlan-id 4010
+set vlans vlan-infra-ilo vlan-id 4013
+set vlans vlan-infra-net-mgmt vlan-id 4012
+set vlans vlan-infra-san-mgmt vlan-id 4011
+set vlans vlan-infra-vmotion vlan-id 4015
+set vlans vlan-internet-dmz vlan-id 4083
+set vlans vlan-itf-servers-acs description "ITF - ACS Server stack"
+set vlans vlan-itf-servers-acs vlan-id 3952
+set vlans vlan-itf-servers-sac description "ITF - SAC Server stack"
+set vlans vlan-itf-servers-sac vlan-id 3953
+set vlans vlan-lan vlan-id 4081
+set vlans vlan-nda-lan vlan-id 4088
+set vlans vlan-netmgmt vlan-id 1900
+set vlans vlan-netmgmt l3-interface vlan.1900
+set vlans vlan-poc-nqa-npm vlan-id 3199
+set vlans vlan-revera-nav vlan-id 4084
+set vlans vlan-servers-acs description "DCN - ACS Server stack"
+set vlans vlan-servers-acs vlan-id 4052
+set vlans vlan-servers-ad vlan-id 4017
+set vlans vlan-servers-dcnservices vlan-id 4037
+set vlans vlan-servers-dev vlan-id 4020
+set vlans vlan-servers-devops vlan-id 4039
+set vlans vlan-servers-docker-data vlan-id 4027
+set vlans vlan-servers-docker-mgmt vlan-id 4026
+set vlans vlan-servers-docker-prod vlan-id 4028
+set vlans vlan-servers-docker-test vlan-id 4029
+set vlans vlan-servers-gis-sandbox vlan-id 4018
+set vlans vlan-servers-infra-playpen vlan-id 4021
+set vlans vlan-servers-itfservices vlan-id 4038
+set vlans vlan-servers-legacy-mgmt vlan-id 4019
+set vlans vlan-servers-mgmt vlan-id 4016
+set vlans vlan-servers-sac description "DCN - SAC Server stack"
+set vlans vlan-servers-sac vlan-id 4053
+set vlans vlan-servers-secservices vlan-id 4033
+set vlans vlan-workstation-admin description "Admin Workstation VLAN"
+set vlans vlan-workstation-admin vlan-id 4009
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# do
+                    ^
+unknown command.
+dsadmin@esl-sw-hrb# do   sho
+                    ^
+unknown command.
+dsadmin@esl-sw-hrb# dosho         
+                    ^
+unknown command.
+dsadmin@esl-sw-hrb# dos             run show ?
+Possible completions:
+  accounting           Show accounting profiles and records
+  analyzer             Show analyzer information
+  app-engine           Show App-engine information
+  arp                  Show system Address Resolution Protocol table entries
+  as-path              Show table of known autonomous system paths
+  authentication-whitelist  Show 802.1X White List MAC addresses
+  bfd                  Show Bidirectional Forwarding Detection information
+  bgp                  Show Border Gateway Protocol information
+  captive-portal       Show captive portal information
+  chassis              Show chassis information
+  class-of-service     Show class-of-service (CoS) information
+  cli                  Show command-line interface settings
+  configuration        Show current configuration
+  connections          Show circuit cross-connect connections
+  database-replication  Show database replication information
+  dhcp                 Show Dynamic Host Configuration Protocol information
+  dhcpv6               Show Dynamic Host Configuration Protocol v6 information
+  diagnostics          Show diagnostics information
+  dot1x                Show 802.1X information
+  esis                 Show end system-to-intermediate system information
+  ethernet-switching   Show Ethernet-switching information
+  event-options        Show event-options information
+  firewall             Show firewall information
+  forwarding-options   Show forwarding-options information
+  helper               Show port-forwarding helper information
+  hfrr                 Show information related to Host (Direct route) Fast reroute
+  host                 Show hostname information from domain name server
+  iccp                 Show Inter Chassis Control Protocol information
+  igmp                 Show Internet Group Management Protocol information
+  igmp-snooping        Show IGMP snooping information
+  ike                  Show Internet Key Exchange information
+  ingress-replication  Show Ingress-Replication tunnel information
+  interfaces           Show interface information
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+  l2circuit            Show Layer 2 circuit information
+  l2vpn                Show Layer 2 VPN information
+  lacp                 Show Link Aggregation Control Protocol information
+  link-management      Show link management information
+  lldp                 Show Link Layer Discovery Protocol information
+  log                  Show contents of log file
+  mld                  Show multicast listener discovery information
+  mld-snooping         Show MLD snooping information
+  msdp                 Show Multicast Source Discovery Protocol information
+  multicast            Show multicast information
+  mvpn                 Show Multicast Virtual Private Network (MVPN) information
+  mvrp                 Show Multiple VLAN Registration Protocol information
+  network-access       Show network-access related information
+  ntp                  Show Network Time Protocol information
+  oam                  Show OAM-related information
+  ospf                 Show Open Shortest Path First information
+---(more 66%)---                                          ospf3                Show Open Shortest Path First version 3 information
+  pfe                  Show Packet Forwarding Engine information
+  pim                  Show Protocol Independent Multicast information
+  poe                  Show power-over-ethernet information
+  policy               Show policy information
+  protection-group     Show protection group information
+  redundant-power-system  Show redundant power system information
+  redundant-trunk-group  Show redundant trunk group information
+  rip                  Show Routing Information Protocol information
+  ripng                Show Routing Information Protocol for IPv6 information
+  route                Show routing table information
+  sap                  Show Session Announcement Protocol information
+  security             Show security information
+  services             Show services information
+  sflow                Show sFlow information
+  snmp                 Show Simple Network Management Protocol information
+  spanning-tree        Show Spanning Tree Protocol information
+  subscribers          Show subscriber information
+  system               Show system information
+  task                 Show routing protocol per-task information
+  ted                  Show Traffic Engineering Database information
+  uplink-failure-detection  Show uplink failure detection information
+  validation           Show route validation information
+  version              Show software process revision levels
+  virtual-chassis      Show virtual chassis information
+  vlans                Show VLAN information
+  vrrp                 Show Virtual Router Redundancy Protocol information
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show      vlans 
+Name           Tag     Interfaces
+default       
+                       None
+vlan-aerohive-mgmt 4046   
+                       ae0.0*, ge-0/0/47.0*
+vlan-bob-mgmt  4080   
+                       None
+vlan-ccl-ibss  4041   
+                       ae0.0*
+vlan-dcn2-servers 4064   
+                       None
+vlan-dev-sandbox 4043   
+                       ae0.0*
+vlan-digitalsignage 4077   
+                       ae0.0*
+vlan-enable-backbone 4092   
+                       ae0.0*
+vlan-f5-hsl    4034   
+                       ae0.0*
+vlan-f5-mgmt   4036   
+                       ae0.0*
+vlan-guest     4085   
+                       ae0.0*, ge-0/0/47.0*
+vlan-guest-stuff 3085   
+                       ae0.0*, ge-0/0/47.0*
+vlan-hrb-lab   4035   
+                       ae0.0*
+vlan-infra-3par-repl 4014   
+                       ae0.0*
+vlan-infra-esx-mgmt 4010   
+                       ae0.0*
+vlan-infra-ilo 4013   
+                       ae0.0*, ge-0/0/4.0*, ge-0/0/26.0, ge-0/0/27.0, ge-0/0/28.0, ge-0/0/29.0, ge-0/0/30.0, ge-0/0/31.0, ge-0/0/32.0
+vlan-infra-net-mgmt 4012   
+                       ae0.0*, ge-0/0/47.0*
+vlan-infra-san-mgmt 4011   
+                       ae0.0*
+vlan-infra-vmotion 4015   
+                       ae0.0*
+vlan-internet-dmz 4083   
+                       ae0.0*
+vlan-itf-servers-acs 3952   
+                       None
+vlan-itf-servers-sac 3953   
+                       None
+vlan-lan       4081   
+                       ae0.0*, ge-0/0/44.0*, ge-0/0/45.0, ge-0/0/47.0*
+vlan-nda-lan   4088   
+                       ae0.0*, ge-0/0/47.0*
+vlan-netmgmt   1900   
+                       ae0.0*, ge-0/0/2.0*, ge-0/0/3.0*
+vlan-poc-nqa-npm 3199   
+                       ae0.0*
+---(more)---                                        vlan-revera-nav 4084   
+                       None
+vlan-servers-acs 4052   
+                       None
+vlan-servers-ad 4017   
+                       ae0.0*
+vlan-servers-dcnservices 4037   
+                       ae0.0*, ge-0/0/46.0*
+vlan-servers-dev 4020   
+                       ae0.0*
+vlan-servers-devops 4039   
+                       ae0.0*
+vlan-servers-docker-data 4027   
+                       ae0.0*
+vlan-servers-docker-mgmt 4026   
+                       ae0.0*
+vlan-servers-docker-prod 4028   
+                       ae0.0*
+vlan-servers-docker-test 4029   
+                       ae0.0*
+vlan-servers-gis-sandbox 4018   
+                       ae0.0*
+vlan-servers-infra-playpen 4021   
+                       ae0.0*
+vlan-servers-itfservices 4038   
+                       ae0.0*
+vlan-servers-legacy-mgmt 4019   
+                       ae0.0*
+vlan-servers-mgmt 4016   
+                       ae0.0*
+vlan-servers-sac 4053   
+                       None
+vlan-servers-secservices 4033   
+                       ae0.0*
+vlan-workstation-admin 4009   
+                       ae0.0*
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show vlans                   inter                  interfaces brief 
+Physical interface: ge-0/0/0, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/1, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/2, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/2.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/3, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/3.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/4, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/4.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/5, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+---(more)---                                        
+---(more 10%)---                                        Physical interface: ge-0/0/6, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/7, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/8, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/9, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/10, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/11, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/12, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/13, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+---(more 21%)---                                          Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/14, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/15, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/16, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/17, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/18, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/19, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/20, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/21, Administratively down, Physical link is Down
+---(more 32%)---                                          Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/22, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/23, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/24, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/25, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/26, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/26.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/27, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/27.0 
+---(more 43%)---                                            Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/28, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/28.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/29, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/29.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/30, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/30.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/31, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/31.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/32, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+---(more 53%)---                                        
+  Logical interface ge-0/0/32.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/33, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/34, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/35, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/36, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/37, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/38, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/39, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+---(more 64%)---                                        
+Physical interface: ge-0/0/40, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/41, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/42, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/43, Administratively down, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+Physical interface: ge-0/0/44, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/44.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/45, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/45.0 
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/46, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+---(more 75%)---                                          Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/46.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/0/47, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled, Auto-negotiation: Enabled, Remote fault: Online,
+  Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/0/47.0 
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ge-0/1/0, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: 1000mbps, Duplex: Full-Duplex, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled, Auto-negotiation: Enabled,
+  Remote fault: Online, Media type: Fiber
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+
+  Logical interface ge-0/1/0.0 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    aenet
+
+Physical interface: ae0, Enabled, Physical link is Up
+  Link-level type: Ethernet, MTU: 1514, Speed: 1Gbps, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+
+  Logical interface ae0.0 
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    eth-switch
+
+Physical interface: ae1, Enabled, Physical link is Down
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+
+Physical interface: bme0, Enabled, Physical link is Up
+  Type: Ethernet, Link-level type: Ethernet, MTU: 1576, Clocking: Unspecified, Speed: Unspecified
+  Device flags   : Present Running
+
+  Logical interface bme0.32768 
+    Flags: Up Encapsulation: ENET2
+    inet  128.0.0.1/2     
+          128.0.0.16/2    
+---(more 85%)---                                                  128.0.0.32/2    
+    tnp   0x10            
+
+Physical interface: dsc, Enabled, Physical link is Up
+  Type: Software-Pseudo, Link-level type: Unspecified, MTU: Unlimited, Clocking: Unspecified, Speed: Unspecified
+  Device flags   : Present Running
+  Interface flags: Point-To-Point SNMP-Traps
+
+Physical interface: gre, Enabled, Physical link is Up
+  Type: GRE, Link-level type: GRE, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: Point-To-Point SNMP-Traps
+
+Physical interface: ipip, Enabled, Physical link is Up
+  Type: IPIP, Link-level type: IP-over-IP, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+
+Physical interface: lo0, Enabled, Physical link is Up
+  Type: Loopback, Link-level type: Unspecified, MTU: Unlimited, Clocking: Unspecified, Speed: Unspecified
+  Device flags   : Present Running Loopback
+  Interface flags: SNMP-Traps
+
+  Logical interface lo0.16384 
+    Flags: Down Encapsulation: Unspecified
+    inet  127.0.0.1        --> 0/0
+
+Physical interface: lsi, Enabled, Physical link is Up
+  Type: Software-Pseudo, Link-level type: LSI, MTU: 1496, Clocking: Unspecified, Speed: Unlimited
+  Device flags   : Present Running
+
+Physical interface: me0, Enabled, Physical link is Down
+  Type: Ethernet, Link-level type: Ethernet, MTU: 1514, Clocking: Unspecified, Speed: Unspecified
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps
+
+  Logical interface me0.0 
+    Flags: Device-Down SNMP-Traps Encapsulation: ENET2
+    inet
+
+Physical interface: mtun, Enabled, Physical link is Up
+  Type: Multicast-GRE, Link-level type: GRE, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+
+Physical interface: pimd, Enabled, Physical link is Up
+  Type: PIMD, Link-level type: PIM-Decapsulator, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+
+Physical interface: pime, Enabled, Physical link is Up
+  Type: PIME, Link-level type: PIM-Encapsulator, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+
+---(more 96%)---                                        Physical interface: tap, Enabled, Physical link is Up
+  Type: Software-Pseudo, Link-level type: Interface-Specific, MTU: Unlimited, Clocking: Unspecified, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+
+Physical interface: vlan, Enabled, Physical link is Up
+  Type: VLAN, Link-level type: VLAN, MTU: 1518, Clocking: Unspecified, Speed: 1000mbps
+  Device flags   : Present Running
+
+  Logical interface vlan.1900 
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    inet  10.130.160.9/24 
+
+Physical interface: vme, Enabled, Physical link is Down
+  Type: Mgmt-VLAN, Link-level type: Mgmt-VLAN, MTU: 1518, Clocking: Unspecified, Speed: 1000mbps
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show interfaces brief                      ?
+Possible completions:
+  <[Enter]>            Execute this command
+  <interface-name>     Name of physical or logical interface
+  ge-0/0/0             
+  ge-0/0/1             
+  ge-0/0/2             ESLHRBAGW001 mgmt
+  ge-0/0/2.0           
+  ge-0/0/3             ESLRICAGW001 mgmt
+  ge-0/0/3.0           
+  ge-0/0/4             iDRAC for new ESLHRBSEC002 server
+  ge-0/0/4.0           
+  ge-0/0/5             
+  ge-0/0/6             
+  ge-0/0/7             
+  ge-0/0/8             
+  ge-0/0/9             
+  ge-0/0/10            
+  ge-0/0/11            
+  ge-0/0/12            
+  ge-0/0/13            
+  ge-0/0/14            
+  ge-0/0/15            
+  ge-0/0/16            
+  ge-0/0/17            
+  ge-0/0/18            
+  ge-0/0/19            
+  ge-0/0/20            
+  ge-0/0/21            
+  ge-0/0/22            
+  ge-0/0/23            
+  ge-0/0/24            
+  ge-0/0/25            
+  ge-0/0/26            
+  ge-0/0/26.0          
+  ge-0/0/27            
+  ge-0/0/27.0          
+  ge-0/0/28            
+  ge-0/0/28.0          
+  ge-0/0/29            
+  ge-0/0/29.0          
+  ge-0/0/30            
+  ge-0/0/30.0          
+  ge-0/0/31            
+  ge-0/0/31.0          
+  ge-0/0/32            
+  ge-0/0/32.0          
+  ge-0/0/33            
+  ge-0/0/34            
+  ge-0/0/35            
+  ge-0/0/36            
+  ge-0/0/37            
+  ge-0/0/38            
+  ge-0/0/39            
+---(more 49%)---                                          ge-0/0/40            
+  ge-0/0/41            
+  ge-0/0/42            
+  ge-0/0/43            
+  ge-0/0/44            Temp Legacy LAN for new ESLHRBSEC002
+  ge-0/0/44.0          
+  ge-0/0/45            Temp Legacy LAN for new ESLHRBSEC002
+  ge-0/0/45.0          
+  ge-0/0/46            NTP3 server
+  ge-0/0/46.0          
+  ge-0/0/47            ena-wi-hrb
+  ge-0/0/47.0          
+  ge-0/1/0             esl-sw-core ge-0/0/16
+  ge-0/1/0.0           
+  ae0                  esl-sw-core ae3
+  ae0.0                
+  ae1                  
+  bme0                 
+  bme0.32768           
+  dsc                  
+  gre                  
+  ipip                 
+  lo0                  
+  lo0.16384            
+  lsi                  
+  me0                  
+  me0.0                
+  mtun                 
+  pimd                 
+  pime                 
+  tap                  
+  vlan                 
+  vlan.1900            
+  vme                  
+  brief                Display brief output
+  controller           Show controller information
+  descriptions         Display interface description strings
+  destination-class    Show statistics for destination class
+  detail               Display detailed output
+  diagnostics          Show interface diagnostics information
+  extensive            Display extensive output
+  far-end-interval     Show far end interval statistics
+  filters              Show interface filters information
+  interval             Show interval statistics
+  mac-database         Show media access control database information
+  mc-ae                Show MC-AE configured interface information
+  media                Display media information
+  queue                Show queue statistics for this interface
+  routing              Show routing status
+  routing-instance     Name of routing instance
+  snmp-index           SNMP index of interface
+  source-class         Show statistics for source class
+  statistics           Display statistics and detailed output
+---(more 98%)---                                          terse                Display terse output
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show interfaces             des
+                                           ^
+'des' is ambiguous.
+Possible completions:
+  <interface-name>     Name of physical or logical interface
+  descriptions         Display interface description strings
+  destination-class    Show statistics for destination class
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show interfaces des   criptions 
+Interface       Admin Link Description
+ge-0/0/2        up    up   ESLHRBAGW001 mgmt
+ge-0/0/3        up    up   ESLRICAGW001 mgmt
+ge-0/0/4        up    up   iDRAC for new ESLHRBSEC002 server
+ge-0/0/44       up    up   Temp Legacy LAN for new ESLHRBSEC002
+ge-0/0/45       up    down Temp Legacy LAN for new ESLHRBSEC002
+ge-0/0/46       up    up   NTP3 server
+ge-0/0/47       up    up   ena-wi-hrb
+ge-0/1/0        up    up   esl-sw-core ge-0/0/16
+ae0             up    up   esl-sw-core ae3
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# do
+                    ^
+unknown command.
+dsadmin@esl-sw-hrb# do   sh
+                    ^
+unknown command.
+dsadmin@esl-sw-hrb# dosh   ip                  run show ip
+                               ^
+'ip' is ambiguous.
+Possible completions:
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+dsadmin@esl-sw-hrb# run show ip        routei
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show iproutei                     
+                               ^
+'ip' is ambiguous.
+Possible completions:
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+dsadmin@esl-sw-hrb# run show ip        rou
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show iprou            
+                               ^
+'ip' is ambiguous.
+Possible completions:
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+dsadmin@esl-sw-hrb# run show ip           route ?
+Possible completions:
+  <[Enter]>            Execute this command
+  <destination>        IP address and optional prefix length of destination
+  active-path          Show active paths
+  advertising-protocol  Show information in format intended for particular routing protocol
+  all                  Show all entries, including hidden entries
+  aspath-regex         BGP AS path regular expression for entries to match
+  best                 Show longest matching route
+  brief                Display brief output
++ community            Identifier for community (can include wildcards)
+  community-name       Name of configured community policy to match
+  damping              Show entries subjected to particular kind of route damping
+  detail               Display detailed output
+  exact                Show routes that match exactly
+  export               Show instance export information
+  extensive            Display extensive output
+  flow                 Show flow routing information
+  forwarding-table     Show entries in all forwarding tables
+  hidden               Show hidden entries
+  inactive-path        Show inactive paths
+  inactive-prefix      Show inactive route destinations
+  instance             Show routing instances information
+  label-switched-path  Name of LSP tunnel associated with entries
+  localization         Show route localization information
+  martians             Show martian networks
+  match-prefix         Regular expression to match formatted prefix
+  next-hop             IP address of next hop that is destination for entries
+  no-community         Show entries with no associated community
+  output               Show entries sent out a particular interface
+  private              Show private table routes
+  protocol             Name of protocol that is source for entries
+  range                Show all entries in prefix range
+  rd-prefix            Route distinguisher with ip prefix (rd:prefix)
+  receive-protocol     Show information in format received from particular routing protocol
+  resolution           Show next-hop resolution database
+  rib-groups           Show group of routing tables
+  source-gateway       IP address of source router for entries
+  static-label-switched-path  Name of static LSP tunnel associated with entries
+  summary              Show routing table statistics
+  table                Name of routing table
+  terse                Display terse output
+  validation-state     Show entries with a given validation state
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show route     summary 
+Router ID: 10.130.160.9
+
+inet.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
+Limit/Threshold: 8000/8000 destinations
+              Direct:      1 routes,      1 active
+               Local:      1 routes,      1 active
+              Static:      2 routes,      2 active
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show route summary    ter
+                                           ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show route summary ter                                    terse 
+
+inet.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+A V Destination        P Prf   Metric 1   Metric 2  Next hop        AS path
+* ? 0.0.0.0/0          S   5                       >10.130.160.1
+* ? 10.128.24.4/32     S   5                       >10.130.160.1
+* ? 10.130.160.0/24    D   0                       >vlan.1900   
+* ? 10.130.160.9/32    L   0                        Local
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show route terse                      table 
+                                         ^
+syntax error, expecting <data>.
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show route table    ?
+Possible completions:
+  <table>              Name of routing table
+  inet.0               
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show route table                                        arp 
+MAC Address       Address         Name                      Interface           Flags
+00:10:db:ff:10:01 10.130.160.1    10.130.160.1              vlan.1900           none
+3c:8c:93:87:7e:40 10.130.160.7    10.130.160.7              vlan.1900           none
+Total entries: 2
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show arp                mac
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show mac      
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show mac   -
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show mac-      _
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show mac_               ?
+Possible completions:
+  accounting           Show accounting profiles and records
+  analyzer             Show analyzer information
+  app-engine           Show App-engine information
+  arp                  Show system Address Resolution Protocol table entries
+  as-path              Show table of known autonomous system paths
+  authentication-whitelist  Show 802.1X White List MAC addresses
+  bfd                  Show Bidirectional Forwarding Detection information
+  bgp                  Show Border Gateway Protocol information
+  captive-portal       Show captive portal information
+  chassis              Show chassis information
+  class-of-service     Show class-of-service (CoS) information
+  cli                  Show command-line interface settings
+  configuration        Show current configuration
+  connections          Show circuit cross-connect connections
+  database-replication  Show database replication information
+  dhcp                 Show Dynamic Host Configuration Protocol information
+  dhcpv6               Show Dynamic Host Configuration Protocol v6 information
+  diagnostics          Show diagnostics information
+  dot1x                Show 802.1X information
+  esis                 Show end system-to-intermediate system information
+  ethernet-switching   Show Ethernet-switching information
+  event-options        Show event-options information
+  firewall             Show firewall information
+  forwarding-options   Show forwarding-options information
+  helper               Show port-forwarding helper information
+  hfrr                 Show information related to Host (Direct route) Fast reroute
+  host                 Show hostname information from domain name server
+  iccp                 Show Inter Chassis Control Protocol information
+  igmp                 Show Internet Group Management Protocol information
+  igmp-snooping        Show IGMP snooping information
+  ike                  Show Internet Key Exchange information
+  ingress-replication  Show Ingress-Replication tunnel information
+  interfaces           Show interface information
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+  l2circuit            Show Layer 2 circuit information
+  l2vpn                Show Layer 2 VPN information
+  lacp                 Show Link Aggregation Control Protocol information
+  link-management      Show link management information
+  lldp                 Show Link Layer Discovery Protocol information
+  log                  Show contents of log file
+  mld                  Show multicast listener discovery information
+  mld-snooping         Show MLD snooping information
+  msdp                 Show Multicast Source Discovery Protocol information
+  multicast            Show multicast information
+  mvpn                 Show Multicast Virtual Private Network (MVPN) information
+  mvrp                 Show Multiple VLAN Registration Protocol information
+  network-access       Show network-access related information
+  ntp                  Show Network Time Protocol information
+  oam                  Show OAM-related information
+  ospf                 Show Open Shortest Path First information
+---(more 66%)---                                          ospf3                Show Open Shortest Path First version 3 information
+  pfe                  Show Packet Forwarding Engine information
+  pim                  Show Protocol Independent Multicast information
+  poe                  Show power-over-ethernet information
+  policy               Show policy information
+  protection-group     Show protection group information
+  redundant-power-system  Show redundant power system information
+  redundant-trunk-group  Show redundant trunk group information
+  rip                  Show Routing Information Protocol information
+  ripng                Show Routing Information Protocol for IPv6 information
+  route                Show routing table information
+  sap                  Show Session Announcement Protocol information
+  security             Show security information
+  services             Show services information
+  sflow                Show sFlow information
+  snmp                 Show Simple Network Management Protocol information
+  spanning-tree        Show Spanning Tree Protocol information
+  subscribers          Show subscriber information
+  system               Show system information
+  task                 Show routing protocol per-task information
+  ted                  Show Traffic Engineering Database information
+  uplink-failure-detection  Show uplink failure detection information
+  validation           Show route validation information
+  version              Show software process revision levels
+  virtual-chassis      Show virtual chassis information
+  vlans                Show VLAN information
+  vrrp                 Show Virtual Router Redundancy Protocol information
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show       system 
+                                    ^
+syntax error, expecting <command>.
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show system    ?
+Possible completions:
+  alarms               Show system alarm status
+  audit                Show file system MD5 hash and permissions
+  auto-snapshot        Show auto-snapshot status when system booted from alternate slice
+  autoinstallation     Show autoinstallation information
+  boot-messages        Show boot time messages
+  buffers              Show buffer statistics
+  certificate          Show installed X509 certificates
+  commit               Show pending commit requests (if any) and commit history
+  configuration        Show configuration information
+  connections          Show system connection activity
+  core-dumps           Show system core files
+  directory-usage      Show local directory information
+  initialsetup         Show initial setup information
+  license              Show feature licenses information
+  login                Show system login state
+  memory               Show system memory usage
+  processes            Show system process table
+  reboot               Show any pending halt or reboot requests
+  resource-cleanup     Show resource cleanup information
+  services             Show service applications information
+  snapshot             Show snapshot information
+  software             Show loaded JUNOS extensions
+  statistics           Show statistics for protocol
+  storage              Show local storage data
+  subscriber-management  Show Subscriber management information
+  uptime               Show time since system and processes started
+  users                Show users who are currently logged in
+  virtual-memory       Show kernel dynamic memory usage
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show system    uptime 
+fpc0:
+--------------------------------------------------------------------------
+Current time: 2022-09-18 21:15:05 NZST
+System booted: 2022-05-17 21:20:32 NZST (17w4d 23:54 ago)
+Protocols started: 2022-05-17 21:25:24 NZST (17w4d 23:49 ago)
+Last configured: 2022-09-16 15:14:47 NZST (2d 06:00 ago) by acadmin
+ 9:15PM  up 123 days, 23:55, 1 user, load averages: 0.01, 0.07, 0.05
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show system uptime                         de
+                                    ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show system de               software 
+ fpc0:
+--------------------------------------------------------------------------
+Information for fips-mode-arm:
+
+Comment:
+JUNOS FIPS mode utilities [12.3R12-S21]
+
+
+
+Information for jbase:
+
+Comment:
+JUNOS Base OS Software Suite [12.3R12-S21]
+
+
+
+Information for jcrypto-ex:
+
+Comment:
+JUNOS Crypto Software Suite [12.3R12-S21]
+
+
+
+Information for jdocs-ex:
+
+Comment:
+JUNOS Online Documentation [12.3R12-S21]
+
+
+
+Information for jkernel-ex-3300:
+
+Comment:
+JUNOS Kernel Software Suite [12.3R12-S21]
+
+
+
+Information for jpfe-ex33x:
+
+Comment:
+JUNOS Packet Forwarding Engine Enterprise Software Suite [12.3R12-S21]
+
+
+
+Information for jroute-ex:
+
+Comment:
+JUNOS Routing Software Suite [12.3R12-S21]
+
+
+
+Information for jswitch-ex:
+
+---(more)---                                        Comment:
+JUNOS Enterprise Software Suite [12.3R12-S21]
+
+
+
+Information for junos:
+
+Comment:
+JUNOS Base OS boot [12.3R12-S21]
+
+
+
+Information for jweb-ex:
+
+Comment:
+JUNOS Web Management [12.3R12-S21]
+---(more 100%)---                                        
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show system software                                                    chassis ?
+Possible completions:
+  alarms               Show alarm status
+  environment          Show component status and temperature, cooling system speeds
+  firmware             Show firmware and operating system version for components
+  fpc                  Show Flexible PIC Concentrator status
+  hardware             Show installed hardware components
+  lcd                  Show LCD display
+  led                  Show LED status
+  location             Show physical location of chassis
+  mac-addresses        Show media access control addresses
+  nonstop-upgrade      Show nonstop upgrade status
+  pic                  Show Physical Interface Card state, type, and uptime
+  redundant-power-system  Show redundant power system chassis information
+  routing-engine       Show Routing Engine status
+  temperature-thresholds  Show chassis temperature threshold settings
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show chassis                   
+                                     ^
+syntax error, expecting <command>.
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show chassis       h    hardware 
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                GA0214090475      EX3300-48T
+Routing Engine 0 REV 14   750-034247   GA0214090475      EX3300 48-Port
+FPC 0            REV 14   750-034247   GA0214090475      EX3300 48-Port
+  CPU                     BUILTIN      BUILTIN           FPC CPU
+  PIC 0                   BUILTIN      BUILTIN           48x 10/100/1000 Base-T
+  PIC 1          REV 14   750-034247   GA0214090475      4x GE/XE SFP+
+    Xcvr 0       uPl      NON-JNPR     10081000042       SFP-LX10
+Power Supply 0                                           PS 100W AC
+Fan Tray                                                 Fan Tray
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show                
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show virtual-chassis ?
+Possible completions:
+  <[Enter]>            Execute this command
+  active-topology      Virtual chassis active topology
+  device-topology      PFE device topology
+  fast-failover        Fast failover status
+  login                
+  protocol             Show virtual chassis protocol information
+  status               Virtual chassis information
+  vc-path              Show virtual-chassis packet path
+  vc-port              Virtual chassis port information
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show virtual-chassis    
+
+Virtual Chassis ID: 3411.6b16.b67e
+Virtual Chassis Mode: Enabled
+                                           Mstr           Mixed Neighbor List
+Member ID  Status   Serial No    Model     prio  Role      Mode ID  Interface
+0 (FPC 0)  Prsnt    GA0214090475 ex3300-48t 128  Master*     NA
+
+Member ID for next new member: 1 (FPC 1)
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show interfaces vcp 
+error: device vcp not found
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show interfaces vcp             i          ?
+Possible completions:
+  <[Enter]>            Execute this command
+  <interface-name>     Name of physical or logical interface
+  ge-0/0/0             
+  ge-0/0/1             
+  ge-0/0/2             ESLHRBAGW001 mgmt
+  ge-0/0/2.0           
+  ge-0/0/3             ESLRICAGW001 mgmt
+  ge-0/0/3.0           
+  ge-0/0/4             iDRAC for new ESLHRBSEC002 server
+  ge-0/0/4.0           
+  ge-0/0/5             
+  ge-0/0/6             
+  ge-0/0/7             
+  ge-0/0/8             
+  ge-0/0/9             
+  ge-0/0/10            
+  ge-0/0/11            
+  ge-0/0/12            
+  ge-0/0/13            
+  ge-0/0/14            
+  ge-0/0/15            
+  ge-0/0/16            
+  ge-0/0/17            
+  ge-0/0/18            
+  ge-0/0/19            
+  ge-0/0/20            
+  ge-0/0/21            
+  ge-0/0/22            
+  ge-0/0/23            
+  ge-0/0/24            
+  ge-0/0/25            
+  ge-0/0/26            
+  ge-0/0/26.0          
+  ge-0/0/27            
+  ge-0/0/27.0          
+  ge-0/0/28            
+  ge-0/0/28.0          
+  ge-0/0/29            
+  ge-0/0/29.0          
+  ge-0/0/30            
+  ge-0/0/30.0          
+  ge-0/0/31            
+  ge-0/0/31.0          
+  ge-0/0/32            
+  ge-0/0/32.0          
+  ge-0/0/33            
+  ge-0/0/34            
+  ge-0/0/35            
+  ge-0/0/36            
+  ge-0/0/37            
+  ge-0/0/38            
+  ge-0/0/39            
+---(more 49%)---                                          ge-0/0/40            
+---(more 50%)---                                          ge-0/0/41            
+  ge-0/0/42            
+  ge-0/0/43            
+  ge-0/0/44            Temp Legacy LAN for new ESLHRBSEC002
+  ge-0/0/44.0          
+  ge-0/0/45            Temp Legacy LAN for new ESLHRBSEC002
+  ge-0/0/45.0          
+  ge-0/0/46            NTP3 server
+  ge-0/0/46.0          
+  ge-0/0/47            ena-wi-hrb
+  ge-0/0/47.0          
+  ge-0/1/0             esl-sw-core ge-0/0/16
+  ge-0/1/0.0           
+  ae0                  esl-sw-core ae3
+  ae0.0                
+  ae1                  
+  bme0                 
+  bme0.32768           
+  dsc                  
+  gre                  
+  ipip                 
+  lo0                  
+  lo0.16384            
+  lsi                  
+  me0                  
+  me0.0                
+  mtun                 
+  pimd                 
+  pime                 
+  tap                  
+  vlan                 
+  vlan.1900            
+  vme                  
+  brief                Display brief output
+  controller           Show controller information
+  descriptions         Display interface description strings
+  destination-class    Show statistics for destination class
+  detail               Display detailed output
+  diagnostics          Show interface diagnostics information
+  extensive            Display extensive output
+  far-end-interval     Show far end interval statistics
+  filters              Show interface filters information
+  interval             Show interval statistics
+  mac-database         Show media access control database information
+  mc-ae                Show MC-AE configured interface information
+  media                Display media information
+  queue                Show queue statistics for this interface
+  routing              Show routing status
+  routing-instance     Name of routing instance
+  snmp-index           SNMP index of interface
+  source-class         Show statistics for source class
+  statistics           Display statistics and detailed output
+  terse                Display terse output
+---(more 99%)---                                          |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show interfaces                                                                     show virtual-chassis ?
+Possible completions:
+  <[Enter]>            Execute this command
++ apply-groups         Groups from which to inherit configuration data
++ apply-groups-except  Don't inherit configuration data from these groups
+  auto-conversion      Enable automatic VC port conversion
+> auto-sw-update       Auto software update
+> fast-failover        Fast failover mechanism
+> graceful-restart     Configure graceful restart attributes
+  id                   Virtual chassis identifier, of type ISO system-id
+> mac-persistence-timer  How long to retain MAC address when member leaves virtual chassis
+> member               Member of virtual chassis configuration
+  no-auto-conversion   Disable automatic VC port conversion
+  no-split-detection   Disable split detection. This command is recommended to only be enabled in a 2 member setup
+  preprovisioned       Only accept preprovisioned members
+> traceoptions         
+> vc-port              Set vc ports lag hashing mode
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show virtual-chassis                       member 
+                                                ^
+syntax error, expecting <identifier>.
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# show virtual-chassis member    ?
+Possible completions:
+  <member-id>          Member identifier (0..9)
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show virtual-chassis member    0 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# show virtual-chassis member 0       1      1 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# show virtual-chassis member 1                               vc-port ?
+Possible completions:
+  <[Enter]>            Execute this command
++ apply-groups         Groups from which to inherit configuration data
++ apply-groups-except  Don't inherit configuration data from these groups
+  lag-hash             Set vc ports lag hashing mode
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show virtual-chassis vc-port            
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show virtual-chassis ?
+Possible completions:
+  <[Enter]>            Execute this command
++ apply-groups         Groups from which to inherit configuration data
++ apply-groups-except  Don't inherit configuration data from these groups
+  auto-conversion      Enable automatic VC port conversion
+> auto-sw-update       Auto software update
+> fast-failover        Fast failover mechanism
+> graceful-restart     Configure graceful restart attributes
+  id                   Virtual chassis identifier, of type ISO system-id
+> mac-persistence-timer  How long to retain MAC address when member leaves virtual chassis
+> member               Member of virtual chassis configuration
+  no-auto-conversion   Disable automatic VC port conversion
+  no-split-detection   Disable split detection. This command is recommended to only be enabled in a 2 member setup
+  preprovisioned       Only accept preprovisioned members
+> traceoptions         
+> vc-port              Set vc ports lag hashing mode
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# show virtual-chassis    
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show virtual-chassis ?
+Possible completions:
+  <[Enter]>            Execute this command
+  active-topology      Virtual chassis active topology
+  device-topology      PFE device topology
+  fast-failover        Fast failover status
+  login                
+  protocol             Show virtual chassis protocol information
+  status               Virtual chassis information
+  vc-path              Show virtual-chassis packet path
+  vc-port              Virtual chassis port information
+  |                    Pipe through a command
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show virtual-chassis    status 
+
+Virtual Chassis ID: 3411.6b16.b67e
+Virtual Chassis Mode: Enabled
+                                           Mstr           Mixed Neighbor List
+Member ID  Status   Serial No    Model     prio  Role      Mode ID  Interface
+0 (FPC 0)  Prsnt    GA0214090475 ex3300-48t 128  Master*     NA
+
+Member ID for next new member: 1 (FPC 1)
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show virtual-chassis status                         device-topology 
+fpc0:
+--------------------------------------------------------------------------
+                                               Neighbor List  
+Member  Device  Status   System ID         Member  Device  Interface
+   0       0    Prsnt    84b5.9c36.a6c0       0       1    internal-0/24
+   0       1    Prsnt    84b5.9c36.a6c1       0       0    internal-1/27
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# dsadmin@esl-sw-hrb# run show virtual-chassis device-topology                                                    vc-pdsadmin@esl-sw-hrb# run show virtual-chassis vc-p                  ort 
+fpc0:
+--------------------------------------------------------------------------
+Interface   Type              Trunk  Status       Speed        Neighbor
+or                             ID                 (mbps)       ID  Interface
+PIC / Port
+1/2         Configured               Absent  
+1/3         Configured               Absent  
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show bo
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show bo   
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show bo   o
+                             ^
+syntax error, expecting <command>.
+dsadmin@esl-sw-hrb# run show boo            system boot-messages 
+fpc0:
+--------------------------------------------------------------------------
+GDB: debug ports: uart
+GDB: current port: uart
+KDB: debugger backends: ddb gdb
+KDB: current backend: ddb
+Copyright (c) 1996-2022, Juniper Networks, Inc.
+All rights reserved.
+Copyright (c) 1992-2006 The FreeBSD Project.
+Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+The Regents of the University of California. All rights reserved.
+JUNOS 12.3R12-S21 #0: 2022-03-02 16:09:50 UTC
+    builder@ancalagon.juniper.net:/volume/build/junos/12.3/release/12.3R12-S21/obj/arm/junos/bsd/kernels/JUNIPER-EX-3300/kernel
+can't re-use a leaf (all_slot_serialid)!
+CPU: Early Feroceon 88FR571 rev 0 (Marvell core)
+cpu55: Early Feroceon 88FR571 revision   WB enabled EABT branch prediction enabled
+  32KB/32B 4-way Instruction cache
+  32KB/32B 4-way write-back-locking-C Data cache
+real memory  = 1073741824 (1024 MB)
+avail memory = 1029824512 (982 MB)
+SOC: Marvell MV78100, TClock 200MHz
+Security policy loaded: Junos MAC/veriexec (mac_veriexec)
+MAC/veriexec fingerprint module loaded: SHA256
+MAC/veriexec fingerprint module loaded: SHA1
+ETHERNET SOCKET BRIDGE initialising
+Initializing EXSERIES properties ...
+mbus0: <Marvell Internal Bus (Mbus)> on motherboard
+ic0: <Marvell Integrated Interrupt Controller> at mem 0xf1020200-0xf102023b on mbus0
+timer0: <Marvell CPU Timer> at mem 0xf1020300-0xf102032f irq 8 on mbus0
+gpio0: <Marvell Integrated GPIO Controller> at mem 0xf1010100-0xf101011f irq 56,57,58,59 on mbus0
+uart0: <16550 or compatible> at mem 0xf1012000-0xf101201f irq 12 on mbus0
+uart0: console (9600,n,8,1)
+uart1: <16550 or compatible> at mem 0xf1012100-0xf101211f irq 13 on mbus0
+ehci0: <88F5XXX Integrated USB 2.0 controller> at mem 0xf1050000-0xf1050fff irq 72,16 on mbus0
+usb0: EHCI version 1.0
+usb0 on ehci0
+usb0: USB revision 2.0
+uhub0: Marvell EHCI root hub, class 9/0, rev 2.00/1.00, addr 1
+uhub0: 1 port with 1 removable, self powered
+umass0: STMicroelectronics ST72682  High Speed Mode, rev 2.00/2.10, addr 2
+ehci1: <88F5XXX Integrated USB 2.0 controller> at mem 0xf1051000-0xf1051fff irq 72,17 on mbus0
+usb1: EHCI version 1.0
+usb1 on ehci1
+usb1: USB revision 2.0
+uhub1: Marvell EHCI root hub, class 9/0, rev 2.00/1.00, addr 1
+uhub1: 1 port with 1 removable, self powered
+ehci2: <88F5XXX Integrated USB 2.0 controller> at mem 0xf1052000-0xf1052fff irq 72,18 on mbus0
+usb2: EHCI version 1.0
+usb2 on ehci2
+usb2: USB revision 2.0
+uhub2: Marvell EHCI root hub, class 9/0, rev 2.00/1.00, addr 1
+uhub2: 1 port with 1 removable, self powered
+mge0: <Marvell Gigabit Ethernet controller> at mem 0xf1072000-0xf1073fff irq 41,42,43,40,70 on mbus0
+---(more)---                                        mge0: hardware MAC address 84:b5:9c:36:a6:ff
+miibus0: <MII bus> on mge0
+e1000phy0: <Marvell 88E1310 Gigabit PHY> on miibus0
+e1000phy0:  10baseT, 10baseT-FDX, 100baseTX, 100baseTX-FDX, 1000baseTX-FDX, auto
+i2c0: <Marvell I2C ARM OnChip Controller> at mem 0xf1011000-0xf101101f on mbus0
+8564 rtc0: <8564 RTC> on i2c0
+poe0: <POE> on i2c0
+device_attach: poe0 attach returned 19
+i2c1: <Marvell I2C ARM OnChip Controller> at mem 0xf1011100-0xf101111f on mbus0
+pcib0: <Marvell MV78100 PCI-Express host controller> at mem 0xf1040000-0xf1041fff,0xe8000000-0xebffffff on mbus0
+pci0: <PCI bus> on pcib0
+mpfe0: <Juniper EX-series Packet Forwarding Engine> mem 0xe8000000-0xebffffff irq 112 at device 1.0 on pci0
+mpfe0: 0x100000 bytes of rid 0x10 res 3 failed (0, 0xffffffff).
+pcib1: <Marvell MV78100 PCI-Express host controller> at mem 0xf1080000-0xf1081fff,0xec000000-0xefffffff on mbus0
+pci1: <PCI bus> on pcib1
+mpfe1: <Juniper EX-series Packet Forwarding Engine> mem 0xec000000-0xefffffff irq 113 at device 1.0 on pci1
+mpfe1: 0x100000 bytes of rid 0x10 res 3 failed (0, 0xffffffff).
+syspld0 at mem 0xf9000000-0xf90fffff on mbus0
+cfi0: <SPI flash - 8MB> at mem 0xf1010600-0xf101062f,0xf8800000-0xf8ffffff irq 1 on mbus0
+Initializing product: 114 ..
+bmeb: bmeb_lib_init done 0xc41c7800, addr 0xc1d892c8
+bme0:Virtual BME driver initializing
+Timecounter "CPU Timer" frequency 200000000 Hz quality 1000
+###PCB Group initialized for udppcbgroup
+###PCB Group initialized for tcppcbgroup
+da0 at umass-sim0 bus 0 target 0 lun 0
+da0: <ST ST72682 2.10> Removable Direct Access SCSI-2 device
+da0: 40.000MB/s transfers
+da0: 1000MB (2048000 512 byte sectors: 64H 32S/T 1000C)
+Kernel thread "wkupdaemon" (pid 46) exited prematurely.
+Trying to mount root from ufs:/dev/da0s2a
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# 
+
+
+
+
+
+dsadmin@esl-sw-hrb# run show ethernet-switching table
+Ethernet-switching table: 128 entries, 91 learned, 0 persistent entries
+  VLAN              MAC address       Type         Age Interfaces
+  vlan-aerohive-mgmt *                Flood          - All-members
+  vlan-aerohive-mgmt 00:10:db:ff:10:01 Learn         0 ae0.0
+  vlan-aerohive-mgmt 00:50:56:bd:70:4d Learn         0 ae0.0
+  vlan-aerohive-mgmt 08:ea:44:8c:81:40 Learn         0 ge-0/0/47.0
+  vlan-aerohive-mgmt d4:dc:09:20:42:68 Learn      1:03 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:0d Learn      1:20 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:21 Learn      1:23 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:2b Learn      1:21 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:49 Learn      1:09 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:df Learn      1:28 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:e4 Learn      1:20 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:e9 Learn      1:11 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:fd Learn      1:17 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:0c Learn      1:14 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:11 Learn      1:12 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:16 Learn      1:22 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:1b Learn      1:10 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:25 Learn      1:17 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:34 Learn      1:11 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:6b Learn      1:24 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:84 Learn      1:03 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:ac Learn      1:17 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:b1 Learn      1:31 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:c5 Learn      1:15 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:d4 Learn      1:09 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:e3 Learn      1:13 ae0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:ed Learn      1:08 ae0.0
+  vlan-ccl-ibss     *                 Flood          - All-members
+  vlan-ccl-ibss     00:10:db:ff:10:01 Learn       1:43 ae0.0
+  vlan-ccl-ibss     00:50:56:8d:48:01 Learn       3:15 ae0.0
+  vlan-dev-sandbox  *                 Flood          - All-members
+  vlan-dev-sandbox  00:10:db:ff:10:01 Learn       3:40 ae0.0
+  vlan-dev-sandbox  00:50:56:8d:1f:8e Learn       1:01 ae0.0
+  vlan-dev-sandbox  00:50:56:8d:38:f4 Learn         42 ae0.0
+  vlan-dev-sandbox  00:50:56:b7:6e:a4 Learn       1:12 ae0.0
+  vlan-digitalsignage *               Flood          - All-members
+  vlan-digitalsignage b8:27:eb:88:8b:b0 Learn        0 ae0.0
+  vlan-enable-backbone *              Flood          - All-members
+  vlan-enable-backbone 00:10:db:ff:10:01 Learn        0 ae0.0
+  vlan-enable-backbone 3c:8c:93:87:7e:40 Learn        0 ae0.0
+  vlan-f5-hsl       *                 Flood          - All-members
+  vlan-f5-mgmt      *                 Flood          - All-members
+  vlan-guest        *                 Flood          - All-members
+  vlan-guest-stuff  *                 Flood          - All-members
+  vlan-guest-stuff  7a:90:cd:a1:64:28 Learn          0 ae0.0
+  vlan-hrb-lab      *                 Flood          - All-members
+  vlan-infra-3par-repl *              Flood          - All-members
+  vlan-infra-esx-mgmt *               Flood          - All-members
+  vlan-infra-esx-mgmt 00:10:db:ff:10:01 Learn     1:20 ae0.0
+  vlan-infra-esx-mgmt 00:25:b5:e5:00:00 Learn       54 ae0.0
+  vlan-infra-esx-mgmt 00:25:b5:e5:01:93 Learn     2:11 ae0.0
+  vlan-infra-esx-mgmt 00:50:56:85:33:9e Learn     3:01 ae0.0
+  vlan-infra-esx-mgmt 00:50:56:8d:f2:19 Learn        0 ae0.0
+  vlan-infra-esx-mgmt 34:48:ed:e5:7d:ce Learn     3:45 ae0.0
+  vlan-infra-esx-mgmt 34:48:ed:e5:80:3e Learn     1:04 ae0.0
+  vlan-infra-ilo    *                 Flood          - All-members
+  vlan-infra-ilo    00:10:db:ff:10:01 Learn          0 ae0.0
+  vlan-infra-ilo    3c:ec:ef:c7:22:0e Learn       1:53 ae0.0
+  vlan-infra-ilo    3c:ec:ef:c7:23:b2 Learn       2:06 ae0.0
+  vlan-infra-ilo    d0:8e:79:bc:85:42 Learn          0 ge-0/0/4.0
+  vlan-infra-ilo    d0:8e:79:be:5c:78 Learn          0 ae0.0
+  vlan-infra-net-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt 4c:d9:8f:a6:e5:ef Learn     2:09 ae0.0
+  vlan-infra-san-mgmt 4c:d9:8f:af:1e:43 Learn     1:39 ae0.0
+  vlan-infra-vmotion *                Flood          - All-members
+  vlan-infra-vmotion 8c:04:ba:ea:d0:e1 Learn         0 ae0.0
+  vlan-internet-dmz *                 Flood          - All-members
+  vlan-internet-dmz 00:10:db:ff:10:01 Learn       2:05 ae0.0
+  vlan-internet-dmz 3c:8c:93:87:7e:40 Learn          0 ae0.0
+  vlan-lan          *                 Flood          - All-members
+  vlan-lan          00:23:e9:54:ee:04 Learn          0 ae0.0
+  vlan-lan          00:23:e9:78:a7:04 Learn          0 ae0.0
+  vlan-lan          00:50:56:8d:58:1d Learn       4:02 ae0.0
+  vlan-lan          00:50:56:8d:9a:9e Learn          0 ae0.0
+  vlan-lan          00:50:56:8d:f0:f4 Learn         51 ae0.0
+  vlan-lan          3c:8c:93:87:7e:40 Learn       2:03 ae0.0
+  vlan-lan          d0:8e:79:bc:85:49 Learn       2:27 ge-0/0/44.0
+  vlan-nda-lan      *                 Flood          - All-members
+  vlan-netmgmt      *                 Flood          - All-members
+  vlan-netmgmt      00:10:db:ff:10:01 Learn          0 ae0.0
+  vlan-netmgmt      00:20:85:ea:0c:40 Learn          0 ae0.0
+  vlan-netmgmt      00:23:e9:54:ee:01 Learn          0 ge-0/0/3.0
+  vlan-netmgmt      00:23:e9:78:a7:01 Learn          0 ge-0/0/2.0
+  vlan-netmgmt      3c:8c:93:87:7e:40 Learn       1:45 ae0.0
+  vlan-netmgmt      84:b5:9c:36:a6:c1 Static         - Router
+  vlan-poc-nqa-npm  *                 Flood          - All-members
+  vlan-servers-ad   *                 Flood          - All-members
+  vlan-servers-ad   00:50:56:8d:61:68 Learn          0 ae0.0
+  vlan-servers-dcnservices *          Flood          - All-members
+  vlan-servers-dcnservices 00:10:db:ff:10:01 Learn        0 ae0.0
+  vlan-servers-dcnservices 00:50:56:8d:18:ec Learn        0 ae0.0
+  vlan-servers-dcnservices 00:50:56:8d:2e:48 Learn     4:45 ae0.0
+  vlan-servers-dcnservices 00:50:56:8d:6a:bd Learn       57 ae0.0
+  vlan-servers-dcnservices 00:50:56:8d:7b:fb Learn        0 ae0.0
+  vlan-servers-dcnservices 00:50:56:8d:7f:9b Learn     4:19 ae0.0
+  vlan-servers-dcnservices 00:50:56:b7:d5:12 Learn     4:02 ae0.0
+  vlan-servers-dcnservices 6c:2b:59:c6:cc:3a Learn        0 ge-0/0/46.0
+  vlan-servers-dev  *                 Flood          - All-members
+  vlan-servers-devops *               Flood          - All-members
+  vlan-servers-devops 00:10:db:ff:10:01 Learn     3:40 ae0.0
+  vlan-servers-docker-data *          Flood          - All-members
+  vlan-servers-docker-mgmt *          Flood          - All-members
+  vlan-servers-docker-prod *          Flood          - All-members
+  vlan-servers-docker-prod 00:10:db:ff:10:01 Learn     1:53 ae0.0
+  vlan-servers-docker-test *          Flood          - All-members
+  vlan-servers-docker-test 00:10:db:ff:10:01 Learn        0 ae0.0
+  vlan-servers-gis-sandbox *          Flood          - All-members
+  vlan-servers-infra-playpen *        Flood          - All-members
+  vlan-servers-infra-playpen 00:50:56:8d:16:92 Learn     2:06 ae0.0
+  vlan-servers-infra-playpen 00:50:56:8d:f6:c2 Learn     1:03 ae0.0
+  vlan-servers-itfservices *          Flood          - All-members
+  vlan-servers-itfservices 00:10:db:ff:10:01 Learn     3:08 ae0.0
+  vlan-servers-legacy-mgmt *          Flood          - All-members
+  vlan-servers-mgmt *                 Flood          - All-members
+  vlan-servers-mgmt 00:10:db:ff:10:01 Learn       1:10 ae0.0
+  vlan-servers-mgmt 00:50:56:8d:e4:cb Learn          0 ae0.0
+  vlan-servers-secservices *          Flood          - All-members
+  vlan-workstation-admin *            Flood          - All-members
+  vlan-workstation-admin 00:10:db:ff:10:01 Learn       59 ae0.0
+  vlan-workstation-admin 00:50:56:01:3c:fb Learn     1:01 ae0.0
+  vlan-workstation-admin 00:50:56:8d:06:7e Learn     4:09 ae0.0
+  vlan-workstation-admin 00:50:56:8d:0f:34 Learn     2:22 ae0.0
+  vlan-workstation-admin 00:50:56:8d:62:01 Learn     4:40 ae0.0
+  vlan-workstation-admin 00:50:56:8d:8b:86 Learn     2:49 ae0.0
+  vlan-workstation-admin 00:50:56:8d:e0:f8 Learn        0 ae0.0
+  vlan-workstation-admin 00:50:56:8d:ed:86 Learn     4:23 ae0.0
+  vlan-workstation-admin d8:9e:f3:9d:c9:82 Learn     1:25 ae0.0
+
+{master:0}[edit]
+dsadmin@esl-sw-hrb# run show ethernet-switching interfaces
+Interface    State  VLAN members        Tag   Tagging  Blocking
+ae0.0        up     vlan-aerohive-mgmt  4046  tagged   unblocked
+                    vlan-ccl-ibss       4041  tagged   unblocked
+                    vlan-dev-sandbox    4043  tagged   unblocked
+                    vlan-digitalsignage 4077  tagged   unblocked
+                    vlan-enable-backbone 4092 tagged   unblocked
+                    vlan-f5-hsl         4034  tagged   unblocked
+                    vlan-f5-mgmt        4036  tagged   unblocked
+                    vlan-guest          4085  tagged   unblocked
+                    vlan-guest-stuff    3085  tagged   unblocked
+                    vlan-hrb-lab        4035  tagged   unblocked
+                    vlan-infra-3par-repl 4014 tagged   unblocked
+                    vlan-infra-esx-mgmt 4010  tagged   unblocked
+                    vlan-infra-ilo      4013  tagged   unblocked
+                    vlan-infra-net-mgmt 4012  tagged   unblocked
+                    vlan-infra-san-mgmt 4011  tagged   unblocked
+                    vlan-infra-vmotion  4015  tagged   unblocked
+                    vlan-internet-dmz   4083  tagged   unblocked
+                    vlan-lan            4081  tagged   unblocked
+                    vlan-nda-lan        4088  tagged   unblocked
+                    vlan-netmgmt        1900  tagged   unblocked
+                    vlan-poc-nqa-npm    3199  tagged   unblocked
+                    vlan-servers-ad     4017  tagged   unblocked
+                    vlan-servers-dcnservices 4037 tagged unblocked
+                    vlan-servers-dev    4020  tagged   unblocked
+                    vlan-servers-devops 4039  tagged   unblocked
+                    vlan-servers-docker-data 4027 tagged unblocked
+                    vlan-servers-docker-mgmt 4026 tagged unblocked
+                    vlan-servers-docker-prod 4028 tagged unblocked
+                    vlan-servers-docker-test 4029 tagged unblocked
+                    vlan-servers-gis-sandbox 4018 tagged unblocked
+                    vlan-servers-infra-playpen 4021 tagged unblocked
+                    vlan-servers-itfservices 4038 tagged unblocked
+                    vlan-servers-legacy-mgmt 4019 tagged unblocked
+                    vlan-servers-mgmt   4016  tagged   unblocked
+                    vlan-servers-secservices 4033 tagged unblocked
+                    vlan-workstation-admin 4009 tagged unblocked
+ge-0/0/2.0   up     vlan-netmgmt        1900  untagged unblocked
+ge-0/0/3.0   up     vlan-netmgmt        1900  untagged unblocked
+ge-0/0/4.0   up     vlan-infra-ilo      4013  untagged unblocked
+ge-0/0/26.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/27.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/28.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/29.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/30.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/31.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/32.0  down   vlan-infra-ilo      4013  untagged blocked by STP
+ge-0/0/44.0  up     vlan-lan            4081  untagged unblocked
+ge-0/0/45.0  down   vlan-lan            4081  untagged blocked by STP
+ge-0/0/46.0  up     vlan-servers-dcnservices 4037 untagged unblocked
+ge-0/0/47.0  up     vlan-aerohive-mgmt  4046  tagged   unblocked
+                    vlan-guest          4085  tagged   unblocked
+                    vlan-guest-stuff    3085  tagged   unblocked
+                    vlan-infra-net-mgmt 4012  tagged   unblocked
+                    vlan-lan            4081  tagged   unblocked
+                    vlan-nda-lan        4088  tagged   unblocked

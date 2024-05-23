@@ -1,0 +1,82 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-building-security vlan-id 4074
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-building-security
+
+(commit confirmed 4 comment "T20230302.0521 - New VLAN for Enable Create new vlan 4074 for building-security Daniel Shi")
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+
+interface vlan4074
+ vlan-name vlan-building-security
+ description ena_4074_building-security
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4074
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4074
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 4074 description "vlan-building-security"
+set interfaces reth1 unit 4074 vlan-id 4074
+set interfaces reth1 unit 4074 family inet address 10.130.74.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4074 passive
+set security zones security-zone zone-building-security interfaces reth1.4074 host-inbound-traffic system-services ping
+set security address-book zone-building-security address addr-enaprotp01 10.130.74.10/32
+set security address-book zone-building-security attach zone zone-building-security
+
+set security policies from-zone zone-building-security to-zone zone-servers-ad apply-groups allow-ad-dns-template
+
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers match source-address addr-enaprotp01
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers match destination-address addr-protege-controllers
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers match application junos-icmp-all
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers match application junos-http
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers match application app-protege-server-to-controller
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers then permit
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers then log session-init
+set security policies from-zone zone-building-security to-zone zone-dcn policy policy-building-server-to-controllers then log session-close
+
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security match source-address addrs-admin-workstations
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security match destination-address addr-enaprotp01
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security match application junos-ping
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security match application junos-ssh
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security match application app-mstsc
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security then permit
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security then log session-init
+set security policies from-zone zone-admin to-zone zone-building-security policy policy-admin-building-security then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security match source-address addr-enactxp09
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security match destination-address addr-enaprotp01
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security match application junos-icmp-ping
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security match application app-protege-client
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security then permit
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-building-security policy policy-rpa-building-security then log session-close
+
+
+
+
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh match source-address 
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh match destination-address addr-enaaccp01
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh match application junos-ssh
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh then permit
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh then log session-init
+set security policies from-zone zone-building-security to-zone zone-servers-edge policy policy-enaprotp-enaaccp01-ssh then log session-close
+
+
+
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus match source-address addr-enaprotp01
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus match destination-address addr-enaupdp03
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus match application junos-smb
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus then permit
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus then log session-init
+set security policies from-zone zone-building-security to-zone zone-enable-lan policy policy-building-security-to-wsus then log session-close

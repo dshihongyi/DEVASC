@@ -1,0 +1,45 @@
+
+@REM Vocus Secondary - Core Switch ge-1/0/10
+
+set interfaces ge-1/0/10 description "Vocus Backup ISP IPT:10045481"
+set interfaces ge-1/0/10 vlan-tagging
+set interfaces ge-1/0/10 speed 1g
+set interfaces ge-1/0/10 link-mode full-duplex
+set interfaces ge-1/0/10 gigether-options no-auto-negotiation
+set interfaces ge-1/0/10 unit 947 vlan-id 947
+set interfaces ge-1/0/10 unit 947 family inet filter input filter-inet-to-dmz
+set interfaces ge-1/0/10 unit 947 family inet address 131.203.254.170/30
+
+
+
+@REM set routing-instances vr-internet routing-options autonomous-system 131196
+@REM set routing-instances vr-internet protocols bgp group bgp-external type external
+set routing-instances vr-internet protocols bgp group bgp-external import policy-bgp-external-import
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 local-address 131.203.254.170
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 export policy-bgp-external-export-prepend
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 peer-as 9503
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 local-address 202.124.123.125
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 export policy-bgp-external-export
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 peer-as 23655
+
+
+set policy-options policy-statement policy-bgp-external-export-prepend term fx from protocol direct
+set policy-options policy-statement policy-bgp-external-export-prepend term fx from route-filter 202.36.221.0/24 exact
+set policy-options policy-statement policy-bgp-external-export-prepend term fx then as-path-prepend "131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-export-prepend term fx then accept
+set policy-options policy-statement policy-bgp-external-export-prepend then reject
+
+@REM set policy-options policy-statement policy-bgp-external-export term snap from protocol direct
+@REM set policy-options policy-statement policy-bgp-external-export term snap from route-filter 202.36.221.0/24 exact
+@REM set policy-options policy-statement policy-bgp-external-export term snap then accept
+@REM set policy-options policy-statement policy-bgp-external-export then reject
+
+
+set policy-options policy-statement policy-bgp-external-import term fx from neighbor 131.203.254.169
+set policy-options policy-statement policy-bgp-external-import term fx from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement policy-bgp-external-import term fx then as-path-prepend "131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-import term fx then accept
+set policy-options policy-statement policy-bgp-external-import term snap from neighbor 202.124.123.124
+set policy-options policy-statement policy-bgp-external-import term snap from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement policy-bgp-external-import term snap then accept
+set policy-options policy-statement policy-bgp-external-import then reject

@@ -1,0 +1,562 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2023.09.13 16:39:33 =~=~=~=~=~=~=~=~=~=~=~=
+c
+root@CIAL-CHC-RTR01% cli
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> show configuration | display set | not
+                                                        ^
+syntax error, expecting <command>.
+
+root@CIAL-CHC-RTR01> show configuration | display set | not      -more 
+set version 19.4R3-S1.3
+set groups HOST_INBOUND_TRAFFIC security zones security-zone <*> interfaces <*> host-inbound-traffic system-services ping
+set groups HOST_INBOUND_TRAFFIC security zones security-zone <*> interfaces <*> host-inbound-traffic system-services traceroute
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL description "This policy is the default, explicit 'deny all' policy for accounting purposes"
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL match source-address any
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL match destination-address any
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL match application any
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL then deny
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL then log session-init
+set groups BLANKET_DENY_ALL_POLICY security policies from-zone <*> to-zone <*> policy DENY_ALL then count
+set system host-name CIAL-CHC-RTR01
+set system root-authentication encrypted-password "$6$vNikNoM8$r2ZkKryCH5hDwVTqSIf2Ppx65psFMafhq2VdyhB5mni3WhCY9zVej9fBx6ZiK9lIHwZ/i5QCBABJrgo8q0.zJ1"
+set system scripts op file cpu-usage-60.slax
+set system login retry-options tries-before-disconnect 3
+set system login retry-options backoff-threshold 3
+set system login retry-options backoff-factor 10
+set system login retry-options minimum-time 30
+set system login retry-options maximum-time 40
+set system login retry-options lockout-period 1
+set system login class op idle-timeout 60
+set system login class op login-alarms
+set system login class op permissions all
+set system login class ro idle-timeout 60
+set system login class ro login-alarms
+set system login class ro permissions access
+set system login class ro permissions admin
+set system login class ro permissions firewall
+set system login class ro permissions flow-tap
+set system login class ro permissions interface
+set system login class ro permissions network
+set system login class ro permissions routing
+set system login class ro permissions secret
+set system login class ro permissions security
+set system login class ro permissions snmp
+set system login class ro permissions system
+set system login class ro permissions trace
+set system login class ro permissions view
+set system login class su idle-timeout 180
+set system login class su login-alarms
+set system login class su permissions all
+set system login user admin full-name "This account should only be used as a last resort when the RADIUS server is unavailable"
+set system login user admin uid 2000
+set system login user admin class su
+set system login user admin authentication encrypted-password Qi
+set system login user op full-name Operator
+set system login user op uid 2011
+set system login user op class op
+set system login user ro full-name "Read only"
+set system login user ro uid 2012
+set system login user ro class ro
+set system login user su full-name Administrator
+set system login user su uid 2010
+set system login user su class su
+set system login message "\n\n\n\tUNAUTHORIZED USE OF THIS SYSTEM\n\tIS STRICTLY PROHIBITED!\n\n\tPlease contact\ 'support@cial.nz\' to gain\n\taccess to this equipment if you need authorization.\n\n\n"
+set system services ssh root-login allow
+set system services ssh protocol-version v2
+set system services netconf ssh
+set system services dhcp-local-server group CIAL_UFB interface irb.262
+set system time-zone Pacific/Auckland
+set system no-redirects
+set system dump-on-panic
+set system internet-options path-mtu-discovery
+set system internet-options tcp-mss 1452
+set system authentication-order password
+set system location country-code NZ
+set system ports console log-out-on-disconnect
+set system name-server 122.56.237.1
+set system name-server 210.55.111.1
+set system max-configurations-on-flash 25
+set system max-configuration-rollbacks 25
+set system ntp boot-server 202.37.101.1
+set system ntp server 202.37.101.1
+set system ntp server 202.37.101.2
+set system ntp server 202.37.101.3
+set chassis config-button no-clear
+set chassis aggregated-devices ethernet device-count 5
+set chassis alarm management-ethernet link-down ignore
+set security address-book global address cial_monitoring_subnet1 20.40.188.54/32
+set security address-book global address cial_monitoring_subnet2 20.53.215.120/32
+set security address-book global address cial_monitoring_subnet3 103.11.124.74/32
+set security address-book global address cial_monitoring_subnet4 202.14.167.147/32
+set security address-book global address cial_monitoring_subnet5 192.168.2.0/24
+set security address-book global address inde_monitoring1 203.109.202.180/32
+set security address-book global address inde_monitoring2 66.159.211.65/32
+set security address-book global address inde_monitoring3 66.159.211.5/32
+set security address-book global address inde_monitoring4 165.1.228.235/32
+set security address-book global address inde_monitoring5 165.1.231.245/32
+set security address-book global address cial_monitoring_subnet6 202.124.113.204/32
+set security address-book global address cial_monitoring_subnet7 202.124.113.206/32
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet1
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet2
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet3
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet4
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet5
+set security address-book global address-set cial_monitoring address cial_monitoring_subnet6
+set security address-book global address-set inde_monitoring address inde_monitoring1
+set security address-book global address-set inde_monitoring address inde_monitoring2
+set security address-book global address-set inde_monitoring address inde_monitoring3
+set security address-book global address-set inde_monitoring address inde_monitoring4
+set security address-book global address-set inde_monitoring address inde_monitoring5
+set security address-book global address-set inde_monitoring address cial_monitoring_subnet7
+set security alg dns disable
+set security alg ftp disable
+set security alg h323 disable
+set security alg mgcp disable
+set security alg msrpc disable
+set security alg sunrpc disable
+set security alg rsh disable
+set security alg rtsp disable
+set security alg sccp disable
+set security alg sip disable
+set security alg sql disable
+set security alg talk disable
+set security alg tftp disable
+set security alg pptp disable
+set security forwarding-options family inet6 mode flow-based
+set security flow tcp-mss all-tcp mss 1452
+set security flow tcp-session no-syn-check
+set security flow tcp-session no-sequence-check
+set security nat source rule-set rs1 from zone internal
+set security nat source rule-set rs1 to zone external
+set security nat source rule-set rs1 rule r1 match source-address 0.0.0.0/0
+set security nat source rule-set rs1 rule r1 match destination-address 0.0.0.0/0
+set security nat source rule-set rs1 rule r1 then source-nat interface
+set security policies apply-groups BLANKET_DENY_ALL_POLICY
+set security policies from-zone internal to-zone external policy allow_all_outbound description "This policy is the default, allow all services outbound from the customer to the Internet / WAN"
+set security policies from-zone internal to-zone external policy allow_all_outbound match source-address any
+set security policies from-zone internal to-zone external policy allow_all_outbound match destination-address any
+set security policies from-zone internal to-zone external policy allow_all_outbound match application any
+set security policies from-zone internal to-zone external policy allow_all_outbound then permit
+set security policies from-zone internal to-zone external policy allow_all_outbound then count
+set security policies from-zone external to-zone internal policy deny_ntp description "This policy is the default, deny ntp inbound from the Internet / WAN to the customer"
+set security policies from-zone external to-zone internal policy deny_ntp match source-address any
+set security policies from-zone external to-zone internal policy deny_ntp match destination-address any
+set security policies from-zone external to-zone internal policy deny_ntp match application junos-ntp
+set security policies from-zone external to-zone internal policy deny_ntp then deny
+set security policies from-zone external to-zone internal policy deny_ntp then count
+set security policies from-zone external to-zone internal policy allow_all_inbound description "This policy is the default, allow all services inbound from the Internet / WAN to the customer"
+set security policies from-zone external to-zone internal policy allow_all_inbound match source-address any
+set security policies from-zone external to-zone internal policy allow_all_inbound match destination-address any
+set security policies from-zone external to-zone internal policy allow_all_inbound match application any
+set security policies from-zone external to-zone internal policy allow_all_inbound then permit
+set security policies from-zone external to-zone internal policy allow_all_inbound then count
+set security policies from-zone external to-zone junos-host policy router_protect_permit description "This policy permits traffic bound for the RE / SRX host. Bear in mind that the services also need to referenced under the 'from-zone external' as 'host-inbound-traffic'."
+set security policies from-zone external to-zone junos-host policy router_protect_permit match source-address cial_monitoring
+set security policies from-zone external to-zone junos-host policy router_protect_permit match source-address inde_monitoring
+set security policies from-zone external to-zone junos-host policy router_protect_permit match destination-address any
+set security policies from-zone external to-zone junos-host policy router_protect_permit match application junos-icmp-all
+set security policies from-zone external to-zone junos-host policy router_protect_permit match application junos-radius
+set security policies from-zone external to-zone junos-host policy router_protect_permit match application junos-ssh
+set security policies from-zone external to-zone junos-host policy router_protect_permit match application CIAL_SNMP
+set security policies from-zone external to-zone junos-host policy router_protect_permit then permit
+set security policies from-zone external to-zone junos-host policy router_protect_permit then log session-init
+set security policies from-zone external to-zone junos-host policy router_protect_permit then count
+set security policies from-zone external to-zone junos-host policy router_protect_deny description "This policy denies all other traffic bound for the RE / SRX host."
+set security policies from-zone external to-zone junos-host policy router_protect_deny match source-address any
+set security policies from-zone external to-zone junos-host policy router_protect_deny match destination-address any
+set security policies from-zone external to-zone junos-host policy router_protect_deny match application any
+set security policies from-zone external to-zone junos-host policy router_protect_deny then deny
+set security policies from-zone external to-zone junos-host policy router_protect_deny then log session-init
+set security policies from-zone external to-zone junos-host policy router_protect_deny then count
+set security policies from-zone internal to-zone junos-host policy router_protect_permit description "This policy permits traffic bound for the RE / SRX host. Bear in mind that the services also need to referenced under the 'from-zone external' as 'host-inbound-traffic'."
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match source-address cial_monitoring
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match destination-address any
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match application junos-icmp-all
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match application junos-radius
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match application junos-ssh
+set security policies from-zone internal to-zone junos-host policy router_protect_permit match application CIAL_SNMP
+set security policies from-zone internal to-zone junos-host policy router_protect_permit then permit
+set security policies from-zone internal to-zone junos-host policy router_protect_permit then log session-init
+set security policies from-zone internal to-zone junos-host policy router_protect_permit then count
+set security policies from-zone internal to-zone junos-host policy router_protect_deny description "This policy denies all other traffic bound for the RE / SRX host."
+set security policies from-zone internal to-zone junos-host policy router_protect_deny match source-address any
+set security policies from-zone internal to-zone junos-host policy router_protect_deny match destination-address any
+set security policies from-zone internal to-zone junos-host policy router_protect_deny match application any
+set security policies from-zone internal to-zone junos-host policy router_protect_deny then deny
+set security policies from-zone internal to-zone junos-host policy router_protect_deny then log session-init
+set security policies from-zone internal to-zone junos-host policy router_protect_deny then count
+set security policies default-policy deny-all
+set security policies policy-rematch
+set security zones apply-groups HOST_INBOUND_TRAFFIC
+set security zones security-zone internal interfaces irb.260 host-inbound-traffic system-services bootp
+set security zones security-zone internal interfaces irb.260 host-inbound-traffic system-services dhcp
+set security zones security-zone internal interfaces irb.260 host-inbound-traffic system-services ssh
+set security zones security-zone internal interfaces irb.260 host-inbound-traffic system-services ping
+set security zones security-zone internal interfaces irb.262 host-inbound-traffic system-services bootp
+set security zones security-zone internal interfaces irb.262 host-inbound-traffic system-services dhcp
+set security zones security-zone internal interfaces irb.262 host-inbound-traffic system-services ssh
+set security zones security-zone internal interfaces irb.262 host-inbound-traffic system-services ping
+set security zones security-zone external interfaces pp0.0 host-inbound-traffic system-services snmp
+set security zones security-zone external interfaces pp0.0 host-inbound-traffic system-services ssh
+set interfaces ge-0/0/0 description "ge-0/0/0 - PRIMARY - UFB - ++UID:1150469"
+set interfaces ge-0/0/0 traps
+set interfaces ge-0/0/0 per-unit-scheduler
+set interfaces ge-0/0/0 vlan-tagging
+set interfaces ge-0/0/0 unit 0 encapsulation ppp-over-ether
+set interfaces ge-0/0/0 unit 0 vlan-id 10
+set interfaces ge-0/0/1 description "ge-0/0/1 - Customer LAN - ++UID:1150469"
+set interfaces ge-0/0/1 disable
+set interfaces ge-0/0/1 no-traps
+set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members internal
+set interfaces ge-0/0/2 description "ge-0/0/2 - Customer LAN - ++UID:1150469"
+set interfaces ge-0/0/2 disable
+set interfaces ge-0/0/2 no-traps
+set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members internal_nopalo
+set interfaces ge-0/0/3 description "ge-0/0/3 - Customer LAN - ++UID:1150469"
+set interfaces ge-0/0/3 disable
+set interfaces ge-0/0/3 no-traps
+set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members internal
+set interfaces ge-0/0/4 description "ge-0/0/4 - Customer LAN - ++UID:1150469"
+set interfaces ge-0/0/4 disable
+set interfaces ge-0/0/4 no-traps
+set interfaces ge-0/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members internal
+set interfaces ge-0/0/6 ether-options 802.3ad ae0
+set interfaces ge-0/0/7 ether-options 802.3ad ae0
+set interfaces ae0 native-vlan-id 260
+set interfaces ae0 aggregated-ether-options lacp active
+set interfaces ae0 aggregated-ether-options lacp periodic slow
+set interfaces ae0 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae0 unit 0 family ethernet-switching vlan members internal
+set interfaces ae0 unit 0 family ethernet-switching vlan members internal_nopalo
+set interfaces irb unit 260 family inet address 10.168.160.2/24
+set interfaces irb unit 262 family inet address 10.168.162.1/24
+set interfaces lo0 unit 0 description "inet.0 - LOOPBACK - Local Loopback - ++UID:1150469"
+set interfaces pp0 unit 0 description "pp0.0 - PRIMARY - UFB - ++UID:1150469"
+set interfaces pp0 unit 0 ppp-options pap local-name "user@spark.co.nz"
+set interfaces pp0 unit 0 ppp-options pap local-password "$9$nvJI6tO1IclvLEcgJDkTQEcyreW"
+set interfaces pp0 unit 0 ppp-options pap passive
+set interfaces pp0 unit 0 pppoe-options underlying-interface ge-0/0/0.0
+set interfaces pp0 unit 0 pppoe-options auto-reconnect 10
+set interfaces pp0 unit 0 pppoe-options client
+set interfaces pp0 unit 0 family inet primary
+set interfaces pp0 unit 0 family inet negotiate-address
+set event-options policy boot_check events system
+set event-options policy boot_check attributes-match system.message matches "Boot from backup root"
+set event-options policy boot_check then execute-commands commands "request system snapshot slice alternate"
+set accounting-options file router.prf files 3
+set accounting-options routing-engine-profile router-profile file router.prf
+set accounting-options routing-engine-profile router-profile interval 1
+set accounting-options routing-engine-profile router-profile fields time-of-day
+set accounting-options routing-engine-profile router-profile fields total-cpu-usage
+set class-of-service classifiers dscp dscp-classify forwarding-class q0 loss-priority high code-points 000001
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000000
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000010
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000011
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000100
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000101
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000110
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 000111
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001000
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001001
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001010
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001011
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001100
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001101
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001110
+set class-of-service classifiers dscp dscp-classify forwarding-class q1 loss-priority medium-high code-points 001111
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010000
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010001
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010010
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010011
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010100
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010101
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010110
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 010111
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011000
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011001
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011010
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011011
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011100
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011101
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011110
+set class-of-service classifiers dscp dscp-classify forwarding-class q2 loss-priority medium-low code-points 011111
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100000
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100001
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100010
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100011
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100100
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100101
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100110
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 100111
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101000
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101001
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101010
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101011
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101100
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101101
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101110
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 101111
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110000
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110001
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110010
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110011
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110100
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110101
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110110
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 110111
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111000
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111001
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111010
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111011
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111100
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111101
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111110
+set class-of-service classifiers dscp dscp-classify forwarding-class q3 loss-priority low code-points 111111
+set class-of-service host-outbound-traffic forwarding-class q4
+set class-of-service forwarding-classes queue 0 q0
+set class-of-service forwarding-classes queue 0 priority low
+set class-of-service forwarding-classes queue 1 q1
+set class-of-service forwarding-classes queue 1 priority low
+set class-of-service forwarding-classes queue 2 q2
+set class-of-service forwarding-classes queue 2 priority low
+set class-of-service forwarding-classes queue 3 q3
+set class-of-service forwarding-classes queue 3 priority high
+set class-of-service forwarding-classes queue 4 q4
+set class-of-service forwarding-classes queue 4 priority high
+set class-of-service interfaces ge-0/0/0 unit * scheduler-map SNAP_DEFAULT_CoS
+set class-of-service interfaces ge-0/0/0 unit 0 scheduler-map SNAP_DEFAULT_CoS
+set class-of-service interfaces ge-0/0/0 unit 0 shaping-rate 515m
+set class-of-service interfaces irb unit * classifiers dscp dscp-classify
+set class-of-service scheduler-maps SNAP_DEFAULT_CoS forwarding-class q0 scheduler q0
+set class-of-service scheduler-maps SNAP_DEFAULT_CoS forwarding-class q1 scheduler q1
+set class-of-service scheduler-maps SNAP_DEFAULT_CoS forwarding-class q2 scheduler q2
+set class-of-service scheduler-maps SNAP_DEFAULT_CoS forwarding-class q3 scheduler q3
+set class-of-service scheduler-maps SNAP_DEFAULT_CoS forwarding-class q4 scheduler q4
+set class-of-service schedulers q0 priority low
+set class-of-service schedulers q1 priority medium-low
+set class-of-service schedulers q2 priority medium-high
+set class-of-service schedulers q3 priority high
+set class-of-service schedulers q4 priority strict-high
+set access address-assignment pool CIAL_UFB family inet network 10.168.162.0/24
+set access address-assignment pool CIAL_UFB family inet range DHCP low 10.168.162.20
+set access address-assignment pool CIAL_UFB family inet range DHCP high 10.168.162.250
+set access address-assignment pool CIAL_UFB family inet dhcp-attributes name-server 8.8.8.8
+set access address-assignment pool CIAL_UFB family inet dhcp-attributes router 10.168.162.1
+set applications application CIAL_SNMP protocol udp
+set applications application CIAL_SNMP destination-port 161
+set vlans internal description "VLAN 260 - Customer Data VLAN"
+set vlans internal vlan-id 260
+set vlans internal l3-interface irb.260
+set vlans internal_nopalo description "Vlan 262 - Customer DATA vlan"
+set vlans internal_nopalo vlan-id 262
+set vlans internal_nopalo l3-interface irb.262
+set protocols l2-learning global-mode switching
+set protocols lldp interface all
+set routing-options static route 0.0.0.0/0 next-hop pp0.0
+set routing-options static route 0.0.0.0/0 preference 1
+set routing-options static route 192.168.0.0/16 next-hop 10.168.160.1
+set routing-options static route 10.0.0.0/8 next-hop 10.168.160.1
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> show v   chassis ?
+Possible completions:
+  alarms               Show alarm status
+  cluster              Show chassis cluster information
+  craft-interface      Show craft interface status
+  environment          Show component status and temperature, cooling system speeds
+  errors               Show chassis errors
+  fan                  Show fan and fan tray information
+  firmware             Show firmware and operating system version for components
+  forwarding           Show forwarding process (fwdd) status
+  fpc                  Show Flexible PIC Concentrator status
+  hardware             Show installed hardware components
+  l3-ha-mode           Display L3-ha-mode related information
+  location             Show physical location of chassis
+  mac-addresses        Show media access control addresses
+  pic                  Show Physical Interface Card state, type, and uptime
+  realtime-ukern-thread  Show ukernel realtime thread assignment status 
+  routing-engine       Show Routing Engine status
+  temperature-thresholds  Show chassis temperature threshold settings
+  usb                  Show chassis USB status
+
+root@CIAL-CHC-RTR01> show chassis     hardware 
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CV3521AF0232      SRX300
+Routing Engine   REV 0x17 650-065039   CV3521AF0232      RE-SRX300
+FPC 0                                                    FPC
+  PIC 0                                                  6xGE,2xGE SFP Base PIC
+    Xcvr 6                NON-JNPR     FNS1917065N       SFP-LX10
+Power Supply 0  
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> sho         show interfaces terse 
+Interface               Admin Link Proto    Local                 Remote
+ge-0/0/0                up    up
+ge-0/0/0.0              up    up  
+ge-0/0/0.32767          up    up  
+gr-0/0/0                up    up
+ip-0/0/0                up    up
+lsq-0/0/0               up    up
+lt-0/0/0                up    up
+mt-0/0/0                up    up
+sp-0/0/0                up    up
+sp-0/0/0.0              up    up   inet    
+                                   inet6   
+sp-0/0/0.16383          up    up   inet     10.0.0.1            --> 10.0.0.16
+                                            10.0.0.6            --> 0/0
+                                            128.0.0.1           --> 128.0.1.16
+                                            128.0.0.6           --> 0/0
+ge-0/0/1                down  down
+ge-0/0/1.0              up    down eth-switch
+ge-0/0/2                down  down
+ge-0/0/2.0              up    down eth-switch
+ge-0/0/3                down  down
+ge-0/0/3.0              up    down eth-switch
+ge-0/0/4                down  down
+ge-0/0/4.0              up    down eth-switch
+ge-0/0/5                up    down
+ge-0/0/6                up    up
+ge-0/0/6.0              up    up   aenet    --> ae0.0
+ge-0/0/7                up    down
+ge-0/0/7.0              up    down aenet    --> ae0.0
+ae0                     up    up
+ae0.0                   up    up   eth-switch
+esi                     up    up
+fti0                    up    up
+gre                     up    up
+ipip                    up    up
+irb                     up    up
+irb.260                 up    up   inet     10.168.160.2/24 
+irb.262                 up    up   inet     10.168.162.1/24 
+jsrv                    up    up
+jsrv.1                  up    up   inet     128.0.0.127/2   
+lo0                     up    up
+lo0.0                   up    up  
+lo0.16384               up    up   inet     127.0.0.1           --> 0/0
+lo0.16385               up    up   inet     10.0.0.1            --> 0/0
+                                            10.0.0.16           --> 0/0
+                                            128.0.0.1           --> 0/0
+                                            128.0.0.4           --> 0/0
+                                            128.0.1.16          --> 0/0
+lo0.32768               up    up  
+lsi                     up    up
+mtun                    up    up
+pimd                    up    up
+pime                    up    up
+pp0                     up    up
+pp0.0                   up    up   inet     125.236.216.145     --> 125.236.192.9
+ppd0                    up    up
+ppe0                    up    up
+rbeb                    up    up
+st0                     up    up
+tap                     up    up
+vtep                    up    up
+
+root@CIAL-CHC-RTR01> 
+
+root@CIAL-CHC-RTR01> show interfaces descriptions          ns 
+Interface       Admin Link Description
+ge-0/0/0        up    up   ge-0/0/0 - PRIMARY - UFB - ++UID:1150469
+ge-0/0/1        down  down ge-0/0/1 - Customer LAN - ++UID:1150469
+ge-0/0/2        down  down ge-0/0/2 - Customer LAN - ++UID:1150469
+ge-0/0/3        down  down ge-0/0/3 - Customer LAN - ++UID:1150469
+ge-0/0/4        down  down ge-0/0/4 - Customer LAN - ++UID:1150469
+lo0.0           up    up   inet.0 - LOOPBACK - Local Loopback - ++UID:1150469
+pp0.0           up    up   pp0.0 - PRIMARY - UFB - ++UID:1150469
+
+root@CIAL-CHC-RTR01> 
+
+
+
+
+@REM ~~~~ Core switch ~~~~
+
+
+CoreS-Stack-A_B#sh run int port-channel 61
+Building configuration...
+
+Current configuration : 247 bytes
+!
+interface Port-channel61
+ description TEST UFB internet
+ switchport
+ switchport trunk native vlan 260
+ switchport mode trunk
+ switchport trunk allowed vlan 2,260-262
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+
+
+
+CoreS-Stack-A_B#sh run int g1/2/30
+Building configuration...
+
+Current configuration : 245 bytes
+!
+interface GigabitEthernet1/2/30
+ description to SRX300 Ge-0/0/6
+ switchport
+ switchport trunk native vlan 260
+ switchport mode trunk
+ switchport trunk allowed vlan 2,260-262
+ switchport nonegotiate
+ mtu 9216
+ channel-group 61 mode active
+end
+
+CoreS-Stack-A_B#sh run int g2/2/30
+Building configuration...
+
+Current configuration : 329 bytes
+!
+interface GigabitEthernet2/2/30
+ description to SRX300 Ge-0/0/7
+ switchport
+ switchport trunk native vlan 260
+ switchport mode trunk
+ switchport trunk allowed vlan 2,260-262
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 61 mode active
+end

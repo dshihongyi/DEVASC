@@ -1,0 +1,542 @@
+
+
+
+hostname FramesMSCPL3
+domain-name cial.co.nz
+banner motd ~
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+~C
+!
+user admin group administrators password plaintext vanc4brszz
+user cattools group administrators password plaintext woihw943asE
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key plaintext wimC8yPqb5Nupz%gIf0FLj6#2J7
+!
+aaa authentication allow-fail-through
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+!
+vsf member 1
+    type jl725a
+    link 1 1/1/25
+    link 2 1/1/26
+!
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 3
+    name Workstations
+vlan 8
+    name VoIP
+vlan 23
+    name Carpark
+vlan 25
+    name EAS
+vlan 50
+    name UPS_Management
+vlan 111
+    name CCTV-camera
+vlan 121
+    name BMS_ITP
+vlan 123
+    name DevCarPark
+vlan 223
+    name CARPARK_DEV_EFTPOS
+vlan 240
+    name FIDS_240
+vlan 262
+    name INTERNET-UFB
+vlan 320
+    name Seismic_Sensors
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,3,8,23,25,50,111,121,123,223,240,262,320,888
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1 
+    dwrr queue 1 weight 1 
+    dwrr queue 2 weight 1 
+    dwrr queue 3 weight 1 
+    dwrr queue 4 weight 1 
+    dwrr queue 5 weight 1 
+    dwrr queue 6 weight 1 
+    strict queue 7 max-bandwidth 100000 kbps 
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 0 local-priority 0 
+qos dscp-map 1 local-priority 0 
+qos dscp-map 2 local-priority 0 
+qos dscp-map 3 local-priority 0 
+qos dscp-map 4 local-priority 0 
+qos dscp-map 5 local-priority 0 
+qos dscp-map 6 local-priority 0 
+qos dscp-map 7 local-priority 0 
+qos dscp-map 8 local-priority 1 
+qos dscp-map 9 local-priority 1 
+qos dscp-map 10 local-priority 1 
+qos dscp-map 11 local-priority 1 
+qos dscp-map 12 local-priority 1 
+qos dscp-map 13 local-priority 1 
+qos dscp-map 14 local-priority 1 
+qos dscp-map 15 local-priority 1 
+qos dscp-map 26 local-priority 4 color green 
+qos dscp-map 40 local-priority 6 color green name CS5 
+qos dscp-map 41 local-priority 6 color green 
+qos dscp-map 42 local-priority 6 color green 
+qos dscp-map 43 local-priority 6 color green 
+qos dscp-map 44 local-priority 6 color green 
+qos dscp-map 45 local-priority 6 color green 
+qos dscp-map 47 local-priority 5 color green name Audio 
+qos dscp-map 49 local-priority 5 color green name PTPv2 
+interface lag 1
+    description Uplink To CoreS-Stack-A_B LAG63
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,23,25,50,111,121,123,223,240,262,320,888
+    lacp mode active
+    qos trust dscp
+    spanning-tree link-type point-to-point
+interface 1/1/1
+    description (Retain)(1)MSCPl3 Win7 Abacus PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description (Retain)(2)Dev carpark license dongle
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description (Retain) (3) Dev carpark manual paystation
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description (Retain) (4) Dev carpark LAN box - note reader
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description (Retain) (5) EFTPOS terminal 223.140 and 141 only
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description (Retain) (6) Dev carpark paystation control unit
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/7
+    description (Retain) seismic-testing
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 320
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description FRAMEUMSCPL32
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description (Retain) (9) Dev Car Park Devices
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description (Retain)(10)EFTPOS terminal 223.140 and 141 only
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description (Retain) (11) Dev Car Park Devices
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description (Retain) UFB-Internet
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    description (Retain) test interCom
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 8
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description (Retain) Intercom-test
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 8
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description (Retain) (15) EFTPOS terminal 223.140 and 141 only
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 223
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/16
+    description (Retain) (16) EFTPOS terminal 223.140 and 141 only
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 223
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/17
+    description (Retain) (17) Dev carpark Exit face cam
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/18
+    description (Retain) (24) Dev carpark Entry LPR cam
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/19
+    description (Retain) (19) Dev carpark Exit control unit
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/20
+    description (Retain) (20) Dev carpark Exit LPR cam
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/21
+    description WAP_095
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/22
+    description (Retain)(22) Dev carpark Entry face cam
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/23
+    description (Retain) (23) Dev carpark Entry control unit
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/24
+    description FRAMEUMSCPL3 Car park level 3 (192.168.50.61)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/25
+    no shutdown
+interface 1/1/26
+    no shutdown
+interface 1/1/27
+    description Uplink to CoreS-Stack-A_B Gi2/1/34
+    no shutdown
+    lag 1
+interface 1/1/28
+    description Spare-Port (Not_In_Use)
+    no shutdown
+    lag 1
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.239/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+https-server vrf default
+https-server vrf mgmt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+interface Port-channel63
+ description Uplink to FramesMSCPL3 LAG1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,23,25,50,111,121,123,223,240,262,320,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ service-policy input CIAL-QoS-Input-Policy
+
+
+~~~
+
+ interface GigabitEthernet2/1/34
+ description FramesMSCPL31 G1/1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,23,25,50,111,121,123,223,240,320,888
+ switchport nonegotiate
+ mtu 9216
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+end
+
+~~~
+
+default interface GigabitEthernet2/1/34
+interface GigabitEthernet2/1/34
+ description FramesMSCPL3 - Gi1/1/27
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,23,25,50,111,121,123,223,240,262,320,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 63 mode active

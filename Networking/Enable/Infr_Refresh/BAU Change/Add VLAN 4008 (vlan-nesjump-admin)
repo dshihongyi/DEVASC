@@ -1,0 +1,43 @@
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-nsejump-admin vlan-id 4008
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-nsejump-admin
+
+Port 17 on FPC1 and FPC0
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4008
+ vlan-name vlan-nsejump-admin
+ description ena_4008_nsejump-admin
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4008
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4008
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+set interfaces reth1 unit 4008 description "vlan-nsejump-admin"
+set interfaces reth1 unit 4008 vlan-id 4008
+set interfaces reth1 unit 4008 family inet address 10.130.8.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4008 passive
+set security zones security-zone zone-nsejump-admin interfaces reth1.4008 host-inbound-traffic system-services ping
+set security address-book zone-nsejump-admin address addr-enajumpnse1 10.130.8.10/24
+set security address-book zone-nsejump-admin attach zone zone-nsejump-admin
+set security address-book zone-dcn2-interconnect address addr-bng-mgmt 10.132.4.254/32
+
+
+# set security policies from-zone zone-nsejump-admin to-zone zone-enable-lan apply-groups allow-ad-dns-template
+set security policies from-zone zone-nsejump-admin to-zone zone-servers-ad apply-groups allow-ad-dns-template
+
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt match source-address zone-nsejump-admin
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt match destination-address addr-bng-mgmt
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt match application junos-ssh
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt then permit
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt then log session-init
+set security policies from-zone zone-nsejump-admin to-zone zone-dcn2-interconnect policy policy-nsejumphost-bng-mgmt then log session-close

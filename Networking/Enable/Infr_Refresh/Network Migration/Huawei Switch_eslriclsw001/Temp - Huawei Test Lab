@@ -1,0 +1,574 @@
+Huawei Backup
+
+interface GigabitEthernet0/1/1
+ undo negotiation auto
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+
+
+
+[ESLITFLSW001]display interface GigabitEthernet 0/1/1
+GigabitEthernet0/1/1 current state : DOWN
+Line protocol current state : DOWN
+Description:TO_ESLITFEAS001_G/1/1/18
+Switch Port, PVID : 4050, TPID : 8100(Hex), The Maximum Frame Length is 1600
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0046-4bd6-5430
+Current system time: 2062-12-12 13:05:24+12:00
+Port Mode: COMMON FIBER, Transceiver: BASE_BX10_SFP
+Speed : 10,     Loopback: NONE
+Duplex: HALF,   Negotiation: ENABLE
+Flow-control: DISABLE
+Last 300 seconds input rate 88 bits/sec, 0 packets/sec
+Last 300 seconds output rate 200 bits/sec, 0 packets/sec
+Input peak rate 51278856 bits/sec, Record time: 2062-12-06 12:33:38
+Output peak rate 51267168 bits/sec, Record time: 2062-12-06 12:33:38
+Input:  129431 packets, 17656740 bytes
+  Unicast:                        448,  Multicast:                      128769
+  Broadcast:                      214,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+  Total Error:                      0
+  CRC:                              0,  Giants:                              0
+  Jabbers:                          0,  Fragments:                           0
+  Runts:                            0,  DropEvents:                          0
+  Alignments:                       0,  Symbols:                             0
+
+
+Core switch Backup
+
+
+set interfaces ge-0/0/30 speed 1g
+set interfaces ge-0/0/30 link-mode full-duplex
+set interfaces ge-0/0/30 ether-options no-auto-negotiation
+set interfaces ge-0/0/30 unit 0 family ethernet-switching vlan members vlan-huawei
+
+set interfaces irb unit 4050 family inet address x.x.x.200/24
+set vlans vlan-huawei vlan-id 4050
+set vlans vlan-huawei l3-interface irb.4050
+
+
+
+
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:51+13:00 DST ESLITFLSW001 IFNET/1/IF_LINKDOWN:OID 1.3.6.1.6.3.1.1.5.3 Interface 31 turned into DOWN state.(AdminStatus=1,OperStatus=2,InterfaceName=GigabitEthernet0/1/2)
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:51+13:00 DST ESLITFLSW001 IFNET/1/IF_LINKDOWN:OID 1.3.6.1.6.3.1.1.5.3 Interface 67 turned into DOWN state.(AdminStatus=1,OperStatus=2,InterfaceName=Vlanif4050)
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:51+13:00 DST ESLITFLSW001 LLDP/4/NBRCHGTRAP:OID: 1.0.8802.1.1.2.0.0.1 Neighbor information is changed. (LldpStatsRemTablesInserts=0, LldpStatsRemTablesDeletes=1, LldpStatsRemTablesDrops=0, LldpStatsRemTablesAgeouts=0)
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:51+13:00 DST ESLITFLSW001 OSPF/2/IFCHG:OID 1.3.6.1.2.1.14.16.2.16: The status of the non-virtual interface changes. (IfIpAddress=172.16.1.241, AddressLessIf=0, ProcessId=1, AreaId=0.0.0.0, IfnetIndex=67, ProcessId=1, RouterId=172.16.5.131, IfState=1, IfName=Vlanif4050, InstanceName=, IfChgReason=2)
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:51+13:00 DST ESLITFLSW001 OSPF/4/OGNLSA:OID 1.3.6.1.2.1.14.16.2.12: An LSA is generated. (LsdbAreaId=0.0.0.0, LsdbType=1, LsdbLsid=172.16.5.131, LsdbRouterId=172.16.5.131, ProcessId=1, RouterId=172.16.5.131, InstanceName=)
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+Dec 12 2062 14:21:55+13:00 DST ESLITFLSW001 DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 29, the change loop count is 0, and the maximum number of records is 4095.un
+[ESLITFLSW001-GigabitEthernet0/1/2]und
+[ESLITFLSW001-GigabitEthernet0/1/2]undo sp
+[ESLITFLSW001-GigabitEthernet0/1/2]undo speed 
+Error: Please undo negotiation auto first.
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]dis
+[ESLITFLSW001-GigabitEthernet0/1/2]display inter
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface gi
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2
+GigabitEthernet0/1/2 current state : DOWN
+Line protocol current state : DOWN
+Description:TO_ESLITFEAS001_G/1/1/18
+Switch Port, PVID : 4050, TPID : 8100(Hex), The Maximum Frame Length is 1600
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0046-4bd6-5430
+Current system time: 2062-12-12 14:22:48+12:00
+Port Mode: COMMON FIBER, Transceiver: 1000_BASE_LX_SFP
+Speed : 10,     Loopback: NONE
+Duplex: HALF,   Negotiation: ENABLE
+Flow-control: DISABLE
+Last 300 seconds input rate 96 bits/sec, 0 packets/sec
+Last 300 seconds output rate 184 bits/sec, 0 packets/sec
+Input peak rate 51286568 bits/sec, Record time: 2062-12-06 12:33:38
+Output peak rate 51290424 bits/sec, Record time: 2062-12-06 12:33:38
+Input:  110028 packets, 11231902 bytes
+  Unicast:                          0,  Multicast:                      110024
+  Broadcast:                        4,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+  Total Error:                      0
+  CRC:                              0,  Giants:                              0
+  Jabbers:                          0,  Fragments:                           0
+  Runts:                            0,  DropEvents:                          0
+  Alignments:                       0,  Symbols:                             0
+  Ignoreds:                         0     
+
+Output:  110152 packets, 11252889 bytes
+  Unicast:                          0,  Multicast:                      110147
+  Broadcast:                        5,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+
+  Total Error:                      0
+  Collisions:                       0,  ExcessiveCollisions:                 0
+  Late Collisions:                  0,  Deferreds:                           0
+  Buffers Purged:                   0
+
+    Input bandwidth utilization threshold : 90.00%
+    Output bandwidth utilization threshold: 90.00%
+    Input bandwidth utilization  : 0.01%
+    Output bandwidth utilization : 0.01%
+
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | in  
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | include FE
+Description:TO_ESLITFEAS001_G/1/1/18
+
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | include FEC
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | include F  
+Description:TO_ESLITFEAS001_G/1/1/18
+Switch Port, PVID : 4050, TPID : 8100(Hex), The Maximum Frame Length is 1600
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0046-4bd6-5430
+Port Mode: COMMON FIBER, Transceiver: 1000_BASE_LX_SFP
+Duplex: HALF,   Negotiation: ENABLE
+Flow-control: DISABLE
+  Frames:                           0
+
+  Jabbers:                          0,  Fragments:                           0
+
+[ESLITFLSW001-GigabitEthernet0/1/2] und
+[ESLITFLSW001-GigabitEthernet0/1/2] undo f
+[ESLITFLSW001-GigabitEthernet0/1/2] undo FE          
+[ESLITFLSW001-GigabitEthernet0/1/2]fec      
+[ESLITFLSW001-GigabitEthernet0/1/2]fec mo
+[ESLITFLSW001-GigabitEthernet0/1/2]fec ? 
+                                   ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]FE  
+[ESLITFLSW001-GigabitEthernet0/1/2]f 
+[ESLITFLSW001-GigabitEthernet0/1/2]flow-control ?
+  negotiation  Configure flow-control negotiation mode  
+  <cr>         
+
+[ESLITFLSW001-GigabitEthernet0/1/2]flow-control ne
+[ESLITFLSW001-GigabitEthernet0/1/2]flow-control negotiation ?
+  <cr>  
+
+[ESLITFLSW001-GigabitEthernet0/1/2]flow-control negotiation 
+Error: This port or this mode does not support this command.
+[ESLITFLSW001-GigabitEthernet0/1/2]fe
+[ESLITFLSW001-GigabitEthernet0/1/2]dis
+[ESLITFLSW001-GigabitEthernet0/1/2]display cu
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration inter
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface gi
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface GigabitEthernet 0/1/2
+#
+interface GigabitEthernet0/1/2
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+#
+return
+[ESLITFLSW001-GigabitEthernet0/1/2]ne
+[ESLITFLSW001-GigabitEthernet0/1/2]negotiation au
+[ESLITFLSW001-GigabitEthernet0/1/2]negotiation auto 
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]fec
+[ESLITFLSW001-GigabitEthernet0/1/2]fe 
+[ESLITFLSW001-GigabitEthernet0/1/2]fe
+Dec 12 2062 14:25:25+13:00 DST ESLITFLSW001 DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 30, the change loop count is 0, and the maximum number of records is 4095 
+[ESLITFLSW001-GigabitEthernet0/1/2 
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]dis
+[ESLITFLSW001-GigabitEthernet0/1/2]display inter
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface gi
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2
+GigabitEthernet0/1/2 current state : DOWN
+Line protocol current state : DOWN
+Description:TO_ESLITFEAS001_G/1/1/18
+Switch Port, PVID : 4050, TPID : 8100(Hex), The Maximum Frame Length is 1600
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 0046-4bd6-5430
+Current system time: 2062-12-12 14:25:35+12:00
+Port Mode: COMMON FIBER, Transceiver: 1000_BASE_LX_SFP
+Speed : 10,     Loopback: NONE
+Duplex: HALF,   Negotiation: ENABLE
+Flow-control: DISABLE
+Last 300 seconds input rate 24 bits/sec, 0 packets/sec
+Last 300 seconds output rate 56 bits/sec, 0 packets/sec
+Input peak rate 51286568 bits/sec, Record time: 2062-12-06 12:33:38
+Output peak rate 51290424 bits/sec, Record time: 2062-12-06 12:33:38
+Input:  110028 packets, 11231902 bytes
+  Unicast:                          0,  Multicast:                      110024
+  Broadcast:                        4,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+  Frames:                           0
+
+  Total Error:                      0
+  CRC:                              0,  Giants:                              0
+  Jabbers:                          0,  Fragments:                           0
+  Runts:                            0,  DropEvents:                          0
+  Alignments:                       0,  Symbols:                             0
+  Ignoreds:                         0     
+
+Output:  110152 packets, 11252889 bytes
+  Unicast:                          0,  Multicast:                      110147
+  Broadcast:                        5,  Jumbo:                               0
+  Discard:                          0,  Pause:                               0
+
+  Total Error:                      0
+  Collisions:                       0,  ExcessiveCollisions:                 0
+  Late Collisions:                  0,  Deferreds:                           0
+  Buffers Purged:                   0
+
+    Input bandwidth utilization threshold : 90.00%
+    Output bandwidth utilization threshold: 90.00%
+    Input bandwidth utilization  : 0.01%
+    Output bandwidth utilization : 0.01%
+
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | in  
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | include fec
+[ESLITFLSW001-GigabitEthernet0/1/2]display interface GigabitEthernet 0/1/2 | include FE 
+Description:TO_ESLITFEAS001_G/1/1/18
+
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]und
+[ESLITFLSW001-GigabitEthernet0/1/2]undo fe
+[ESLITFLSW001-GigabitEthernet0/1/2]undo fec
+[ESLITFLSW001-GigabitEthernet0/1/2]undo fec?
+                                        ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]undo fec
+                                        ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]dis
+[ESLITFLSW001-GigabitEthernet0/1/2]display cu
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration inter
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface gi
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface GigabitEthernet 0/1/2
+#
+interface GigabitEthernet0/1/2
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+#
+return
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface GigabitEthernet 0/1/1
+#
+interface GigabitEthernet0/1/1
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+#
+return
+[ESLITFLSW001-GigabitEthernet0/1/2]inter
+[ESLITFLSW001-GigabitEthernet0/1/2]exi  
+                                   ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]qut
+                                   ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]quit
+[ESLITFLSW001]
+[ESLITFLSW001]
+[ESLITFLSW001]sh 
+[ESLITFLSW001]shcu
+[ESLITFLSW001]sh cuf
+[ESLITFLSW001]sh curr
+[ESLITFLSW001]inter  
+[ESLITFLSW001]interface gi
+[ESLITFLSW001]interface GigabitEthernet 0/1/2
+[ESLITFLSW001-GigabitEthernet0/1/2]und
+[ESLITFLSW001-GigabitEthernet0/1/2]undo nei
+[ESLITFLSW001-GigabitEthernet0/1/2]undo nei
+                                        ^
+Error: Unrecognized command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]und neg
+[ESLITFLSW001-GigabitEthernet0/1/2]und negotiation 
+                                                   ^
+Error:Incomplete command found at '^' position.
+[ESLITFLSW001-GigabitEthernet0/1/2]und negotiation au
+[ESLITFLSW001-GigabitEthernet0/1/2]und negotiation auto 
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]qu
+Dec 12 2062 14:27:33+13:00 DST ESLITFLSW001 %%01IFPDT/4/IF_STATE(l)[31]:Interface GigabitEthernet0/1/2 has turned into UP state.it
+[ESLITFLSW001-GigabitEthernet0/1/2]quit
+Dec 12 2062 14:27:33+13:00 DST ESLITFLSW001 %%01IFNET/4/IF_STATE(l)[32]:Interface Vlanif4050 has turned into UP state.
+[ESLITFLSW001-GigabitEthernet0/1/2]quit
+Dec 12 2062 14:27:33+13:00 DST ESLITFLSW001 %%01IFNET/4/LINK_STATE(l)[33]:The line protocol IP on the interface Vlanif4050 has entered the UP state.
+[ESLITFLSW001]
+[ESLITFLSW001]
+Dec 12 2062 14:27:33+13:00 DST ESLITFLSW001 IFNET/1/IF_LINKUP:OID 1.3.6.1.6.3.1.1.5.4 Interface 31 turned into UP state.(AdminStatus=1,OperStatus=1,InterfaceName=GigabitEthernet0/1/2)
+[ESLITFLSW001]
+Dec 12 2062 14:27:33+13:00 DST ESLITFLSW001 IFNET/1/IF_LINKUP:OID 1.3.6.1.6.3.1.1.5.4 Interface 67 turned into UP state.(AdminStatus=1,OperStatus=1,InterfaceName=Vlanif4050)
+[ESLITFLSW001]
+Dec 12 2062 14:27:34+13:00 DST ESLITFLSW001 OSPF/4/OGNLSA:OID 1.3.6.1.2.1.14.16.2.12: An LSA is generated. (LsdbAreaId=0.0.0.0, LsdbType=1, LsdbLsid=172.16.5.131, LsdbRouterId=172.16.5.131, ProcessId=1, RouterId=172.16.5.131, InstanceName=)
+[ESLITFLSW001]
+Dec 12 2062 14:27:35+13:00 DST ESLITFLSW001 LLDP/4/NBRCHGTRAP:OID: 1.0.8802.1.1.2.0.0.1 Neighbor information is changed. (LldpStatsRemTablesInserts=1, LldpStatsRemTablesDeletes=0, LldpStatsRemTablesDrops=0, LldpStatsRemTablesAgeouts=0)
+[ESLITFLSW001]
+Dec 12 2062 14:27:35+13:00 DST ESLITFLSW001 DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 31, the change loop count is 0, and the maximum number of records is 4095.
+[ESLITFLSW001]
+[ESLITFLSW001]
+[ESLITFLSW001]                                                                                             display current-configuration interface GigabitEthernet 0/1/1                                                    urrent-configuration interface GigabitEthern#t 0/1/1                                                       display current-configuration interface GigabitEthernet 0/1/2        interface GigabitEthernet0/1/1              urrent-configuration interface GigabitEthernet 0/1/1
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+#
+return
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]display current-configuration interface GigabitEthernet 0/1/2
+#
+interface GigabitEthernet0/1/2
+ undo negotiation auto
+ description TO_ESLITFEAS001_G/1/1/18
+ port link-type access
+ port default vlan 4050
+#
+return
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+[ESLITFLSW001-GigabitEthernet0/1/2]
+
+{master:0}[edit]
+root@ena-sw-core-new# ]
+                      ^
+unknown command.
+
+{master:0}[edit]
+root@ena-sw-core-new# 
+
+{master:0}[edit]
+root@ena-sw-core-new# ds     
+                      ^
+unknown command.
+root@ena-sw-core-new# dis         
+                      ^
+unknown command.
+root@ena-sw-core-new# au     
+                      ^
+unknown command.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 
+Physical interface: ge-0/0/30, Enabled, Physical link is Up
+  Interface index: 668, SNMP ifIndex: 590
+  Link-level type: Ethernet, MTU: 1514, LAN-PHY mode, Speed: 1000mbps,
+  BPDU Error: None, Loop Detect PDU Error: None, Ethernet-Switching Error: None,
+  MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled,
+  Flow control: Disabled, Media type: Fiber,
+  IEEE 802.3az Energy Efficient Ethernet: Disabled, Auto-MDIX: Enabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 10 supported, 10 maximum usable queues
+  Current address: 00:c5:2c:89:55:e2, Hardware address: 00:c5:2c:89:55:e2
+  Last flapped   : 2022-12-12 22:03:25 NZDT (00:02:30 ago)
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Active alarms  : None
+  Active defects : None
+  PCS statistics                      Seconds
+    Bit errors                             0
+    Errored blocks                         0
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+  PRBS Mode : Disabled
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/30.0 (Index 587) (SNMP ifIndex 591)
+    Flags: Up SNMP-Traps 0x24024000 Encapsulation: Ethernet-Bridge
+    Input packets : 29
+    Output packets: 123
+    Protocol eth-switch, MTU: 1514
+
+{master:0}[edit]
+root@ena-sw-core-new# set interfaces ge-0/0/30 ?
+Possible completions:
+  accounting-profile   Accounting profile name
++ apply-groups         Groups from which to inherit configuration data
++ apply-groups-except  Don't inherit configuration data from these groups
+  description          Text description of interface
+  disable              Disable this interface
+> dsl-sfp-options      DSL SFP options
+  encapsulation        Physical link-layer encapsulation
+> esi                  ESI configuration of multi-homed interface
+> ether-options        Ethernet interface-specific options
+  flexible-vlan-tagging  Support for no tagging, or single and double 802.1q VLAN tagging
+> gigether-options     Gigabit Ethernet interface-specific options
+  gratuitous-arp-reply  Enable gratuitous ARP reply
+> hold-time            Hold time for link up and link down
+  input-native-vlan-push  Control native-vlan-id insertion to untagged frames when input-vlan-map push is configured
+  link-mode            Link operational mode
+  mac                  Hardware MAC address
+  mtu                  Maximum transmit packet size (256..9216)
+  native-vlan-id       Virtual LAN identifier for untagged frames (0..4094)
+  no-gratuitous-arp-reply  Don't enable gratuitous ARP reply
+  no-gratuitous-arp-request  Ignore gratuitous ARP request
+  no-per-unit-scheduler  Don't enable subunit queuing on Frame Relay or VLAN IQ interface
+  no-traps             Don't enable SNMP notifications on state changes
+> optics-options       Optics options
+> otn-options          Optical Transmission Network interface-specific options
+  passive-monitor-mode  Use interface to tap packets from another router
+  per-unit-scheduler   Enable subunit queuing on Frame Relay or VLAN IQ interface
+  speed                Link speed
+> tdm-options          Time division multiplexing (TDM) interface-specific options
+> traceoptions         Interface trace options
+  traps                Enable SNMP notifications on state changes
+> unit                 Logical interface
+  vlan-tagging         802.1q VLAN tagging support
+{master:0}[edit]
+root@ena-sw-core-new# set interfaces ge-0/0/30 fe 
+                                               ^
+syntax error.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 | grep fec 
+  Active defects : None
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 | grep fec    
+  Active defects : None
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extend| grep fec 
+                                                    ^
+syntax error.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extend| grep fec          
+error: syntax error: extend
+
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extend| grep fec   
+                                                    ^
+syntax error.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extend| grep fec   
+error: syntax error: extend
+
+{master:0}[edit]
+root@ena-sw-core-new# 
+
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extend             
+                                                    ^
+syntax error.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extensive | grep fec 
+  Active defects : None
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+
+{master:0}[edit]
+root@ena-sw-core-new# set interfaces ge-0/0/30 ether-options fe        
+                                                             ^
+syntax error.
+root@ena-sw-core-new# set interfaces ge-0/0/30 ether-options ?                
+Possible completions:
+> 802.3ad              IEEE 802.3ad
++ apply-groups         Groups from which to inherit configuration data
++ apply-groups-except  Don't inherit configuration data from these groups
+  asynchronous-notification  Enable sending asynchronous notification to peer on CCC-down
+  auto-negotiation     Enable auto-negotiation
+  autostate-exclude    Interface will not contribute to IRB state
+> configured-flow-control  Enable flow control
+> ethernet-switch-profile  Ethernet virtual LAN/media access control-level options
+  flow-control         Enable flow control
+  ieee-802-3az-eee     IEEE 802.3az Energy Efficient Ethernet(EEE)
+  ignore-l3-incompletes  Ignore L3 incomplete errors
+  loopback             Enable loopback
+> mpls                 MPLS options
+  no-auto-mdix         Disable auto MDI/MDIX
+  no-auto-negotiation  Don't enable auto-negotiation
+  no-flow-control      Don't enable flow control
+  no-loopback          Don't enable loopback
+{master:0}[edit]
+root@ena-sw-core-new# set interfaces ge-0/0/30 ether-options fec              
+                                                             ^
+syntax error.
+root@ena-sw-core-new# set interfaces ge-0/0/30 fe                  
+                                               ^
+syntax error.
+root@ena-sw-core-new# set interfaces ge-0/0/30 fe?                  
+No valid completions
+{master:0}[edit]
+root@ena-sw-core-new# set interfaces ge-0/0/30 fec  
+                                               ^
+syntax error.
+
+{master:0}[edit]
+root@ena-sw-core-new# dis                                                   
+                      ^
+unknown command.
+root@ena-sw-core-new# show interfaces ge-0/0/30 ext
+                                                   ^
+syntax error.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extensive ?     
+Possible completions:
+  <[Enter]>            Execute this command
+  brief                Display brief output
+  descriptions         Display interface description strings
+  detail               Display detailed output
+  ifl-class            IFL classification
+  routing-instance     Name of routing instance
+  smart-sfp-defects    Smart SFP defect status
+  smart-sfp-statistics  Smart SFP counters
+  snmp-index           SNMP index of interface
+  terse                Display terse output
+  |                    Pipe through a command
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extensive | ?             
+Possible completions:
+  append               Append output text to file
+  count                Count occurrences
+  display              Show additional kinds of information
+  except               Show only text that does not match a pattern
+  find                 Search for first occurrence of pattern
+  hold                 Hold text without exiting the --More-- prompt
+  last                 Display end of output only
+  match                Show only text that matches a pattern
+  no-more              Don't paginate output
+  refresh              Refresh a continuous display of the command
+  request              Make system-level requests
+  save                 Save output text to file
+  tee                  Write to standard output and file
+  trim                 Trim specified number of columns from start of line
+{master:0}[edit]
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extensive | brief
+                                                                ^
+syntax error, expecting <command>.
+root@ena-sw-core-new# run show interfaces ge-0/0/30 extensive | grep fec  
+  Active defects : None
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+
+{master:0}[edit]
+root@ena-sw-core-new# 

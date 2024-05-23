@@ -1,0 +1,2297 @@
+config firewall policy
+ edit 300
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 1
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_DevOps-Servers" 
+  set dstaddr "grp_fqdn_azure-devops" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 2
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL240_FIDS" 
+  set dstaddr "ACL_Remote_Peer_network" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 3
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_fqdn-ioc-computer" "grp_iocop-computer" 
+  set dstaddr "host_TRBOnet-public-IP" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 4
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_siem-internal-srv" 
+  set dstaddr "obj_siem-ext-srv01" 
+  set service "tcp-31222" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 5
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_siem-internal-srv" 
+  set dstaddr "obj_siem-ext-srv02" 
+  set service "tcp-9200" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 6
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "Webproxy1" 
+  set service "UDP-161" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 7
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" "CIAL_FTP_SSH_TCP" "CIAL_Monitoring_TCP_Out" "CIAL_Monitoring_UDP_Out" "TFTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 8
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "Carpark1" 
+  set service "CIAL_RPC_Ports_TCP" "CarPark-tcp-udp-49154" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 9
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Backup1" "grp_monitoring-servers" 
+  set dstaddr "cloudconnect.vbridge.co.nz" 
+  set service "TCP-UDP-6180" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 10
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "n-192.168.169.0_24" 
+  set service "SNMP-SecuredWorkstations-In" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 11
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "n-192.168.169.0_24" 
+  set dstaddr "grp_monitoring-servers" 
+  set service "SNMP-SecuredWorkstations-Out" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 12
+  set srcintf "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "INDE_PUBLIC_ADDRESSES" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status disable
+  set action accept
+ next
+ edit 13
+  set srcintf "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "all" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 14
+  set srcintf "SERVICES" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 15
+  set srcintf "SERVICES" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 16
+  set srcintf "AIRNZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 17
+  set srcintf "CARPARK" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 18
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 19
+  set srcintf "DMZ" 
+  set dstintf "any" 
+  set srcaddr "obj_citrix-vpn-endpoints" 
+  set dstaddr "all" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 20
+  set srcintf "AIRNZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 21
+  set srcintf "CARPARK" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 22
+  set srcintf "AIRNZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 23
+  set srcintf "ARINC" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 24
+  set srcintf "ARINC" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "CIAERP2" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 25
+  set srcintf "CARPARK" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 26
+  set srcintf "any" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_CrowdStrike" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 301
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-202.124.113.199" "vip-Netscaler_External_IP_tcp-9443" 
+  set service "tcp-9443" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 27
+  set srcintf "any" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "CIAL_Web_Allow_Inbound" 
+  set service "tcp-9443" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 302
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL167" "CIAL244_CorpGeneral" "CIAL2_NetworkMgmt" "CIAL3_Workstation" "CS-Wireless" 
+  set dstaddr "Azure-Group" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 28
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_Azure_Access" 
+  set dstaddr "Azure-Group" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 303
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL3_Workstation" 
+  set dstaddr "Azure-13.75.149.87" 
+  set service "Azure_Database_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 29
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" 
+  set dstaddr "Azure-13.75.149.87" 
+  set service "Azure_Database_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 30
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Wireless_AP" 
+  set dstaddr "all" 
+  set service "HTTPS" "SKYFii-8777" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 31
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_Wireless_AP" 
+  set dstaddr "SKYFii-Servers" 
+  set service "SKYFii-UDP" "SkyFii-TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 32
+  set srcintf "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "SKYFii-Servers" 
+  set dstaddr "vip-SKYFii-Nat-3799_SKYFii-3799" 
+  set service "SKYFii-3799" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 33
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_nps-srv" 
+  set dstaddr "grp_fqdn_azure-mfa" "grp_fqdn_azure-mfa-setup" 
+  set service "http" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 34
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_AzureADConnect" 
+  set dstaddr "grp_Microsoft365" "grp_Microsoft365-IPs" 
+  set service "HTTP" "HTTPS" "tcp-5671" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 35
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_AADSync-Sources" 
+  set dstaddr "grp_Microsoft365" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 36
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_citrix-adm-agent" 
+  set dstaddr "all" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 304
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CS-Wireless" 
+  set dstaddr "fqdn_www.msftconnecttest.com" "fqdn_www.msftncsi.com" 
+  set service "http" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 37
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" "CIAL_VLAN3_Workstations" 
+  set dstaddr "fqdn_www.msftconnecttest.com" "fqdn_www.msftncsi.com" 
+  set service "http" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 38
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL244_CorpGeneral" "CIAL3_Workstation" 
+  set dstaddr "github.com" 
+  set service "TCP-9418" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 305
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL3_Workstation" 
+  set dstaddr "FQDN-wave.scorch.co.nz" 
+  set service "Wave_Scorch" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 39
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" 
+  set dstaddr "FQDN-wave.scorch.co.nz" 
+  set service "Wave_Scorch" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 306
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL3_Workstation" 
+  set dstaddr "Azure_Database" 
+  set service "Azure_Database_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 40
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" 
+  set dstaddr "Azure_Database" 
+  set service "Azure_Database_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 41
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "iMac-Kerry" 
+  set dstaddr "ftp.pmplimited.co.nz" 
+  set service "FTP" "TCP-20" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 42
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "DEVSQLBI1" 
+  set dstaddr "Azure-sqlsvr" 
+  set service "TCP-1433" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 43
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_Domain_Controllers" 
+  set dstaddr "secured-pax-network" 
+  set service "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 44
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "secured-pax-network" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 45
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "secured-pax-network" 
+  set dstaddr "swarm-sftp-destination" 
+  set service "Swarm_file_transfer" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 46
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "secured-pax-network" 
+  set dstaddr "smtp.gmail.com" 
+  set service "TCP587" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 47
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "secured-pax-network" 
+  set dstaddr "all" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 48
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DHCP_PORTS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 49
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "GLP01-printer" 
+  set service "ALL_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 50
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "CIAL24_Bagsort" 
+  set service "rdp" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 51
+  set srcintf "SERVICES" 
+  set dstintf "UNTRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "Cisco_DNS" 
+  set service "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 52
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "n-192.168.29.0_24" 
+  set dstaddr "FIDSWEB" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 53
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "CIAERP2" "obj_ciaerp1" 
+  set service "http" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 54
+  set srcintf "SERVICES" 
+  set dstintf "TRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "CIAERP2" "obj_ciaerp1" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 55
+  set srcintf "SERVICES" 
+  set dstintf "Outside_map_001" "Outside_map_002" "Outside_map_004" "SERVICES" "CARPARK" "AIRNZ" "DMZ" "ARINC" "TRUST" "UNTRUST" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "CIAL_Internal_Networks" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 56
+  set srcintf "SERVICES" 
+  set dstintf "any" 
+  set srcaddr "BHS-Support-network" 
+  set dstaddr "all" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 57
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAERP2" "obj_ciaerp1" 
+  set dstaddr "GmapAPIs" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 58
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAERP2" "obj_ciaerp1" 
+  set dstaddr "FQDN.apps.technologyonecorp.com" "FQDN.d5pyglw5yz5ku.cloudfront.net" 
+  set service "http" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 59
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_host-PA-FW" 
+  set dstaddr "fqdn_proditpdownloads.paloaltonetworks.com" "grp_fqdn-paloalto-updates" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 307
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-Netscaler1_External_IP_smtp" "vip-TMG1_External_Hybrid_smtp" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 60
+  set srcintf "any" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "CIAL_SMTP_Servers" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 61
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "EXCH2" 
+  set dstaddr "CIAL_EXCH_outbound" "CIAL_Office365_Servers" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 308
+  set srcintf "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Airways_Noise_Data" 
+  set dstaddr "vip-corefw_mail_websites_195_ssh" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 62
+  set srcintf "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Airways_Noise_Data" 
+  set dstaddr "APP2" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 63
+  set srcintf "DMZ" 
+  set dstintf "TRUST" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "TMCM1" 
+  set service "TCP-10190" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 64
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL_Proxy_Management" 
+  set dstaddr "Webproxy1" 
+  set service "CIAL_ProxyManagement_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 65
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_192.168.9.183" 
+  set dstaddr "Webproxy1" 
+  set service "CIAL_Proxy_Ports_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 66
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_fids-to-webproxy" "grp_glidepath-to-webproxy" 
+  set dstaddr "Webproxy1" 
+  set service "TCP-8080" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 67
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL240_FIDS" "CIAL24_Bagsort" "Secured_Workstations" 
+  set dstaddr "Webproxy1" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 68
+  set srcintf "ARINC" "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIALInternal" 
+  set dstaddr "Webproxy1" 
+  set service "CIAL_Proxy_Ports_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 69
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "netmon1" 
+  set dstaddr "Webproxy1" 
+  set service "UDP-161" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 70
+  set srcintf "DMZ" 
+  set dstintf "TRUST" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DNS" "Internet-Locator-Service" "KERBEROS" "TCP-3268" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 309
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "all" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-corefw_mail_websites_195" 
+ next
+ edit 310
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "PaloAlto-TestServer" "SurfacePro-DMT" 
+  set dstaddr "all" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 71
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Web_Allow_Outbound" "obj_RDS2" "obj_host-Mahesh-DT" 
+  set dstaddr "all" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 72
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "CIAL_FTP_SSH_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 311
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "FIDSINT" 
+  set dstaddr "all" 
+  set service "CIAL_FTP_SSH_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 312
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "all" 
+  set service "CIAL_FTP_SSH_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-corefw_mail_websites_195" 
+ next
+ edit 73
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Allow_FTP_Outbound" 
+  set dstaddr "all" 
+  set service "CIAL_FTP_SSH_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 74
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "TFTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 313
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "FIDSINT" 
+  set dstaddr "all" 
+  set service "TFTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 314
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "all" 
+  set service "TFTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-corefw_mail_websites_195" 
+ next
+ edit 75
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Allow_FTP_Outbound" 
+  set dstaddr "all" 
+  set service "TFTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 76
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "CIAL_Allow_RDP_Outbound" 
+  set dstaddr "CIAL_RDP_Servers_External" "DMZ" 
+  set service "rdp" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 77
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "Airways_Noise_Data" 
+  set dstaddr "tmg_dmz_40" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 78
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Monitoring_Servers" "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "CIAL_Monitoring_TCP_Out" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 79
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Monitoring_Servers" "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "CIAL_Monitoring_UDP_Out" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 80
+  set srcintf "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_FWMANAGEMENT_EXTERNAL" 
+  set dstaddr "h-202.124.113.206" 
+  set service "FW_Management_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 81
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_MANAGEMENT_INTERNAL" 
+  set dstaddr "h-192.168.210.254" 
+  set service "FW_Management_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 82
+  set srcintf "any" 
+  set dstintf "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "obj_4.2.2.2" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 315
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Allow_ICMP_Outbound" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 83
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_MANAGEMENT_INTERNAL" "grp_monitoring-servers" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 84
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_VLAN2_NetworkMgmt" 
+  set dstaddr "all" 
+  set service "UDP-161" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 85
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL_DMZ_Management_Access" 
+  set dstaddr "CIAL_DMZ" 
+  set service "PING" "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 86
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_papercut-printers" "grp_papercut-servers" 
+  set dstaddr "grp_fujixerox-services" "grp_papercut-cloud-services" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 87
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_papercut-printers" "grp_papercut-servers" 
+  set dstaddr "fqdn_smtpauth.cial.co.nz" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 88
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_papercut-printers" 
+  set dstaddr "grp_fujixerox-services" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 89
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "grp_papercut-servers" 
+  set service "tcp-9163" "tcp-9164" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 90
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL244_CorpGeneral" "CIAL3_Workstation" 
+  set dstaddr "grp_papercut-servers" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 91
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DHCP_PORTS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 316
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "vip-202.124.126.205" "vip-202.124.126.206" 
+  set service "EAS-Proxy-Client-Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 92
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "EAS-Proxy-Servers" 
+  set service "EAS-Proxy-Client-Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 93
+  set srcintf "any" 
+  set dstintf "any" 
+  set srcaddr "all" 
+  set dstaddr "Office365" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 94
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Mailarchive1" 
+  set dstaddr "Office365_Exchange_Portal" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 95
+  set srcintf "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "ACL_S2S_VPN" "Chauntry_S2S_VPN" 
+  set dstaddr "h-202.124.113.206" 
+  set service "ESP" "IKE" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 96
+  set srcintf "CARPARK" 
+  set dstintf "Outside_map_001" "Outside_map_002" "Outside_map_004" "SERVICES" "CARPARK" "AIRNZ" "DMZ" "ARINC" "TRUST" "UNTRUST" 
+  set srcaddr "FlyingSouth_Craddocks_VLAN323" 
+  set dstaddr "CIAL_Internal_Networks" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 97
+  set srcintf "CARPARK" 
+  set dstintf "any" 
+  set srcaddr "FlyingSouth_Craddocks_VLAN323" 
+  set dstaddr "all" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 98
+  set srcintf "any" 
+  set dstintf "CARPARK" "DMZ" "TRUST" 
+  set srcaddr "fqdn_ipscanner" 
+  set dstaddr "grp_PA-migration-test-networks" 
+  set service "TCP-UDP_PA-MIGRATION" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 99
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_skyspark-srv" 
+  set dstaddr "fqdn_stackhub.org" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 100
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_skyspark-srv" 
+  set dstaddr "fqdn_skyfoundry.com" "fqdn_weather.skyfoundry.com" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 101
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_skyspark-srv" 
+  set dstaddr "fqdn_analytics-nz.nv5.com" "fqdn_analytics.nv5.com" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 102
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_skyspark-srv" 
+  set dstaddr "obj_202.212.182.182" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 103
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_skyspark-srv" 
+  set dstaddr "fqdn_worldweatheronline.com" "obj_83.136.254.59" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 104
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_3_&_244" 
+  set dstaddr "ClearSCADA1" 
+  set service "TCP_85" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 105
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_3_&_244" 
+  set dstaddr "Carpark1" 
+  set service "HTTP" "TCP-61667" "TCP-UDP-443" "TCP_UDP-RDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 106
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_3_&_244" 
+  set dstaddr "obj_RAND-iLO" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 107
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "Carpark1" 
+  set service "CIAL_RPC_Ports_TCP" "CarPark-tcp-udp-49154" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 108
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "APP2" 
+  set dstaddr "Carpark1" 
+  set service "tcp-9003" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 109
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "APP2" 
+  set dstaddr "grp_Airways" 
+  set service "tcp_6080" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 110
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_srv-to-sccm" 
+  set dstaddr "SCCM1" 
+  set service "TCP_8530" "TCP_8531" "http" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 111
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Carpark1" 
+  set dstaddr "APP2" 
+  set service "tcp-9003" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 112
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "APP5" "obj_FTPMGT01" 
+  set dstaddr "Carpark1" 
+  set service "SMB" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 113
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "OBJ_sec.windcave.com" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 114
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "OBJ_203.207.60.30" "OBJ_scr.windcave.com" 
+  set service "TCP-65" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 115
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Carpark1" 
+  set dstaddr "all" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 116
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "all" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 117
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "PaymentExpress_EFTPOS_Servers" 
+  set service "TCP-65" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 118
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL_Domain_Controllers" 
+  set dstaddr "all" 
+  set service "DNS" "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 119
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL223_CARPARK_DEV_EFTPOS" 
+  set dstaddr "OBJ_uat.windcave.com" 
+  set service "TCP-65" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 120
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL223_CARPARK_DEV_EFTPOS" 
+  set dstaddr "obj_windcave-103.232.204.55" "obj_windcave-203.207.60.31" "obj_windcave-203.207.60.55" 
+  set service "HTTPS" "TCP-65" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 121
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL223_CARPARK_DEV_EFTPOS" "CIAL23_Carpark" 
+  set dstaddr "obj-8.8.8.8" 
+  set service "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 122
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Carpark_Dev_EFTPOS" 
+  set dstaddr "all" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 123
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DHCP_PORTS" "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 124
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_Secured_Workstations_Network_Access" 
+  set dstaddr "Secured_Workstations" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 125
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "dc1" 
+  set service "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 126
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "SCCM1" 
+  set service "KMS" "WSUS_Updates" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 127
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "CCTV_Group" 
+  set service "Milestone-Port-Group" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 128
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_Secured_Workstations_Network_Access" 
+  set dstaddr "Secured_Workstations" 
+  set service "CIAL_Secured_Workstations_RA" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 129
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "CIAL22_CARDAX" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 130
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "FIDSAODB1" 
+  set service "FIDS_5590" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 307
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-C1-1-Internal" "EAS-Proxy-C2-1-Internal" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 131
+  set srcintf "DMZ" 
+  set dstintf "any" 
+  set srcaddr "EAS-Proxy-Servers" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 318
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-C1-1-Internal" "EAS-Proxy-C2-1-Internal" 
+  set dstaddr "n-202.37.106.0_24" 
+  set service "TCP-38008" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 132
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-Servers" 
+  set dstaddr "n-202.37.106.0_24" 
+  set service "TCP-38008" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 319
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-C1-1-Internal" "EAS-Proxy-C2-1-Internal" 
+  set dstaddr "all" 
+  set service "DNS" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 133
+  set srcintf "DMZ" 
+  set dstintf "any" 
+  set srcaddr "EAS-Proxy-Servers" 
+  set dstaddr "all" 
+  set service "DNS" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 320
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-C1-1-Internal" "EAS-Proxy-C2-1-Internal" 
+  set dstaddr "n-17.0.0.0_8" 
+  set service "TCP-2197" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 134
+  set srcintf "DMZ" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS-Proxy-Servers" 
+  set dstaddr "n-17.0.0.0_8" 
+  set service "TCP-2197" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 321
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "EAS_Ext1" "EAS_Ext2" 
+  set dstaddr "vip-202.124.126.205" "vip-202.124.126.206" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 135
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "EAS_Ext1" "EAS_Ext2" 
+  set dstaddr "EAS-Proxy-Servers" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 322
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "EAS_Ext1" "EAS_Ext2" 
+  set dstaddr "vip-202.124.126.205" "vip-202.124.126.206" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 136
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "EAS_Ext1" "EAS_Ext2" 
+  set dstaddr "EAS-Proxy-Servers" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 323
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-202.124.126.205" "vip-202.124.126.206" 
+  set service "EAS-Proxy-Client-Ports" "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 137
+  set srcintf "any" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "EAS-Proxy-Servers" 
+  set service "EAS-Proxy-Client-Ports" "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 138
+  set srcintf "DMZ" 
+  set dstintf "TRUST" 
+  set srcaddr "EAS-Proxy-Servers" 
+  set dstaddr "EAS-E-Servers" 
+  set service "ALL_ICMP" "NTP" "TCP-48000" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 139
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "EAS-E-Servers" 
+  set dstaddr "EAS-Proxy-Servers" 
+  set service "ALL_ICMP" "SSH" "TCP-48000" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 324
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Glidepath_GSS1" "Glidepath_GSS2" "Glidepath_GSS3" "Glidepath_GSS4" 
+  set dstaddr "SITA_BSM_server_CHC1SAC" 
+  set service "SITA_BSM_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 140
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Glidepath_GSS_Servers" 
+  set dstaddr "SITA_BSM_server_CHC1SAC" 
+  set service "SITA_BSM_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 141
+  set srcintf "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "EAS_External_Servers" 
+  set dstaddr "EAS_Servers_NAT" 
+  set service "EAS_SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 142
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "EAS_network" 
+  set dstaddr "all" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 143
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "EAS_Servers" 
+  set dstaddr "EAS_External_Servers" 
+  set service "EAS_Monitor" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 144
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "EAS_Servers" 
+  set dstaddr "EAS_EQ_Devices" 
+  set service "EAS_EQ_Ports_TCP" "EAS_EQ_Ports_UDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 145
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "EAS_EQ_Devices" 
+  set dstaddr "EAS_Servers" 
+  set service "EAS_EQ_Ports_UDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 146
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "EAS_Servers" 
+  set dstaddr "EAS_EQ_Devices" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 147
+  set srcintf "ARINC" 
+  set dstintf "ARINC" 
+  set srcaddr "ARINC-SOURCEIP-FIDSWEB" 
+  set dstaddr "ARINC-DESTINATIONIP-FIDSWEB" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 148
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "AirNZ_Baggage_InternalNetworks" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 149
+  set srcintf "any" 
+  set dstintf "AIRNZ" 
+  set srcaddr "all" 
+  set dstaddr "AirNZ_KingFish_Devices" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 150
+  set srcintf "TRUST" 
+  set dstintf "AIRNZ" 
+  set srcaddr "Core-Gw-Group" 
+  set dstaddr "AirNZ_Baggage_RADIUS_Direct" "AirNZ_Baggage_RADIUS_Direct_ISE" 
+  set service "AirNZ_Radius_and_Accounting" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 151
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "AirNZ_Baggage_InternalNetworks" 
+  set service "AirNZ_Airflow_App_Ports_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 152
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_Baggage_InternalNetworks" 
+  set dstaddr "AirNZ_DomBaggage_HH" 
+  set service "AirNZ_Airflow_App_Ports_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 153
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "AirNZ_Baggage_InternalNetworks" 
+  set service "AirNZ_DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 154
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_AKLDV087" 
+  set dstaddr "AirNZ_DomBaggage_HH" 
+  set service "AirNZ_HH_MGMT_Ports_TCP" "AirNZ_HH_MGMT_Ports_UDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 155
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "AirNZ_AKLDV087" 
+  set service "AirNZ_HH_MGMT_Ports_TCP" "AirNZ_HH_MGMT_Ports_UDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 156
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_AKL0mg288" 
+  set dstaddr "AirNZ_DomBaggage_HH" 
+  set service "AirNZ_Wavelink_Ports_AirNZDomHH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 157
+  set srcintf "AIRNZ" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "AirNZ_AKL0mg288" 
+  set service "AirNZ_Wavelink_Ports_AirNZ_AKL0MG288_Ports_TCP" "AirNZ_Wavelink_Ports_AirNZ_AKL0MG288_Ports_UDP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 158
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_DomBaggage_HH" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DHCP_PORTS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 159
+  set srcintf "TRUST" 
+  set dstintf "AIRNZ" 
+  set srcaddr "AirNZ_DIAG_CIAL_FIDS" 
+  set dstaddr "CIAL_DIAG_AirNZ_FIDS" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 325
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_FidsLink_162.112.20.0" "AirNZ_FidsLink_162.112.8.0" "AirNZ_FidsLink_GDUs_10.90.0.0" 
+  set dstaddr "vip-FIDSINT_NAT" "vip-FIDSWEB_NAT" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 326
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_Fidslink_Router" 
+  set dstaddr "vip-FIDSINT_NAT" "vip-FIDSWEB_NAT" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 160
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_DIAG_AirNZ_FIDS" 
+  set dstaddr "AirNZ_FIDS_Devices_Allow_ICMP" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 161
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL23_Carpark" "Carpark1" 
+  set dstaddr "Webproxy1" 
+  set service "CIAL_Proxy_Ports_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 162
+  set srcintf "TRUST" 
+  set dstintf "ARINC" "TRUST" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "CIAL240_FIDS" "CIALInternal" 
+  set service "ALL_TCP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 163
+  set srcintf "TRUST" 
+  set dstintf "ARINC" "TRUST" 
+  set srcaddr "CIAL23_Carpark" 
+  set dstaddr "CIAL240_FIDS" "CIALInternal" 
+  set service "ALL_UDP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 164
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL240_FIDS" 
+  set dstaddr "CIAL23_Carpark" 
+  set service "ALL_TCP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 165
+  set srcintf "ARINC" "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIALInternal" 
+  set dstaddr "CIAL23_Carpark" 
+  set service "ALL_TCP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 166
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL240_FIDS" 
+  set dstaddr "CIAL23_Carpark" 
+  set service "ALL_UDP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 167
+  set srcintf "ARINC" "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIALInternal" 
+  set dstaddr "CIAL23_Carpark" 
+  set service "ALL_UDP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 168
+  set srcintf "DMZ" 
+  set dstintf "TRUST" 
+  set srcaddr "Serv-U-Gateway-Prod" 
+  set dstaddr "CIAL222_Serv-U" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 169
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL222_Serv-U" 
+  set dstaddr "Serv-U-Gateway-Prod" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 327
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "ogChauntry_Prod" 
+  set dstaddr "vip-oServ-U-Gateway_Public" 
+  set service "CIAL_Carpark_Serv-U-Gateway" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 170
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "ogChauntry_Prod" 
+  set dstaddr "Serv-U-Gateway-Prod" 
+  set service "CIAL_Carpark_Serv-U-Gateway" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 171
+  set srcintf "TRUST" "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_MITEL-Simon" "obj_Simon-PC" 
+  set dstaddr "Serv-U-Gateway-Prod" "obj_serv-u-gateway-prod" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 172
+  set srcintf "TRUST" "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_MITEL-Simon" "obj_Simon-PC" 
+  set dstaddr "Serv-U-Gateway-Prod" "obj_serv-u-gateway-prod" 
+  set service "CIAL_Carpark_Serv-U-Gateway" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+end

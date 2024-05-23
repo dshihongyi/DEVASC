@@ -1,0 +1,404 @@
+
+FramesHoteLNorth1#sh run
+Building configuration...
+
+Current configuration : 10255 bytes
+!
+! Last configuration change at 13:49:45 NZST Mon Jul 24 2023 by cisco
+! NVRAM config last updated at 09:39:29 NZST Wed Jun 30 2021 by cisco
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname FramesHoteLNorth1
+!
+boot-start-marker
+boot-end-marker
+!
+enable password 7 15062B0757050D0279
+!
+username cisco privilege 15 password 7 13233B2B2B1B24337A
+username cattools privilege 15 password 7 150504050C3D72707B322607
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+!
+!
+!
+!
+!
+!
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+login on-failure log
+login on-success log
+vtp domain cial
+vtp mode transparent
+!
+!
+!
+!
+!
+udld aggressive
+
+!
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 46 47
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue output dscp-map queue 2 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 100 100 50 200
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+!
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast edge bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+auto qos srnd4
+no errdisable detect cause gbic-invalid
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery interval 180
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 50
+ name UPS_Management
+!
+vlan 111
+ name CCTV
+!
+vlan 700
+ name Remote_SPAN_VLAN
+ remote-span
+!
+vlan 999
+!
+lldp run
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/1
+ description (DR3-5)CCTV Camera 604 Plaza Coach Park North East Pole
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/2
+ description (DR3-6)CCTV Camera 605 Plaza Coach Park North West Pole
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/3
+ description (DR3-23)CCTV Camera 599 Hotel Plaza Crossing West
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/4
+ description (DR3-24)CCTV Camera 602 Plaza Covered Walkway Central
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/5
+ description (DR3-XX) CCTV Camera 603 Hotel XXX  192.168.234.168
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/6
+ description (DR3-XX) CCTV Camera 600 Hotel XXX  192.168.234.165
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/7
+ description (DR3-XX) CCTV Camera 601 Hotel XXX  192.168.234.166
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/8
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/9
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/10
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/11
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/12
+ description UPS
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security violation restrict
+ switchport port-security aging time 2
+ switchport port-security aging type inactivity
+ switchport port-security
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast edge
+!
+interface GigabitEthernet0/13
+ shutdown
+!
+interface GigabitEthernet0/14
+ shutdown
+!
+interface GigabitEthernet0/15
+ shutdown
+!
+interface GigabitEthernet0/16
+ switchport trunk allowed vlan 2,50,111,700
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust cos
+ auto qos trust
+ no lldp transmit
+ no lldp receive
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.164 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 192.168.2.10
+ip forward-protocol nd
+ip http server
+ip http secure-server
+!
+ip ssh version 2
+!
+!
+logging facility local0
+logging host 192.168.2.253
+logging host 202.14.167.171
+access-list 1 permit any
+!
+snmp-server community crc981u RO
+snmp-server location Cabinet DR3 - North of hotel receprion across the road
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps cluster
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps entity
+snmp-server enable traps ipsla
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server host 192.168.2.253 version 2c crc981u
+snmp-server host 192.168.2.250 public  tty cluster config-copy config entity bridge stpx syslog vtp vlancreate vlandelete flash port-security envmon mac-notification vlan-membership snmp
+!
+!
+banner motd ^C
+
+"*******************************************
+
+* {WARNING}                                *
+
+*                                          *
+
+* This system is owned by CIAL. If you are *
+
+* not authorised to access this system,    *
+
+* exit immediately.  Unauthorised access   *
+
+* is forbidden.                            *
+
+*******************************************"
+
+^C
+!
+line con 0
+ exec-timeout 30 0
+line vty 0 4
+ length 0
+ transport input ssh
+line vty 5 15
+ length 0
+ transport input ssh
+!
+ntp server 202.14.167.144
+ntp server 202.14.167.238
+!
+end
+
+FramesHoteLNorth1#

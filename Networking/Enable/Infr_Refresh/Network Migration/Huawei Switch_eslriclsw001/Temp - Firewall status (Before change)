@@ -1,0 +1,121 @@
+dsadmin@ena-fw-ric> show chassis hardware
+node0:
+--------------------------------------------------------------------------
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CZ2017AF0515      SRX345
+Routing Engine   REV 0x07 650-065042   CZ2017AF0515      RE-SRX345
+FPC 0                                                    FPC
+  PIC 0                                                  8xGE,8xGE SFP Base PIC
+    Xcvr 8                NON-JNPR     A0217022478       SFP-1000BASE-BX10-D
+    Xcvr 9                NON-JNPR     A0217023254       SFP-1000BASE-BX10-D
+    Xcvr 12               NON-JNPR     A0217022257       SFP-1000BASE-BX10-D
+Power Supply 0
+
+node1:
+--------------------------------------------------------------------------
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CZ1317AF0120      SRX345
+Routing Engine   REV 0x07 650-065042   CZ1317AF0120      RE-SRX345
+FPC 0                                                    FPC
+  PIC 0                                                  8xGE,8xGE SFP Base PIC
+    Xcvr 8                NON-JNPR     A0217023269       SFP-1000BASE-BX10-D
+    Xcvr 9                NON-JNPR     A0217022508       SFP-1000BASE-BX10-D
+    Xcvr 12               NON-JNPR     A0217023253       SFP-1000BASE-BX10-D
+Power Supply 0
+
+
+dsadmin@ena-fw-ric> show ospf neighbor
+Address          Interface              State     ID               Pri  Dead
+10.130.92.1      reth1.4092             Full      10.130.3.1       128    36
+10.128.1.157     reth3.4065             Full      10.128.6.131       1    31
+
+
+
+dsadmin@ena-fw-ric> show ospf route
+Topology default Route Table:
+
+Prefix             Path  Route      NH       Metric NextHop       Nexthop
+                   Type  Type       Type            Interface     Address/LSP
+10.128.5.131       Intra AS BR      IP            6 reth3.4065    10.128.1.157
+10.128.6.131       Intra AS BR      IP            5 reth3.4065    10.128.1.157
+10.128.24.232      Intra Router     IP            7 reth3.4065    10.128.1.157
+10.130.3.1         Intra Router     IP            1 reth1.4092    10.130.92.1
+10.128.1.24/29     Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.1.152/30    Intra Network    IP            6 reth3.4065    10.128.1.157
+10.128.1.156/30    Intra Network    IP            5 reth3.4065
+10.128.1.232/29    Intra Network    IP            7 reth3.4065    10.128.1.157
+10.128.1.240/29    Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.2.0/24      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.3.0/24      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.4.0/24      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.5.0/25      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.128.5.131/32    Intra Network    IP            6 reth3.4065    10.128.1.157
+10.128.6.0/25      Intra Network    IP            6 reth3.4065    10.128.1.157
+10.128.6.131/32    Intra Network    IP            5 reth3.4065    10.128.1.157
+10.128.20.0/24     Intra Network    IP            7 reth3.4065    10.128.1.157
+10.128.24.0/29     Intra Network    IP            8 reth3.4065    10.128.1.157
+10.128.24.232/32   Intra Network    IP            7 reth3.4065    10.128.1.157
+10.128.24.233/32   Intra Network    IP            0 lo0.0
+10.129.0.0/17      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.129.0.0/18      Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.130.3.0/24      Intra Network    IP            2 reth1.4092    10.130.92.1
+10.130.9.0/24      Intra Network    IP            1 reth1.4009
+10.130.10.0/24     Intra Network    IP            1 reth1.4010
+10.130.11.0/24     Intra Network    IP            1 reth1.4011
+10.130.13.0/24     Intra Network    IP            1 reth1.4013
+10.130.16.0/24     Intra Network    IP            1 reth1.4016
+10.130.17.0/24     Intra Network    IP            1 reth1.4017
+10.130.21.0/24     Intra Network    IP            1 reth1.4021
+10.130.22.0/24     Intra Network    IP            1 reth1.4022
+10.130.23.0/24     Intra Network    IP            1 reth1.4023
+10.130.25.0/24     Intra Network    IP            1 reth1.4025
+10.130.26.0/24     Intra Network    IP            1 reth1.4026
+10.130.27.0/24     Intra Network    IP            1 reth1.4027
+10.130.28.0/24     Intra Network    IP            1 reth1.4028
+10.130.29.0/24     Intra Network    IP            1 reth1.4029
+10.130.30.0/24     Intra Network    IP            1 reth1.4030
+10.130.37.0/24     Intra Network    IP            1 reth1.4037
+10.130.38.0/24     Intra Network    IP            1 reth1.4038
+10.130.39.0/24     Intra Network    IP            1 reth1.4039
+10.130.40.0/24     Intra Network    IP            1 reth1.4040
+10.130.41.0/24     Intra Network    IP            1 reth1.4041
+10.130.42.0/24     Intra Network    IP            1 reth1.4042
+10.130.43.0/24     Intra Network    IP            1 reth1.4043
+10.130.44.0/24     Intra Network    IP            1 reth1.4044
+10.130.56.0/24     Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.130.57.0/24     Ext2  Network    IP            1 reth3.4065    10.128.1.157
+10.130.64.0/24     Intra Network    IP            1 reth1.4064
+10.130.70.0/24     Intra Network    IP            1 reth1.4070
+10.130.71.0/24     Intra Network    IP            1 reth1.4071
+10.130.72.0/24     Intra Network    IP            1 reth1.4072
+10.130.77.0/24     Intra Network    IP            1 reth1.4077
+10.130.87.0/24     Intra Network    IP            2 reth1.4092    10.130.92.1
+10.130.88.0/24     Intra Network    IP            2 reth1.4092    10.130.92.1
+10.130.89.0/24     Intra Network    IP            2 reth1.4092    10.130.92.1
+10.130.90.0/24     Intra Network    IP            2 reth1.4092    10.130.92.1
+10.130.92.0/24     Intra Network    IP            1 reth1.4092
+10.130.160.0/24    Intra Network    IP            1 reth1.1900
+10.130.163.0/24    Intra Network    IP            1 reth1.4046
+10.131.7.0/24      Intra Network    IP            7 reth3.4065    10.128.1.157
+10.131.8.0/24      Intra Network    IP            6 reth3.4065    10.128.1.157
+10.131.43.0/24     Intra Network    IP            1 reth1.3143
+10.132.40.0/24     Intra Network    IP            1 reth1.3240
+10.132.43.0/24     Intra Network    IP            1 reth1.3243
+10.132.44.0/24     Intra Network    IP            1 reth1.3244
+172.21.96.0/24     Intra Network    IP            1 reth1.4084
+172.22.1.0/24      Intra Network    IP            2 reth1.4092    10.130.92.1
+
+
+
+
+
+dsadmin@ena-fw-ric> show lldp neighbors
+Local Interface    Parent Interface    Chassis Id          Port info          System Name
+ge-0/0/12          reth1               3c:8c:93:87:7e:40   ena-fw-ric ge-0/0/12 via HRB R1_FP05_C01_T01 f19 ena-sw-core
+ge-5/0/12          reth1               3c:8c:93:87:7e:40   ena-fw-ric ge-5/0/12 via HRB R1_FP05_C01_T01 f20 ena-sw-core
+ge-0/0/8           reth1               3c:8c:93:87:7e:40   ena-fw-ric ge-0/0/8 ena-sw-core
+ge-5/0/8           reth1               3c:8c:93:87:7e:40   ena-fw-ric ge-5/0/8 ena-sw-core
+ge-0/0/9           reth3               e0:24:7f:df:64:13   TO_ena-fw-ric_ge-5/0/9 ESLRICLSW001
+ge-5/0/9           reth3               e0:24:7f:df:64:13   TO_ena-fw-ric_ge-0/0/9 ESLRICLSW001

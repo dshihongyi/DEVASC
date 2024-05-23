@@ -1,0 +1,108 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-accedian-admin vlan-id 4061
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-accedian-admin
+
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4061
+ vlan-name vlan-accedian-admin
+ description ena_4061_accedian-admin
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4061
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4061
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 4061 description "vlan-accedian-admin"
+set interfaces reth1 unit 4061 vlan-id 4061
+set interfaces reth1 unit 4061 family inet address 10.130.61.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4061 passive
+set security zones security-zone zone-accedian-admin interfaces reth1.4061 host-inbound-traffic system-services ping
+set security address-book zone-accedian-admin address addr-enajump12 10.130.61.10/32
+set security address-book zone-accedian-admin attach zone zone-accedian-admin
+
+set security policies from-zone zone-accedian-admin to-zone zone-servers-ad apply-groups allow-ad-dns-template
+set security policies from-zone zone-accedian-admin to-zone zone-servers-prod apply-groups allow-kms-template
+
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match source-address any
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match destination-address addr-enajump12
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application junos-ping
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application junos-ssh
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application app-mstsc
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then permit
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then log session-init
+set security policies from-zone zone-enable-lan to-zone zone-accedian-admin policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then log session-close
+
+
+
+set security nat source rule-set nat-servers-accedian-to-internet from zone zone-accedian-admin
+set security nat source rule-set nat-servers-accedian-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-accedian-to-internet rule nat-servers-accedian-to-internet match source-address 10.130.61.10/32
+set security nat source rule-set nat-servers-accedian-to-internet rule nat-servers-accedian-to-internet then source-nat interface
+
+
+~~~~~~~~ nqanpm ~~~~~~~~~
+
+set security address-book zone-nqa-npm address addr-enanqanpm-sko 10.130.32.10/32
+set security address-book zone-nqa-npm address addr-enanqanpm-sks 10.130.32.12/32
+set security address-book zone-nqa-npm address addr-enanqanpm-ror 10.130.32.11/32
+set security address-book zone-internet address addr-skylight-analytics 34.87.250.26/32
+
+set security address-book zone-nqa-npm address-set addrs-enanqanpm-servers address addr-enanqanpm-sko
+set security address-book zone-nqa-npm address-set addrs-enanqanpm-servers address addr-enanqanpm-sks
+set security address-book zone-nqa-npm address-set addrs-enanqanpm-servers address addr-enanqanpm-ror
+set applications application app-accedian-http protocol tcp
+set applications application app-accedian-http destination-port 6080
+set applications application app-accedian-https protocol tcp
+set applications application app-accedian-https destination-port 6081
+set applications application app-accedian-ssh protocol tcp
+set applications application app-accedian-ssh destination-port 2200
+set applications application-set apps-accedian-web application app-accedian-http
+set applications application-set apps-accedian-web application app-accedian-https
+
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match source-address addr-enajump12
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match destination-address addrs-enanqanpm-servers
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match application junos-ssh
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match application junos-icmp-all
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match application junos-https
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match application apps-accedian-web
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers match application app-accedian-ssh
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers then permit
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers then log session-init
+set security policies from-zone zone-accedian-admin to-zone zone-nqa-npm policy policy-accedian-jumphost-nqanpm-servers then log session-close
+ 
+set security policies from-zone zone-nqa-npm to-zone zone-servers-mgmt apply-groups allow-snmptrap-prtg-template
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns match source-address addrs-enanqanpm-servers
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns match destination-address addr-dns1
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns match destination-address addr-dns2
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns match application junos-dns-udp
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns match application junos-dns-tcp
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns then permit
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns then log session-init
+set security policies from-zone zone-nqa-npm to-zone zone-servers-ad policy policy-nqanpm-dns then log session-close
+ 
+set security policies from-zone zone-nqa-npm to-zone zone-servers-dcnservices apply-groups allow-syslog-pukeko
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet match source-address addr-enanqanpm-ror
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet match destination-address addr-skylight-analytics
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet match application junos-https
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet then permit
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet then log session-init
+set security policies from-zone zone-nqa-npm to-zone zone-internet policy policy-servers-nqanpm-internet then log session-close
+ 
+set security nat source rule-set nat-servers-nqanpm-to-internet from zone zone-nqa-npm
+set security nat source rule-set nat-servers-nqanpm-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-nqanpm-to-internet rule nat-servers-nqanpm-to-internet match source-address 10.130.32.11/24
+set security nat source rule-set nat-servers-nqanpm-to-internet rule nat-servers-nqanpm-to-internet then source-nat interface
+delete security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm

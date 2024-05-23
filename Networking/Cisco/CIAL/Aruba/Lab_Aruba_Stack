@@ -1,0 +1,511 @@
+FramesGT91# sh run
+Current configuration:
+!
+!Version ArubaOS-CX ML.10.10.1070
+!export-password: default
+hostname FramesGT91
+domain-name cial.co.nz
+banner motd !
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+!
+user admin group administrators password ciphertext AQBapVcQJ1oLrwpS/lGmqh4ChT8kS6bCvAshTOEc9yl6TivsYgAAAIqd8Vn+KenN7rwWRLmxeY0foqlF93AZ50T43sPmpkEa3kag6uDT2qREs9EfGGDEBHJq80m0Xm+9eEq4f5VEfO5nre7iquPVPxzlId+F+MCpHVyT+iYDomuWSyxFgyjC0Cdd
+user aruba group administrators password ciphertext AQBapYjpWhZz1INaG2VXu5A2hIg7mM5gEKT2CAUznpMrRTBNYgAAADCbFz/zvUwaZkWkuQVgxlrNzKpGQ3tk+PDIh2fFzEpGkyE4tYJXc4epMaujISEiPvFhuI+tboJ+qiQ/E8y84gXLvzM0pFI4/ztcdhGSbomOGG5J2uLAjcldQnLasxKh0wbr
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp server pool.ntp.org minpoll 4 maxpoll 4 iburst
+ntp enable                                                     
+!
+!
+!
+!
+radius-server host app6.net.cial.co.nz key ciphertext AQBapWWBsuUdeKcDAtb+M0kpvnV5HZFfQs5Rl7bIKuMYavECGwAAAKrfS/wIDV/z11zBNmmPj1mZ4uUvNKT6/IQR/A==
+!
+!
+aaa group server radius CIAL-Radius
+    server app6.net.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+ssh key-exchange-algorithms curve25519-sha256 curve25519-sha256@libssh.org ecdh-sha2-nistp256 ecdh-sha2-nistp384 ecdh-sha2-nistp521 diffie-hellman-group-exchange-sha256 diffie-hellman-group16-sha512 diffie-hellman-group18-sha512 diffie-hellman-group14-sha256 diffie-hellman-group14-sha1
+vsf secondary-member 2
+vsf member 1 
+    type jl725a
+    link 1 1/1/27
+    link 2 1/1/28
+vsf member 2 
+    type jl725a                                                
+    link 1 2/1/27
+    link 2 2/1/28
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 3
+    name Workstations
+vlan 8
+    name VoIP
+vlan 10
+    name CCTV
+vlan 14
+    name Q-SYS-PA
+vlan 21
+    name BMS
+vlan 22
+    name Cardax
+vlan 23
+    name Carpark
+vlan 27
+    name BagSort_Control
+vlan 50
+    name UPS_Management                                        
+vlan 110
+    name CCTV_ITP
+vlan 111
+    name CCTV_camera
+vlan 121
+    name BMS_ITP
+vlan 140
+    name FIDS_ITP_DDCs
+vlan 166
+    name ACUS
+vlan 167
+    name Production
+vlan 168
+    name FIDS
+vlan 169
+    name Secure_Workstations
+vlan 171
+    name Secured-Pax
+vlan 224
+    name Clevertronics
+vlan 240
+    name FIDS_240
+vlan 244                                                       
+    name CorpGeneral
+vlan 262
+    name INTERNET-UFB
+vlan 268
+    name EMERGENCY
+vlan 309
+    name Aviation-Security
+vlan 700
+    name RSPAN_VoIP
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+interface mgmt
+    shutdown
+    ip dhcp
+fault-monitor profile noisy-ports
+    excessive-broadcasts action notify-and-disable auto-enable 600
+    excessive-link-flaps action notify-and-disable auto-enable 600
+interface lag 1
+    description Uplink To CoreS-Stack-A_B
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,14,21-23,27,50,110-111,121,140,166-169,171,224,240,244,262,309,700,888
+    lacp mode active
+interface 1/1/1
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/2
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/3                                                
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/4
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/5
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/6
+    no shutdown
+    no routing                                                 
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/7
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/8
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/9
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard                                   
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/10
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/11
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/12
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge                         
+interface 1/1/13
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/14
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/15
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/16
+    no shutdown                                                
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/17
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/18
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/19
+    no shutdown
+    no routing
+    vlan access 999                                            
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/20
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/21
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/22
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard                                   
+    spanning-tree port-type admin-edge
+interface 1/1/23
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/24
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/25
+    description Uplink to CoreS-Stack-A_B
+    no shutdown
+    lag 1
+interface 1/1/26
+    no shutdown
+    no routing
+    vlan access 999                                            
+interface 1/1/27
+    description VSF Port
+    no shutdown
+interface 1/1/28
+    description VSF Port
+    no shutdown
+interface 2/1/1
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/2
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/3
+    no shutdown
+    no routing                                                 
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/4
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/5
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/6
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard                                   
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/7
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/8
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/9
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge                         
+interface 2/1/10
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/11
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/12
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/13
+    no shutdown                                                
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/14
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/15
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/16
+    no shutdown
+    no routing
+    vlan access 999                                            
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/17
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/18
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/19
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard                                   
+    spanning-tree port-type admin-edge
+interface 2/1/20
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/21
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/22
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/23                                               
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/24
+    no shutdown
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/25
+    description Uplink to CoreS-Stack-A_B
+    no shutdown
+    lag 1
+interface 2/1/26
+    no shutdown
+    no routing
+    vlan access 999
+interface 2/1/27
+    description VSF Port                                       
+    no shutdown
+interface 2/1/28
+    description VSF Port
+    no shutdown
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.114/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server system-location MT6
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!                                                              
+!
+no https-server vrf default
+no https-server vrf mgmt

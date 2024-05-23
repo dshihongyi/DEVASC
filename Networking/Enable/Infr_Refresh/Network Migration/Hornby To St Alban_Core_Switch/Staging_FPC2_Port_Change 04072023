@@ -1,0 +1,194 @@
+
+
+request virtual-chassis vc-port set pic-slot member 1 0 port 53
+
+
+
+@REM ~~~ Change has been add to FPC2 ~~~~
+
+set interfaces ge-2/0/3 description "ESLHRBAGW001 1.3"
+set interfaces ge-2/0/3 disable
+set interfaces ge-2/0/3 ether-options 802.3ad ae4
+
+
+
+set interfaces ge-2/0/4 description "ESL Backup ISP via ers-sw-hrb-01 ge-2/0/21"
+set interfaces ge-2/0/4 vlan-tagging
+set interfaces ge-2/0/4 mtu 9192
+set interfaces ge-2/0/4 unit 3297 vlan-id 3297
+set interfaces ge-2/0/4 unit 3297 family inet filter input filter-inet-to-dmz
+set interfaces ge-2/0/4 unit 3297 family inet address 103.150.228.33/31
+set interfaces ge-2/0/6 description "ESLHRBLSW001 1/0/18"
+set interfaces ge-2/0/6 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/6 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+set interfaces ge-2/0/6 unit 0 family ethernet-switching storm-control sc
+set interfaces ge-2/0/8 description "ESLHRBFWL001 ge-2/0/7"
+set interfaces ge-2/0/8 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/8 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-2/0/8 unit 0 family ethernet-switching vlan members vlan-servers-itfservices
+set interfaces ge-2/0/8 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+set interfaces ge-2/0/8 unit 0 family ethernet-switching vlan members vlan-servers-devops
+set interfaces ge-2/0/8 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ge-2/0/8 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/11 description "ena-fw-ric ge-0/0/12 via HRB R1_FP05_C01_T01 f19"
+set interfaces ge-2/0/11 disable
+set interfaces ge-2/0/11 ether-options 802.3ad ae8
+
+set interfaces ge-2/0/12 description "ena-fw-ric ge-5/0/12 via HRB R1_FP05_C01_T01 f20"
+set interfaces ge-2/0/12 disable
+set interfaces ge-2/0/12 ether-options 802.3ad ae9
+
+set interfaces ge-2/0/14 description "Uplink to Netonix HRB switch"
+
+set interfaces ge-2/0/15 description "ESLRICFWL002 ge-0/0/8"
+set interfaces ge-2/0/15 ether-options 802.3ad ae13
+set interfaces ge-2/0/16 description "esl-sw-hrb ge-0/1/0"
+set interfaces ge-2/0/16 ether-options 802.3ad ae3
+set interfaces ge-2/0/17 unit 0 family ethernet-switching
+
+delete interfaces ge-2/0/9
+delete interfaces ge-2/0/10
+delete interfaces ge-2/0/12
+delete interfaces ge-2/0/13
+delete interfaces ge-2/0/14
+delete interfaces ge-2/0/16
+delete interfaces ge-2/0/17
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+
+delete interfaces ge-2/0/18
+delete interfaces ge-2/0/19
+delete interfaces ge-2/0/20
+delete interfaces ge-2/0/21
+delete interfaces ge-2/0/22
+delete interfaces ge-2/0/24
+delete interfaces ge-2/0/25
+delete interfaces ge-2/0/27
+delete interfaces ge-2/0/28
+delete interfaces ge-2/0/29
+delete interfaces ge-2/0/30
+delete interfaces ge-2/0/31
+delete interfaces xe-2/0/40
+delete interfaces xe-2/0/41
+delete interfaces xe-2/0/42
+delete interfaces xe-2/0/43
+delete interfaces xe-2/0/44
+delete interfaces xe-2/0/47
+delete interfaces interface-range range-remote-co-uplinks member-range ge-2/0/29 to ge-2/0/31
+delete interfaces interface-range range-remote-co-uplinks member-range ge-2/0/28 to ge-2/0/31
+delete interfaces interface-range range-remote-co-uplinks member ge-2/0/21
+delete routing-instances vr-internet interface ge-2/0/9.0
+delete routing-instances vr-internet interface ge-2/0/10.947
+
+
+set interfaces ge-2/0/18 description "ESLRICAGW001 2.1"
+set interfaces ge-2/0/18 disable
+set interfaces ge-2/0/18 ether-options 802.3ad ae5
+set interfaces ge-2/0/19 description "ESLRICLSW001 Gi-1/0/8 Huawei/1490T/1310R"										
+set interfaces ge-2/0/19 ether-options 802.3ad ae23
+
+set interfaces interface-range range-remote-co-uplinks member ge-2/0/20
+set interfaces interface-range range-remote-co-uplinks member ge-2/0/29
+set interfaces interface-range range-remote-co-uplinks member ge-2/0/31
+set interfaces interface-range range-remote-co-uplinks member ge-2/0/14
+set interfaces interface-range range-remote-co-uplinks member-range ge-2/0/25 to ge-2/0/26
+
+set interfaces ge-2/0/20 description "NTX PAP-20k-I01 f127"
+set interfaces ge-2/0/20 enable
+set interfaces ge-2/0/20 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/20 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/25 description "NTX RNG-40k-I09 f137"
+set interfaces ge-2/0/25 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/25 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/26 description "NTX RED-20k-I10 f16"
+set interfaces ge-2/0/26 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/26 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/29 description "NTX ROL-40k-I10 f114"
+set interfaces ge-2/0/29 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/29 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/31 description "NTX MTP-20k-I03 f144"
+set interfaces ge-2/0/31 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/31 unit 0 family ethernet-switching storm-control sc
+
+set interfaces ge-2/0/27 description "ena-fw-ric ge-0/0/12 via HRB R1_FP05_C01_T01 f19"
+set interfaces ge-2/0/27 ether-options 802.3ad ae8
+set interfaces ge-2/0/28 description "ena-fw-ric ge-5/0/12 via HRB R1_FP05_C01_T01 f20"
+set interfaces ge-2/0/28 ether-options 802.3ad ae9
+
+set interfaces ge-2/0/21 description "esl-sw-wr114 HRB via Enable Colo HRB R1_FP05_C01_T01 f25"
+set interfaces ge-2/0/21 disable
+set interfaces ge-2/0/21 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-lan								
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-enwr-l0-lan
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-workstation-admin
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+set interfaces ge-2/0/21 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ge-2/0/21 unit 0 family ethernet-switching storm-control sc
+set interfaces ge-2/0/22 description "ESLHRBFWL002 ge-5/0/7"
+set interfaces ge-2/0/22 ether-options 802.3ad ae12
+set interfaces ge-2/0/24 description "Legacy FW-RIC (disabled)"
+set interfaces ge-2/0/24 disable
+set interfaces ge-2/0/30 description "ESLHRBSEC001 DAG C"
+set interfaces ge-2/0/30 speed 1g
+set interfaces ge-2/0/30 link-mode full-duplex
+set interfaces ge-2/0/30 ether-options no-auto-negotiation
+set interfaces ge-2/0/30 unit 0 family ethernet-switching storm-control sc
+
+set protocols sflow interfaces ge-2/0/27.0
+set protocols sflow interfaces ge-2/0/28.0
+set protocols sflow interfaces xe-2/0/40.0
+set protocols sflow interfaces xe-2/0/44.0
+
+set interfaces xe-2/0/33 description "Cisco HRB DCN Firewall"
+set interfaces xe-2/0/33 ether-options 802.3ad ae18
+set interfaces xe-2/0/34 description "Cisco RIC DCN Firewall"
+set interfaces xe-2/0/34 ether-options 802.3ad ae19
+set interfaces ge-2/0/36 description test
+set interfaces xe-2/0/40 description "CCL via I03 f25 - L22E f14"
+set interfaces xe-2/0/40 speed 10g
+deactivate interfaces xe-2/0/40 speed
+set interfaces xe-2/0/40 ether-options 802.3ad ae0
+set interfaces xe-2/0/41 description "HRB Iwikau uplink"
+set interfaces xe-2/0/41 ether-options 802.3ad ae10
+set interfaces xe-2/0/42 description "esl-sw-ric xe-1/1/0"
+set interfaces xe-2/0/42 ether-options 802.3ad ae2
+set interfaces xe-2/0/43 description "ena-sw-hwl-m01 Mgmt Switch via L22Wf29 E09Wf38 RIC_R1_FP01_C01_T02_Pos14;;"
+set interfaces xe-2/0/43 ether-options 802.3ad ae15
+set interfaces xe-2/0/44 description "ena-sw-hwl-m01 Po5 Mgmt Switch via L13Ef75 E10Ef32 E10Wf32 E09Wf37 RIC_R1_FP01_C01_T02_Pos13L13Ef75 E10Ef32 E10Wf32 E09Wf37 RIC_R1_FP01_C01_T02_Pos13;"
+set interfaces xe-2/0/44 ether-options 802.3ad ae16
+set interfaces xe-2/0/45 description "ena-sw-sta-m01 Mgmt Switch"
+set interfaces xe-2/0/45 ether-options 802.3ad ae22
+set interfaces xe-2/0/46 description "enahrblef101 HRB Smart SFP/Purple/BX40/1330T/1270R"
+set interfaces xe-2/0/46 mtu 9216
+set interfaces xe-2/0/46 unit 0 family ethernet-switching interface-mode access
+set interfaces xe-2/0/46 unit 0 family ethernet-switching vlan members vlan-nqa-npm-enni
+set interfaces xe-2/0/46 unit 0 family ethernet-switching storm-control sc
+set interfaces xe-2/0/47 description "Temp DAC cable to HRB EX4550"
+set interfaces xe-2/0/47 disable
+set interfaces et-2/0/48 description "Uplink to ena-sw-sta-c01"
+set interfaces et-2/0/48 ether-options 802.3ad ae21
+
+
+
+
+
+
+
+
+
+
+
+

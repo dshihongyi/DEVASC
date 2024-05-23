@@ -1,0 +1,46 @@
+
+@REM // ~~~~~ Core Switch ~~~~~~~
+
+ESLITFFWL001
+
+set vlans vlan-itf-dcn-firewall vlan-id 3008
+set interfaces ae8 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+set interfaces ae9 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+set interfaces ae10 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+
+(commit confirmed 4 comment "T20230209.0464 - New VLAN for Enable Create new vlan 3008 for DCN Firewall Daniel Shi")
+
+
+@REM ~~~~ Iwikau Switch ~~~~~
+
+set vlans vlan-itf-dcn-firewall vlan-id 3008
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+
+set interfaces ge-1/0/2 description "DCN-ESLITFFWL002 ge-1/0/3"
+set interfaces ge-1/0/2 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-1/0/2 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+set interfaces ge-1/0/2 unit 0 family ethernet-switching storm-control sc
+
+
+@REM // ~~~~~ Firewall RIC ~~~~~
+
+set interfaces reth1 unit 3008 description "vlan-itf-dcn-firewall"
+set interfaces reth1 unit 3008 vlan-id 3008
+set interfaces reth1 unit 3008 family inet address 172.16.8.1/24
+set security zones security-zone zone-itf interfaces reth1.3008 host-inbound-traffic system-services ping
+
+delete routing-options static route 172.16.0.0/16 next-hop st0.5
+delete routing-options static route 10.232.0.0/13 next-hop st0.5
+set routing-options static route 172.16.0.0/16 next-hop 172.16.8.2
+set routing-options static route 10.232.0.0/13 next-hop 172.16.8.2
+
+(commit confirmed 10 comment "T20230209.0464 - New VLAN for Enable Create new vlan 3008 for DCN Firewall Daniel Shi")
+
+
+@REM // ~~~~~ Firewall DCN ~~~~~
+
+set interfaces ge-0/0/3 description "ENA-SW-IWIKAU ge-1/0/2"
+@REM set interfaces ge-0/0/3 description "ESLITFWL001 ge-0/0/6"
+@REM set interfaces ge-0/0/3 vlan-tagging
+@REM set interfaces ge-0/0/3 unit 3008 vlan-id 3008
+@REM set interfaces ge-0/0/3 unit 3008 family inet address 172.16.8.2/24

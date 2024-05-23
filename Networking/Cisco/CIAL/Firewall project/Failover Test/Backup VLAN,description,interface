@@ -1,0 +1,1329 @@
+
+CoreS-Stack-A_B#sh vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi1/1/18, Gi1/1/24, Gi1/1/36
+                                                Gi1/1/37, Gi1/1/45, Gi1/2/24
+                                                Gi1/2/45, Gi1/7/37, Gi2/1/37
+                                                Gi2/1/45, Gi2/2/2, Gi2/2/16
+                                                Gi2/2/24, Gi2/2/30, Gi2/2/45
+                                                Gi2/7/29, Gi2/7/44
+2    Network_Mgmt                     active    Gi1/7/9, Gi1/7/22, Gi1/7/38
+                                                Gi1/7/42, Gi1/7/46, Gi2/7/9
+                                                Gi2/7/38, Gi2/7/42, Gi2/7/45
+                                                Gi2/7/46
+3    Workstations                     active    Gi1/7/43, Gi2/7/28
+4    CCTV_Storage                     active
+5    Server_Mgmt                      active
+8    VoIP                             active
+10   CCTV                             active
+11   CIALStaffWireless                active
+12   RFID                             active
+14   Q-SYS-PA                         active
+20   Honeywell                        active
+21   Building_Management_System       active    Gi1/7/33
+22   Cardax                           active    Gi1/7/32
+23   Carpark                          active    Gi1/7/29
+24   Bagsort                          active    Gi1/7/30, Gi2/7/27
+25   EAS                              active
+26   BagSort_HA                       active
+27   BagSort_Control                  active
+29   BHS-Support-Network              active
+30   Water_treatment                  active
+31   Telephony                        active    Gi2/7/30
+32   SIP_Gateways                     active    Gi1/2/43, Gi1/7/23, Gi2/2/43
+35   Carpark_DMZ                      active
+39   DataSentinel                     active
+50   UPS_Management                   active
+60   Smartgraphics                    active
+80   CDHB                             active    Gi1/7/45
+82   Qantas                           active
+90   Terminal_Services                active    Gi1/7/35, Gi2/7/23, Gi2/7/24
+91   ARINC                            active    Gi2/7/19
+103  CCTV_LPR                         active
+110  CCTV_ITP                         active
+111  CCTV_camera                      active
+112  Backup_ESX                       active
+121  BMS_ITP                          active    Gi2/7/26
+123  DevCarPark                       active
+140  FIDS_ITP_DDCs                    active
+160  AD_DEV_Network_A                 active
+167  Production                       active    Gi1/7/31, Gi1/7/34, Gi1/7/41
+168  FIDS                             active
+169  Secure_Workstations              active
+170  Legacy_Servers                   active
+171  Secured-Pax                      active
+172  Carpark_Transit                  active
+191  AirNZ_KingFish_HandHelds         active
+192  Cyberlock                        active
+193  AirNZ_KingFish_TransitNetwork    active
+210  CIAL_FW_Inside                   active    Gi1/7/1, Gi2/7/1, Po103, Po104
+211  CIAL_FW_Failover                 active    Gi1/7/7, Gi2/7/7
+212  PaloAlto_HA1                     active    Gi1/7/48, Gi2/7/48
+213  PaloAlto_HA2                     active    Gi1/7/47, Gi2/7/47
+214  PaloAlto-CORE_TmpRtg             active
+220  vMotion_ESX                      active
+221  iSCSI_Storage_ESX                active
+222  CIAL_Serv-U                      active
+223  Carpark_Dev_EFTPOS               active
+224  Clevertronics                    active
+240  FIDS_240                         active
+244  CorpGeneral                      active
+248  CIAL_Staff_WLAN_C-I              active
+260  INTERNET-UFB                     active
+261  internet-UFB                     active
+262  UFB-INTERNET                     active
+264  Public_Use_Device                active
+265  GuestWireless                    active
+267  ADSL                             active
+268  EMERGENCY                        active
+269  ADSL_IT                          active
+301  Canterbury_Tourism               active
+304  AirNZ                            active
+305  China_Sth_Airlines               active
+306  Jetstar                          active
+307  Skystar                          active
+308  AntarcticCenter                  active
+309  Aviation-Security                active
+311  Jetstar_ARINC                    active    Gi2/7/20
+314  HMS                              active
+316  Virgin                           active
+318  LagardereQnQ                     active
+319  Exit_Race                        active
+320  Seismic_Sensors                  active    Gi1/7/36
+323  FlyingSouth_Craddocks            active
+407  SITA_L3_Interconnect             active
+410  ARINC1                           active
+411  ARINC2                           active
+412  ARINC_DSL                        active    Gi2/7/21
+417  AirNZ_FidsLink                   active
+455  SITA-SQ-Voice                    active
+456  SITA-SQ-Data                     active
+457  Sita-Emirates                    active
+588  BGP_Primary_Link                 active    Gi1/7/17
+589  BGP_Secondary_Link               active    Gi2/7/17
+600  2D_BGP_Primary                   active
+601  2D_BGP_Secondary                 active
+700  RSPAN_VoIP                       active
+801  Public_Wifi_2Deg                 active
+887  COREGWS_WLAN_PEPPER              active
+888  COREGWS_APs                      active
+889  COREGWS_WLANs                    active
+901  FWEXT                            active    Gi1/7/8, Gi2/7/8
+902  FWDMZ                            active    Gi1/7/39, Gi1/7/40, Gi2/7/39
+                                                Gi2/7/40
+
+
+
+
+CoreS-Stack-A_B#sh int des
+Interface                      Status         Protocol Description
+Gi1/1/1                        up             up       Frames GT31 - Gi1/0/52 - Po1
+Gi1/1/2                        up             up       FramesGT41 0/49
+Gi1/1/3                        up             up       FrameSTGT64 0/51
+Gi1/1/4                        up             up       FrameSTGT75 0/49
+Gi1/1/5                        up             up       FramesGT83 0/49
+Gi1/1/6                        up             up       FramesGT91  Gi1/0/28   Po13
+Gi1/1/7                        up             up       FramesTG11 Gi0/25
+Gi1/1/8                        up             up       FramesTG512 Gi0/49
+Gi1/1/9                        up             up       FramesTG521 Gi0/1
+Gi1/1/10                       up             up       FramesTB11 gi0/49
+Gi1/1/11                       up             up       FramesHotelPlant1 Gi 1/0/25
+Gi1/1/12                       up             up       FramesTS41 Gi0/1
+Gi1/1/13                       up             up       FramesMSCPG1 Gi0/25
+Gi1/1/14                       up             up       FrameSHotelPlaza1 G1/0/25
+Gi1/1/15                       up             up       FramesIOC1 Gi1/1/4 PO9
+Gi1/1/16                       up             up       FramesIAC1 Gi0/1
+Gi1/1/17                       up             up       FrameSPWC1 - Power Centre 3560
+Gi1/1/18                       down           down     FramesAG1 - G1/4 Po29
+Gi1/1/19                       up             up       FramesTOWER Link to Airways Tower via Demarc
+Gi1/1/20                       up             up       FramesGT01 Stack
+Gi1/1/21                       admin down     down
+Gi1/1/22                       up             up       Frame1T62 0/49
+Gi1/1/23                       up             up       Frames1T73 Gi0/49
+Gi1/1/24                       down           down     ServersA G1/1/1
+Gi1/1/25                       up             up       ServersB191 G1/1/1
+Gi1/1/26                       up             up       FramesMT60 - Aruba Port 2/1/25
+Gi1/1/27                       up             up       framesAG5 gi1/1/1
+Gi1/1/28                       up             up       Reserved FrameSMYD1
+Gi1/1/29                       up             up       FramesFA Gi0/16
+Gi1/1/30                       up             up       FramesWaterPlant1
+Gi1/1/31                       up             up       Link to FramesCP31 Gi1/0/25
+Gi1/1/32                       up             up       FramesPolice
+Gi1/1/33                       up             up       Link to FramesMSCPL41 G0/49
+Gi1/1/34                       up             up       uplink to FramesZEnergy1 Gi0/1
+Gi1/1/35                       down           down
+Gi1/1/36                       admin down     down
+Gi1/1/37                       admin down     down     FramesMT6Moxa Gi1/0/27
+Gi1/1/38                       admin down     down
+Gi1/1/39                       admin down     down
+Gi1/1/40                       admin down     down
+Gi1/1/41                       down           down     "spare interface"
+Gi1/1/42                       up             up       FortGate_100F ExternalFwA AE-19
+Gi1/1/43                       admin down     down
+Gi1/1/44                       up             up       PaloAlto InternalFwA port 9 AE3
+Gi1/1/45                       down           down     PaloAlto InternalFwA port 5 AE2
+Gi1/1/46                       up             up       PaloAlto InternalFwB port 5 AE2
+Gi1/1/47                       admin down     down
+Gi1/1/48                       up             up
+Gi1/2/1                        up             up       to framesRGCP1 - gi1/0/28
+Gi1/2/2                        up             up       FramesORCP1 G1/1
+Gi1/2/3                        up             up       FramesGT64 0/52
+Gi1/2/4                        up             up       FramesGT75 0/50
+Gi1/2/5                        up             up       FramesGT83 0/50
+Gi1/2/6                        up             up       Fibre - FramesGT95 Gi0/49
+Gi1/2/7                        up             up       FramesTB22 0/2
+Gi1/2/8                        up             up       FramesTG511 Gi1/1
+Gi1/2/9                        up             up       FramesTB31 0/25
+Gi1/2/10                       up             up       FramesTB12 0/49
+Gi1/2/11                       up             up       FramesTS31 0/1
+Gi1/2/12                       up             up       FramesHotelNorth1
+Gi1/2/13                       up             up       FramesTF41 Gi2/1/4
+Gi1/2/14                       up             up       FramesLongStayX1 Gi1/0/25
+Gi1/2/15                       up             up       FramesTF21 Gi1/1
+Gi1/2/16                       admin down     down
+Gi1/2/17                       up             up       FramesTF31 Gi1/1
+Gi1/2/18                       up             up       FramesAG1 Gi1/1
+Gi1/2/19                       admin down     down
+Gi1/2/20                       admin down     down
+Gi1/2/21                       up             up       FramesHotel1 Gi1/0/27
+Gi1/2/22                       up             up       FrameS1T62 0/50
+Gi1/2/23                       up             up       Frames1T73 Gi0/50
+Gi1/2/24                       down           down     ServersA G2/1/1
+Gi1/2/25                       admin down     down
+Gi1/2/26                       down           down
+Gi1/2/27                       admin down     down
+Gi1/2/28                       admin down     down
+Gi1/2/29                       admin down     down
+Gi1/2/30                       up             up       to SRX300 Ge-0/0/6
+Gi1/2/31                       admin down     down
+Gi1/2/32                       admin down     down
+Gi1/2/33                       admin down     down
+Gi1/2/34                       admin down     down
+Gi1/2/35                       admin down     down
+Gi1/2/36                       admin down     down
+Gi1/2/37                       admin down     down
+Gi1/2/38                       admin down     down
+Gi1/2/39                       admin down     down
+Gi1/2/40                       admin down     down
+Gi1/2/41                       admin down     down
+Gi1/2/42                       up             up       FortGate_100F ExternalFwA AE-20
+Gi1/2/43                       admin down     down     Uplink to Spark SIP gateway (Basement)
+Gi1/2/44                       up             up       PaloAlto InternalFwB port 9 AE3
+Gi1/2/45                       down           down     PaloAlto InternalFwA port 6 AE2
+Gi1/2/46                       up             up       PaloAlto InternalFwB port 6 AE2
+Gi1/2/47                       admin down     down
+Gi1/2/48                       admin down     down
+Te1/3/1                        up             up
+Te1/3/2                        up             up
+Te1/3/3                        up             up       FortGate_200F InternalFwA AE-X1
+Te1/3/4                        admin down     down
+Te1/3/5                        up             up       vBridge NCHC2SW3 Xe 1/0/32
+Te1/3/6                        admin down     down
+Te1/3/7                        admin down     down
+Te1/3/8                        admin down     down
+Fo1/3/9                        admin down     down
+Fo1/3/10                       admin down     down
+Te1/4/1                        up             up
+Te1/4/2                        up             up
+Te1/4/3                        up             up       FortGate_200F InternalFwB AE-X1
+Te1/4/4                        admin down     down
+Te1/4/5                        admin down     down
+Te1/4/6                        admin down     down
+Te1/4/7                        admin down     down
+Te1/4/8                        admin down     down
+Fo1/4/9                        admin down     down
+Fo1/4/10                       admin down     down
+Gi1/7/1                        up             up       CoreFWA-Primary Inside Gi0/0
+Gi1/7/2                        up             up       CoreFW-Primary Gi0/1
+Gi1/7/3                        up             up       CoreFW-Primary Gi0/2
+Gi1/7/4                        up             up       CoreFW-Primary Gi0/3
+Gi1/7/5                        up             up       CoreFW-Primary Gi0/4
+Gi1/7/6                        up             up       CoreFW-Primary Gi0/5
+Gi1/7/7                        up             up       CoreFW-Primary Failover Gi0/6
+Gi1/7/8                        up             up       CoreFW-Primary Outside Gi0/7
+Gi1/7/9                        up             up       CoreFW-Primary Firepower M0/0
+Gi1/7/10                       admin down     down
+Gi1/7/11                       admin down     down
+Gi1/7/12                       admin down     down
+Gi1/7/13                       up             up       Aruba_Wlan_Controller
+Gi1/7/14                       admin down     down     Aruba_Wlan_Controller
+Gi1/7/15                       up             up       CoresBGP Gi1/0/15
+Gi1/7/16                       up             up       CoresBGP Gi1/0/16
+Gi1/7/17                       up             up       BGP Primary 2D Router (SNAP-CHC-AIRPRT-SWC01 Gi0/8)
+Gi1/7/18                       down           down
+Gi1/7/19                       up             up       CoreVDSL (Fa1)
+Gi1/7/20                       admin down     down
+Gi1/7/21                       admin down     down
+Gi1/7/22                       down           down     "Test interface for vlan 2 migration"
+Gi1/7/23                       up             up       Uplink to SPARK SIP gateway port 1/0/0 VLAN 32
+Gi1/7/24                       down           down
+Gi1/7/25                       up             up       CIAL-IT-VDSL1 (Fa3)
+Gi1/7/26                       admin down     down
+Gi1/7/27                       up             up       ServersILOB192 Gi1/0/1
+Gi1/7/28                       up             up       Primary Link to AirNZ Comms Room - Patched A-NZ-1
+Gi1/7/29                       up             up       Carpark1_USB Anywhere for DESIGO
+Gi1/7/30                       up             up       AnyWhere USB 192.168.24.95 connecting to Glidepath GVS1 192.168.24.201
+Gi1/7/31                       down           down     USBAnywhere - DESIGO1 Dongle (202.14.167.148)
+Gi1/7/32                       up             up       Anywhere USB 192.168.22.6 connecting to Cardax1 192.168.22.5
+Gi1/7/33                       up             up       Anywhere USB 192.168.21.127 connecting to SmartGraphics1 192.168.21.250
+Gi1/7/34                       up             up       USBAnywhere - APOGEE Dongle (202.14.167.149)
+Gi1/7/35                       up             up       CUSP-M_Seismic server in Cabinet A
+Gi1/7/36                       up             up       CUSP-M_Seismic server in Cabinet A
+Gi1/7/37                       admin down     down     was ServerSiLoB191 G1/0/24
+Gi1/7/38                       up             up       FortGate_100F Primary mgmt 192.168.2.201
+Gi1/7/39                       up             up       EAS Proxy Comm 2 EM/0 - IP 172.20.1.33
+Gi1/7/40                       up             up       EAS Proxy Comm 2 EM/1 - IP 172.20.1.34
+Gi1/7/41                       up             up       USB Anywhere Desigo 202.14.167.148
+Gi1/7/42                       up             up       FortGate_200F Primary mgmt 192.168.2.203
+Gi1/7/43                       up             up       B19 PC
+Gi1/7/44                       up             up       to Palo Alto UFB Virtual Router
+Gi1/7/45                       up             up
+Gi1/7/46                       up             up       PaloAlto Primary mgmt 192.168.2.198
+Gi1/7/47                       up             up       Primary PaloAlto - HA2
+Gi1/7/48                       up             up       Primary PaloAlto - HA1
+Gi2/1/1                        up             up       Frames GT31 - Gi2/0/52 - Po1
+Gi2/1/2                        up             up       FramesGT43 0/49
+Gi2/1/3                        up             up       FrameSTGT61 0/49
+Gi2/1/4                        up             up       FrameSTGT71 0/49
+Gi2/1/5                        up             up       FramesGT81 0/49
+Gi2/1/6                        up             up       FramesGT91  Gi2/0/28  Po13
+Gi2/1/7                        up             up       Frames2T61 0/49
+Gi2/1/8                        up             up       Frames1T51 G0/49
+Gi2/1/9                        up             up       RESV-FramesGT5-new-switch
+Gi2/1/10                       up             up       Link To FramesHotelPlant1 G2/0/25
+Gi2/1/11                       up             up       FramesRLT11 0/49
+Gi2/1/12                       up             up       FramesMT51 Gi1/1
+Gi2/1/13                       up             up       FramesMSCPL45 Gi1/1/2
+Gi2/1/14                       admin down     down
+Gi2/1/15                       up             up       FramesIOC1 Gi2/1/4 PO9
+Gi2/1/16                       admin down     down     FREE
+Gi2/1/17                       up             up       FramesAFS2 Gi1/1/4
+Gi2/1/18                       admin down     down     FREE
+Gi2/1/19                       up             up       FramesPlaza Gi0/1
+Gi2/1/20                       up             up       FramesGT01 Stack
+Gi2/1/21                       admin down     down
+Gi2/1/22                       up             up       FrameS1T61 0/49
+Gi2/1/23                       up             up       Frames1T71 Gi0/49
+Gi2/1/24                       up             up       RSVD-FramesSL2
+Gi2/1/25                       admin down     down
+Gi2/1/26                       up             up       FramesMT60 - Aruba Port 1/1/25
+Gi2/1/27                       up             up       FramesAG5 Gi1/1/2
+Gi2/1/28                       admin down     down
+Gi2/1/29                       admin down     down
+Gi2/1/30                       up             up       FramesWaterPlant1
+Gi2/1/31                       admin down     down
+Gi2/1/32                       admin down     down
+Gi2/1/33                       up             up       Link to FramesMSCPLG2 G0/49
+Gi2/1/34                       up             up       FramesMSCPL31 G1/1
+Gi2/1/35                       down           down
+Gi2/1/36                       down           down
+Gi2/1/37                       admin down     down     FramesMT6Moxa Gi2/0/27
+Gi2/1/38                       admin down     down
+Gi2/1/39                       admin down     down
+Gi2/1/40                       admin down     down
+Gi2/1/41                       admin down     down
+Gi2/1/42                       up             up       FortGate_100F ExternalFwB AE-19
+Gi2/1/43                       admin down     down
+Gi2/1/44                       up             up       PaloAlto InternalFwA port 10 AE3
+Gi2/1/45                       down           down     PaloAlto InternalFwA port 7 AE2
+Gi2/1/46                       up             up       PaloAlto InternalFwB port 7 AE2
+Gi2/1/47                       admin down     down
+Gi2/1/48                       up             up
+Gi2/2/1                        up             up       to framesRGCP1 - gi2/0/28
+Gi2/2/2                        admin down     down
+Gi2/2/3                        up             up       FrameSTGT61 0/50
+Gi2/2/4                        up             up       FrameSTGT71 0/50
+Gi2/2/5                        up             up       FramesGT81 0/50
+Gi2/2/6                        up             up       Fibre - FramesGT93 Gi0/49
+Gi2/2/7                        up             up       Frames2T62 0/49
+Gi2/2/8                        up             up       Frames1T52 G0/49
+Gi2/2/9                        admin down     down
+Gi2/2/10                       admin down     down
+Gi2/2/11                       up             up       FramesSRLT12 gi0/49
+Gi2/2/12                       up             up       FramesMT52 Gi1/2
+Gi2/2/13                       up             up       FramesTF41 Gi1/1/4
+Gi2/2/14                       admin down     down
+Gi2/2/15                       up             up       FramesSpitFire1 Gi1/1/1
+Gi2/2/16                       down           down     vBridge Tertiary Connection to NCHCSW0 Ge 5/0/2
+Gi2/2/17                       admin down     down
+Gi2/2/18                       admin down     down
+Gi2/2/19                       admin down     down
+Gi2/2/20                       admin down     down
+Gi2/2/21                       up             up       FramesHotel1 Gi2/0/27
+Gi2/2/22                       up             up       FrameS1T61 0/50
+Gi2/2/23                       up             up       Frames1T71 Gi0/50
+Gi2/2/24                       admin down     down
+Gi2/2/25                       up             up       framesag81 Gi0/15
+Gi2/2/26                       admin down     down
+Gi2/2/27                       admin down     down
+Gi2/2/28                       admin down     down
+Gi2/2/29                       admin down     down
+Gi2/2/30                       down           down     to SRX300 Ge-0/0/7
+Gi2/2/31                       admin down     down
+Gi2/2/32                       admin down     down
+Gi2/2/33                       admin down     down
+Gi2/2/34                       admin down     down
+Gi2/2/35                       admin down     down
+Gi2/2/36                       admin down     down
+Gi2/2/37                       admin down     down
+Gi2/2/38                       admin down     down
+Gi2/2/39                       admin down     down
+Gi2/2/40                       admin down     down
+Gi2/2/41                       admin down     down
+Gi2/2/42                       up             up       FortGate_100F ExternalFwB AE-20
+Gi2/2/43                       down           down     Uplink to Spark SIP gateway (R216)
+Gi2/2/44                       up             up       PaloAlto InternalFwB port 10 AE3
+Gi2/2/45                       down           down     PaloAlto InternalFwA port 8 AE2
+Gi2/2/46                       up             up       PaloAlto InternalFwB port 8 AE2
+Gi2/2/47                       admin down     down
+Gi2/2/48                       admin down     down
+Te2/3/1                        up             up
+Te2/3/2                        up             up
+Te2/3/3                        up             up       FortGate_200F InternalFwA AE-X2
+Te2/3/4                        admin down     down
+Te2/3/5                        up             up       vBridge NCHC2SW3 Xe 0/0/32
+Te2/3/6                        admin down     down
+Te2/3/7                        admin down     down
+Te2/3/8                        admin down     down
+Fo2/3/9                        admin down     down
+Fo2/3/10                       admin down     down
+Te2/4/1                        up             up
+Te2/4/2                        up             up
+Te2/4/3                        up             up       FortGate_200F InternalFwB AE-X2
+Te2/4/4                        admin down     down
+Te2/4/5                        admin down     down
+Te2/4/6                        admin down     down
+Te2/4/7                        admin down     down
+Te2/4/8                        admin down     down
+Fo2/4/9                        admin down     down
+Fo2/4/10                       admin down     down
+mgmt0                          admin down     down
+Gi2/7/1                        up             up       CoreFW-Secondary Inside gi0/0
+Gi2/7/2                        up             up       CoreFW-Secondary Gi0/1
+Gi2/7/3                        up             up       CoreFW-Secondary Gi0/2
+Gi2/7/4                        up             up       CoreFW-Secondary Gi0/3
+Gi2/7/5                        up             up       CoreFW-Secondary Gi0/4
+Gi2/7/6                        up             up       CoreFW-Secondary Gi0/5
+Gi2/7/7                        up             up       CoreFW-Secondary Failover Gi0/6
+Gi2/7/8                        up             up       CoreFW-Secondary Outside Gi0/7
+Gi2/7/9                        up             up       CoreFW-Secondary Firepower M0/0
+Gi2/7/10                       admin down     down
+Gi2/7/11                       admin down     down
+Gi2/7/12                       admin down     down
+Gi2/7/13                       up             up       Aruba_Wlan_Controller
+Gi2/7/14                       admin down     down     Aruba_Wlan_Controller
+Gi2/7/15                       up             up       CoresBGP Gi0/0/15
+Gi2/7/16                       up             up       CoresBGP Gi0/0/16
+Gi2/7/17                       up             up       BGP Secondary 2D Router (SNAP-CHC-EHN-SWC01)
+Gi2/7/18                       up             up       ARINC Switch CHC1CSW1 Gi2/0/21
+Gi2/7/19                       up             up       ARINC Switch CHC1CSW1 Gi1/0/19
+Gi2/7/20                       up             up       ARINC Switch CHC1CSW1 Gi1/0/20
+Gi2/7/21                       up             up       ARINC Switch CHC1CSW1 Gi1/0/13
+Gi2/7/22                       up             up       ARINC Switch CHC1CSW1 Gi2/0/21
+Gi2/7/23                       down           down     (Retain) PA_system_testport - Strawberry -  192.168.90.19
+Gi2/7/24                       down           down     PA_system_ITP - Strawberry -  192.168.90.21
+Gi2/7/25                       admin down     down
+Gi2/7/26                       up             up       CGVision_USB Anywhere 192.168.121.99
+Gi2/7/27                       up             up       AnyWhere USB 192.168.24.96 connecting to Glidepath GVS2 192.168.24.202
+Gi2/7/28                       up             up       2T6PC
+Gi2/7/29                       admin down     down
+Gi2/7/30                       up             up       Mitel AX Controller Interface 1 (192.168.31.19)
+Gi2/7/31                       admin down     down
+Gi2/7/32                       admin down     down     FREE
+Gi2/7/33                       admin down     down
+Gi2/7/34                       admin down     down
+Gi2/7/35                       admin down     down
+Gi2/7/36                       admin down     down
+Gi2/7/37                       admin down     down
+Gi2/7/38                       up             up       FortGate_100F Secondary mgmt 192.168.2.202
+Gi2/7/39                       up             up       EAS Proxy Comm 1 EM/0 - IP 172.20.1.31
+Gi2/7/40                       up             up       EAS Proxy Comm 1 EM/1 - IP 172.20.1.32
+Gi2/7/41                       admin down     down
+Gi2/7/42                       up             up       FortGate_200F Secondary mgmt 192.168.2.204
+Gi2/7/43                       admin down     down
+Gi2/7/44                       down           down     PaloAlto (216) Ethernet1/4
+Gi2/7/45                       admin down     down     Test Palo Sec Mgmt
+Gi2/7/46                       up             up       PaloAlto Secondary mgmt 192.168.2.199
+Gi2/7/47                       up             up       Secondary PaloAlto - HA2
+Gi2/7/48                       up             up       Secondary PaloAlto - HA1
+Lo1                            up             up
+Po1                            up             up       VSS ACTIVE Po
+Po2                            up             up       VSS STANDBY Po
+Po3                            admin down     down
+Po5                            up             up       vBridge Port Channel - AE8
+Po8                            up             up       CoresBGP Po8
+Po9                            up             up       FramesIOC1 Po9
+Po10                           up             up       FramesGT64 Po1
+Po11                           up             up       GT75 Po1
+Po12                           up             up       FramesGT83 Po1
+Po13                           up             up       FrameGT91 Po13
+Po14                           up             up       FrameS1T62 Po1
+Po15                           up             up       Frames1T73 Po15
+Po16                           admin down     down     THIS IS A PO TYPO - SIMON OSULLIVAN
+Po17                           up             up       FortGate_100F ExternalFwA AE
+Po18                           up             up       FortGate_100F ExternalFwB AE
+Po19                           down           down     ServersA Po19
+Po20                           up             up       FramesGT61 Po1
+Po21                           up             up       FramesGT71 Po1
+Po22                           up             up       FramesGT81 Po1
+Po23                           up             up       FramesGT31 - Po1
+Po24                           up             up       Frames1T61 Po1
+Po25                           up             up       Frames1T71 Po25
+Po26                           up             up       ARINC Switch CHC1CSW1
+Po27                           up             up       framesAG5 po27
+Po29                           up             up       tp FramesTF41 stack
+Po28                           up             up       FramesGT01 Stack
+Po30                           up             up       FramesHotel1 - Po1
+Po31                           up             up       FramesWaterPlant1 ---  Po1
+Po32                           down           down     FramesMT6-Distribution - Po1
+Po33                           up             up       FramesMT60 - Aruba Po1
+Po60                           down           down     to Palo Alto UFB Virtual Router
+Po61                           up             up       TEST UFB internet
+Po101                          down           down     PaloAlto InternalFwA AE2
+Po102                          up             up       PaloAlto InternalFwB AE2
+Po103                          up             up       PaloAlto InternalFwA AE3
+Po104                          up             up       PaloAlto InternalFwB AE3
+Po111                          up             up       FortGate_200F InternalFwA AE
+Po112                          up             up       FortGate_200F InternalFwB AE
+Po132                          up             up       FramesRGCP1-stack
+Po260                          admin down     down
+Po261                          admin down     down
+Tu0                            up             up       Pim Register Tunnel (Encap) for RP 192.168.209.1
+Tu1                            up             up       Pim Register Tunnel (Decap) for RP 192.168.209.1
+Vl1                            admin down     down
+Vl2                            admin down     down
+Vl3                            admin down     down
+Vl4                            admin down     down
+Vl5                            up             up
+Vl8                            admin down     down
+Vl10                           up             up
+Vl11                           admin down     down
+Vl12                           up             up
+Vl20                           up             up
+Vl21                           admin down     down
+Vl22                           admin down     down
+Vl23                           admin down     down
+Vl24                           admin down     down
+Vl31                           admin down     down
+Vl33                           admin down     down
+Vl40                           admin down     down
+Vl50                           admin down     down
+Vl81                           down           down
+Vl90                           admin down     down
+Vl103                          up             up
+Vl110                          up             up
+Vl112                          up             up       Backup_ESX
+Vl121                          admin down     down
+Vl140                          admin down     down
+Vl167                          admin down     down
+Vl168                          admin down     down
+Vl192                          up             up
+Vl210                          up             up
+Vl214                          up             up
+Vl220                          up             up       vMotion_ESX
+Vl221                          up             up       iSCSI vlan for ESX Storage HP4000s
+Vl224                          admin down     down
+Vl240                          admin down     down
+Vl244                          admin down     down
+Vl260                          up             up
+Vl261                          admin down     down
+Vl319                          admin down     down
+Vl888                          admin down     down
+Vl889                          admin down     down
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#sh int status
+
+Port          Name               Status       Vlan       Duplex  Speed Type
+Gi1/1/1       Frames GT31 - Gi1/ connected    trunk        full   1000 1000BaseLH
+Gi1/1/2       FramesGT41 0/49    connected    trunk        full   1000 1000BaseLH
+Gi1/1/3       FrameSTGT64 0/51   connected    trunk        full   1000 1000BaseLH
+Gi1/1/4       FrameSTGT75 0/49   connected    trunk        full   1000 1000BaseLH
+Gi1/1/5       FramesGT83 0/49    connected    trunk        full   1000 1000BaseLH
+Gi1/1/6       FramesGT91  Gi1/0/ connected    trunk        full   1000 1000BaseLH
+Gi1/1/7       FramesTG11 Gi0/25  connected    trunk        full   1000 1000BaseLH
+Gi1/1/8       FramesTG512 Gi0/49 connected    trunk        full   1000 1000BaseLH
+Gi1/1/9       FramesTG521 Gi0/1  connected    trunk        full   1000 1000BaseLH
+Gi1/1/10      FramesTB11 gi0/49  connected    trunk        full   1000 1000BaseLH
+Gi1/1/11      FramesHotelPlant1  connected    trunk        full   1000 1000BaseLH
+Gi1/1/12      FramesTS41 Gi0/1   connected    trunk        full   1000 1000BaseLH
+Gi1/1/13      FramesMSCPG1 Gi0/2 connected    trunk        full   1000 1000BaseLH
+Gi1/1/14      FrameSHotelPlaza1  connected    trunk        full   1000 1000BaseLH
+Gi1/1/15      FramesIOC1 Gi1/1/4 connected    trunk        full   1000 1000BaseLH
+Gi1/1/16      FramesIAC1 Gi0/1   connected    trunk        full   1000 1000BaseLH
+Gi1/1/17      FrameSPWC1 - Power connected    trunk        full   1000 1000BaseLH
+Gi1/1/18      FramesAG1 - G1/4 P notconnect   unassigned   full   1000 No Transceiver
+Gi1/1/19      FramesTOWER Link t connected    trunk        full   1000 1000BaseLH
+Gi1/1/20      FramesGT01 Stack   connected    trunk        full   1000 1000BaseLH
+Gi1/1/21                         disabled     999          full   1000 No Transceiver
+Gi1/1/22      Frame1T62 0/49     connected    trunk        full   1000 1000BaseLH
+Gi1/1/23      Frames1T73 Gi0/49  connected    trunk        full   1000 1000BaseLH
+Gi1/1/24      ServersA G1/1/1    notconnect   unassigned   full   1000 1000BaseLH
+Gi1/1/25      ServersB191 G1/1/1 connected    trunk        full   1000 1000BaseLH
+Gi1/1/26      FramesMT60 - Aruba connected    trunk        full   1000 1000BaseLH
+Gi1/1/27      framesAG5 gi1/1/1  connected    trunk        full   1000 1000BaseLH
+Gi1/1/28      Reserved FrameSMYD connected    trunk        full   1000 1000BaseLH
+Gi1/1/29      FramesFA Gi0/16    connected    trunk        full   1000 1000BaseLH
+Gi1/1/30      FramesWaterPlant1  connected    trunk        full   1000 1000BaseLH
+Gi1/1/31      Link to FramesCP31 connected    trunk        full   1000 1000BaseLH
+Gi1/1/32      FramesPolice       connected    trunk        full   1000 1000BaseLH
+Gi1/1/33      Link to FramesMSCP connected    trunk        full   1000 1000BaseLH
+Gi1/1/34      uplink to FramesZE connected    trunk        full   1000 1000BaseLH
+Gi1/1/35                         notconnect   routed       full   1000 No Transceiver
+Gi1/1/36                         disabled     unassigned   full   1000 No Transceiver
+Gi1/1/37      FramesMT6Moxa Gi1/ disabled     unassigned   full   1000 1000BaseLH
+Gi1/1/38                         disabled     999          full   1000 No Transceiver
+Gi1/1/39                         disabled     999          full   1000 No Transceiver
+Gi1/1/40                         disabled     999          full   1000 No Transceiver
+Gi1/1/41      "spare interface"  notconnect   999          full   1000 No Transceiver
+Gi1/1/42      FortGate_100F Exte connected    trunk        full   1000 1000BaseLH
+Gi1/1/43                         disabled     999          full   1000 No Transceiver
+Gi1/1/44      PaloAlto InternalF connected    210          full   1000 1000BaseLH
+Gi1/1/45      PaloAlto InternalF notconnect   1            full   1000 1000BaseLH
+Gi1/1/46      PaloAlto InternalF connected    trunk        full   1000 1000BaseLH
+Gi1/1/47                         disabled     unassigned   full   1000 No Transceiver
+Gi1/1/48                         connected    routed       full   1000 1000BaseLH
+Gi1/2/1       to framesRGCP1 - g connected    trunk        full   1000 1000BaseLH
+Gi1/2/2       FramesORCP1 G1/1   connected    trunk        full   1000 1000BaseLH
+Gi1/2/3       FramesGT64 0/52    connected    trunk        full   1000 1000BaseLH
+Gi1/2/4       FramesGT75 0/50    connected    trunk        full   1000 1000BaseLH
+Gi1/2/5       FramesGT83 0/50    connected    trunk        full   1000 1000BaseLH
+Gi1/2/6       Fibre - FramesGT95 connected    trunk        full   1000 1000BaseLH
+Gi1/2/7       FramesTB22 0/2     connected    trunk        full   1000 1000BaseLH
+Gi1/2/8       FramesTG511 Gi1/1  connected    trunk        full   1000 1000BaseLH
+Gi1/2/9       FramesTB31 0/25    connected    trunk        full   1000 1000BaseLH
+Gi1/2/10      FramesTB12 0/49    connected    trunk        full   1000 1000BaseLH
+Gi1/2/11      FramesTS31 0/1     connected    trunk        full   1000 1000BaseSX
+Gi1/2/12      FramesHotelNorth1  connected    trunk        full   1000 1000BaseLH
+Gi1/2/13      FramesTF41 Gi2/1/4 connected    trunk        full   1000 1000BaseLH
+Gi1/2/14      FramesLongStayX1 G connected    trunk        full   1000 1000BaseLH
+Gi1/2/15      FramesTF21 Gi1/1   connected    trunk        full   1000 1000BaseLH
+Gi1/2/16                         disabled     999          full   1000 No Transceiver
+Gi1/2/17      FramesTF31 Gi1/1   connected    trunk        full   1000 1000BaseLH
+Gi1/2/18      FramesAG1 Gi1/1    connected    trunk        full   1000 1000BaseLH
+Gi1/2/19                         disabled     999          full   1000 No Transceiver
+Gi1/2/20                         disabled     999          full   1000 No Transceiver
+Gi1/2/21      FramesHotel1 Gi1/0 connected    trunk        full   1000 1000BaseLH
+Gi1/2/22      FrameS1T62 0/50    connected    trunk        full   1000 1000BaseLH
+Gi1/2/23      Frames1T73 Gi0/50  connected    trunk        full   1000 1000BaseLH
+Gi1/2/24      ServersA G2/1/1    notconnect   unassigned   full   1000 1000BaseLH
+Gi1/2/25                         disabled     999          full   1000 No Transceiver
+Gi1/2/26                         notconnect   999          full   1000 No Transceiver
+Gi1/2/27                         disabled     999          full   1000 No Transceiver
+Gi1/2/28                         disabled     999          full   1000 No Transceiver
+Gi1/2/29                         disabled     999          full   1000 No Transceiver
+Gi1/2/30      to SRX300 Ge-0/0/6 connected    trunk        full   1000 1000BaseLH
+Gi1/2/31                         disabled     999          full   1000 No Transceiver
+Gi1/2/32                         disabled     999          full   1000 No Transceiver
+Gi1/2/33                         disabled     999          full   1000 No Transceiver
+Gi1/2/34                         disabled     999          full   1000 No Transceiver
+Gi1/2/35                         disabled     999          full   1000 No Transceiver
+Gi1/2/36                         disabled     999          full   1000 No Transceiver
+Gi1/2/37                         disabled     999          full   1000 No Transceiver
+Gi1/2/38                         disabled     999          full   1000 No Transceiver
+Gi1/2/39                         disabled     999          full   1000 No Transceiver
+Gi1/2/40                         disabled     999          full   1000 No Transceiver
+Gi1/2/41                         disabled     999          full   1000 1000BaseLH
+Gi1/2/42      FortGate_100F Exte connected    trunk        full   1000 1000BaseLH
+Gi1/2/43      Uplink to Spark SI disabled     32           full   1000 No Transceiver
+Gi1/2/44      PaloAlto InternalF connected    210          full   1000 1000BaseLH
+Gi1/2/45      PaloAlto InternalF notconnect   1            full   1000 1000BaseLH
+Gi1/2/46      PaloAlto InternalF connected    trunk        full   1000 1000BaseLH
+Gi1/2/47                         disabled     999          full   1000 No Transceiver
+Gi1/2/48                         disabled     999          full   1000 No Transceiver
+Te1/3/1                          connected    routed       full    10G 10Gbase-LR
+Te1/3/2                          connected    routed       full    10G 10Gbase-LR
+Te1/3/3       FortGate_200F Inte connected    trunk        full    10G 10Gbase-LR
+Te1/3/4                          disabled     routed       full    10G No Connector
+Te1/3/5       vBridge NCHC2SW3 X connected    trunk        full    10G 10Gbase-LR
+Te1/3/6                          disabled     routed       full    10G No Connector
+Te1/3/7                          disabled     routed       full    10G No Connector
+Te1/3/8                          disabled     routed       full    10G No Connector
+Fo1/3/9                          disabled     routed       full    40G No Connector
+Fo1/3/10                         disabled     routed       full    40G No Connector
+Te1/4/1                          connected    routed       full    10G 10Gbase-LR
+Te1/4/2                          connected    routed       full    10G 10Gbase-LR
+Te1/4/3       FortGate_200F Inte connected    trunk        full    10G 10Gbase-LR
+Te1/4/4                          disabled     routed       full    10G No Connector
+Te1/4/5                          disabled     routed       full    10G No Connector
+Te1/4/6                          disabled     routed       full    10G No Connector
+Te1/4/7                          disabled     routed       full    10G No Connector
+Te1/4/8                          disabled     routed       full    10G No Connector
+Fo1/4/9                          disabled     routed       full    40G No Connector
+Fo1/4/10                         disabled     routed       full    40G No Connector
+Gi1/7/1       CoreFWA-Primary In connected    210        a-full a-1000 10/100/1000BaseT
+Gi1/7/2       CoreFW-Primary Gi0 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/3       CoreFW-Primary Gi0 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/4       CoreFW-Primary Gi0 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/5       CoreFW-Primary Gi0 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/6       CoreFW-Primary Gi0 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/7       CoreFW-Primary Fai connected    211        a-full a-1000 10/100/1000BaseT
+Gi1/7/8       CoreFW-Primary Out connected    901        a-full a-1000 10/100/1000BaseT
+Gi1/7/9       CoreFW-Primary Fir connected    2          a-full a-1000 10/100/1000BaseT
+Gi1/7/10                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/11                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/12                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/13      Aruba_Wlan_Control connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/14      Aruba_Wlan_Control disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/15      CoresBGP Gi1/0/15  connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/16      CoresBGP Gi1/0/16  connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/17      BGP Primary 2D Rou connected    588        a-full a-1000 10/100/1000BaseT
+Gi1/7/18                         notconnect   routed       full   auto 10/100/1000BaseT
+Gi1/7/19      CoreVDSL (Fa1)     connected    trunk      a-full  a-100 10/100/1000BaseT
+Gi1/7/20                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/21                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/22      "Test interface fo notconnect   2            full   auto 10/100/1000BaseT
+Gi1/7/23      Uplink to SPARK SI connected    32         a-full a-1000 10/100/1000BaseT
+Gi1/7/24                         notconnect   routed       full   auto 10/100/1000BaseT
+Gi1/7/25      CIAL-IT-VDSL1 (Fa3 connected    trunk      a-full  a-100 10/100/1000BaseT
+Gi1/7/26                         disabled     999          full   auto 10/100/1000BaseT
+Gi1/7/27      ServersILOB192 Gi1 connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/28      Primary Link to Ai connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/29      Carpark1_USB Anywh connected    23         a-half  a-100 10/100/1000BaseT
+Gi1/7/30      AnyWhere USB 192.1 connected    24         a-half  a-100 10/100/1000BaseT
+Gi1/7/31      USBAnywhere - DESI notconnect   167          full   auto 10/100/1000BaseT
+Gi1/7/32      Anywhere USB 192.1 connected    22         a-half  a-100 10/100/1000BaseT
+Gi1/7/33      Anywhere USB 192.1 connected    21         a-full  a-100 10/100/1000BaseT
+Gi1/7/34      USBAnywhere - APOG connected    167        a-half  a-100 10/100/1000BaseT
+Gi1/7/35      CUSP-M_Seismic ser connected    90         a-full a-1000 10/100/1000BaseT
+Gi1/7/36      CUSP-M_Seismic ser connected    320        a-full a-1000 10/100/1000BaseT
+Gi1/7/37      was ServerSiLoB191 disabled     unassigned   full   auto 10/100/1000BaseT
+Gi1/7/38      FortGate_100F Prim connected    2          a-full a-1000 10/100/1000BaseT
+Gi1/7/39      EAS Proxy Comm 2 E connected    902        a-full a-1000 10/100/1000BaseT
+Gi1/7/40      EAS Proxy Comm 2 E connected    902        a-full a-1000 10/100/1000BaseT
+Gi1/7/41      USB Anywhere Desig connected    167        a-full a-1000 10/100/1000BaseT
+Gi1/7/42      FortGate_200F Prim connected    2          a-full a-1000 10/100/1000BaseT
+Gi1/7/43      B19 PC             connected    3          a-full a-1000 10/100/1000BaseT
+Gi1/7/44      to Palo Alto UFB V connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi1/7/45                         connected    80         a-full a-1000 10/100/1000BaseT
+Gi1/7/46      PaloAlto Primary m connected    2          a-full a-1000 10/100/1000BaseT
+Gi1/7/47      Primary PaloAlto - connected    213        a-full a-1000 10/100/1000BaseT
+Gi1/7/48      Primary PaloAlto - connected    212        a-full a-1000 10/100/1000BaseT
+Gi2/1/1       Frames GT31 - Gi2/ connected    trunk        full   1000 1000BaseLH
+Gi2/1/2       FramesGT43 0/49    connected    trunk        full   1000 1000BaseLH
+Gi2/1/3       FrameSTGT61 0/49   connected    trunk        full   1000 1000BaseLH
+Gi2/1/4       FrameSTGT71 0/49   connected    trunk        full   1000 1000BaseLH
+Gi2/1/5       FramesGT81 0/49    connected    trunk        full   1000 1000BaseLH
+Gi2/1/6       FramesGT91  Gi2/0/ connected    trunk        full   1000 1000BaseLH
+Gi2/1/7       Frames2T61 0/49    connected    trunk        full   1000 1000BaseLH
+Gi2/1/8       Frames1T51 G0/49   connected    trunk        full   1000 1000BaseLH
+Gi2/1/9       RESV-FramesGT5-new connected    trunk        full   1000 1000BaseLH
+Gi2/1/10      Link To FramesHote connected    trunk        full   1000 1000BaseLH
+Gi2/1/11      FramesRLT11 0/49   connected    trunk        full   1000 1000BaseLH
+Gi2/1/12      FramesMT51 Gi1/1   connected    trunk        full   1000 1000BaseLH
+Gi2/1/13      FramesMSCPL45 Gi1/ connected    trunk        full   1000 1000BaseLH
+Gi2/1/14                         disabled     999          full   1000 No Transceiver
+Gi2/1/15      FramesIOC1 Gi2/1/4 connected    trunk        full   1000 1000BaseLH
+Gi2/1/16      FREE               disabled     999          full   1000 No Transceiver
+Gi2/1/17      FramesAFS2 Gi1/1/4 connected    trunk        full   1000 1000BaseLH
+Gi2/1/18      FREE               disabled     999          full   1000 1000BaseLH
+Gi2/1/19      FramesPlaza Gi0/1  connected    trunk        full   1000 1000BaseLH
+Gi2/1/20      FramesGT01 Stack   connected    trunk        full   1000 1000BaseLH
+Gi2/1/21                         disabled     999          full   1000 No Transceiver
+Gi2/1/22      FrameS1T61 0/49    connected    trunk        full   1000 1000BaseLH
+Gi2/1/23      Frames1T71 Gi0/49  connected    trunk        full   1000 1000BaseLH
+Gi2/1/24      RSVD-FramesSL2     connected    trunk        full   1000 1000BaseLH
+Gi2/1/25                         disabled     999          full   1000 No Transceiver
+Gi2/1/26      FramesMT60 - Aruba connected    trunk        full   1000 1000BaseLH
+Gi2/1/27      FramesAG5 Gi1/1/2  connected    trunk        full   1000 1000BaseLH
+Gi2/1/28                         disabled     999          full   1000 No Transceiver
+Gi2/1/29                         disabled     999          full   1000 No Transceiver
+Gi2/1/30      FramesWaterPlant1  connected    trunk        full   1000 1000BaseLH
+Gi2/1/31                         disabled     999          full   1000 No Transceiver
+Gi2/1/32                         disabled     999          full   1000 No Transceiver
+Gi2/1/33      Link to FramesMSCP connected    trunk        full   1000 1000BaseLH
+Gi2/1/34      FramesMSCPL31 G1/1 connected    trunk        full   1000 1000BaseLH
+Gi2/1/35                         notconnect   routed       full   1000 No Transceiver
+Gi2/1/36                         notconnect   routed       full   1000 No Transceiver
+Gi2/1/37      FramesMT6Moxa Gi2/ disabled     unassigned   full   1000 1000BaseLH
+Gi2/1/38                         disabled     999          full   1000 No Transceiver
+Gi2/1/39                         disabled     999          full   1000 No Transceiver
+Gi2/1/40                         disabled     999          full   1000 No Transceiver
+Gi2/1/41                         disabled     999          full   1000 No Transceiver
+Gi2/1/42      FortGate_100F Exte connected    trunk        full   1000 1000BaseLH
+Gi2/1/43                         disabled     999          full   1000 No Transceiver
+Gi2/1/44      PaloAlto InternalF connected    210          full   1000 1000BaseLH
+Gi2/1/45      PaloAlto InternalF notconnect   1            full   1000 1000BaseLH
+Gi2/1/46      PaloAlto InternalF connected    trunk        full   1000 1000BaseLH
+Gi2/1/47                         disabled     999          full   1000 No Transceiver
+Gi2/1/48                         connected    routed       full   1000 1000BaseLH
+Gi2/2/1       to framesRGCP1 - g connected    trunk        full   1000 1000BaseLH
+Gi2/2/2                          disabled     unassigned   full   1000 1000BaseLH
+Gi2/2/3       FrameSTGT61 0/50   connected    trunk        full   1000 1000BaseLH
+Gi2/2/4       FrameSTGT71 0/50   connected    trunk        full   1000 1000BaseLH
+Gi2/2/5       FramesGT81 0/50    connected    trunk        full   1000 1000BaseLH
+Gi2/2/6       Fibre - FramesGT93 connected    trunk        full   1000 1000BaseLH
+Gi2/2/7       Frames2T62 0/49    connected    trunk        full   1000 1000BaseLH
+Gi2/2/8       Frames1T52 G0/49   connected    trunk        full   1000 1000BaseLH
+Gi2/2/9                          disabled     999          full   1000 No Transceiver
+Gi2/2/10                         disabled     999          full   1000 No Transceiver
+Gi2/2/11      FramesSRLT12 gi0/4 connected    trunk        full   1000 1000BaseLH
+Gi2/2/12      FramesMT52 Gi1/2   connected    trunk        full   1000 1000BaseLH
+Gi2/2/13      FramesTF41 Gi1/1/4 connected    trunk        full   1000 1000BaseLH
+Gi2/2/14                         disabled     999          full   1000 No Transceiver
+Gi2/2/15      FramesSpitFire1 Gi connected    trunk        full   1000 1000BaseLH
+Gi2/2/16      vBridge Tertiary C notconnect   unassigned   full   1000 1000BaseBX10D
+Gi2/2/17                         disabled     999          full   1000 No Transceiver
+Gi2/2/18                         disabled     999          full   1000 No Transceiver
+Gi2/2/19                         disabled     999          full   1000 No Transceiver
+Gi2/2/20                         disabled     999          full   1000 No Transceiver
+Gi2/2/21      FramesHotel1 Gi2/0 connected    trunk        full   1000 1000BaseLH
+Gi2/2/22      FrameS1T61 0/50    connected    trunk        full   1000 1000BaseLH
+Gi2/2/23      Frames1T71 Gi0/50  connected    trunk        full   1000 1000BaseLH
+Gi2/2/24                         disabled     unassigned   full   1000 No Transceiver
+Gi2/2/25      framesag81 Gi0/15  connected    trunk        full   1000 1000BaseLH
+Gi2/2/26                         disabled     999          full   1000 No Transceiver
+Gi2/2/27                         disabled     999          full   1000 No Transceiver
+Gi2/2/28                         disabled     999          full   1000 No Transceiver
+Gi2/2/29                         disabled     999          full   1000 No Transceiver
+Gi2/2/30      to SRX300 Ge-0/0/7 notconnect   unassigned   full   1000 No Transceiver
+Gi2/2/31                         disabled     999          full   1000 No Transceiver
+Gi2/2/32                         disabled     999          full   1000 No Transceiver
+Gi2/2/33                         disabled     999          full   1000 No Transceiver
+Gi2/2/34                         disabled     999          full   1000 No Transceiver
+Gi2/2/35                         disabled     999          full   1000 No Transceiver
+Gi2/2/36                         disabled     999          full   1000 No Transceiver
+Gi2/2/37                         disabled     999          full   1000 No Transceiver
+Gi2/2/38                         disabled     999          full   1000 No Transceiver
+Gi2/2/39                         disabled     999          full   1000 No Transceiver
+Gi2/2/40                         disabled     999          full   1000 No Transceiver
+Gi2/2/41                         disabled     999          full   1000 No Transceiver
+Gi2/2/42      FortGate_100F Exte connected    trunk        full   1000 1000BaseLH
+Gi2/2/43      Uplink to Spark SI notconnect   32           full   1000 No Transceiver
+Gi2/2/44      PaloAlto InternalF connected    210          full   1000 1000BaseLH
+Gi2/2/45      PaloAlto InternalF notconnect   1            full   1000 1000BaseLH
+Gi2/2/46      PaloAlto InternalF connected    trunk        full   1000 1000BaseLH
+Gi2/2/47                         disabled     999          full   1000 No Transceiver
+Gi2/2/48                         disabled     999          full   1000 No Transceiver
+Te2/3/1                          connected    routed       full    10G 10Gbase-LR
+Te2/3/2                          connected    routed       full    10G 10Gbase-LR
+Te2/3/3       FortGate_200F Inte connected    trunk        full    10G 10Gbase-LR
+Te2/3/4                          disabled     routed       full    10G No Connector
+Te2/3/5       vBridge NCHC2SW3 X connected    trunk        full    10G 10Gbase-LR
+Te2/3/6                          disabled     routed       full    10G No Connector
+Te2/3/7                          disabled     routed       full    10G No Connector
+Te2/3/8                          disabled     routed       full    10G No Connector
+Fo2/3/9                          disabled     routed       full    40G No Connector
+Fo2/3/10                         disabled     routed       full    40G No Connector
+Te2/4/1                          connected    routed       full    10G 10Gbase-LR
+Te2/4/2                          connected    routed       full    10G 10Gbase-LR
+Te2/4/3       FortGate_200F Inte connected    trunk        full    10G 10Gbase-LR
+Te2/4/4                          disabled     routed       full    10G No Connector
+Te2/4/5                          disabled     routed       full    10G No Connector
+Te2/4/6                          disabled     routed       full    10G No Connector
+Te2/4/7                          disabled     routed       full    10G No Connector
+Te2/4/8                          disabled     routed       full    10G No Connector
+Fo2/4/9                          disabled     routed       full    40G No Connector
+Fo2/4/10                         disabled     routed       full    40G No Connector
+mgmt0                            disabled     routed       half   auto 10/100/1000BaseT
+Gi2/7/1       CoreFW-Secondary I connected    210        a-full a-1000 10/100/1000BaseT
+Gi2/7/2       CoreFW-Secondary G connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/3       CoreFW-Secondary G connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/4       CoreFW-Secondary G connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/5       CoreFW-Secondary G connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/6       CoreFW-Secondary G connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/7       CoreFW-Secondary F connected    211        a-full a-1000 10/100/1000BaseT
+Gi2/7/8       CoreFW-Secondary O connected    901        a-full a-1000 10/100/1000BaseT
+Gi2/7/9       CoreFW-Secondary F connected    2          a-full a-1000 10/100/1000BaseT
+Gi2/7/10                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/11                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/12                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/13      Aruba_Wlan_Control connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/14      Aruba_Wlan_Control disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/15      CoresBGP Gi0/0/15  connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/16      CoresBGP Gi0/0/16  connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/17      BGP Secondary 2D R connected    589        a-full a-1000 10/100/1000BaseT
+Gi2/7/18      ARINC Switch CHC1C connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/19      ARINC Switch CHC1C connected    91         a-full a-1000 10/100/1000BaseT
+Gi2/7/20      ARINC Switch CHC1C connected    311        a-full a-1000 10/100/1000BaseT
+Gi2/7/21      ARINC Switch CHC1C connected    412        a-full a-1000 10/100/1000BaseT
+Gi2/7/22      ARINC Switch CHC1C connected    trunk      a-full a-1000 10/100/1000BaseT
+Gi2/7/23      (Retain) PA_system notconnect   90           full   auto 10/100/1000BaseT
+Gi2/7/24      PA_system_ITP - St notconnect   90           full   auto 10/100/1000BaseT
+Gi2/7/25                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/26      CGVision_USB Anywh connected    121        a-half  a-100 10/100/1000BaseT
+Gi2/7/27      AnyWhere USB 192.1 connected    24         a-half  a-100 10/100/1000BaseT
+Gi2/7/28      2T6PC              connected    3          a-full a-1000 10/100/1000BaseT
+Gi2/7/29                         disabled     unassigned   full   auto 10/100/1000BaseT
+Gi2/7/30      Mitel AX Controlle connected    31         a-full  a-100 10/100/1000BaseT
+Gi2/7/31                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/32      FREE               disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/33                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/34                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/35                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/36                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/37                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/38      FortGate_100F Seco connected    2          a-full a-1000 10/100/1000BaseT
+Gi2/7/39      EAS Proxy Comm 1 E connected    902        a-full a-1000 10/100/1000BaseT
+Gi2/7/40      EAS Proxy Comm 1 E connected    902        a-full a-1000 10/100/1000BaseT
+Gi2/7/41                         disabled     routed       full   auto 10/100/1000BaseT
+Gi2/7/42      FortGate_200F Seco connected    2          a-full a-1000 10/100/1000BaseT
+Gi2/7/43                         disabled     999          full   auto 10/100/1000BaseT
+Gi2/7/44      PaloAlto (216) Eth notconnect   unassigned   full   auto 10/100/1000BaseT
+Gi2/7/45      Test Palo Sec Mgmt disabled     2            full   auto 10/100/1000BaseT
+Gi2/7/46      PaloAlto Secondary connected    2          a-full a-1000 10/100/1000BaseT
+Gi2/7/47      Secondary PaloAlto connected    213        a-full a-1000 10/100/1000BaseT
+Gi2/7/48      Secondary PaloAlto connected    212        a-full a-1000 10/100/1000BaseT
+Po1           VSS ACTIVE Po      connected    routed     a-full  a-10G
+Po2           VSS STANDBY Po     connected    routed     a-full  a-10G
+Po3                              disabled     routed       full   auto
+Po5           vBridge Port Chann connected    trunk      a-full  a-10G
+Po8           CoresBGP Po8       connected    trunk      a-full a-1000
+Po9           FramesIOC1 Po9     connected    trunk      a-full a-1000
+Po10          FramesGT64 Po1     connected    trunk      a-full a-1000
+Po11          GT75 Po1           connected    trunk      a-full a-1000
+Po12          FramesGT83 Po1     connected    trunk      a-full a-1000
+Po13          FrameGT91 Po13     connected    trunk      a-full a-1000
+Po14          FrameS1T62 Po1     connected    trunk      a-full a-1000
+Po15          Frames1T73 Po15    connected    trunk      a-full a-1000
+Po16          THIS IS A PO TYPO  disabled     routed       full   auto
+Po17          FortGate_100F Exte connected    trunk      a-full a-1000
+Po18          FortGate_100F Exte connected    trunk      a-full a-1000
+Po19          ServersA Po19      notconnect   unassigned   full   auto
+Po20          FramesGT61 Po1     connected    trunk      a-full a-1000
+Po21          FramesGT71 Po1     connected    trunk      a-full a-1000
+Po22          FramesGT81 Po1     connected    trunk      a-full a-1000
+Po23          FramesGT31 - Po1   connected    trunk      a-full a-1000
+Po24          Frames1T61 Po1     connected    trunk      a-full a-1000
+Po25          Frames1T71 Po25    connected    trunk      a-full a-1000
+Po26          ARINC Switch CHC1C connected    trunk      a-full a-1000
+Po27          framesAG5 po27     connected    trunk      a-full a-1000
+Po29          tp FramesTF41 stac connected    trunk      a-full a-1000
+Po28          FramesGT01 Stack   connected    trunk      a-full a-1000
+Po30          FramesHotel1 - Po1 connected    trunk      a-full a-1000
+Po31          FramesWaterPlant1  connected    trunk      a-full a-1000
+Po32          FramesMT6-Distribu notconnect   unassigned   full   auto
+Po33          FramesMT60 - Aruba connected    trunk      a-full a-1000
+Po60          to Palo Alto UFB V notconnect   unassigned   full   auto
+Po61          TEST UFB internet  connected    trunk      a-full a-1000
+Po101         PaloAlto InternalF notconnect   1            full   auto
+Po102         PaloAlto InternalF connected    trunk      a-full a-1000
+Po103         PaloAlto InternalF connected    210        a-full a-1000
+Po104         PaloAlto InternalF connected    210        a-full a-1000
+Po111         FortGate_200F Inte connected    trunk      a-full  a-10G
+Po112         FortGate_200F Inte connected    trunk      a-full  a-10G
+Po132         FramesRGCP1-stack  connected    trunk      a-full a-1000
+Po260                            disabled     unassigne    full   auto
+Po261                            disabled     unassigne    full   auto
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#sh ip int brief
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1/1/1   unassigned      YES unset  up                    up
+GigabitEthernet1/1/2   unassigned      YES unset  up                    up
+GigabitEthernet1/1/3   unassigned      YES unset  up                    up
+GigabitEthernet1/1/4   unassigned      YES unset  up                    up
+GigabitEthernet1/1/5   unassigned      YES unset  up                    up
+GigabitEthernet1/1/6   unassigned      YES unset  up                    up
+GigabitEthernet1/1/7   unassigned      YES unset  up                    up
+GigabitEthernet1/1/8   unassigned      YES unset  up                    up
+GigabitEthernet1/1/9   unassigned      YES unset  up                    up
+GigabitEthernet1/1/10  unassigned      YES unset  up                    up
+GigabitEthernet1/1/11  unassigned      YES unset  up                    up
+GigabitEthernet1/1/12  unassigned      YES unset  up                    up
+GigabitEthernet1/1/13  unassigned      YES unset  up                    up
+GigabitEthernet1/1/14  unassigned      YES unset  up                    up
+GigabitEthernet1/1/15  unassigned      YES unset  up                    up
+GigabitEthernet1/1/16  unassigned      YES unset  up                    up
+GigabitEthernet1/1/17  unassigned      YES unset  up                    up
+GigabitEthernet1/1/18  unassigned      YES unset  down                  down
+GigabitEthernet1/1/19  unassigned      YES unset  up                    up
+GigabitEthernet1/1/20  unassigned      YES unset  up                    up
+GigabitEthernet1/1/21  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/22  unassigned      YES unset  up                    up
+GigabitEthernet1/1/23  unassigned      YES unset  up                    up
+GigabitEthernet1/1/24  unassigned      YES unset  down                  down
+GigabitEthernet1/1/25  unassigned      YES unset  up                    up
+GigabitEthernet1/1/26  unassigned      YES unset  up                    up
+GigabitEthernet1/1/27  unassigned      YES unset  up                    up
+GigabitEthernet1/1/28  unassigned      YES unset  up                    up
+GigabitEthernet1/1/29  unassigned      YES unset  up                    up
+GigabitEthernet1/1/30  unassigned      YES unset  up                    up
+GigabitEthernet1/1/31  unassigned      YES unset  up                    up
+GigabitEthernet1/1/32  unassigned      YES unset  up                    up
+GigabitEthernet1/1/33  unassigned      YES unset  up                    up
+GigabitEthernet1/1/34  unassigned      YES unset  up                    up
+GigabitEthernet1/1/35  unassigned      YES NVRAM  down                  down
+GigabitEthernet1/1/36  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/37  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/38  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/39  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/40  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/41  unassigned      YES unset  down                  down
+GigabitEthernet1/1/42  unassigned      YES unset  up                    up
+GigabitEthernet1/1/43  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/44  unassigned      YES unset  up                    up
+GigabitEthernet1/1/45  unassigned      YES unset  down                  down
+GigabitEthernet1/1/46  unassigned      YES unset  up                    up
+GigabitEthernet1/1/47  unassigned      YES unset  administratively down down
+GigabitEthernet1/1/48  unassigned      YES NVRAM  up                    up
+GigabitEthernet1/2/1   unassigned      YES unset  up                    up
+GigabitEthernet1/2/2   unassigned      YES unset  up                    up
+GigabitEthernet1/2/3   unassigned      YES unset  up                    up
+GigabitEthernet1/2/4   unassigned      YES unset  up                    up
+GigabitEthernet1/2/5   unassigned      YES unset  up                    up
+GigabitEthernet1/2/6   unassigned      YES unset  up                    up
+GigabitEthernet1/2/7   unassigned      YES unset  up                    up
+GigabitEthernet1/2/8   unassigned      YES unset  up                    up
+GigabitEthernet1/2/9   unassigned      YES unset  up                    up
+GigabitEthernet1/2/10  unassigned      YES unset  up                    up
+GigabitEthernet1/2/11  unassigned      YES unset  up                    up
+GigabitEthernet1/2/12  unassigned      YES unset  up                    up
+GigabitEthernet1/2/13  unassigned      YES unset  up                    up
+GigabitEthernet1/2/14  unassigned      YES unset  up                    up
+GigabitEthernet1/2/15  unassigned      YES unset  up                    up
+GigabitEthernet1/2/16  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/17  unassigned      YES unset  up                    up
+GigabitEthernet1/2/18  unassigned      YES unset  up                    up
+GigabitEthernet1/2/19  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/20  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/21  unassigned      YES unset  up                    up
+GigabitEthernet1/2/22  unassigned      YES unset  up                    up
+GigabitEthernet1/2/23  unassigned      YES unset  up                    up
+GigabitEthernet1/2/24  unassigned      YES unset  down                  down
+GigabitEthernet1/2/25  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/26  unassigned      YES unset  down                  down
+GigabitEthernet1/2/27  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/28  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/29  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/30  unassigned      YES unset  up                    up
+GigabitEthernet1/2/31  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/32  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/33  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/34  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/35  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/36  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/37  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/38  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/39  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/40  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/41  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/42  unassigned      YES unset  up                    up
+GigabitEthernet1/2/43  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/44  unassigned      YES unset  up                    up
+GigabitEthernet1/2/45  unassigned      YES unset  down                  down
+GigabitEthernet1/2/46  unassigned      YES unset  up                    up
+GigabitEthernet1/2/47  unassigned      YES unset  administratively down down
+GigabitEthernet1/2/48  unassigned      YES unset  administratively down down
+Te1/3/1                unassigned      YES NVRAM  up                    up
+Te1/3/2                unassigned      YES NVRAM  up                    up
+Te1/3/3                unassigned      YES unset  up                    up
+Te1/3/4                unassigned      YES NVRAM  administratively down down
+Te1/3/5                unassigned      YES unset  up                    up
+Te1/3/6                unassigned      YES NVRAM  administratively down down
+Te1/3/7                unassigned      YES NVRAM  administratively down down
+Te1/3/8                unassigned      YES NVRAM  administratively down down
+Fo1/3/9                unassigned      YES NVRAM  administratively down down
+Fo1/3/10               unassigned      YES NVRAM  administratively down down
+Te1/4/1                unassigned      YES NVRAM  up                    up
+Te1/4/2                unassigned      YES NVRAM  up                    up
+Te1/4/3                unassigned      YES unset  up                    up
+Te1/4/4                unassigned      YES NVRAM  administratively down down
+Te1/4/5                unassigned      YES NVRAM  administratively down down
+Te1/4/6                unassigned      YES NVRAM  administratively down down
+Te1/4/7                unassigned      YES NVRAM  administratively down down
+Te1/4/8                unassigned      YES NVRAM  administratively down down
+Fo1/4/9                unassigned      YES NVRAM  administratively down down
+Fo1/4/10               unassigned      YES NVRAM  administratively down down
+GigabitEthernet1/7/1   unassigned      YES unset  up                    up
+GigabitEthernet1/7/2   unassigned      YES unset  up                    up
+GigabitEthernet1/7/3   unassigned      YES unset  up                    up
+GigabitEthernet1/7/4   unassigned      YES unset  up                    up
+GigabitEthernet1/7/5   unassigned      YES unset  up                    up
+GigabitEthernet1/7/6   unassigned      YES unset  up                    up
+GigabitEthernet1/7/7   unassigned      YES unset  up                    up
+GigabitEthernet1/7/8   unassigned      YES unset  up                    up
+GigabitEthernet1/7/9   unassigned      YES unset  up                    up
+GigabitEthernet1/7/10  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/11  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/12  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/13  unassigned      YES unset  up                    up
+GigabitEthernet1/7/14  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/15  unassigned      YES unset  up                    up
+GigabitEthernet1/7/16  unassigned      YES unset  up                    up
+GigabitEthernet1/7/17  unassigned      YES unset  up                    up
+GigabitEthernet1/7/18  unassigned      YES NVRAM  down                  down
+GigabitEthernet1/7/19  unassigned      YES unset  up                    up
+GigabitEthernet1/7/20  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/21  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/22  unassigned      YES unset  down                  down
+GigabitEthernet1/7/23  unassigned      YES unset  up                    up
+GigabitEthernet1/7/24  unassigned      YES NVRAM  down                  down
+GigabitEthernet1/7/25  unassigned      YES unset  up                    up
+GigabitEthernet1/7/26  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/27  unassigned      YES unset  up                    up
+GigabitEthernet1/7/28  unassigned      YES unset  up                    up
+GigabitEthernet1/7/29  unassigned      YES unset  up                    up
+GigabitEthernet1/7/30  unassigned      YES unset  up                    up
+GigabitEthernet1/7/31  unassigned      YES unset  down                  down
+GigabitEthernet1/7/32  unassigned      YES unset  up                    up
+GigabitEthernet1/7/33  unassigned      YES unset  up                    up
+GigabitEthernet1/7/34  unassigned      YES unset  up                    up
+GigabitEthernet1/7/35  unassigned      YES unset  up                    up
+GigabitEthernet1/7/36  unassigned      YES unset  up                    up
+GigabitEthernet1/7/37  unassigned      YES unset  administratively down down
+GigabitEthernet1/7/38  unassigned      YES unset  up                    up
+GigabitEthernet1/7/39  unassigned      YES unset  up                    up
+GigabitEthernet1/7/40  unassigned      YES unset  up                    up
+GigabitEthernet1/7/41  unassigned      YES unset  up                    up
+GigabitEthernet1/7/42  unassigned      YES unset  up                    up
+GigabitEthernet1/7/43  unassigned      YES unset  up                    up
+GigabitEthernet1/7/44  unassigned      YES unset  up                    up
+GigabitEthernet1/7/45  unassigned      YES unset  up                    up
+GigabitEthernet1/7/46  unassigned      YES unset  up                    up
+GigabitEthernet1/7/47  unassigned      YES unset  up                    up
+GigabitEthernet1/7/48  unassigned      YES unset  up                    up
+GigabitEthernet2/1/1   unassigned      YES unset  up                    up
+GigabitEthernet2/1/2   unassigned      YES unset  up                    up
+GigabitEthernet2/1/3   unassigned      YES unset  up                    up
+GigabitEthernet2/1/4   unassigned      YES unset  up                    up
+GigabitEthernet2/1/5   unassigned      YES unset  up                    up
+GigabitEthernet2/1/6   unassigned      YES unset  up                    up
+GigabitEthernet2/1/7   unassigned      YES unset  up                    up
+GigabitEthernet2/1/8   unassigned      YES unset  up                    up
+GigabitEthernet2/1/9   unassigned      YES unset  up                    up
+GigabitEthernet2/1/10  unassigned      YES unset  up                    up
+GigabitEthernet2/1/11  unassigned      YES unset  up                    up
+GigabitEthernet2/1/12  unassigned      YES unset  up                    up
+GigabitEthernet2/1/13  unassigned      YES unset  up                    up
+GigabitEthernet2/1/14  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/15  unassigned      YES unset  up                    up
+GigabitEthernet2/1/16  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/17  unassigned      YES unset  up                    up
+GigabitEthernet2/1/18  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/19  unassigned      YES unset  up                    up
+GigabitEthernet2/1/20  unassigned      YES unset  up                    up
+GigabitEthernet2/1/21  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/22  unassigned      YES unset  up                    up
+GigabitEthernet2/1/23  unassigned      YES unset  up                    up
+GigabitEthernet2/1/24  unassigned      YES unset  up                    up
+GigabitEthernet2/1/25  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/26  unassigned      YES unset  up                    up
+GigabitEthernet2/1/27  unassigned      YES unset  up                    up
+GigabitEthernet2/1/28  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/29  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/30  unassigned      YES unset  up                    up
+GigabitEthernet2/1/31  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/32  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/33  unassigned      YES unset  up                    up
+GigabitEthernet2/1/34  unassigned      YES unset  up                    up
+GigabitEthernet2/1/35  unassigned      YES NVRAM  down                  down
+GigabitEthernet2/1/36  unassigned      YES NVRAM  down                  down
+GigabitEthernet2/1/37  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/38  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/39  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/40  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/41  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/42  unassigned      YES unset  up                    up
+GigabitEthernet2/1/43  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/44  unassigned      YES unset  up                    up
+GigabitEthernet2/1/45  unassigned      YES unset  down                  down
+GigabitEthernet2/1/46  unassigned      YES unset  up                    up
+GigabitEthernet2/1/47  unassigned      YES unset  administratively down down
+GigabitEthernet2/1/48  unassigned      YES NVRAM  up                    up
+GigabitEthernet2/2/1   unassigned      YES unset  up                    up
+GigabitEthernet2/2/2   unassigned      YES unset  administratively down down
+GigabitEthernet2/2/3   unassigned      YES unset  up                    up
+GigabitEthernet2/2/4   unassigned      YES unset  up                    up
+GigabitEthernet2/2/5   unassigned      YES unset  up                    up
+GigabitEthernet2/2/6   unassigned      YES unset  up                    up
+GigabitEthernet2/2/7   unassigned      YES unset  up                    up
+GigabitEthernet2/2/8   unassigned      YES unset  up                    up
+GigabitEthernet2/2/9   unassigned      YES unset  administratively down down
+GigabitEthernet2/2/10  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/11  unassigned      YES unset  up                    up
+GigabitEthernet2/2/12  unassigned      YES unset  up                    up
+GigabitEthernet2/2/13  unassigned      YES unset  up                    up
+GigabitEthernet2/2/14  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/15  unassigned      YES unset  up                    up
+GigabitEthernet2/2/16  unassigned      YES unset  down                  down
+GigabitEthernet2/2/17  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/18  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/19  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/20  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/21  unassigned      YES unset  up                    up
+GigabitEthernet2/2/22  unassigned      YES unset  up                    up
+GigabitEthernet2/2/23  unassigned      YES unset  up                    up
+GigabitEthernet2/2/24  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/25  unassigned      YES unset  up                    up
+GigabitEthernet2/2/26  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/27  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/28  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/29  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/30  unassigned      YES unset  down                  down
+GigabitEthernet2/2/31  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/32  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/33  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/34  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/35  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/36  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/37  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/38  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/39  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/40  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/41  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/42  unassigned      YES unset  up                    up
+GigabitEthernet2/2/43  unassigned      YES unset  down                  down
+GigabitEthernet2/2/44  unassigned      YES unset  up                    up
+GigabitEthernet2/2/45  unassigned      YES unset  down                  down
+GigabitEthernet2/2/46  unassigned      YES unset  up                    up
+GigabitEthernet2/2/47  unassigned      YES unset  administratively down down
+GigabitEthernet2/2/48  unassigned      YES unset  administratively down down
+Te2/3/1                unassigned      YES NVRAM  up                    up
+Te2/3/2                unassigned      YES NVRAM  up                    up
+Te2/3/3                unassigned      YES unset  up                    up
+Te2/3/4                unassigned      YES NVRAM  administratively down down
+Te2/3/5                unassigned      YES unset  up                    up
+Te2/3/6                unassigned      YES NVRAM  administratively down down
+Te2/3/7                unassigned      YES NVRAM  administratively down down
+Te2/3/8                unassigned      YES NVRAM  administratively down down
+Fo2/3/9                unassigned      YES NVRAM  administratively down down
+Fo2/3/10               unassigned      YES NVRAM  administratively down down
+Te2/4/1                unassigned      YES NVRAM  up                    up
+Te2/4/2                unassigned      YES NVRAM  up                    up
+Te2/4/3                unassigned      YES unset  up                    up
+Te2/4/4                unassigned      YES NVRAM  administratively down down
+Te2/4/5                unassigned      YES NVRAM  administratively down down
+Te2/4/6                unassigned      YES NVRAM  administratively down down
+Te2/4/7                unassigned      YES NVRAM  administratively down down
+Te2/4/8                unassigned      YES NVRAM  administratively down down
+Fo2/4/9                unassigned      YES NVRAM  administratively down down
+Fo2/4/10               unassigned      YES NVRAM  administratively down down
+mgmt0                  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/1   unassigned      YES unset  up                    up
+GigabitEthernet2/7/2   unassigned      YES unset  up                    up
+GigabitEthernet2/7/3   unassigned      YES unset  up                    up
+GigabitEthernet2/7/4   unassigned      YES unset  up                    up
+GigabitEthernet2/7/5   unassigned      YES unset  up                    up
+GigabitEthernet2/7/6   unassigned      YES unset  up                    up
+GigabitEthernet2/7/7   unassigned      YES unset  up                    up
+GigabitEthernet2/7/8   unassigned      YES unset  up                    up
+GigabitEthernet2/7/9   unassigned      YES unset  up                    up
+GigabitEthernet2/7/10  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/11  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/12  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/13  unassigned      YES unset  up                    up
+GigabitEthernet2/7/14  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/15  unassigned      YES unset  up                    up
+GigabitEthernet2/7/16  unassigned      YES unset  up                    up
+GigabitEthernet2/7/17  unassigned      YES unset  up                    up
+GigabitEthernet2/7/18  unassigned      YES unset  up                    up
+GigabitEthernet2/7/19  unassigned      YES unset  up                    up
+GigabitEthernet2/7/20  unassigned      YES unset  up                    up
+GigabitEthernet2/7/21  unassigned      YES unset  up                    up
+GigabitEthernet2/7/22  unassigned      YES unset  up                    up
+GigabitEthernet2/7/23  unassigned      YES unset  down                  down
+GigabitEthernet2/7/24  unassigned      YES unset  down                  down
+GigabitEthernet2/7/25  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/26  unassigned      YES unset  up                    up
+GigabitEthernet2/7/27  unassigned      YES unset  up                    up
+GigabitEthernet2/7/28  unassigned      YES unset  up                    up
+GigabitEthernet2/7/29  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/30  unassigned      YES unset  up                    up
+GigabitEthernet2/7/31  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/32  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/33  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/34  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/35  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/36  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/37  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/38  unassigned      YES unset  up                    up
+GigabitEthernet2/7/39  unassigned      YES unset  up                    up
+GigabitEthernet2/7/40  unassigned      YES unset  up                    up
+GigabitEthernet2/7/41  unassigned      YES NVRAM  administratively down down
+GigabitEthernet2/7/42  unassigned      YES unset  up                    up
+GigabitEthernet2/7/43  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/44  unassigned      YES unset  down                  down
+GigabitEthernet2/7/45  unassigned      YES unset  administratively down down
+GigabitEthernet2/7/46  unassigned      YES unset  up                    up
+GigabitEthernet2/7/47  unassigned      YES unset  up                    up
+GigabitEthernet2/7/48  unassigned      YES unset  up                    up
+Loopback1              192.168.209.1   YES manual up                    up
+Port-channel1          unassigned      YES unset  up                    up
+Port-channel2          unassigned      YES unset  up                    up
+Port-channel3          unassigned      YES unset  administratively down down
+Port-channel5          unassigned      YES unset  up                    up
+Port-channel8          unassigned      YES unset  up                    up
+Port-channel9          unassigned      YES unset  up                    up
+Port-channel10         unassigned      YES unset  up                    up
+Port-channel11         unassigned      YES unset  up                    up
+Port-channel12         unassigned      YES unset  up                    up
+Port-channel13         unassigned      YES unset  up                    up
+Port-channel14         unassigned      YES unset  up                    up
+Port-channel15         unassigned      YES unset  up                    up
+Port-channel16         unassigned      YES unset  administratively down down
+Port-channel17         unassigned      YES unset  up                    up
+Port-channel18         unassigned      YES unset  up                    up
+Port-channel19         unassigned      YES unset  down                  down
+Port-channel20         unassigned      YES unset  up                    up
+Port-channel21         unassigned      YES unset  up                    up
+Port-channel22         unassigned      YES unset  up                    up
+Port-channel23         unassigned      YES unset  up                    up
+Port-channel24         unassigned      YES unset  up                    up
+Port-channel25         unassigned      YES unset  up                    up
+Port-channel26         unassigned      YES unset  up                    up
+Port-channel27         unassigned      YES unset  up                    up
+Port-channel29         unassigned      YES unset  up                    up
+Port-channel28         unassigned      YES unset  up                    up
+Port-channel30         unassigned      YES unset  up                    up
+Port-channel31         unassigned      YES unset  up                    up
+Port-channel32         unassigned      YES unset  down                  down
+Port-channel33         unassigned      YES unset  up                    up
+Port-channel60         unassigned      YES unset  down                  down
+Port-channel61         unassigned      YES unset  up                    up
+Port-channel101        unassigned      YES unset  down                  down
+Port-channel102        unassigned      YES unset  up                    up
+Port-channel103        unassigned      YES unset  up                    up
+Port-channel104        unassigned      YES unset  up                    up
+Port-channel111        unassigned      YES unset  up                    up
+Port-channel112        unassigned      YES unset  up                    up
+Port-channel132        unassigned      YES unset  up                    up
+Port-channel260        unassigned      YES unset  administratively down down
+Port-channel261        unassigned      YES unset  administratively down down
+Tunnel0                192.168.209.1   YES unset  up                    up
+Tunnel1                192.168.209.1   YES unset  up                    up
+Vlan1                  unassigned      YES NVRAM  administratively down down
+Vlan2                  192.168.2.3     YES manual administratively down down
+Vlan3                  192.168.3.1     YES NVRAM  administratively down down
+Vlan4                  192.168.4.1     YES NVRAM  administratively down down
+Vlan5                  192.168.5.1     YES NVRAM  up                    up
+Vlan8                  192.168.8.1     YES NVRAM  administratively down down
+Vlan10                 192.168.10.1    YES NVRAM  up                    up
+Vlan11                 192.168.11.1    YES NVRAM  administratively down down
+Vlan12                 192.168.12.1    YES NVRAM  up                    up
+Vlan20                 192.168.20.1    YES NVRAM  up                    up
+Vlan21                 192.168.21.1    YES NVRAM  administratively down down
+Vlan22                 192.168.22.1    YES NVRAM  administratively down down
+Vlan23                 192.168.23.1    YES NVRAM  administratively down down
+Vlan24                 192.168.24.1    YES NVRAM  administratively down down
+Vlan31                 192.168.31.1    YES manual administratively down down
+Vlan33                 192.168.33.1    YES NVRAM  administratively down down
+Vlan40                 192.168.40.1    YES NVRAM  administratively down down
+Vlan50                 192.168.50.1    YES NVRAM  administratively down down
+Vlan81                 192.168.81.1    YES NVRAM  down                  down
+Vlan90                 192.168.90.1    YES NVRAM  administratively down down
+Vlan103                192.168.103.1   YES manual up                    up
+Vlan110                192.168.110.1   YES NVRAM  up                    up
+Vlan112                192.168.112.1   YES NVRAM  up                    up
+Vlan121                192.168.121.1   YES NVRAM  administratively down down
+Vlan140                192.168.140.1   YES NVRAM  administratively down down
+Vlan167                202.14.167.2    YES NVRAM  administratively down down
+Vlan168                202.14.168.231  YES NVRAM  administratively down down
+Vlan192                192.168.192.250 YES NVRAM  up                    up
+Vlan210                192.168.210.1   YES NVRAM  up                    up
+Vlan214                192.168.214.1   YES manual up                    up
+Vlan220                192.168.220.1   YES NVRAM  up                    up
+Vlan221                192.168.221.1   YES NVRAM  up                    up
+Vlan224                192.168.224.1   YES manual administratively down down
+Vlan240                192.168.240.1   YES NVRAM  administratively down down
+Vlan244                192.168.244.1   YES NVRAM  administratively down down
+Vlan260                10.168.160.3    YES manual up                    up
+Vlan261                10.168.161.3    YES manual administratively down down
+Vlan319                192.168.249.1   YES NVRAM  administratively down down
+Vlan888                192.168.7.1     YES NVRAM  administratively down down
+Vlan889                192.168.6.1     YES manual administratively down down

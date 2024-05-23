@@ -1,0 +1,146 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-incognito-admin vlan-id 4062
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-incognito-admin
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4062
+ vlan-name vlan-incognito-admin
+ description ena_4062_incognito-admin
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4062
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4062
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 4062 description "vlan-incognito-admin"
+set interfaces reth1 unit 4062 vlan-id 4062
+set interfaces reth1 unit 4062 family inet address 10.130.62.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4062 passive
+set security zones security-zone zone-incognito-admin interfaces reth1.4062 host-inbound-traffic system-services ping
+set security address-book zone-incognito-admin address addr-enajump13 10.130.62.10/32
+set security address-book zone-incognito-admin attach zone zone-incognito-admin
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-ad apply-groups allow-ad-dns-template
+
+~~~~~~ PROD ~~~~~
+
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh match source-address any
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh match destination-address addr-enajump13
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh match application junos-ping
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh match application app-mstsc
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh then permit
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh then log session-init
+set security policies from-zone zone-enable-lan to-zone zone-incognito-admin policy policy-enable-lan-incognito-admin-workstations-rdp-ssh then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz match destination-address addr-servers-acs-dmz
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz then permit
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs match destination-address addr-servers-acs
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs then permit
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs policy policy-incognito-jumphost-prod-servers-acs then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac match destination-address addr-servers-sac
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac then permit
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-servers-sac policy policy-incognito-jumphost-prod-servers-sac then log session-close
+
+
+
+
+
+
+~~~~~ ITF ~~~~~
+
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match destination-address addr-itf-servers-acs
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match application junos-https
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match application app-http-alt
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs match application app-alt-https-8443
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs then permit
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka match destination-address addr-enaacskfkt101
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka match destination-address addr-enaacskfkt102
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka match destination-address addr-enaacskfkt103
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka match application app-kafka
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka then permit
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-acs policy policy-incognito-jumphost-itf-servers-acs-kafka then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match destination-address addr-itf-servers-sac
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application junos-https
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application app-http-alt
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application app-incognito-sac
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac match application app-alt-https-8443
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac then permit
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-itf-servers-sac policy policy-incognito-jumphost-itf-servers-sac then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match destination-address addr-itf-servers-kea
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then permit
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then log session-close
+
+
+
+~~~~~~~~ Internet ~~~~~~~~
+
+
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet match destination-address any
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet match application junos-ping
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet match application junos-http
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet match application junos-https
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet then permit
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-internet policy policy-incognito-admin-internet then log session-close
+
+
+~~~~~ Tidy up ~~~~~
+
+delete security address-book zone-admin address addr-enajump10 description "ITF Incognito Jumpbox"
+delete security address-book zone-admin address addr-enajump10 10.130.9.70/32
+delete security address-book zone-admin address-set addrs-admin-workstations address addr-enajump10
+
+delete security policies from-zone zone-enable-lan to-zone zone-admin policy policy-lan-enajump10-mstsc
+delete security policies from-zone zone-admin to-zone zone-servers-ad policy policy-enajump-ad-ldap match source-address addr-enajump10
+delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs
+delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs-lb
+delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs-kafka
+delete security policies from-zone zone-admin to-zone zone-itf-servers-sac policy policy-jumphost-itf-servers-sac
+delete security policies from-zone zone-admin to-zone zone-itf-servers-sac policy policy-jumphost-itf-servers-sac-lb
+delete security policies from-zone zone-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-jumphost-itf-servers-kea

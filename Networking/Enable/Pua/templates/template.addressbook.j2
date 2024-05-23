@@ -1,0 +1,18 @@
+
+{% if delete_config %}
+delete security address-book {{ zone }}
+{% else %}
+{% if addrs %}
+{% for name, addr in addrs | dictsort %}
+set security address-book {{ zone }} address addr-{{ name }} {{ addr }}
+{% endfor %}
+{% endif %}
+{% if addrsets %}
+{% for name, addr in addrsets | dictsort %}
+set security address-book {{ zone }} address-set addrs-{{ name }} address {{ addr }}
+{% endfor %}
+{% endif %}
+set security address-book {{ zone }} attach zone {{ zone }}
+{% endif %}
+
+

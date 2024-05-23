@@ -1,0 +1,191 @@
+Change made on 1/2/2024
+add new Internet service
+
+
+set firewall family inet filter filter-inet-to-dmz term rule-bgp from source-address 203.167.222.113/32
+set firewall family inet filter filter-inet-to-dmz term rule-bgp from destination-address 203.167.222.114/32
+
+
+set interfaces xe-0/0/42 description "ONENZ STA via E09W f12"
+set interfaces xe-0/0/42 unit 0 family inet filter input filter-inet-to-dmz
+set interfaces xe-0/0/42 unit 0 family inet address 203.167.222.114/30
+set routing-instances vr-internet interface xe-0/0/42.0
+
+
+
+set policy-options policy-statement policy-bgp-external-import term onenz from neighbor 203.167.222.113
+set policy-options policy-statement policy-bgp-external-import term onenz then as-path-prepend "131196 131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-import term onenz from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement policy-bgp-external-import term onenz then accept
+
+set policy-options policy-statement policy-bgp-external-export-prepend-onenz term onenz from protocol direct
+set policy-options policy-statement policy-bgp-external-export-prepend-onenz term onenz from route-filter 202.36.221.0/24 exact
+set policy-options policy-statement policy-bgp-external-export-prepend-onenz term onenz then as-path-prepend "131196 131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-export-prepend-onenz term onenz then accept
+set policy-options policy-statement policy-bgp-external-export-prepend-onenz then reject
+
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 203.167.222.113 local-address 203.167.222.114
+set routing-instances vr-internet protocols bgp group-statement policy-bgp-external-import term onenz from neighbor 203.167.222.113
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 203.167.222.113 peer-as 4768
+
+
+set firewall family inet filter filter-loopback term rule-allow-public-icmp from source-address 203.167.222.113/32
+set firewall family inet filter filter-loopback term rule-allow-bgp from source-address 203.167.222.113/32
+
+
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+set interfaces ge-1/0/9 description "Snap RIC via E09W f12"
+set interfaces ge-1/0/9 unit 0 family inet filter input filter-inet-to-dmz
+set interfaces ge-1/0/9 unit 0 family inet address 202.124.123.125/31
+
+
+
+
+
+set interfaces ge-1/0/10 description "Vocus Backup ISP IPT:10045481"
+set interfaces ge-1/0/10 vlan-tagging
+set interfaces ge-1/0/10 speed 1g
+set interfaces ge-1/0/10 link-mode full-duplex
+set interfaces ge-1/0/10 gigether-options no-auto-negotiation
+set interfaces ge-1/0/10 unit 947 vlan-id 947
+set interfaces ge-1/0/10 unit 947 family inet filter input filter-inet-to-dmz
+set interfaces ge-1/0/10 unit 947 family inet address 131.203.254.170/30
+
+
+set interfaces xe-0/0/42 description "ONENZ STA via E07W T6 F9 - BIA23711472"
+set interfaces xe-0/0/42 unit 0 family inet address 203.167.222.114/30
+
+
+
+dsadmin@ena-sw-core> show bgp summary
+Threading mode: BGP I/O
+Default eBGP mode: advertise - accept, receive - accept
+Groups: 4 Peers: 4 Down peers: 0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+103.150.228.32       140602     662947      67006       0       2 4w0d 5:43:44 Establ
+  vr-internet.inet.0: 0/1/1/0
+131.203.254.169        9503     662082      67006       0       2 4w0d 5:43:44 Establ
+  vr-internet.inet.0: 0/1/1/0
+202.124.123.124       23655     627935      67006       0       2 4w0d 5:53:23 Establ
+  vr-internet.inet.0: 1/1/1/0
+203.167.222.113        4768      28540      29709       0       3 1w2d 9:09:48 Establ
+
+
+dsadmin@ena-sw-core> show route table vr-internet.inet.0
+
+vr-internet.inet.0: 11 destinations, 14 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[BGP/170] 1w0d 20:42:53, localpref 100
+                      AS path: 23655 I, validation-state: unverified
+                    >  to 202.124.123.124 via ge-1/0/9.0
+                    [BGP/170] 1w2d 09:11:45, localpref 100
+                      AS path: 4768 I, validation-state: unverified
+                    >  to 203.167.222.113 via xe-0/0/42.0
+                    [BGP/170] 4w0d 05:45:41, localpref 100
+                      AS path: 131196 131196 131196 131196 9503 I, validation-state: unverified
+                    >  to 131.203.254.169 via ge-1/0/10.947
+                    [BGP/170] 4w0d 05:45:41, localpref 100
+                      AS path: 131196 131196 131196 131196 131196 131196 131196 131196 140602 I, validation-state: unverified
+                    >  to 103.150.228.32 via ge-2/0/4.3297
+103.150.228.32/31  *[Direct/0] 29w6d 21:20:44
+                    >  via ge-2/0/4.3297
+103.150.228.33/32  *[Local/0] 29w6d 21:20:44
+                       Local via ge-2/0/4.3297
+131.203.254.168/30 *[Direct/0] 29w6d 21:19:52
+                    >  via ge-1/0/10.947
+131.203.254.170/32 *[Local/0] 29w6d 21:19:52
+                       Local via ge-1/0/10.947
+202.36.221.0/24    *[Direct/0] 29w6d 21:20:44
+                    >  via irb.4083
+202.36.221.254/32  *[Local/0] 29w6d 21:20:44
+                       Local via irb.4083
+202.124.123.124/31 *[Direct/0] 29w6d 21:19:52
+                    >  via ge-1/0/9.0
+202.124.123.125/32 *[Local/0] 29w6d 21:19:52
+                       Local via ge-1/0/9.0
+203.167.222.112/30 *[Direct/0] 1w2d 09:11:47
+                    >  via xe-0/0/42.0
+203.167.222.114/32 *[Local/0] 1w2d 09:11:47
+                       Local via xe-0/0/42.0
+
+
+
+dsadmin@ena-sw-core> show route table vr-internet.inet.0
+
+vr-internet.inet.0: 11 destinations, 13 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[BGP/170] 1w2d 09:18:40, localpref 100
+                      AS path: 4768 I, validation-state: unverified
+                    >  to 203.167.222.113 via xe-0/0/42.0
+                    [BGP/170] 4w0d 05:52:36, localpref 100
+                      AS path: 131196 131196 131196 131196 9503 I, validation-state: unverified
+                    >  to 131.203.254.169 via ge-1/0/10.947
+                    [BGP/170] 4w0d 05:52:36, localpref 100
+                      AS path: 131196 131196 131196 131196 131196 131196 131196 131196 140602 I, validation-state: unverified
+                    >  to 103.150.228.32 via ge-2/0/4.3297
+
+
+
+dsadmin@ena-fw-hwl> traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 40 byte packets
+
+
+ 1  * * *
+ 2  203.167.222.113 (203.167.222.113)  25.552 ms  30.126 ms  29.865 ms
+ 3  203.98.50.2 (203.98.50.2)  29.854 ms  30.013 ms  29.588 ms
+ 4  203.98.50.251 (203.98.50.251)  139.893 ms  139.671 ms  139.919 ms
+ 5  be10-2.bgnzftc02.akl.vf.net.nz (203.109.130.41)  139.649 ms  139.794 ms  139.716 ms
+ 6  unassigned.vf.net.nz (203.109.180.146)  50.157 ms  49.960 ms  49.899 ms
+ 7  as15169.nsw.ix.asn.au (218.100.52.3)  50.136 ms  49.514 ms  50.715 ms
+ 8  192.178.97.83 (192.178.97.83)  59.337 ms 192.178.97.209 (192.178.97.209)  50.104 ms  50.084 ms
+ 9  209.85.247.133 (209.85.247.133)  50.282 ms 142.251.64.179 (142.251.64.179)  49.869 ms 142.250.224.187 (142.250.224.187)  50.202 ms
+10  dns.google (8.8.8.8)  49.862 ms  49.894 ms  50.303 ms
+
+
+
+
+Converted IPv6 for: 202.36.221.23
+Start: 2024-04-10T14:25:03+0500
+HOST: DNSChecker.org                                           Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+  2.|-- 10.74.132.49                                              0.0%     3    0.4   0.7   0.4   1.0   0.3
+  3.|-- 138.197.248.246                                           0.0%     3    0.8   1.0   0.8   1.1   0.1
+  4.|-- 138.197.248.14                                            0.0%     3    1.8   1.0   0.5   1.8   0.7
+  5.|-- 138.197.244.44                                            0.0%     3    1.6   4.0   1.1   9.3   4.6
+  6.|-- port-channel5.core1.nyc6.he.net (184.104.198.154)        33.3%     3    6.2   4.4   2.7   6.2   2.5
+  7.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+  8.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+  9.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+ 10.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+ 11.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+ 12.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+ 13.|-- be200.bdr01.akl05.akl.nz.vocus.network (114.31.199.75)   66.7%     3  183.5 183.5 183.5 183.5   0.0
+ 14.|-- be100.bdr01.akl03.akl.nz.vocus.network (114.31.202.39)    0.0%     3  184.7 184.7 184.5 185.0   0.3
+ 15.|-- as9790.bdr01.akl03.akl.nz.vocus.network (175.45.102.238)  0.0%     3  184.2 190.7 184.2 203.3  10.9
+ 16.|-- default-rdns.vocus.co.nz (101.98.5.221)                   0.0%     3  183.6 183.9 183.6 184.2   0.3
+ 17.|-- 250.31.69.111.static.snap.net.nz (111.69.31.250)          0.0%     3  197.6 202.8 197.6 212.7   8.6
+ 18.|-- 251.31.69.111.static.snap.net.nz (111.69.31.251)          0.0%     3  197.8 198.0 197.8 198.3   0.2
+ 19.|-- ???                                                      100.0     3    0.0   0.0   0.0   0.0   0.0
+ 20.|-- gwd023.southnet.co.nz (202.36.221.23)                     0.0%     3  224.6 219.4 213.6 224.6   5.5

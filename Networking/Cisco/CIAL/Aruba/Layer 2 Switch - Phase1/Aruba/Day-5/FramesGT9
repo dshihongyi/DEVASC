@@ -1,0 +1,3578 @@
+
+FramesGT6# sh run
+Current configuration:
+!
+!Version ArubaOS-CX ML.10.10.1090
+!export-password: default
+hostname FramesGT9
+domain-name cial.co.nz
+banner motd !
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+!
+user admin group administrators password plaintext vanc4brszz
+user cattools group administrators password plaintext woihw943asE
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status 
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key plaintext wimC8yPqb5Nupz%gIf0FLj6#2J7
+aaa authentication allow-fail-through
+!
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+vsf split-detect mgmt
+vsf secondary-member 2
+vsf member 1
+    type jl727a
+    link 1 1/1/50
+    link 2 1/1/49
+vsf member 2
+    type jl727a
+    link 1 2/1/49
+    link 2 2/1/50
+vsf member 3
+    type jl727a
+    link 1 3/1/49
+    link 2 3/1/50
+vsf member 4
+    type jl727a
+    link 1 4/1/49
+    link 2 4/1/50
+vsf member 5
+    type jl727a
+    link 1 5/1/49
+    link 2 5/1/50
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 3
+    name Workstations
+vlan 8
+    name VoIP
+vlan 10
+    name CCTV
+vlan 14
+    name Q-SYS-PA
+vlan 21
+    name Building_Management_System
+vlan 22
+    name Cardax
+vlan 23
+    name Carpark
+vlan 24
+    name BagSort
+vlan 27
+    name Bagsort_Control
+vlan 40
+    name FIDS_DDCs
+vlan 50
+    name UPS_Management
+vlan 90
+    name Terminal_Services
+vlan 110
+    name CCTV_ITP
+vlan 111
+    name CCTV-camera
+vlan 121
+    name BMS_ITP
+vlan 140
+    name FIDS_ITP_DDCs
+vlan 166
+    name ACUS
+vlan 167
+    name Production
+vlan 168
+    name FIDS
+vlan 169
+    name Secure_Workstations
+vlan 171
+    name Secured-Pax
+vlan 224
+    name Clevertronics
+vlan 240
+    name FIDS_240
+vlan 244
+    name CorpGeneral
+vlan 262
+    name UFB-INTERNET
+vlan 268
+    name EMERGENCY
+vlan 307
+    name Skystar
+vlan 309
+    name Aviation-Security
+vlan 700
+    name Remote_SPAN_VLAN
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140,166-169,171,224,240,244,262,268,307,309,700,888
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1 
+    dwrr queue 1 weight 1 
+    dwrr queue 2 weight 1 
+    dwrr queue 3 weight 1 
+    dwrr queue 4 weight 1 
+    dwrr queue 5 weight 1 
+    dwrr queue 6 weight 1 
+    strict queue 7 max-bandwidth 100000 
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 26 local-priority 4 color green 
+qos dscp-map 40 local-priority 6 color green name CS5 
+qos dscp-map 41 local-priority 6 color green 
+qos dscp-map 42 local-priority 6 color green 
+qos dscp-map 43 local-priority 6 color green 
+qos dscp-map 44 local-priority 6 color green 
+qos dscp-map 45 local-priority 6 color green 
+qos dscp-map 47 local-priority 5 color green name Audio 
+qos dscp-map 49 local-priority 5 color green name PTPv2 
+interface lag 1
+    description Uplink To CoreS-Stack-A_B LAG44
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140,166-169,171,224,240,244,262,268,307,309,700,888
+    lacp mode active
+    qos trust dscp
+    spanning-tree link-type point-to-point
+
+
+
+interface 1/1/1
+    description Workstations
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description (GT9-074) GT Dashboard screen on TV8 outlet
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description BMS_ITP - GT09-01
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description BMS_ITP - GT09-02
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description (434) Sonny Ng
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description BMS_ITP - GT09-096
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/7
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description (Retain) City Care ADSL Port
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description (Retain) City Care ADSL Port
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description GlidePath C1T0102 ME WS MOXA
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 27
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description GlidePath C1KWS & RFID Interface
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 27
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    desscription GlidePath C1K0104 WS MOXA
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 27
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description CCTV Camera 199 ITP G Lv Stair 4 A/Side Door 192.168.232.214
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/16
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable  
+interface 1/1/17
+    description (Retain) HP SAN Failover Mgr
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 221
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/18
+    description (GT9-36) NIG for stand 15
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 168
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/19
+    description (GT09-200) ACUS CHCM0CK00014
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/20
+    description (GT09-193) ACUS CHCM0CK00015
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/22
+    description (GT9-008) Siemens BMS controllers plant room G1 & G8
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/23
+    description CCTV Camera 575 (192.168.234.140)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/24
+    description GT_Printer_AirportServ
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 23
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/25
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/26
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/27
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/28
+    description (GT09-185) ACUS CHCM0CK00016
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/29
+    description (GT09-177) ACUS CHCM0CK00017
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/30
+    description WAP064
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/31
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/32
+    description WAP007
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/33
+    description WAP008
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/34
+    description WAP062
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/35
+    description WAP-FREE
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/36
+    description WAP-FREE
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/37
+    description WAP009 GT9-366 Checkin Hall
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/38
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/39
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable 
+interface 1/1/40
+    description WAP040
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/41
+    description (493) Airport Services Display PC 1
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/42
+    description (Retain) City Care ADSL Port
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/43
+    description WAP005
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/44
+    description (496) Spare Propel GT9 Workshop
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/45
+    description AIrport SErvices
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/46
+    description (GT9-497) PROPEL Electrician PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/47
+    description (589) Airport Services
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/48
+    description (590) Airport Services
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/49
+    no shutdown
+interface 1/1/50
+    no shutdown
+interface 1/1/51
+    description Uplink to CoreS-Stack-A_B Gi1/1/6
+    no shutdown
+    lag 1
+interface 1/1/52
+    description Uplink to CoreS-Stack-A_B Gi2/1/6
+    no shutdown
+    lag 1
+
+
+
+
+
+
+interface 2/1/1
+    description Glidepath BHS GT9-C1KATR.01-E1.1
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 27
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/2
+    description GlidePath C1K Sick RFID Cont
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 27
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/3
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/4
+    description Lost & Found PC (GT9-006)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/5
+    description CCTV Camera 204 GF Airport Services 192.168.232.219
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/6
+    description CCTV Camera 205 GF Airport Services 192.168.232.220
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enables
+interface 2/1/7
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/8
+    description (Retain) City Care ADSL Port
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/9
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/10
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/11
+    description (GT09-169) ACUS CHCM0CK00018
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/12
+    description (GT09-161) ACUS CHCM0CK00019
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/13
+    description (GT09-153) ACUS CHCM0CK00020
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/14
+    description (GT09-145) ACUS CHCM0CK00021
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/15
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/16
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/17
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/18
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/19
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/20
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/22
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/23
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/24
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/25
+    description CCTV Camera 178 192.168.232.212
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/26
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/27
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/28
+    description CCTV 419 Regional Lounge Cam 22 192.168.233.209
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/29
+    description CCTV 202 ITP G Lv Baggage Make-up Hall 192.168.232.217
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/30
+    description (GT9-204) 615 Air NZ bag drop 192.168.234.180
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/31
+    description WAP053
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/32
+    description WAP038
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/33
+    description BMS_ITP GT09-435
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/34
+    description BMS_ITP GT09-437
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/35
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/36
+    description WAP006
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/37
+    description (GT9-229) Pax-Swarm-Server Glidepath Control Room
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 171
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/38
+    description CCTV 416 Regional Lounge Cam 17 192.168.233.206
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/39
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/40
+    description WAP039
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/41
+    description WAP048
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/42
+    description AS Stewart PC + phone (GT9-469)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/43
+    description (GT9-XXX) CCL BMS printer HP M452dn
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/44
+    description AS Copier (GT9-481)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/45
+    description AS Photo ID printer 202.14.167.28 (GT9-455)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 167
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/46
+    description AS Meeting room PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/47
+    description AS Front Desk PC + phone (GT9-451)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port
+interface 2/1/48
+    description AS CCTV + AS Dashboard PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port
+interface 2/1/49
+    no shutdown
+interface 2/1/50
+    no shutdown
+interface 2/1/51
+    description Uplink to CoreS-Stack-A_B Gi1/2/6
+    no shutdown
+    lag 1
+interface 2/1/52
+    description Uplink to CoreS-Stack-A_B Gi2/2/6
+    no shutdown
+    lag 1
+
+
+
+
+
+
+
+interface 3/1/1
+    description CCTV 179-ITP G Lv Check-in Hall-192.168.232.194
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/2
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/3
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/4
+    description CCTV 195-ITP G Lv Check-in Hall Counters & Queing-192.168.232.210
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/5
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/6
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/7
+    description CCTV 201-ITP G Lv Baggage Make-up Hall-192.168.232.216
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/8
+    description CCTV 203-ITP Basement Stair A/Side Door-192.168.232.218
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/9
+    description CCTV 257-ITP Mezz Level Maintenance Walkway-192.168.233.47
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/10
+    description CCTV 263-ITP Mezz Level Maintenance Walkway-192.168.233.53
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/11
+    description CCTV 406-Regional Lounge Cam 7-192.168.233.196
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/12
+    description CCTV 410-Regional Lounge Cam 11-192.168.233.200
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/13
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/14
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/15
+    description CCTV 418-Regional Lounge Cam 19-192.168.233.208
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/16
+    description CCTV 420-Regional Lounge Cam 21-192.168.233.210
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/17
+    description CCTV 181-(GT9C10) ITP G Lv A/Side Door-192.168.232.196
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/18
+    description (GT09-111) ACUS CHCM0CK00025
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/19
+    description Airport Services CCTV-APTSRV1 (GT9-070)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/20
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/22
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/23
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/24
+    description ITP_FIDS-GT09-F01
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/25
+    description ITP_FIDS-GT9-F49-DDC407
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/26
+    description ITP_FIDS-GT9-RLF48-DDC409
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/27
+    description ITP_FIDS-GT9-F51-DDC411
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/28
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/29
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/30
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/31
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/32
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/33
+    description ITP_BMS (GT9-302)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/34
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/35
+    description (GT9-F45) LED Screen Gate 11  192.168.140.246
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 140
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/36
+    description CCTV 422-Regional Lounge cam 23-192.168.233.212
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/37
+    description (GT09-135) ACUS CHCM0CK00022
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/38
+    description (GT09-127) ACUS CHCM0CK00023
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/39
+    description (GT09-115) ACUS CHCM0CK00024
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 166
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/40
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/41
+    description AS Angela PC + phone (GT9-457)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/42
+    description (GT9-466) AS DM Senior
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/43
+    description AS DM PC + phone (GT9-465)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/44
+    description (GT6-41) JetStar Switch located in 104-034
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/45
+    description (GT9-495) BIDashboard1 AS Display Screen
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/46
+    description Airport Services CCTV-APTSRV2 (GT9-594)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/47
+    description (GT9-583) DDC914 Airport Services Display Screen Managers end
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/48
+    description (Retain) (GT9-499) City Care ADSL port in AS
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 3/1/49
+    no shutdown
+interface 3/1/50
+    no shutdown
+interface 3/1/51
+    description FramesGT91-11 Gi0/15
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,10,21,40,50,110,111,121,168,240,700,888
+    qos trust dscp
+    spanning-tree link-type point-to-point
+interface 3/1/52
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+
+
+
+interface 4/1/1
+    description CCTV 180-ITP G Lv Check-in Hall-192.168.232.195
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/2
+    description CCTV 182-ITP G Lv Check-in Hall-192.168.232.197
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/3
+    description CCTV 194-ITP G Lv Check-in Hall Counters-192.168.232.209
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/4
+    description CCTV 196-ITP G Lv Check-in Hall Counters-192.168.232.211
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/5
+    description CCTV 198-ITP G Lv A/Side lift Lobby-192.168.232.213
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/6
+    description CCTV 200-ITP G Lv Comms Room 076A-192.168.232.215
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/7
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/8
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/9
+    description CCTV 258-ITP Mezz Lv Maintenance Walkway-192.168.233.48
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/10
+    description CCTV Camea 414-Regional Lounge Cam 414-192.168.233.204
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/11
+    description CCTV 407-Regional Lounge Cam 8-192.168.233.197
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/12
+    description CCTV 413-Regional Lounge Cam 14-192.168.233.203
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/13
+    description CCTV 415-Regional Lounge Cam 16-192.168.233.205
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/14
+    description CCTV 417-Regional Lounge Cam 18-192.168.233.207
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/15
+    description CCTV 421-Regional Lounge Cam 20-192.168.233.211
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/16
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/17
+    description (GT9-212) Cardax Contractor Registration Kiosk CARDAX-KIOSK1
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 169
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/18
+    description (GT9-112) Q-SYS-PA
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 14
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/19
+    description (GT9-24) Q-SYS-PA
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 14
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/20
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/22
+    description ITP-FIDS GT9-F46 DDC406
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/23
+    description ITP-FIDS GT9-RLF375 DDC408
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/24
+    description ITP-FIDS GT9-RLF49 DDC410
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/25
+    description ITP_FIDS-GT9-11-DDC538
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/26
+    description ITP_FIDS-GT9-13-DDC540
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/27
+    description ITP_FIDS-GT9-15-DDC542
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/28
+    description ITP_FIDS-GT9-17-DDC544
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/29
+    description ITP_FIDS-GT9-19-DDC546
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/30
+    description ITP_FIDS-GT9-21-DDC548
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/31
+    description (C34) 517 Check-in Hall AirNZ Bag Drop Belt-192.168.234.82
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/32
+    description WAP008
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 4/1/33
+    description ITP_FIDS-GT9-09-DDC576
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/34
+    description ITP_FIDS-GT9-36-DDC450
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/35
+    description (GT9-C43) BMA 252 192.168.233.42
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/36
+    description ITP_FIDS-GT9-40-DDC454
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/37
+    description (GT9-215) CCTV 540 (192.168.234.105)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/38
+    description (GT9-214) CCTV 543 (192.168.234.108)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/39
+    description WAP_10-GT9-367-Checkin Hall
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 4/1/40
+    description ITP-FIDS GT9-F50 DDC412
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/41
+    description AS Jacqui PC + phone (GT9-458)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 4/1/42
+    description user and phone 463
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 4/1/43
+    description Airport Services
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 4/1/44
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/45
+    description usr and phone 461
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 4/1/46
+    description user & Phone 462
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 4/1/47
+    description (GT9-690) SPARK Quatra repeater
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/48
+    description (GT9-610) SPARK Quatra repeater
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 4/1/49
+    no shutdown
+interface 4/1/50
+    no shutdown
+interface 4/1/51
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+interface 4/1/52
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+
+
+    
+
+interface 5/1/1
+    description BMS_ITP - GT09-307
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/2
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/3
+    description BMS_ITP - GT09-309
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/4
+    description ITP_Cardax GT09-293-I/F 9 Grnd floor Room 076A/63
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/5
+    description ITP_Cardax GT09-294-I/F 9 Grnd floor Room 076A/64
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/6
+    description ITP_Cardax GT09-296-I/F 9 Grnd floor Room 076A/65
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/7
+    description ITP_Cardax GT09-297-I/F 9 Grnd floor Room 076A/66
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/8
+    description ITP_Cardax GT09-298-I/F 19 Grnd floor Room 076A/84
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/9
+    description ITP_Cardax GT09-299-I/F 19 Grnd floor Room 076A/85
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/10
+    description ITP_FIDS-GT9-12-DDC539
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/11
+    description ITP_FIDS-GT9-14-DDC541
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/12
+    description ITP_FIDS-GT9-16-DDC543
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/13
+    description ITP_FIDS-GT9-18-DDC545
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/14
+    description ITP_FIDS-GT9-20-DDC547
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/15
+    description ITP_FIDS-GT9-22-DDC549
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/16
+    description ITP_Cardax GT09-393-I/F 30  RL FTC152
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/17
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/18
+    description ITP_FIDS-GT9-10-DDC577
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/19
+    description ITP_FIDS-GT9-37-DDC451
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/20
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/22
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/23
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/24
+    description OpsSignage Device 4-Gate 15-192.168.90.50
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 90
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/25
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/26
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/27
+    description (GT9-113) Q-SYS-PA
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 14
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/28
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/29
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/30
+    description BMS_ITP device GT9-432
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/31
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/32
+    description (GT09-360) Pwr meter DB5B/13
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/33
+    description Cardax FTC6000 FTC151 GT09-392-I/F 30 Grnd Flr Room 041/151
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/34
+    description ITP_Cardax GT09-391-I/F 30 Grnd floor Room 041/150
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/35
+    description BMS_ITP-ELS Router 2-GT09-430
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/36
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/37
+    description BMS_ITP GT09-361-Electricity meter 192.168.121.103
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/38
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/39
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/40
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/41
+    description AS Mike H PC + phone (GT9-459)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 5/1/42
+    description (GT9-487) AS Meeting room PC + phone
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 5/1/43
+    description (GT9-487) AS Meeting room PC + phone
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 3
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 5/1/44
+    description GT9-501 (BICS unit 8)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/45
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/46
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 5/1/47
+    description (GT9-487) AS Meeting room PC + phone
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 2
+interface 5/1/48
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+
+
+interface 5/1/49
+    no shutdown
+interface 5/1/50
+    no shutdown
+interface 5/1/51
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+interface 5/1/52
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+
+
+
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    description Management Interface
+    ip address 192.168.2.48/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server system-location GT9
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~~~ Core Switch ~~~~
+
+interface Port-channel44
+ description Uplink to FramesGT9 LAG1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,268,307,309,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ service-policy input CIAL-QoS-Input-Policy
+
+
+ description FrameGT91 Po13
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,240,244,262,307,309,410-412,700
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ service-policy input CIAL-QoS-Input-Policy
+
+
+ 
+!
+CoreS-Stack-A_B#sh run int g1/1/6
+Building configuration...
+
+Current configuration : 408 bytes
+!
+interface GigabitEthernet1/1/6
+ description FramesGT91  Gi1/0/28   Po13
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,240,244,262,307,309,410-412,700
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ mtu 9216
+ channel-group 13 mode active
+end
+
+CoreS-Stack-A_B#sh run int g2/1/6
+Building configuration...
+
+Current configuration : 491 bytes
+!
+interface GigabitEthernet2/1/6
+ description FramesGT91  Gi2/0/28  Po13
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,240,244,262,307,309,410-412,700
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 13 mode active
+end
+
+CoreS-Stack-A_B#sh run int g1/2/6
+Building configuration...
+
+Current configuration : 411 bytes
+!
+interface GigabitEthernet1/2/6
+ description Fibre - FramesGT95 Gi0/49
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 167-169,171,240,244,307,309,410-412,700,888
+ switchport nonegotiate
+ spanning-tree link-type point-to-point
+ service-policy input CIAL-QoS-Input-Policy
+end
+
+CoreS-Stack-A_B#sh run int g2/2/6
+Building configuration...
+
+Current configuration : 450 bytes
+!
+interface GigabitEthernet2/2/6
+ description Fibre - FramesGT93 Gi0/49
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,240,244,262,307,309,410-412,700
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ spanning-tree link-type point-to-point
+ service-policy input CIAL-QoS-Input-Policy
+end
+
+
+
+
+
+
+
+~~~~ Change NEED ~~~~
+
+!
+default interface GigabitEthernet1/1/6
+interface GigabitEthernet1/1/6
+ description FramesGT9 - Gi1/1/51
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,268,307,309,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 44 mode active
+!
+default interface GigabitEthernet2/1/6
+interface GigabitEthernet2/1/6
+ description FramesGT9 - Gi1/1/52
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,268,307,309,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 44 mode active
+!
+default interface GigabitEthernet1/2/6
+interface GigabitEthernet1/2/6
+ description FramesGT9 - Gi2/1/51
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,268,307,309,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 44 mode active
+!
+default interface GigabitEthernet2/2/6
+interface GigabitEthernet2/2/6
+ description FramesGT9 - Gi2/1/52
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,14,21-24,27,40,50,90,110,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,268,307,309,700,888
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 44 mode active
+end
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Master  - 2 x 1GB - LAG1. core switch GigabitEthernet1/1/4
+                                      GigabitEthernet2/1/4
+Standby - 2 x 1GB - LAG1- core switch GigabitEthernet1/2/4
+                                      GigabitEthernet2/2/4
+Member 3 
+Member 4 
+Member 5

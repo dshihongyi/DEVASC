@@ -1,0 +1,2374 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2023.11.23 09:51:42 =~=~=~=~=~=~=~=~=~=~=~=
+terl ne       len 0
+FramesGT72#sh run
+Building configuration...
+
+Current configuration : 24229 bytes
+!
+! Last configuration change at 11:45:22 NZST Wed Aug 9 2023 by cisco
+! NVRAM config last updated at 11:45:22 NZST Wed Aug 9 2023 by cisco
+!
+version 15.0
+no service pad
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname FramesGT72
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 16384
+enable secret 4 7AVwz1oZVQ3RjZnl8Z6zzHX2xQKTzFc29Qvq.Zwp1eY
+enable password 7 091E5C1C175112040E1E
+!
+username cisco password 7 052D2A36015B6E1048
+username cattools privilege 15 secret 4 piSPgxmHLB0BIiyuIQaimkpTqn9i8GZFn6q1faickYI
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+vtp domain cial
+vtp mode transparent
+udld aggressive
+
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+!
+!
+!
+mls qos map dscp-cos  49 to 5
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue input bandwidth 70 30
+mls qos srr-queue input threshold 1 80 90
+mls qos srr-queue input threshold 2 10 100
+mls qos srr-queue input priority-queue 2 bandwidth 30
+mls qos srr-queue input cos-map queue 1 threshold 2 3
+mls qos srr-queue input cos-map queue 1 threshold 3 6 7
+mls qos srr-queue input cos-map queue 2 threshold 1 4
+mls qos srr-queue input dscp-map queue 1 threshold 2 24
+mls qos srr-queue input dscp-map queue 1 threshold 3 48 50 51 52 53 54 55 56
+mls qos srr-queue input dscp-map queue 1 threshold 3 57 58 59 60 61 62 63
+mls qos srr-queue input dscp-map queue 2 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue input dscp-map queue 2 threshold 3 47 49
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 47 49
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 50 51 52 53 54 55 56
+mls qos srr-queue output dscp-map queue 2 threshold 3 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 10 100 50 1000
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+!
+!
+!
+!
+!
+!
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery interval 30
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 3
+ name Workstations
+!
+vlan 8
+ name VoIP
+!
+vlan 10
+ name CCTV
+!
+vlan 14
+ name Q-SYS-PA
+!
+vlan 21
+ name Building_Management_System
+!
+vlan 22
+ name Cardax
+!
+vlan 24
+ name BagSort
+!
+vlan 25
+ name EAS
+!
+vlan 27
+ name Bagsort_Control
+!
+vlan 29
+ name BHS-Support-Network
+!
+vlan 40
+ name FIDS_DDCs
+!
+vlan 50
+ name UPS_Management
+!
+vlan 110
+ name CCTV_ITP
+!
+vlan 111
+ name CCTV-camera
+!
+vlan 121
+ name BMS_ITP
+!
+vlan 140
+ name FIDS_ITP_DDCs
+!
+vlan 166
+ name ACUS
+!
+vlan 167
+ name Production
+!
+vlan 168
+ name FIDS
+!
+vlan 169
+ name Secure_Workstations
+!
+vlan 240
+ name FIDS_240
+!
+vlan 305
+ name ChinaSthrn
+!
+vlan 306
+ name Jetstar
+!
+vlan 307
+ name Skystar
+!
+vlan 314
+ name HMS
+!
+vlan 316
+ name Virgin
+!
+vlan 318
+ name LagardereQnQ
+!
+vlan 320
+ name Seismic_Sensors
+!
+vlan 410
+ name ARINC1
+!
+vlan 411
+ name ARINC2
+!
+vlan 700
+ name Remote_SPAN_VLAN
+ remote-span
+!
+vlan 888
+ name COREGWS_APs
+!
+vlan 999 
+!
+vlan 1000
+ name Trunk
+lldp run
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/1
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ description (GT07-083) ACUS CHCM0CK00036
+ switchport access vlan 166
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ description (GT07-075) ACUS CHCM0CK00037
+ switchport access vlan 166
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ description (GT07-067) ACUS CHCM0CK00038
+ switchport access vlan 166
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ description (GT07-059) ACUS CHCM0CK00039
+ switchport access vlan 166
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/25
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/26
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/27
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/28
+ description Cam 172 GT7C28 Terminal Plaza (Centre) 192.168.232.187
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/29
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/30
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/31
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/32
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/33
+ description (GT7-29) Q-SYS-PA
+ switchport access vlan 14
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out 
+ mls qos trust dscp
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/34
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/35
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/36
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/37
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/38
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/39
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/40
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/41
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/42
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/43
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/44
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/45
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/46
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/47
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ no lldp transmit
+ no lldp receive
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/48
+ description WAP042
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/49
+ description Fibre - FrameSTGT71 0/51
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out 
+ mls qos trust dscp
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/50
+ description Fibre - FrameSTGT73 0/49
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out 
+ mls qos trust dscp
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/51
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ shutdown
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/52
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ shutdown
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.85 255.255.255.0
+ no ip route-cache
+ no ip mroute-cache
+!
+ip default-gateway 192.168.2.10
+ip http server
+ip http secure-server
+!
+!
+logging facility local0
+logging host 192.168.2.253
+logging host 202.14.167.171
+snmp-server community crc981u RO
+snmp-server location Corridor Behind Counter 27
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps cluster
+snmp-server enable traps entity
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps hsrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server host 192.168.2.253 version 2c crc981u 
+!
+!
+!
+no vstack
+banner motd ^CCCC
+"*******************************************
+*                  {WARNING}               *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+*               is forbidden.              *
+*      Please Contact CIAL ITSUPPORT       *
+*             on Ext 37766                 *
+*******************************************"
+^C
+!
+line con 0
+ exec-timeout 0 0
+line vty 0 4
+ password 7 047D273F2F366C5758
+ length 0
+line vty 5 15
+ password 7 047D273F2F366C5758
+!
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+end
+
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#sh int status             sh mac add
+FramesGT72#sh mac address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+ All    0100.0ccc.cccc    STATIC      CPU
+ All    0100.0ccc.cccd    STATIC      CPU
+ All    0180.c200.0000    STATIC      CPU
+ All    0180.c200.0001    STATIC      CPU
+ All    0180.c200.0002    STATIC      CPU
+ All    0180.c200.0003    STATIC      CPU
+ All    0180.c200.0004    STATIC      CPU
+ All    0180.c200.0005    STATIC      CPU
+ All    0180.c200.0006    STATIC      CPU
+ All    0180.c200.0007    STATIC      CPU
+ All    0180.c200.0008    STATIC      CPU
+ All    0180.c200.0009    STATIC      CPU
+ All    0180.c200.000a    STATIC      CPU
+ All    0180.c200.000b    STATIC      CPU
+ All    0180.c200.000c    STATIC      CPU
+ All    0180.c200.000d    STATIC      CPU
+ All    0180.c200.000e    STATIC      CPU
+ All    0180.c200.000f    STATIC      CPU
+ All    0180.c200.0010    STATIC      CPU
+ All    ffff.ffff.ffff    STATIC      CPU
+   1    0018.bafe.0e33    DYNAMIC     Gi0/49
+   1    0024.98bb.edb1    DYNAMIC     Gi0/50
+   2    0018.bafe.0e33    DYNAMIC     Gi0/49
+   2    001b.1700.0131    DYNAMIC     Gi0/49
+   2    0024.98bb.edc1    DYNAMIC     Gi0/50
+   2    0050.56af.4911    DYNAMIC     Gi0/49
+   2    0c97.5fb0.3b40    DYNAMIC     Gi0/49
+   2    14ab.ec95.85c0    DYNAMIC     Gi0/49
+   2    14ab.ec96.b5c0    DYNAMIC     Gi0/49
+   2    14ab.ec97.d980    DYNAMIC     Gi0/49
+   2    9460.d5da.8680    DYNAMIC     Gi0/49
+   2    a40e.75a9.ae40    DYNAMIC     Gi0/49
+   2    a40e.75aa.34c0    DYNAMIC     Gi0/49
+   2    a40e.75ab.2040    DYNAMIC     Gi0/49
+   2    cc8e.7128.ecc1    DYNAMIC     Gi0/49
+   2    ec67.94d1.3680    DYNAMIC     Gi0/49
+   2    ec67.94d1.4680    DYNAMIC     Gi0/49
+   3    0018.bafe.0e33    DYNAMIC     Gi0/49
+   3    001b.1700.0131    DYNAMIC     Gi0/49
+   3    0068.ebc3.db5e    DYNAMIC     Gi0/49
+   3    0068.ebc3.db6a    DYNAMIC     Gi0/49
+   3    0068.ebcd.693d    DYNAMIC     Gi0/49
+   3    0068.ebcd.69d7    DYNAMIC     Gi0/49
+   3    0068.ebcd.69e6    DYNAMIC     Gi0/49
+   3    040e.3c4b.6f7a    DYNAMIC     Gi0/49
+   3    10e7.c61e.dbac    DYNAMIC     Gi0/49
+   3    1860.247e.e5ed    DYNAMIC     Gi0/49
+   3    38ca.843c.f0d4    DYNAMIC     Gi0/49
+   3    38ca.843c.fb2b    DYNAMIC     Gi0/49
+   3    38ca.843c.fdc7    DYNAMIC     Gi0/49
+   3    38ca.843d.01e4    DYNAMIC     Gi0/49
+   3    38ca.843d.0271    DYNAMIC     Gi0/49
+   3    38ca.8456.d3a1    DYNAMIC     Gi0/49
+   3    38ca.8456.e36a    DYNAMIC     Gi0/49
+   3    5081.402d.8d55    DYNAMIC     Gi0/49
+   3    5081.402d.8dd3    DYNAMIC     Gi0/49
+   3    5081.402d.90d1    DYNAMIC     Gi0/49
+   3    5081.402d.90d5    DYNAMIC     Gi0/49
+   3    607d.0904.51b9    DYNAMIC     Gi0/49
+   3    6c02.e04c.e6b5    DYNAMIC     Gi0/49
+   3    7446.a0a4.ceb9    DYNAMIC     Gi0/49
+   3    7446.a0a5.0bc9    DYNAMIC     Gi0/49
+   3    7c57.586c.7e15    DYNAMIC     Gi0/49
+   3    8469.9392.e815    DYNAMIC     Gi0/49
+   3    8469.93c8.1766    DYNAMIC     Gi0/49
+   3    8469.93df.df38    DYNAMIC     Gi0/49
+   3    8cdc.d456.5b74    DYNAMIC     Gi0/49
+   3    9457.a5ed.31b3    DYNAMIC     Gi0/49
+   3    a08c.fdc2.5198    DYNAMIC     Gi0/49
+   3    bc0f.f3d9.5624    DYNAMIC     Gi0/49
+   3    c018.03c9.0a94    DYNAMIC     Gi0/49
+   3    c018.03c9.8ab4    DYNAMIC     Gi0/49
+   3    c018.03c9.d9e2    DYNAMIC     Gi0/49
+   3    c465.16c9.ba06    DYNAMIC     Gi0/49
+   3    c85a.cf68.9a6a    DYNAMIC     Gi0/49
+   3    c85a.cf69.3243    DYNAMIC     Gi0/49
+   3    c8d9.d212.8a2c    DYNAMIC     Gi0/49
+   3    c8d9.d217.927b    DYNAMIC     Gi0/49
+   3    e073.e75d.cbbe    DYNAMIC     Gi0/49
+   3    e073.e75d.cbfd    DYNAMIC     Gi0/49
+   3    f092.1cf4.9608    DYNAMIC     Gi0/49
+   8    0018.bafe.0e33    DYNAMIC     Gi0/49
+   8    001b.1700.0131    DYNAMIC     Gi0/49
+   8    0060.b955.42d4    DYNAMIC     Gi0/49
+  10    0018.bafe.0e33    DYNAMIC     Gi0/49
+  10    0050.568a.0d2a    DYNAMIC     Gi0/49
+  10    0050.568a.1443    DYNAMIC     Gi0/49
+  10    0050.568a.46a9    DYNAMIC     Gi0/49
+  10    0050.568a.46e9    DYNAMIC     Gi0/49
+  10    0050.568a.5098    DYNAMIC     Gi0/49
+  10    0050.568a.589d    DYNAMIC     Gi0/49
+  10    0050.56af.32ac    DYNAMIC     Gi0/49
+  21    0004.f35d.7380    DYNAMIC     Gi0/49
+  21    0012.ea0e.450d    DYNAMIC     Gi0/49
+  21    0018.bafe.0e33    DYNAMIC     Gi0/49
+  21    001b.1700.0131    DYNAMIC     Gi0/49
+  21    0020.4aa2.3f46    DYNAMIC     Gi0/49
+  21    0020.4aa2.96fb    DYNAMIC     Gi0/49
+  21    0020.4aa2.973e    DYNAMIC     Gi0/49
+  21    0020.4aa2.97bb    DYNAMIC     Gi0/49
+  21    0020.4aa2.9e2c    DYNAMIC     Gi0/49
+  21    0020.4ab4.938b    DYNAMIC     Gi0/49
+  21    0040.9db1.b057    DYNAMIC     Gi0/49
+  21    0040.9db1.dd14    DYNAMIC     Gi0/49
+  21    0050.010b.c1ec    DYNAMIC     Gi0/49
+  21    0050.569c.716c    DYNAMIC     Gi0/49
+  21    0050.56af.0bc3    DYNAMIC     Gi0/49
+  21    0050.56af.a5d3    DYNAMIC     Gi0/49
+  21    0080.a3d5.c947    DYNAMIC     Gi0/49
+  21    00a0.0302.3a3a    DYNAMIC     Gi0/49
+  21    00a0.0302.3eef    DYNAMIC     Gi0/49
+  21    00a0.0302.5c37    DYNAMIC     Gi0/49
+  21    00a0.0302.5f8b    DYNAMIC     Gi0/49
+  21    00a0.0302.8d81    DYNAMIC     Gi0/49
+  21    00a0.0302.b19e    DYNAMIC     Gi0/49
+  21    00a0.0302.bef5    DYNAMIC     Gi0/49
+  21    00a0.0302.d648    DYNAMIC     Gi0/49
+  21    00a0.0302.f57d    DYNAMIC     Gi0/49
+  21    00a0.0303.08bb    DYNAMIC     Gi0/49
+  21    00a0.0305.3e1d    DYNAMIC     Gi0/49
+  21    00a0.0308.0846    DYNAMIC     Gi0/49
+  21    00a0.0308.a457    DYNAMIC     Gi0/49
+  21    00a0.0308.ee19    DYNAMIC     Gi0/49
+  21    00a0.0309.b195    DYNAMIC     Gi0/49
+  21    00a0.030b.9f52    DYNAMIC     Gi0/49
+  21    00a0.030c.362e    DYNAMIC     Gi0/49
+  21    00a0.030c.3a96    DYNAMIC     Gi0/49
+  21    00a0.0311.9b35    DYNAMIC     Gi0/49
+  21    00a0.0315.d34b    DYNAMIC     Gi0/49
+  21    00a0.0315.d355    DYNAMIC     Gi0/49
+  21    00a0.0315.d375    DYNAMIC     Gi0/49
+  21    00a0.0315.d3b3    DYNAMIC     Gi0/49
+  21    00a0.0318.5d3c    DYNAMIC     Gi0/49
+  21    00a0.031f.389f    DYNAMIC     Gi0/49
+  21    00a0.0323.ef1b    DYNAMIC     Gi0/49
+  21    00a0.0323.ef24    DYNAMIC     Gi0/49
+  21    00a0.0325.f45a    DYNAMIC     Gi0/49
+  21    00c0.e400.5ce4    DYNAMIC     Gi0/49
+  21    00c0.e400.6c4d    DYNAMIC     Gi0/49
+  21    00c0.e400.9290    DYNAMIC     Gi0/49
+  21    00c0.e400.b532    DYNAMIC     Gi0/49
+  21    00c0.e400.b713    DYNAMIC     Gi0/49
+  21    00c0.e400.b7ce    DYNAMIC     Gi0/49
+  21    00c0.e400.c2d3    DYNAMIC     Gi0/49
+  21    00c0.e400.c2e8    DYNAMIC     Gi0/49
+  21    00c0.e400.c692    DYNAMIC     Gi0/49
+  21    00c0.e400.c912    DYNAMIC     Gi0/49
+  21    00c0.e400.c913    DYNAMIC     Gi0/49
+  21    00c0.e400.c914    DYNAMIC     Gi0/49
+  21    00c0.e400.c939    DYNAMIC     Gi0/49
+  21    00c0.e400.d2a6    DYNAMIC     Gi0/49
+  21    00c0.e400.d2c4    DYNAMIC     Gi0/49
+  21    00c0.e400.e60b    DYNAMIC     Gi0/49
+  21    00c0.e400.f565    DYNAMIC     Gi0/49
+  21    00c0.e400.fd4c    DYNAMIC     Gi0/49
+  21    00c0.e401.abde    DYNAMIC     Gi0/49
+  21    00c0.e401.be6d    DYNAMIC     Gi0/49
+  21    00c0.e401.e5a8    DYNAMIC     Gi0/49
+  21    00c0.e401.faab    DYNAMIC     Gi0/49
+  21    00c0.e402.0a1f    DYNAMIC     Gi0/49
+  21    00c0.e402.1391    DYNAMIC     Gi0/49
+  21    00c0.e402.3126    DYNAMIC     Gi0/49
+  21    00c0.e402.3334    DYNAMIC     Gi0/49
+  21    00c0.e402.333a    DYNAMIC     Gi0/49
+  21    00c0.e402.333b    DYNAMIC     Gi0/49
+  21    00c0.e402.3342    DYNAMIC     Gi0/49
+  21    00c0.e402.335d    DYNAMIC     Gi0/49
+  21    00c0.e402.3415    DYNAMIC     Gi0/49
+  21    00c0.e402.3572    DYNAMIC     Gi0/49
+  21    00c0.e402.357c    DYNAMIC     Gi0/49
+  21    00c0.e402.3584    DYNAMIC     Gi0/49
+  21    00c0.e402.5145    DYNAMIC     Gi0/49
+  21    00c0.e402.5147    DYNAMIC     Gi0/49
+  21    00c0.e402.5158    DYNAMIC     Gi0/49
+  21    00c0.e402.515e    DYNAMIC     Gi0/49
+  21    00c0.e402.934c    DYNAMIC     Gi0/49
+  21    00c0.e403.0432    DYNAMIC     Gi0/49
+  21    00c0.e403.a585    DYNAMIC     Gi0/49
+  21    00c0.e404.dbed    DYNAMIC     Gi0/49
+  21    1860.24b1.3908    DYNAMIC     Gi0/49
+  21    5c88.169a.ed3d    DYNAMIC     Gi0/49
+  22    0000.0a3c.3cf3    DYNAMIC     Gi0/49
+  22    0004.f35d.7389    DYNAMIC     Gi0/49
+  22    0018.bafe.0e33    DYNAMIC     Gi0/49
+  22    001b.1700.0131    DYNAMIC     Gi0/49
+  22    0050.56af.e2aa    DYNAMIC     Gi0/49
+  22    0050.56af.ea4e    DYNAMIC     Gi0/49
+  24    000b.abd9.e091    DYNAMIC     Gi0/49
+  24    0018.bafe.0e33    DYNAMIC     Gi0/49
+  24    001b.1700.0131    DYNAMIC     Gi0/49
+  24    0050.56af.606e    DYNAMIC     Gi0/49
+  24    0050.56af.63d7    DYNAMIC     Gi0/49
+  24    0050.56af.e913    DYNAMIC     Gi0/49
+  24    0050.56af.ef18    DYNAMIC     Gi0/49
+  24    38ca.843c.fbc5    DYNAMIC     Gi0/49
+  24    5081.402d.8e7c    DYNAMIC     Gi0/49
+  24    5081.402d.8f23    DYNAMIC     Gi0/49
+  24    5081.402d.8f43    DYNAMIC     Gi0/49
+  24    5081.402d.8f59    DYNAMIC     Gi0/49
+  24    5081.402d.90a1    DYNAMIC     Gi0/49
+  24    5081.402d.90e7    DYNAMIC     Gi0/49
+  25    0015.1763.6720    DYNAMIC     Gi0/49
+  25    0018.bafe.0e33    DYNAMIC     Gi0/49
+  25    001b.1700.0131    DYNAMIC     Gi0/49
+  25    0080.6610.125f    DYNAMIC     Gi0/50
+  25    00c0.b7b3.db5c    DYNAMIC     Gi0/49
+  25    00c0.b7b8.3594    DYNAMIC     Gi0/49
+  25    00c0.b7df.69fa    DYNAMIC     Gi0/50
+  27    0000.bc22.dbff    DYNAMIC     Gi0/49
+  27    0000.bc5a.cfee    DYNAMIC     Gi0/49
+  27    0000.bc5b.feaa    DYNAMIC     Gi0/49
+  27    0000.bc5b.ff7a    DYNAMIC     Gi0/49
+  27    0000.bc61.d474    DYNAMIC     Gi0/49
+  27    0000.bc61.d4b7    DYNAMIC     Gi0/49
+  27    0000.bc61.d50d    DYNAMIC     Gi0/49
+  27    0000.bc66.37a7    DYNAMIC     Gi0/49
+  27    000f.7303.20c4    DYNAMIC     Gi0/49
+  27    000f.7303.20c6    DYNAMIC     Gi0/49
+  27    000f.7303.26bc    DYNAMIC     Gi0/49
+  27    000f.7303.26c0    DYNAMIC     Gi0/49
+  27    000f.7303.26d9    DYNAMIC     Gi0/49
+  27    000f.7303.26de    DYNAMIC     Gi0/49
+  27    0013.3b90.de8f    DYNAMIC     Gi0/49
+  27    0016.7709.1130    DYNAMIC     Gi0/49
+  27    0016.7709.1131    DYNAMIC     Gi0/49
+  27    0016.7709.1134    DYNAMIC     Gi0/49
+  27    0016.7709.1135    DYNAMIC     Gi0/49
+  27    0016.7709.1136    DYNAMIC     Gi0/49
+  27    0016.7709.1137    DYNAMIC     Gi0/49
+  27    0016.7709.1138    DYNAMIC     Gi0/49
+  27    0016.7709.1139    DYNAMIC     Gi0/49
+  27    0016.7709.113e    DYNAMIC     Gi0/49
+  27    0016.7709.113f    DYNAMIC     Gi0/49
+  27    0016.7709.1144    DYNAMIC     Gi0/49
+  27    0016.7709.1145    DYNAMIC     Gi0/49
+  27    0016.7709.1494    DYNAMIC     Gi0/49
+  27    0016.7709.1495    DYNAMIC     Gi0/49
+  27    0016.7709.1496    DYNAMIC     Gi0/49
+  27    0016.7709.1497    DYNAMIC     Gi0/49
+  27    0016.7709.149a    DYNAMIC     Gi0/49
+  27    0016.7709.149b    DYNAMIC     Gi0/49
+  27    0016.7709.149c    DYNAMIC     Gi0/49
+  27    0016.7709.149d    DYNAMIC     Gi0/49
+  27    0016.7709.14a4    DYNAMIC     Gi0/49
+  27    0016.7709.14a5    DYNAMIC     Gi0/49
+  27    0016.7709.14a6    DYNAMIC     Gi0/49
+  27    0016.7709.14a7    DYNAMIC     Gi0/49
+  27    0016.7709.14a8    DYNAMIC     Gi0/49
+  27    0016.7709.14a9    DYNAMIC     Gi0/49
+  27    0016.7709.14aa    DYNAMIC     Gi0/49
+  27    0016.7709.14ab    DYNAMIC     Gi0/49
+  27    0016.7709.14ac    DYNAMIC     Gi0/49
+  27    0016.7709.14ad    DYNAMIC     Gi0/49
+  27    0016.7709.14b0    DYNAMIC     Gi0/49
+  27    0016.7709.14b1    DYNAMIC     Gi0/49
+  27    0016.7709.14b2    DYNAMIC     Gi0/49
+  27    0016.7709.14b3    DYNAMIC     Gi0/49
+  27    0016.7709.14b4    DYNAMIC     Gi0/49
+  27    0016.7709.14b5    DYNAMIC     Gi0/49
+  27    0016.7709.14b6    DYNAMIC     Gi0/49
+  27    0016.7709.14b7    DYNAMIC     Gi0/49
+  27    0016.7709.14ba    DYNAMIC     Gi0/49
+  27    0016.7709.14bb    DYNAMIC     Gi0/49
+  27    0016.7709.14bc    DYNAMIC     Gi0/49
+  27    0016.7709.14bd    DYNAMIC     Gi0/49
+  27    0016.7709.14be    DYNAMIC     Gi0/49
+  27    0016.7709.14bf    DYNAMIC     Gi0/49
+  27    0016.7709.14c0    DYNAMIC     Gi0/49
+  27    0016.7709.14c1    DYNAMIC     Gi0/49
+  27    0016.770a.9d5f    DYNAMIC     Gi0/49
+  27    0016.770a.9d60    DYNAMIC     Gi0/49
+  27    0016.770a.cff2    DYNAMIC     Gi0/49
+  27    0016.770a.cff3    DYNAMIC     Gi0/49
+  27    0016.770a.cffc    DYNAMIC     Gi0/49
+  27    0016.770a.cffd    DYNAMIC     Gi0/49
+  27    0018.bafe.0e33    DYNAMIC     Gi0/49
+  27    001b.1700.0131    DYNAMIC     Gi0/49
+  27    0020.4ac1.04ce    DYNAMIC     Gi0/49
+  27    0020.4ac1.04f0    DYNAMIC     Gi0/49
+  27    0050.56af.5bcd    DYNAMIC     Gi0/49
+  27    0050.56af.9e18    DYNAMIC     Gi0/49
+  27    0050.56af.ac5d    DYNAMIC     Gi0/49
+  27    0090.e821.5e0d    DYNAMIC     Gi0/49
+  27    0090.e821.5e1c    DYNAMIC     Gi0/49
+  27    5c88.16c7.b1b4    DYNAMIC     Gi0/49
+  27    5c88.16c7.b281    DYNAMIC     Gi0/49
+  27    c400.ad9f.3037    DYNAMIC     Gi0/49
+  29    0009.0f09.231a    DYNAMIC     Gi0/49
+  29    0018.bafe.0e33    DYNAMIC     Gi0/49
+  29    04d3.b009.3a26    DYNAMIC     Gi0/49
+  29    62d6.c5a2.4ed0    DYNAMIC     Gi0/49
+  29    d247.5058.492b    DYNAMIC     Gi0/49
+  29    da00.b85a.1668    DYNAMIC     Gi0/49
+  29    e073.e7e8.3ae2    DYNAMIC     Gi0/49
+  29    e0c2.644b.d205    DYNAMIC     Gi0/49
+  29    f0b6.1e9b.514f    DYNAMIC     Gi0/49
+  40    0018.bafe.0e33    DYNAMIC     Gi0/49
+  40    001b.1700.0131    DYNAMIC     Gi0/49
+  40    c85a.cfde.647e    DYNAMIC     Gi0/49
+  50    0018.bafe.0e33    DYNAMIC     Gi0/49
+  50    001b.1700.0131    DYNAMIC     Gi0/49
+  50    00c0.b753.1547    DYNAMIC     Gi0/49
+  50    00c0.b754.cf7a    DYNAMIC     Gi0/49
+  50    00c0.b786.36b2    DYNAMIC     Gi0/49
+  50    00c0.b789.8335    DYNAMIC     Gi0/49
+  50    00c0.b78a.4228    DYNAMIC     Gi0/49
+  50    00c0.b795.3707    DYNAMIC     Gi0/49
+  50    00c0.b795.49cd    DYNAMIC     Gi0/49
+  50    00c0.b7a0.cd6f    DYNAMIC     Gi0/49
+  50    00c0.b7b4.164b    DYNAMIC     Gi0/49
+  50    00c0.b7b8.2129    DYNAMIC     Gi0/49
+  50    00c0.b7b8.da5a    DYNAMIC     Gi0/49
+  50    00c0.b7c4.0cbb    DYNAMIC     Gi0/49
+  50    00c0.b7c8.bcf6    DYNAMIC     Gi0/49
+  50    00c0.b7df.6bc0    DYNAMIC     Gi0/49
+  50    00c0.b7df.6bc7    DYNAMIC     Gi0/49
+  50    00c0.b7df.6bcd    DYNAMIC     Gi0/49
+  50    00c0.b7df.6c8e    DYNAMIC     Gi0/49
+  50    00c0.b7df.edbd    DYNAMIC     Gi0/49
+  50    00c0.b7e1.8946    DYNAMIC     Gi0/49
+  50    00c0.b7e2.37d8    DYNAMIC     Gi0/49
+  50    00c0.b7e2.380a    DYNAMIC     Gi0/49
+  50    00c0.b7ea.6b36    DYNAMIC     Gi0/49
+  50    00c0.b7ec.7f45    DYNAMIC     Gi0/49
+  50    00c0.b7f4.f838    DYNAMIC     Gi0/49
+  50    00c0.b7f4.f8cc    DYNAMIC     Gi0/49
+  50    00c0.b7f4.f916    DYNAMIC     Gi0/49
+  50    00c0.b7f4.f952    DYNAMIC     Gi0/49
+  50    00c0.b7f5.19b9    DYNAMIC     Gi0/49
+  50    00c0.b7fc.d415    DYNAMIC     Gi0/49
+  50    2829.8606.4994    DYNAMIC     Gi0/49
+  50    2829.8606.b8f4    DYNAMIC     Gi0/49
+  50    2829.860b.cfc1    DYNAMIC     Gi0/49
+  50    2829.8612.3f8a    DYNAMIC     Gi0/49
+  50    2829.8619.fb01    DYNAMIC     Gi0/49
+  50    2829.861d.3535    DYNAMIC     Gi0/49
+  50    2829.861d.356a    DYNAMIC     Gi0/49
+  50    2829.861d.d177    DYNAMIC     Gi0/49
+  50    2829.8622.6155    DYNAMIC     Gi0/49
+  50    2829.862e.1b57    DYNAMIC     Gi0/49
+  50    2829.864b.2ebb    DYNAMIC     Gi0/49
+  50    2829.864b.37d1    DYNAMIC     Gi0/49
+  50    2829.8657.5ac9    DYNAMIC     Gi0/49
+  50    2829.8657.5acf    DYNAMIC     Gi0/49
+  50    2829.8657.5b04    DYNAMIC     Gi0/49
+  50    2829.8657.5b1c    DYNAMIC     Gi0/49
+  50    2829.8664.242f    DYNAMIC     Gi0/49
+  50    2829.8664.2465    DYNAMIC     Gi0/49
+  50    2829.8664.348c    DYNAMIC     Gi0/49
+  50    2829.866b.56a4    DYNAMIC     Gi0/49
+  50    2829.866b.583b    DYNAMIC     Gi0/49
+  50    2829.866b.5845    DYNAMIC     Gi0/49
+  50    2829.866b.584d    DYNAMIC     Gi0/49
+  50    2829.866b.5866    DYNAMIC     Gi0/49
+  50    2829.866b.587b    DYNAMIC     Gi0/49
+  50    2829.866b.5881    DYNAMIC     Gi0/49
+  50    2829.866b.58e2    DYNAMIC     Gi0/49
+ 110    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 110    0050.56af.1930    DYNAMIC     Gi0/49
+ 110    0050.56af.4604    DYNAMIC     Gi0/49
+ 110    0050.56af.5923    DYNAMIC     Gi0/49
+ 110    0050.56af.6491    DYNAMIC     Gi0/49
+ 110    0050.56af.baa6    DYNAMIC     Gi0/49
+ 110    0050.56af.cf9e    DYNAMIC     Gi0/49
+ 111    0010.be08.fe46    DYNAMIC     Gi0/50
+ 111    0010.be09.0a26    DYNAMIC     Gi0/49
+ 111    0010.be09.0a29    DYNAMIC     Gi0/50
+ 111    0010.be09.2770    DYNAMIC     Gi0/49
+ 111    0010.be09.278f    DYNAMIC     Gi0/49
+ 111    0010.be09.282d    DYNAMIC     Gi0/49
+ 111    0010.be09.28db    DYNAMIC     Gi0/49
+ 111    0010.be09.fdd4    DYNAMIC     Gi0/50
+ 111    0010.be0b.3d62    DYNAMIC     Gi0/49
+ 111    0010.be0b.3d8b    DYNAMIC     Gi0/49
+ 111    0010.be0b.3eac    DYNAMIC     Gi0/49
+ 111    0010.be0b.ca47    DYNAMIC     Gi0/49
+ 111    0010.be0b.ca7f    DYNAMIC     Gi0/49
+ 111    0010.be0b.ca83    DYNAMIC     Gi0/49
+ 111    0010.be0b.ca8f    DYNAMIC     Gi0/49
+ 111    0010.be0b.cae9    DYNAMIC     Gi0/49
+ 111    0012.8151.107c    DYNAMIC     Gi0/49
+ 111    0012.8151.10c2    DYNAMIC     Gi0/49
+ 111    0012.8151.10ee    DYNAMIC     Gi0/49
+ 111    0012.8151.110a    DYNAMIC     Gi0/49
+ 111    0012.8151.1111    DYNAMIC     Gi0/49
+ 111    0012.8151.1114    DYNAMIC     Gi0/49
+ 111    0012.8151.1283    DYNAMIC     Gi0/49
+ 111    0012.8151.128c    DYNAMIC     Gi0/49
+ 111    0012.8151.13aa    DYNAMIC     Gi0/49
+ 111    0012.8151.13af    DYNAMIC     Gi0/49
+ 111    0012.8151.13b1    DYNAMIC     Gi0/49
+ 111    0012.8151.13b3    DYNAMIC     Gi0/49
+ 111    0012.8151.13b4    DYNAMIC     Gi0/49
+ 111    0012.8151.13b5    DYNAMIC     Gi0/49
+ 111    0012.8151.13bc    DYNAMIC     Gi0/49
+ 111    0012.8151.13c2    DYNAMIC     Gi0/49
+ 111    0012.8151.13cd    DYNAMIC     Gi0/49
+ 111    0012.8151.13d8    DYNAMIC     Gi0/49
+ 111    0012.8151.13dd    DYNAMIC     Gi0/49
+ 111    0012.8151.1401    DYNAMIC     Gi0/49
+ 111    0012.8151.1414    DYNAMIC     Gi0/50
+ 111    0012.8151.143a    DYNAMIC     Gi0/49
+ 111    0012.8151.1462    DYNAMIC     Gi0/49
+ 111    0012.8151.155d    DYNAMIC     Gi0/49
+ 111    0012.8151.1560    DYNAMIC     Gi0/49
+ 111    0012.8151.156e    DYNAMIC     Gi0/49
+ 111    0012.8151.1571    DYNAMIC     Gi0/49
+ 111    0012.8151.1593    DYNAMIC     Gi0/49
+ 111    0012.8151.1816    DYNAMIC     Gi0/49
+ 111    0012.8151.1820    DYNAMIC     Gi0/49
+ 111    0012.8151.182e    DYNAMIC     Gi0/49
+ 111    0012.8151.182f    DYNAMIC     Gi0/49
+ 111    0012.8151.1837    DYNAMIC     Gi0/49
+ 111    0012.8151.183d    DYNAMIC     Gi0/49
+ 111    0012.8151.1843    DYNAMIC     Gi0/49
+ 111    0012.8151.1846    DYNAMIC     Gi0/49
+ 111    0012.8151.1849    DYNAMIC     Gi0/49
+ 111    0012.8151.184e    DYNAMIC     Gi0/49
+ 111    0012.8151.1856    DYNAMIC     Gi0/49
+ 111    0012.8151.185d    DYNAMIC     Gi0/49
+ 111    0012.8151.185e    DYNAMIC     Gi0/49
+ 111    0012.8151.1867    DYNAMIC     Gi0/50
+ 111    0012.8151.186c    DYNAMIC     Gi0/49
+ 111    0012.8151.186f    DYNAMIC     Gi0/49
+ 111    0012.8151.1873    DYNAMIC     Gi0/49
+ 111    0012.8151.1874    DYNAMIC     Gi0/50
+ 111    0012.8151.1898    DYNAMIC     Gi0/49
+ 111    0012.8151.18a1    DYNAMIC     Gi0/50
+ 111    0012.8151.18a6    DYNAMIC     Gi0/49
+ 111    0012.8151.18ad    DYNAMIC     Gi0/49
+ 111    0012.8151.18af    DYNAMIC     Gi0/49
+ 111    0012.8151.18d0    DYNAMIC     Gi0/50
+ 111    0012.8151.18e0    DYNAMIC     Gi0/49
+ 111    0012.8151.18e3    DYNAMIC     Gi0/49
+ 111    0012.8151.21f4    DYNAMIC     Gi0/49
+ 111    0012.8151.21f6    DYNAMIC     Gi0/49
+ 111    0012.8151.21f8    DYNAMIC     Gi0/49
+ 111    0012.8151.225a    DYNAMIC     Gi0/49
+ 111    0012.8151.225c    DYNAMIC     Gi0/49
+ 111    0012.8151.225f    DYNAMIC     Gi0/49
+ 111    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 111    001b.1700.0131    DYNAMIC     Gi0/49
+ 111    0040.8ce2.30ad    DYNAMIC     Gi0/49
+ 111    0040.8ce4.f7d3    DYNAMIC     Gi0/49
+ 111    0040.8ce8.31af    DYNAMIC     Gi0/49
+ 111    0050.56af.0215    DYNAMIC     Gi0/49
+ 111    0050.56af.2649    DYNAMIC     Gi0/49
+ 111    0050.56af.431a    DYNAMIC     Gi0/49
+ 111    0050.56af.489a    DYNAMIC     Gi0/49
+ 111    0050.56af.99bd    DYNAMIC     Gi0/49
+ 111    0050.56af.b5d4    DYNAMIC     Gi0/49
+ 111    0050.56af.c5aa    DYNAMIC     Gi0/49
+ 111    0050.56af.eedc    DYNAMIC     Gi0/49
+ 111    24a4.3c88.b9b8    DYNAMIC     Gi0/49
+ 111    accc.8e02.12cb    DYNAMIC     Gi0/49
+ 111    accc.8e02.36e9    DYNAMIC     Gi0/49
+ 111    accc.8e2e.0fc3    DYNAMIC     Gi0/49
+ 111    accc.8e2e.40b5    DYNAMIC     Gi0/49
+ 111    accc.8e2e.40cb    DYNAMIC     Gi0/49
+ 111    accc.8e36.bb03    DYNAMIC     Gi0/49
+ 111    accc.8e36.bbc5    DYNAMIC     Gi0/49
+ 111    accc.8e36.bbc6    DYNAMIC     Gi0/49
+ 111    accc.8e43.bc97    DYNAMIC     Gi0/49
+ 111    accc.8e43.bc99    DYNAMIC     Gi0/49
+ 111    accc.8e44.6474    DYNAMIC     Gi0/49
+ 111    accc.8e44.c83b    DYNAMIC     Gi0/49
+ 111    accc.8e4a.79ba    DYNAMIC     Gi0/49
+ 111    accc.8e4a.c21b    DYNAMIC     Gi0/49
+ 111    accc.8e4a.c237    DYNAMIC     Gi0/49
+ 111    accc.8e4a.c23b    DYNAMIC     Gi0/49
+ 111    accc.8e4a.c34c    DYNAMIC     Gi0/49
+ 111    accc.8e4a.c367    DYNAMIC     Gi0/49
+ 111    accc.8e4c.6015    DYNAMIC     Gi0/49
+ 111    accc.8e4c.6e1b    DYNAMIC     Gi0/49
+ 111    accc.8e4f.49f5    DYNAMIC     Gi0/49
+ 111    accc.8e4f.5352    DYNAMIC     Gi0/49
+ 111    accc.8e4f.5356    DYNAMIC     Gi0/49
+ 111    accc.8e4f.535b    DYNAMIC     Gi0/49
+ 111    accc.8e4f.ac9c    DYNAMIC     Gi0/49
+ 111    accc.8e4f.ac9d    DYNAMIC     Gi0/49
+ 111    accc.8e4f.b5e6    DYNAMIC     Gi0/49
+ 111    accc.8e4f.b5ec    DYNAMIC     Gi0/49
+ 111    accc.8e4f.b5f1    DYNAMIC     Gi0/49
+ 111    accc.8e4f.b5f3    DYNAMIC     Gi0/49
+ 111    accc.8e5a.01dc    DYNAMIC     Gi0/49
+ 111    accc.8e61.3fad    DYNAMIC     Gi0/49
+ 111    accc.8e61.4389    DYNAMIC     Gi0/49
+ 111    accc.8e61.9f98    DYNAMIC     Gi0/49
+ 111    accc.8e61.9fd4    DYNAMIC     Gi0/49
+ 111    accc.8e6f.32ef    DYNAMIC     Gi0/49
+ 111    accc.8e6f.9f10    DYNAMIC     Gi0/49
+ 111    accc.8e73.2090    DYNAMIC     Gi0/49
+ 111    accc.8e79.f82f    DYNAMIC     Gi0/49
+ 111    accc.8e7a.65ac    DYNAMIC     Gi0/49
+ 111    accc.8e83.b3f9    DYNAMIC     Gi0/49
+ 111    accc.8e83.d66e    DYNAMIC     Gi0/49
+ 111    accc.8e83.d678    DYNAMIC     Gi0/49
+ 111    accc.8e83.d890    DYNAMIC     Gi0/49
+ 111    accc.8e87.97f5    DYNAMIC     Gi0/49
+ 111    accc.8e87.d26f    DYNAMIC     Gi0/49
+ 111    accc.8e87.d278    DYNAMIC     Gi0/49
+ 111    accc.8e87.d27f    DYNAMIC     Gi0/49
+ 111    accc.8e87.d284    DYNAMIC     Gi0/49
+ 111    accc.8e87.d2aa    DYNAMIC     Gi0/49
+ 111    accc.8e88.b1d1    DYNAMIC     Gi0/49
+ 111    accc.8e88.b21a    DYNAMIC     Gi0/50
+ 111    accc.8e88.b225    DYNAMIC     Gi0/49
+ 111    accc.8e88.b23e    DYNAMIC     Gi0/49
+ 111    accc.8e88.b24f    DYNAMIC     Gi0/49
+ 111    accc.8e88.b254    DYNAMIC     Gi0/49
+ 111    accc.8e88.b33e    DYNAMIC     Gi0/49
+ 111    accc.8e88.dee6    DYNAMIC     Gi0/49
+ 111    accc.8e88.e1b5    DYNAMIC     Gi0/49
+ 111    accc.8e88.e6c8    DYNAMIC     Gi0/49
+ 111    accc.8e96.3ed6    DYNAMIC     Gi0/49
+ 111    accc.8e98.43b0    DYNAMIC     Gi0/49
+ 111    accc.8e98.43be    DYNAMIC     Gi0/49
+ 111    accc.8e98.43bf    DYNAMIC     Gi0/49
+ 111    accc.8e98.dfa4    DYNAMIC     Gi0/49
+ 111    accc.8e98.dfac    DYNAMIC     Gi0/49
+ 111    accc.8e98.e255    DYNAMIC     Gi0/49
+ 111    accc.8e98.ea85    DYNAMIC     Gi0/49
+ 111    accc.8e98.ea8f    DYNAMIC     Gi0/49
+ 111    accc.8e98.ea96    DYNAMIC     Gi0/49
+ 111    accc.8e98.eaa7    DYNAMIC     Gi0/49
+ 111    accc.8e98.eaaa    DYNAMIC     Gi0/49
+ 111    accc.8e98.eab0    DYNAMIC     Gi0/49
+ 111    accc.8eae.22ca    DYNAMIC     Gi0/49
+ 111    accc.8eae.2341    DYNAMIC     Gi0/49
+ 111    accc.8eae.2435    DYNAMIC     Gi0/49
+ 111    accc.8eae.6cfb    DYNAMIC     Gi0/49
+ 111    accc.8eae.6d3f    DYNAMIC     Gi0/49
+ 111    accc.8eae.6d5d    DYNAMIC     Gi0/49
+ 111    accc.8eae.6dc7    DYNAMIC     Gi0/49
+ 111    accc.8eae.f305    DYNAMIC     Gi0/49
+ 111    accc.8eb1.2f59    DYNAMIC     Gi0/49
+ 111    accc.8eb5.245c    DYNAMIC     Gi0/49
+ 111    accc.8eb5.248a    DYNAMIC     Gi0/49
+ 111    accc.8eb9.e1e3    DYNAMIC     Gi0/49
+ 111    accc.8eba.7934    DYNAMIC     Gi0/49
+ 111    accc.8eba.f6e2    DYNAMIC     Gi0/49
+ 111    accc.8ec3.34a8    DYNAMIC     Gi0/49
+ 111    accc.8ec8.6659    DYNAMIC     Gi0/49
+ 111    accc.8ec9.0b22    DYNAMIC     Gi0/49
+ 111    accc.8ec9.6fbe    DYNAMIC     Gi0/49
+ 111    accc.8ec9.865e    DYNAMIC     Gi0/49
+ 111    accc.8eca.0f4a    DYNAMIC     Gi0/49
+ 111    accc.8eca.2563    DYNAMIC     Gi0/49
+ 111    accc.8eca.25e3    DYNAMIC     Gi0/49
+ 111    accc.8eca.f8ba    DYNAMIC     Gi0/49
+ 111    accc.8ed0.982d    DYNAMIC     Gi0/49
+ 111    accc.8ed1.7c33    DYNAMIC     Gi0/49
+ 111    accc.8edb.0557    DYNAMIC     Gi0/49
+ 111    accc.8eeb.e430    DYNAMIC     Gi0/49
+ 111    b8a4.4f0e.6ce6    DYNAMIC     Gi0/49
+ 111    b8a4.4f11.fc00    DYNAMIC     Gi0/50
+ 111    b8a4.4f18.81bd    DYNAMIC     Gi0/50
+ 111    b8a4.4f1d.d13e    DYNAMIC     Gi0/49
+ 111    b8a4.4f20.9565    DYNAMIC     Gi0/49
+ 111    b8a4.4f24.a7cd    DYNAMIC     Gi0/49
+ 111    b8a4.4f28.d16c    DYNAMIC     Gi0/49
+ 111    b8a4.4f2b.3d27    DYNAMIC     Gi0/49
+ 111    b8a4.4f39.9676    DYNAMIC     Gi0/49
+ 111    b8a4.4f3a.a388    DYNAMIC     Gi0/49
+ 111    b8a4.4f42.0a5f    DYNAMIC     Gi0/49
+ 111    b8a4.4f47.6885    STATIC      Gi0/28 
+ 111    b8a4.4f58.9b7a    DYNAMIC     Gi0/49
+ 111    b8a4.4f5c.7ffa    DYNAMIC     Gi0/49
+ 111    b8a4.4f5e.e12e    DYNAMIC     Gi0/49
+ 111    b8a4.4f60.3657    DYNAMIC     Gi0/49
+ 111    b8a4.4f60.46fa    DYNAMIC     Gi0/49
+ 111    b8a4.4f64.d7f8    DYNAMIC     Gi0/50
+ 111    b8a4.4f6c.4441    DYNAMIC     Gi0/49
+ 111    b8a4.4f6c.4c84    DYNAMIC     Gi0/49
+ 111    b8a4.4f6c.4cc1    DYNAMIC     Gi0/49
+ 111    b8a4.4f6c.e272    DYNAMIC     Gi0/49
+ 111    b8a4.4f71.9ebb    DYNAMIC     Gi0/49
+ 111    b8a4.4f73.84c0    DYNAMIC     Gi0/49
+ 111    b8a4.4f76.304a    DYNAMIC     Gi0/49
+ 111    b8a4.4f80.a473    DYNAMIC     Gi0/49
+ 111    d892.0800.4500    DYNAMIC     Gi0/49
+ 121    0004.f354.34b1    DYNAMIC     Gi0/49
+ 121    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 121    001b.1700.0131    DYNAMIC     Gi0/49
+ 121    0020.4abf.989e    DYNAMIC     Gi0/49
+ 121    0050.011c.2538    DYNAMIC     Gi0/49
+ 121    0050.569c.7312    DYNAMIC     Gi0/49
+ 121    0050.56af.f336    DYNAMIC     Gi0/49
+ 121    0050.db00.b950    DYNAMIC     Gi0/49
+ 121    0080.a397.227e    DYNAMIC     Gi0/49
+ 121    00a0.0302.c969    DYNAMIC     Gi0/49
+ 121    00a0.0302.e0a2    DYNAMIC     Gi0/49
+ 121    00a0.0302.f29e    DYNAMIC     Gi0/49
+ 121    00a0.0302.f29f    DYNAMIC     Gi0/49
+ 121    00a0.0302.f2a0    DYNAMIC     Gi0/49
+ 121    00a0.0302.f2a1    DYNAMIC     Gi0/49
+ 121    00a0.0302.f2af    DYNAMIC     Gi0/49
+ 121    00a0.0302.f2bb    DYNAMIC     Gi0/49
+ 121    00a0.0302.f2c7    DYNAMIC     Gi0/49
+ 121    00a0.0303.2a53    DYNAMIC     Gi0/49
+ 121    00a0.0303.4337    DYNAMIC     Gi0/49
+ 121    00a0.0303.449c    DYNAMIC     Gi0/49
+ 121    00a0.0303.c9e1    DYNAMIC     Gi0/49
+ 121    00a0.0304.1494    DYNAMIC     Gi0/49
+ 121    00a0.0304.89d1    DYNAMIC     Gi0/49
+ 121    00a0.0308.eb99    DYNAMIC     Gi0/49
+ 121    00a0.0318.a519    DYNAMIC     Gi0/49
+ 121    00a0.0322.abe7    DYNAMIC     Gi0/49
+ 121    00a0.0330.8162    DYNAMIC     Gi0/49
+ 121    00c0.e401.a72c    DYNAMIC     Gi0/49
+ 121    00c0.e401.aae8    DYNAMIC     Gi0/49
+ 121    00c0.e401.ac94    DYNAMIC     Gi0/49
+ 121    00c0.e401.b340    DYNAMIC     Gi0/49
+ 121    00c0.e401.b342    DYNAMIC     Gi0/49
+ 121    00c0.e401.b345    DYNAMIC     Gi0/49
+ 121    00c0.e401.b346    DYNAMIC     Gi0/49
+ 121    00c0.e401.c2e5    DYNAMIC     Gi0/49
+ 121    00c0.e401.d4e9    DYNAMIC     Gi0/49
+ 121    00c0.e401.ff52    DYNAMIC     Gi0/49
+ 121    00c0.e401.ff56    DYNAMIC     Gi0/49
+ 121    00c0.e401.ff58    DYNAMIC     Gi0/49
+ 121    00c0.e401.ff5a    DYNAMIC     Gi0/49
+ 121    00c0.e401.ff5c    DYNAMIC     Gi0/49
+ 121    00c0.e402.0176    DYNAMIC     Gi0/49
+ 121    00c0.e402.17b7    DYNAMIC     Gi0/49
+ 121    00c0.e402.17b9    DYNAMIC     Gi0/49
+ 121    00c0.e402.17ba    DYNAMIC     Gi0/49
+ 121    00c0.e402.17bb    DYNAMIC     Gi0/49
+ 121    00c0.e402.17bd    DYNAMIC     Gi0/49
+ 121    00c0.e402.17be    DYNAMIC     Gi0/49
+ 121    00c0.e402.18d6    DYNAMIC     Gi0/49
+ 121    00c0.e402.18d9    DYNAMIC     Gi0/49
+ 121    00c0.e402.18da    DYNAMIC     Gi0/49
+ 121    00c0.e402.18dc    DYNAMIC     Gi0/49
+ 121    00c0.e402.1bab    DYNAMIC     Gi0/49
+ 121    00c0.e402.1bac    DYNAMIC     Gi0/49
+ 121    00c0.e402.1bae    DYNAMIC     Gi0/49
+ 121    00c0.e402.1bb1    DYNAMIC     Gi0/49
+ 121    00c0.e402.1bb2    DYNAMIC     Gi0/49
+ 121    00c0.e402.20d5    DYNAMIC     Gi0/49
+ 121    00c0.e402.21ea    DYNAMIC     Gi0/49
+ 121    00c0.e402.21f2    DYNAMIC     Gi0/49
+ 121    00c0.e402.21f3    DYNAMIC     Gi0/49
+ 121    00c0.e402.21f4    DYNAMIC     Gi0/49
+ 121    00c0.e402.21fa    DYNAMIC     Gi0/49
+ 121    00c0.e402.21fe    DYNAMIC     Gi0/49
+ 121    00c0.e402.49fe    DYNAMIC     Gi0/49
+ 121    00c0.e402.4a00    DYNAMIC     Gi0/49
+ 121    00c0.e402.4a07    DYNAMIC     Gi0/49
+ 121    00c0.e402.96e0    DYNAMIC     Gi0/49
+ 121    00c0.e402.c8a7    DYNAMIC     Gi0/49
+ 121    00c0.e402.cefc    DYNAMIC     Gi0/49
+ 121    00c0.e403.21ed    DYNAMIC     Gi0/49
+ 121    00c0.e403.220a    DYNAMIC     Gi0/49
+ 121    00c0.e403.5e01    DYNAMIC     Gi0/49
+ 121    00c0.e403.7c3f    DYNAMIC     Gi0/49
+ 121    00c0.e403.b53e    DYNAMIC     Gi0/49
+ 121    00c0.e403.b9be    DYNAMIC     Gi0/49
+ 121    00c0.e403.c976    DYNAMIC     Gi0/49
+ 121    00c0.e404.a36e    DYNAMIC     Gi0/49
+ 121    00c0.e407.24c8    DYNAMIC     Gi0/49
+ 121    00c0.e407.24cc    DYNAMIC     Gi0/49
+ 121    00c0.e407.24d8    DYNAMIC     Gi0/49
+ 121    00c0.e407.24db    DYNAMIC     Gi0/49
+ 121    00c0.e407.24e1    DYNAMIC     Gi0/49
+ 121    00c0.e407.24fb    DYNAMIC     Gi0/49
+ 121    00c0.e407.24ff    DYNAMIC     Gi0/49
+ 121    00c0.e407.2505    DYNAMIC     Gi0/49
+ 121    00c0.e407.2531    DYNAMIC     Gi0/49
+ 121    00c0.e407.2574    DYNAMIC     Gi0/49
+ 121    00c0.e407.2578    DYNAMIC     Gi0/49
+ 121    00c0.e407.257f    DYNAMIC     Gi0/49
+ 121    00c0.e407.3123    DYNAMIC     Gi0/49
+ 121    00c0.e407.314c    DYNAMIC     Gi0/49
+ 121    00c0.e407.79f1    DYNAMIC     Gi0/49
+ 121    00c0.e409.e89a    DYNAMIC     Gi0/49
+ 121    00c0.e40e.1c3d    DYNAMIC     Gi0/49
+ 121    00c0.e40f.e342    DYNAMIC     Gi0/49
+ 140    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 140    001b.1700.0131    DYNAMIC     Gi0/49
+ 167    0004.f33f.c1f5    DYNAMIC     Gi0/49
+ 167    0004.f35d.7675    DYNAMIC     Gi0/49
+ 167    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 167    001b.1700.0131    DYNAMIC     Gi0/49
+ 167    0050.568a.2c37    DYNAMIC     Gi0/49
+ 167    0050.568a.2dfa    DYNAMIC     Gi0/49
+ 167    0050.568a.315d    DYNAMIC     Gi0/49
+ 167    0050.569c.165d    DYNAMIC     Gi0/49
+ 167    0050.569c.501c    DYNAMIC     Gi0/49
+ 167    0050.56a2.0bec    DYNAMIC     Gi0/49
+ 167    0050.56af.0830    DYNAMIC     Gi0/49
+ 167    0050.56af.1109    DYNAMIC     Gi0/49
+ 167    0050.56af.161d    DYNAMIC     Gi0/49
+ 167    0050.56af.1f7d    DYNAMIC     Gi0/49
+ 167    0050.56af.23d7    DYNAMIC     Gi0/49
+ 167    0050.56af.45df    DYNAMIC     Gi0/49
+ 167    0050.56af.4dcd    DYNAMIC     Gi0/49
+ 167    0050.56af.4e80    DYNAMIC     Gi0/49
+ 167    0050.56af.7097    DYNAMIC     Gi0/49
+ 167    0050.56af.8b48    DYNAMIC     Gi0/49
+ 167    0050.56af.9a14    DYNAMIC     Gi0/49
+ 167    0050.56af.9b2c    DYNAMIC     Gi0/49
+ 167    0050.56af.aabb    DYNAMIC     Gi0/49
+ 167    0050.56af.b884    DYNAMIC     Gi0/49
+ 167    0050.56af.b9d1    DYNAMIC     Gi0/49
+ 167    0050.56af.d7e0    DYNAMIC     Gi0/49
+ 167    0050.56af.e389    DYNAMIC     Gi0/49
+ 167    0050.56af.f7b8    DYNAMIC     Gi0/49
+ 167    0060.4851.1466    DYNAMIC     Gi0/49
+ 167    0060.4851.1467    DYNAMIC     Gi0/49
+ 167    0060.4851.146e    DYNAMIC     Gi0/49
+ 167    0060.4851.146f    DYNAMIC     Gi0/49
+ 167    0080.a3b3.8a8c    DYNAMIC     Gi0/49
+ 168    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 168    001b.1700.0131    DYNAMIC     Gi0/49
+ 168    0050.569c.2f12    DYNAMIC     Gi0/49
+ 168    0050.56af.365c    DYNAMIC     Gi0/49
+ 169    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 169    001b.1700.0131    DYNAMIC     Gi0/49
+ 169    0023.24de.1969    DYNAMIC     Gi0/49
+ 169    040e.3c3d.37ef    DYNAMIC     Gi0/49
+ 169    10e7.c61d.49fa    DYNAMIC     Gi0/49
+ 169    480f.cf62.16bb    DYNAMIC     Gi0/49
+ 169    6c02.e03f.cc7d    DYNAMIC     Gi0/49
+ 169    c8d9.d208.0d3f    DYNAMIC     Gi0/49
+ 169    c8d9.d208.0d84    DYNAMIC     Gi0/49
+ 169    f092.1ce9.af9a    DYNAMIC     Gi0/49
+ 169    f439.0947.0544    DYNAMIC     Gi0/49
+ 240    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 240    001b.1700.0131    DYNAMIC     Gi0/49
+ 240    0023.24b8.926b    DYNAMIC     Gi0/49
+ 240    0023.24bc.08d2    DYNAMIC     Gi0/49
+ 240    0023.24d4.e8ce    DYNAMIC     Gi0/49
+ 240    0050.568a.0cc3    DYNAMIC     Gi0/49
+ 240    0050.568a.280c    DYNAMIC     Gi0/49
+ 240    0050.568a.5754    DYNAMIC     Gi0/49
+ 240    040e.3c3a.8378    DYNAMIC     Gi0/49
+ 240    040e.3c3a.840a    DYNAMIC     Gi0/49
+ 240    040e.3c3a.840b    DYNAMIC     Gi0/49
+ 240    040e.3c3a.840d    DYNAMIC     Gi0/49
+ 240    040e.3c3a.840f    DYNAMIC     Gi0/49
+ 240    040e.3c3a.8410    DYNAMIC     Gi0/49
+ 240    040e.3c3a.842f    DYNAMIC     Gi0/49
+ 240    040e.3c3a.8439    DYNAMIC     Gi0/49
+ 240    040e.3c3d.36ec    DYNAMIC     Gi0/49
+ 240    040e.3c3d.3700    DYNAMIC     Gi0/49
+ 240    040e.3c3d.37dc    DYNAMIC     Gi0/49
+ 240    040e.3c3d.37e9    DYNAMIC     Gi0/49
+ 240    040e.3c3d.37ed    DYNAMIC     Gi0/49
+ 240    040e.3c3d.37f5    DYNAMIC     Gi0/49
+ 240    040e.3c3d.37fc    DYNAMIC     Gi0/49
+ 240    2cf0.5d91.99de    DYNAMIC     Gi0/49
+ 240    2cf0.5d91.99f6    DYNAMIC     Gi0/49
+ 240    2cf0.5d91.9b02    DYNAMIC     Gi0/49
+ 240    2cf0.5d91.9be8    DYNAMIC     Gi0/49
+ 240    2cf0.5d91.9cf7    DYNAMIC     Gi0/49
+ 240    38ca.843c.fba7    DYNAMIC     Gi0/49
+ 240    38ca.843c.fd04    DYNAMIC     Gi0/49
+ 240    38ca.843c.fda6    DYNAMIC     Gi0/49
+ 240    6c02.e03e.145e    DYNAMIC     Gi0/49
+ 240    6c02.e03e.1595    DYNAMIC     Gi0/49
+ 240    6c02.e03e.9b83    DYNAMIC     Gi0/49
+ 240    6c02.e03e.9ca6    DYNAMIC     Gi0/49
+ 240    6c02.e03e.b33a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a38    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a3c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a40    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a46    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a59    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a5c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a5f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a60    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a6e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a77    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6a9f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6aa3    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6aa4    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6aa8    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bbe    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bc3    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bc4    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bc7    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bcd    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6bf8    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6c23    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6c27    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6c2b    DYNAMIC     Gi0/49
+ 240    6c02.e03f.6c47    DYNAMIC     Gi0/49
+ 240    6c02.e03f.a03e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc14    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc16    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc17    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc19    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc1a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc1d    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc1e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc1f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc22    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc23    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc24    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc25    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc26    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc27    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc28    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc2c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc2f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc30    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc31    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc32    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc33    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc35    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc36    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc3a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc3b    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc3c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc3d    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc3e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc43    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc47    DYNAMIC     Gi0/50
+ 240    6c02.e03f.cc48    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc49    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc4a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc53    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc54    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc5a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc5b    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc5f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc60    DYNAMIC     Gi0/50
+ 240    6c02.e03f.cc61    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc64    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc65    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc6a    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc6e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc74    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc77    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc78    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc7c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc7e    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc8d    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc98    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc99    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cc9f    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cca4    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cca5    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cca6    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccad    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccaf    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccb0    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccb1    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccb5    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccd2    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccd5    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cce9    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccf1    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ccf2    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd00    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd51    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd52    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd54    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd57    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd58    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd5c    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd6d    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd71    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd74    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd75    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd84    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cd98    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdb2    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdb7    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdbe    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdc1    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdc3    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdea    DYNAMIC     Gi0/49
+ 240    6c02.e03f.cdef    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce11    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce13    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce1d    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce31    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce36    DYNAMIC     Gi0/49
+ 240    6c02.e03f.ce47    DYNAMIC     Gi0/49
+ 240    6c02.e03f.e7cf    DYNAMIC     Gi0/49
+ 240    6c02.e04b.85c9    DYNAMIC     Gi0/49
+ 240    6c02.e04b.8f30    DYNAMIC     Gi0/49
+ 240    6c02.e04b.8f31    DYNAMIC     Gi0/49
+ 240    6c02.e04b.8f47    DYNAMIC     Gi0/49
+ 240    6c02.e04b.986a    DYNAMIC     Gi0/49
+ 240    6c02.e04b.986c    DYNAMIC     Gi0/49
+ 240    6c02.e04b.986d    DYNAMIC     Gi0/49
+ 240    6c02.e04b.986e    DYNAMIC     Gi0/49
+ 240    6c02.e04b.986f    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9870    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9871    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9872    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9873    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9874    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9875    DYNAMIC     Gi0/50
+ 240    6c02.e04b.9876    DYNAMIC     Gi0/49
+ 240    6c02.e04b.987c    DYNAMIC     Gi0/49
+ 240    6c02.e04b.987d    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98a0    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98a1    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98a2    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98a4    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98bd    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98cf    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98d3    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98e1    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98e3    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98e5    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98e6    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98ea    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98ed    DYNAMIC     Gi0/49
+ 240    6c02.e04b.98f4    DYNAMIC     Gi0/49
+ 240    6c02.e04b.9996    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e30d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e31e    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e673    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e67d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e68c    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e68d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e68e    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e68f    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e691    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e694    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e698    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e69d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e69e    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6a1    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6a2    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6a3    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6a5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6b8    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6c4    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6cd    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6d2    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6d5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6d7    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6d9    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e6dd    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e70b    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e727    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e72d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e72f    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e763    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e767    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e76d    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e76e    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e788    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e789    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e78b    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e78f    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e790    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e791    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e793    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e794    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e795    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e796    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e798    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e79a    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e79b    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e79d    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a0    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a1    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a2    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a3    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a4    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7a9    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7aa    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e7ab    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7ac    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7ad    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7b2    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7b5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7b6    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e7b7    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7b8    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7be    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7bf    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7c0    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7c1    DYNAMIC     Gi0/50
+ 240    6c02.e04c.e7c4    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7c5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7c6    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7d4    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7dc    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7e2    DYNAMIC     Gi0/49
+ 240    6c02.e04c.e7e5    DYNAMIC     Gi0/49
+ 240    6c02.e04c.f568    DYNAMIC     Gi0/49
+ 240    6c02.e04c.f57e    DYNAMIC     Gi0/49
+ 240    e8d8.d13c.b638    DYNAMIC     Gi0/49
+ 240    e8d8.d13c.b639    DYNAMIC     Gi0/49
+ 240    f439.0935.3cd4    DYNAMIC     Gi0/49
+ 240    f439.0948.2084    DYNAMIC     Gi0/49
+ 240    f439.0948.2095    DYNAMIC     Gi0/49
+ 305    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 306    0000.0c9f.f132    DYNAMIC     Gi0/49
+ 306    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 306    0050.b6b0.de3e    DYNAMIC     Gi0/49
+ 306    00c0.eb09.c451    DYNAMIC     Gi0/49
+ 306    4c4e.35ac.d680    DYNAMIC     Gi0/49
+ 306    5838.7914.bfa6    DYNAMIC     Gi0/49
+ 306    5838.7920.c1e9    DYNAMIC     Gi0/49
+ 306    5838.7920.c20c    DYNAMIC     Gi0/49
+ 306    8c8c.aa28.59c0    DYNAMIC     Gi0/49
+ 306    8c8c.aa73.d14c    DYNAMIC     Gi0/49
+ 306    8c8c.aa73.d573    DYNAMIC     Gi0/49
+ 306    8c8c.aa73.d8b2    DYNAMIC     Gi0/49
+ 306    8c8c.aa73.d959    DYNAMIC     Gi0/49
+ 306    8c8c.aa73.dab8    DYNAMIC     Gi0/49
+ 306    e02f.6d05.a800    DYNAMIC     Gi0/49
+ 307    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 307    0892.048f.0961    DYNAMIC     Gi0/49
+ 307    0892.048f.0969    DYNAMIC     Gi0/49
+ 307    0892.048f.0971    DYNAMIC     Gi0/49
+ 307    0892.048f.0caa    DYNAMIC     Gi0/49
+ 307    1c7d.225f.d1d7    DYNAMIC     Gi0/49
+ 307    683a.1e45.006d    DYNAMIC     Gi0/49
+ 307    6c3c.8c23.8395    DYNAMIC     Gi0/49
+ 307    6c3c.8c23.9b51    DYNAMIC     Gi0/49
+ 307    6c3c.8c32.788d    DYNAMIC     Gi0/49
+ 307    6c3c.8c32.78d8    DYNAMIC     Gi0/49
+ 307    70b5.e860.8334    DYNAMIC     Gi0/49
+ 307    70b5.e860.8396    DYNAMIC     Gi0/49
+ 307    70b5.e863.ef6c    DYNAMIC     Gi0/49
+ 307    7478.2781.2281    DYNAMIC     Gi0/49
+ 307    7478.27ef.d072    DYNAMIC     Gi0/49
+ 307    80e0.1dfd.4148    DYNAMIC     Gi0/49
+ 307    a4bb.6d8a.d275    DYNAMIC     Gi0/49
+ 307    a4bb.6d8a.d43c    DYNAMIC     Gi0/49
+ 307    a4bb.6d8a.d532    DYNAMIC     Gi0/49
+ 307    ac91.a1a0.8a88    DYNAMIC     Gi0/49
+ 307    f4ee.08a1.7eb9    DYNAMIC     Gi0/49
+ 314    000d.ac34.d3ae    DYNAMIC     Gi0/49
+ 314    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 314    0060.ef3a.d5e0    DYNAMIC     Gi0/49
+ 314    0090.fb48.78f9    DYNAMIC     Gi0/49
+ 314    009c.028f.7b98    DYNAMIC     Gi0/49
+ 314    1866.da26.776b    DYNAMIC     Gi0/49
+ 314    1c69.7a09.885d    DYNAMIC     Gi0/49
+ 314    1cc1.dea9.c4cc    DYNAMIC     Gi0/49
+ 314    2067.7ce5.a874    DYNAMIC     Gi0/49
+ 314    20fd.f150.5587    DYNAMIC     Gi0/49
+ 314    20fd.f150.8755    DYNAMIC     Gi0/49
+ 314    4001.c69e.a304    DYNAMIC     Gi0/49
+ 314    40a8.f065.d7d7    DYNAMIC     Gi0/49
+ 314    6c5a.b088.c658    DYNAMIC     Gi0/49
+ 314    6c6a.77ff.68c9    DYNAMIC     Gi0/49
+ 314    b897.5adf.9f21    DYNAMIC     Gi0/49
+ 314    b897.5aec.558b    DYNAMIC     Gi0/49
+ 314    e073.e72a.c7df    DYNAMIC     Gi0/49
+ 314    ecb1.d751.1fb0    DYNAMIC     Gi0/49
+ 314    f481.39ed.82e5    DYNAMIC     Gi0/49
+ 316    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 316    2c3f.383a.8541    DYNAMIC     Gi0/50
+ 318    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 320    000b.ab4b.085a    DYNAMIC     Gi0/49
+ 320    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 410    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 411    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 888    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 888    001b.1700.0131    DYNAMIC     Gi0/49
+ 888    f42e.7fc8.c4cc    DYNAMIC     Gi0/48
+ 888    f42e.7fc8.de78    DYNAMIC     Gi0/50
+ 999    0018.bafe.0e33    DYNAMIC     Gi0/49
+1000    0018.bafe.0e33    DYNAMIC     Gi0/49
+1000    0024.98bb.edb1    DYNAMIC     Gi0/50
+  14    0018.bafe.0e33    DYNAMIC     Gi0/49
+  14    001b.1700.0131    DYNAMIC     Gi0/49
+  14    0060.7404.92aa    DYNAMIC     Gi0/49
+  14    0060.7406.8a28    DYNAMIC     Gi0/49
+  14    0060.7406.8c28    DYNAMIC     Gi0/49
+  14    0060.7407.4f57    DYNAMIC     Gi0/49
+  14    0060.7407.5b59    DYNAMIC     Gi0/50
+  14    0060.7407.5b8e    DYNAMIC     Gi0/49
+  14    0060.7407.5b91    DYNAMIC     Gi0/49
+  14    0060.7407.65be    DYNAMIC     Gi0/49
+  14    0060.7407.65c6    DYNAMIC     Gi0/49
+  14    0060.7407.6695    DYNAMIC     Gi0/49
+  14    0060.7407.669f    DYNAMIC     Gi0/49
+  14    0060.7407.66f5    DYNAMIC     Gi0/49
+  14    0060.7407.6757    DYNAMIC     Gi0/49
+  14    0060.7407.6763    DYNAMIC     Gi0/49
+  14    0060.7407.6781    DYNAMIC     Gi0/49
+  14    0060.7407.6787    DYNAMIC     Gi0/49
+  14    0060.7407.678b    DYNAMIC     Gi0/49
+  14    0060.7407.6791    DYNAMIC     Gi0/49
+  14    0060.7407.6793    DYNAMIC     Gi0/49
+  14    0060.7407.6795    DYNAMIC     Gi0/49
+  14    0060.7407.7a61    STATIC      Gi0/33 
+  14    0060.7407.7a6d    DYNAMIC     Gi0/49
+  14    0060.7407.7a7f    DYNAMIC     Gi0/49
+  14    0060.7407.7a87    DYNAMIC     Gi0/49
+  14    0060.7407.7aa3    DYNAMIC     Gi0/49
+  14    0060.7407.7ab1    DYNAMIC     Gi0/49
+  14    0060.74fd.1edc    DYNAMIC     Gi0/49
+  14    b05c.da35.7ee8    DYNAMIC     Gi0/49
+ 166    0009.0f09.231a    DYNAMIC     Gi0/49
+ 166    0018.bafe.0e33    DYNAMIC     Gi0/49
+ 166    6c3c.8c38.3480    DYNAMIC     Gi0/49
+ 166    6c3c.8c38.352a    DYNAMIC     Gi0/49
+ 166    6c3c.8c38.3548    DYNAMIC     Gi0/49
+ 166    6c3c.8c38.354b    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8139    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.814c    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.814d    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8157    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8167    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8185    DYNAMIC     Gi0/50
+ 166    6c3c.8c3f.8197    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8249    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.826f    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.82cb    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.82cc    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.831f    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.834d    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.835f    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8362    DYNAMIC     Gi0/50
+ 166    6c3c.8c3f.8364    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8367    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.836d    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.836e    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8370    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83bb    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83db    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83ef    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83f3    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83f4    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83f6    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.83f8    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8402    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.84bd    STATIC      Gi0/13 
+ 166    6c3c.8c3f.84d1    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85b2    STATIC      Gi0/12 
+ 166    6c3c.8c3f.85b3    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85b8    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85b9    STATIC      Gi0/11 
+ 166    6c3c.8c3f.85bb    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85bc    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85e7    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85ec    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85ed    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85ef    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85f1    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85f4    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85f5    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85f6    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.85f8    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8631    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.8657    DYNAMIC     Gi0/50
+ 166    6c3c.8c3f.866e    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86bc    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86c3    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86c4    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86c7    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86c8    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86cc    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86ce    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86e9    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86ea    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86ee    STATIC      Gi0/10 
+ 166    6c3c.8c3f.86ef    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86f0    DYNAMIC     Gi0/49
+ 166    6c3c.8c3f.86f1    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5694    DYNAMIC     Gi0/50
+ 166    6c3c.8c41.5810    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5811    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5812    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5814    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5818    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.581e    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5857    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.585a    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.590f    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5919    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.591c    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5925    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.598f    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5992    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.59cf    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.59d4    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5a3a    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5a89    DYNAMIC     Gi0/49
+ 166    6c3c.8c41.5ae5    DYNAMIC     Gi0/49
+Total Mac Addresses for this criterion: 1185
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#sh int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi0/1                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/2                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/3                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/4                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/5                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/6                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/7                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/8                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/9                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/10    (GT07-083) ACUS CH connected    166        a-full a-1000 10/100/1000BaseTX
+Gi0/11    (GT07-075) ACUS CH connected    166        a-full a-1000 10/100/1000BaseTX
+Gi0/12    (GT07-067) ACUS CH connected    166        a-full a-1000 10/100/1000BaseTX
+Gi0/13    (GT07-059) ACUS CH connected    166        a-full a-1000 10/100/1000BaseTX
+Gi0/14                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/15                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/16                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/17                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/18                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/19                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/20                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/21                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/22                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/23                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/24                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/25                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/26                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/27                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/28    Cam 172 GT7C28 Ter connected    111        a-full a-1000 10/100/1000BaseTX
+Gi0/29                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/30                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/31                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/32                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/33    (GT7-29) Q-SYS-PA  connected    14         a-full a-1000 10/100/1000BaseTX
+Gi0/34                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/35                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/36                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/37                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/38                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/39                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/40                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/41                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/42                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/43                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/44                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/45                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/46                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/47                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/48    WAP042             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/49    Fibre - FrameSTGT7 connected    trunk      a-full a-1000 1000BaseCX SFP Cable
+Gi0/50    Fibre - FrameSTGT7 connected    trunk      a-full a-1000 1000BaseCX SFP Cable
+Gi0/51                       disabled     trunk        auto   auto Not Present
+Gi0/52                       disabled     trunk        auto   auto Not Present
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#sh int des
+Interface                      Status         Protocol Description
+Vl1                            admin down     down     
+Vl2                            up             up       Management Interface
+Gi0/1                          admin down     down     
+Gi0/2                          admin down     down     
+Gi0/3                          admin down     down     
+Gi0/4                          admin down     down     
+Gi0/5                          admin down     down     
+Gi0/6                          admin down     down     
+Gi0/7                          admin down     down     
+Gi0/8                          admin down     down     
+Gi0/9                          admin down     down     
+Gi0/10                         up             up       (GT07-083) ACUS CHCM0CK00036
+Gi0/11                         up             up       (GT07-075) ACUS CHCM0CK00037
+Gi0/12                         up             up       (GT07-067) ACUS CHCM0CK00038
+Gi0/13                         up             up       (GT07-059) ACUS CHCM0CK00039
+Gi0/14                         admin down     down     
+Gi0/15                         admin down     down     
+Gi0/16                         admin down     down     
+Gi0/17                         admin down     down     
+Gi0/18                         admin down     down     
+Gi0/19                         admin down     down     
+Gi0/20                         admin down     down     
+Gi0/21                         admin down     down     
+Gi0/22                         admin down     down     
+Gi0/23                         admin down     down     
+Gi0/24                         admin down     down     
+Gi0/25                         admin down     down     
+Gi0/26                         admin down     down     
+Gi0/27                         admin down     down     
+Gi0/28                         up             up       Cam 172 GT7C28 Terminal Plaza (Centre) 192.168.232.187
+Gi0/29                         admin down     down     
+Gi0/30                         admin down     down     
+Gi0/31                         admin down     down     
+Gi0/32                         admin down     down     
+Gi0/33                         up             up       (GT7-29) Q-SYS-PA
+Gi0/34                         admin down     down     
+Gi0/35                         admin down     down     
+Gi0/36                         admin down     down     
+Gi0/37                         admin down     down     
+Gi0/38                         admin down     down     
+Gi0/39                         admin down     down     
+Gi0/40                         admin down     down     
+Gi0/41                         admin down     down     
+Gi0/42                         admin down     down     
+Gi0/43                         admin down     down     
+Gi0/44                         admin down     down     
+Gi0/45                         admin down     down     
+Gi0/46                         admin down     down     
+Gi0/47                         admin down     down     
+Gi0/48                         up             up       WAP042
+Gi0/49                         up             up       Fibre - FrameSTGT71 0/51
+Gi0/50                         up             up       Fibre - FrameSTGT73 0/49
+Gi0/51                         admin down     down     
+Gi0/52                         admin down     down     
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#
+FramesGT72#sh mac      sh cdp nei
+FramesGT72#sh cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+FramesGT73.cial.co.nz
+                 Gig 0/50          162              S I   WS-C3560G Gig 0/49
+FramesGT71.cial.co.nz
+                 Gig 0/49          179              S I   WS-C3560G Gig 0/51
+FramesGT72#

@@ -1,0 +1,224 @@
+# ~~~~~CIAL-200F~~~~~~~
+# Core Switch
+
+vlan 600
+ name 2D_BGP_Primary
+!
+vlan 601
+ name 2D_BGP_Secondary
+
+spanning-tree vlan add 600-601 priority 4096
+
+
+interface Port-channel111
+ description FortGate_200F InternalFwA AE
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ !
+interface Port-channel112
+ description FortGate_200F InternalFwB AE
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ !
+interface GigabitEthernet1/7/41
+ description FortGate_200F Primary mgmt 192.168.2.203
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7 
+ spanning-tree portfast edge
+ no shutdown
+!
+interface GigabitEthernet2/7/41
+ description FortGate_200F Secondary mgmt 192.168.2.204
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7 
+ spanning-tree portfast edge
+ no shutdown
+!
+interface TenGigabitEthernet1/3/3
+ description FortGate_200F InternalFwA AE-X1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 111 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+!
+interface TenGigabitEthernet1/4/3
+ description FortGate_200F InternalFwB AE-X1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 112 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+!
+interface TenGigabitEthernet2/3/3
+ description FortGate_200F InternalFwA AE-X2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 111 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+!
+interface TenGigabitEthernet2/4/3
+ description FortGate_200F InternalFwB AE-X2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,91,160,172,191,193,210,323,417,901-902
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 112 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root 
+ no shutdown
+!
+
+# ~~~~~CIAL-100F~~~~~~~
+# Core Switch
+
+
+interface Port-channel17
+ description FortGate_100F ExternalFwA AE
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+
+interface Port-channel18
+ description FortGate_100F ExternalFwB AE
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+!
+default interface GigabitEthernet1/7/38
+interface GigabitEthernet1/7/38
+ description FortGate_100F Primary mgmt 192.168.2.201
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7 
+ spanning-tree portfast edge
+ no shutdown
+!
+default interface GigabitEthernet2/7/38
+interface GigabitEthernet2/7/38
+ description FortGate_100F Secondary mgmt 192.168.2.202
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7 
+ spanning-tree portfast edge
+ no shutdown
+!
+!
+ default interface GigabitEthernet1/1/42
+ interface GigabitEthernet1/1/42
+ description FortGate_100F ExternalFwA AE-19
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 17 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+ !
+ default interface GigabitEthernet1/2/42
+ interface GigabitEthernet1/2/42
+ description FortGate_100F ExternalFwA AE-20
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 17 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+ !
+ default interface GigabitEthernet2/1/42
+ interface GigabitEthernet2/1/42
+ description FortGate_100F ExternalFwB AE-19
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 18 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+ !
+ default interface GigabitEthernet2/2/42
+ interface GigabitEthernet2/2/42
+ description FortGate_100F ExternalFwB AE-20
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2 
+ wrr-queue cos-map 3 5 3 4 
+ wrr-queue cos-map 3 7 6 7
+ channel-group 18 mode active
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ no shutdown
+

@@ -1,0 +1,50 @@
+
+
+
+set system radius-server 192.168.134.148 port 1812 secret m0nd@y source-address 192.168.134.112 retry 3 timeout 300    
+set system authentication-order [radius password]
+
+
+set interfaces irb unit 134 description "radius"
+set interfaces irb unit 134 family inet address 192.168.134.100/24
+
+set vlans vlan-radius vlan-id 134
+set vlans vlan-radius l3-interface irb.134
+
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan-radius
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+delete system authentication-order radius
+delete system authentication-order password
+delete system radius-server 192.168.134.148 port 1812
+delete system radius-server 192.168.134.148 secret 
+delete system radius-server 192.168.134.148 timeout 300
+delete system radius-server 192.168.134.148 retry 3
+delete system radius-server 192.168.134.148 source-address 192.168.134.112
+delete system syslog file interactive-commands interactive-commands any
+delete system syslog file messages any notice
+delete system syslog file messages authorization info
+delete chassis redundancy graceful-switchover
+delete interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan-radius
+delete interfaces irb unit 134 description radius
+delete interfaces irb unit 134 family inet address 192.168.134.112/24
+delete interfaces irb unit 1900 description "Network MGMT"
+delete interfaces irb unit 1900 family inet address 10.130.160.112/24
+delete forwarding-options storm-control-profiles default all
+delete routing-options static route 0.0.0.0/0 next-hop 192.168.130.200
+delete protocols lldp interface all
+delete protocols lldp-med interface all
+delete protocols igmp-snooping vlan default
+delete vlans vlan-netmgmt vlan-id 1900
+delete vlans vlan-radius vlan-id 134
+delete vlans vlan-radius l3-interface irb.134

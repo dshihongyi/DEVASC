@@ -1,0 +1,32 @@
+
+
+firewall
+
+~~~ Staging_Task_26204_Allow_NTP_From_ONT_NTP ~~~
+
+
+set security address-book zone-itf address addrs-itf-huawei-onts 10.232.0.0/13
+
+set security address-book zone-itf-servers-acs-dmz address addr-enadmzdhcpt101 10.131.54.11/32
+set security address-book zone-itf-servers-acs-dmz address addr-enadmzdhcpt102 10.131.54.12/32
+set security address-book zone-itf-servers-acs-dmz address addr-enadmzhttplbt101 10.131.54.10/32
+
+
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server match source-address addrs-itf-huawei-onts
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server match destination-address addr-enadmzdhcpt101
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server match destination-address addr-enadmzdhcpt102
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server match application junos-ntp
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server then permit
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server then log session-init
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-dhcp-server then log session-close
+
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb match source-address addrs-itf-huawei-onts
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb match destination-address addr-enadmzhttplbt101
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb match application junos-http
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb then permit
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb then log session-init
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs-dmz policy policy-itf-huawei-onts-dmz-http-lb then log session-close
+
+set routing-options static route 10.232.0.0/13 next-hop st0.5
+
+

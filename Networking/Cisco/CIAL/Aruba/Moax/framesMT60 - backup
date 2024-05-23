@@ -1,0 +1,1641 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2024.03.14 15:47:10 =~=~=~=~=~=~=~=~=~=~=~=
+
+
+framesMT60# s r   sh run
+Current configuration:
+!
+!Version ArubaOS-CX FL.10.07.0081
+!export-password: default
+hostname framesMT60
+user admin group administrators password ciphertext AQBapQLsHq2fo4FzXuIMOUyrpDzqiauQsUI63XcGIFdiIcunYgAAACBTl49l0hD7QV+2m7OzXznUS2WbkVl4ejQK/9/oyC9bmimq5rmhU7QkQhc41GPc/EXA9+2+T6vVVLdEOUlVM+untkI/hm6EIPu60R6XfN45gDvwtGtoH6l9C8RgjopUlHIS
+user cattools group administrators password ciphertext AQBapdlgIV5Tp0qLj7XeiOiJ9E8ujCErwQoDlGuB2ZSO7BPvYgAAAMtuaHfE1Yy49yWgtuWzCDSyLVL+JvRNye1qN4aU+J581L8MbMWrMP91GUSM3xrTqi36yBUL+dFNAc3Y+hiX/Wf4v8UzREDy5UIPelW7APa4Q9JtZn0dx/+Wxt8eBJXHHfWP
+clock timezone pacific/auckland
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+!
+!
+!
+!
+radius-server host RADIUS1.net.cial.co.nz
+radius-server host RADIUS2.net.cial.co.nz
+!
+!
+!
+logging 192.168.2.253
+ssh server vrf default
+ssh server vrf mgmt
+ssh key-exchange-algorithms curve25519-sha256 curve25519-sha256@libssh.org ecdh-sha2-nistp256 ecdh-sha2-nistp384 ecdh-sha2-nistp521 diffie-hellman-group-exchange-sha256 diffie-hellman-group16-sha512 diffie-hellman-group18-sha512 diffie-hellman-group14-sha256 diffie-hellman-group14-sha1
+vsf secondary-member 2
+vsf member 1 
+    type jl658a
+    link 1 1/1/27
+    link 2 1/1/28
+vsf member 2 
+    type jl658a
+    link 1 2/1/27
+    link 2 2/1/28
+vlan 1
+vlan 2
+    name network_mgmt
+vlan 3
+    name workstations
+vlan 8
+    name VoIP
+vlan 10
+    name CCTV
+vlan 21
+    name BMS
+vlan 22
+    name Cardax
+vlan 24
+    name BagSort
+vlan 27
+    name BagSort_Control
+vlan 29
+    name BHS_Support_Network
+vlan 50
+    name UPS_Management
+vlan 110
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+    name CCTV_ITP
+vlan 111
+    name CCTV_camera
+vlan 121
+    name BMS_ITP
+vlan 140
+    name FIDS_ITP_DDCs
+vlan 167
+    name Production
+vlan 168
+    name FIDS
+vlan 169
+    name Secure_Workstations
+vlan 171
+    name Secured_Pax
+vlan 240
+    name FIDS_240
+vlan 262
+    name UFB_INTERNET
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Blackhole
+vlan 1000
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+interface mgmt
+    shutdown
+    ip dhcp
+interface lag 1
+    no shutdown
+    description to CORESW - Po33
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,21-22,24,27,29,50,110-111,121,140,167-169,171,240,262,888,1000
+    lacp mode active
+interface 1/1/1
+    no shutdown
+    description to bhs-moxa01
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/2
+    no shutdown
+    description to bhs-moxa03
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/3
+    no shutdown
+    description to bhs-moxa05
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+interface 1/1/4
+    no shutdown
+    description to bhs-moxa07
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/5
+    no shutdown
+    description to bhs-moxa09
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/6
+    no shutdown
+    description to bhs-moxa11
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/7
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/8
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/9
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/10
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/11
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/12
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/13
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/14
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/15
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/16
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 1/1/17
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/18
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/19
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/20
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/21
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/22
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/23
+    shutdown
+    no routing
+    vlan access 999
+interface 1/1/24
+    no shutdown
+    description to FramesMT61 port 0/49
+    no routing
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,21-22,24,27,29,50,110-111,121,140,167-169,171,240,262,888,1000
+interface 1/1/25
+    no shutdown
+    description to CoreS-Stack-A_B port 2/1/26
+    lag 1
+interface 1/1/26
+    no shutdown
+    no routing
+    vlan access 1
+interface 1/1/27
+    no shutdown
+interface 1/1/28
+    no shutdown
+interface 2/1/1
+    no shutdown
+    description to bhs-moxa02
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/2
+    no shutdown
+    description to bhs-moxa04
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/3
+    no shutdown
+    description to bhs-moxa06
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/4
+    no shutdown
+    description to bhs-moxa08
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/5
+    no shutdown
+    description to bhs-moxa10
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/6
+    no shutdown
+    description to bhs-moxa12
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/7
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+    vlan trunk allowed 2,27,1000
+interface 2/1/8
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/9
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/10
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/11
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/12
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/13
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/14
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/15
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+interface 2/1/16
+    no shutdown
+    description to MOXA switch
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,27,1000
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+interface 2/1/17
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/18
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/19
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/20
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/21
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/22
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/23
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/24
+    no shutdown
+    description to MT62 GigEth0/2
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,21-22,24,27,29,50,110-111,121,140,167-169,171,240,262,888,1000
+interface 2/1/25
+    no shutdown
+    description To CoreS-Stack-A_B port 1/1/26
+    lag 1
+interface 2/1/26
+    no shutdown
+    no routing
+    vlan access 1
+interface 2/1/27
+    no shutdown
+interface 2/1/28
+    no shutdown
+interface vlan 1
+    ip dhcp
+interface vlan 2
+    ip address 192.168.2.33/24
+snmp-server vrf default
+snmp-server system-location MT6
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+framesMT60#                  
+framesMT60# sh int status
+Unknown interface status.
+framesMT60# sh int brief
+--------------------------------------------------------------------------------------------------------------
+Port      Native  Mode   Type           Enabled Status  Reason                 Speed   Description
+          VLAN                                                                 (Mb/s)  
+--------------------------------------------------------------------------------------------------------------
+1/1/1     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa01
+1/1/2     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa03
+1/1/3     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa05
+1/1/4     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa07
+1/1/5     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa09
+1/1/6     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa11
+1/1/7     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/8     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/9     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/10    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/11    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/12    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/13    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/14    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/15    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/16    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+1/1/17    999     access --             no      down    No XCVR installed      --      --
+1/1/18    999     access --             no      down    No XCVR installed      --      --
+1/1/19    999     access --             no      down    No XCVR installed      --      --
+1/1/20    999     access --             no      down    No XCVR installed      --      --
+1/1/21    999     access --             no      down    No XCVR installed      --      --
+1/1/22    999     access --             no      down    No XCVR installed      --      --
+1/1/23    999     access --             no      down    No XCVR installed      --      --
+1/1/24    1000    trunk  SFP-LX         yes     up                             1000    to FramesMT61 port...
+1/1/25    1000    trunk  SFP-LX         yes     up                             1000    to CoreS-Stack-A_B...
+1/1/26    1       access --             yes     down    No XCVR installed      --      --
+1/1/27    --      VSF    SFP+DAC1       yes     up                             10000   --
+1/1/28    --      VSF    SFP+DAC1       yes     up                             10000   --
+2/1/1     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa02
+2/1/2     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa04
+2/1/3     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa06
+2/1/4     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa08
+2/1/5     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa10
+2/1/6     1000    trunk  SFP-LX         yes     up                             1000    to bhs-moxa12
+2/1/7     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/8     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/9     1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/10    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/11    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/12    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/13    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/14    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/15    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/16    1000    trunk  --             yes     down    No XCVR installed      --      to MOXA switch
+2/1/17    999     access --             no      down    No XCVR installed      --      --
+2/1/18    999     access --             no      down    No XCVR installed      --      --
+2/1/19    999     access --             no      down    No XCVR installed      --      --
+2/1/20    999     access --             no      down    No XCVR installed      --      --
+2/1/21    999     access --             no      down    No XCVR installed      --      --
+2/1/22    999     access --             no      down    No XCVR installed      --      --
+2/1/23    999     access --             no      down    No XCVR installed      --      --
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+2/1/24    1000    trunk  SFP-LX         yes     up                             1000    to MT62 GigEth0/2
+2/1/25    1000    trunk  SFP-LX         yes     up                             1000    To CoreS-Stack-A_B...
+2/1/26    1       access --             yes     down    No XCVR installed      --      --
+2/1/27    --      VSF    SFP+DAC1       yes     up                             10000   --
+2/1/28    --      VSF    SFP+DAC1       yes     up                             10000   --
+vlan1     --             --             yes     down                           --      --
+vlan2     --             --             yes     up                             --      --
+lag1      1000    trunk  --             yes     up      --                     2000    to CORESW - Po33
+
+framesMT60#   
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh vlan
+
+----------------------------------------------------------------------------------------------------------------
+VLAN  Name                              Status  Reason                  Type      Interfaces                    
+----------------------------------------------------------------------------------------------------------------
+1     DEFAULT_VLAN_1                    down    no_member_forwarding    default   1/1/26,2/1/26
+2     network_mgmt                      up      ok                      static    1/1/1-1/1/16,1/1/24,
+                                                                                  2/1/1-2/1/16,2/1/24,lag1
+3     workstations                      up      ok                      static    1/1/24,2/1/24,lag1
+8     VoIP                              up      ok                      static    1/1/24,2/1/24,lag1
+10    CCTV                              up      ok                      static    1/1/24,2/1/24,lag1
+21    BMS                               up      ok                      static    1/1/24,2/1/24,lag1
+22    Cardax                            up      ok                      static    1/1/24,2/1/24,lag1
+24    BagSort                           up      ok                      static    1/1/24,2/1/24,lag1
+27    BagSort_Control                   up      ok                      static    1/1/1-1/1/16,1/1/24,
+                                                                                  2/1/1-2/1/16,2/1/24,lag1
+29    BHS_Support_Network               up      ok                      static    1/1/24,2/1/24,lag1
+50    UPS_Management                    up      ok                      static    1/1/24,2/1/24,lag1
+110   CCTV_ITP                          up      ok                      static    1/1/24,2/1/24,lag1
+111   CCTV_camera                       up      ok                      static    1/1/24,2/1/24,lag1
+121   BMS_ITP                           up      ok                      static    1/1/24,2/1/24,lag1
+140   FIDS_ITP_DDCs                     up      ok                      static    1/1/24,2/1/24,lag1
+167   Production                        up      ok                      static    1/1/24,2/1/24,lag1
+168   FIDS                              up      ok                      static    1/1/24,2/1/24,lag1
+169   Secure_Workstations               up      ok                      static    1/1/24,2/1/24,lag1
+171   Secured_Pax                       up      ok                      static    1/1/24,2/1/24,lag1
+240   FIDS_240                          up      ok                      static    1/1/24,2/1/24,lag1
+262   UFB_INTERNET                      up      ok                      static    1/1/24,2/1/24,lag1
+888   COREGWS_APs                       up      ok                      static    1/1/24,2/1/24,lag1
+999   Blackhole                         down    no_member_forwarding    static    1/1/17-1/1/23,2/1/17-2/1/23
+1000  VLAN1000                          up      ok                      static    1/1/1-1/1/16,1/1/24,
+                                                                                  2/1/1-2/1/16,2/1/24,lag1
+framesMT60#  
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh har   cer
+Invalid input: cer
+framesMT60# sh ver
+-----------------------------------------------------------------------------
+ArubaOS-CX
+(c) Copyright 2017-2022 Hewlett Packard Enterprise Development LP
+-----------------------------------------------------------------------------
+Version      : FL.10.07.0081                                                 
+Build Date   : 2022-06-30 15:17:43 UTC                                       
+Build ID     : ArubaOS-CX:FL.10.07.0081:7e649613ef95:202206301433            
+Build SHA    : 7e649613ef95a18b3d09e8f88513a0cb8563338a                      
+Active Image : primary                       
+
+Service OS Version : FL.01.09.0002                 
+BIOS Version       : FL.01.0002                    
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh hard
+Invalid input: hard
+framesMT60# sh version 
+-----------------------------------------------------------------------------
+ArubaOS-CX
+(c) Copyright 2017-2022 Hewlett Packard Enterprise Development LP
+-----------------------------------------------------------------------------
+Version      : FL.10.07.0081                                                 
+Build Date   : 2022-06-30 15:17:43 UTC                                       
+Build ID     : ArubaOS-CX:FL.10.07.0081:7e649613ef95:202206301433            
+Build SHA    : 7e649613ef95a18b3d09e8f88513a0cb8563338a                      
+Active Image : primary                       
+
+Service OS Version : FL.01.09.0002                 
+BIOS Version       : FL.01.0002                    
+framesMT60# 
+framesMT60# 
+framesMT60# sh hard    system 
+  inventory             Show installed hardware information 
+  resource-utilization  Utilization metrics of various system resources 
+  serviceos             Display serviceOS information 
+  <cr>                  
+framesMT60# sh system inventory 
+
+Type                 Location Product    Description                                        Serial          Hardware   
+                              Number                                                        Number          Version    
+-------------------- -------- ---------- -------------------------------------------------- --------------- -----------
+Chassis              1        JL658A     6300M 24-port SFP+ and 4-port SFP56 Switch         SG29KMX0X1      4          
+Chassis              2        JL658A     6300M 24-port SFP+ and 4-port SFP56 Switch         SG29KMX0X4      4          
+Power Supply         1/1      JL085A     Aruba X371 12VDC 250W PS                           TH27GZ8CXL      07         
+Power Supply         1/2      JL085A     Aruba X371 12VDC 250W PS                           TH27GZ899F      07         
+Power Supply         2/1      JL085A     Aruba X371 12VDC 250W PS                           TH27GZ8CXR      07         
+Power Supply         2/2      JL085A     Aruba X371 12VDC 250W PS                           TH27GZ8CXD      07         
+Fan Tray             1/1      JL669A     6300M Fan Tray                                     CN28LB0LT3      --         
+Fan Tray             1/2      JL669A     6300M Fan Tray                                     CN28LB0LRW      --         
+Fan Tray             2/1      JL669A     6300M Fan Tray                                     CN28LB0LK7      --         
+Fan Tray             2/2      JL669A     6300M Fan Tray                                     CN28LB0LSQ      --         
+Transceiver          1/1/1    J4859D     SFP-LX                                             CN23KXJ54Z      1990-4762  
+Transceiver          1/1/2    J4859D     SFP-LX                                             CN23KXJ7HN      1990-4762  
+Transceiver          1/1/3    J4859D     SFP-LX                                             CN24KZ339Q      1990-4802  
+Transceiver          1/1/4    J4859D     SFP-LX                                             CN23KXJ60H      1990-4762  
+Transceiver          1/1/5    J4859D     SFP-LX                                             CN23KXJ55D      1990-4762  
+Transceiver          1/1/6    J4859D     SFP-LX                                             CN23KXJ60B      1990-4762  
+Transceiver          1/1/24   J4859D     SFP-LX                                             CN23KXJ4YY      1990-4762  
+Transceiver          1/1/25   J4859D     SFP-LX                                             CN23KXJ7HL      1990-4762  
+Transceiver          1/1/27   J9281D     SFP+DAC1                                           CN22KS3F7T      8121-1300  
+Transceiver          1/1/28   J9281D     SFP+DAC1                                           CN21KS3YDF      8121-1300  
+Transceiver          2/1/1    J4859D     SFP-LX                                             CN23KXJ7HM      1990-4762  
+Transceiver          2/1/2    J4859D     SFP-LX                                             CN23KXJ55L      1990-4762  
+Transceiver          2/1/3    J4859D     SFP-LX                                             CN23KXJ55K      1990-4762  
+Transceiver          2/1/4    J4859D     SFP-LX                                             CN23KXJ7HD      1990-4762  
+Transceiver          2/1/5    J4859D     SFP-LX                                             CN23KXJ55G      1990-4762  
+Transceiver          2/1/6    J4859D     SFP-LX                                             CN23KXJ55N      1990-4762  
+Transceiver          2/1/24   J4859D     SFP-LX                                             CN23KXJ550      1990-4762  
+Transceiver          2/1/25   J4859D     SFP-LX                                             CN23KXJ55J      1990-4762  
+Transceiver          2/1/27   J9281D     SFP+DAC1                                           CN22KS3F7T      8121-1300  
+Transceiver          2/1/28   J9281D     SFP+DAC1                                           CN21KS3YDF      8121-1300  
+
+framesMT60# sh cdp neighbor-info 
+
+CDP Neighbor Information 
+=========================
+
+Port        Device ID                Platform                 Capability  
+--------------------------------------------------------------------------------
+1/1/25      CoreS-Stack-A_B.cial.c...Cisco C6807-XL           IRS         
+1/1/24      FramesMT61.cial.co.nz    cisco WS-C3560G-48TS     IS          
+2/1/24      FramesMT62.cial.co.nz    cisco WS-C3560V2-24PS    IS          
+2/1/25      CoreS-Stack-A_B.cial.c...Cisco C6807-XL           IRS         
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh run int 1/1/25
+interface 1/1/25 
+    no shutdown 
+    description to CoreS-Stack-A_B port 2/1/26
+    lag 1
+    exit
+framesMT60# sh run int 1/1/25 4
+interface 1/1/24 
+    no shutdown 
+    description to FramesMT61 port 0/49
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,21-22,24,27,29,50,110-111,121,140,167-169,171,240,262,888,1000
+    exit
+framesMT60# sh run int 1/1/24 2
+interface 2/1/24 
+    no shutdown 
+    description to MT62 GigEth0/2
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2-3,8,10,21-22,24,27,29,50,110-111,121,140,167-169,171,240,262,888,1000
+    exit
+framesMT60# sh run int 2/1/24 5
+interface 2/1/25 
+    no shutdown 
+    description To CoreS-Stack-A_B port 1/1/26
+    lag 1
+    exit
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh mac address 
+% Command incomplete.
+framesMT60# sh mac address          -address-table 
+MAC age-time            : 300 seconds
+Number of MAC addresses : 915
+
+MAC Address          VLAN     Type                      Port      
+--------------------------------------------------------------
+ec:67:94:d1:46:80    2        dynamic                   lag1       
+ec:67:94:d1:36:80    2        dynamic                   lag1       
+cc:8e:71:28:ec:c1    2        dynamic                   lag1       
+c8:d9:d2:12:32:7f    2        dynamic                   lag1       
+a4:0e:75:cc:cd:00    2        dynamic                   lag1       
+a4:0e:75:cc:ac:00    2        dynamic                   lag1       
+a4:0e:75:ab:20:40    2        dynamic                   lag1       
+a4:0e:75:aa:34:c0    2        dynamic                   lag1       
+a4:0e:75:a9:ae:40    2        dynamic                   lag1       
+94:60:d5:da:86:80    2        dynamic                   lag1       
+7c:95:f3:a4:0f:c1    2        dynamic                   2/1/24     
+58:ac:78:98:fc:5d    2        dynamic                   lag1       
+58:35:d9:a8:16:41    2        dynamic                   1/1/24     
+1c:6a:7a:f9:fb:b2    2        dynamic                   lag1       
+00:50:56:af:49:11    2        dynamic                   lag1       
+00:1b:17:00:01:31    2        dynamic                   lag1       
+00:90:e8:97:f4:01    2        dynamic                   2/1/3      
+00:90:e8:97:f4:80    2        dynamic                   2/1/4      
+00:90:e8:a2:72:0b    2        dynamic                   1/1/2      
+00:90:e8:a2:72:6a    2        dynamic                   1/1/4      
+00:90:e8:a2:72:6d    2        dynamic                   1/1/5      
+00:90:e8:a2:72:6f    2        dynamic                   2/1/6      
+00:90:e8:a2:72:80    2        dynamic                   2/1/1      
+00:90:e8:a2:72:81    2        dynamic                   1/1/1      
+00:90:e8:a2:72:a6    2        dynamic                   2/1/2      
+00:90:e8:a2:72:a7    2        dynamic                   2/1/5      
+00:90:e8:a2:72:af    2        dynamic                   1/1/6      
+00:90:e8:a2:72:b6    2        dynamic                   1/1/3      
+14:ab:ec:94:84:80    2        dynamic                   lag1       
+14:ab:ec:95:85:c0    2        dynamic                   lag1       
+14:ab:ec:96:b5:c0    2        dynamic                   lag1       
+14:ab:ec:97:d9:80    2        dynamic                   lag1       
+14:ab:ec:98:ed:00    2        dynamic                   lag1       
+f0:92:1c:f2:8f:fb    3        dynamic                   lag1       
+ec:b1:d7:4f:59:b1    3        dynamic                   lag1       
+e0:73:e7:5d:cb:fe    3        dynamic                   lag1       
+e0:73:e7:5d:cb:be    3        dynamic                   lag1       
+e0:70:ea:3d:5e:bc    3        dynamic                   lag1       
+e0:70:ea:3d:3e:4e    3        dynamic                   lag1       
+d8:25:22:ad:b5:1f    3        dynamic                   lag1       
+d0:ad:08:ee:8e:a1    3        dynamic                   lag1       
+d0:ad:08:ee:3e:ff    3        dynamic                   lag1       
+d0:ad:08:87:32:51    3        dynamic                   lag1       
+d0:ad:08:08:02:9a    3        dynamic                   lag1       
+c8:5a:cf:de:64:9e    3        dynamic                   lag1       
+c8:5a:cf:69:32:43    3        dynamic                   lag1       
+c8:5a:cf:68:9a:52    3        dynamic                   lag1       
+c4:65:16:c9:ba:06    3        dynamic                   lag1       
+c0:18:03:c9:8a:b4    3        dynamic                   lag1       
+a0:8c:fd:c2:51:98    3        dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+a0:8c:fd:c2:4d:bc    3        dynamic                   lag1       
+8c:dc:d4:56:5b:74    3        dynamic                   lag1       
+84:69:93:e5:3c:61    3        dynamic                   lag1       
+84:69:93:df:df:38    3        dynamic                   lag1       
+84:69:93:92:e8:15    3        dynamic                   lag1       
+84:3a:5b:55:3e:96    3        dynamic                   lag1       
+7c:57:58:6c:7e:15    3        dynamic                   lag1       
+7c:57:58:6c:7e:14    3        dynamic                   lag1       
+74:46:a0:a5:0b:c9    3        dynamic                   lag1       
+6c:02:e0:4c:e6:b5    3        dynamic                   lag1       
+64:4e:d7:07:79:a3    3        dynamic                   lag1       
+58:ac:78:98:fc:5d    3        dynamic                   lag1       
+50:81:40:3b:2d:65    3        dynamic                   lag1       
+50:81:40:2d:8f:64    3        dynamic                   lag1       
+50:81:40:2d:8d:d3    3        dynamic                   lag1       
+38:ca:84:56:f3:95    3        dynamic                   lag1       
+38:ca:84:56:f3:43    3        dynamic                   lag1       
+38:ca:84:56:f3:08    3        dynamic                   lag1       
+38:ca:84:56:e3:6a    3        dynamic                   lag1       
+38:ca:84:3d:02:99    3        dynamic                   lag1       
+38:ca:84:3d:02:71    3        dynamic                   lag1       
+38:ca:84:3d:02:1c    3        dynamic                   lag1       
+38:ca:84:3c:fe:65    3        dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    3        dynamic                   lag1       
+00:1b:17:00:01:31    3        dynamic                   lag1       
+00:68:eb:c3:db:63    3        dynamic                   lag1       
+00:68:eb:c3:db:77    3        dynamic                   lag1       
+00:68:eb:c3:db:de    3        dynamic                   lag1       
+00:68:eb:c3:dd:60    3        dynamic                   lag1       
+00:68:eb:cd:69:3d    3        dynamic                   lag1       
+00:68:eb:cd:69:d7    3        dynamic                   lag1       
+00:68:eb:cd:69:e6    3        dynamic                   lag1       
+04:0e:3c:06:2a:c1    3        dynamic                   lag1       
+04:0e:3c:3d:36:c9    3        dynamic                   lag1       
+04:0e:3c:4b:6f:7a    3        dynamic                   lag1       
+10:e7:c6:1d:79:96    3        dynamic                   lag1       
+10:e7:c6:20:16:95    3        dynamic                   lag1       
+18:60:24:7e:e5:ed    3        dynamic                   lag1       
+58:ac:78:98:fc:5d    8        dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    8        dynamic                   lag1       
+00:1b:17:00:01:31    8        dynamic                   lag1       
+00:60:b9:55:42:d4    8        dynamic                   lag1       
+08:00:0f:e3:92:ca    8        dynamic                   1/1/24     
+08:00:0f:e3:95:76    8        dynamic                   1/1/24     
+5c:88:16:9a:ed:3d    21       dynamic                   lag1       
+58:ac:78:98:fc:5d    21       dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    21       dynamic                   lag1       
+00:50:56:af:a5:d3    21       dynamic                   lag1       
+00:50:56:af:0b:c3    21       dynamic                   lag1       
+00:50:56:9c:71:6c    21       dynamic                   lag1       
+00:50:01:0b:c1:ec    21       dynamic                   lag1       
+00:40:9d:b1:dd:14    21       dynamic                   lag1       
+00:20:4a:b4:93:8b    21       dynamic                   lag1       
+00:20:4a:a2:9e:2c    21       dynamic                   lag1       
+00:20:4a:a2:97:bb    21       dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:20:4a:a2:97:3e    21       dynamic                   lag1       
+00:20:4a:a2:96:fb    21       dynamic                   lag1       
+00:20:4a:a2:3f:46    21       dynamic                   lag1       
+00:1b:17:00:01:31    21       dynamic                   lag1       
+00:04:f3:5d:73:80    21       dynamic                   lag1       
+00:12:ea:0e:45:0d    21       dynamic                   lag1       
+00:80:a3:d5:c9:47    21       dynamic                   lag1       
+00:a0:03:02:3a:3a    21       dynamic                   lag1       
+00:a0:03:02:3e:ef    21       dynamic                   lag1       
+00:a0:03:02:5c:37    21       dynamic                   lag1       
+00:a0:03:02:5f:8b    21       dynamic                   lag1       
+00:a0:03:02:8d:81    21       dynamic                   lag1       
+00:a0:03:02:b1:9e    21       dynamic                   lag1       
+00:a0:03:02:be:f5    21       dynamic                   lag1       
+00:a0:03:02:d6:48    21       dynamic                   lag1       
+00:a0:03:02:f5:7d    21       dynamic                   lag1       
+00:a0:03:03:08:bb    21       dynamic                   lag1       
+00:a0:03:05:3e:1d    21       dynamic                   lag1       
+00:a0:03:08:08:46    21       dynamic                   lag1       
+00:a0:03:08:a4:57    21       dynamic                   lag1       
+00:a0:03:08:ee:19    21       dynamic                   lag1       
+00:a0:03:09:b1:95    21       dynamic                   lag1       
+00:a0:03:0b:9f:52    21       dynamic                   lag1       
+00:a0:03:0c:36:2e    21       dynamic                   lag1       
+00:a0:03:0c:3a:96    21       dynamic                   lag1       
+00:a0:03:11:9b:35    21       dynamic                   lag1       
+00:a0:03:15:d3:44    21       dynamic                   lag1       
+00:a0:03:15:d3:55    21       dynamic                   lag1       
+00:a0:03:15:d3:78    21       dynamic                   lag1       
+00:a0:03:15:d3:cf    21       dynamic                   lag1       
+00:a0:03:18:5d:3c    21       dynamic                   lag1       
+00:a0:03:23:ef:1b    21       dynamic                   lag1       
+00:a0:03:23:ef:24    21       dynamic                   lag1       
+00:c0:e4:00:5c:e4    21       dynamic                   lag1       
+00:c0:e4:00:6c:4d    21       dynamic                   lag1       
+00:c0:e4:00:92:90    21       dynamic                   lag1       
+00:c0:e4:00:b5:32    21       dynamic                   lag1       
+00:c0:e4:00:b7:13    21       dynamic                   lag1       
+00:c0:e4:00:c2:d3    21       dynamic                   lag1       
+00:c0:e4:00:c2:e8    21       dynamic                   lag1       
+00:c0:e4:00:c6:92    21       dynamic                   lag1       
+00:c0:e4:00:c9:12    21       dynamic                   lag1       
+00:c0:e4:00:c9:13    21       dynamic                   lag1       
+00:c0:e4:00:c9:14    21       dynamic                   lag1       
+00:c0:e4:00:c9:39    21       dynamic                   lag1       
+00:c0:e4:00:d2:a6    21       dynamic                   lag1       
+00:c0:e4:00:d2:c4    21       dynamic                   lag1       
+00:c0:e4:00:e6:0b    21       dynamic                   lag1       
+00:c0:e4:00:f5:65    21       dynamic                   lag1       
+00:c0:e4:00:fd:4c    21       dynamic                   lag1       
+00:c0:e4:01:ab:de    21       dynamic                   lag1       
+00:c0:e4:01:be:6d    21       dynamic                   lag1       
+00:c0:e4:01:e2:11    21       dynamic                   lag1       
+00:c0:e4:01:e5:a8    21       dynamic                   lag1       
+00:c0:e4:01:fa:ab    21       dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:c0:e4:02:0a:1f    21       dynamic                   lag1       
+00:c0:e4:02:0b:b6    21       dynamic                   lag1       
+00:c0:e4:02:13:91    21       dynamic                   lag1       
+00:c0:e4:02:31:26    21       dynamic                   lag1       
+00:c0:e4:02:33:34    21       dynamic                   lag1       
+00:c0:e4:02:33:3a    21       dynamic                   lag1       
+00:c0:e4:02:33:3b    21       dynamic                   lag1       
+00:c0:e4:02:33:42    21       dynamic                   lag1       
+00:c0:e4:02:33:5d    21       dynamic                   lag1       
+00:c0:e4:02:34:15    21       dynamic                   lag1       
+00:c0:e4:02:35:72    21       dynamic                   lag1       
+00:c0:e4:02:35:7c    21       dynamic                   lag1       
+00:c0:e4:02:35:84    21       dynamic                   lag1       
+00:c0:e4:02:51:45    21       dynamic                   lag1       
+00:c0:e4:02:51:47    21       dynamic                   lag1       
+00:c0:e4:02:51:58    21       dynamic                   lag1       
+00:c0:e4:02:51:5e    21       dynamic                   lag1       
+00:c0:e4:02:93:4c    21       dynamic                   lag1       
+00:c0:e4:03:04:32    21       dynamic                   lag1       
+00:c0:e4:03:a5:85    21       dynamic                   lag1       
+00:c0:e4:04:db:ed    21       dynamic                   lag1       
+58:ac:78:98:fc:5d    22       dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    22       dynamic                   lag1       
+00:50:56:af:05:2c    22       dynamic                   lag1       
+00:1b:17:00:01:31    22       dynamic                   lag1       
+00:04:f3:5d:73:89    22       dynamic                   lag1       
+00:00:0a:3c:3c:f3    22       dynamic                   lag1       
+00:50:56:af:e2:aa    22       dynamic                   lag1       
+00:50:56:af:ea:4e    22       dynamic                   lag1       
+58:ac:78:98:fc:5d    24       dynamic                   lag1       
+50:81:40:2d:90:e7    24       dynamic                   1/1/24     
+50:81:40:2d:90:a1    24       dynamic                   lag1       
+50:81:40:2d:8f:59    24       dynamic                   1/1/24     
+50:81:40:2d:8f:43    24       dynamic                   1/1/24     
+50:81:40:2d:8f:23    24       dynamic                   1/1/24     
+50:81:40:2d:8e:7c    24       dynamic                   2/1/24     
+38:ca:84:3c:fb:c5    24       dynamic                   1/1/24     
+00:50:56:af:63:d7    24       dynamic                   lag1       
+00:50:56:af:60:6e    24       dynamic                   lag1       
+00:50:56:af:2c:22    24       dynamic                   lag1       
+00:50:56:af:19:cf    24       dynamic                   lag1       
+00:1b:17:00:01:31    24       dynamic                   lag1       
+00:0b:ab:d9:e0:91    24       dynamic                   lag1       
+00:50:56:af:e9:13    24       dynamic                   lag1       
+00:50:56:af:ef:18    24       dynamic                   lag1       
+c4:00:ad:9f:30:37    27       dynamic                   lag1       
+bc:f4:99:03:99:48    27       dynamic                   lag1       
+5c:88:16:c7:b2:81    27       dynamic                   2/1/24     
+5c:88:16:c7:b1:b4    27       dynamic                   2/1/24     
+58:ac:78:98:fc:5d    27       dynamic                   lag1       
+00:50:56:af:ac:5d    27       dynamic                   lag1       
+00:50:56:af:9e:18    27       dynamic                   lag1       
+00:50:56:af:71:fb    27       dynamic                   lag1       
+00:50:56:af:5b:cd    27       dynamic                   lag1       
+00:50:56:af:32:ed    27       dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:20:4a:c1:04:f0    27       dynamic                   lag1       
+00:20:4a:c1:04:ce    27       dynamic                   lag1       
+00:1b:17:00:01:31    27       dynamic                   lag1       
+00:16:77:0a:cf:fd    27       dynamic                   2/1/2      
+00:16:77:0a:cf:fc    27       dynamic                   2/1/2      
+00:16:77:0a:cf:f3    27       dynamic                   1/1/3      
+00:16:77:0a:cf:f2    27       dynamic                   1/1/3      
+00:16:77:0a:9d:60    27       dynamic                   2/1/4      
+00:16:77:0a:9d:5f    27       dynamic                   1/1/5      
+00:16:77:09:14:c1    27       dynamic                   1/1/6      
+00:16:77:09:14:c0    27       dynamic                   1/1/6      
+00:16:77:09:14:bf    27       dynamic                   1/1/5      
+00:16:77:09:14:be    27       dynamic                   1/1/5      
+00:16:77:09:14:bd    27       dynamic                   2/1/6      
+00:16:77:09:14:bc    27       dynamic                   2/1/6      
+00:16:77:09:14:bb    27       dynamic                   1/1/3      
+00:16:77:09:14:ba    27       dynamic                   1/1/3      
+00:16:77:09:14:b7    27       dynamic                   2/1/2      
+00:16:77:09:14:b6    27       dynamic                   2/1/2      
+00:16:77:09:14:b5    27       dynamic                   1/1/4      
+00:16:77:09:14:b4    27       dynamic                   1/1/4      
+00:16:77:09:14:b3    27       dynamic                   2/1/6      
+00:16:77:09:14:b2    27       dynamic                   2/1/6      
+00:00:bc:66:37:a7    27       dynamic                   lag1       
+00:00:bc:22:db:ff    27       dynamic                   lag1       
+00:00:bc:5a:cf:ee    27       dynamic                   lag1       
+00:00:bc:5b:fe:aa    27       dynamic                   1/1/24     
+00:00:bc:5b:ff:7a    27       dynamic                   1/1/24     
+00:00:bc:61:d4:74    27       dynamic                   lag1       
+00:00:bc:61:d4:b7    27       dynamic                   lag1       
+00:00:bc:61:d5:0d    27       dynamic                   1/1/2      
+00:0d:8d:00:3d:b4    27       dynamic                   1/1/24     
+00:0d:8d:00:91:66    27       dynamic                   1/1/24     
+00:0f:73:03:20:c4    27       dynamic                   lag1       
+00:0f:73:03:20:c6    27       dynamic                   lag1       
+00:0f:73:03:26:bc    27       dynamic                   lag1       
+00:0f:73:03:26:c0    27       dynamic                   lag1       
+00:0f:73:03:26:de    27       dynamic                   lag1       
+00:13:3b:90:de:8f    27       dynamic                   2/1/24     
+00:16:77:09:11:30    27       dynamic                   1/1/4      
+00:16:77:09:11:31    27       dynamic                   1/1/4      
+00:16:77:09:11:34    27       dynamic                   1/1/4      
+00:16:77:09:11:35    27       dynamic                   1/1/4      
+00:16:77:09:11:36    27       dynamic                   1/1/1      
+00:16:77:09:11:37    27       dynamic                   1/1/1      
+00:16:77:09:11:38    27       dynamic                   2/1/6      
+00:16:77:09:11:39    27       dynamic                   2/1/6      
+00:16:77:09:11:3e    27       dynamic                   1/1/6      
+00:16:77:09:11:3f    27       dynamic                   1/1/6      
+00:16:77:09:11:44    27       dynamic                   1/1/2      
+00:16:77:09:11:45    27       dynamic                   1/1/2      
+00:16:77:09:14:94    27       dynamic                   1/1/5      
+00:16:77:09:14:95    27       dynamic                   2/1/4      
+00:16:77:09:14:96    27       dynamic                   2/1/3      
+00:16:77:09:14:97    27       dynamic                   2/1/3      
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:16:77:09:14:9a    27       dynamic                   2/1/2      
+00:16:77:09:14:9b    27       dynamic                   2/1/2      
+00:16:77:09:14:9c    27       dynamic                   1/1/5      
+00:16:77:09:14:9d    27       dynamic                   2/1/4      
+00:16:77:09:14:a4    27       dynamic                   2/1/1      
+00:16:77:09:14:a5    27       dynamic                   2/1/1      
+00:16:77:09:14:a6    27       dynamic                   2/1/5      
+00:16:77:09:14:a7    27       dynamic                   2/1/5      
+00:16:77:09:14:a8    27       dynamic                   1/1/4      
+00:16:77:09:14:a9    27       dynamic                   1/1/4      
+00:16:77:09:14:aa    27       dynamic                   1/1/6      
+00:16:77:09:14:ab    27       dynamic                   1/1/6      
+00:16:77:09:14:ac    27       dynamic                   2/1/5      
+00:16:77:09:14:ad    27       dynamic                   2/1/5      
+00:16:77:09:14:b0    27       dynamic                   1/1/3      
+00:16:77:09:14:b1    27       dynamic                   1/1/3      
+00:90:e8:21:5e:0d    27       dynamic                   lag1       
+00:90:e8:21:5e:1c    27       dynamic                   lag1       
+f0:b6:1e:9b:51:4f    29       dynamic                   lag1       
+e0:73:e7:e8:3a:e2    29       dynamic                   1/1/24     
+c8:d9:d2:07:fe:73    29       dynamic                   1/1/24     
+58:ac:78:98:fc:5d    29       dynamic                   lag1       
+00:09:0f:09:23:1a    29       dynamic                   lag1       
+58:ac:78:98:fc:5d    50       dynamic                   lag1       
+28:29:86:6b:58:e2    50       dynamic                   lag1       
+28:29:86:6b:58:81    50       dynamic                   lag1       
+28:29:86:6b:58:7b    50       dynamic                   lag1       
+28:29:86:6b:58:66    50       dynamic                   lag1       
+28:29:86:6b:58:4d    50       dynamic                   lag1       
+28:29:86:6b:58:4c    50       dynamic                   lag1       
+28:29:86:6b:58:45    50       dynamic                   lag1       
+28:29:86:6b:56:a4    50       dynamic                   lag1       
+28:29:86:64:34:8c    50       dynamic                   lag1       
+28:29:86:64:24:65    50       dynamic                   lag1       
+28:29:86:64:24:2f    50       dynamic                   lag1       
+28:29:86:57:5b:1c    50       dynamic                   lag1       
+28:29:86:57:5b:04    50       dynamic                   lag1       
+28:29:86:57:5a:cf    50       dynamic                   lag1       
+28:29:86:57:5a:c9    50       dynamic                   lag1       
+28:29:86:4b:37:d1    50       dynamic                   lag1       
+28:29:86:4b:2e:bb    50       dynamic                   lag1       
+28:29:86:2e:1b:57    50       dynamic                   lag1       
+28:29:86:22:61:55    50       dynamic                   lag1       
+28:29:86:1d:d1:77    50       dynamic                   lag1       
+28:29:86:1d:35:6a    50       dynamic                   lag1       
+28:29:86:1d:35:35    50       dynamic                   lag1       
+28:29:86:19:fb:01    50       dynamic                   lag1       
+28:29:86:12:3f:8a    50       dynamic                   lag1       
+28:29:86:0b:cf:c1    50       dynamic                   lag1       
+28:29:86:06:b8:f4    50       dynamic                   lag1       
+28:29:86:06:49:94    50       dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    50       dynamic                   lag1       
+00:1b:17:00:01:31    50       dynamic                   lag1       
+00:c0:b7:53:15:47    50       dynamic                   lag1       
+00:c0:b7:54:cf:7a    50       dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:c0:b7:86:36:b2    50       dynamic                   lag1       
+00:c0:b7:89:83:35    50       dynamic                   lag1       
+00:c0:b7:8a:42:28    50       dynamic                   lag1       
+00:c0:b7:95:37:07    50       dynamic                   lag1       
+00:c0:b7:95:49:cd    50       dynamic                   lag1       
+00:c0:b7:a0:cd:6f    50       dynamic                   lag1       
+00:c0:b7:b4:16:4b    50       dynamic                   lag1       
+00:c0:b7:b8:21:29    50       dynamic                   lag1       
+00:c0:b7:b8:da:5a    50       dynamic                   lag1       
+00:c0:b7:c4:0c:bb    50       dynamic                   lag1       
+00:c0:b7:c8:bc:f6    50       dynamic                   lag1       
+00:c0:b7:df:6b:c0    50       dynamic                   lag1       
+00:c0:b7:df:6b:c7    50       dynamic                   lag1       
+00:c0:b7:df:6b:cd    50       dynamic                   lag1       
+00:c0:b7:df:6c:8e    50       dynamic                   lag1       
+00:c0:b7:df:ed:bd    50       dynamic                   lag1       
+00:c0:b7:e1:89:46    50       dynamic                   lag1       
+00:c0:b7:e2:37:d8    50       dynamic                   lag1       
+00:c0:b7:e2:38:0a    50       dynamic                   lag1       
+00:c0:b7:ea:6b:36    50       dynamic                   lag1       
+00:c0:b7:ec:7f:45    50       dynamic                   lag1       
+00:c0:b7:f4:f8:38    50       dynamic                   lag1       
+00:c0:b7:f4:f8:cc    50       dynamic                   lag1       
+00:c0:b7:f4:f9:16    50       dynamic                   lag1       
+00:c0:b7:f4:f9:52    50       dynamic                   lag1       
+00:c0:b7:f5:19:b9    50       dynamic                   lag1       
+00:c0:b7:fc:d4:15    50       dynamic                   lag1       
+d8:92:08:00:45:00    111      dynamic                   lag1       
+58:ac:78:98:fc:5d    111      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    111      dynamic                   lag1       
+00:50:56:af:c5:aa    111      dynamic                   lag1       
+00:50:56:af:b5:d4    111      dynamic                   lag1       
+00:50:56:af:99:bd    111      dynamic                   lag1       
+00:50:56:af:48:9a    111      dynamic                   lag1       
+00:50:56:af:43:d1    111      dynamic                   lag1       
+00:50:56:af:43:1a    111      dynamic                   lag1       
+00:50:56:af:26:49    111      dynamic                   lag1       
+00:50:56:af:02:15    111      dynamic                   lag1       
+00:1b:17:00:01:31    111      dynamic                   lag1       
+00:12:81:51:15:93    111      dynamic                   lag1       
+00:12:81:51:15:71    111      dynamic                   lag1       
+00:12:81:51:15:6e    111      dynamic                   lag1       
+00:12:81:51:15:60    111      dynamic                   lag1       
+00:12:81:51:15:5d    111      dynamic                   lag1       
+00:12:81:51:14:62    111      dynamic                   lag1       
+00:12:81:51:14:3a    111      dynamic                   lag1       
+00:12:81:51:14:14    111      dynamic                   lag1       
+00:12:81:51:14:01    111      dynamic                   lag1       
+00:12:81:51:13:dd    111      dynamic                   lag1       
+00:12:81:51:13:cd    111      dynamic                   lag1       
+00:12:81:51:13:c2    111      dynamic                   lag1       
+00:12:81:51:13:bc    111      dynamic                   lag1       
+00:12:81:51:13:b5    111      dynamic                   lag1       
+00:12:81:51:13:b4    111      dynamic                   lag1       
+00:12:81:51:13:b3    111      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:12:81:51:13:b1    111      dynamic                   lag1       
+00:12:81:51:13:af    111      dynamic                   lag1       
+00:12:81:51:13:aa    111      dynamic                   lag1       
+00:12:81:51:12:8c    111      dynamic                   lag1       
+00:12:81:51:12:83    111      dynamic                   lag1       
+00:12:81:51:11:14    111      dynamic                   lag1       
+00:12:81:51:11:11    111      dynamic                   lag1       
+00:12:81:51:11:0a    111      dynamic                   lag1       
+00:12:81:51:10:ee    111      dynamic                   lag1       
+00:12:81:51:10:c2    111      dynamic                   lag1       
+00:12:81:51:10:7c    111      dynamic                   lag1       
+00:10:be:0b:ca:e9    111      dynamic                   lag1       
+00:10:be:0b:ca:8f    111      dynamic                   lag1       
+00:10:be:0b:ca:83    111      dynamic                   lag1       
+00:10:be:0b:ca:7f    111      dynamic                   lag1       
+00:10:be:09:27:70    111      dynamic                   lag1       
+00:10:be:09:27:8f    111      dynamic                   lag1       
+00:10:be:09:28:2d    111      dynamic                   lag1       
+00:10:be:09:28:db    111      dynamic                   lag1       
+00:10:be:0b:3d:62    111      dynamic                   lag1       
+00:10:be:0b:3d:8b    111      dynamic                   lag1       
+00:10:be:0b:3e:ac    111      dynamic                   lag1       
+00:10:be:0b:ca:47    111      dynamic                   lag1       
+00:12:81:51:18:16    111      dynamic                   lag1       
+00:12:81:51:18:20    111      dynamic                   lag1       
+00:12:81:51:18:2e    111      dynamic                   lag1       
+00:12:81:51:18:2f    111      dynamic                   lag1       
+00:12:81:51:18:37    111      dynamic                   lag1       
+00:12:81:51:18:3d    111      dynamic                   lag1       
+00:12:81:51:18:43    111      dynamic                   lag1       
+00:12:81:51:18:46    111      dynamic                   lag1       
+00:12:81:51:18:4e    111      dynamic                   lag1       
+00:12:81:51:18:56    111      dynamic                   lag1       
+00:12:81:51:18:5d    111      dynamic                   lag1       
+00:12:81:51:18:5e    111      dynamic                   lag1       
+00:12:81:51:18:67    111      dynamic                   lag1       
+00:12:81:51:18:6c    111      dynamic                   lag1       
+00:12:81:51:18:6f    111      dynamic                   lag1       
+00:12:81:51:18:73    111      dynamic                   lag1       
+00:12:81:51:18:74    111      dynamic                   lag1       
+00:12:81:51:18:98    111      dynamic                   lag1       
+00:12:81:51:18:a6    111      dynamic                   lag1       
+00:12:81:51:18:ad    111      dynamic                   lag1       
+00:12:81:51:18:af    111      dynamic                   lag1       
+00:12:81:51:18:d0    111      dynamic                   lag1       
+00:12:81:51:18:e0    111      dynamic                   lag1       
+00:12:81:51:18:e3    111      dynamic                   lag1       
+00:12:81:51:21:f4    111      dynamic                   lag1       
+00:12:81:51:21:f6    111      dynamic                   lag1       
+00:12:81:51:21:f8    111      dynamic                   lag1       
+00:12:81:51:22:5a    111      dynamic                   lag1       
+00:12:81:51:22:5c    111      dynamic                   lag1       
+00:12:81:51:22:5f    111      dynamic                   lag1       
+00:50:56:af:ee:dc    111      dynamic                   lag1       
+58:ac:78:98:fc:5d    121      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+1c:6a:7a:f9:fb:b2    121      dynamic                   lag1       
+00:50:56:9c:73:12    121      dynamic                   lag1       
+00:50:01:1c:25:38    121      dynamic                   lag1       
+00:20:4a:c4:d6:60    121      dynamic                   lag1       
+00:20:4a:c4:d6:5c    121      dynamic                   lag1       
+00:20:4a:c4:c5:a3    121      dynamic                   lag1       
+00:20:4a:c4:c5:59    121      dynamic                   lag1       
+00:20:4a:bf:98:9e    121      dynamic                   lag1       
+00:1b:17:00:01:31    121      dynamic                   lag1       
+00:04:f3:54:34:b1    121      dynamic                   lag1       
+00:50:56:af:f3:36    121      dynamic                   lag1       
+00:50:db:00:b9:50    121      dynamic                   lag1       
+00:80:a3:97:22:7e    121      dynamic                   lag1       
+00:a0:03:02:c9:69    121      dynamic                   lag1       
+00:a0:03:02:e0:a2    121      dynamic                   lag1       
+00:a0:03:02:f2:9e    121      dynamic                   lag1       
+00:a0:03:02:f2:9f    121      dynamic                   lag1       
+00:a0:03:02:f2:a0    121      dynamic                   lag1       
+00:a0:03:02:f2:a1    121      dynamic                   lag1       
+00:a0:03:02:f2:af    121      dynamic                   lag1       
+00:a0:03:02:f2:bb    121      dynamic                   lag1       
+00:a0:03:02:f2:c7    121      dynamic                   lag1       
+00:a0:03:03:2a:53    121      dynamic                   lag1       
+00:a0:03:03:43:37    121      dynamic                   lag1       
+00:a0:03:03:44:9c    121      dynamic                   lag1       
+00:a0:03:03:c9:e1    121      dynamic                   lag1       
+00:a0:03:04:14:94    121      dynamic                   lag1       
+00:a0:03:04:89:d1    121      dynamic                   lag1       
+00:a0:03:08:eb:99    121      dynamic                   lag1       
+00:a0:03:18:a5:19    121      dynamic                   lag1       
+00:a0:03:22:ab:e7    121      dynamic                   lag1       
+00:a0:03:30:81:62    121      dynamic                   lag1       
+00:c0:e4:01:a7:2c    121      dynamic                   lag1       
+00:c0:e4:01:aa:e8    121      dynamic                   lag1       
+00:c0:e4:01:ac:94    121      dynamic                   lag1       
+00:c0:e4:01:b3:40    121      dynamic                   lag1       
+00:c0:e4:01:b3:42    121      dynamic                   lag1       
+00:c0:e4:01:b3:45    121      dynamic                   lag1       
+00:c0:e4:01:b3:46    121      dynamic                   lag1       
+00:c0:e4:01:c2:e5    121      dynamic                   lag1       
+00:c0:e4:01:d4:e9    121      dynamic                   lag1       
+00:c0:e4:01:ff:52    121      dynamic                   lag1       
+00:c0:e4:01:ff:56    121      dynamic                   lag1       
+00:c0:e4:01:ff:58    121      dynamic                   lag1       
+00:c0:e4:01:ff:5a    121      dynamic                   lag1       
+00:c0:e4:01:ff:5c    121      dynamic                   lag1       
+00:c0:e4:02:01:76    121      dynamic                   lag1       
+00:c0:e4:02:17:b7    121      dynamic                   lag1       
+00:c0:e4:02:17:b9    121      dynamic                   lag1       
+00:c0:e4:02:17:ba    121      dynamic                   lag1       
+00:c0:e4:02:17:bb    121      dynamic                   lag1       
+00:c0:e4:02:17:bd    121      dynamic                   lag1       
+00:c0:e4:02:17:be    121      dynamic                   lag1       
+00:c0:e4:02:18:d6    121      dynamic                   lag1       
+00:c0:e4:02:18:d9    121      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:c0:e4:02:18:da    121      dynamic                   lag1       
+00:c0:e4:02:18:dc    121      dynamic                   lag1       
+00:c0:e4:02:1b:ab    121      dynamic                   lag1       
+00:c0:e4:02:1b:ac    121      dynamic                   lag1       
+00:c0:e4:02:1b:ae    121      dynamic                   lag1       
+00:c0:e4:02:1b:b1    121      dynamic                   lag1       
+00:c0:e4:02:1b:b2    121      dynamic                   lag1       
+00:c0:e4:02:20:d5    121      dynamic                   lag1       
+00:c0:e4:02:21:ea    121      dynamic                   lag1       
+00:c0:e4:02:21:f2    121      dynamic                   lag1       
+00:c0:e4:02:21:f3    121      dynamic                   lag1       
+00:c0:e4:02:21:f4    121      dynamic                   lag1       
+00:c0:e4:02:21:fa    121      dynamic                   lag1       
+00:c0:e4:02:21:fe    121      dynamic                   lag1       
+00:c0:e4:02:49:fe    121      dynamic                   lag1       
+00:c0:e4:02:4a:00    121      dynamic                   lag1       
+00:c0:e4:02:4a:07    121      dynamic                   lag1       
+00:c0:e4:02:96:e0    121      dynamic                   lag1       
+00:c0:e4:02:c8:a7    121      dynamic                   lag1       
+00:c0:e4:02:ce:fc    121      dynamic                   lag1       
+00:c0:e4:03:21:ed    121      dynamic                   lag1       
+00:c0:e4:03:22:0a    121      dynamic                   lag1       
+00:c0:e4:03:5e:01    121      dynamic                   lag1       
+00:c0:e4:03:7c:3f    121      dynamic                   lag1       
+00:c0:e4:03:b5:3e    121      dynamic                   lag1       
+00:c0:e4:03:c9:76    121      dynamic                   lag1       
+00:c0:e4:04:a3:6e    121      dynamic                   lag1       
+00:c0:e4:07:24:cc    121      dynamic                   lag1       
+00:c0:e4:07:24:dc    121      dynamic                   lag1       
+00:c0:e4:07:24:e1    121      dynamic                   lag1       
+00:c0:e4:07:24:fb    121      dynamic                   lag1       
+00:c0:e4:07:24:ff    121      dynamic                   lag1       
+00:c0:e4:07:25:05    121      dynamic                   lag1       
+00:c0:e4:07:25:31    121      dynamic                   lag1       
+00:c0:e4:07:25:74    121      dynamic                   lag1       
+00:c0:e4:07:25:78    121      dynamic                   lag1       
+00:c0:e4:07:31:23    121      dynamic                   lag1       
+00:c0:e4:07:79:f1    121      dynamic                   lag1       
+00:c0:e4:09:e8:9a    121      dynamic                   lag1       
+00:c0:e4:0e:1c:3d    121      dynamic                   lag1       
+00:c0:e4:0f:e3:42    121      dynamic                   lag1       
+58:ac:78:98:fc:5d    140      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    140      dynamic                   lag1       
+00:1b:17:00:01:31    140      dynamic                   lag1       
+58:ac:78:98:fc:5d    167      dynamic                   lag1       
+28:92:4a:ab:b4:af    167      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    167      dynamic                   lag1       
+00:50:56:af:de:6f    167      dynamic                   lag1       
+00:50:56:af:d7:e0    167      dynamic                   lag1       
+00:50:56:af:d4:22    167      dynamic                   lag1       
+00:50:56:af:d3:09    167      dynamic                   lag1       
+00:50:56:af:c7:fc    167      dynamic                   lag1       
+00:50:56:af:b8:84    167      dynamic                   lag1       
+00:50:56:af:b7:10    167      dynamic                   lag1       
+00:50:56:af:aa:bb    167      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+00:50:56:af:9b:2c    167      dynamic                   lag1       
+00:50:56:af:88:e8    167      dynamic                   lag1       
+00:50:56:af:83:2d    167      dynamic                   lag1       
+00:50:56:af:80:50    167      dynamic                   lag1       
+00:50:56:af:7c:da    167      dynamic                   lag1       
+00:50:56:af:71:7c    167      dynamic                   lag1       
+00:50:56:af:70:97    167      dynamic                   lag1       
+00:50:56:af:5f:91    167      dynamic                   lag1       
+00:50:56:af:4e:80    167      dynamic                   lag1       
+00:50:56:af:4d:cd    167      dynamic                   lag1       
+00:50:56:af:45:df    167      dynamic                   lag1       
+00:50:56:af:36:87    167      dynamic                   lag1       
+00:50:56:af:27:34    167      dynamic                   lag1       
+00:50:56:af:23:d7    167      dynamic                   lag1       
+00:50:56:af:1f:7d    167      dynamic                   lag1       
+00:50:56:af:1e:e5    167      dynamic                   lag1       
+00:50:56:af:17:66    167      dynamic                   lag1       
+00:50:56:af:11:09    167      dynamic                   lag1       
+00:50:56:af:08:30    167      dynamic                   lag1       
+00:50:56:af:03:a9    167      dynamic                   lag1       
+00:50:56:a2:0b:ec    167      dynamic                   lag1       
+00:50:56:9c:7f:70    167      dynamic                   lag1       
+00:50:56:9c:50:1c    167      dynamic                   lag1       
+00:50:56:9c:50:1a    167      dynamic                   lag1       
+00:50:56:9c:16:5d    167      dynamic                   lag1       
+00:50:56:9c:16:5b    167      dynamic                   lag1       
+00:50:56:9c:06:ed    167      dynamic                   lag1       
+00:50:56:8a:57:e8    167      dynamic                   lag1       
+00:50:56:8a:57:29    167      dynamic                   lag1       
+00:50:56:8a:44:87    167      dynamic                   lag1       
+00:50:56:8a:31:6f    167      dynamic                   lag1       
+00:50:56:8a:31:5d    167      dynamic                   lag1       
+00:50:56:8a:2d:fa    167      dynamic                   lag1       
+00:50:56:8a:2c:37    167      dynamic                   lag1       
+00:50:56:8a:14:b3    167      dynamic                   lag1       
+00:1b:17:00:01:31    167      dynamic                   lag1       
+00:04:f3:5d:76:75    167      dynamic                   lag1       
+00:04:f3:3f:c1:f5    167      dynamic                   lag1       
+00:50:56:af:e3:89    167      dynamic                   lag1       
+00:50:56:af:f7:b8    167      dynamic                   lag1       
+00:80:a3:b3:8a:8c    167      dynamic                   lag1       
+58:ac:78:98:fc:5d    168      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    168      dynamic                   lag1       
+00:50:56:af:36:5c    168      dynamic                   lag1       
+00:50:56:9c:2f:12    168      dynamic                   lag1       
+00:1b:17:00:01:31    168      dynamic                   lag1       
+f4:39:09:48:20:96    169      dynamic                   lag1       
+f4:39:09:47:05:44    169      dynamic                   lag1       
+f4:39:09:30:4c:6f    169      dynamic                   lag1       
+f0:92:1c:e9:af:9a    169      dynamic                   lag1       
+c8:d9:d2:08:0d:84    169      dynamic                   lag1       
+c8:d3:ff:b5:56:93    169      dynamic                   lag1       
+a0:8c:fd:c3:d3:84    169      dynamic                   lag1       
+a0:8c:fd:c3:cc:e3    169      dynamic                   lag1       
+a0:48:1c:77:05:0c    169      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+6c:02:e0:3f:cc:7d    169      dynamic                   lag1       
+58:ac:78:98:fc:5d    169      dynamic                   lag1       
+50:81:40:2d:8f:3d    169      dynamic                   1/1/24     
+48:0f:cf:62:16:bb    169      dynamic                   lag1       
+48:0f:cf:5f:eb:c4    169      dynamic                   lag1       
+40:b0:34:1d:f5:5a    169      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    169      dynamic                   lag1       
+00:23:24:de:19:69    169      dynamic                   lag1       
+00:1b:17:00:01:31    169      dynamic                   lag1       
+00:68:eb:c3:db:3c    169      dynamic                   1/1/24     
+00:68:eb:cc:b9:30    169      dynamic                   1/1/24     
+10:62:e5:1a:a6:6e    169      dynamic                   lag1       
+10:e7:c6:0c:ce:92    169      dynamic                   lag1       
+10:e7:c6:1d:49:fa    169      dynamic                   lag1       
+f4:54:33:9c:c2:4f    171      dynamic                   lag1       
+f4:54:33:9c:c1:fe    171      dynamic                   lag1       
+f4:4d:30:68:3f:9e    171      dynamic                   lag1       
+58:ac:78:98:fc:5d    171      dynamic                   lag1       
+18:68:cb:2a:d3:35    171      dynamic                   lag1       
+18:68:cb:2a:d3:30    171      dynamic                   lag1       
+00:1b:17:00:01:31    171      dynamic                   lag1       
+f4:39:09:48:20:95    240      dynamic                   lag1       
+f4:39:09:48:20:84    240      dynamic                   lag1       
+f4:39:09:35:3c:d4    240      dynamic                   lag1       
+e8:d8:d1:3c:b6:39    240      dynamic                   lag1       
+e8:d8:d1:3c:b6:38    240      dynamic                   lag1       
+6c:02:e0:4c:f5:7e    240      dynamic                   lag1       
+6c:02:e0:4c:f5:68    240      dynamic                   lag1       
+6c:02:e0:4c:e7:e5    240      dynamic                   lag1       
+6c:02:e0:4c:e7:e2    240      dynamic                   lag1       
+6c:02:e0:4c:e7:dc    240      dynamic                   lag1       
+6c:02:e0:4c:e7:d4    240      dynamic                   lag1       
+6c:02:e0:4c:e7:c6    240      dynamic                   lag1       
+6c:02:e0:4c:e7:c5    240      dynamic                   lag1       
+6c:02:e0:4c:e7:c4    240      dynamic                   lag1       
+6c:02:e0:4c:e7:c1    240      dynamic                   lag1       
+6c:02:e0:4c:e7:bf    240      dynamic                   lag1       
+6c:02:e0:4c:e7:be    240      dynamic                   lag1       
+6c:02:e0:4c:e7:b8    240      dynamic                   lag1       
+6c:02:e0:4c:e7:b7    240      dynamic                   lag1       
+6c:02:e0:4c:e7:b6    240      dynamic                   lag1       
+6c:02:e0:4c:e7:b2    240      dynamic                   lag1       
+6c:02:e0:4c:e7:ad    240      dynamic                   lag1       
+6c:02:e0:4c:e7:ac    240      dynamic                   lag1       
+6c:02:e0:4c:e7:ab    240      dynamic                   lag1       
+6c:02:e0:4c:e7:aa    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a9    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a5    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a4    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a3    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a2    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a1    240      dynamic                   lag1       
+6c:02:e0:4c:e7:a0    240      dynamic                   lag1       
+6c:02:e0:4c:e7:9d    240      dynamic                   lag1       
+6c:02:e0:4c:e7:9b    240      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+6c:02:e0:4c:e7:9a    240      dynamic                   lag1       
+6c:02:e0:4c:e7:98    240      dynamic                   lag1       
+6c:02:e0:4c:e7:96    240      dynamic                   lag1       
+6c:02:e0:4c:e7:95    240      dynamic                   lag1       
+6c:02:e0:4c:e7:94    240      dynamic                   lag1       
+6c:02:e0:4c:e7:93    240      dynamic                   lag1       
+6c:02:e0:4c:e7:91    240      dynamic                   lag1       
+6c:02:e0:4c:e7:90    240      dynamic                   lag1       
+6c:02:e0:4c:e7:8f    240      dynamic                   lag1       
+6c:02:e0:4c:e7:8b    240      dynamic                   lag1       
+6c:02:e0:4c:e7:89    240      dynamic                   lag1       
+6c:02:e0:4c:e7:88    240      dynamic                   lag1       
+6c:02:e0:4c:e7:6e    240      dynamic                   lag1       
+6c:02:e0:4c:e7:6d    240      dynamic                   lag1       
+6c:02:e0:4c:e7:67    240      dynamic                   lag1       
+6c:02:e0:4c:e7:63    240      dynamic                   lag1       
+6c:02:e0:4c:e7:2f    240      dynamic                   lag1       
+6c:02:e0:4c:e7:2d    240      dynamic                   lag1       
+6c:02:e0:4c:e7:29    240      dynamic                   lag1       
+6c:02:e0:4c:e7:27    240      dynamic                   lag1       
+6c:02:e0:4c:e7:0b    240      dynamic                   lag1       
+6c:02:e0:4c:e6:dd    240      dynamic                   lag1       
+6c:02:e0:4c:e6:d9    240      dynamic                   lag1       
+6c:02:e0:4c:e6:d7    240      dynamic                   lag1       
+6c:02:e0:4c:e6:d5    240      dynamic                   lag1       
+6c:02:e0:4c:e6:d2    240      dynamic                   lag1       
+6c:02:e0:4c:e6:cd    240      dynamic                   lag1       
+6c:02:e0:4c:e6:c4    240      dynamic                   lag1       
+6c:02:e0:4c:e6:b8    240      dynamic                   lag1       
+6c:02:e0:4c:e6:a5    240      dynamic                   lag1       
+6c:02:e0:4c:e6:a3    240      dynamic                   lag1       
+6c:02:e0:4c:e6:a2    240      dynamic                   lag1       
+6c:02:e0:4c:e6:a1    240      dynamic                   lag1       
+6c:02:e0:4c:e6:9e    240      dynamic                   lag1       
+6c:02:e0:4c:e6:9d    240      dynamic                   lag1       
+6c:02:e0:4c:e6:9c    240      dynamic                   lag1       
+6c:02:e0:4c:e6:98    240      dynamic                   lag1       
+6c:02:e0:4c:e6:91    240      dynamic                   lag1       
+6c:02:e0:4c:e6:8f    240      dynamic                   lag1       
+6c:02:e0:4c:e6:8e    240      dynamic                   lag1       
+6c:02:e0:4c:e6:8d    240      dynamic                   lag1       
+6c:02:e0:4c:e6:8c    240      dynamic                   lag1       
+6c:02:e0:4c:e6:7d    240      dynamic                   lag1       
+6c:02:e0:4c:e6:73    240      dynamic                   lag1       
+6c:02:e0:4c:e3:1e    240      dynamic                   lag1       
+6c:02:e0:4c:e3:0d    240      dynamic                   lag1       
+6c:02:e0:4b:99:96    240      dynamic                   lag1       
+6c:02:e0:4b:98:f4    240      dynamic                   lag1       
+6c:02:e0:4b:98:ed    240      dynamic                   lag1       
+6c:02:e0:4b:98:ea    240      dynamic                   lag1       
+6c:02:e0:4b:98:e6    240      dynamic                   lag1       
+6c:02:e0:4b:98:e5    240      dynamic                   lag1       
+6c:02:e0:4b:98:e3    240      dynamic                   lag1       
+6c:02:e0:4b:98:e1    240      dynamic                   lag1       
+6c:02:e0:4b:98:d3    240      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+6c:02:e0:4b:98:cf    240      dynamic                   lag1       
+6c:02:e0:4b:98:bd    240      dynamic                   lag1       
+6c:02:e0:4b:98:a4    240      dynamic                   lag1       
+6c:02:e0:4b:98:a2    240      dynamic                   lag1       
+6c:02:e0:4b:98:a1    240      dynamic                   lag1       
+6c:02:e0:4b:98:a0    240      dynamic                   lag1       
+6c:02:e0:4b:98:7d    240      dynamic                   lag1       
+6c:02:e0:4b:98:7c    240      dynamic                   lag1       
+6c:02:e0:4b:98:76    240      dynamic                   lag1       
+6c:02:e0:4b:98:75    240      dynamic                   lag1       
+6c:02:e0:4b:98:74    240      dynamic                   lag1       
+6c:02:e0:4b:98:73    240      dynamic                   lag1       
+6c:02:e0:4b:98:72    240      dynamic                   lag1       
+6c:02:e0:4b:98:71    240      dynamic                   lag1       
+6c:02:e0:4b:98:70    240      dynamic                   lag1       
+6c:02:e0:4b:98:6f    240      dynamic                   lag1       
+6c:02:e0:4b:98:6e    240      dynamic                   lag1       
+6c:02:e0:4b:98:6d    240      dynamic                   lag1       
+6c:02:e0:4b:98:6c    240      dynamic                   lag1       
+6c:02:e0:4b:98:6a    240      dynamic                   lag1       
+6c:02:e0:4b:8f:47    240      dynamic                   lag1       
+6c:02:e0:4b:8f:31    240      dynamic                   lag1       
+6c:02:e0:4b:8f:30    240      dynamic                   lag1       
+6c:02:e0:4b:85:c9    240      dynamic                   lag1       
+6c:02:e0:3f:e7:cf    240      dynamic                   lag1       
+6c:02:e0:3f:ce:47    240      dynamic                   lag1       
+6c:02:e0:3f:ce:36    240      dynamic                   lag1       
+6c:02:e0:3f:ce:1d    240      dynamic                   lag1       
+6c:02:e0:3f:ce:13    240      dynamic                   lag1       
+6c:02:e0:3f:ce:11    240      dynamic                   lag1       
+6c:02:e0:3f:cd:ef    240      dynamic                   lag1       
+6c:02:e0:3f:cd:ea    240      dynamic                   lag1       
+6c:02:e0:3f:cd:c3    240      dynamic                   lag1       
+6c:02:e0:3f:cd:c1    240      dynamic                   lag1       
+6c:02:e0:3f:cd:be    240      dynamic                   lag1       
+6c:02:e0:3f:cd:b7    240      dynamic                   lag1       
+6c:02:e0:3f:cd:b2    240      dynamic                   lag1       
+6c:02:e0:3f:cd:98    240      dynamic                   lag1       
+6c:02:e0:3f:cd:84    240      dynamic                   lag1       
+6c:02:e0:3f:cd:75    240      dynamic                   lag1       
+6c:02:e0:3f:cd:74    240      dynamic                   lag1       
+6c:02:e0:3f:cd:71    240      dynamic                   lag1       
+6c:02:e0:3f:cd:6d    240      dynamic                   lag1       
+6c:02:e0:3f:cd:5c    240      dynamic                   lag1       
+6c:02:e0:3f:cd:58    240      dynamic                   lag1       
+6c:02:e0:3f:cd:54    240      dynamic                   lag1       
+6c:02:e0:3f:cd:52    240      dynamic                   lag1       
+6c:02:e0:3f:cd:51    240      dynamic                   lag1       
+6c:02:e0:3f:cd:00    240      dynamic                   lag1       
+6c:02:e0:3f:cc:f2    240      dynamic                   lag1       
+6c:02:e0:3f:cc:f1    240      dynamic                   lag1       
+6c:02:e0:3f:cc:e9    240      dynamic                   lag1       
+6c:02:e0:3f:cc:d5    240      dynamic                   lag1       
+6c:02:e0:3f:cc:d2    240      dynamic                   lag1       
+6c:02:e0:3f:cc:b5    240      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+6c:02:e0:3f:cc:b1    240      dynamic                   lag1       
+6c:02:e0:3f:cc:b0    240      dynamic                   lag1       
+6c:02:e0:3f:cc:af    240      dynamic                   lag1       
+6c:02:e0:3f:cc:ad    240      dynamic                   lag1       
+6c:02:e0:3f:cc:a6    240      dynamic                   lag1       
+6c:02:e0:3f:cc:a5    240      dynamic                   lag1       
+6c:02:e0:3f:cc:a4    240      dynamic                   1/1/24     
+6c:02:e0:3f:cc:9f    240      dynamic                   lag1       
+6c:02:e0:3f:cc:99    240      dynamic                   lag1       
+6c:02:e0:3f:cc:98    240      dynamic                   lag1       
+6c:02:e0:3f:cc:8d    240      dynamic                   lag1       
+6c:02:e0:3f:cc:7e    240      dynamic                   lag1       
+6c:02:e0:3f:cc:7c    240      dynamic                   lag1       
+6c:02:e0:3f:cc:78    240      dynamic                   lag1       
+6c:02:e0:3f:cc:77    240      dynamic                   lag1       
+6c:02:e0:3f:cc:74    240      dynamic                   lag1       
+6c:02:e0:3f:cc:6e    240      dynamic                   lag1       
+6c:02:e0:3f:cc:6a    240      dynamic                   lag1       
+6c:02:e0:3f:cc:65    240      dynamic                   lag1       
+6c:02:e0:3f:cc:64    240      dynamic                   lag1       
+6c:02:e0:3f:cc:61    240      dynamic                   lag1       
+6c:02:e0:3f:cc:60    240      dynamic                   lag1       
+6c:02:e0:3f:cc:5f    240      dynamic                   lag1       
+6c:02:e0:3f:cc:5b    240      dynamic                   lag1       
+6c:02:e0:3f:cc:5a    240      dynamic                   lag1       
+6c:02:e0:3f:cc:54    240      dynamic                   lag1       
+6c:02:e0:3f:cc:53    240      dynamic                   lag1       
+6c:02:e0:3f:cc:4a    240      dynamic                   lag1       
+6c:02:e0:3f:cc:49    240      dynamic                   lag1       
+6c:02:e0:3f:cc:48    240      dynamic                   lag1       
+6c:02:e0:3f:cc:47    240      dynamic                   lag1       
+6c:02:e0:3f:cc:43    240      dynamic                   lag1       
+6c:02:e0:3f:cc:3e    240      dynamic                   lag1       
+6c:02:e0:3f:cc:3d    240      dynamic                   lag1       
+6c:02:e0:3f:cc:3c    240      dynamic                   lag1       
+6c:02:e0:3f:cc:3b    240      dynamic                   lag1       
+6c:02:e0:3f:cc:3a    240      dynamic                   lag1       
+6c:02:e0:3f:cc:36    240      dynamic                   lag1       
+6c:02:e0:3f:cc:35    240      dynamic                   lag1       
+6c:02:e0:3f:cc:33    240      dynamic                   lag1       
+6c:02:e0:3f:cc:32    240      dynamic                   lag1       
+6c:02:e0:3f:cc:31    240      dynamic                   lag1       
+6c:02:e0:3f:cc:30    240      dynamic                   lag1       
+6c:02:e0:3f:cc:2f    240      dynamic                   lag1       
+6c:02:e0:3f:cc:2c    240      dynamic                   lag1       
+6c:02:e0:3f:cc:28    240      dynamic                   lag1       
+6c:02:e0:3f:cc:27    240      dynamic                   lag1       
+6c:02:e0:3f:cc:26    240      dynamic                   lag1       
+6c:02:e0:3f:cc:25    240      dynamic                   lag1       
+6c:02:e0:3f:cc:24    240      dynamic                   lag1       
+6c:02:e0:3f:cc:23    240      dynamic                   lag1       
+6c:02:e0:3f:cc:22    240      dynamic                   lag1       
+6c:02:e0:3f:cc:1f    240      dynamic                   lag1       
+6c:02:e0:3f:cc:1e    240      dynamic                   lag1       
+6c:02:e0:3f:cc:1d    240      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+6c:02:e0:3f:cc:1a    240      dynamic                   lag1       
+6c:02:e0:3f:cc:19    240      dynamic                   lag1       
+6c:02:e0:3f:cc:17    240      dynamic                   lag1       
+6c:02:e0:3f:cc:16    240      dynamic                   lag1       
+6c:02:e0:3f:cc:14    240      dynamic                   lag1       
+6c:02:e0:3f:a0:3e    240      dynamic                   lag1       
+6c:02:e0:3f:6c:47    240      dynamic                   lag1       
+6c:02:e0:3f:6c:2b    240      dynamic                   lag1       
+6c:02:e0:3f:6c:27    240      dynamic                   lag1       
+6c:02:e0:3f:6c:23    240      dynamic                   lag1       
+6c:02:e0:3f:6b:f8    240      dynamic                   lag1       
+6c:02:e0:3f:6b:cd    240      dynamic                   lag1       
+6c:02:e0:3f:6b:c7    240      dynamic                   lag1       
+6c:02:e0:3f:6b:c4    240      dynamic                   lag1       
+6c:02:e0:3f:6b:c3    240      dynamic                   lag1       
+6c:02:e0:3f:6b:be    240      dynamic                   lag1       
+6c:02:e0:3f:6a:a8    240      dynamic                   lag1       
+6c:02:e0:3f:6a:a4    240      dynamic                   lag1       
+6c:02:e0:3f:6a:a3    240      dynamic                   lag1       
+6c:02:e0:3f:6a:9f    240      dynamic                   lag1       
+6c:02:e0:3f:6a:77    240      dynamic                   lag1       
+6c:02:e0:3f:6a:6e    240      dynamic                   lag1       
+6c:02:e0:3f:6a:60    240      dynamic                   lag1       
+6c:02:e0:3f:6a:5f    240      dynamic                   lag1       
+6c:02:e0:3f:6a:5c    240      dynamic                   lag1       
+6c:02:e0:3f:6a:59    240      dynamic                   lag1       
+6c:02:e0:3f:6a:46    240      dynamic                   lag1       
+6c:02:e0:3f:6a:40    240      dynamic                   lag1       
+6c:02:e0:3f:6a:3c    240      dynamic                   lag1       
+6c:02:e0:3f:6a:38    240      dynamic                   lag1       
+6c:02:e0:3e:b3:3a    240      dynamic                   lag1       
+6c:02:e0:3e:9c:a6    240      dynamic                   lag1       
+6c:02:e0:3e:9b:83    240      dynamic                   lag1       
+6c:02:e0:3e:15:95    240      dynamic                   lag1       
+6c:02:e0:3e:14:5e    240      dynamic                   lag1       
+58:ac:78:98:fc:5d    240      dynamic                   lag1       
+38:ca:84:3c:fd:a6    240      dynamic                   lag1       
+38:ca:84:3c:fd:04    240      dynamic                   lag1       
+38:ca:84:3c:fb:a7    240      dynamic                   lag1       
+2c:f0:5d:91:9c:f7    240      dynamic                   lag1       
+2c:f0:5d:91:9b:e8    240      dynamic                   lag1       
+2c:f0:5d:91:9b:02    240      dynamic                   lag1       
+2c:f0:5d:91:99:f6    240      dynamic                   lag1       
+2c:f0:5d:91:99:de    240      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    240      dynamic                   lag1       
+00:50:56:8a:57:54    240      dynamic                   lag1       
+00:50:56:8a:28:0c    240      dynamic                   lag1       
+00:50:56:8a:0c:c3    240      dynamic                   lag1       
+00:23:24:d4:e8:ce    240      dynamic                   lag1       
+00:23:24:bc:08:d2    240      dynamic                   lag1       
+00:23:24:b8:92:6b    240      dynamic                   lag1       
+00:1b:17:00:01:31    240      dynamic                   lag1       
+00:11:6b:68:cf:e7    240      dynamic                   lag1       
+04:0e:3c:3a:83:78    240      dynamic                   lag1       
+04:0e:3c:3a:84:0a    240      dynamic                   lag1       
+
+ -- MORE --, next page: Space, next line: Enter, quit: q
+                                                               
+04:0e:3c:3a:84:0b    240      dynamic                   lag1       
+04:0e:3c:3a:84:0d    240      dynamic                   lag1       
+04:0e:3c:3a:84:0f    240      dynamic                   lag1       
+04:0e:3c:3a:84:10    240      dynamic                   lag1       
+04:0e:3c:3a:84:2f    240      dynamic                   lag1       
+04:0e:3c:3a:84:39    240      dynamic                   lag1       
+04:0e:3c:3d:36:ec    240      dynamic                   lag1       
+04:0e:3c:3d:37:00    240      dynamic                   lag1       
+04:0e:3c:3d:37:dc    240      dynamic                   lag1       
+04:0e:3c:3d:37:e9    240      dynamic                   lag1       
+04:0e:3c:3d:37:ed    240      dynamic                   lag1       
+04:0e:3c:3d:37:f3    240      dynamic                   lag1       
+04:0e:3c:3d:37:f5    240      dynamic                   lag1       
+04:0e:3c:3d:37:fc    240      dynamic                   lag1       
+fe:fb:38:ee:8d:33    262      dynamic                   lag1       
+f4:39:09:47:05:46    262      dynamic                   lag1       
+f2:40:4b:d3:28:29    262      dynamic                   lag1       
+98:01:a7:b2:ac:f7    262      dynamic                   lag1       
+86:be:03:fc:56:20    262      dynamic                   lag1       
+84:69:93:56:a2:cb    262      dynamic                   lag1       
+74:d0:2b:0d:5c:fd    262      dynamic                   lag1       
+70:1a:b8:5f:de:67    262      dynamic                   lag1       
+64:6e:e0:f8:3f:9a    262      dynamic                   lag1       
+5e:df:4d:dc:fc:af    262      dynamic                   lag1       
+58:ac:78:98:fc:5d    262      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    262      dynamic                   lag1       
+00:09:0f:09:00:00    262      dynamic                   lag1       
+00:b0:9d:db:57:19    262      dynamic                   lag1       
+00:b0:9d:db:57:91    262      dynamic                   lag1       
+12:bb:5e:58:ff:f5    262      dynamic                   lag1       
+14:cc:20:cd:4e:53    262      dynamic                   lag1       
+18:60:24:46:55:1e    262      dynamic                   lag1       
+18:60:24:c7:5b:e3    262      dynamic                   lag1       
+f4:2e:7f:c8:b4:28    888      dynamic                   1/1/24     
+58:ac:78:98:fc:5d    888      dynamic                   lag1       
+1c:6a:7a:f9:fb:b2    888      dynamic                   lag1       
+00:1b:17:00:01:31    888      dynamic                   lag1       
+58:ac:78:98:fc:5d    1000     dynamic                   lag1       
+58:35:d9:a8:16:31    1000     dynamic                   1/1/24     
+00:90:e8:00:00:81    1000     dynamic                   2/1/3      
+framesMT60#                  
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# 
+framesMT60# sh arp
+IPv4 Address     MAC                Port         Physical Port              State     
+--------------------------------------------------------------------------------------
+192.168.2.253    00:50:56:af:49:11  vlan2        lag1                       reachable  
+192.168.2.250    c8:d9:d2:12:32:7f  vlan2        lag1                       reachable  
+192.168.2.10     00:1b:17:00:01:31  vlan2        lag1                       reachable  
+Total Number Of ARP Entries Listed- 3.
+------------------------------------------------------------------------------------------
+framesMT60# 

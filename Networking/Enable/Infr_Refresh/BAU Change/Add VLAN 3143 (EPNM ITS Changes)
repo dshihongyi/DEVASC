@@ -1,0 +1,103 @@
+4033
+4040
+
+3243 - Example
+
+
+~~~~~~~~~~~~~~
+
+VLAN
+    3243   Active    ena_3243_NextGenL2PoCServers    T Eth1/1/1-1/1/6
+                                                     T Po1,1000
+interface vlan3243
+ vlan-name vlan-NextGenL2PoCServers
+ description ena_3243_NextGenL2PoCServers
+ no shutdown
+
+
+
+
+interface ethernet1/1/1
+
+// ~~~~~ Halswell Dell Switch CO01 ~~~~~
+
+DELL 
+
+ena-sw-hwl-c01
+
+
+interface vlan3143
+ vlan-name vlan-Cisco_Epnm_itf
+ description ena_3143_CiscoEpnm_itf
+ no shutdown
+
+
+interface port-channel1
+ description "Uplink to esl-sw-core AE16"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 1900,3085,3199,3240,3243-3244,3952-3954,4009-4023,4025-4030,4033-4046,4052-4054,4056-4057,4064,4068,4070-4072,4077-4078,4080-4081,4083-4084,4092
+ mtu 9216
+ vlt-port-channel 1
+ 
+ 
+ 
+ interface vlan3143
+ vlan-name vlan-Cisco_Epnm_itf
+ description ena_3143_CiscoEpnm_itf
+ no shutdown
+
+
+interface port-channel1
+ description "Uplink to esl-sw-core AE16"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 1900,3085,3199,3240,3243-3244,3952-3954,4009-4023,4025-4030,4033-4046,4052-4054,4056-4057,4064,4068,4070-4072,4077-4078,4080-4081,4083-4084,4092
+ mtu 9216
+ vlt-port-channel 1
+
+
+interface port-channel1
+ description "Uplink to esl-sw-core AE16"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 1900,3085,3199,3240,3243-3244,3952-3954,4009-4023,4025-4030,4033-4046,4052-4054,4056-4057,4064,4068,4070-4072,4077-4078,4080-4081,4083-4084,4092
+ mtu 9216
+ vlt-port-channel 1
+
+
+
+interface port-channel1
+switchport trunk allowed vlan 3143
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 3143
+
+
+
+ // ~~~~~ Core Switch ~~~~~
+
+
+dsadmin@ena-sw-core>
+set vlans vlan-CiscoEpnmItf vlan-id 3143
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-CiscoEpnmItf
+set interfaces ae8 unit 0 family ethernet-switching vlan members vlan-CiscoEpnmItf
+set interfaces ae9 unit 0 family ethernet-switching vlan members vlan-CiscoEpnmItf
+set interfaces ae16 unit 0 family ethernet-switching vlan members vlan-CiscoEpnmItf
+
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-cisco-epnm-itf
+
+commit confirmed 4 comment "Project Refresh Infra: Create new vlan 3143 for vCenter Daniel Shi"
+
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+
+set security zones security-zone zone-nextgen-l2poc-servers interfaces reth1.3243 host-inbound-traffic system-services ping
+set interfaces reth1 unit 3243 description vlan-NextGenL2PoCServers
+set interfaces reth1 unit 3243 vlan-id 3243
+set interfaces reth1 unit 3243 family inet address 10.132.43.1/24
+set protocols ospf area 0.0.0.0 interface reth1.3243 passive

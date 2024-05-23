@@ -1,0 +1,63 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-servers-sac vlan-id 4053
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-sac
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+@REM set protocols ospf area 0.0.0.0 interface reth1.4053 passive
+
+set interfaces reth1 unit 4053 description "vlan-servers-sac"
+set interfaces reth1 unit 4053 vlan-id 4053
+set interfaces reth1 unit 4053 family inet address 10.130.53.1/24
+set security zones security-zone zone-servers-sac interfaces reth1.4053 host-inbound-traffic system-services ping
+
+set security address-book zone-servers-sac address addr-enasaclbp101 10.130.53.10/32
+set security address-book zone-servers-sac address addr-enasacprvp101 10.130.53.11/32
+set security address-book zone-servers-sac address addr-enasacprvp102 10.130.53.12/32
+set security address-book zone-servers-sac address addr-enasacsqlp101 10.130.53.40/32
+set security address-book zone-servers-sac address addr-enasacsqlp102 10.130.53.41/32
+set security address-book zone-servers-sac address addr-enasacsqlp103 10.130.53.42/32
+set security address-book zone-servers-sac address addr-cluster_mgmt 10.130.53.50/32
+set security address-book zone-servers-sac address addr-servers-sac 10.130.53.0/24
+set security address-book zone-servers-sac attach zone zone-servers-sac
+
+set security nat source rule-set nat-servers-sac-to-internet from zone zone-servers-sac
+set security nat source rule-set nat-servers-sac-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-sac-to-internet rule rule-servers-sac match source-address 10.130.53.0/24
+set security nat source rule-set nat-servers-sac-to-internet rule rule-servers-sac then source-nat interface
+
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac apply-groups allow-nessus-scan-template
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac apply-groups allow-prtg-monitoring-template
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac match source-address addr-ssh-bastion-prod
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac match destination-address addr-servers-sac
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac match application junos-ssh
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac match application junos-icmp-all
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac then permit
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac then log session-init
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-sac policy policy-bastion-prod-servers-sac then log session-close
+
+set security policies from-zone zone-servers-sac to-zone zone-internet apply-groups allow-ccl-manage-template
+set security policies from-zone zone-servers-sac to-zone zone-internet apply-groups allow-o365-smtp-relay
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out match source-address addr-servers-sac
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out match destination-address any
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out match application junos-http
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out match application junos-https
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out then permit
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out then log session-init
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-out then log session-close
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns match source-address addr-servers-sac
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns match destination-address any
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns match application junos-dns-udp
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns match application junos-dns-tcp
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns then permit
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns then log session-init
+set security policies from-zone zone-servers-sac to-zone zone-internet policy policy-servers-sac-dns then log session-close
+
+
+
+
+
+

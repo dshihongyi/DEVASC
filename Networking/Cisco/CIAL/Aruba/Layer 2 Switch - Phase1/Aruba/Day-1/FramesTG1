@@ -1,0 +1,536 @@
+
+
+
+hostname FramesTG1
+domain-name cial.co.nz
+banner motd ~
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+~C
+!
+user admin group administrators password plaintext vanc4brszz
+user cattools group administrators password plaintext woihw943asE
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key plaintext wimC8yPqb5Nupz%gIf0FLj6#2J7
+!
+aaa authentication allow-fail-through
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+!
+vsf member 1
+    type jl725a
+    link 1 1/1/27
+    link 2 1/1/28
+!
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 3
+    name Workstations
+vlan 8
+    name VoIP
+vlan 10
+    name CCTV
+vlan 20
+    name Honeywell
+vlan 21
+    name Building_Management_System
+vlan 22
+    name Cardax
+vlan 23
+    name Carpark
+vlan 24
+    name BagSort
+vlan 25
+    name EAS
+vlan 27
+    name Bagsort_Control
+vlan 40
+    name FIDS_DDCs
+vlan 50
+    name UPS_Management
+vlan 90
+    name Terminal_Services
+vlan 110
+    name CCTV_ITP
+vlan 111
+    name CCTV-camera
+vlan 121
+    name BMS_ITP
+vlan 140
+    name FIDS_ITP_DDCs
+vlan 166
+    name ACUS
+vlan 167
+    name Production
+vlan 168
+    name FIDS
+vlan 169
+    name Secure_Workstations
+vlan 224
+    name Clevertronics
+vlan 240
+    name FIDS_240
+vlan 267
+    name ADSL
+vlan 268
+    name Emergency
+vlan 302
+    name AirNZ_LAN
+vlan 306
+    name Jetstar
+vlan 309
+    name Aviation-Security
+vlan 316
+    name Whitcoulls_VoIP
+vlan 317
+    name Whitcoulls_DATA
+vlan 319
+    name Exit_Race
+vlan 320
+    name Seismic_Sensors
+vlan 410
+    name ARINC1
+vlan 411
+    name ARINC2
+vlan 666
+    name WirelessA
+vlan 667
+    name WirelessB
+vlan 668
+    name Airways_IP_Radio
+vlan 700
+    name Remote_SPAN_VLAN
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+!
+!
+!
+!
+spanning-tree mode rpvst
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,3,8,10,20-22,24,27,40,50,90,110,111,121,140,166-169,224,240,267,268,306,410,411,666,667,700,888
+!
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1
+    dwrr queue 1 weight 1
+    dwrr queue 2 weight 1
+    dwrr queue 3 weight 1
+    dwrr queue 4 weight 1
+    dwrr queue 5 weight 1
+    dwrr queue 6 weight 1
+    strict queue 7 max-bandwidth 100000
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 26 local-priority 4 color green
+qos dscp-map 40 local-priority 6 color green name CS5
+qos dscp-map 41 local-priority 6 color green
+qos dscp-map 42 local-priority 6 color green
+qos dscp-map 43 local-priority 6 color green
+qos dscp-map 44 local-priority 6 color green
+qos dscp-map 45 local-priority 6 color green
+qos dscp-map 47 local-priority 5 color green name Audio
+qos dscp-map 49 local-priority 5 color green name PTPv2
+!
+!
+interface lag 1
+    description Uplink To CoreS-Stack-A_B
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,3,8,10,20-22,24,27,40,50,90,110,111,121,140,166-169,224,240,267,268,306,410,411,666,667,700,888
+    lacp mode active
+    qos trust cos
+    spanning-tree link-type point-to-point
+!
+!
+interface 1/1/1
+    description (TG1-42) (2 x G3FCUs 1 to 2) 192.168.21.221 to 222
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/2
+    description TG1/1 DDC102 Int belt 1
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description (TG1-44) (4 x G3FCUs 3 to 6) 192.168.21.223 to 226
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/4
+    description CCTV Camera 558 (192.168.234.123)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description (Retain) GOS NIG ( Gate 30 ) 202.14.168.224
+    no shutdown
+    speed 10-half
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 168
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/6
+    description WAP_T1
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/7
+    description (TG1-53) OPS Signage apron gate 29/30
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 90
+    qos trust cos
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 2
+interface 1/1/8
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description (TG1-46)(5 x G1FCUs 1 to 5) 192.168.21.230 to 234
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/10
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description WAP030
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/13
+    description Cardax FTC3000 FTC020 TG1-9
+    no shutdown
+    speed 10-half
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description Cardax FTC3000 FTC021 TG1-10
+    no shutdown
+    speed 10-half
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description Cardax FTC3000 FTC022 TG1-11
+    no shutdown
+    speed 10-half
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/16
+    description Cardax FTC3000 FTC023 TG1-12
+    no shutdown
+    speed 10-half
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 22
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/17
+    description FrameUTG1 192.168.50.21
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/18
+    description CCTV Camera 379 - Int Arrivals Baggage Reclaim PTZ - 192.168.233.169
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/19
+    description CCTV Camera 382 - Int Arrivals Baggage Reclaim (Belt 1) - 192.168.233.172
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/20
+    description CCTV Camera 383 - Int Arrivals Baggage Reclaim (Belt 2) - 192.168.233.173
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/21
+    description CCTV Camera 380 - Int Arrivals Baggage Reclaim (Belt 1 Ext) - 192.168.233.170
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/22
+    description CCTV Camera 381 - Int Arrivals Baggage Reclaim (Belt 2 Ext) - 192.168.233.171
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/23
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/24
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/25
+    description Uplink to CoreS-Stack-A_B Gi1/1/7
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,3,8,10,20-22,24,27,40,50,90,110,111,121,140,166-169,224,240,267,268,306,410,411,666,667,700,888
+    qos trust cos
+    spanning-tree link-type point-to-point
+
+interface 1/1/26
+    description FramesTB21 Gi1/1
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,3,8,10,20-22,24,27,40,50,90,110,111,121,140,166-169,224,240,267,268,306,410,411,666,667,700,888
+    qos trust cos
+    spanning-tree link-type point-to-point
+
+# interface 1/1/25
+#     description Uplink to CoreS-Stack-A_B Gi1/1/7
+#     no shutdown
+#     lag 1
+# interface 1/1/26
+#   description Spare-Port (Not_In_Use)
+#     no shutdown
+#     lag 1
+!
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.39/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+

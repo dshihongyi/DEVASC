@@ -1,0 +1,138 @@
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend match source-address addrs-rpa-frontend-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend match source-address addr-parea-new
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend match destination-address addrs-rpa-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-frontend then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness match source-address addrs-rpa-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness match destination-address addr-enanx02
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness match application app-citrix-client
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-citrix-citrix-nxwitness then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness match source-address addrs-rpa-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness match destination-address addr-enanx01
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness match destination-address addr-enawatp01
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness then permit
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-co-bms-cameras policy policy-citrix-nxwitness then log session-close
+
+
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix match source-address addr-enanx01
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix match source-address addr-enawatp01
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix match destination-address addrs-rpa-controller-servers
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix match application junos-http
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix match application app-citrix-client
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix then permit
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix then log session-init
+set security policies from-zone zone-co-bms-cameras to-zone zone-servers-rpa policy policy-nxwitness-citrix then log session-close
+
+policy-rpa-citrix-frontend
+policy-citrix-citrix-nxwitness 
+policy-nxwitness-citrix
+policy-citrix-nxwitness
+
+~~~~~
+
+
+policy-rpa-rds-cal
+policy-rpa-citrix-app-config
+policy-rpa-rds-cal
+policy-citrix-kms
+policy-enable-rpa-access
+policy-rpa-citrix-controller
+
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match source-address addrs-rpa-app-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match destination-address addr-ad-rdscal1
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match destination-address addr-enalicp01
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match application junos-ms-rpc-tcp
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match application app-dfsr-rpc
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match application app-citrix-licensing
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal match application junos-icmp-all
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-ad policy policy-rpa-rds-cal then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config match source-address addrs-rpa-app-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config match destination-address addrs-rpa-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config match application app-citrix-licensing
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-app-config then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal match source-address addrs-rpa-app-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal match destination-address addr-puuweto
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal match application app-citrix-licensing
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal match application junos-ms-rpc-tcp
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal match application app-dfsr-rpc
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-rds-cal then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms match source-address addrs-rpa-app-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms match destination-address addr-tui
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms match application app-kms
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-citrix-kms then log session-close
+
+
+
+
+
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match source-address any
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match destination-address addrs-rpa-app-servers
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match destination-address addrs-rpa-frontend-servers
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match destination-address addr-enanx02
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match application junos-http
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match application junos-https
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match application app-citrix-client
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access then permit
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access then log session-init
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access then log session-close
+
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller match source-address addrs-rpa-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller match destination-address addrs-rpa-app-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller match application junos-smb
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-citrix-controller then log session-close
+
+
+
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match source-address addr-puuweto
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match source-address addr-enactxp03
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match source-address addr-enactxp06
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match source-address addr-enactxp08
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match source-address addr-enactxp010
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match destination-address any
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet then permit
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-rpa-citrix-licensing-internet then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match source-address addr-kootuku
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match source-address addr-enactxp02
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match source-address addr-enactxp04
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match source-address addr-enactxp06
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match source-address addr-enactxp010
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match destination-address any
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet match application any
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet then permit
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-internet policy policy-temp-rpa-server-internet then log session-close

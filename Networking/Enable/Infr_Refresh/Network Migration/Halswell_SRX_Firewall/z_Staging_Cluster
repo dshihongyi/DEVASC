@@ -1,0 +1,24 @@
+
+---waiting to put in new firewall ---
+
+set interfaces reth2 description "ESLHRBLSW001 Eth-Trunk2"
+set interfaces reth2 disable
+set interfaces reth2 vlan-tagging
+set interfaces reth2 redundant-ether-options redundancy-group 2
+set interfaces reth2 redundant-ether-options minimum-links 1
+set interfaces reth2 redundant-ether-options lacp active
+deactivate interfaces reth2
+
+set interfaces reth6 description "esl-sw-core ae8"
+set interfaces reth6 disable
+set interfaces reth6 vlan-tagging
+set interfaces reth6 redundant-ether-options redundancy-group 1
+set interfaces reth6 redundant-ether-options minimum-links 1
+set interfaces reth6 redundant-ether-options lacp active
+set interfaces reth6 unit 100 vlan-id 100
+set interfaces reth6 unit 100 family inet address 10.100.100.1/24
+deactivate interfaces reth6
+
+set security zones security-zone zone-test-juniper interfaces reth6.100 host-inbound-traffic system-services ping
+set security zones security-zone zone-test-juniper interfaces reth6.100 host-inbound-traffic protocols all
+deactivate security zones security-zone zone-test-juniper interfaces reth6.100

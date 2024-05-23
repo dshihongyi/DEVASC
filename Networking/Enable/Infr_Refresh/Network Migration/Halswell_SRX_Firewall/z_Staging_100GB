@@ -1,0 +1,33 @@
+
+@REM --- ena-sw-core ---
+
+set interfaces ae16 aggregated-ether-options link-speed mixed
+
+set interfaces et-1/0/49 description "ena-sw-hwl-c01 Data Switch via DAC to e1/1/53"
+set interfaces et-1/0/49 ether-options 802.3ad ae16
+
+set interfaces et-0/0/49 description "ena-sw-hwl-c02 Data Switch via L13Ef75 E10Ef32 E10Wf32 E09Wf37 RIC_R1_FP01_C01_T02_Pos13L13Ef75 E10Ef32 E10Wf32 E09Wf37 RIC_R1_FP01_C01_T02_Pos13 to e1/1/53;"
+set interfaces et-0/0/49 ether-options 802.3ad ae16
+
+
+@REM --- ena-sw-hwl-c01 ---
+interface ethernet1/1/53
+ description "Uplink to esl-sw-core AE16"
+ no shutdown
+ channel-group 1 mode active
+ no switchport
+ mtu 9216
+ flowcontrol receive off
+
+@REM  negotiation off
+
+
+ @REM --- ena-sw-hwl-c02 ---
+interface ethernet1/1/53
+ description "Uplink to esl-sw-core AE16"
+ no shutdown
+ channel-group 1 mode active
+ no switchport
+ mtu 9216
+ flowcontrol receive off
+

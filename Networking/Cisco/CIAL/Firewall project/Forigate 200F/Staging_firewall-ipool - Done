@@ -1,0 +1,32 @@
+config firewall ippool
+ edit "ippool-Internet_Public_IP"
+  set endip 202.124.113.204
+  set startip 202.124.113.204
+  set type overload
+ next
+ edit "ippool-corefw_mail_websites_195"
+  set endip 202.124.113.195
+  set startip 202.124.113.195
+  set type overload
+ next
+# # Warning: IPPool ippool-Internet_Public_IP range overlap with this IPPool
+#  edit "ippool-202.124.113.204"
+#   set endip 202.124.113.204
+#   set startip 202.124.113.204
+#   set type overload
+#  next
+# # Warning: IPPool ippool-202.124.113.204 range overlap with this IPPool
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

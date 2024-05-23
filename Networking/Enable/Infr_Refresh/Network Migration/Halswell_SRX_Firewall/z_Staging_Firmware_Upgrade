@@ -1,0 +1,118 @@
+<!-- --- Copy OS image from USB --- -->
+
+login as: netconsole
+netconsole@10.130.160.25's password:
+Linux pi-console-hwl 5.15.32+ #1538 Thu Mar 31 19:37:58 BST 2022 armv6l
+
+root> start shell user root
+root@% ls /dev/da*
+/dev/da0        /dev/da0s2      /dev/da0s3c     /dev/da0s4a     /dev/da1s1
+/dev/da0s1      /dev/da0s2a     /dev/da0s3e     /dev/da0s4c
+/dev/da0s1a     /dev/da0s2c     /dev/da0s3f     /dev/da0s4e
+/dev/da0s1c     /dev/da0s3      /dev/da0s4      /dev/da1
+root@% umass1: at uhub1 port 1 (addr 2) disconnected
+(da1:umass-sim1:1:0:0): lost device
+(da1:umass-sim1:1:0:0): removing device entry
+umass1: detached
+ls /dev/da*
+/dev/da0        /dev/da0s1c     /dev/da0s2c     /dev/da0s3e     /dev/da0s4a
+/dev/da0s1      /dev/da0s2      /dev/da0s3      /dev/da0s3f     /dev/da0s4c
+/dev/da0s1a     /dev/da0s2a     /dev/da0s3c     /dev/da0s4      /dev/da0s4e
+
+
+
+root@% mkdir /var/tmp/usb
+root@% ls /var/tmp/usb
+
+root@% umass1: Kingston DataTraveler 2.0, rev 2.00/1.00, addr 2
+da1 at umass-sim1 bus 1 target 0 lun 0
+da1: <Kingston DataTraveler 2.0 1.00> Removable Direct Access SCSI-4 device
+da1: 40.000MB/s transfers
+da1: 14800MB (30310400 512 byte sectors: 255H 63S/T 1886C)
+
+
+root@% ls /dev/da*
+/dev/da0        /dev/da0s2      /dev/da0s3c     /dev/da0s4a     /dev/da1s1
+/dev/da0s1      /dev/da0s2a     /dev/da0s3e     /dev/da0s4c
+/dev/da0s1a     /dev/da0s2c     /dev/da0s3f     /dev/da0s4e
+/dev/da0s1c     /dev/da0s3      /dev/da0s4      /dev/da1
+
+root@% mount_msdosfs /dev/da1s1 /var/tmp/usb
+
+root@% ls /var/tmp/usb
+junos-srxsme-21.2R3-S3.5.tgz
+
+root@% cp /var/tmp/usb/junos-srxsme-21.2R3-S3.5.tgz /var/tmp
+
+root@% ls /var/tmp/
+junos-srxsme-21.2R3-S3.5.tgz    sec-download
+
+root@% umount /var/tmp/usb
+
+
+
+Via the CLI
+
+>file copy /var/tmp/junos-srxsme-21.4R3-S4.9.tgz node1:/var/tmp/
+Or
+
+Run the following commands, as per the order, via the shell:
+
+>start shell user root
+%rcp -T /var/tmp/junos-srxsme-21.4R3-S4.9.tgz node1:/var/tmp/
+
+
+
+
+
+
+Usage Instructions for Junos Products
+
+Instructions:
+
+    Click the Copy option.
+    The URL string generated is copied to the clipboard.
+    NOTE: The URL generated remains active only for 15 minutes.
+    Log in to the device (router, switch, or services gateway).
+    Download the file by using file copy URL Destination command
+    Example:
+    user@host>file copy
+    "https://cdn.juniper.net/software/ittest/software_target/agileEcotTest/Dev_Binary_Build.tar?SM_USER=user1=1507622971_dce164fa854b4a27550c254eef950dd8"
+    /var/tmp/image-name.tgz
+    Note: Ensure that the URL is enclosed within quotation marks. Also ensure that there is sufficient free space on the device.
+
+    # (Optional) Validate the image by using the request system software validate
+    # Example:
+    # user@host> request system software validate /var/tmp/junos-srxsme-21.4R3-S4.9.tgz
+
+
+    After the download is complete, you can install the image by using the request system software add command,
+    Example:
+    user@host> request system software add /var/tmp/image-name.tgz 
+
+
+     request system software add /var/tmp/junos-srxsme-21.4R3-S4.9.tgz no-copy no-validate unlink
+     request system reboot node all
+
+
+
+
+
+
+
+
+
+
+
+
+
+     [edit]
+user@host# load (factory-default | merge | override | patch | replace | set | update) filename <relative> <json>
+To load a configuration from the terminal, you use the following version of the load configuration mode command. Press Ctrl-d to end the input.
+
+content_copy zoom_out_map
+[edit]
+user@host# load (factory-default | merge | override | patch | replace | set | update) terminal <relative> <json>
+
+
+https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/command/request-chassis-cluster-failover-node.html

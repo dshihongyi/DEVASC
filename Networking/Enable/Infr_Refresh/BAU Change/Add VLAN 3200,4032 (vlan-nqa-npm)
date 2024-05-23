@@ -1,0 +1,88 @@
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 3200 description "vlan-nqa-npm-enni"
+set interfaces reth1 unit 3200 vlan-id 3200
+set interfaces reth1 unit 3200 family inet address 10.240.1.1/24
+set protocols ospf area 0.0.0.0 interface reth1.3200 passive
+set security zones security-zone zone-nqa-npm-enni interfaces reth1.3200 host-inbound-traffic system-services ping
+set security address-book zone-nqa-npm-enni address addr-nqa-npm-enni 10.240.1.0/24
+set security address-book zone-nqa-npm-enni attach zone zone-nqa-npm-enni
+
+set interfaces reth1 unit 4032 description "vlan-nqa-npm"
+set interfaces reth1 unit 4032 vlan-id 4032
+set interfaces reth1 unit 4032 family inet address 10.130.32.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4032 passive
+set security zones security-zone zone-nqa-npm interfaces reth1.4032 host-inbound-traffic system-services ping
+set security address-book zone-nqa-npm address addr-nqa-npm 10.130.32.0/24
+set security address-book zone-nqa-npm attach zone zone-nqa-npm
+
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm match source-address addr-enajump12
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm match destination-address TBA
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm match application junos-ssh
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm match application junos-icmp-all
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm match application junos-https
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm then permit
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm then log session-init
+set security policies from-zone zone-l2x-admin to-zone zone-nqa-npm policy policy-l2x-jumphost-nqa-npm then log session-close
+
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-nqa-npm-enni vlan-id 3200
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm-enni
+
+set vlans vlan-nqa-npm vlan-id 4032
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+
+interface vlan4032
+ vlan-name vlan-nqa-npm
+ description ena_4032_nqa-npm
+ mtu 9216
+ no shutdown
+
+
+interface vlan3200
+ vlan-name vlan-nqa-npm-enni
+ description ena-3200-nqa-npm-enni
+ mtu 9216
+ no shutdown
+
+
+interface port-channel1
+switchport trunk allowed vlan 4032,3200
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4032,3200
+
+~~~~~ Connect to the Core switch ~~~~
+
+set interfaces xe-0/0/46 description "enahrblef101 HRB Smart SFP/Purple/BX40/1330T/1270R"
+set interfaces xe-0/0/46 unit 0 family ethernet-switching interface-mode access
+set interfaces xe-0/0/46 unit 0 family ethernet-switching vlan members vlan-nqa-npm-enni
+set interfaces xe-0/0/46 unit 0 family ethernet-switching storm-control sc
+
+
+
+set interfaces ge-0/0/17 description "enahrblef101 HRB Smart SFP/Purple/BX40/1330T/1270R"
+set interfaces ge-0/0/17 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan-nqa-npm-enni
+set interfaces ge-0/0/17 unit 0 family ethernet-switching storm-control sc
+
+
+delete interfaces ge-0/0/17 description "enahrblef101 HRB Smart SFP/Purple/BX40/1330T/1270R"
+delete interfaces ge-0/0/17 unit 0 family ethernet-switching interface-mode trunk
+delete interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan-nqa-npm
+delete interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan-nqa-npm-enni
+delete interfaces ge-0/0/17 unit 0 family ethernet-switching storm-control sc
+
+
+
+
+set interfaces interface-range range-remote-co-uplinks unit 0 family ethernet-switching

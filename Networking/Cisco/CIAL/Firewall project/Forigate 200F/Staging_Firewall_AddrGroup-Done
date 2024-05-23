@@ -1,0 +1,252 @@
+config firewall addrgrp
+ edit "AirNZ_Baggage_InternalNetworks"
+  set member "AirNZ_Baggage_10.201.4.0" "AirNZ_Baggage_10.202.4.0" "AirNZ_Baggage_10.248.0.0" "AirNZ_Baggage_10.65.12.0" "AirNZ_Baggage_10.65.27.0" "AirNZ_Baggage_10.66.0.0" "AirNZ_Baggage_RADIUS_Direct" 
+ next
+ edit "AirNZ_DIAG_CIAL_FIDS"
+  set member "CIAL168" "CIAL240_FIDS" "CIAL244_CorpGeneral" "CIAL2_NetworkMgmt" "CIAL3_Workstation" 
+ next
+ edit "AirNZ_FIDS_Devices_Allow_ICMP"
+  set member "FIDSDEVICE1" "FIDSINT1" "FIDSINT" "FIDSWEB" 
+ next
+ edit "AirNZ_KingFish_Devices"
+  set member "AirNZ_KingFish_Radius" "AirNZ_KingFish_Router" "AirNZ_Kingfish_RADIUS1" "AirNZ_Kingfish_RADIUS2" 
+ next
+ edit "Azure-Group"
+  set member "Azure" "Azure-Dev" 
+  set allow-routing enable
+ next
+ edit "Azure_Database"
+  set member "S-dev-dbserver.database.windows.net" 
+ next
+ edit "CCTV_Group"
+  set member "CCTVFAILOVER" "CCTVLPR" "CCTVREC1" "CCTVREC2" "CCTVREC3" "CCTVREC4" "CCTVREC5" "CCTVmgmt" "CCTVREC6" 
+ next
+ edit "CCTV_cameras"
+  set member "CCTV_111" 
+ next
+ edit "CIALInternal"
+  set member "ARINC_Veripax_192.168.91.0" "CIAL103_CctvLpr" "CIAL10_Cameras" "CIAL110_Cameras_ITP" "CIAL121_BMS_ITP" "CIAL12_RFID_network" "CIAL140_DDCs_ITP" "CIAL167" "CIAL168" "CIAL20_Honeywell" "CIAL21_BMS" "CIAL220_Vmotion" "CIAL221_iSCSI" "CIAL22_CARDAX" "CIAL244_CorpGeneral" "CIAL24_Bagsort" "CIAL2_NetworkMgmt" "CIAL3_Workstation" "CIAL40_DDCs" "CIAL50_UPS_Management" "CIAL5_ServerMgmt" "CIAL90_TerminalServices" "CS-Wireless" "CIAL8_VoIP" "Telephony-network" "CIAL31_Telephony" 
+ next
+ edit "CIAL_3_&_244"
+  set member "CIAL244_CorpGeneral" "CIAL_VLAN3_Workstations" 
+ next
+ edit "CIAL_Allow_FTP_Outbound"
+  set member "Anna_PC" "Justin_8A056718H" "KateP_Desktop" "Lee_PC" "Recovery1" "FIDSINT" "Webproxy1" 
+ next
+ edit "CIAL_Allow_ICMP_Outbound"
+  set member "CIAL167" "CIAL168" "CIAL244_CorpGeneral" "CIAL3_Workstation" 
+ next
+ edit "CIAL_Allow_RDP_Outbound"
+  set member "CIAL167" "CIAL244_CorpGeneral" "CIAL3_Workstation" 
+ next
+ edit "CIAL_Azure_Access"
+  set member "CIAL167" "CIAL244_CorpGeneral" "CIAL2_NetworkMgmt" "CIAL3_Workstation" "RA_VPN_Network" "CS-Wireless" 
+ next
+ edit "CIAL_DIAG_AirNZ_FIDS"
+  set member "AirNZ_FidsLink_162.112.20.0" "AirNZ_FidsLink_162.112.8.0" "AirNZ_FidsLink_GDUs_10.90.0.0" "AirNZ_Fidslink_Router" 
+ next
+ edit "CIAL_DMZ_Management_Access"
+  set member "CIAL_VLAN2_NetworkMgmt" "CIAL_VLAN167_Production" "CIAL_VLAN244_CorpGeneral" "CIAL_VLAN3_Workstations" 
+ next
+ edit "CIAL_Domain_Controllers"
+  set member "dc1" "dc2" "dc3" 
+ next
+ edit "CIAL_EXCH_outbound"
+  set member "chcinternational.mail.protection.FQDN1" "chcinternational.mail.protection.FQDN2" 
+ next
+ edit "CIAL_Internal_Networks"
+  set member "ClassA_Private" "CIAL167" "CIAL168" "ClassB_Private" "ClassC_Private" "Net_57.236.210.48" 
+ next
+ edit "CIAL_MANAGEMENT_INTERNAL"
+  set member "CIAL_VLAN2_NetworkMgmt" 
+ next
+ edit "CIAL_Monitoring_Servers"
+  set member "FMC" 
+ next
+ edit "CIAL_Office365_Servers"
+  set member "cial-co-nz.mail.protection.outlook.com1" "cial-co-nz.mail.protection.outlook.com2" "cial-co-nz.mail.protection.outlook.com3" "cial-co-nz.mail.protection.outlook.com4" 
+ next
+ edit "CIAL_Proxy_Management"
+  set member "CIAL3_Workstation" "CIAL167" "CIAL2_NetworkMgmt" "CIAL244_CorpGeneral" 
+ next
+ edit "CIAL_RDP_Servers_External"
+  set member "AzureHost" "Cial.digiweb.net.nz" 
+ next
+ edit "CIAL_SMTP_Servers"
+  set member "corefw_OWA_194" "corefw_mail_websites_195" "TMG1_DMZ_Hybrid" "TMG1_External_Hybrid" "NSVIP1_DMZ" 
+ next
+ edit "CIAL_Secured_Workstations_Network_Access"
+  set member "CIAL167" "CIAL168" "CIAL2_NetworkMgmt" "CIAL3_Workstation" "CIAL_VLAN244_CorpGeneral" 
+ next
+ edit "CIAL_Web_Allow_Inbound"
+  set member "TMG1_External_Hybrid" "TMG_External_FS" "TMG_External_IP" "corefw_OWA_194" "corefw_mail_websites_195" "tmg_dmz_40" "TMG1_DMZ_FS" "TMG1_DMZ_Hybrid" "TMG1_DMZ_IP" "TMG1_DMZ_Lime" "TMG1_External_Lime" "NSVIP_DMZ" "NSVIP1_DMZ" "obj_citrix-vpn-endpoints" 
+ next
+ edit "CIAL_Web_Allow_Outbound"
+  set member "TMG1_DMZ_IP" "Webproxy1" "SurfacePro-DMT" "EXCH2" "PaloAlto-TestServer" 
+ next
+ edit "Cisco_DNS"
+  set member "cisco-dns1" "cisco-dns2" 
+ next
+ edit "Core-Gw-Group"
+  set member "WiFiAMC01-ASI-VIP21" "WiFiAMC01-Mgmt-IP" "WiFiAMC01-Mgmt-VIP20" "WiFiAMC02-ASI-VIP22" "WiFiAMC02-Mgmt-IP" 
+ next
+ edit "EAS-E-Servers"
+  set member "EAS-Server-E1" "EAS-Server-E2" 
+ next
+ edit "EAS-Proxy-Servers"
+  set member "EAS-Proxy-C1-1-Internal" "EAS-Proxy-C1-2-Internal" "EAS-Proxy-C2-1-Internal" "EAS-Proxy-C2-2-Internal" 
+ next
+ edit "EAS_EQ_Devices"
+  set member "CUSP-M_Seismic" "EQmonitor" "EQmonitor-ag16" 
+ next
+ edit "EAS_External_Servers"
+  set member "EAS_Ext1" "EAS_Ext2" "EAS_Ext2_OLD" 
+ next
+ edit "EAS_Servers"
+  set member "EAS_server1" "EAS_server2" 
+ next
+ edit "EAS_Servers_NAT"
+  set member "EAS" "EAS_server1" "EAS_server2" 
+ next
+ edit "Glidepath_GSS_Servers"
+  set member "Glidepath_GSS1" "Glidepath_GSS2" "Glidepath_GVS03" "Glidepath_GVS04" "Glidepath_GVWS01" "Glidepath_GSS3" "Glidepath_GSS4" 
+ next
+ edit "INDE_PUBLIC_ADDRESSES"
+  set member "Inde_Public_Fibre" "Inde_Public_Mask" "Inde_Public_Azure_01" "Inde_Public_Azure_02" "h-165.1.228.235" "h-165.1.231.245" "h-203.109.202.180" "h-66.159.211.5" "h-66.159.211.65" 
+ next
+ edit "Microsoft_PowerBI_Temp_ranges"
+  set member "Microsoft_20.190.167.149" "Microsoft_20.190.167.150" "Microsoft_20.190.167.18" "Microsoft_20.190.167.20" "Microsoft_20.190.167.74" "Microsoft_20.37.195.65" "Microsoft_52.140.118.28" "Microsoft_20.189.173.11" "Microsoft_20.190.142.165" "Microsoft_20.198.118.190" "Microsoft_40.119.249.228" "Microsoft_40.126.14.160" "Microsoft_40.126.14.161" "Microsoft_40.126.14.163" "Microsoft_40.126.14.164" "Microsoft_51.11.168.232" "Microsoft_104.46.162.226" 
+ next
+ edit "Office365"
+  set member "cdn.odc.officeapps.live.com" "crl.microsoft.com" "o15.officeredir.microsoft.com" "ocsredir.officeapps.live.com" "ocws.officeapps.live.com" "odc.officeapps.live.com" "office15client.microsoft.com" "officeclient.microsoft.com" "officepreviewredir.microsoft.com" "officeredir.microsoft.com" "ols.officeapps.live.com" "r.office.microsoft.com" "activation.sls.microsoft.com" 
+ next
+ edit "Office365_Exchange_Portal"
+  set member "outlook.office365.com" 
+ next
+ edit "PaymentExpress_EFTPOS_Servers"
+  set member "n-103.232.204.0_23" "n-202.167.253.112_28" "n-203.207.60.0_23" "oPaymentExpressServer" "38.125.44.1-38.125.44.254" "4.15.244.193-4.15.244.222" "45.75.195.1-45.75.195.3" 
+ next
+ edit "S2SVPN_CIAL_Gentrack_Local_Networks"
+  set member "CIAL240_FIDS" 
+ next
+ edit "S2SVPN_CIAL_Gentrack_Remote_Networks"
+  set member "S2SVPN_CIAL_Gentrack_Remote_N1" 
+ next
+ edit "S2SVPN_Gentrack_FIDS"
+  set member "FIDSAODB1" "FIDSDDC1" "FIDSDDC2" "FIDSDEVICE1" "FIDSINT1" "FIDSINT2" "FIDSLINK1" "FIDSWEB1" "FIDSAODB" "FIDSINT" "FIDSWEB" 
+ next
+ edit "SKYFii-Servers"
+  set member "SKYFii-52.62.73.96" "SKYFii-52.64.33.144" 
+ next
+ edit "SQLServices_Kaseya_SQL_Servers"
+  set member "CNVSQLERP1" "Carpark1" "DEVSQLERP1" "FIDSAODB1" "SQLDEV1" "DEVSQLBI1" "SQLSC1" "SQLSERVICES1" "netmon1" "SQLPROD2" "SQLERP2" "FIDSAODB" "SQLBI3" "CARDAX2" "SQLCARDAX1" "SQLPROD3" 
+ next
+ edit "WiFiMgmtRange"
+  set member "CIAL_Wireless_AP" "CIAL_Wireless_APs" 
+ next
+ edit "grp_AADSync-Sources"
+  set member "APP2" "APP5" 
+ next
+ edit "grp_Airways"
+  set member "obj_Airways_Prod" "obj_Airways_Test_Lab" 
+ next
+ edit "grp_AzureADConnect"
+  set member "APP2" "APP6" 
+ next
+ edit "grp_CrowdStrike"
+  set member "fqdn_lfodown01-b.cloudsink.net" "fqdn_ts01-b.cloudsink.net" "falcon-lfo-download_13.56.121.58" "falcon-lfo-download_50.18.198.237" "falcon-lfo-download_52.8.141.1" "falcon-lfo-download_54.183.135.80" "falcon-lfo-download_54.183.215.154" "falcon-lfo-download_54.193.86.245" "falcon-lfo-download_54.215.170.42" "falcon-lfo-download_54.219.179.25" "falcon-lfo-download_54.241.161.242" "falcon-lfo-download_54.241.181.78" "falcon-lfo-download_54.241.182.78" "falcon-lfo-download_54.241.183.151" "falcon-lfo-download_54.241.183.229" "falcon-lfo-download_54.241.183.232" "falcon-lfo-download_54.67.108.17" "falcon-lfo-download_54.67.114.188" "falcon-lfo-download_54.67.122.238" "falcon-lfo-download_54.67.17.131" "falcon-lfo-download_54.67.24.156" "falcon-lfo-download_54.67.4.108" "falcon-lfo-download_54.67.41.192" "falcon-lfo-download_54.67.5.136" "falcon-lfo-download_54.67.51.32" "falcon-lfo-download_54.67.72.218" "falcon-term-server_13.56.127.239" "falcon-term-server_13.57.54.63" "falcon-term-server_50.18.194.39" "falcon-term-server_52.52.117.52" "falcon-term-server_52.52.119.33" "falcon-term-server_52.52.149.168" "falcon-term-server_52.52.239.58" "falcon-term-server_52.53.77.89" "falcon-term-server_52.8.134.130" "falcon-term-server_52.8.160.82" "falcon-term-server_52.8.172.89" "falcon-term-server_52.8.173.58" "falcon-term-server_52.8.19.75" "falcon-term-server_52.8.32.113" "falcon-term-server_52.8.45.162" "falcon-term-server_52.8.5.240" "falcon-term-server_52.8.54.244" "falcon-term-server_52.8.61.206" "falcon-term-server_52.9.104.148" "falcon-term-server_52.9.77.209" "falcon-term-server_52.9.82.94" "falcon-term-server_52.9.87.98" "falcon-term-server_54.183.105.3" "falcon-term-server_54.183.122.156" "falcon-term-server_54.183.140.32" "falcon-term-server_54.183.142.105" "falcon-term-server_54.183.148.116" "falcon-term-server_54.183.148.43" "falcon-term-server_54.183.234.42" "falcon-term-server_54.183.24.162" "falcon-term-server_54.183.252.86" "falcon-term-server_54.183.34.154" "falcon-term-server_54.183.39.68" "falcon-term-server_54.183.51.31" "falcon-term-server_54.183.51.69" "falcon-term-server_54.183.52.221" "falcon-term-server_54.193.117.199" "falcon-term-server_54.193.27.226" "falcon-term-server_54.193.29.47" "falcon-term-server_54.193.67.98" "falcon-term-server_54.193.87.57" "falcon-term-server_54.193.90.171" "falcon-term-server_54.193.93.19" "falcon-term-server_54.215.131.232" "falcon-term-server_54.215.154.80" "falcon-term-server_54.215.169.199" "falcon-term-server_54.215.169.38" "falcon-term-server_54.215.176.108" "falcon-term-server_54.215.183.157" "falcon-term-server_54.215.226.55" "falcon-term-server_54.219.112.243" "falcon-term-server_54.219.115.12" "falcon-term-server_54.219.137.54" "falcon-term-server_54.219.140.50" "falcon-term-server_54.219.141.250" "falcon-term-server_54.219.145.181" "falcon-term-server_54.219.147.253" "falcon-term-server_54.219.148.161" "falcon-term-server_54.219.149.89" "falcon-term-server_54.219.149.92" "falcon-term-server_54.219.151.1" "falcon-term-server_54.219.151.27" "falcon-term-server_54.219.153.248" "falcon-term-server_54.219.158.53" "falcon-term-server_54.219.159.84" "falcon-term-server_54.219.161.141" "falcon-term-server_54.241.138.180" "falcon-term-server_54.241.146.67" "falcon-term-server_54.241.148.127" "falcon-term-server_54.241.150.134" "falcon-term-server_54.241.161.60" "falcon-term-server_54.241.162.180" "falcon-term-server_54.241.162.64" "falcon-term-server_54.241.164.212" "falcon-term-server_54.241.175.140" "falcon-term-server_54.241.175.52" "falcon-term-server_54.241.179.52" "falcon-term-server_54.241.181.242" "falcon-term-server_54.241.184.161" "falcon-term-server_54.241.185.201" "falcon-term-server_54.241.186.124" "falcon-term-server_54.241.197.58" "falcon-term-server_54.67.105.202" "falcon-term-server_54.67.119.89" "falcon-term-server_54.67.123.150" "falcon-term-server_54.67.123.234" "falcon-term-server_54.67.26.184" "falcon-term-server_54.67.33.233" "falcon-term-server_54.67.48.56" "falcon-term-server_54.67.54.116" "falcon-term-server_54.67.6.201" "falcon-term-server_54.67.68.88" "falcon-term-server_54.67.92.206" "falcon-term-server_54.67.96.255" "falcon-term-server_54.67.99.247" 
+ next
+ edit "grp_DevOps-Servers"
+  set member "obj_DEVSQLBI2" 
+ next
+ edit "grp_ERP-servers"
+  set member "CIAERP2" "DEVERP1" "SQLSERVICES1" "obj_ERP2" "obj_ciaerp1" "obj_ERP3" "obj_DEVERP3" "obj_DEVERP4" "obj_devciaerp2" 
+ next
+ edit "grp_Microsoft365"
+  set member "fqdn_account.activedirectory.windowsazure.com" "fqdn_accounts.accesscontrol.windows.net" "fqdn_adminwebservice.microsoftonline.com" "fqdn_api.passwordreset.microsoftonline.com" "fqdn_autologon.microsoftazuread-sso.com" "fqdn_becws.microsoftonline.com" "fqdn_clientconfig.microsoftonline-p.net" "fqdn_companymanager.microsoftonline.com" "fqdn_device.login.microsoftonline.com" "fqdn_graph.microsoft.com" "fqdn_graph.windows.net" "fqdn_login-us.microsoftonline.com" "fqdn_login.microsoft.com" "fqdn_login.microsoftonline-p.com" "fqdn_login.microsoftonline.com" "fqdn_login.windows.net" "fqdn_logincert.microsoftonline.com" "fqdn_loginex.microsoftonline.com" "fqdn_nexus.microsoftonline-p.com" "fqdn_passwordreset.microsoftonline.com" "fqdn_provisioningapi.microsoftonline.com" "fqdn_secure.aadcdn.microsoftonline-p.com" "fqdn_aadcdn.msauth.net" "fqdn_aadcdn.msftauth.net" "fqdn_aadconnecthealth.azure.com" "fqdn_adds.aadconnecthealth.azure.com" "fqdn_adhybridhealth.azure.com" "fqdn_blob.core.windows.net" "fqdn_management.azure.com" "fqdn_policykeyservice.dc.ad.msft.net" "fqdn_servicebus.windows.net" "fqdn_www.office.com" "fqdn_randomcharacters.registration.msappproxy.net" "fqdn_ssprdedicatedsbprodncu.servicebus.windows.net" "fqdn_crl.microsoft.com" "fqdn_crl3.digicert.com" "fqdn_crl4.digicert.com" "fqdn_management.core.windows.net" "fqdn_microsoftonline.com" "fqdn_mscrl.microsoft.com" "fqdn_ocsp.digicert.com" "fqdn_ocsp.msocsp.com" "fqdn_oneocsp.microsoft.com" "fqdn_s1.adhybridhealth.azure.com" 
+ next
+ edit "grp_Microsoft365-IPs"
+  set member "obj_13.107.140.6" "obj_13.107.18.15" "obj_13.107.6.171" "obj_52.238.106.116" "obj_52.244.203.72" "obj_52.244.207.172" "obj_52.244.223.198" "obj_52.244.37.168" "obj_52.247.150.191" "obj_52.239.161.42" "obj_40.112.242.1" "net_microsoft-13.65.0.0-16" "net_microsoft-40.126.0.0-18" 
+ next
+ edit "grp_Mitel-Internal-LAN-Access"
+  set member "CIAL8_VoIP" "CIAL244_CorpGeneral" "CIAL3_Workstation" "CIAL248_Staff_WLAN_C-I" "CS-Wireless" 
+ next
+ edit "grp_MitelGateways"
+  set member "obj_MBG01-External" "obj_MBG03-External" "obj_mbg01" "obj_mbg03" 
+ next
+ edit "grp_PA-migration-test-networks"
+  set member "n-10.168.223.0_24" "n-10.170.248.0_24" "n-172.20.1.0_24" "n-192.168.14.0_24" "n-192.168.169.0_24" "n-192.168.172.0_24" "n-192.168.223.0_24" "n-192.168.232.0_21" "n-192.168.30.0_24" "n-192.168.35.0_24" 
+ next
+ edit "grp_bypass-proxy-urls"
+  set member "fqdn_account.activedirectory.windowsazure.com" "fqdn_account.office.net" "fqdn_accounts.accesscontrol.windows.net" "fqdn_adminwebservice.microsoftonline.com" "fqdn_autologon.microsoftazuread-sso.com" "fqdn_becws.microsoftonline.com" "fqdn_broadcast.officeapps.live.com" "fqdn_broadcast.skype.com" "fqdn_chcinternational-my.sharepoint.com" "fqdn_chcinternational.sharepoint.com" "fqdn_clientconfig.microsoftonline-p.net" "fqdn_cloudconnect.vbridge.co.nz" "fqdn_companymanager.microsoftonline.com" "fqdn_compliance.microsoft.com" "fqdn_device.login.microsoftonline.com" "fqdn_graph.microsoft.com" "fqdn_graph.windows.net" "fqdn_login-us.microsoftonline.com" "fqdn_login.microsoft.com" "fqdn_login.microsoftonline-p.com" "fqdn_login.microsoftonline.com" "fqdn_login.windows.net" "fqdn_logincert.microsoftonline.com" "fqdn_loginex.microsoftonline.com" "fqdn_lync.xom" "fqdn_mail.protection.outlook.com" "fqdn_msftidentity.com" "fqdn_msidentity.com" "fqdn_nexus.microsoftonline-p.comoffice.live.com" "fqdn_officeapps.live.com" "fqdn_ols.officeapps.live.com" "fqdn_online.office.com" "fqdn_outlook.office.com" "fqdn_outlook.office365.com" "fqdn_parking.christchurchairport.co.nz" "fqdn_parking.presto.co.nz" "fqdn_passwordreset.microsoftonline.com" "fqdn_protection.office.com" "fqdn_protection.outlook.com" "fqdn_provisioningapi.microsoftonline.com" "fqdn_security.microsoft.com" "fqdn_skypeforbusiness.com" "fqdn_smtp.office365.com" "fqdn_teams.microsoft.com" "fqdn_wofonline.landtransport.govt.nz" "fqdn_wofonline.nzta.govt.nz" "fqdn_statics.teams.cdn.office.net" "fqdn_teams.events.data.microsoft.com" "fqdn_cdn.uci.officeapps.live.com" "fqdn_mrodevicemgr.officeapps.live.com" "fqdn_ocsa.officeapps.live.com" "fqdn_sched-noam.broadcast.skype.com" "fqdn_webdir.online.lync.com" "fqdn_worldaz.tr.teams.microsoft.com" 
+ next
+ edit "grp_fids-to-webproxy"
+  set member "FIDSAODB1" "FIDSDEVICE1" "FIDSINT" 
+ next
+ edit "grp_fqdn-ioc-computer"
+  set member "fqdn_iocop1" "fqdn_iocop2" "fqdn_iocop3" "fqdn_iocop4" "fqdn_iocop5" "fqdn_iocop8" "fqdn_iocopsenior" "fqdn_iocopsenior1" 
+ next
+ edit "grp_fqdn-paloalto-updates"
+  set member "fqdn_updates.paloaltonetworks.com" 
+ next
+ edit "grp_fqdn_azure-devops"
+  set member "fqdn_chcinternational.visualstudio.com" "fqdn_vstsagentpackage.azureedge.net" "fqdn_login.microsoftonline.com" 
+ next
+ edit "grp_fqdn_azure-mfa"
+  set member "fqdn_adnotifications.windowsazure.com" "fqdn_credentials.azure.com" "fqdn_login.microsoftonline.com" "fqdn_go.microsoft.com" "fqdn_onegetcdn.azureedge.net" 
+ next
+ edit "grp_fqdn_azure-mfa-setup"
+  set member "fqdn_aadcdn.msauth.net" "fqdn_aadcdn.msftauthimages.net" "fqdn_provisioningapi.microsoftonline.com" 
+ next
+ edit "grp_fujixerox-services"
+  set member "fqdn_bbedge3-ex.fujixerox.co.jp" "fqdn_bbedge3p-a-ex.iotconnectup.com" "fqdn_bbedge3p-ex.fujixerox.co.jp" "fqdn_bbedge3p-ex.iotconnectup.com" "fqdn_bbedge3s-ex.fujixerox.co.jp" "fqdn_bbedge4d-ex.fujixerox.co.jp" "fqdn_bbedge4sd-ex.fujixerox.co.jp" "fqdn_caps03.fujixerox.co.jp" "fqdn_caps04.fujixerox.co.jp" "fqdn_caps04.iotconnectup.com" "fqdn_caps05.fujixerox.co.jp" "fqdn_caps06.fujixerox.co.jp" "fqdn_mfdhelp.fujixerox.com" "fqdn_mfdhelp.iotconnectup.com" "fqdn_mfdhelpsearch.fujixerox.com" "fqdn_ssl.google-analytics.com" "fqdn_swupdate-ex.iotconnectup.com" 
+ next
+ edit "grp_glidepath-to-webproxy"
+  set member "GPMGMT1" "Glidepath_GSS3" "Glidepath_GSS4" "Glidepath_GVS03" "Glidepath_GVS04" "Glidepath_GVWS01" 
+ next
+ edit "grp_host-PA-FW"
+  set member "obj_host-PA01" "obj_host-PA02" 
+ next
+ edit "grp_iocop-computer"
+  set member "host_iocop5" "host_iocop1" "host_iocop2" "host_iocop3" "host_iocop4" "host_iocop8" "host_iocsenior" "host_iocsenior1" 
+ next
+ edit "grp_monitoring-servers"
+  set member "netmon1" "obj_host-netmon2" 
+ next
+ edit "grp_nps-srv"
+  set member "UT1" 
+ next
+ edit "grp_papercut-cloud-services"
+  set member "fqdn_broker.au.multiverse.papercut.com" "fqdn_broker.multiverse.papercut.com" "fqdn_mobility-print-standalone.papercut.com" "fqdn_mobility-print.papercut.com" "fqdn_multiverse.au.cloud.papercut.com" "fqdn_multiverse.us.cloud.papercut.com" "fqdn_ocr.au.cloud.papercut.com" "fqdn_ocr.cloud.papercut.com" "fqdn_papercut.com" "fqdn_pc-mobility-print.appspot.com" "fqdn_scan.au.cloud.papercut.com" "fqdn_scan.cloud.papercut.com" "fqdn_scan.papercut.com" "fqdn_storage.googleapis.com" "fqdn_update.multiverse.au.cloud.papercut.com" "fqdn_update.multiverse.us.cloud.papercut.com" "fqdn_papercut-ios-profile" "fqdn_swupdate-ex.iotconnectup.com" 
+ next
+ edit "grp_papercut-printers"
+  set member "obj_192.168.247.30" "obj_192.168.247.31-45" 
+ next
+ edit "grp_papercut-servers"
+  set member "obj_papercut1" 
+ next
+ edit "grp_siem-internal-srv"
+  set member "obj_siem-siemaggregator1" 
+ next
+ edit "grp_skyspark-srv"
+  set member "obj_skyspark-srv-ip1" "obj_skyspark-srv-ip2" 
+ next
+ edit "grp_srv-to-sccm"
+  set member "Carpark1" "obj_lv01" "obj_micc01" 
+ next
+ edit "grp_telephony-srv"
+  set member "obj_lv01" "obj_mbg02" "obj_mbg04" "obj_micc01" "obj_mico01" "obj_mivb01" "obj_mivbax01" 
+ next
+ edit "ogChauntry_Prod"
+  set member "oChauntry_Prod" 
+ next
+ edit "CIAL_FWMANAGEMENT_EXTERNAL"
+  set member "INDE_PUBLIC_ADDRESSES" 
+ next
+ edit "split-tunnel_Split_Tunnel"
+  set member "n-10.0.0.0_8" "n-192.168.0.0_16" "n-172.16.0.0_12" "n-202.14.167.0_24" "n-202.14.168.0_24" "h-104.18.30.176" 
+ next
+ edit "SSLVPN_TUNNEL_ADDR_GRP"
+  set member "CIAL_VPN_POOL" "SSLVPN_TUNNEL_ADDR1" 
+ next
+end

@@ -1,0 +1,11 @@
+
+~~~~~~ HRB Core ~~~~~~~
+
+set interfaces ge-0/0/27 description "ena-fw-ric ge-0/0/12 via HRB R1_FP05_C01_T01 f19"
+set interfaces ge-0/0/27 ether-options 802.3ad ae8
+set interfaces ge-0/0/28 description "ena-fw-ric ge-5/0/12 via HRB R1_FP05_C01_T01 f20"
+set interfaces ge-0/0/28 ether-options 802.3ad ae9
+
+
+
+

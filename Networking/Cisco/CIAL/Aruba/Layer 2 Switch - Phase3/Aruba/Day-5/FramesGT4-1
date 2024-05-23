@@ -1,0 +1,499 @@
+
+hostname FramesGT4-1
+domain-name cial.co.nz
+banner motd ~
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+~C
+!
+user admin group administrators password plaintext vanc4brszz
+user cattools group administrators password plaintext woihw943asE
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key plaintext wimC8yPqb5Nupz%gIf0FLj6#2J7
+!
+aaa authentication allow-fail-through
+!
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+!
+vsf member 1
+    type jl725a
+    link 1 1/1/25
+    link 2 1/1/26
+!
+!
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 21
+    name Building_Management
+vlan 50
+    name UPS_Management
+vlan 111
+    name CCTV-camera
+vlan 121
+    name BMS_ITP
+vlan 224
+    name Clevertronics
+vlan 240
+    name FIDS_240
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+
+!
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,21,50,111,121,224,240,888,1000
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1 
+    dwrr queue 1 weight 1 
+    dwrr queue 2 weight 1 
+    dwrr queue 3 weight 1 
+    dwrr queue 4 weight 1 
+    dwrr queue 5 weight 1 
+    dwrr queue 6 weight 1 
+    strict queue 7 max-bandwidth 100000 
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 26 local-priority 4 color green 
+qos dscp-map 40 local-priority 6 color green name CS5 
+qos dscp-map 41 local-priority 6 color green 
+qos dscp-map 42 local-priority 6 color green 
+qos dscp-map 43 local-priority 6 color green 
+qos dscp-map 44 local-priority 6 color green 
+qos dscp-map 45 local-priority 6 color green 
+qos dscp-map 47 local-priority 5 color green name Audio 
+qos dscp-map 49 local-priority 5 color green name PTPv2 
+interface lag 1
+    description Uplink To FramesGT4 LAG2
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,21,50,111,121,224,240,888
+    lacp mode active
+    qos trust dscp
+    spanning-tree link-type point-to-point
+interface 1/1/1
+    description (GT4/1-01) CCTV Camera 525 192.168.234.90
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description (GT4/1-02) CCTV Camera 526 192.168.234.91
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description (GT4/1-08) in cabinet DB 2/13 - BMS  192.168.121.133 - 104GHCDB213_BEPXC01
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 121
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description (GT4/1-B10) CCTV Camera 586 (192.168.234.151)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 111
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description (GT41-4)(1 x G3FCU 14 ) 192.168.21.215
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description (GT41-5)(3 x G3FCU 17 to 2021 ) 192.168.21.216 to 218
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client 5
+interface 1/1/7
+    description (GT41-6) (1 x G3FCU 2223) 192.168.21.219
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description (GT41-7)(1 x G3FCU 2425) 192.168.21.220
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description Em lighting controller Stand 22 192.168.224.24
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 224
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description (GT4/1-19) FIDS DDCXXX
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description (GT4/1-20) FIDS DDCXXX
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description (GT4/1-21) FIDS DDCXXX
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    description (GT4/1-22) FIDS DDCXXX
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/16
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/17
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/18
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/19
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/20
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/21
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/22
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/23
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/24
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/25
+    no shutdown
+interface 1/1/26
+    no shutdown
+interface 1/1/27
+    description Uplink to FramesGT4 Gi1/1/52
+    no shutdown
+    lag 1
+interface 1/1/28
+    description Spare-Port (Not_In_Use)
+    no shutdown
+    lag 1
+!
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.192/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server system-location GT4/1
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FramesGT4#
+
+interface 1/1/52
+    description FramesGT4-11 Gi0/1
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed all
+    qos trust dscp
+    spanning-tree link-type point-to-point
+    exit
+
+interface lag 2
+    description Uplink To FramesGT4-1 LAG1
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,21,50,111,121,224,240,888,1000
+    lacp mode active
+    qos trust dscp
+    spanning-tree link-type point-to-point
+    exit
+
+
+default interface 1/1/52
+interface 1/1/52
+    description Uplink to FramesGT4-1 1/1/27
+    no shutdown
+    lag 2
+    exit
+
+

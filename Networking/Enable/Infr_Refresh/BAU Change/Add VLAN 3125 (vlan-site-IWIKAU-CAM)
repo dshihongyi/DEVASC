@@ -1,0 +1,19 @@
+// ~~~~~ Core Switch ~~~~~~~
+
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-IWIKAU-CAM
+set interfaces interface-range range-remote-co-uplinks unit 0 family ethernet-switching vlan members vlan-site-IWIKAU-CAM
+
+set interfaces irb unit 3125 description vlan-site-IWIKAU-CAM
+set interfaces irb unit 3125 family inet address 10.112.125.1/24
+set routing-instances vr-co-cameras interface irb.3125
+
+set vlans vlan-site-IWIKAU-CAM vlan-id 3125
+set vlans vlan-site-IWIKAU-CAM l3-interface irb.3125
+
+set interfaces ae10 unit 0 family ethernet-switching vlan members vlan-site-IWIKAU-CAM
+
+
+// ~~~~~ IWIKAU Switch ~~~~~~~
+
+set vlans vlan-site-IWIKAU-CAM vlan-id 3125
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-site-IWIKAU-CAM

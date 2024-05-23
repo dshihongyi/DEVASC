@@ -1,0 +1,97 @@
+
+@REM 2degree - Core Switch ge-2/0/9
+
+set interfaces ge-2/0/9 description "c"
+set interfaces ge-2/0/9 unit 0 family inet filter input filter-inet-to-dmz
+set interfaces ge-2/0/9 unit 0 family inet address 202.124.123.125/31
+
+
+@REM set routing-instances vr-internet routing-options autonomous-system 131196
+@REM set routing-instances vr-internet protocols bgp group bgp-external type external
+@REM set routing-instances vr-internet protocols bgp group bgp-external import policy-bgp-external-import
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 local-address 131.203.254.170
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 export policy-bgp-external-export-prepend
+@REM set routing-instances vr-internet protocols bgp group bgp-external neighbor 131.203.254.169 peer-as 9503
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 local-address 202.124.123.125
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 export policy-bgp-external-export
+set routing-instances vr-internet protocols bgp group bgp-external neighbor 202.124.123.124 peer-as 23655
+
+
+set policy-options policy-statement policy-bgp-external-export term snap from protocol direct
+set policy-options policy-statement policy-bgp-external-export term snap from route-filter 202.36.221.0/24 exact
+set policy-options policy-statement policy-bgp-external-export term snap then accept
+set policy-options policy-statement policy-bgp-external-export then reject
+
+
+@REM set policy-options policy-statement policy-bgp-external-export-prepend term fx from protocol direct
+@REM set policy-options policy-statement policy-bgp-external-export-prepend term fx from route-filter 202.36.221.0/24 exact
+@REM set policy-options policy-statement policy-bgp-external-export-prepend term fx then as-path-prepend "131196 131196 131196 131196"
+@REM set policy-options policy-statement policy-bgp-external-export-prepend term fx then accept
+@REM set policy-options policy-statement policy-bgp-external-export-prepend then reject
+
+
+
+set policy-options policy-statement policy-bgp-external-import term fx from neighbor 131.203.254.169
+set policy-options policy-statement policy-bgp-external-import term fx from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement policy-bgp-external-import term fx then as-path-prepend "131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-import term fx then accept
+set policy-options policy-statement policy-bgp-external-import term snap from neighbor 202.124.123.124
+set policy-options policy-statement policy-bgp-external-import term snap from route-filter 0.0.0.0/0 exact
+set policy-options policy-statement policy-bgp-external-import term snap then accept
+set policy-options policy-statement policy-bgp-external-import then reject
+
+
+
+
+
+dsadmin@ena-sw-core> show route table vr-internet.inet.0 all
+
+vr-internet.inet.0: 9 destinations, 11 routes (9 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[BGP/170] 11w3d 16:42:18, localpref 100
+                      AS path: 23655 I, validation-state: unverified
+                    >  to 202.124.123.124 via ge-2/0/9.0
+                    [BGP/170] 7w0d 15:49:59, localpref 100
+                      AS path: 131196 131196 131196 131196 9503 I, validation-state: unverified
+                    >  to 131.203.254.169 via ge-1/0/10.947
+                  #   [BGP/170] 25w3d 17:55:16, localpref 100
+                  #     AS path: 131196 131196 131196 131196 131196 131196 131196 131196 140602 I, validation-state: unverified
+                  #  >  to 103.150.228.32 via ge-0/0/4.3297
+
+~~~~~~~~~~~~~~~~~~~~~
+
+dsadmin@ena-sw-core> show route receive-protocol bgp 202.124.123.124
+
+vr-internet.inet.0: 9 destinations, 11 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 0.0.0.0/0               202.124.123.124                         23655 I
+
+dsadmin@ena-sw-core> show route advertising-protocol bgp 202.124.123.124
+
+vr-internet.inet.0: 9 destinations, 11 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 202.36.221.0/24         Self                                    I
+
+~~~~~~~~~~~~~~~~~~~~~
+
+dsadmin@ena-sw-core> show route receive-protocol bgp 131.203.254.169
+
+vr-internet.inet.0: 9 destinations, 11 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  0.0.0.0/0               131.203.254.169                         9503 I
+
+dsadmin@ena-sw-core> show route advertising-protocol bgp 131.203.254.169
+
+vr-internet.inet.0: 9 destinations, 11 routes (9 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 202.36.221.0/24         Self                                    131196 131196 131196 131196 [131196] I
+
+~~~~~~~~~~~~~~~~~~~~
+
+
+
+dsadmin@ena-sw-core# run clear bgp neighbor 202.124.123.124 soft instance vr-internet
+
+{master:0}[edit]
+dsadmin@ena-sw-core# run clear bgp neighbor 202.124.123.124 soft-inbound instance vr-internet

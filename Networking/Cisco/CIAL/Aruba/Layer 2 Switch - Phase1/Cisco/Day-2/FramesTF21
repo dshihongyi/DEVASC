@@ -1,0 +1,1791 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2023.11.10 16:00:28 =~=~=~=~=~=~=~=~=~=~=~=
+ter e len 0
+FramesTF21#sh run
+Building configuration...
+
+Current configuration : 17544 bytes
+!
+! Last configuration change at 14:11:31 NZST Thu Oct 12 2023 by cisco
+!
+version 12.2
+no service pad
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname FramesTF21
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$RMCM$2cVA3WKFKVGOdHHd67pcw1
+enable password 7 091E5C1C175112040E1E
+!
+username cisco password 7 10682520250032125D
+username cattools privilege 15 secret 5 $1$e/dG$GOvYs6fpZCtbvN/YARRRK/
+!
+!
+aaa new-model
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+!
+!
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+vtp domain cial
+vtp mode transparent
+udld aggressive
+
+!
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue input bandwidth 70 30
+mls qos srr-queue input threshold 1 80 90
+mls qos srr-queue input priority-queue 2 bandwidth 30
+mls qos srr-queue input cos-map queue 1 threshold 2 3
+mls qos srr-queue input cos-map queue 1 threshold 3 6 7
+mls qos srr-queue input cos-map queue 2 threshold 1 4
+mls qos srr-queue input dscp-map queue 1 threshold 2 24
+mls qos srr-queue input dscp-map queue 1 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue input dscp-map queue 1 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue input dscp-map queue 2 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue input dscp-map queue 2 threshold 3 46 47
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 46 47
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue output dscp-map queue 2 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 100 100 50 200
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+crypto pki trustpoint TP-self-signed-2112653824
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2112653824
+ revocation-check none
+ rsakeypair TP-self-signed-2112653824
+!
+!
+crypto pki certificate chain TP-self-signed-2112653824
+ certificate self-signed 01
+  3082024D 308201B6 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313132 36353338 3234301E 170D3933 30333031 30303031 
+  31325A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31313236 
+  35333832 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B984 91748370 DC339DCE 92775A80 4209669F 80187752 9C32D96C 640CDA97 
+  17DD2F9D 62531998 937D8E43 A560316D A67B5E03 D090DE61 57B4D59D AAF69669 
+  2D091E1B 6D8DA657 D3D0374B B4368C3F 0687C923 54F00119 648EF895 FD08F237 
+  95FD9149 1D8107B2 FB24C2B4 4084ADFD 07B048D7 87179B4A B7E37726 1DFACE24 
+  7BB30203 010001A3 75307330 0F060355 1D130101 FF040530 030101FF 30200603 
+  551D1104 19301782 15467261 6D657354 4632312E 6369616C 2E636F2E 6E7A301F 
+  0603551D 23041830 16801447 E3E8931B 985CB539 503D4809 8ADCA091 AD5CBF30 
+  1D060355 1D0E0416 041447E3 E8931B98 5CB53950 3D48098A DCA091AD 5CBF300D 
+  06092A86 4886F70D 01010405 00038181 000E0919 F7A4831C 56EE681B BF55F815 
+  90EB1440 53F73F80 E1EF40AC 447FDCB6 EA5FD912 445AA041 8F93A0D2 830B9F68 
+  644CE617 DAEC5E19 A7FE726A 719AEA0B 0C1FF54B D6FCCDA1 5655B936 E31EB119 
+  BE7E6ABA 0E407110 D55BD443 4BD0B642 EE4F8211 5FA2E87C D3F3E7CE 7FB0EB45 
+  3204EE35 24C980CC E1C9467C C6D4ED56 B8
+  quit
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+auto qos srnd4
+!
+!
+!
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery interval 30
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 3
+ name Workstations
+!
+vlan 8
+ name VoIP
+!
+vlan 10
+ name CCTV
+!
+vlan 21
+ name Building_Management_System
+!
+vlan 22
+ name Cardax
+!
+vlan 40
+ name FIDS_DDCs
+!
+vlan 50
+ name UPS_Management
+!
+vlan 110
+ name CCTV_ITP
+!
+vlan 111
+ name CCTV-camera
+!
+vlan 121
+ name BMS_ITP
+!
+vlan 140
+ name FIDS_ITP_DDCs
+!
+vlan 167
+ name Production
+!
+vlan 168
+ name FIDS
+!
+vlan 169
+ name Secure_Workstations
+!
+vlan 240
+ name FIDS_240
+!
+vlan 314
+ name HMS
+!
+vlan 318
+ name LagardereQnQ
+!
+vlan 320
+ name Seismic_Sensors
+!
+vlan 667
+ name WirelessB
+!
+vlan 700
+ name Remote_SPAN_VLAN
+ remote-span
+!
+vlan 888
+ name COREGWS_APs
+!
+vlan 999 
+!
+vlan 1000
+ name Trunk
+!
+lldp run
+!
+class-map match-all TenMeg
+  description TenMeg Rate limit class
+ match access-group 1
+!
+!
+policy-map TenMegger
+ description TenMeg QOS Policy
+ class TenMeg
+  police 10000000 65536 exceed-action drop
+!
+!
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/1
+ description FrameUTF21 UPS - (192.168.50.70)
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ power inline never
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description WAP076
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description WAP086
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+ spanning-tree bpdufilter enable
+!
+interface GigabitEthernet0/4
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description (TF2-23) Manaia Lounge International WiFi Symbol AP PoE
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+!
+interface GigabitEthernet0/6
+ description WAP078
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ description (TF2-72) CCTV Camera 457                                                                                                                                                              - IAREP Level 1 Departure Lounge (4) - 192.168.234.22
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ description Seismic Monitor Location 4 - TF2 Equipment Room
+ switchport access vlan 320
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ description HMS Host VLAN  FB3 - 314
+ switchport access vlan 314
+ switchport mode access
+ switchport nonegotiate
+ power inline never
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+!
+interface GigabitEthernet0/14
+ description camera 565 192.168.234.130
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ description (TF2-86) Camera 564 -  192.168.234.129
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ description (TF2-73) CCTV Camera 458 Int Departure Lounge PTX Gate 29-30
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ description (TF2-71) CCTV Camera 456 International Departure Lounge - 192.168.234.21
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 7
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ description WAP085
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ description WAP087
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ description WAP077
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ description WAP079
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ description WAP75
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ description WAP025
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ no cdp tlv server-location 
+ no cdp tlv app
+ spanning-tree portfast
+!
+interface GigabitEthernet1/1
+ description Fibre Link To CoresA
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 2,3,8,10,21,22,40,50,110,111,121,140,167-169,240
+ switchport trunk allowed vlan add 314,318,320,667,700,888
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out 
+ mls qos trust dscp
+ auto qos trust 
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ description uplink to FramesTF22
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out 
+ mls qos trust dscp
+ auto qos trust 
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/3
+ switchport access vlan 999
+ shutdown
+ no lldp transmit
+ no lldp receive
+!
+interface GigabitEthernet1/4
+ switchport access vlan 999
+ shutdown
+ no lldp transmit
+ no lldp receive
+!
+interface TenGigabitEthernet1/1
+!
+interface TenGigabitEthernet1/2
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ no ip mroute-cache
+ shutdown
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.128 255.255.255.0
+ no ip route-cache
+ no ip mroute-cache
+!
+ip default-gateway 192.168.2.10
+ip classless
+ip http server
+ip http secure-server
+!
+ip sla enable reaction-alerts
+logging facility local0
+logging 192.168.2.253
+logging 202.14.167.171
+access-list 1 permit any
+snmp-server community crc981u RO
+snmp-server location In cupboard level 1 in corridor behind Ballantynes Int Dept
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps cluster
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps entity
+snmp-server enable traps hsrp
+snmp-server enable traps rtr
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server host 192.168.2.253 version 2c crc981u 
+!
+no vstack
+banner motd ^C
+********************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+^C
+!
+line con 0
+ exec-timeout 0 0
+ password 7 080D1D49010D2D18071809
+line vty 0 4
+ password 7 047D273F2F366C5758
+ length 0
+line vty 5 15
+ password 7 047D273F2F366C5758
+!
+ntp clock-period 36027725
+ntp server 202.14.167.238
+ntp server 202.14.167.144 prefer
+end
+
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#sh a mac ad
+FramesTF21#sh mac address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+ All    0100.0ccc.cccc    STATIC      CPU
+ All    0100.0ccc.cccd    STATIC      CPU
+ All    0180.c200.0000    STATIC      CPU
+ All    0180.c200.0001    STATIC      CPU
+ All    0180.c200.0002    STATIC      CPU
+ All    0180.c200.0003    STATIC      CPU
+ All    0180.c200.0004    STATIC      CPU
+ All    0180.c200.0005    STATIC      CPU
+ All    0180.c200.0006    STATIC      CPU
+ All    0180.c200.0007    STATIC      CPU
+ All    0180.c200.0008    STATIC      CPU
+ All    0180.c200.0009    STATIC      CPU
+ All    0180.c200.000a    STATIC      CPU
+ All    0180.c200.000b    STATIC      CPU
+ All    0180.c200.000c    STATIC      CPU
+ All    0180.c200.000d    STATIC      CPU
+ All    0180.c200.000e    STATIC      CPU
+ All    0180.c200.000f    STATIC      CPU
+ All    0180.c200.0010    STATIC      CPU
+ All    ffff.ffff.ffff    STATIC      CPU
+  50    001b.1700.0131    DYNAMIC     Gi1/1
+  50    0078.888c.451e    DYNAMIC     Gi1/1
+  50    00c0.b753.1547    DYNAMIC     Gi1/1
+  50    00c0.b754.cf7a    DYNAMIC     Gi1/1
+  50    00c0.b77b.bbdb    DYNAMIC     Gi1/1
+  50    00c0.b77b.bc03    DYNAMIC     Gi1/1
+  50    00c0.b786.36b2    DYNAMIC     Gi1/1
+  50    00c0.b789.8335    DYNAMIC     Gi1/1
+  50    00c0.b78a.4228    DYNAMIC     Gi1/1
+  50    00c0.b795.3707    DYNAMIC     Gi1/1
+  50    00c0.b795.49cd    DYNAMIC     Gi1/1
+  50    00c0.b7a0.cd6f    DYNAMIC     Gi1/1
+  50    00c0.b7b4.164b    DYNAMIC     Gi1/1
+  50    00c0.b7b8.2129    DYNAMIC     Gi1/1
+  50    00c0.b7b8.da5a    DYNAMIC     Gi1/1
+  50    00c0.b7c4.0cbb    DYNAMIC     Gi1/1
+  50    00c0.b7c8.bcf6    DYNAMIC     Gi1/1
+  50    00c0.b7df.6bc0    DYNAMIC     Gi1/1
+  50    00c0.b7df.6bc7    DYNAMIC     Gi1/1
+  50    00c0.b7df.6bcd    DYNAMIC     Gi1/1
+  50    00c0.b7df.6c8e    DYNAMIC     Gi1/1
+  50    00c0.b7df.edbd    DYNAMIC     Gi1/1
+  50    00c0.b7e1.8946    DYNAMIC     Gi1/1
+  50    00c0.b7e2.37d8    DYNAMIC     Gi1/1
+  50    00c0.b7e2.380a    DYNAMIC     Gi1/1
+  50    00c0.b7ea.6b36    DYNAMIC     Gi1/1
+  50    00c0.b7ec.7f45    DYNAMIC     Gi1/1
+  50    00c0.b7f4.f792    DYNAMIC     Gi1/1
+  50    00c0.b7f4.f838    DYNAMIC     Gi1/1
+  50    00c0.b7f4.f8cc    DYNAMIC     Gi1/1
+  50    00c0.b7f4.f916    DYNAMIC     Gi1/1
+  50    00c0.b7f4.f952    DYNAMIC     Gi1/1
+  50    00c0.b7f5.19b9    DYNAMIC     Gi1/1
+  50    00c0.b7fc.d415    DYNAMIC     Gi1/1
+  50    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+  50    2829.8606.4994    DYNAMIC     Gi1/1
+  50    2829.8606.b8f4    DYNAMIC     Gi1/1
+  50    2829.860b.cfc1    STATIC      Gi0/1 
+  50    2829.8612.3f8a    DYNAMIC     Gi1/1
+  50    2829.8619.fb01    DYNAMIC     Gi1/1
+  50    2829.861d.3535    DYNAMIC     Gi1/1
+  50    2829.861d.356a    DYNAMIC     Gi1/1
+  50    2829.861d.d177    DYNAMIC     Gi1/1
+  50    2829.8622.6155    DYNAMIC     Gi1/1
+  50    2829.862e.1b57    DYNAMIC     Gi1/1
+  50    2829.864b.2ebb    DYNAMIC     Gi1/1
+  50    2829.864b.37d1    DYNAMIC     Gi1/1
+  50    2829.8657.5ac9    DYNAMIC     Gi1/1
+  50    2829.8657.5acf    DYNAMIC     Gi1/1
+  50    2829.8657.5b04    DYNAMIC     Gi1/1
+  50    2829.8657.5b1c    DYNAMIC     Gi1/1
+  50    2829.8664.242f    DYNAMIC     Gi1/1
+  50    2829.8664.2465    DYNAMIC     Gi1/1
+  50    2829.8664.348c    DYNAMIC     Gi1/1
+  50    2829.866b.56a4    DYNAMIC     Gi1/1
+  50    2829.866b.583b    DYNAMIC     Gi1/1
+  50    2829.866b.5845    DYNAMIC     Gi1/1
+  50    2829.866b.584d    DYNAMIC     Gi1/1
+  50    2829.866b.5866    DYNAMIC     Gi1/1
+  50    2829.866b.5881    DYNAMIC     Gi1/1
+  50    2829.866b.58e2    DYNAMIC     Gi1/1
+ 314    0000.856e.26c0    DYNAMIC     Gi0/13
+ 314    0000.856e.34fb    DYNAMIC     Gi0/13
+ 314    0000.856e.34fd    DYNAMIC     Gi0/13
+ 314    0000.856e.34fe    DYNAMIC     Gi0/13
+ 314    0000.856e.34ff    DYNAMIC     Gi0/13
+ 314    0000.856e.3511    DYNAMIC     Gi0/13
+ 314    000d.ac34.d3ae    DYNAMIC     Gi0/13
+ 314    0060.ef39.623d    DYNAMIC     Gi1/1
+ 314    0060.ef3a.d5e0    DYNAMIC     Gi1/1
+ 314    0060.ef3b.3b90    DYNAMIC     Gi0/13
+ 314    0078.888c.451e    DYNAMIC     Gi1/1
+ 314    0090.fb48.78f9    DYNAMIC     Gi1/1
+ 314    009c.028f.7b98    DYNAMIC     Gi1/1
+ 314    1866.da26.776b    DYNAMIC     Gi1/1
+ 314    1c69.7a09.885d    DYNAMIC     Gi1/1
+ 314    1cc1.dea9.c4cc    DYNAMIC     Gi1/1
+ 314    2067.7ce5.a874    DYNAMIC     Gi1/1
+ 314    2c44.fd35.983f    DYNAMIC     Gi1/1
+ 314    2c44.fd36.2937    DYNAMIC     Gi1/1
+ 314    4001.c69e.a334    DYNAMIC     Gi0/13
+ 314    40a8.f065.d7d7    DYNAMIC     Gi1/1
+ 314    6012.8bd3.0ec6    DYNAMIC     Gi1/1
+ 314    6c5a.b088.c658    DYNAMIC     Gi1/1
+ 314    6c6a.77ff.68c9    DYNAMIC     Gi1/1
+ 314    a460.11e8.c99b    DYNAMIC     Gi0/13
+ 314    a81e.8432.13da    DYNAMIC     Gi1/1
+ 314    b05c.da83.d501    DYNAMIC     Gi1/1
+ 314    b897.5adf.9f21    DYNAMIC     Gi1/1
+ 314    b897.5aec.558b    DYNAMIC     Gi1/1
+ 314    e073.e72a.c7df    DYNAMIC     Gi1/1
+ 314    ecb1.d751.1fb0    DYNAMIC     Gi1/1
+ 314    f439.0902.2050    DYNAMIC     Gi1/1
+ 314    f481.39ed.82e5    DYNAMIC     Gi1/1
+   2    0019.068b.d441    DYNAMIC     Gi1/2
+   2    001b.1700.0131    DYNAMIC     Gi1/1
+   2    0050.56af.4911    DYNAMIC     Gi1/1
+   2    0078.888c.451e    DYNAMIC     Gi1/1
+   2    00a5.bfa2.ac41    DYNAMIC     Gi1/1
+   2    00a7.42eb.efc1    DYNAMIC     Gi1/1
+   2    04da.d205.0141    DYNAMIC     Gi1/1
+   2    0c97.5fb0.3b40    DYNAMIC     Gi1/1
+   2    14ab.ec97.d980    DYNAMIC     Gi1/1
+   2    14ab.ec98.ed00    DYNAMIC     Gi1/1
+   2    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+   2    7802.b10e.05c1    DYNAMIC     Gi1/1
+   2    9460.d5da.8680    DYNAMIC     Gi1/1
+   2    a40e.75a9.ae40    DYNAMIC     Gi1/1
+   2    a40e.75aa.34c0    DYNAMIC     Gi1/1
+   2    a40e.75ab.2040    DYNAMIC     Gi1/1
+   2    ac7e.8a1e.22c1    DYNAMIC     Gi1/1
+   2    acf5.e6e4.0341    DYNAMIC     Gi1/1
+   2    c07b.bca2.b3c1    DYNAMIC     Gi1/1
+   2    c07b.bcda.fbc1    DYNAMIC     Gi1/1
+   2    cc8e.7128.ecc1    DYNAMIC     Gi1/1
+   2    ec67.94d1.3680    DYNAMIC     Gi1/1
+   2    ec67.94d1.4680    DYNAMIC     Gi1/1
+   2    f8a5.c526.89c1    DYNAMIC     Gi1/1
+   2    f8b7.e216.9941    DYNAMIC     Gi1/1
+   3    001b.1700.0131    DYNAMIC     Gi1/1
+   3    0068.ebc3.db34    DYNAMIC     Gi1/1
+   3    0068.ebc3.db5e    DYNAMIC     Gi1/1
+   3    0068.ebc3.db77    DYNAMIC     Gi1/1
+   3    0068.ebc3.dbde    DYNAMIC     Gi1/1
+   3    0068.ebcd.69d7    DYNAMIC     Gi1/1
+   3    0068.ebcd.69e6    DYNAMIC     Gi1/1
+   3    0078.888c.451e    DYNAMIC     Gi1/1
+   3    040e.3c3d.36c9    DYNAMIC     Gi1/1
+   3    040e.3c4b.6f7a    DYNAMIC     Gi1/1
+   3    1860.247c.543b    DYNAMIC     Gi1/1
+   3    1860.247e.e5ed    DYNAMIC     Gi1/1
+   3    1860.2488.15be    DYNAMIC     Gi1/1
+   3    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+   3    38ca.843c.fb24    DYNAMIC     Gi1/1
+   3    38ca.843c.fdc7    DYNAMIC     Gi1/1
+   3    38ca.843d.01e4    DYNAMIC     Gi1/1
+   3    38ca.843d.024a    DYNAMIC     Gi1/1
+   3    38ca.843d.0271    DYNAMIC     Gi1/1
+   3    38ca.843d.034b    DYNAMIC     Gi1/1
+   3    38ca.8456.d3a1    DYNAMIC     Gi1/1
+   3    38ca.8456.f395    DYNAMIC     Gi1/1
+   3    480f.cf5c.9b2b    DYNAMIC     Gi1/1
+   3    5081.402d.8d3a    DYNAMIC     Gi1/1
+   3    5081.402d.8dd3    DYNAMIC     Gi1/1
+   3    5081.402d.8dfe    DYNAMIC     Gi1/1
+   3    6c02.e04c.e6b5    DYNAMIC     Gi1/1
+   3    7446.a0a4.ceb9    DYNAMIC     Gi1/1
+   3    7446.a0a5.0bc9    DYNAMIC     Gi1/1
+   3    7c57.586c.7e11    DYNAMIC     Gi1/1
+   3    8469.9356.a419    DYNAMIC     Gi1/1
+   3    8469.93c8.1766    DYNAMIC     Gi1/1
+   3    a08c.fdc2.4dbc    DYNAMIC     Gi1/1
+   3    a08c.fdc3.d207    DYNAMIC     Gi1/1
+   3    c018.03c9.8ab4    DYNAMIC     Gi1/1
+   3    c018.03c9.d9e2    DYNAMIC     Gi1/1
+   3    c465.16c9.ba06    DYNAMIC     Gi1/1
+   3    c85a.cf68.9a7e    DYNAMIC     Gi1/1
+   3    c85a.cf69.3243    DYNAMIC     Gi1/1
+   3    c8d9.d208.0d93    DYNAMIC     Gi1/1
+   3    d825.22ad.b51f    DYNAMIC     Gi1/1
+   3    e073.e75d.cbbe    DYNAMIC     Gi1/1
+   3    ecb1.d745.46a8    DYNAMIC     Gi1/1
+   3    f092.1cf2.8ffb    DYNAMIC     Gi1/1
+   3    f80d.ac59.a3fb    DYNAMIC     Gi1/1
+   8    001b.1700.0131    DYNAMIC     Gi1/1
+   8    0060.b955.42d4    DYNAMIC     Gi1/1
+   8    0078.888c.451e    DYNAMIC     Gi1/1
+   8    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+  10    0050.568a.0d2a    DYNAMIC     Gi1/1
+  10    0050.568a.1443    DYNAMIC     Gi1/1
+  10    0050.568a.46a9    DYNAMIC     Gi1/1
+  10    0050.568a.46e9    DYNAMIC     Gi1/1
+  10    0050.568a.5098    DYNAMIC     Gi1/1
+  10    0050.568a.589d    DYNAMIC     Gi1/1
+  10    0050.568a.7360    DYNAMIC     Gi1/1
+  10    0050.56af.32ac    DYNAMIC     Gi1/1
+  10    0078.888c.451e    DYNAMIC     Gi1/1
+  10    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+  21    0004.f35d.7380    DYNAMIC     Gi1/1
+  21    0012.ea0e.450d    DYNAMIC     Gi1/1
+  21    001b.1700.0131    DYNAMIC     Gi1/1
+  21    0020.4aa2.97bb    DYNAMIC     Gi1/1
+  21    0020.4aa2.9959    DYNAMIC     Gi1/1
+  21    0020.4aa2.9e2c    DYNAMIC     Gi1/1
+  21    0020.4ab4.938b    DYNAMIC     Gi1/1
+  21    0040.9db1.b057    DYNAMIC     Gi1/1
+  21    0040.9db1.dd14    DYNAMIC     Gi1/1
+  21    0050.010b.c1ec    DYNAMIC     Gi1/1
+  21    0050.569c.716c    DYNAMIC     Gi1/1
+  21    0050.56af.0bc3    DYNAMIC     Gi1/1
+  21    0050.56af.a5d3    DYNAMIC     Gi1/1
+  21    0078.888c.451e    DYNAMIC     Gi1/1
+  21    0080.a3d5.c947    DYNAMIC     Gi1/1
+  21    00a0.0302.3a3a    DYNAMIC     Gi1/1
+  21    00a0.0302.3eef    DYNAMIC     Gi1/1
+  21    00a0.0302.5c37    DYNAMIC     Gi1/1
+  21    00a0.0302.5f8b    DYNAMIC     Gi1/1
+  21    00a0.0302.8d81    DYNAMIC     Gi1/1
+  21    00a0.0302.b19e    DYNAMIC     Gi1/1
+  21    00a0.0302.bef5    DYNAMIC     Gi1/1
+  21    00a0.0302.d648    DYNAMIC     Gi1/1
+  21    00a0.0302.f57d    DYNAMIC     Gi1/1
+  21    00a0.0303.08bb    DYNAMIC     Gi1/1
+  21    00a0.0305.3e1d    DYNAMIC     Gi1/1
+  21    00a0.0308.0846    DYNAMIC     Gi1/1
+  21    00a0.0308.a457    DYNAMIC     Gi1/1
+  21    00a0.0308.ee19    DYNAMIC     Gi1/1
+  21    00a0.0309.b195    DYNAMIC     Gi1/1
+  21    00a0.030b.9f52    DYNAMIC     Gi1/1
+  21    00a0.030c.362e    DYNAMIC     Gi1/1
+  21    00a0.030c.3a96    DYNAMIC     Gi1/1
+  21    00a0.0311.9b35    DYNAMIC     Gi1/1
+  21    00a0.0315.d355    DYNAMIC     Gi1/1
+  21    00a0.0315.d36a    DYNAMIC     Gi1/1
+  21    00a0.0318.5d3c    DYNAMIC     Gi1/1
+  21    00a0.031f.389f    DYNAMIC     Gi1/2
+  21    00a0.0323.ef1b    DYNAMIC     Gi1/1
+  21    00a0.0323.ef24    DYNAMIC     Gi1/1
+  21    00a0.0325.f45a    DYNAMIC     Gi1/1
+  21    00c0.e400.5ce4    DYNAMIC     Gi1/1
+  21    00c0.e400.6c4d    DYNAMIC     Gi1/1
+  21    00c0.e400.9290    DYNAMIC     Gi1/1
+  21    00c0.e400.b532    DYNAMIC     Gi1/1
+  21    00c0.e400.b713    DYNAMIC     Gi1/1
+  21    00c0.e400.b7ce    DYNAMIC     Gi1/1
+  21    00c0.e400.c2d3    DYNAMIC     Gi1/1
+  21    00c0.e400.c2e8    DYNAMIC     Gi1/1
+  21    00c0.e400.c692    DYNAMIC     Gi1/1
+  21    00c0.e400.c913    DYNAMIC     Gi1/1
+  21    00c0.e400.c914    DYNAMIC     Gi1/1
+  21    00c0.e400.c939    DYNAMIC     Gi1/1
+  21    00c0.e400.d2a6    DYNAMIC     Gi1/1
+  21    00c0.e400.d2c4    DYNAMIC     Gi1/1
+  21    00c0.e400.e60b    DYNAMIC     Gi1/1
+  21    00c0.e400.f565    DYNAMIC     Gi1/1
+  21    00c0.e400.fd4c    DYNAMIC     Gi1/1
+  21    00c0.e401.be6d    DYNAMIC     Gi1/1
+  21    00c0.e401.e211    DYNAMIC     Gi1/1
+  21    00c0.e401.e5a8    DYNAMIC     Gi1/1
+  21    00c0.e401.faab    DYNAMIC     Gi1/1
+  21    00c0.e402.0a1f    DYNAMIC     Gi1/1
+  21    00c0.e402.0bb6    DYNAMIC     Gi1/1
+  21    00c0.e402.1391    DYNAMIC     Gi1/1
+  21    00c0.e402.270b    DYNAMIC     Gi1/1
+  21    00c0.e402.3126    DYNAMIC     Gi1/1
+  21    00c0.e402.3334    DYNAMIC     Gi1/1
+  21    00c0.e402.333a    DYNAMIC     Gi1/1
+  21    00c0.e402.333b    DYNAMIC     Gi1/1
+  21    00c0.e402.3342    DYNAMIC     Gi1/1
+  21    00c0.e402.335d    DYNAMIC     Gi1/1
+  21    00c0.e402.3415    DYNAMIC     Gi1/1
+  21    00c0.e402.3572    DYNAMIC     Gi1/1
+  21    00c0.e402.357c    DYNAMIC     Gi1/1
+  21    00c0.e402.3584    DYNAMIC     Gi1/1
+  21    00c0.e402.5145    DYNAMIC     Gi1/1
+  21    00c0.e402.5147    DYNAMIC     Gi1/1
+  21    00c0.e402.5158    DYNAMIC     Gi1/1
+  21    00c0.e402.515e    DYNAMIC     Gi1/1
+  21    00c0.e403.0432    DYNAMIC     Gi1/1
+  21    00c0.e403.a585    DYNAMIC     Gi1/1
+  21    00c0.e404.dbed    DYNAMIC     Gi1/1
+  21    1860.24b1.3908    DYNAMIC     Gi1/1
+  21    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+  21    5c88.169a.ed3d    DYNAMIC     Gi1/1
+  22    0000.0a3c.3cf3    DYNAMIC     Gi1/1
+  22    0004.f35d.7389    DYNAMIC     Gi1/1
+  22    001b.1700.0131    DYNAMIC     Gi1/1
+  22    0050.56af.052c    DYNAMIC     Gi1/1
+  22    0050.56af.e2aa    DYNAMIC     Gi1/1
+  22    0050.56af.ea4e    DYNAMIC     Gi1/1
+  22    0078.888c.451e    DYNAMIC     Gi1/1
+  22    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 110    0050.56af.1930    DYNAMIC     Gi1/1
+ 110    0050.56af.4604    DYNAMIC     Gi1/1
+ 110    0050.56af.5923    DYNAMIC     Gi1/1
+ 110    0050.56af.6491    DYNAMIC     Gi1/1
+ 110    0050.56af.baa6    DYNAMIC     Gi1/1
+ 110    0050.56af.cf9e    DYNAMIC     Gi1/1
+ 110    0050.56af.fab4    DYNAMIC     Gi1/1
+ 110    0078.888c.451e    DYNAMIC     Gi1/1
+ 110    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 111    0010.be09.2770    DYNAMIC     Gi1/1
+ 111    0010.be09.278f    DYNAMIC     Gi1/1
+ 111    0010.be09.282d    DYNAMIC     Gi1/1
+ 111    0010.be09.28db    DYNAMIC     Gi1/1
+ 111    0010.be0b.3d62    DYNAMIC     Gi1/1
+ 111    0010.be0b.3d8b    DYNAMIC     Gi1/1
+ 111    0010.be0b.3eac    DYNAMIC     Gi1/1
+ 111    0010.be0b.ca47    DYNAMIC     Gi1/1
+ 111    0010.be0b.ca7f    DYNAMIC     Gi1/1
+ 111    0010.be0b.ca83    DYNAMIC     Gi1/1
+ 111    0010.be0b.ca8f    DYNAMIC     Gi1/1
+ 111    0010.be0b.cae9    DYNAMIC     Gi1/1
+ 111    0012.8151.107c    DYNAMIC     Gi1/1
+ 111    0012.8151.10c2    DYNAMIC     Gi1/1
+ 111    0012.8151.10ee    DYNAMIC     Gi1/1
+ 111    0012.8151.110a    DYNAMIC     Gi1/1
+ 111    0012.8151.1111    DYNAMIC     Gi1/1
+ 111    0012.8151.1114    DYNAMIC     Gi1/1
+ 111    0012.8151.1283    DYNAMIC     Gi1/1
+ 111    0012.8151.128c    DYNAMIC     Gi1/1
+ 111    0012.8151.13aa    DYNAMIC     Gi1/1
+ 111    0012.8151.13af    DYNAMIC     Gi1/1
+ 111    0012.8151.13b1    DYNAMIC     Gi1/1
+ 111    0012.8151.13b3    DYNAMIC     Gi1/1
+ 111    0012.8151.13b4    DYNAMIC     Gi1/1
+ 111    0012.8151.13b5    DYNAMIC     Gi1/1
+ 111    0012.8151.13bc    DYNAMIC     Gi1/1
+ 111    0012.8151.13c2    DYNAMIC     Gi1/1
+ 111    0012.8151.13cd    DYNAMIC     Gi1/1
+ 111    0012.8151.13d8    DYNAMIC     Gi1/1
+ 111    0012.8151.13dd    DYNAMIC     Gi1/1
+ 111    0012.8151.1401    DYNAMIC     Gi1/1
+ 111    0012.8151.1414    DYNAMIC     Gi1/1
+ 111    0012.8151.143a    DYNAMIC     Gi1/1
+ 111    0012.8151.1462    DYNAMIC     Gi1/1
+ 111    0012.8151.155d    DYNAMIC     Gi1/1
+ 111    0012.8151.1560    DYNAMIC     Gi1/1
+ 111    0012.8151.156e    DYNAMIC     Gi1/1
+ 111    0012.8151.1571    DYNAMIC     Gi1/1
+ 111    0012.8151.1593    DYNAMIC     Gi1/1
+ 111    0012.8151.1816    DYNAMIC     Gi1/1
+ 111    0012.8151.1820    DYNAMIC     Gi1/1
+ 111    0012.8151.182e    DYNAMIC     Gi1/1
+ 111    0012.8151.182f    DYNAMIC     Gi1/1
+ 111    0012.8151.1837    DYNAMIC     Gi1/1
+ 111    0012.8151.183d    DYNAMIC     Gi1/1
+ 111    0012.8151.1843    DYNAMIC     Gi1/1
+ 111    0012.8151.1846    DYNAMIC     Gi1/1
+ 111    0012.8151.1849    DYNAMIC     Gi1/1
+ 111    0012.8151.184e    DYNAMIC     Gi1/1
+ 111    0012.8151.1856    DYNAMIC     Gi1/1
+ 111    0012.8151.185d    DYNAMIC     Gi1/1
+ 111    0012.8151.185e    DYNAMIC     Gi1/1
+ 111    0012.8151.1867    DYNAMIC     Gi1/1
+ 111    0012.8151.186c    DYNAMIC     Gi1/1
+ 111    0012.8151.186f    DYNAMIC     Gi1/1
+ 111    0012.8151.1873    DYNAMIC     Gi1/1
+ 111    0012.8151.1874    DYNAMIC     Gi1/1
+ 111    0012.8151.1898    DYNAMIC     Gi1/1
+ 111    0012.8151.18a1    DYNAMIC     Gi1/1
+ 111    0012.8151.18a6    DYNAMIC     Gi1/1
+ 111    0012.8151.18ad    DYNAMIC     Gi1/1
+ 111    0012.8151.18af    DYNAMIC     Gi1/1
+ 111    0012.8151.18d0    DYNAMIC     Gi1/1
+ 111    0012.8151.18e0    DYNAMIC     Gi1/1
+ 111    0012.8151.18e3    DYNAMIC     Gi1/1
+ 111    0012.8151.21f4    DYNAMIC     Gi1/1
+ 111    0012.8151.21f6    DYNAMIC     Gi1/1
+ 111    0012.8151.21f8    DYNAMIC     Gi1/1
+ 111    0012.8151.225a    DYNAMIC     Gi1/1
+ 111    0012.8151.225c    DYNAMIC     Gi1/1
+ 111    0012.8151.225f    DYNAMIC     Gi1/1
+ 111    001b.1700.0131    DYNAMIC     Gi1/1
+ 111    0040.8c71.2bc7    DYNAMIC     Gi1/1
+ 111    0040.8c71.2bc8    DYNAMIC     Gi1/1
+ 111    0040.8c71.2bc9    DYNAMIC     Gi1/1
+ 111    0050.56af.0215    DYNAMIC     Gi1/1
+ 111    0050.56af.2649    DYNAMIC     Gi1/1
+ 111    0050.56af.431a    DYNAMIC     Gi1/1
+ 111    0050.56af.43d1    DYNAMIC     Gi1/1
+ 111    0050.56af.489a    DYNAMIC     Gi1/1
+ 111    0050.56af.99bd    DYNAMIC     Gi1/1
+ 111    0050.56af.b5d4    DYNAMIC     Gi1/1
+ 111    0050.56af.c5aa    DYNAMIC     Gi1/1
+ 111    0050.56af.eedc    DYNAMIC     Gi1/1
+ 111    0078.888c.451e    DYNAMIC     Gi1/1
+ 111    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 111    24a4.3c88.b747    DYNAMIC     Gi1/1
+ 111    24a4.3c88.b9b4    DYNAMIC     Gi1/1
+ 111    24a4.3c88.b9dd    DYNAMIC     Gi1/1
+ 111    accc.8e24.f998    DYNAMIC     Gi1/1
+ 111    accc.8e29.6d73    DYNAMIC     Gi1/1
+ 111    accc.8e29.94f3    DYNAMIC     Gi1/1
+ 111    accc.8e30.8e35    DYNAMIC     Gi1/1
+ 111    accc.8e3c.6c4b    DYNAMIC     Gi1/1
+ 111    accc.8e3c.6cc3    DYNAMIC     Gi1/1
+ 111    accc.8e40.f7ce    DYNAMIC     Gi1/1
+ 111    accc.8e53.6240    DYNAMIC     Gi1/1
+ 111    accc.8e53.8aa5    DYNAMIC     Gi1/1
+ 111    accc.8e53.ca3e    DYNAMIC     Gi1/1
+ 111    accc.8e53.cbcc    DYNAMIC     Gi1/1
+ 111    accc.8e6c.585e    DYNAMIC     Gi1/1
+ 111    accc.8e6c.6a55    DYNAMIC     Gi1/1
+ 111    accc.8e6c.755c    DYNAMIC     Gi1/1
+ 111    accc.8e6c.756c    DYNAMIC     Gi1/1
+ 111    accc.8e78.c362    DYNAMIC     Gi1/1
+ 111    accc.8e78.c3bb    DYNAMIC     Gi1/1
+ 111    accc.8e78.c3c6    DYNAMIC     Gi1/1
+ 111    accc.8e7a.6667    DYNAMIC     Gi1/1
+ 111    accc.8e7e.a236    DYNAMIC     Gi1/1
+ 111    accc.8e7f.077c    DYNAMIC     Gi1/1
+ 111    accc.8e83.d892    DYNAMIC     Gi1/1
+ 111    accc.8e83.d8af    STATIC      Gi0/17 
+ 111    accc.8e85.4802    STATIC      Gi0/14 
+ 111    accc.8e85.4816    DYNAMIC     Gi1/1
+ 111    accc.8e85.4831    DYNAMIC     Gi1/1
+ 111    accc.8e85.4846    DYNAMIC     Gi1/1
+ 111    accc.8e85.485c    DYNAMIC     Gi1/1
+ 111    accc.8e85.485d    DYNAMIC     Gi1/1
+ 111    accc.8e85.4870    DYNAMIC     Gi1/1
+ 111    accc.8e85.4897    DYNAMIC     Gi1/1
+ 111    accc.8e85.489c    DYNAMIC     Gi0/15
+ 111    accc.8e87.ba46    DYNAMIC     Gi1/1
+ 111    accc.8e87.d278    DYNAMIC     Gi1/1
+ 111    accc.8e88.b1cb    DYNAMIC     Gi1/1
+ 111    accc.8e88.b23e    STATIC      Gi0/10 
+ 111    accc.8e88.b24f    STATIC      Gi0/18 
+ 111    accc.8e88.b394    DYNAMIC     Gi1/1
+ 111    accc.8e88.b39e    DYNAMIC     Gi1/1
+ 111    accc.8e88.b3ad    DYNAMIC     Gi1/1
+ 111    accc.8e98.eab2    DYNAMIC     Gi1/1
+ 111    accc.8e98.f239    DYNAMIC     Gi1/1
+ 111    accc.8e9a.7bce    DYNAMIC     Gi1/1
+ 111    accc.8e9b.63af    DYNAMIC     Gi1/1
+ 111    accc.8e9b.63f9    DYNAMIC     Gi1/1
+ 111    accc.8e9b.9d17    DYNAMIC     Gi1/1
+ 111    accc.8e9b.9d3f    DYNAMIC     Gi1/1
+ 111    accc.8e9b.9d42    DYNAMIC     Gi1/1
+ 111    accc.8e9b.9e6a    DYNAMIC     Gi1/1
+ 111    accc.8eab.02e2    DYNAMIC     Gi1/1
+ 111    accc.8eae.4182    DYNAMIC     Gi1/1
+ 111    accc.8eae.4672    DYNAMIC     Gi1/1
+ 111    accc.8eae.4ddc    DYNAMIC     Gi1/1
+ 111    accc.8eae.577a    DYNAMIC     Gi1/1
+ 111    accc.8eae.57c6    DYNAMIC     Gi1/1
+ 111    accc.8eae.5cc1    DYNAMIC     Gi1/1
+ 111    accc.8eae.6c45    DYNAMIC     Gi1/1
+ 111    accc.8eae.6c6e    DYNAMIC     Gi1/1
+ 111    accc.8eae.6cc0    DYNAMIC     Gi1/1
+ 111    accc.8eae.6cd9    DYNAMIC     Gi1/1
+ 111    accc.8eae.6d21    DYNAMIC     Gi1/1
+ 111    accc.8eaf.2c2b    DYNAMIC     Gi1/1
+ 111    accc.8eaf.2d06    DYNAMIC     Gi1/1
+ 111    accc.8eb5.246b    DYNAMIC     Gi1/1
+ 111    accc.8eb9.df74    DYNAMIC     Gi1/1
+ 111    accc.8eb9.e0cf    DYNAMIC     Gi1/1
+ 111    accc.8eba.763d    DYNAMIC     Gi1/1
+ 111    accc.8eba.7934    DYNAMIC     Gi1/1
+ 111    accc.8ebb.3618    DYNAMIC     Gi1/1
+ 111    accc.8ebc.5fda    DYNAMIC     Gi1/1
+ 111    accc.8ebc.d4dc    DYNAMIC     Gi1/1
+ 111    accc.8ebc.dff4    DYNAMIC     Gi1/1
+ 111    accc.8ec6.1ba2    DYNAMIC     Gi1/1
+ 111    accc.8ec6.4614    DYNAMIC     Gi1/1
+ 111    accc.8ec6.7185    DYNAMIC     Gi1/1
+ 111    accc.8ec7.ee2d    DYNAMIC     Gi1/1
+ 111    accc.8ec7.eebb    DYNAMIC     Gi1/1
+ 111    accc.8ec9.0721    DYNAMIC     Gi1/1
+ 111    accc.8ec9.287b    DYNAMIC     Gi1/1
+ 111    accc.8ec9.31bc    DYNAMIC     Gi1/1
+ 111    accc.8ec9.330d    DYNAMIC     Gi1/1
+ 111    accc.8ec9.6ca4    DYNAMIC     Gi1/1
+ 111    accc.8ec9.6fbe    DYNAMIC     Gi1/1
+ 111    accc.8ec9.82c2    DYNAMIC     Gi1/1
+ 111    accc.8ec9.865e    DYNAMIC     Gi1/1
+ 111    accc.8eca.1b4e    DYNAMIC     Gi1/1
+ 111    accc.8eca.1e8d    DYNAMIC     Gi1/1
+ 111    accc.8ecb.8884    DYNAMIC     Gi1/1
+ 111    accc.8ed1.7c33    DYNAMIC     Gi1/1
+ 111    accc.8ed1.7c3e    DYNAMIC     Gi1/1
+ 111    accc.8ed1.7c60    DYNAMIC     Gi1/1
+ 111    accc.8ed1.7c72    DYNAMIC     Gi1/1
+ 111    accc.8ed9.8379    DYNAMIC     Gi1/1
+ 111    accc.8eee.3c25    DYNAMIC     Gi1/1
+ 111    accc.8ef1.a204    DYNAMIC     Gi1/1
+ 111    accc.8ef8.c50e    DYNAMIC     Gi1/1
+ 111    accc.8ef9.7d76    DYNAMIC     Gi1/1
+ 111    accc.8eff.2738    DYNAMIC     Gi1/1
+ 111    accc.8eff.2744    DYNAMIC     Gi1/1
+ 111    b8a4.4f03.afb8    DYNAMIC     Gi1/1
+ 111    b8a4.4f09.4fa3    DYNAMIC     Gi1/1
+ 111    b8a4.4f09.4fb6    DYNAMIC     Gi1/1
+ 111    b8a4.4f09.4fbb    DYNAMIC     Gi1/1
+ 111    b8a4.4f11.fc00    DYNAMIC     Gi1/1
+ 111    b8a4.4f17.9085    DYNAMIC     Gi1/1
+ 111    b8a4.4f1a.785a    DYNAMIC     Gi1/1
+ 111    b8a4.4f1c.536d    DYNAMIC     Gi1/1
+ 111    b8a4.4f20.2c3c    DYNAMIC     Gi1/1
+ 111    b8a4.4f20.955f    DYNAMIC     Gi1/1
+ 111    b8a4.4f20.9565    DYNAMIC     Gi1/1
+ 111    b8a4.4f20.b02b    DYNAMIC     Gi1/1
+ 111    b8a4.4f28.2b6e    DYNAMIC     Gi1/1
+ 111    b8a4.4f28.5d7c    DYNAMIC     Gi1/1
+ 111    b8a4.4f31.dd9e    DYNAMIC     Gi1/1
+ 111    b8a4.4f39.9676    DYNAMIC     Gi1/1
+ 111    b8a4.4f42.9ab1    DYNAMIC     Gi1/1
+ 111    b8a4.4f45.bd6e    DYNAMIC     Gi1/1
+ 111    b8a4.4f4b.65b6    DYNAMIC     Gi1/1
+ 111    b8a4.4f4d.b209    DYNAMIC     Gi1/1
+ 111    b8a4.4f52.530c    DYNAMIC     Gi1/1
+ 111    b8a4.4f52.5466    DYNAMIC     Gi1/1
+ 111    b8a4.4f5c.89af    DYNAMIC     Gi1/1
+ 111    b8a4.4f60.5671    DYNAMIC     Gi1/1
+ 111    b8a4.4f62.4cd1    DYNAMIC     Gi1/1
+ 111    b8a4.4f68.1c55    DYNAMIC     Gi1/1
+ 111    b8a4.4f6b.e786    DYNAMIC     Gi1/1
+ 111    b8a4.4f73.923a    DYNAMIC     Gi1/1
+ 111    b8a4.4f80.310d    DYNAMIC     Gi1/1
+ 111    d892.0800.4500    DYNAMIC     Gi1/1
+ 121    0004.f354.34b1    DYNAMIC     Gi1/1
+ 121    001b.1700.0131    DYNAMIC     Gi1/1
+ 121    0050.011c.2538    DYNAMIC     Gi1/1
+ 121    0050.569c.7312    DYNAMIC     Gi1/1
+ 121    0050.56af.f336    DYNAMIC     Gi1/1
+ 121    0050.db00.b950    DYNAMIC     Gi1/1
+ 121    0078.888c.451e    DYNAMIC     Gi1/1
+ 121    0080.6786.d7e5    DYNAMIC     Gi1/1
+ 121    00a0.0302.c969    DYNAMIC     Gi1/1
+ 121    00a0.0302.e0a2    DYNAMIC     Gi1/1
+ 121    00a0.0302.f29e    DYNAMIC     Gi1/1
+ 121    00a0.0302.f29f    DYNAMIC     Gi1/1
+ 121    00a0.0302.f2a0    DYNAMIC     Gi1/1
+ 121    00a0.0302.f2a1    DYNAMIC     Gi1/1
+ 121    00a0.0302.f2af    DYNAMIC     Gi1/1
+ 121    00a0.0302.f2bb    DYNAMIC     Gi1/1
+ 121    00a0.0302.f2c7    DYNAMIC     Gi1/1
+ 121    00a0.0303.2a53    DYNAMIC     Gi1/1
+ 121    00a0.0303.4337    DYNAMIC     Gi1/1
+ 121    00a0.0303.449c    DYNAMIC     Gi1/1
+ 121    00a0.0303.c9e1    DYNAMIC     Gi1/1
+ 121    00a0.0304.1494    DYNAMIC     Gi1/1
+ 121    00a0.0304.89d1    DYNAMIC     Gi1/1
+ 121    00a0.0308.eb99    DYNAMIC     Gi1/1
+ 121    00a0.0318.a519    DYNAMIC     Gi1/1
+ 121    00a0.0322.abe7    DYNAMIC     Gi1/1
+ 121    00a0.0330.8162    DYNAMIC     Gi1/1
+ 121    00c0.e401.a72c    DYNAMIC     Gi1/1
+ 121    00c0.e401.aae8    DYNAMIC     Gi1/1
+ 121    00c0.e401.ac94    DYNAMIC     Gi1/1
+ 121    00c0.e401.b340    DYNAMIC     Gi1/1
+ 121    00c0.e401.b342    DYNAMIC     Gi1/1
+ 121    00c0.e401.b345    DYNAMIC     Gi1/1
+ 121    00c0.e401.b346    DYNAMIC     Gi1/1
+ 121    00c0.e401.c2e5    DYNAMIC     Gi1/1
+ 121    00c0.e401.d4e9    DYNAMIC     Gi1/1
+ 121    00c0.e401.ff52    DYNAMIC     Gi1/1
+ 121    00c0.e401.ff56    DYNAMIC     Gi1/1
+ 121    00c0.e401.ff58    DYNAMIC     Gi1/1
+ 121    00c0.e401.ff5a    DYNAMIC     Gi1/1
+ 121    00c0.e401.ff5c    DYNAMIC     Gi1/1
+ 121    00c0.e402.0176    DYNAMIC     Gi1/1
+ 121    00c0.e402.17b7    DYNAMIC     Gi1/1
+ 121    00c0.e402.17b9    DYNAMIC     Gi1/1
+ 121    00c0.e402.17ba    DYNAMIC     Gi1/1
+ 121    00c0.e402.17bb    DYNAMIC     Gi1/1
+ 121    00c0.e402.17bd    DYNAMIC     Gi1/1
+ 121    00c0.e402.17be    DYNAMIC     Gi1/1
+ 121    00c0.e402.18d6    DYNAMIC     Gi1/1
+ 121    00c0.e402.18d9    DYNAMIC     Gi1/1
+ 121    00c0.e402.18da    DYNAMIC     Gi1/1
+ 121    00c0.e402.18dc    DYNAMIC     Gi1/1
+ 121    00c0.e402.1bab    DYNAMIC     Gi1/1
+ 121    00c0.e402.1bac    DYNAMIC     Gi1/1
+ 121    00c0.e402.1bae    DYNAMIC     Gi1/1
+ 121    00c0.e402.1bb1    DYNAMIC     Gi1/1
+ 121    00c0.e402.1bb2    DYNAMIC     Gi1/1
+ 121    00c0.e402.20d5    DYNAMIC     Gi1/1
+ 121    00c0.e402.21ea    DYNAMIC     Gi1/1
+ 121    00c0.e402.21f2    DYNAMIC     Gi1/1
+ 121    00c0.e402.21f3    DYNAMIC     Gi1/1
+ 121    00c0.e402.21f4    DYNAMIC     Gi1/1
+ 121    00c0.e402.21fa    DYNAMIC     Gi1/1
+ 121    00c0.e402.21fe    DYNAMIC     Gi1/1
+ 121    00c0.e402.49fe    DYNAMIC     Gi1/1
+ 121    00c0.e402.4a00    DYNAMIC     Gi1/1
+ 121    00c0.e402.4a07    DYNAMIC     Gi1/1
+ 121    00c0.e402.96e0    DYNAMIC     Gi1/1
+ 121    00c0.e402.c8a7    DYNAMIC     Gi1/1
+ 121    00c0.e402.cefc    DYNAMIC     Gi1/1
+ 121    00c0.e403.21ed    DYNAMIC     Gi1/1
+ 121    00c0.e403.220a    DYNAMIC     Gi1/1
+ 121    00c0.e403.5e01    DYNAMIC     Gi1/1
+ 121    00c0.e403.7c3f    DYNAMIC     Gi1/1
+ 121    00c0.e403.b53e    DYNAMIC     Gi1/1
+ 121    00c0.e403.b9be    DYNAMIC     Gi1/1
+ 121    00c0.e403.c976    DYNAMIC     Gi1/1
+ 121    00c0.e404.a36e    DYNAMIC     Gi1/1
+ 121    00c0.e407.24cc    DYNAMIC     Gi1/1
+ 121    00c0.e407.24da    DYNAMIC     Gi1/2
+ 121    00c0.e407.24dc    DYNAMIC     Gi1/2
+ 121    00c0.e407.24fb    DYNAMIC     Gi1/1
+ 121    00c0.e407.24ff    DYNAMIC     Gi1/2
+ 121    00c0.e407.2505    DYNAMIC     Gi1/2
+ 121    00c0.e407.2531    DYNAMIC     Gi1/1
+ 121    00c0.e407.2532    DYNAMIC     Gi1/1
+ 121    00c0.e407.2563    DYNAMIC     Gi1/1
+ 121    00c0.e407.2574    DYNAMIC     Gi1/1
+ 121    00c0.e407.2578    DYNAMIC     Gi1/1
+ 121    00c0.e407.257e    DYNAMIC     Gi1/2
+ 121    00c0.e407.311c    DYNAMIC     Gi1/1
+ 121    00c0.e407.3123    DYNAMIC     Gi1/1
+ 121    00c0.e407.3148    DYNAMIC     Gi1/1
+ 121    00c0.e407.3154    DYNAMIC     Gi1/1
+ 121    00c0.e407.3163    DYNAMIC     Gi1/1
+ 121    00c0.e407.798b    DYNAMIC     Gi1/1
+ 121    00c0.e407.79f1    DYNAMIC     Gi1/1
+ 121    00c0.e409.e89a    DYNAMIC     Gi1/1
+ 121    00c0.e40e.1c3d    DYNAMIC     Gi1/1
+ 121    00c0.e40f.e342    DYNAMIC     Gi1/1
+ 121    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 140    001b.1700.0131    DYNAMIC     Gi1/1
+ 140    0078.888c.451e    DYNAMIC     Gi1/1
+ 140    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 167    0004.f33f.c1f5    DYNAMIC     Gi1/1
+ 167    0004.f35d.7675    DYNAMIC     Gi1/1
+ 167    001b.1700.0131    DYNAMIC     Gi1/1
+ 167    0050.568a.14b3    DYNAMIC     Gi1/1
+ 167    0050.568a.2c37    DYNAMIC     Gi1/1
+ 167    0050.568a.2dfa    DYNAMIC     Gi1/1
+ 167    0050.568a.315d    DYNAMIC     Gi1/1
+ 167    0050.568a.316f    DYNAMIC     Gi1/1
+ 167    0050.568a.4487    DYNAMIC     Gi1/1
+ 167    0050.568a.5729    DYNAMIC     Gi1/1
+ 167    0050.568a.57e8    DYNAMIC     Gi1/1
+ 167    0050.569c.06ed    DYNAMIC     Gi1/1
+ 167    0050.569c.165b    DYNAMIC     Gi1/1
+ 167    0050.569c.165d    DYNAMIC     Gi1/1
+ 167    0050.569c.501a    DYNAMIC     Gi1/1
+ 167    0050.569c.501c    DYNAMIC     Gi1/1
+ 167    0050.569c.7f70    DYNAMIC     Gi1/1
+ 167    0050.56a2.0bec    DYNAMIC     Gi1/1
+ 167    0050.56af.03a9    DYNAMIC     Gi1/1
+ 167    0050.56af.0830    DYNAMIC     Gi1/1
+ 167    0050.56af.1109    DYNAMIC     Gi1/1
+ 167    0050.56af.161d    DYNAMIC     Gi1/1
+ 167    0050.56af.1766    DYNAMIC     Gi1/1
+ 167    0050.56af.1ee5    DYNAMIC     Gi1/1
+ 167    0050.56af.1f7d    DYNAMIC     Gi1/1
+ 167    0050.56af.23d7    DYNAMIC     Gi1/1
+ 167    0050.56af.2734    DYNAMIC     Gi1/1
+ 167    0050.56af.3687    DYNAMIC     Gi1/1
+ 167    0050.56af.45df    DYNAMIC     Gi1/1
+ 167    0050.56af.4dcd    DYNAMIC     Gi1/1
+ 167    0050.56af.4e80    DYNAMIC     Gi1/1
+ 167    0050.56af.5f91    DYNAMIC     Gi1/1
+ 167    0050.56af.68db    DYNAMIC     Gi1/1
+ 167    0050.56af.7097    DYNAMIC     Gi1/1
+ 167    0050.56af.717c    DYNAMIC     Gi1/1
+ 167    0050.56af.7cda    DYNAMIC     Gi1/1
+ 167    0050.56af.8050    DYNAMIC     Gi1/1
+ 167    0050.56af.832d    DYNAMIC     Gi1/1
+ 167    0050.56af.873a    DYNAMIC     Gi1/1
+ 167    0050.56af.88e8    DYNAMIC     Gi1/1
+ 167    0050.56af.8b48    DYNAMIC     Gi1/1
+ 167    0050.56af.9a14    DYNAMIC     Gi1/1
+ 167    0050.56af.9b2c    DYNAMIC     Gi1/1
+ 167    0050.56af.aabb    DYNAMIC     Gi1/1
+ 167    0050.56af.b710    DYNAMIC     Gi1/1
+ 167    0050.56af.b884    DYNAMIC     Gi1/1
+ 167    0050.56af.b9d1    DYNAMIC     Gi1/1
+ 167    0050.56af.c7fc    DYNAMIC     Gi1/1
+ 167    0050.56af.d309    DYNAMIC     Gi1/1
+ 167    0050.56af.d422    DYNAMIC     Gi1/1
+ 167    0050.56af.d7e0    DYNAMIC     Gi1/1
+ 167    0050.56af.de6f    DYNAMIC     Gi1/1
+ 167    0050.56af.e389    DYNAMIC     Gi1/1
+ 167    0050.56af.f7b8    DYNAMIC     Gi1/1
+ 167    0078.888c.451e    DYNAMIC     Gi1/1
+ 167    0080.a3b3.8a8c    DYNAMIC     Gi1/1
+ 167    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 167    38ca.843d.0235    DYNAMIC     Gi1/1
+ 168    001b.1700.0131    DYNAMIC     Gi1/1
+ 168    0050.569c.2f12    DYNAMIC     Gi1/1
+ 168    0050.56af.365c    DYNAMIC     Gi1/1
+ 168    0078.888c.451e    DYNAMIC     Gi1/1
+ 168    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 169    001b.1700.0131    DYNAMIC     Gi1/1
+ 169    0023.24de.1969    DYNAMIC     Gi1/1
+ 169    0068.ebc3.db3c    DYNAMIC     Gi1/1
+ 169    0078.888c.451e    DYNAMIC     Gi1/1
+ 169    10e7.c60c.ce92    DYNAMIC     Gi1/1
+ 169    10e7.c61f.d1ef    DYNAMIC     Gi1/1
+ 169    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 169    5081.402d.8f3d    DYNAMIC     Gi1/1
+ 169    6c02.e03f.cc7d    DYNAMIC     Gi1/1
+ 169    c8d3.ffb5.5693    DYNAMIC     Gi1/1
+ 169    c8d9.d208.0d84    DYNAMIC     Gi1/1
+ 169    f439.0947.0544    DYNAMIC     Gi1/1
+ 240    001b.1700.0131    DYNAMIC     Gi1/1
+ 240    0023.24b8.926b    DYNAMIC     Gi1/1
+ 240    0023.24bc.08d2    DYNAMIC     Gi1/1
+ 240    0023.24d4.e8ce    DYNAMIC     Gi1/1
+ 240    0050.568a.0cc3    DYNAMIC     Gi1/1
+ 240    0050.568a.280c    DYNAMIC     Gi1/1
+ 240    0050.568a.5754    DYNAMIC     Gi1/1
+ 240    0078.888c.451e    DYNAMIC     Gi1/1
+ 240    040e.3c3a.8378    DYNAMIC     Gi1/1
+ 240    040e.3c3a.840a    DYNAMIC     Gi1/1
+ 240    040e.3c3a.840b    DYNAMIC     Gi1/1
+ 240    040e.3c3a.840d    DYNAMIC     Gi1/1
+ 240    040e.3c3a.840f    DYNAMIC     Gi1/1
+ 240    040e.3c3a.8410    DYNAMIC     Gi1/1
+ 240    040e.3c3a.842f    DYNAMIC     Gi1/1
+ 240    040e.3c3a.8439    DYNAMIC     Gi1/1
+ 240    040e.3c3d.36ec    DYNAMIC     Gi1/1
+ 240    040e.3c3d.3700    DYNAMIC     Gi1/1
+ 240    040e.3c3d.37dc    DYNAMIC     Gi1/1
+ 240    040e.3c3d.37e9    DYNAMIC     Gi1/1
+ 240    040e.3c3d.37ed    DYNAMIC     Gi1/1
+ 240    040e.3c3d.37f5    DYNAMIC     Gi1/1
+ 240    040e.3c3d.37fc    DYNAMIC     Gi1/1
+ 240    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 240    2cf0.5d91.99de    DYNAMIC     Gi1/1
+ 240    2cf0.5d91.99f6    DYNAMIC     Gi1/1
+ 240    2cf0.5d91.9b02    DYNAMIC     Gi1/1
+ 240    2cf0.5d91.9be8    DYNAMIC     Gi1/1
+ 240    2cf0.5d91.9cf7    DYNAMIC     Gi1/1
+ 240    38ca.843c.fba7    DYNAMIC     Gi1/1
+ 240    38ca.843c.fd04    DYNAMIC     Gi1/1
+ 240    38ca.843c.fda6    DYNAMIC     Gi1/1
+ 240    6c02.e03e.145e    DYNAMIC     Gi1/1
+ 240    6c02.e03e.1595    DYNAMIC     Gi1/1
+ 240    6c02.e03e.9b83    DYNAMIC     Gi1/1
+ 240    6c02.e03e.9ca6    DYNAMIC     Gi1/1
+ 240    6c02.e03e.b33a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a38    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a3c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a40    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a46    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a59    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a5c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a5f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a60    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a6e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a77    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6a9f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6aa3    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6aa4    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6aa8    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bbe    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bc3    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bc4    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bc7    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bcd    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6bf8    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6c23    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6c27    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6c2b    DYNAMIC     Gi1/1
+ 240    6c02.e03f.6c47    DYNAMIC     Gi1/1
+ 240    6c02.e03f.a03e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc14    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc16    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc17    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc19    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc1a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc1d    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc1e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc1f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc22    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc23    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc24    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc25    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc26    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc27    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc28    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc2c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc2f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc30    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc31    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc32    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc33    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc35    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc36    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc3a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc3b    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc3c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc3d    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc3e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc43    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc47    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc48    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc49    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc4a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc53    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc54    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc5a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc5b    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc5f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc60    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc61    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc64    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc65    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc6a    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc6e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc74    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc77    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc78    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc7c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc7e    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc8d    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc98    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc99    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cc9f    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cca4    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cca5    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cca6    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccad    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccaf    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccb0    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccb1    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccb5    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccd2    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccd5    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cce9    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccf1    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ccf2    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd00    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd51    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd52    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd54    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd57    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd58    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd5c    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd6d    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd71    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd74    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd75    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd84    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cd98    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdb2    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdb7    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdbe    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdc1    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdc3    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdea    DYNAMIC     Gi1/1
+ 240    6c02.e03f.cdef    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce11    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce13    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce1d    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce31    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce36    DYNAMIC     Gi1/1
+ 240    6c02.e03f.ce47    DYNAMIC     Gi1/1
+ 240    6c02.e03f.e7cf    DYNAMIC     Gi1/1
+ 240    6c02.e04b.85c9    DYNAMIC     Gi1/1
+ 240    6c02.e04b.8f30    DYNAMIC     Gi1/1
+ 240    6c02.e04b.8f31    DYNAMIC     Gi1/1
+ 240    6c02.e04b.8f47    DYNAMIC     Gi1/1
+ 240    6c02.e04b.986a    DYNAMIC     Gi1/1
+ 240    6c02.e04b.986c    DYNAMIC     Gi1/1
+ 240    6c02.e04b.986d    DYNAMIC     Gi1/1
+ 240    6c02.e04b.986e    DYNAMIC     Gi1/1
+ 240    6c02.e04b.986f    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9870    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9871    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9872    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9873    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9874    DYNAMIC     Gi1/2
+ 240    6c02.e04b.9875    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9876    DYNAMIC     Gi1/1
+ 240    6c02.e04b.987c    DYNAMIC     Gi1/1
+ 240    6c02.e04b.987d    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98a0    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98a1    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98a2    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98a4    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98bd    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98cf    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98d3    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98e1    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98e3    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98e5    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98e6    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98ea    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98ed    DYNAMIC     Gi1/1
+ 240    6c02.e04b.98f4    DYNAMIC     Gi1/1
+ 240    6c02.e04b.9996    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e30d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e31e    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e673    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e67d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e68c    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e68d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e68e    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e68f    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e691    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e694    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e698    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e69d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e69e    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6a1    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6a2    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6a3    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6a5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6b8    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6c4    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6cd    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6d2    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6d5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6d7    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6d9    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e6dd    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e70b    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e727    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e72d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e72f    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e763    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e767    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e76d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e76e    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e788    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e789    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e78b    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e78f    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e790    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e791    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e793    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e794    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e795    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e796    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e798    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e79a    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e79b    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e79d    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a0    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a1    DYNAMIC     Gi1/2
+ 240    6c02.e04c.e7a2    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a3    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a4    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7a9    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7aa    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7ab    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7ac    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7ad    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7b2    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7b5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7b6    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7b7    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7b8    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7be    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7bf    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7c0    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7c1    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7c4    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7c5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7c6    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7d4    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7dc    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7e2    DYNAMIC     Gi1/1
+ 240    6c02.e04c.e7e5    DYNAMIC     Gi1/1
+ 240    6c02.e04c.f568    DYNAMIC     Gi1/1
+ 240    6c02.e04c.f57e    DYNAMIC     Gi1/1
+ 240    e8d8.d13c.b638    DYNAMIC     Gi1/1
+ 240    e8d8.d13c.b639    DYNAMIC     Gi1/1
+ 240    f439.0935.3cd4    DYNAMIC     Gi1/1
+ 240    f439.0948.2084    DYNAMIC     Gi1/1
+ 240    f439.0948.2095    DYNAMIC     Gi1/1
+ 318    0078.888c.451e    DYNAMIC     Gi1/1
+ 320    000b.ab4b.085a    DYNAMIC     Gi1/1
+ 320    000b.b97d.2d3b    DYNAMIC     Gi1/1
+ 320    000b.b97d.47a6    STATIC      Gi0/12 
+ 320    000b.b97d.ad5d    DYNAMIC     Gi1/1
+ 320    0018.184b.9ab1    DYNAMIC     Gi1/1
+ 320    0018.19af.6bb2    DYNAMIC     Gi1/1
+ 320    0018.bafe.0e32    DYNAMIC     Gi1/1
+ 320    001b.532f.59b1    DYNAMIC     Gi1/1
+ 320    001b.536b.6531    DYNAMIC     Gi1/1
+ 320    001c.b0a8.e3b1    DYNAMIC     Gi1/1
+ 320    001c.b1eb.8cb1    DYNAMIC     Gi1/1
+ 320    001d.e6fc.28b1    DYNAMIC     Gi1/1
+ 320    0021.d744.73b1    DYNAMIC     Gi1/1
+ 320    0022.0ca7.ec31    DYNAMIC     Gi1/1
+ 320    0023.0543.0c31    DYNAMIC     Gi1/1
+ 320    0023.acd8.7ab2    DYNAMIC     Gi1/1
+ 320    0025.4672.0d31    DYNAMIC     Gi1/1
+ 320    0025.8369.09b1    DYNAMIC     Gi1/1
+ 320    0026.5255.0934    DYNAMIC     Gi1/1
+ 320    0026.ca48.1432    DYNAMIC     Gi1/1
+ 320    0078.888c.451e    DYNAMIC     Gi1/1
+ 320    00f6.63f6.be19    DYNAMIC     Gi1/1
+ 320    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 320    6c41.6a9e.feb1    DYNAMIC     Gi1/1
+ 320    acf5.e6e4.0334    DYNAMIC     Gi1/1
+ 320    b0fa.eb45.3b19    DYNAMIC     Gi1/1
+ 320    cc5a.5350.a119    DYNAMIC     Gi1/1
+ 320    cc5a.5360.5719    DYNAMIC     Gi1/1
+ 320    fcaf.6a00.19c0    DYNAMIC     Gi1/1
+ 320    fcaf.6a00.1a57    DYNAMIC     Gi1/1
+ 888    001b.1700.0131    DYNAMIC     Gi1/1
+ 888    0078.888c.451e    DYNAMIC     Gi1/1
+ 888    1c6a.7af9.fbb2    DYNAMIC     Gi1/1
+ 888    f42e.7fc8.c734    DYNAMIC     Gi1/1
+ 888    f42e.7fc8.c7ce    DYNAMIC     Gi0/3
+ 888    f42e.7fc8.ca02    DYNAMIC     Gi0/19
+ 888    f42e.7fc8.cd40    DYNAMIC     Gi0/22
+ 888    f42e.7fc8.d082    DYNAMIC     Gi0/20
+ 888    f42e.7fc8.d784    DYNAMIC     Gi0/24
+ 888    f42e.7fc8.d86c    DYNAMIC     Gi0/21
+ 888    f42e.7fc8.d936    DYNAMIC     Gi0/6
+ 888    f42e.7fc8.e244    DYNAMIC     Gi0/23
+ 888    f42e.7fc8.e806    DYNAMIC     Gi0/5
+ 888    f42e.7fc8.ee24    DYNAMIC     Gi0/2
+   1    0019.068b.d419    DYNAMIC     Gi1/2
+1000    0019.068b.d419    DYNAMIC     Gi1/2
+Total Mac Addresses for this criterion: 1015
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#sh int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi0/1     FrameUTF21 UPS - ( connected    50         a-full  a-100 10/100/1000BaseTX
+Gi0/2     WAP076             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/3     WAP086             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/4                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/5     (TF2-23) Manaia Lo connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/6     WAP078             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/7                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/8                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/9                        disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/10    (TF2-72) CCTV Came connected    111        a-full  a-100 10/100/1000BaseTX
+Gi0/11                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/12    Seismic Monitor Lo connected    320        a-full  a-100 10/100/1000BaseTX
+Gi0/13    HMS Host VLAN  FB3 connected    314        a-full a-1000 10/100/1000BaseTX
+Gi0/14    camera 565 192.168 connected    111        a-full  a-100 10/100/1000BaseTX
+Gi0/15    (TF2-86) Camera 56 connected    111        a-full  a-100 10/100/1000BaseTX
+Gi0/16                       disabled     999          auto   auto 10/100/1000BaseTX
+Gi0/17    (TF2-73) CCTV Came connected    111        a-full  a-100 10/100/1000BaseTX
+Gi0/18    (TF2-71) CCTV Came connected    111        a-full  a-100 10/100/1000BaseTX
+Gi0/19    WAP085             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/20    WAP087             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/21    WAP077             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/22    WAP079             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/23    WAP75              connected    888        a-full a-1000 10/100/1000BaseTX
+Gi0/24    WAP025             connected    888        a-full a-1000 10/100/1000BaseTX
+Gi1/1     Fibre Link To Core connected    trunk      a-full a-1000 1000BaseLX SFP
+Gi1/2     uplink to FramesTF connected    trunk      a-full a-1000 1000BaseLX SFP
+Gi1/3                        disabled     999          auto   auto Not Present
+Gi1/4                        disabled     999          auto   auto Not Present
+Fa0                          disabled     routed       auto   auto 10/100BaseTX
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#sh int des
+Interface                      Status         Protocol Description
+Vl1                            admin down     down     
+Vl2                            up             up       Management Interface
+Fa0                            admin down     down     
+Gi0/1                          up             up       FrameUTF21 UPS - (192.168.50.70)
+Gi0/2                          up             up       WAP076
+Gi0/3                          up             up       WAP086
+Gi0/4                          admin down     down     
+Gi0/5                          up             up       (TF2-23) Manaia Lounge International WiFi Symbol AP PoE
+Gi0/6                          up             up       WAP078
+Gi0/7                          admin down     down     
+Gi0/8                          admin down     down     
+Gi0/9                          admin down     down     
+Gi0/10                         up             up       (TF2-72) CCTV Camera 457                                                                                                                                                              - IAREP Level 1 Departure Lounge (4) - 192.168.234.22
+Gi0/11                         admin down     down     
+Gi0/12                         up             up       Seismic Monitor Location 4 - TF2 Equipment Room
+Gi0/13                         up             up       HMS Host VLAN  FB3 - 314
+Gi0/14                         up             up       camera 565 192.168.234.130
+Gi0/15                         up             up       (TF2-86) Camera 564 -  192.168.234.129
+Gi0/16                         admin down     down     
+Gi0/17                         up             up       (TF2-73) CCTV Camera 458 Int Departure Lounge PTX Gate 29-30
+Gi0/18                         up             up       (TF2-71) CCTV Camera 456 International Departure Lounge - 192.168.234.21
+Gi0/19                         up             up       WAP085
+Gi0/20                         up             up       WAP087
+Gi0/21                         up             up       WAP077
+Gi0/22                         up             up       WAP079
+Gi0/23                         up             up       WAP75
+Gi0/24                         up             up       WAP025
+Gi1/1                          up             up       Fibre Link To CoresA
+Gi1/2                          up             up       uplink to FramesTF22
+Gi1/3                          admin down     down     
+Gi1/4                          admin down     down     
+Te1/1                          down           down     
+Te1/2                          down           down     
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#sh cdp nei
+FramesTF21#sh cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+FrameSTF22.cial.co.nz
+                 Gig 1/2           156              S I   WS-C3560G Gig 0/25
+CoreS-Stack-A_B.cial.co.nz
+                 Gig 1/1           125             R S I  C6807-XL  Gig 1/2/15
+FramesTF21#
+FramesTF21#
+FramesTF21#
+FramesTF21#sh lldp
+FramesTF21#sh lldp 
+
+Global LLDP Information:
+    Status: ACTIVE
+    LLDP advertisements are sent every 30 seconds
+    LLDP hold time advertised is 120 seconds
+    LLDP interface reinitialisation delay is 2 seconds
+FramesTF21#

@@ -1,0 +1,698 @@
+login as: cisco
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+CCC
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+FramesMT52>en
+Password:
+FramesMT52#ter len 0
+FramesMT52#sh run
+Building configuration...
+
+Current configuration : 18744 bytes
+!
+! Last configuration change at 15:30:09 NZST Tue Oct 3 2023 by cisco
+! NVRAM config last updated at 15:30:09 NZST Tue Oct 3 2023 by cisco
+!
+version 15.0
+no service pad
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname FramesMT52
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 16384
+enable secret 4 7AVwz1oZVQ3RjZnl8Z6zzHX2xQKTzFc29Qvq.Zwp1eY
+enable password 7 091E5C1C175112040E1E
+!
+username cisco password 7 096A62303912370B5A
+username cattools privilege 15 secret 4 piSPgxmHLB0BIiyuIQaimkpTqn9i8GZFn6q1faickYI
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+!
+!
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+vtp domain cial
+vtp mode transparent
+udld aggressive
+
+!
+mls qos map dscp-cos  49 to 5
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue input bandwidth 70 30
+mls qos srr-queue input threshold 1 80 90
+mls qos srr-queue input threshold 2 10 100
+mls qos srr-queue input priority-queue 2 bandwidth 30
+mls qos srr-queue input cos-map queue 1 threshold 2 3
+mls qos srr-queue input cos-map queue 1 threshold 3 6 7
+mls qos srr-queue input cos-map queue 2 threshold 1 4
+mls qos srr-queue input dscp-map queue 1 threshold 2 24
+mls qos srr-queue input dscp-map queue 1 threshold 3 48 50 51 52 53 54 55 56
+mls qos srr-queue input dscp-map queue 1 threshold 3 57 58 59 60 61 62 63
+mls qos srr-queue input dscp-map queue 2 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue input dscp-map queue 2 threshold 3 47 49
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 47 49
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 50 51 52 53 54 55 56
+mls qos srr-queue output dscp-map queue 2 threshold 3 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 10 100 50 1000
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+crypto pki trustpoint TP-self-signed-2112370304
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2112370304
+ revocation-check none
+ rsakeypair TP-self-signed-2112370304
+!
+crypto pki trustpoint HTTPS_SS_CERT_KEYPAIR
+ enrollment selfsigned
+ serial-number
+ revocation-check none
+ rsakeypair HTTPS_SS_CERT_KEYPAIR
+!
+!
+crypto pki certificate chain TP-self-signed-2112370304
+crypto pki certificate chain HTTPS_SS_CERT_KEYPAIR
+ certificate self-signed 01
+  30820299 30820202 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  57311E30 1C060355 04031315 4672616D 65734D54 35322E63 69616C2E 636F2E6E
+  7A313530 0F060355 04051308 31333131 39413830 30220609 2A864886 F70D0109
+  02161546 72616D65 734D5435 322E6369 616C2E63 6F2E6E7A 301E170D 31323037
+  31313233 35333336 5A170D32 30303130 31303030 3030305A 3057311E 301C0603
+  55040313 15467261 6D65734D 5435322E 6369616C 2E636F2E 6E7A3135 300F0603
+  55040513 08313331 31394138 30302206 092A8648 86F70D01 09021615 4672616D
+  65734D54 35322E63 69616C2E 636F2E6E 7A30819F 300D0609 2A864886 F70D0101
+  01050003 818D0030 81890281 8100AFD1 CAB30514 2AB848F7 38692F07 BCF21A7F
+  0D7F8BF1 D34AAEB1 B7EE5B95 098FD7D0 98935DB0 ACE4B1F9 FAABC365 64733FBF
+  EEF4D568 14759164 A1C6581E BB76227E 2731D461 6EB7F028 4221F4AB 5F9D783B
+  5D5C38A4 01E3B7BA D3FADB6C 8E2A1D30 1994E65E CD9CA5E9 5C21871D 4A078341
+  4EBEE94B A048E7F6 D96D1EC3 0D750203 010001A3 75307330 0F060355 1D130101
+  FF040530 030101FF 30200603 551D1104 19301782 15467261 6D65734D 5435322E
+  6369616C 2E636F2E 6E7A301F 0603551D 23041830 1680147B DEF31CF8 F4952BCA
+  A330C8A3 356C32C6 E943F030 1D060355 1D0E0416 04147BDE F31CF8F4 952BCAA3
+  30C8A335 6C32C6E9 43F0300D 06092A86 4886F70D 01010405 00038181 00104375
+  9B53D54F F66D6E71 E8AF143A F35FD3FE B914905B 9E303F59 B99A33F1 4C4451AD
+  46661976 7ADA965C 2C4EE5AE D8DA4205 05CB1B94 C947389B AFB442FD 68C858C0
+  874643C1 0E028E9C B10DD444 EC2F0B7F 7E93DA76 A57ED089 0FF3B522 413EB955
+  CA944D3E E5DC612A FEE2CEC7 F651C7B3 16D98203 B7DE3BA4 2D140289 6B
+        quit
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery interval 30
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 3
+ name Workstations
+!
+vlan 8
+ name VoIP
+!
+vlan 10
+ name CCTV
+!
+vlan 14
+ name Q-SYS-PA
+!
+vlan 21
+ name Building_Management_System
+!
+vlan 22
+ name Cardax
+!
+vlan 24
+ name BagSort
+!
+vlan 27
+ name Bagsort_Control
+!
+vlan 50
+ name UPS_Management
+!
+vlan 90
+ name Terminal_Services
+!
+vlan 110
+ name CCTV_ITP
+!
+vlan 111
+ name CCTV-camera
+!
+vlan 121
+ name BMS_ITP
+!
+vlan 140
+ name FIDS_ITP_DDCs
+!
+vlan 167
+ name Production
+!
+vlan 168
+ name FIDS
+!
+vlan 169
+ name Secure_Workstations
+!
+vlan 240
+ name FIDS_240
+!
+vlan 306
+ name Jetstar
+!
+vlan 314
+ name HMS
+!
+vlan 319
+ name Exit_Race
+!
+vlan 666
+ name WirelessA
+!
+vlan 700
+ name Remote_SPAN_VLAN
+ remote-span
+!
+vlan 888
+ name COREGWS_APs
+!
+vlan 999
+!
+vlan 1000
+ name Trunk
+!
+ip ssh version 2
+!
+class-map match-all TenMeg
+ description TenMeg Rate limit class
+  match access-group 1
+!
+policy-map TenMegger
+ description TenMeg QOS Policy
+ class TenMeg
+  police 10000000 65536 exceed-action drop
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/1
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/2
+ description DDC670 (MT5-F2)
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/3
+ description CCTV Camera 126 [MT5-C3] - ITP Gound Floor Domestic Reclaim - 192.168.232.141
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/4
+ description CCTV Camera 128 [MT5-C5] - ITP Gound Floor Domestic Reclaim - 192.168.232.143
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/5
+ description CCTV Camera 130 [MT5-C7] - ITP Gound Floor Domestic Reclaim - 192.168.232.145
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/6
+ description CCTV Camera 132 [MT5-C9] - ITP Ground Floor Baggage Break-down - 192.168.232.147
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/7
+ description MT5-84 (BICS UNIT 7)
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/8
+ description (MT5-64) Jetstar port for gate 20/23
+ switchport access vlan 306
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/9
+ description GOS NIG for gate 20/23 [MT5-76]
+ switchport access vlan 168
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/10
+ description BMS device [MT5-74]  192.168.121.xxx
+ switchport access vlan 121
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/11
+ description GlidePath DC1 PLC
+ switchport access vlan 27
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/12
+ description OpsSignage Device 3 - Gate 20 - 192.168.90.51
+ switchport access vlan 90
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/13
+ description (MT5-36) Jetstar PC Gate 22
+ switchport access vlan 306
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/14
+ description GOS NIG for gate 21/24 [MT5-78]
+ switchport access vlan 168
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/15
+ description Glidepath DC2 PLC
+ switchport access vlan 27
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/16
+ description WAP115
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/17
+ description [MT5-85] BHS inbound OOG (Near belt 7)
+ switchport access vlan 27
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/18
+ description CARDAX Swing Gate PC (MT5-60)
+ switchport access vlan 169
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/19
+ description (MT5-22) JetStar Gate 21 PC
+ switchport access vlan 306
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/20
+ description (MT5-65) Jetstar port for gate 21/24
+ switchport access vlan 306
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/21
+ description WAP 034
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/22
+ description (MT5-F1) DDC583
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/23
+ description (MT5-F3) DDC671
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/24
+ description (MT5-69) Q-SYS-PA
+ switchport access vlan 14
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust dscp
+ no cdp enable
+ spanning-tree portfast
+!
+interface GigabitEthernet1/1
+ description FramesMT51 uplink to int Gi1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust dscp
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ description CoreSw uplink to int Gi2/2/12 via 104-1T5 12 core LC SM
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 2,3,8,10,14,21,22,24,27,50,90,110,111,121,140
+ switchport trunk allowed vlan add 167-169,240,306,314,319,666,700,888
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust dscp
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ shutdown
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out
+ mls qos trust cos
+ auto qos trust
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/4
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ shutdown
+ srr-queue bandwidth share 1 30 35 5
+ queue-set 2
+ priority-queue out
+ mls qos trust cos
+ auto qos trust
+ spanning-tree link-type point-to-point
+!
+interface TenGigabitEthernet1/1
+!
+interface TenGigabitEthernet1/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.110 255.255.255.0
+ no ip route-cache
+ no ip mroute-cache
+!
+ip default-gateway 192.168.2.10
+ip http server
+ip http secure-server
+!
+!
+ip sla enable reaction-alerts
+logging facility local0
+logging host 192.168.2.253
+logging host 202.14.167.171
+access-list 1 permit any
+!
+snmp-server community crc981u RO
+snmp-server location Frame room mezzanine level BMA north end
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps cluster
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps entity
+snmp-server enable traps ipsla
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server host 192.168.2.253 version 2c crc981u
+!
+!
+!
+no vstack
+banner motd ^CCCC
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+^C
+!
+line con 0
+ exec-timeout 0 0
+line vty 0 4
+ password 7 052D2A36015B6E1048
+ length 0
+line vty 5 15
+ password 7 052D2A36015B6E1048
+!
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+end
+
+FramesMT52#

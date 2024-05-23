@@ -1,0 +1,914 @@
+Using username "admin".
+Pre-authentication banner message from server:
+| "*******************************************
+| * {WARNING}                                *
+| *                                          *
+| * This system is owned by CIAL. If you are *
+| * not authorised to access this system,    *
+| * exit immediately.  Unauthorised access   *
+| * is forbidden.                            *
+| *******************************************"
+|
+End of banner message from server
+admin@192.168.2.122's password:
+Last login: 2024-04-23 03:54:08 from 192.168.244.175
+User "admin" has logged in 5 times in the past 30 days
+FramesMSCPL4CR# sh vlan
+
+------------------------------------------------------------------------------------------------------------------
+VLAN  Name                              Status  Reason                  Type        Interfaces
+------------------------------------------------------------------------------------------------------------------
+1     DEFAULT_VLAN_1                    down    no_member_port          default
+2     Network_Mgmt                      up      ok                      static      1/1/3,lag1
+8     VoIP                              up      ok                      static      1/1/15,lag1
+21    Building_Management_System        up      ok                      static      2/1/8,lag1
+22    Cardax                            up      ok                      static      lag1
+23    Carpark                           up      ok                      static      1/1/2,lag1
+24    BagSort                           up      ok                      static      1/1/10,2/1/13-2/1/14,lag1
+25    EAS                               up      ok                      static      lag1
+40    FIDS_DDCs                         up      ok                      static      1/1/5,1/1/7-1/1/8,
+                                                                                    1/1/12-1/1/13,1/1/17-1/1/18,
+                                                                                    2/1/17,2/1/24,lag1
+50    UPS_Management                    up      ok                      static      1/1/24,2/1/5,2/1/21,lag1
+90    Terminal_Services                 up      ok                      static      2/1/11,lag1
+111   CCTV-camera                       up      ok                      static      lag1
+121   BMS_ITP                           up      ok                      static      lag1
+123   DevCarPark                        up      ok                      static      1/1/23,lag1
+140   FIDS_ITP_DDCs                     up      ok                      static      lag1
+167   Production                        up      ok                      static      lag1
+168   FIDS                              up      ok                      static      lag1
+169   Secure_Workstations               up      ok                      static      lag1
+170   Corporate_AV                      up      ok                      static      lag1
+191   AirNZ_KingFish_HandHelds          up      ok                      static      lag1
+223   Carpark_Dev_EFTPOS                up      ok                      static      lag1
+225   LAN_TEST                          up      ok                      static      1/1/9,2/1/9,lag1
+240   FIDS_240                          up      ok                      static      1/1/14,1/1/19-1/1/20,lag1
+244   CorpGeneral                       up      ok                      static      1/1/4,1/1/6,1/1/11,1/1/21,
+                                                                                    2/1/2,2/1/4,2/1/7,2/1/10,
+                                                                                    2/1/12,2/1/15-2/1/16,
+                                                                                    2/1/18-2/1/20,2/1/22,lag1
+262   UFB-INTERNET                      up      ok                      static      1/1/1,lag1
+305   China_Sth_Airlines                up      ok                      static      lag1
+319   Exit_Race                         up      ok                      static      1/1/16,lag1
+320   Seismic_Sensors                   up      ok                      static      1/1/22,lag1
+700   Remote_SPAN_VLAN                  up      ok                      static      lag1
+888   COREGWS_APs                       up      ok                      static      2/1/23,lag1
+999   Disabled_Access_Ports             down    no_member_forwarding    static      1/1/28,2/1/1,2/1/3,2/1/6,
+                                                                                    2/1/28
+1000  Trunk_Native                      down    no_member_port          static
+FramesMSCPL4CR#
+FramesMSCPL4CR#
+FramesMSCPL4CR#
+FramesMSCPL4CR# no page
+FramesMSCPL4CR#
+FramesMSCPL4CR#
+FramesMSCPL4CR#
+FramesMSCPL4CR# sh run
+Current configuration:
+!
+!Version ArubaOS-CX ML.10.13.1010
+!export-password: default
+hostname FramesMSCPL4CR
+domain-name cial.co.nz
+banner motd !
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+!
+user admin group administrators password ciphertext AQBapd/tKoYozYX+lxquaW0PoxGev/rIsGwySFWmc6uYxDNWYgAAAEbl7fmCZZ79jNLgrxrH1L5Mr6VWWnNQmKhGuoMtXsX3uD0vYjN70JL2+dawoP0f6p21cat16qHcRq+rgaPmrsGuynrkwJCsd+0DPQGlyYdv8Luube+bWU/mkkMmHnIYxv5E
+user cattools group administrators password ciphertext AQBapfCCIw8FzXMukccpzfCku+BdeB9IXFNFzFQocIkRRv6KYgAAACQ6Cd53GJ050UzPIBQTE3SlEPYWea0M57RdP9SuZhha5N+ZTkNi1YA8i+0uGXsqqrQoFFZIxUavJ5yR5r5Xz+v1hgaRko23FsjF1mCwOq6+FcmgCmYtgHYJMdV1MQzw8hM5
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key ciphertext AQBapU8pm31diINHbZbeGwqplik+Q/oPbrmbonMoiPRu3ayjGwAAAPRxmuh0oe6o7PJnjKj/PucvBr/J38q3fQPdew==
+aaa authentication allow-fail-through
+!
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+ssh key-exchange-algorithms curve25519-sha256 curve25519-sha256@libssh.org ecdh-sha2-nistp256 ecdh-sha2-nistp384 ecdh-sha2-nistp521 diffie-hellman-group-exchange-sha256 diffie-hellman-group16-sha512 diffie-hellman-group18-sha512 diffie-hellman-group14-sha256 diffie-hellman-group14-sha1
+vsf split-detect mgmt
+vsf secondary-member 2
+vsf member 1
+    type jl725a
+    link 1 1/1/26
+    link 2 1/1/25
+vsf member 2
+    type jl725a
+    link 1 2/1/25
+    link 2 2/1/26
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 8
+    name VoIP
+vlan 21
+    name Building_Management_System
+vlan 22
+    name Cardax
+vlan 23
+    name Carpark
+vlan 24
+    name BagSort
+vlan 25
+    name EAS
+vlan 40
+    name FIDS_DDCs
+vlan 50
+    name UPS_Management
+vlan 90
+    name Terminal_Services
+vlan 111
+    name CCTV-camera
+vlan 121
+    name BMS_ITP
+vlan 123
+    name DevCarPark
+vlan 140
+    name FIDS_ITP_DDCs
+vlan 167
+    name Production
+vlan 168
+    name FIDS
+vlan 169
+    name Secure_Workstations
+vlan 170
+    name Corporate_AV
+vlan 191
+    name AirNZ_KingFish_HandHelds
+vlan 223
+    name Carpark_Dev_EFTPOS
+vlan 225
+    name LAN_TEST
+vlan 240
+    name FIDS_240
+vlan 244
+    name CorpGeneral
+vlan 262
+    name UFB-INTERNET
+vlan 305
+    name China_Sth_Airlines
+vlan 319
+    name Exit_Race
+vlan 320
+    name Seismic_Sensors
+vlan 700
+    name Remote_SPAN_VLAN
+vlan 888
+    name COREGWS_APs
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,8,21-25,40,50,90,111,121,123,140,167-170,191,223,225,240,244,262,305,319,320,700,888
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1
+    dwrr queue 1 weight 1
+    dwrr queue 2 weight 1
+    dwrr queue 3 weight 1
+    dwrr queue 4 weight 1
+    dwrr queue 5 weight 1
+    dwrr queue 6 weight 1
+    strict queue 7 max-bandwidth 100000 kbps
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 0 local-priority 0
+qos dscp-map 1 local-priority 0
+qos dscp-map 2 local-priority 0
+qos dscp-map 3 local-priority 0
+qos dscp-map 4 local-priority 0
+qos dscp-map 5 local-priority 0
+qos dscp-map 6 local-priority 0
+qos dscp-map 7 local-priority 0
+qos dscp-map 8 local-priority 1
+qos dscp-map 9 local-priority 1
+qos dscp-map 10 local-priority 1
+qos dscp-map 11 local-priority 1
+qos dscp-map 12 local-priority 1
+qos dscp-map 13 local-priority 1
+qos dscp-map 14 local-priority 1
+qos dscp-map 15 local-priority 1
+qos dscp-map 26 local-priority 4 color green
+qos dscp-map 40 local-priority 6 color green name CS5
+qos dscp-map 41 local-priority 6 color green
+qos dscp-map 42 local-priority 6 color green
+qos dscp-map 43 local-priority 6 color green
+qos dscp-map 44 local-priority 6 color green
+qos dscp-map 45 local-priority 6 color green
+qos dscp-map 47 local-priority 5 color green name Audio
+qos dscp-map 49 local-priority 5 color green name PTPv2
+fault-monitor profile noisy-ports
+    excessive-broadcasts action notify-and-disable auto-enable 600
+    excessive-link-flaps action notify-and-disable auto-enable 600
+interface lag 1
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,8,21-25,40,50,90,111,121,123,140,167-170,191,223,225,240,244,262,305,319-320,700,888
+    lacp mode active
+    qos trust dscp
+    spanning-tree link-type point-to-point
+interface 1/1/1
+    description (Retain) Workshop B06
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 262
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description (B02) VLAN 23 for InPhysecPC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 23
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description Netdiscos
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 2
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description (B14) HotSwap PC Hub
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 1/1/5
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/7
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description (B09) - Build Room
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 225
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description VLAN 24
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 24
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description (B13) Hotswap PC Switch
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description (Retain) General use
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 8
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/16
+    description TEMP VLAN 319
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 319
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/17
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/18
+    description (Retain) Test
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/19
+    description FIDS VLAN 240
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/20
+    description (B09)FIDS Build port
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 240
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/21
+    description CCTV-Glidepathspare
+    no shutdown
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/22
+    description (Retain)(DND) IT SCREEN 1
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 320
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/23
+    description DevCarpark Testing
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 123
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/24
+    description UPS management
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/25
+    no shutdown
+interface 1/1/26
+    no shutdown
+interface 1/1/27
+    description Uplink to CoreS-Stack-A_B Gi2/1/7
+    no shutdown
+    lag 1
+interface 1/1/28
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+interface 2/1/1
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/2
+    description ITDISPLAY2 PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/3
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/4
+    description ITDISPLAY1 PC
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/5
+    description (Retain) VLAN 50
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/6
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/7
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/8
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/9
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 225
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/10
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/11
+    description (Retain)h
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 90
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/12
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/13
+    description Glidepath Printer Test Port0
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 24
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/14
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 24
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/15
+    description HP DEVICE MANAGER PC0
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 4
+interface 2/1/16
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/17
+    description VLAN 40
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/18
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 3
+interface 2/1/19
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/20
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 6
+interface 2/1/21
+    description (Retain) VLAN 50 set up UPS's (GREG)
+    no shutdown
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 2
+interface 2/1/22
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 244
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+        client-limit 2
+interface 2/1/23
+    description WAP Test Port
+    no shutdown
+    no cdp
+    no routing
+    vlan access 888
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+interface 2/1/24
+    description (Retain)
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 40
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 2/1/25
+    no shutdown
+interface 2/1/26
+    no shutdown
+interface 2/1/27
+    description Uplink to CoreS-Stack-A_B Gi2/1/7
+    no shutdown
+    lag 1
+interface 2/1/28
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no routing
+    vlan access 999
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    description Management Interface
+    ip address 192.168.2.122/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server system-location MSCPL4CR
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+https-server vrf default
+https-server vrf mgmt
+FramesMSCPL4CR#

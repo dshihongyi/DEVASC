@@ -1,0 +1,339 @@
+login as: admin
+Pre-authentication banner message from server:
+| "*******************************************
+| * {WARNING}                                *
+| *                                          *
+| * This system is owned by CIAL. If you are *
+| * not authorised to access this system,    *
+| * exit immediately.  Unauthorised access   *
+| * is forbidden.                            *
+| *******************************************"
+|
+End of banner message from server
+admin@192.168.2.145's password:
+
+Last login: 2024-04-09 03:11:33 from 192.168.2.253
+User "admin" has logged in 1 time in the past 30 days
+Frames2T6-PA#
+Frames2T6-PA#
+Frames2T6-PA# no page
+Frames2T6-PA#
+Frames2T6-PA#
+Frames2T6-PA#
+Frames2T6-PA# sh run
+Current configuration:
+!
+!Version ArubaOS-CX ML.10.11.1040
+!export-password: default
+hostname Frames2T6-PA
+domain-name cial.co.nz
+banner motd !
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+!
+user admin group administrators password ciphertext AQBapS7h8/Se9HbmylEBAIxmQZykZ0DmSJXSu03500pmA7ZQYgAAAIkpT1dai6iMYcYn/dyap5W7aJYFOaHA+PVgAHPSBYmzcMGFVvdFHhZqpKh77yFVoVWhKMicXN/1Yk/o2ONeU3lznZ3dTLjN4bUXtaK8x+w3Gyiv615pF5zM8JRO71UxMMom
+user cattools group administrators password ciphertext AQBapc/3Y83jzY6qAXEQ1Q1dAYuJMrhl0c91jnI7AT5aUGeVYgAAAKeW0g+/GR9YOl8E1T50Kl3nezyOzNGrzZnWQdOJs3phkrHvYtind9JBdpP8x57EgT541w1tXMj4rCnXMc3/m8Wdb+cXb5QnWVSvjt3rKKT62prYaBVZuS2fDrDNQ9kV8rTw
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key ciphertext AQBapTJLerPwF5WrK3iEmtwhp4nIr9eNwbAgYF5EHvJe4GuqGwAAAHf5xlQG7DeF11dxziaThlwjnNziJY3SbycFCQ==
+aaa authentication allow-fail-through
+!
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+vsf member 1
+    type r8q72a
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 15
+    name Q-SYS-PA-Failover
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,15,1000
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1
+    dwrr queue 1 weight 1
+    dwrr queue 2 weight 1
+    dwrr queue 3 weight 1
+    dwrr queue 4 weight 1
+    dwrr queue 5 weight 1
+    dwrr queue 6 weight 1
+    strict queue 7 max-bandwidth 100000
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 26 local-priority 4 color green
+qos dscp-map 40 local-priority 6 color green name CS5
+qos dscp-map 41 local-priority 6 color green
+qos dscp-map 42 local-priority 6 color green
+qos dscp-map 43 local-priority 6 color green
+qos dscp-map 44 local-priority 6 color green
+qos dscp-map 45 local-priority 6 color green
+qos dscp-map 47 local-priority 5 color green name Audio
+qos dscp-map 49 local-priority 5 color green name PTPv2
+interface lag 1
+    description Uplink To CoreS-Stack-A_B
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,15
+    lacp mode active
+    qos trust dscp
+interface 1/1/1
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/7
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description (Server xxxxx) Q-SYS-PA-Failover processors
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 15
+    qos trust dscp
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/14
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/15
+    description Uplink to CoreS-Stack-A_B Gi1/1/35
+    no shutdown
+    lag 1
+interface 1/1/16
+    description Uplink to CoreS-Stack-A_B Gi2/1/14
+    no shutdown
+    lag 1
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.145/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+Frames2T6-PA#

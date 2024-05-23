@@ -1,0 +1,82 @@
+~~~~ Convert Outside_map_003 to VPN-CIAL-AZURE ~~~~
+
+config vpn ipsec phase1-interface
+ edit "VPN-CIAL-AZURE"
+  set type static
+  set peertype any
+  set remote-gw 52.237.208.174
+  set authmethod psk
+  set psksecret "123456"
+  set dhgrp 2 5
+  set proposal aes256-sha1 aes192-sha1 des-sha1 aes256-sha256 3des-sha1 aes128-sha1
+  set interface VLAN901
+  set keylife 28800
+ next
+
+
+config vpn ipsec phase2-interface
+ edit "Servers"
+  set phase1name "VPN-CIAL-AZURE"
+  set pfs disable
+  set encapsulation tunnel-mode
+  set keylife-type both
+  set keylifekbs 102400000
+  set keylifeseconds 3600
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 192.168.64.0 255.255.240.0
+  set src-addr-type subnet
+  set src-subnet 202.14.167.0 255.255.255.0
+ next
+ edit "CS-WiFi"
+  set phase1name "VPN-CIAL-AZURE"
+  set pfs disable
+  set encapsulation tunnel-mode
+  set keylife-type both
+  set keylifekbs 102400000
+  set keylifeseconds 3600
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 192.168.64.0 255.255.240.0
+  set src-addr-type subnet
+  set src-subnet 192.168.11.0 255.255.255.0
+ next
+ edit "Workstations-224"
+  set phase1name "VPN-CIAL-AZURE"
+  set pfs disable
+  set encapsulation tunnel-mode
+  set keylife-type both
+  set keylifekbs 102400000
+  set keylifeseconds 3600
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 192.168.64.0 255.255.240.0
+  set src-addr-type subnet
+  set src-subnet 192.168.244.0 255.255.252.0
+ next
+ edit "Network_MGMT"
+  set phase1name "VPN-CIAL-AZURE"
+  set pfs disable
+  set encapsulation tunnel-mode
+  set keylife-type both
+  set keylifekbs 102400000
+  set keylifeseconds 3600
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 192.168.64.0 255.255.240.0
+  set src-addr-type subnet
+  set src-subnet 192.168.2.0 255.255.255.0
+ next
+ edit "Workstations-3"
+  set phase1name "VPN-CIAL-AZURE"
+  set pfs disable
+  set encapsulation tunnel-mode
+  set keylife-type both
+  set keylifekbs 102400000
+  set keylifeseconds 3600
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 192.168.64.0 255.255.240.0
+  set src-addr-type subnet
+  set src-subnet 192.168.3.0 255.255.255.0
+ next

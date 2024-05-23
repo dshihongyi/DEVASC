@@ -1,0 +1,45 @@
+@REM ~~~~ Riccarton Core Switch ~~~~~~
+
+set vlans vlan-dcn-huawei vlan-id 4065
+set interfaces ae8 unit 0 family ethernet-switching vlan members vlan-dcn-huawei
+set interfaces ae9 unit 0 family ethernet-switching vlan members vlan-dcn-huawei
+
+set interfaces ae23 description "ESLRICLSW001"
+set interfaces ae23 aggregated-ether-options lacp active
+set interfaces ae23 aggregated-ether-options lacp periodic fast
+set interfaces ae23 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae23 unit 0 family ethernet-switching vlan members vlan-dcn-huawei
+set interfaces ae23 unit 0 family ethernet-switching storm-control sc
+
+
+set interfaces ge-2/0/17 description "ESLRICLSW001 Gi-0/0/1  Huawei/1490T/1310R"
+set interfaces ge-2/0/17 ether-options 802.3ad ae23
+
+set interfaces ge-2/0/19 description "ESLRICLSW001 Gi-1/0/1  Huawei/1490T/1310R"
+set interfaces ge-2/0/19 ether-options 802.3ad ae23
+
+commit comment "Riccarton datacentre Link Migration for Huawei Switch - Daniel Shi"
+
+@REM ~~~~ Riccarton Firewall ~~~~~~
+
+deactivate chassis cluster redundancy-group 3
+delete interfaces reth3
+delete protocols ospf area 0.0.0.0 interface reth3.4065 metric 5
+delete security zones security-zone zone-dcn interfaces reth3.4065 
+delete security zones security-zone zone-dcn interfaces reth3.4065
+delete security zones security-zone zone-dcn interfaces reth3.4065 host-inbound-traffic system-services ping
+delete security zones security-zone zone-dcn interfaces reth3.4065 host-inbound-traffic protocols ospf
+delete interfaces ge-0/0/9 gigether-options redundant-parent reth3
+delete interfaces ge-5/0/9 gigether-options redundant-parent reth3
+delete protocols ospf area 0.0.0.0 interface reth3.4065
+
+
+set interfaces reth1 unit 4065 vlan-id 4065
+set interfaces reth1 unit 4065 family inet address 10.128.1.158/30
+set protocols ospf area 0.0.0.0 interface reth1.4065 metric 5
+
+set security zones security-zone zone-dcn interfaces reth1.4065 host-inbound-traffic system-services ping
+set security zones security-zone zone-dcn interfaces reth1.4065 host-inbound-traffic protocols ospf
+
+set interfaces ge-0/0/9 disable
+set interfaces ge-5/0/9 disable

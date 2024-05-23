@@ -1,0 +1,164 @@
+Start the service and/or configure automatic start:
+Go to Control Panel > System and Security > Administrative Tools and open Services. Locate OpenSSH SSH Server service.
+
+ena-sw-hwl-m01#copy sftp://dsadmin@10.130.9.11/N1500v6.7.1.21.stk backup
+
+
+[dsadmin@bastion-prod images]$ sftp dsadmin@10.130.9.11
+The authenticity of host '10.130.9.11 (10.130.9.11)' can't be established.
+ECDSA key fingerprint is SHA256:bSmxKLU0ysWhynA4wAU2ODZyK1neKtUd881ZA18Ovd0.
+ECDSA key fingerprint is MD5:59:85:34:85:b6:aa:f6:01:99:f5:fc:08:34:67:bf:b0.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.130.9.11' (ECDSA) to the list of known hosts.
+dsadmin@10.130.9.11's password:
+Connected to 10.130.9.11.
+sftp> pwd
+Remote working directory: /C:/Users/dsadmin
+
+
+
+ena-sw-hwl-c01# show version
+Dell EMC Networking OS10 Enterprise
+Copyright (c) 1999-2022 by Dell Inc. All Rights Reserved.
+OS Version: 10.5.2.10
+Build Version: 10.5.2.10.400
+Build Time: 2022-03-01T08:38:17+0000
+System Type: S5248F-ON
+Architecture: x86_64
+Up Time: 46 weeks 1 day 05:46:24
+
+
+
+ena-sw-hwl-m01#show version
+
+Machine Description............... Dell EMC Networking Switch
+System Model ID................... N1524
+Machine Type...................... Dell EMC Networking N1524
+Serial Number..................... CN0G62KT2829899A0187A04
+Manufacturer...................... 0xbc00
+Burned In MAC Address............. 684F.6493.B4D4
+System Object ID.................. 1.3.6.1.4.1.674.10895.3063
+SOC Version....................... BCM56150_A0
+HW Version........................ 2
+CPLD Version...................... 16
+Image File........................ N1500v6.7.1.10
+Software Capability............... Stack Limit = 4, VLAN Limit = 512
+
+unit active      backup      current-active next-active
+---- ----------- ----------- -------------- --------------
+1    6.7.1.10    6.7.0.4     6.7.1.10       6.7.1.10
+2    6.7.1.10    6.7.0.4     6.7.1.10       6.7.1.10
+
+
+ena-sw-sta-c01# show version
+Dell EMC Networking OS10 Enterprise
+Copyright (c) 1999-2022 by Dell Inc. All Rights Reserved.
+OS Version: 10.5.2.10
+Build Version: 10.5.2.10.400
+Build Time: 2022-03-01T08:38:17+0000
+System Type: S5248F-ON
+Architecture: x86_64
+Up Time: 21 weeks 3 days 04:11:35
+
+
+
+# ~~~~ Dell ~~~~
+
+Upgrade ena-sw-hwl-c01 switch firmware
+
+Check OS10 version
+show version 
+ 
+Check license status
+show license status
+ 
+Backup switch config
+copy running-configuration startup-configuration
+ 
+Download the new OS10 binary image to each switch;
+
+image download sftp://dsadmin@10.130.9.11/Users/dsadmin/OS1010.5.4.7.204.bin
+image download sftp://dsadmin@10.130.9.11/Users/dsadmin/OS1010.5.5.3.56.bin
+ 
+Cancel any staged firmware update 
+image cancel
+ 
+Install the OS10 standby image
+image install image://OS10EE.bin
+ 
+Verify the standby image version
+show boot
+
+boot system standby
+show boot detail
+
+Load the new software image
+reload
+ 
+ 
+*Repeat this same process for the second switch chassis*
+
+
+
+
+
+# ~~~~ Juno ~~~~
+
+Upgrade ena-sw-sta-m01virtual chassis firmware
+Check OS version
+show version 
+ 
+Check license status
+Upload firmware to switch via SFTP (WinSCP)
+Verify SHA256
+file checksum sha-256 /var/tmp/junos-arm-32-21.4R3-S4.18.tgz 
+junos-arm-32-21.4R3-S4.18) = 1564ee6358128a5416c07dacf2224e70eab0b50a7685d88a190cf1efadca41d5
+
+Backup switch config
+show configuration | no-more
+request system configuration rescue save
+ 
+Ensure nodes are present in the virtual chassis is the current Master:
+show virtual-chassis
+ 
+Verify correct configuration of the virtual chassis:
+show configuration virtual-chassis | match no-split-detection
+show configuration system commit | match synchronize
+show configuration chassis redundancy | match graceful-switchover
+show configuration routing-options | match nonstop-routing
+show task replication
+
+
+show lacp interface.
+ 
+
+
+ Running upgrade ena-core-sw switch firmware
+
+Run the upgrade:
+request system software nonstop-upgrade /var/tmp/junos-arm-32-21.4R3-S4.18.tgz no-validate
+
+
+Validate and confirm that the upgrades were successfully completed:
+
+•	show virtual-chassis, check all members are present
+•	show lacp interfaces, check it matches previous.
+•	Configuration changes because of the upgrade (show | compare rollback x)
+
+
+
+
+
+@REM ~~~ Dell N1524 ~~~
+
+
+copy tftp://10.130.9.11/N1500v6.7.1.22.stk backup
+yes
+show version
+
+boot system backup
+reload
+
+show version
+console#update bootcode 
+console#reload

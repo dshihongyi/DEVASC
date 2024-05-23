@@ -1,0 +1,7 @@
+#### Day 2 ####
+
+FramesTG511
+  - interface 1/1/24 (Trunk to 512 - Remove in new switch)
+  - interface 1/1/25 (QinQ VLAN 316)
+  - interface 1/1/50 (Trunk to FramesTG51-11 Gi0/16)
+  - interface 2/1/50 (Trunk to FramesTG51-21 Gi0/16)

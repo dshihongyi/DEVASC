@@ -1,0 +1,82 @@
+
+
+
+1)	Crowdstrike isn’t working for some of the hosts in the NQA/NPM subnet – is there a global rule allowing this?  If not, can you please draft one up that makes sense for all our systems to talk to the Crowdstrike endpoints – ideally some DNS entry that ends in their CDN or similar.
+2)	Nessus/Tenable rules – also not working – there should also be a global rule for this if something doesn’t already exist – can you please look at how we do this in a minimal fashion as well.
+3)	RedHat patching – missing rules for that security zone currently – with RHEL8/9 best practice is to go direct to RedHat to get updates – again sounds like a good candidate for a well defined global rule.
+
+
+
+
+
+
+<!-- ~~~ Crowdstrike ~~~ -->
+
+<!-- set security nat source rule-set nat-servers-nqanpm-to-internet from zone zone-nqa-npm
+set security nat source rule-set nat-servers-nqanpm-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-nqanpm-to-internet rule nat-servers-nqanpm-to-internet match source-address 10.130.32.11/24
+set security nat source rule-set nat-servers-nqanpm-to-internet rule nat-servers-nqanpm-to-internet then source-nat interface -->
+
+
+set groups group-aws-address-book security address-book global address addr-ts01-b-cloudsink dns-name ts01-b.cloudsink.net
+set groups group-aws-address-book security address-book global address addr-lfodown01-b-cloudsink dns-name lfodown01-b.cloudsink.net
+set groups group-aws-address-set security address-book global address-set addrs-aws-EC2-us-west-1 address addr-ts01-b-cloudsink
+set groups group-aws-address-set security address-book global address-set addrs-aws-EC2-us-west-1 address addr-lfodown01-b-cloudsink
+
+
+
+<!-- ~~~ Nessus/Tenable ~~~ -->
+
+
+
+@REM set groups allow-nessus-scan-template security policies from-zone zone-servers-mgmt to-zone <*> policy allow-nessus-scan-policy match source-address addr-pateke
+@REM set groups allow-nessus-scan-template security policies from-zone zone-servers-mgmt to-zone <*> policy allow-nessus-scan-policy match destination-address any
+@REM set groups allow-nessus-scan-template security policies from-zone zone-servers-mgmt to-zone <*> policy allow-nessus-scan-policy match application any
+@REM set groups allow-nessus-scan-template security policies from-zone zone-servers-mgmt to-zone <*> policy allow-nessus-scan-policy then permit
+@REM set security address-book zone-servers-mgmt address addr-pateke dns-name pateke.ad.enable.net.nz
+
+
+delete security policies from-zone zone-servers-mgmt to-zone zone-enable-lan apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-ad apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-infra-mgmt apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-prod apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-test apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-devops apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-itfservices apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-dcnservices apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-mgmt apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-internet apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-admin apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-digitalsignage apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-edge apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-legacy-mgmt apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-rpa apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-nextgen-l2poc-servers apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-nextgen-osspoc-servers apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-nextgen-l2poc-jumbox apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-itf-servers-sac apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-itf-servers-acs apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-acs apply-groups allow-nessus-scan-template
+delete security policies from-zone zone-servers-mgmt to-zone zone-servers-sac apply-groups allow-nessus-scan-template
+
+
+set security address-book global address addr-pateke dns-name pateke.ad.enable.net.nz
+set security policies global policy policy-global-allow-nessus-scan match source-address addr-pateke
+set security policies global policy policy-global-allow-nessus-scan match destination-address any
+set security policies global policy policy-global-allow-nessus-scan match application any
+set security policies global policy policy-global-allow-nessus-scan then permit
+
+
+<!-- ~~~ RadHad Patching ~~~ -->
+
+
+set security address-book global address addr-redhat-cdn dns-name cdn.redhat.com
+set security address-book global address-set addrs-redhat-cdn address addr-redhat-cdn
+
+set security policies global policy policy-global-allow-redhat-cdn match source-address any
+set security policies global policy policy-global-allow-redhat-cdn match destination-address addrs-redhat-cdn
+set security policies global policy policy-global-allow-redhat-cdn match application junos-https
+set security policies global policy policy-global-allow-redhat-cdn match application junos-http
+set security policies global policy policy-global-allow-redhat-cdn then permit
+set security policies global policy policy-global-allow-redhat-cdn then log session-init
+set security policies global policy policy-global-allow-redhat-cdn then log session-close

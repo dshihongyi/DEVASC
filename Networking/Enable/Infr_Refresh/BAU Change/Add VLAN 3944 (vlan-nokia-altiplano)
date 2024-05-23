@@ -1,0 +1,81 @@
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 3944 description "vlan-itf-servers-altiplano"
+set interfaces reth1 unit 3944 vlan-id 3944
+set interfaces reth1 unit 3944 family inet address 10.131.44.1/24
+set protocols ospf area 0.0.0.0 interface reth1.3944 passive
+set security zones security-zone zone-itf-servers-altiplano interfaces reth1.3944 host-inbound-traffic system-services ping
+set security address-book zone-itf-servers-altiplano address addr-servers-altiplano 10.131.44.0/24
+set security address-book zone-itf-servers-altiplano attach zone zone-itf-servers-altiplano
+
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns match source-address addrs-itf-altiplano-servers
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns match destination-address addr-dns1
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns match destination-address addr-dns2
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns match application junos-dns-udp
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns then permit
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns then log session-init
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-servers-ad policy policy-itf-altiplano-dns then log session-close
+
+set security address-book zone-itf-servers-altiplano address addr-enaaacwrkcontt101 10.131.44.10/32
+set security address-book zone-itf-servers-altiplano address addr-enaaachelt101 10.131.44.11/32
+set security address-book zone-itf-servers-altiplano address addr-enaaachelt102 10.131.44.12/32
+set security address-book zone-itf-servers-altiplano address-set addrs-itf-altiplano-servers address addr-enaaacwrkcontt101
+set security address-book zone-itf-servers-altiplano address-set addrs-itf-altiplano-servers address addr-enaaachelt101
+set security address-book zone-itf-servers-altiplano address-set addrs-itf-altiplano-servers address addr-enaaachelt102
+
+
+set interfaces reth1 unit 4066 description "vlan-nokia-admin"
+set interfaces reth1 unit 4066 vlan-id 4066
+set interfaces reth1 unit 4066 family inet address 10.130.66.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4066 passive
+set security zones security-zone zone-nokia-admin interfaces reth1.4066 host-inbound-traffic system-services ping
+set security address-book zone-nokia-admin address addr-enajump11 10.130.66.10/32
+set security address-book zone-nokia-admin attach zone zone-nokia-admin
+
+set security policies from-zone zone-nokia-admin to-zone zone-servers-prod apply-groups allow-kms-template
+
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match source-address addr-enajump11
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match destination-address addr-servers-altiplano
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-ssh
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-icmp-all
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-https
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then permit
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then log session-init
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then log session-close
+
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-itf-servers-altiplano vlan-id 3944
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-itf-servers-altiplano
+
+set vlans vlan-nokia-admin vlan-id 4066
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-nokia-admin
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+
+interface vlan4066
+ vlan-name vlan_nokia-mgmt
+ description ena_4066_nokia-mgmt
+ mtu 9216
+ no shutdown
+
+
+interface vlan3944
+ vlan-name vlan-servers-altiplano
+ description ena-3944-servers-altiplano
+ mtu 9216
+ no shutdown
+
+
+interface port-channel1
+switchport trunk allowed vlan 4066,3944
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4066,3944
+
+

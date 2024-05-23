@@ -1,0 +1,665 @@
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v23.0 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to harryoffer@192.168.10.242                           ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?                                             ¦
+    ¦   • SSH-browser     :  ?                                             ¦
+    ¦   • X11-forwarding  :  ?  (disabled or not supported by server)      ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+
+CHCH-Perm1>enable
+Password:*********
+
+CHCH-Perm1#show running-config
+
+!Current Configuration:
+!System Description "Dell Networking N1524P, 6.3.3.14, Linux 3.6.5"
+!System Software Version 6.3.3.14
+!
+configure
+vlan 10,506,620-621
+exit
+vlan 10
+name "Management"
+exit
+hostname "CHCH-Perm1"
+sntp unicast client enable
+sntp server 192.168.254.14
+stack
+member 1 2    ! N1524P
+member 2 2    ! N1524P
+exit
+interface vlan 1
+ip address dhcp
+exit
+interface vlan 10
+ip address 192.168.10.242 255.255.255.0
+exit
+ip default-gateway 192.168.10.254
+username "dsadmin" password 686ba1fa61940c613ac1548c744d4c56 privilege 15 encrypted
+username "hoadmin" password 686ba1fa61940c613ac1548c744d4c56 privilege 15 encrypted
+username "admin" password 686ba1fa61940c613ac1548c744d4c56 privilege 1 encrypted
+aaa authentication login "ISELogin" tacacs
+aaa authentication enable "ISEEnable" tacacs
+tacacs-server host 192.168.50.225
+key 7 "c808daf1b1ff9fd96af187c5d2f3e5e6b933556bfb691dc3ef93cc59242f54f9ef7d77a0941d7846a99d046c301e3c50a41984ce37d46cfbb354459c71bd7cd67deb3e81be61819162d565c4978e68463a203345dd40b3dc6e650415c2c1e5ba7690cddaebf40136e3f0add80ac6e46286bd65d58c9041ce6c8f389ad2680592"
+exit
+line ssh
+login authentication ISELogin
+enable authentication ISEEnable
+exit
+ip ssh server
+ip ssh pubkey-auth
+ip ssh protocol 2
+spanning-tree mode rapid-pvst
+application install SupportAssist auto-restart start-on-boot
+application install hiveagent start-on-boot
+!
+interface Gi1/0/1
+flowcontrol receive off
+description "esx1-nic0-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi1/0/2
+flowcontrol receive off
+description "esx2-nic0-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi1/0/3
+flowcontrol receive off
+description "esx3-nic0-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi1/0/4
+flowcontrol receive off
+description "SPARE"
+spanning-tree portfast
+switchport mode trunk
+switchport access vlan 10
+switchport trunk native vlan 10
+switchport trunk allowed vlan 1,10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/5
+description "rodc-nic1"
+spanning-tree portfast
+spanning-tree guard loop
+switchport access vlan 10
+exit
+!
+interface Gi1/0/6
+description "rodc-idrac"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/7
+description "esx1-idrac"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/8
+description "esx2-idrac"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/9
+description "esx3-idrac"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/10
+shutdown
+exit
+!
+interface Gi1/0/11
+description "chchpure1 ct0e0"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/12
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/13
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/14
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/15
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/16
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/17
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/18
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/19
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/20
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/21
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/22
+channel-group 19 mode active
+flowcontrol receive off
+spanning-tree portfast
+switchport mode trunk
+exit
+!
+interface Gi1/0/23
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi1/0/24
+spanning-tree portfast
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Te1/0/1
+spanning-tree portfast
+exit
+!
+interface Te1/0/2
+spanning-tree portfast
+exit
+!
+interface Te1/0/3
+spanning-tree portfast
+exit
+!
+interface Te1/0/4
+spanning-tree portfast
+exit
+!
+interface Gi2/0/1
+flowcontrol receive off
+description "esx1-nic1-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi2/0/2
+flowcontrol receive off
+description "esx2-nic1-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi2/0/3
+flowcontrol receive off
+description "esx3-nic1-vmk0"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk allowed vlan 1,10
+exit
+!
+interface Gi2/0/4
+flowcontrol receive off
+description "SPARE"
+switchport mode trunk
+switchport access vlan 10
+switchport trunk native vlan 10
+switchport trunk allowed vlan 1,10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi2/0/5
+description "rodc-nic2"
+spanning-tree portfast
+spanning-tree guard loop
+switchport access vlan 10
+exit
+!
+interface Gi2/0/6
+description "rodc-idrac"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface Gi2/0/7
+description "esx1-idrac"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface Gi2/0/8
+description "esx2-idrac"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface Gi2/0/9
+description "esx3-idrac"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface Gi2/0/10
+description "APC PwrXfer"
+spanning-tree portfast
+switchport access vlan 10
+switchport port-security
+switchport port-security maximum 2
+exit
+!
+interface Gi2/0/11
+description "pure1-ct1e0"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface Gi2/0/12
+spanning-tree portfast
+exit
+!
+interface Gi2/0/13
+spanning-tree portfast
+exit
+!
+interface Gi2/0/14
+spanning-tree portfast
+exit
+!
+interface Gi2/0/15
+spanning-tree portfast
+exit
+!
+interface Gi2/0/16
+spanning-tree portfast
+exit
+!
+interface Gi2/0/17
+spanning-tree portfast
+exit
+!
+interface Gi2/0/18
+spanning-tree portfast
+exit
+!
+interface Gi2/0/19
+spanning-tree portfast
+exit
+!
+interface Gi2/0/20
+spanning-tree portfast
+exit
+!
+interface Gi2/0/21
+spanning-tree portfast
+exit
+!
+interface Gi2/0/22
+channel-group 19 mode active
+flowcontrol receive off
+description "CH19_2960-link"
+spanning-tree portfast
+switchport mode trunk
+exit
+!
+interface Gi2/0/23
+spanning-tree portfast
+exit
+!
+interface Gi2/0/24
+spanning-tree portfast
+exit
+!
+interface Te2/0/1
+spanning-tree portfast
+exit
+!
+interface Te2/0/2
+spanning-tree portfast
+exit
+!
+interface Te2/0/3
+description "stk cable"
+spanning-tree portfast
+exit
+!
+interface Te2/0/4
+description "stk cable"
+spanning-tree portfast
+exit
+!
+interface port-channel 1
+description "Uplink to DCSwitch-2960x"
+switchport mode trunk
+switchport trunk allowed vlan 1,10,506,620-621
+exit
+!
+interface port-channel 2
+spanning-tree portfast
+exit
+!
+interface port-channel 3
+spanning-tree portfast
+exit
+!
+interface port-channel 4
+spanning-tree portfast
+exit
+!
+interface port-channel 5
+spanning-tree portfast
+exit
+!
+interface port-channel 6
+spanning-tree portfast
+exit
+!
+interface port-channel 7
+spanning-tree portfast
+exit
+!
+interface port-channel 8
+spanning-tree portfast
+exit
+!
+interface port-channel 9
+spanning-tree portfast
+exit
+!
+interface port-channel 10
+spanning-tree portfast
+exit
+!
+interface port-channel 11
+spanning-tree portfast
+exit
+!
+interface port-channel 12
+spanning-tree portfast
+exit
+!
+interface port-channel 13
+spanning-tree portfast
+exit
+!
+interface port-channel 14
+spanning-tree portfast
+exit
+!
+interface port-channel 15
+spanning-tree portfast
+exit
+!
+interface port-channel 16
+spanning-tree portfast
+exit
+!
+interface port-channel 17
+spanning-tree portfast
+exit
+!
+interface port-channel 18
+description "CH18 - CHINFRA DC"
+spanning-tree portfast
+switchport access vlan 10
+exit
+!
+interface port-channel 19
+description "Uplink to DCSwitch-2960x"
+switchport mode trunk
+switchport trunk allowed vlan 1,10,506,620-621
+exit
+!
+interface port-channel 20
+spanning-tree portfast
+exit
+!
+interface port-channel 21
+spanning-tree portfast
+exit
+!
+interface port-channel 22
+spanning-tree portfast
+exit
+!
+interface port-channel 23
+spanning-tree portfast
+exit
+!
+interface port-channel 24
+spanning-tree portfast
+exit
+!
+interface port-channel 25
+spanning-tree portfast
+exit
+!
+interface port-channel 26
+spanning-tree portfast
+exit
+!
+interface port-channel 27
+spanning-tree portfast
+exit
+!
+interface port-channel 28
+spanning-tree portfast
+exit
+!
+interface port-channel 29
+spanning-tree portfast
+exit
+!
+interface port-channel 30
+spanning-tree portfast
+exit
+!
+interface port-channel 31
+spanning-tree portfast
+exit
+!
+interface port-channel 32
+spanning-tree portfast
+exit
+!
+interface port-channel 33
+spanning-tree portfast
+exit
+!
+interface port-channel 34
+spanning-tree portfast
+exit
+!
+interface port-channel 35
+spanning-tree portfast
+exit
+!
+interface port-channel 36
+spanning-tree portfast
+exit
+!
+interface port-channel 37
+spanning-tree portfast
+exit
+!
+interface port-channel 38
+spanning-tree portfast
+exit
+!
+interface port-channel 39
+spanning-tree portfast
+exit
+!
+interface port-channel 40
+spanning-tree portfast
+exit
+!
+interface port-channel 41
+spanning-tree portfast
+exit
+!
+interface port-channel 42
+spanning-tree portfast
+exit
+!
+interface port-channel 43
+spanning-tree portfast
+exit
+!
+interface port-channel 44
+spanning-tree portfast
+exit
+!
+interface port-channel 45
+spanning-tree portfast
+exit
+!
+interface port-channel 46
+spanning-tree portfast
+exit
+!
+interface port-channel 47
+spanning-tree portfast
+exit
+!
+interface port-channel 48
+spanning-tree portfast
+exit
+!
+interface port-channel 49
+spanning-tree portfast
+exit
+!
+interface port-channel 50
+spanning-tree portfast
+exit
+!
+interface port-channel 51
+spanning-tree portfast
+exit
+!
+interface port-channel 52
+spanning-tree portfast
+exit
+!
+interface port-channel 53
+spanning-tree portfast
+exit
+!
+interface port-channel 54
+spanning-tree portfast
+exit
+!
+interface port-channel 55
+spanning-tree portfast
+exit
+!
+interface port-channel 56
+spanning-tree portfast
+exit
+!
+interface port-channel 57
+spanning-tree portfast
+exit
+!
+interface port-channel 58
+spanning-tree portfast
+exit
+!
+interface port-channel 59
+spanning-tree portfast
+exit
+!
+interface port-channel 60
+spanning-tree portfast
+exit
+!
+interface port-channel 61
+spanning-tree portfast
+exit
+!
+interface port-channel 62
+spanning-tree portfast
+exit
+!
+interface port-channel 63
+spanning-tree portfast
+exit
+!
+interface port-channel 64
+spanning-tree portfast
+exit
+snmp-server engineid local 800002a20320040fe1be8f
+snmp-server community "indaba7" ro
+enable password 886d5fb0b545092c8715dd620330f57e encrypted
+exit
+
+CHCH-Perm1#

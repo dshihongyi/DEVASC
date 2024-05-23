@@ -1,0 +1,2426 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.09.18 21:36:13 =~=~=~=~=~=~=~=~=~=~=~=
+show configuration | display set | nore
+                                                          ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show configuration | display set | nore         -more mo      
+set version 12.3R12-S21
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching port-mode trunk
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-vmotion
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching port-mode trunk
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-ad
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-gis-sandbox
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-legacy-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-dev
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-dev-sandbox
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-lan
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-ccl-ibss
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-secservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-f5-hsl
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-hrb-lab
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-f5-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-itfservices
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-devops
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-enable-backbone
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-infra-playpen
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-internet-dmz
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-digitalsignage
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-mgmt
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-data
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-prod
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-docker-test
+set groups group-interface-esx-data interfaces <*> unit 0 family ethernet-switching vlan members vlan-workstation-admin
+set groups group-interface-infra-san-mgmt interfaces <*> unit 0 family ethernet-switching port-mode access
+set groups group-interface-infra-san-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching port-mode access
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set system host-name ena-sw-cen-01
+set system time-zone Pacific/Auckland
+set system root-authentication encrypted-password "$1$5L.DDY7n$MbZeFBY5QdDHT0T2DnPz4."
+set system login class cfg-view permissions secret
+set system login class cfg-view permissions view-configuration
+set system login class cfg-view allow-commands "(show)|(set cli screen-length)|(set cli screen-width)"
+set system login class cfg-view deny-commands "(clear)|(file)|(file show)|(help)|(load)|(monitor)|(op)|(request)|(save)|(set)|(start)|(test)"
+set system login class cfg-view deny-configuration all
+set system login user CraigReynolds full-name "Craig Reynolds"
+set system login user CraigReynolds uid 2000
+set system login user CraigReynolds class operator
+set system login user CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user DavidRichards full-name "David Richards"
+set system login user DavidRichards uid 2001
+set system login user DavidRichards class operator
+set system login user DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user Jeremy.Crestani full-name "Jeremy Crestani (Read Only)"
+set system login user Jeremy.Crestani uid 2011
+set system login user Jeremy.Crestani class cfg-view
+set system login user Jeremy.Crestani authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNFzTgHHVVWgrJdLSxGq8Ux4wZImCXqL+6mGxUnozLFW1TuD4EttsIrX53m3cj8NczVQqOIoSENQjIkDOsY0U++BuDHL7CZQVesp45C/xLRhe4Zjp2SeIdi+yx0poHkoKadKgzgKBgfIkh/+cmQx7jjy6J91SCzBOuxq28z8zpCf5G5v23WTARTn2xV0fkQfLTfza2RkkTXZhRsu3Xw9rnYYyHK8dLmxwqprWO5BqBrHCmeaTvMMoqumMoGylMuSkrHmSc2SSUQod8LgTuNmXKg/iAEe72EHNa1LkEq+ZzLRFGbrC+WAPlOkYlPDtYSjMCkMUT9fkq/LiE3U+PahI7"
+set system login user Peter.Fowler full-name "Peter Fowler"
+set system login user Peter.Fowler uid 2201
+set system login user Peter.Fowler class operator
+set system login user Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user acadmin full-name "Aaron Christensen - CCL"
+set system login user acadmin uid 2012
+set system login user acadmin class super-user
+set system login user acadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWljKUH9LJKqdYriT8UNtIyYjp/HXH+qQtDGe6i0hazmkUIwtLD3bNuCeHkDCQjel1OST51QgZ97hmbLvRbVmpXMFnsmjFbMrw8PYfXut5iSahYIodjTnR4jpX1LBW2m5rsu+ChsgcOKcbcfLt2/+O+6u4iryCoDLShMnDhKMO0uvCCZaEdpcZTB23n12DuOL/4mTUNXScrYli/3r5EfFf6/QGJgI9eXSbj8/+62mXmlcvi8gO/eP/7GCC2ZMi7B3h2YgWpfek9HzIRIL4Sh+0GWmyhETYFs9CGZgTzMXE9U6HwxrFBMpo3MUASM4yalMVTakCSDS5snMejfXJcKTn"
+set system login user azadmin full-name "Alin Zahn - CCL"
+set system login user azadmin uid 2008
+set system login user azadmin class super-user
+set system login user azadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA5pJiqXVQJGqQhWIGf/bavCWfMZJOdBuwna4S4cVtHqO9UPIdbVY/cDivAU+kI0f4m8+qmnFF0pyTOAGXoO9UddPAs+yqkrT+QeAJTortvMoY1xi573gDpFKo5hQjzBmfJ7x1KAebmzTSmRzlVRs22uB163KFqZxbhc3GQxAbBa5MjqiHwOH1PAgHnqjr6071gQvn2HH1aEx7G767/uLWVYrhj9gRv3t2/kNOLrkYyw4hOD2yt5GwXXi1GwzlwyRTAxlsxeFT36wcxo78crQ1m/0qRrgux7GDaJTF6HkF0iUN5J4CuB3MTFYiiFNlKkZzdkoRals0jU/YxlSumwCc9Q=="
+set system login user dsadmin full-name "Daniel Shi - CCL"
+set system login user dsadmin uid 2009
+set system login user dsadmin class super-user
+set system login user dsadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"
+set system login user oxidized uid 2006
+set system login user oxidized class cfg-view
+set system login user oxidized authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu1PhVHugQvH19ZYL12XerKkTl4Z75GZCvOxy7XDKCtc/hxE1QcB7FKKw/uWatst6Mm3pSeJh8dJsrNK/nseF7zoxXtI0jH/acy9VAGNgV1/v79TOkvuG8sWb/7eHubiWNo/yecrZ3T0Vg3Hb1VDU45Pep1x19gEhFoTz0JwagbM5uwSb68cDQObbey35maD3wlTymrsnpjnQnbKgHRn5rj6xoh61VjSmRzvsZ1YGM2m8gApDdhfocNGHJ0xZZq55mBKa6r0Bp1rM4iBdbUk9UVXyjnXOu7uWSFlna3nug0hZE0eZbZYZJ2wISA9BNuC940hBW1wQ4P6+r+k2CKoQyG2gDA7EcA5Hl3MarX7tKNnMug5HHMg7qgc6EOgBGe1NFxbQtqWolkoze0L0u7Oe5nIXItKItBJtxDCqD7o919NhiXOsIfPaaKnDa6C2dhzKwHtyeok/DUzLb8LBwqVS5u1PM9Ap7MYlp11kHC4l/D0GB0WyAo5DzTWMrv4xooN8= oxidised@d11-netback"
+set system login user pa-CraigReynolds full-name "Craig Reynolds"
+set system login user pa-CraigReynolds uid 2003
+set system login user pa-CraigReynolds class super-user
+set system login user pa-CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user pa-DavidRichards full-name "David Richards"
+set system login user pa-DavidRichards uid 2004
+set system login user pa-DavidRichards class super-user
+set system login user pa-DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user pa-Peter.Fowler full-name "Peter Fowler (Admin)"
+set system login user pa-Peter.Fowler uid 2200
+set system login user pa-Peter.Fowler class super-user
+set system login user pa-Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user pa-mike.taylor full-name "Mike Taylor"
+set system login user pa-mike.taylor uid 2007
+set system login user pa-mike.taylor class super-user
+set system login user pa-mike.taylor authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"
+set system login user taadmin full-name "CCL Trevor Alder"
+set system login user taadmin uid 2102
+set system login user taadmin class super-user
+set system login user taadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCp1UOnKuMImnGW/+pbiIYO2h0evMAeF68WrAYMu4oLanLrhKGPjARaoObl/fbsJnzX67eyquEGL57OWHRlJFi0+VO1qMyvWL4vtX4tgoOfu+Hwe3uRkx82Y2v0zz8XCxPvr0/Wi1H3OpOpzjDc8rFsxTl2B9SRf/MkEWhCCaWFAk6is8diwILpPslRHIEwv0/40pPhsS1rQlgpLCv/0iww+HtCIOI2wlbL8Tc5SmlztehAnBsNGrzzwwlfqE3uAJAvZJXOK5cl7EMcyB8FwU3Erjj1joOy40XFLdiheEamJJwaPvbhS5VDsofCEa9n52/MWS7dgv5J9JQhE3SLEsNz cclchc\talder@CHC-LAPT0P-TA-1"
+set system services ssh
+set system services dhcp traceoptions file dhcp_logfile
+set system services dhcp traceoptions level all
+set system services dhcp traceoptions flag all
+set system syslog user * any emergency
+set system syslog host 10.130.37.16 any info
+set system syslog host 10.130.37.16 security any
+set system syslog host 10.130.37.16 firewall any
+set system syslog host 10.130.37.16 interactive-commands any
+set system syslog host 10.130.37.16 source-address 10.130.160.9
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system ntp server 10.130.37.121
+set system ntp server 10.130.37.122
+set system ntp server 10.130.37.123
+set chassis redundancy graceful-switchover
+set chassis aggregated-devices ethernet device-count 8
+set chassis alarm management-ethernet link-down ignore
+set chassis auto-image-upgrade
+set interfaces interface-range range-disabled-ports member-range ge-0/0/1 to ge-0/0/11
+set interfaces interface-range range-disabled-ports member-range ge-0/0/14 to ge-0/0/25
+set interfaces interface-range range-disabled-ports member-range ge-0/0/28 to ge-0/0/44
+set interfaces interface-range range-disabled-ports disable
+set interfaces ge-0/0/0 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set interfaces ge-0/0/12 description "enaesxc01 mgmt"
+set interfaces ge-0/0/12 ether-options 802.3ad ae1
+set interfaces ge-0/0/13 description "enaesxc02 mgmt"
+set interfaces ge-0/0/13 ether-options 802.3ad ae2
+set interfaces ge-0/0/26 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/26 description "enaesxc01 IPMI"
+set interfaces ge-0/0/27 apply-groups group-interface-infra-ilo
+set interfaces ge-0/0/27 description "enaesxc02 IPMI"
+set interfaces ge-0/0/45 unit 0 family ethernet-switching port-mode access
+set interfaces ge-0/0/45 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-0/0/46 description ena-wi-cen-01
+set interfaces ge-0/0/46 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-null
+set interfaces ge-0/0/46 unit 0 family ethernet-switching vlan members vlan-enwr-l0-lan
+set interfaces ge-0/0/46 unit 0 family ethernet-switching native-vlan-id 4046
+set interfaces ge-0/0/47 description ena-cen-ntx-01
+set interfaces ge-0/0/47 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-lan
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-infra-3par-repl
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-null
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-site-CEN-BMS
+set interfaces ge-0/0/47 unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+set interfaces ge-0/1/0 apply-groups group-interface-esx-mgmt
+set interfaces ge-0/1/0 unit 0 family ethernet-switching port-mode trunk
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-infra-3par-repl
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-guest
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-null
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-site-CEN-BMS
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set interfaces ge-0/1/0 unit 0 family ethernet-switching vlan members vlan-citywifi-mgmt-stub
+set interfaces xe-0/1/0 unit 0 family ethernet-switching
+set interfaces ae1 apply-groups group-interface-esx-mgmt
+set interfaces ae1 description "enaesxc01 mgmt"
+set interfaces ae1 unit 0 family ethernet-switching vlan members vlan-citywifi-mgmt-stub
+set interfaces ae2 apply-groups group-interface-esx-mgmt
+set interfaces ae2 description "enaesxc02 mgmt"
+set interfaces ae2 unit 0 family ethernet-switching vlan members vlan-citywifi-mgmt-stub
+set interfaces ae11 apply-groups group-interface-esx-data
+set interfaces ae11 description "enaesxc01 data"
+set interfaces ae12 apply-groups group-interface-esx-data
+set interfaces ae12 description "enaesxc02 data"
+set interfaces me0 disable
+set interfaces vlan unit 1900 family inet address 10.130.160.47/24
+set snmp community readOnlyCacti authorization read-only
+set snmp trap-group trap-enanmsp03 version v2
+set snmp trap-group trap-enanmsp03 categories authentication
+set snmp trap-group trap-enanmsp03 categories chassis
+set snmp trap-group trap-enanmsp03 categories link
+set snmp trap-group trap-enanmsp03 categories remote-operations
+set snmp trap-group trap-enanmsp03 categories routing
+set snmp trap-group trap-enanmsp03 categories startup
+set snmp trap-group trap-enanmsp03 categories vrrp-events
+set snmp trap-group trap-enanmsp03 categories configuration
+set snmp trap-group trap-enanmsp03 categories services
+set snmp trap-group trap-enanmsp03 targets 10.130.160.40
+set snmp health-monitor
+set routing-options static route 10.128.24.4/32 next-hop 10.130.160.1
+set routing-options static route 0.0.0.0/0 next-hop 10.130.160.1
+set protocols igmp-snooping vlan all
+set protocols rstp
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+set protocols lldp-med interface all
+set ethernet-switching-options storm-control interface all
+set vlans vlan-NextGenL2PoCJumbox vlan-id 3244
+set vlans vlan-NextGenL2PoCServers vlan-id 3243
+set vlans vlan-NextGenOSSPoCServers vlan-id 3240
+set vlans vlan-aerohive-mgmt vlan-id 4046
+set vlans vlan-audiovisual vlan-id 4076
+set vlans vlan-bob-mgmt vlan-id 4080
+set vlans vlan-cam-vrf-stub vlan-id 4069
+set vlans vlan-ccl-ibss vlan-id 4041
+set vlans vlan-ccl-srm-dr vlan-id 4045
+set vlans vlan-ccl-staging vlan-id 4042
+set vlans vlan-citywifi-mgmt-stub description "Stub admin vlan to city wifi firewall"
+set vlans vlan-citywifi-mgmt-stub vlan-id 4075
+set vlans vlan-dcn-backbone vlan-id 4093
+set vlans vlan-dcn-environmental vlan-id 4063
+set vlans vlan-dcn2-interconnect vlan-id 3299
+set vlans vlan-dcn2-servers description "Servers for NextGen NMS EPNM"
+set vlans vlan-dcn2-servers vlan-id 4064
+set vlans vlan-dev-sandbox vlan-id 4043
+set vlans vlan-digitalsignage vlan-id 4077
+set vlans vlan-enable-backbone vlan-id 4092
+set vlans vlan-enwr-l0-lan vlan-id 4089
+set vlans vlan-enwr-l2-lan vlan-id 4090
+set vlans vlan-f5-ha vlan-id 1898
+set vlans vlan-f5-hsl vlan-id 4034
+set vlans vlan-f5-mgmt vlan-id 4036
+set vlans vlan-guest vlan-id 4085
+set vlans vlan-guest-stuff vlan-id 3085
+set vlans vlan-hrb-lab vlan-id 4035
+set vlans vlan-infra-3par-repl vlan-id 4014
+set vlans vlan-infra-esx-mgmt vlan-id 4010
+set vlans vlan-infra-ilo vlan-id 4013
+set vlans vlan-infra-net-mgmt vlan-id 4012
+set vlans vlan-infra-san-mgmt vlan-id 4011
+set vlans vlan-infra-vmotion vlan-id 4015
+set vlans vlan-internet-dmz vlan-id 4083
+set vlans vlan-lan vlan-id 4081
+set vlans vlan-mag-user vlan-id 4078
+set vlans vlan-nda-lan vlan-id 4088
+set vlans vlan-netmgmt vlan-id 1900
+set vlans vlan-netmgmt l3-interface vlan.1900
+set vlans vlan-null vlan-id 4086
+set vlans vlan-nx-witness vlan-id 4068
+set vlans vlan-oob-mgmt vlan-id 336
+set vlans vlan-poc-nqa-npm vlan-id 3199
+set vlans vlan-revera-nav vlan-id 4084
+set vlans vlan-rpa-app-dcn vlan-id 4072
+set vlans vlan-rpa-frontend vlan-id 4071
+set vlans vlan-rpa-mgmt vlan-id 4070
+set vlans vlan-servers-ad vlan-id 4022
+set vlans vlan-servers-ad-infra vlan-id 4017
+set vlans vlan-servers-dcnservices vlan-id 4037
+set vlans vlan-servers-dev vlan-id 4020
+set vlans vlan-servers-devops vlan-id 4039
+set vlans vlan-servers-docker-data vlan-id 4027
+set vlans vlan-servers-docker-mgmt vlan-id 4026
+set vlans vlan-servers-docker-prod vlan-id 4028
+set vlans vlan-servers-docker-test vlan-id 4029
+set vlans vlan-servers-edge description "Internet edge services"
+set vlans vlan-servers-edge vlan-id 4030
+set vlans vlan-servers-gis vlan-id 4023
+set vlans vlan-servers-gis-sandbox vlan-id 4018
+set vlans vlan-servers-infra-playpen vlan-id 4021
+set vlans vlan-servers-itf-secondary vlan-id 4040
+set vlans vlan-servers-itfservices vlan-id 4038
+set vlans vlan-servers-legacy-mgmt vlan-id 4019
+set vlans vlan-servers-mgmt vlan-id 4016
+set vlans vlan-servers-secservices vlan-id 4033
+set vlans vlan-servers-u2000-pri vlan-id 4056
+set vlans vlan-servers-u2000-sec vlan-id 4057
+set vlans vlan-servers-util vlan-id 4025
+set vlans vlan-site-BUR-BMS vlan-id 3113
+set vlans vlan-site-BUR-CAM vlan-id 3114
+set vlans vlan-site-CEN-BMS vlan-id 3073
+set vlans vlan-site-CEN-CAM vlan-id 3074
+set vlans vlan-site-HRB-BMS vlan-id 3013
+set vlans vlan-site-HRB-CAM vlan-id 3014
+set vlans vlan-site-HWL-BMS vlan-id 3023
+set vlans vlan-site-HWL-CAM vlan-id 3024
+set vlans vlan-site-KAI-BMS vlan-id 3093
+set vlans vlan-site-KAI-CAM vlan-id 3094
+set vlans vlan-site-MTP-BMS vlan-id 3123
+set vlans vlan-site-MTP-CAM vlan-id 3124
+set vlans vlan-site-PAP-BMS vlan-id 3033
+set vlans vlan-site-PAP-CAM vlan-id 3034
+set vlans vlan-site-RED-BMS vlan-id 3053
+set vlans vlan-site-RED-CAM vlan-id 3054
+set vlans vlan-site-RIC-BMS vlan-id 3043
+set vlans vlan-site-RIC-CAM vlan-id 3044
+set vlans vlan-site-RNG-BMS vlan-id 3103
+set vlans vlan-site-RNG-CAM vlan-id 3104
+set vlans vlan-site-ROL-BMS vlan-id 3063
+set vlans vlan-site-ROL-CAM vlan-id 3064
+set vlans vlan-site-STA-BMS vlan-id 3083
+set vlans vlan-site-STA-CAM vlan-id 3084
+set vlans vlan-test-servers description "Generic test server vlan"
+set vlans vlan-test-servers vlan-id 3120
+set vlans vlan-wireless-corporate vlan-id 4087
+set vlans vlan-workstation-admin description "Admin Workstation VLAN"
+set vlans vlan-workstation-admin vlan-id 4009
+set vlans vlan-wxc-sip vlan-id 4044
+set poe interface all
+set virtual-chassis preprovisioned
+set virtual-chassis no-split-detection
+set virtual-chassis member 0 role routing-engine
+set virtual-chassis member 0 serial-number GB0213120502
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show system uptime 
+fpc0:
+--------------------------------------------------------------------------
+Current time: 2022-09-18 21:36:36 NZST
+System booted: 2022-05-17 21:29:30 NZST (17w5d 00:07 ago)
+Protocols started: 2022-05-17 21:32:51 NZST (17w5d 00:03 ago)
+Last configured: 2022-09-16 15:09:43 NZST (2d 06:26 ago) by acadmin
+ 9:36PM  up 124 days, 7 mins, 1 user, load averages: 0.01, 0.02, 0.00
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show virtual-chassis 
+
+Preprovisioned Virtual Chassis
+Virtual Chassis ID: 6111.b97d.501a
+Virtual Chassis Mode: Enabled
+                                           Mstr           Mixed Neighbor List
+Member ID  Status   Serial No    Model     prio  Role      Mode ID  Interface
+0 (FPC 0)  Prsnt    GB0213120502 ex3300-48p 129  Master*     NA
+
+{master:0}
+dsadmin@ena-sw-cen-01> show vri
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show vri         irtual-chassis por
+                                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show virtual-chassis por             vc-p
+dsadmin@ena-sw-cen-01> show virtual-chassis vc-p     ort 
+fpc0:
+--------------------------------------------------------------------------
+Interface   Type              Trunk  Status       Speed        Neighbor
+or                             ID                 (mbps)       ID  Interface
+PIC / Port
+1/2         Configured               Absent  
+1/3         Configured               Absent  
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show ?
+Possible completions:
+  accounting           Show accounting profiles and records
+  analyzer             Show analyzer information
+  app-engine           Show App-engine information
+  arp                  Show system Address Resolution Protocol table entries
+  as-path              Show table of known autonomous system paths
+  authentication-whitelist  Show 802.1X White List MAC addresses
+  bfd                  Show Bidirectional Forwarding Detection information
+  bgp                  Show Border Gateway Protocol information
+  captive-portal       Show captive portal information
+  chassis              Show chassis information
+  class-of-service     Show class-of-service (CoS) information
+  cli                  Show command-line interface settings
+  configuration        Show current configuration
+  connections          Show circuit cross-connect connections
+  database-replication  Show database replication information
+  dhcp                 Show Dynamic Host Configuration Protocol information
+  dhcpv6               Show Dynamic Host Configuration Protocol v6 information
+  diagnostics          Show diagnostics information
+  dot1x                Show 802.1X information
+  esis                 Show end system-to-intermediate system information
+  ethernet-switching   Show Ethernet-switching information
+  event-options        Show event-options information
+  firewall             Show firewall information
+  forwarding-options   Show forwarding-options information
+  helper               Show port-forwarding helper information
+  hfrr                 Show information related to Host (Direct route) Fast reroute
+  host                 Show hostname information from domain name server
+  iccp                 Show Inter Chassis Control Protocol information
+  igmp                 Show Internet Group Management Protocol information
+  igmp-snooping        Show IGMP snooping information
+  ike                  Show Internet Key Exchange information
+  ingress-replication  Show Ingress-Replication tunnel information
+  interfaces           Show interface information
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+  l2circuit            Show Layer 2 circuit information
+  l2vpn                Show Layer 2 VPN information
+  lacp                 Show Link Aggregation Control Protocol information
+  link-management      Show link management information
+  lldp                 Show Link Layer Discovery Protocol information
+  log                  Show contents of log file
+  mld                  Show multicast listener discovery information
+  mld-snooping         Show MLD snooping information
+  msdp                 Show Multicast Source Discovery Protocol information
+  multicast            Show multicast information
+  mvpn                 Show Multicast Virtual Private Network (MVPN) information
+  mvrp                 Show Multiple VLAN Registration Protocol information
+  network-access       Show network-access related information
+  ntp                  Show Network Time Protocol information
+  oam                  Show OAM-related information
+  ospf                 Show Open Shortest Path First information
+---(more 66%)---
+                                        
+  ospf3                Show Open Shortest Path First version 3 information
+  pfe                  Show Packet Forwarding Engine information
+  pim                  Show Protocol Independent Multicast information
+  poe                  Show power-over-ethernet information
+  policy               Show policy information
+  protection-group     Show protection group information
+  redundant-power-system  Show redundant power system information
+  redundant-trunk-group  Show redundant trunk group information
+  rip                  Show Routing Information Protocol information
+  ripng                Show Routing Information Protocol for IPv6 information
+  route                Show routing table information
+  sap                  Show Session Announcement Protocol information
+  security             Show security information
+  services             Show services information
+  sflow                Show sFlow information
+  snmp                 Show Simple Network Management Protocol information
+  spanning-tree        Show Spanning Tree Protocol information
+  subscribers          Show subscriber information
+  system               Show system information
+  task                 Show routing protocol per-task information
+  ted                  Show Traffic Engineering Database information
+  uplink-failure-detection  Show uplink failure detection information
+  validation           Show route validation information
+  version              Show software process revision levels
+  virtual-chassis      Show virtual chassis information
+  vlans                Show VLAN information
+  vrrp                 Show Virtual Router Redundancy Protocol information
+{master:0}
+
+dsadmin@ena-sw-cen-01> show    forwarding-options                                                          arp 
+ MAC Address       Address         Name                      Interface           Flags
+00:10:db:ff:10:01 10.130.160.1    10.130.160.1              vlan.1900           none
+3c:8c:93:87:7e:40 10.130.160.7    10.130.160.7              vlan.1900           none
+Total entries: 2
+
+{master:0}
+dsadmin@ena-sw-cen-01> show mac
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show mac            enter
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show enter           
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show ent    h
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show enth            thernet-switching ?
+Possible completions:
+  filters              Show ethernet switching filters
+  interfaces           Display Ethernet-switching interface information
+  layer2-protocol-tunneling  Show Layer2 protocol tunneling information
+  mac-learning-log     Show MAC address learning log
+  mac-notification     Display MAC notification information
+  next-hops            Show next hop information
+  statistics           Show media access control statistics
+  table                Show media access control table
+{master:0}
+
+dsadmin@ena-sw-cen-01> show ethernet-switching      table 
+Ethernet-switching table: 69 entries, 46 learned, 0 persistent entries
+  VLAN            MAC address       Type         Age Interfaces
+  vlan-aerohive-mgmt *                Flood          - All-members
+  vlan-aerohive-mgmt 00:10:db:ff:10:01 Learn         0 ge-0/1/0.0
+  vlan-aerohive-mgmt 08:ea:44:8c:81:40 Learn         0 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:84 Learn         0 ge-0/0/46.0
+  vlan-citywifi-mgmt-stub *           Flood          - All-members
+  vlan-citywifi-mgmt-stub 00:10:db:ff:10:01 Learn        0 ge-0/1/0.0
+  vlan-citywifi-mgmt-stub 00:50:56:8d:99:78 Learn        0 ae1.0
+  vlan-citywifi-mgmt-stub 00:50:56:8d:d2:6e Learn        0 ae2.0
+  vlan-digitalsignage *               Flood          - All-members
+  vlan-digitalsignage 00:10:db:ff:10:01 Learn     4:36 ge-0/1/0.0
+  vlan-digitalsignage 00:50:56:8d:59:20 Learn     3:08 ge-0/1/0.0
+  vlan-digitalsignage b8:27:eb:88:8b:b0 Learn       35 ge-0/1/0.0
+  vlan-enwr-l0-lan  *                 Flood          - All-members
+  vlan-enwr-l2-lan  *                 Flood          - All-members
+  vlan-enwr-l2-lan  3c:8c:93:87:7e:40 Learn          0 ge-0/1/0.0
+  vlan-guest        *                 Flood          - All-members
+  vlan-guest-stuff  *                 Flood          - All-members
+  vlan-guest-stuff  0c:81:26:69:cd:e9 Learn       3:11 ge-0/1/0.0
+  vlan-guest-stuff  7a:90:cd:a1:64:28 Learn          0 ge-0/1/0.0
+  vlan-infra-3par-repl *              Flood          - All-members
+  vlan-infra-esx-mgmt *               Flood          - All-members
+  vlan-infra-esx-mgmt 00:0c:29:08:f8:e6 Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:10:db:ff:10:01 Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:25:b5:e5:01:93 Learn     4:41 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:85:33:9e Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:8d:95:ad Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:8d:aa:24 Learn        0 ae2.0
+  vlan-infra-esx-mgmt 00:50:56:8d:f2:19 Learn       41 ge-0/1/0.0
+  vlan-infra-esx-mgmt 34:48:ed:e5:7d:ce Learn     1:19 ge-0/1/0.0
+  vlan-infra-esx-mgmt 3c:ec:ef:c7:17:93 Learn        0 ae2.0
+  vlan-infra-esx-mgmt 3c:ec:ef:c7:1b:93 Learn        0 ae1.0
+  vlan-infra-ilo    *                 Flood          - All-members
+  vlan-infra-ilo    00:10:db:ff:10:01 Learn          0 ge-0/1/0.0
+  vlan-infra-ilo    34:48:ed:e5:7d:c8 Learn       2:54 ge-0/1/0.0
+  vlan-infra-ilo    3c:ec:ef:c7:22:0e Learn          0 ge-0/0/26.0
+  vlan-infra-ilo    3c:ec:ef:c7:23:b2 Learn          0 ge-0/0/27.0
+  vlan-infra-ilo    d0:8e:79:bc:85:42 Learn       3:00 ge-0/1/0.0
+  vlan-infra-net-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt 00:10:db:ff:10:01 Learn     3:19 ge-0/1/0.0
+  vlan-infra-san-mgmt 4c:d9:8f:a6:e5:ef Learn     1:28 ge-0/1/0.0
+  vlan-infra-san-mgmt 4c:d9:8f:af:1e:43 Learn       59 ge-0/1/0.0
+  vlan-infra-vmotion *                Flood          - All-members
+  vlan-lan          *                 Flood          - All-members
+  vlan-nda-lan      *                 Flood          - All-members
+  vlan-netmgmt      *                 Flood          - All-members
+  vlan-netmgmt      00:10:db:ff:10:01 Learn          0 ge-0/1/0.0
+  vlan-netmgmt      00:20:85:ea:0c:40 Learn         54 ge-0/1/0.0
+  vlan-netmgmt      3c:8c:93:87:7e:40 Learn       2:30 ge-0/1/0.0
+  vlan-netmgmt      54:e0:32:f4:4a:c1 Static         - Router
+  vlan-netmgmt      ec:13:b2:11:5e:40 Learn          0 ge-0/0/47.0
+---(more)---
+                                        
+  vlan-null         *                 Flood          - All-members
+  vlan-poc-nqa-npm  *                 Flood          - All-members
+  vlan-servers-mgmt *                 Flood          - All-members
+  vlan-servers-mgmt 00:10:db:ff:10:01 Learn       2:37 ge-0/1/0.0
+  vlan-servers-mgmt 00:50:56:8d:e4:cb Learn          0 ge-0/1/0.0
+  vlan-site-CEN-BMS *                 Flood          - All-members
+  vlan-site-CEN-CAM *                 Flood          - All-members
+  vlan-site-CEN-CAM 3c:8c:93:87:7e:40 Learn          0 ge-0/1/0.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:96:55 Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:97:6d Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:97:8c Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:12:41:d4 Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7c Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7d Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7f Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:83 Learn          0 ge-0/0/47.0
+  vlan-wireless-corporate *           Flood          - All-members
+  vlan-wireless-corporate 3c:8c:93:87:7e:40 Learn        0 ge-0/1/0.0
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+dsadmin@ena-sw-cen-01> show ethernet-switching table    ve      tr
+                                                     ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show ethernet-switching table tr          brief 
+Ethernet-switching table: 73 entries, 50 learned, 0 persistent entries
+  VLAN            MAC address       Type         Age Interfaces
+  vlan-aerohive-mgmt *                Flood          - All-members
+  vlan-aerohive-mgmt 00:10:db:ff:10:01 Learn         0 ge-0/1/0.0
+  vlan-aerohive-mgmt 08:ea:44:8c:81:40 Learn         0 ge-0/1/0.0
+  vlan-aerohive-mgmt 8c:04:ba:ea:d0:e1 Learn        44 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:43:2b Learn        44 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:25 Learn        39 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:6b Learn         0 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:84 Learn         0 ge-0/0/46.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:d4 Learn        32 ge-0/1/0.0
+  vlan-aerohive-mgmt d4:dc:09:20:44:e3 Learn        36 ge-0/1/0.0
+  vlan-citywifi-mgmt-stub *           Flood          - All-members
+  vlan-citywifi-mgmt-stub 00:10:db:ff:10:01 Learn        0 ge-0/1/0.0
+  vlan-citywifi-mgmt-stub 00:50:56:8d:99:78 Learn        0 ae1.0
+  vlan-citywifi-mgmt-stub 00:50:56:8d:d2:6e Learn        0 ae2.0
+  vlan-digitalsignage *               Flood          - All-members
+  vlan-digitalsignage 00:50:56:8d:59:20 Learn     3:32 ge-0/1/0.0
+  vlan-digitalsignage b8:27:eb:88:8b:b0 Learn       59 ge-0/1/0.0
+  vlan-enwr-l0-lan  *                 Flood          - All-members
+  vlan-enwr-l2-lan  *                 Flood          - All-members
+  vlan-enwr-l2-lan  3c:8c:93:87:7e:40 Learn          0 ge-0/1/0.0
+  vlan-guest        *                 Flood          - All-members
+  vlan-guest-stuff  *                 Flood          - All-members
+  vlan-guest-stuff  0c:81:26:69:cd:e9 Learn       3:35 ge-0/1/0.0
+  vlan-guest-stuff  7a:90:cd:a1:64:28 Learn         41 ge-0/1/0.0
+  vlan-infra-3par-repl *              Flood          - All-members
+  vlan-infra-esx-mgmt *               Flood          - All-members
+  vlan-infra-esx-mgmt 00:0c:29:08:f8:e6 Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:10:db:ff:10:01 Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:85:33:9e Learn       38 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:8d:95:ad Learn        0 ge-0/1/0.0
+  vlan-infra-esx-mgmt 00:50:56:8d:aa:24 Learn        0 ae2.0
+  vlan-infra-esx-mgmt 00:50:56:8d:f2:19 Learn     1:05 ge-0/1/0.0
+  vlan-infra-esx-mgmt 34:48:ed:e5:7d:ce Learn     1:43 ge-0/1/0.0
+  vlan-infra-esx-mgmt 3c:ec:ef:c7:17:93 Learn        0 ae2.0
+  vlan-infra-esx-mgmt 3c:ec:ef:c7:1b:93 Learn        0 ae1.0
+  vlan-infra-ilo    *                 Flood          - All-members
+  vlan-infra-ilo    00:10:db:ff:10:01 Learn          0 ge-0/1/0.0
+  vlan-infra-ilo    34:48:ed:e5:7d:c8 Learn       3:18 ge-0/1/0.0
+  vlan-infra-ilo    3c:ec:ef:c7:22:0e Learn          0 ge-0/0/26.0
+  vlan-infra-ilo    3c:ec:ef:c7:23:b2 Learn          0 ge-0/0/27.0
+  vlan-infra-ilo    d0:8e:79:bc:85:42 Learn       3:24 ge-0/1/0.0
+  vlan-infra-net-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt *               Flood          - All-members
+  vlan-infra-san-mgmt 00:10:db:ff:10:01 Learn     3:43 ge-0/1/0.0
+  vlan-infra-san-mgmt 4c:d9:8f:a6:e5:ef Learn     1:52 ge-0/1/0.0
+  vlan-infra-san-mgmt 4c:d9:8f:af:1e:43 Learn     1:23 ge-0/1/0.0
+  vlan-infra-vmotion *                Flood          - All-members
+  vlan-lan          *                 Flood          - All-members
+  vlan-nda-lan      *                 Flood          - All-members
+  vlan-netmgmt      *                 Flood          - All-members
+  vlan-netmgmt      00:10:db:ff:10:01 Learn          0 ge-0/1/0.0
+---(more)---
+                                        
+  vlan-netmgmt      00:20:85:ea:0c:40 Learn       1:18 ge-0/1/0.0
+  vlan-netmgmt      3c:8c:93:87:7e:40 Learn          0 ge-0/1/0.0
+  vlan-netmgmt      54:e0:32:f4:4a:c1 Static         - Router
+  vlan-netmgmt      ec:13:b2:11:5e:40 Learn          0 ge-0/0/47.0
+  vlan-null         *                 Flood          - All-members
+  vlan-poc-nqa-npm  *                 Flood          - All-members
+  vlan-servers-mgmt *                 Flood          - All-members
+  vlan-servers-mgmt 00:10:db:ff:10:01 Learn       3:01 ge-0/1/0.0
+  vlan-servers-mgmt 00:50:56:8d:e4:cb Learn         47 ge-0/1/0.0
+  vlan-site-CEN-BMS *                 Flood          - All-members
+  vlan-site-CEN-CAM *                 Flood          - All-members
+  vlan-site-CEN-CAM 3c:8c:93:87:7e:40 Learn          0 ge-0/1/0.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:96:55 Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:97:6d Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 4c:bd:8f:6e:97:8c Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:12:41:d4 Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7c Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7d Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:7f Learn          0 ge-0/0/47.0
+  vlan-site-CEN-CAM 64:db:8b:1d:ce:83 Learn          0 ge-0/0/47.0
+  vlan-wireless-corporate *           Flood          - All-members
+  vlan-wireless-corporate 3c:8c:93:87:7e:40 Learn        0 ge-0/1/0.0
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show bri
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show bri   d
+                            ^
+syntax error, expecting <command>.
+
+dsadmin@ena-sw-cen-01> show brid                              show firewall ?
+Possible completions:
+  <[Enter]>            Execute this command
+  application          Owner application
+  counter              Counter name
+  filter               Filter name
+  log                  Show log entries for firewall activity
+  terse                Show filter names only
+  |                    Pipe through a command
+{master:0}
+
+dsadmin@ena-sw-cen-01> show firewall            
+
+{master:0}
+dsadmin@ena-sw-cen-01> show vlans 
+Name           Tag     Interfaces
+default       
+                       None
+vlan-NextGenL2PoCJumbox 3244   
+                       None
+vlan-NextGenL2PoCServers 3243   
+                       None
+vlan-NextGenOSSPoCServers 3240   
+                       None
+vlan-aerohive-mgmt 4046   
+                       ge-0/0/45.0, ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-audiovisual 4076   
+                       None
+vlan-bob-mgmt  4080   
+                       None
+vlan-cam-vrf-stub 4069   
+                       None
+vlan-ccl-ibss  4041   
+                       None
+vlan-ccl-srm-dr 4045   
+                       None
+vlan-ccl-staging 4042   
+                       None
+vlan-citywifi-mgmt-stub 4075   
+                       ae1.0*, ae2.0*, ge-0/1/0.0*
+vlan-dcn-backbone 4093   
+                       None
+vlan-dcn-environmental 4063   
+                       None
+vlan-dcn2-interconnect 3299   
+                        None
+vlan-dcn2-servers 4064   
+                       None
+vlan-dev-sandbox 4043   
+                       None
+vlan-digitalsignage 4077   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-enable-backbone 4092   
+                       None
+vlan-enwr-l0-lan 4089   
+                       ge-0/0/46.0*
+vlan-enwr-l2-lan 4090   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-f5-ha     1898   
+                       None
+vlan-f5-hsl    4034   
+                       None
+vlan-f5-mgmt   4036   
+                       None
+vlan-guest     4085   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-guest-stuff 3085   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+---(more)---
+                                        
+vlan-hrb-lab   4035   
+                       None
+vlan-infra-3par-repl 4014   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-infra-esx-mgmt 4010   
+                       ae1.0*, ae2.0*, ge-0/0/0.0, ge-0/1/0.0*
+vlan-infra-ilo 4013   
+                       ae1.0*, ae2.0*, ge-0/0/26.0*, ge-0/0/27.0*, ge-0/1/0.0*
+vlan-infra-net-mgmt 4012   
+                       ge-0/0/47.0*
+vlan-infra-san-mgmt 4011   
+                       ae1.0*, ae2.0*, ge-0/1/0.0*
+vlan-infra-vmotion 4015   
+                       ae1.0*, ae2.0*, ge-0/1/0.0*
+vlan-internet-dmz 4083   
+                       None
+vlan-lan       4081   
+                       ge-0/0/47.0*
+vlan-mag-user  4078   
+                       None
+vlan-nda-lan   4088   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-netmgmt   1900   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-null      4086   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-nx-witness 4068   
+                       None
+vlan-oob-mgmt  336    
+                       None
+vlan-poc-nqa-npm 3199   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-revera-nav 4084   
+                       None
+vlan-rpa-app-dcn 4072   
+                       None
+vlan-rpa-frontend 4071   
+                       None
+vlan-rpa-mgmt  4070   
+                       None
+vlan-servers-ad 4022   
+                       None
+vlan-servers-ad-infra 4017   
+                       None
+vlan-servers-dcnservices 4037   
+                       None
+vlan-servers-dev 4020   
+                       None
+vlan-servers-devops 4039   
+                       None
+vlan-servers-docker-data 4027   
+                       None
+vlan-servers-docker-mgmt 4026   
+---(more)---
+                                        
+                       None
+vlan-servers-docker-prod 4028   
+                       None
+vlan-servers-docker-test 4029   
+                       None
+vlan-servers-edge 4030   
+                       None
+vlan-servers-gis 4023   
+                       None
+vlan-servers-gis-sandbox 4018   
+                       None
+vlan-servers-infra-playpen 4021   
+                       None
+vlan-servers-itf-secondary 4040   
+                       None
+vlan-servers-itfservices 4038   
+                       None
+vlan-servers-legacy-mgmt 4019   
+                       None
+vlan-servers-mgmt 4016   
+                       ae1.0*, ae2.0*, ge-0/1/0.0*
+vlan-servers-secservices 4033   
+                       None
+vlan-servers-u2000-pri 4056   
+                       None
+vlan-servers-u2000-sec 4057   
+                       None
+vlan-servers-util 4025   
+                       None
+vlan-site-BUR-BMS 3113   
+                       None
+vlan-site-BUR-CAM 3114   
+                       None
+vlan-site-CEN-BMS 3073   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-site-CEN-CAM 3074   
+                       ge-0/0/47.0*, ge-0/1/0.0*
+vlan-site-HRB-BMS 3013   
+                       None
+vlan-site-HRB-CAM 3014   
+                       None
+vlan-site-HWL-BMS 3023   
+                       None
+vlan-site-HWL-CAM 3024   
+                       None
+vlan-site-KAI-BMS 3093   
+                       None
+vlan-site-KAI-CAM 3094   
+                       None
+vlan-site-MTP-BMS 3123   
+                       None
+vlan-site-MTP-CAM 3124   
+                       None
+---(more 83%)---
+                                        
+vlan-site-PAP-BMS 3033   
+                       None
+vlan-site-PAP-CAM 3034   
+                       None
+vlan-site-RED-BMS 3053   
+                       None
+vlan-site-RED-CAM 3054   
+                       None
+vlan-site-RIC-BMS 3043   
+                       None
+vlan-site-RIC-CAM 3044   
+                       None
+vlan-site-RNG-BMS 3103   
+                       None
+vlan-site-RNG-CAM 3104   
+                       None
+vlan-site-ROL-BMS 3063   
+                       None
+vlan-site-ROL-CAM 3064   
+                       None
+vlan-site-STA-BMS 3083   
+                       None
+vlan-site-STA-CAM 3084   
+                       None
+vlan-test-servers 3120   
+                       None
+vlan-wireless-corporate 4087   
+                       ge-0/0/46.0*, ge-0/0/47.0*, ge-0/1/0.0*
+vlan-workstation-admin 4009   
+                       None
+vlan-wxc-sip   4044   
+                       None
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show interfaces des
+                                          ^
+'des' is ambiguous.
+Possible completions:
+  <interface-name>     Name of physical or logical interface
+  descriptions         Display interface description strings
+  destination-class    Show statistics for destination class
+{master:0}
+
+dsadmin@ena-sw-cen-01> show interfaces des   
+                                          ^
+'des' is ambiguous.
+Possible completions:
+  <interface-name>     Name of physical or logical interface
+  descriptions         Display interface description strings
+  destination-class    Show statistics for destination class
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+dsadmin@ena-sw-cen-01> show interfaces des   is             scriptions | no-more 
+Interface       Admin Link Description
+ge-0/0/12       up    up   enaesxc01 mgmt
+ge-0/0/13       up    up   enaesxc02 mgmt
+ge-0/0/26       up    up   enaesxc01 IPMI
+ge-0/0/27       up    up   enaesxc02 IPMI
+ge-0/0/46       up    up   ena-wi-cen-01
+ge-0/0/47       up    up   ena-cen-ntx-01
+ae1             up    up   enaesxc01 mgmt
+ae2             up    up   enaesxc02 mgmt
+ae11                       enaesxc01 data
+ae12                       enaesxc02 data
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show itner            nterfaces statistics ?
+Possible completions:
+  <[Enter]>            Execute this command
+  <interface-name>     Name of physical or logical interface
+  ge-0/0/0             
+  ge-0/0/0.0           
+  ge-0/0/1             
+  ge-0/0/2             
+  ge-0/0/3             
+  ge-0/0/4             
+  ge-0/0/5             
+  ge-0/0/6             
+  ge-0/0/7             
+  ge-0/0/8             
+  ge-0/0/9             
+  ge-0/0/10            
+  ge-0/0/11            
+  ge-0/0/12            enaesxc01 mgmt
+  ge-0/0/12.0          
+  ge-0/0/13            enaesxc02 mgmt
+  ge-0/0/13.0          
+  ge-0/0/14            
+  ge-0/0/15            
+  ge-0/0/16            
+  ge-0/0/17            
+  ge-0/0/18            
+  ge-0/0/19            
+  ge-0/0/20            
+  ge-0/0/21            
+  ge-0/0/22            
+  ge-0/0/23            
+  ge-0/0/24            
+  ge-0/0/25            
+  ge-0/0/26            enaesxc01 IPMI
+  ge-0/0/26.0          
+  ge-0/0/27            enaesxc02 IPMI
+  ge-0/0/27.0          
+  ge-0/0/28            
+  ge-0/0/29            
+  ge-0/0/30            
+  ge-0/0/31            
+  ge-0/0/32            
+  ge-0/0/33            
+  ge-0/0/34            
+  ge-0/0/35            
+  ge-0/0/36            
+  ge-0/0/37            
+  ge-0/0/38            
+  ge-0/0/39            
+  ge-0/0/40            
+  ge-0/0/41            
+  ge-0/0/42            
+  ge-0/0/43            
+  ge-0/0/44            
+---(more 55%)---
+                                        
+  ge-0/0/45            
+  ge-0/0/45.0          
+  ge-0/0/46            ena-wi-cen-01
+  ge-0/0/46.0          
+  ge-0/0/47            ena-cen-ntx-01
+  ge-0/0/47.0          
+  ge-0/1/0             
+  ge-0/1/0.0           
+  ae0                  
+  ae1                  enaesxc01 mgmt
+  ae1.0                
+  ae2                  enaesxc02 mgmt
+  ae2.0                
+  ae3                  
+  ae4                  
+  ae5                  
+  ae6                  
+  ae7                  
+  bme0                 
+  bme0.32768           
+  dsc                  
+  gre                  
+  ipip                 
+  lo0                  
+  lo0.16384            
+  lsi                  
+  me0                  
+  me0.0                
+  mtun                 
+  pimd                 
+  pime                 
+  tap                  
+  vlan                 
+  vlan.1900            
+  vme                  
+  brief                Display brief output
+  descriptions         Display interface description strings
+  detail               Display detailed output
+  routing-instance     Name of routing instance
+  snmp-index           SNMP index of interface
+  terse                Display terse output
+  |                    Pipe through a command
+{master:0}
+
+dsadmin@ena-sw-cen-01> show interfaces statistics        
+Physical interface: ge-0/0/0, Enabled, Physical link is Down
+  Interface index: 137, SNMP ifIndex: 501
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c3, Hardware address: 54:e0:32:f4:4a:c3
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/0.0 (Index 70) (SNMP ifIndex 502)
+    Flags: Device-Down SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Input packets : 0
+    Output packets: 0
+    Protocol eth-switch
+      Flags: Trunk-Mode
+
+Physical interface: ge-0/0/1, Administratively down, Physical link is Down
+  Interface index: 138, SNMP ifIndex: 503
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c4, Hardware address: 54:e0:32:f4:4a:c4
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/2, Administratively down, Physical link is Down
+  Interface index: 139, SNMP ifIndex: 521
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c5, Hardware address: 54:e0:32:f4:4a:c5
+  Last flapped   : Never
+---(more)---
+                                        
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/3, Administratively down, Physical link is Down
+  Interface index: 140, SNMP ifIndex: 533
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c6, Hardware address: 54:e0:32:f4:4a:c6
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/4, Administratively down, Physical link is Down
+  Interface index: 141, SNMP ifIndex: 545
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c7, Hardware address: 54:e0:32:f4:4a:c7
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/5, Administratively down, Physical link is Down
+  Interface index: 142, SNMP ifIndex: 555
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c8, Hardware address: 54:e0:32:f4:4a:c8
+---(more)---
+                                        
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/6, Administratively down, Physical link is Down
+  Interface index: 143, SNMP ifIndex: 557
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c9, Hardware address: 54:e0:32:f4:4a:c9
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/7, Administratively down, Physical link is Down
+  Interface index: 144, SNMP ifIndex: 559
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ca, Hardware address: 54:e0:32:f4:4a:ca
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/8, Administratively down, Physical link is Down
+  Interface index: 145, SNMP ifIndex: 561
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+---(more 12%)---
+                                        
+  Current address: 54:e0:32:f4:4a:cb, Hardware address: 54:e0:32:f4:4a:cb
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/9, Administratively down, Physical link is Down
+  Interface index: 146, SNMP ifIndex: 563
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:cc, Hardware address: 54:e0:32:f4:4a:cc
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/10, Administratively down, Physical link is Down
+  Interface index: 147, SNMP ifIndex: 505
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:cd, Hardware address: 54:e0:32:f4:4a:cd
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/11, Administratively down, Physical link is Down
+  Interface index: 148, SNMP ifIndex: 507
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+---(more 16%)---
+                                        
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ce, Hardware address: 54:e0:32:f4:4a:ce
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/12, Enabled, Physical link is Up
+  Interface index: 149, SNMP ifIndex: 509
+  Description: enaesxc01 mgmt
+  Link-level type: Ethernet, MTU: 1514, Speed: 1000mbps, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c4, Hardware address: 54:e0:32:f4:4a:cf
+  Last flapped   : 2022-08-27 12:08:35 NZST (3w1d 09:31 ago)
+  Statistics last cleared: Never
+  Input rate     : 44920 bps (27 pps)
+  Output rate    : 4304 bps (7 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/12.0 (Index 71) (SNMP ifIndex 504)
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    Protocol aenet, AE bundle: ae1.0
+
+Physical interface: ge-0/0/13, Enabled, Physical link is Up
+  Interface index: 150, SNMP ifIndex: 511
+  Description: enaesxc02 mgmt
+  Link-level type: Ethernet, MTU: 1514, Speed: 1000mbps, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:c5, Hardware address: 54:e0:32:f4:4a:d0
+  Last flapped   : 2022-07-19 19:21:40 NZST (8w5d 02:18 ago)
+  Statistics last cleared: Never
+  Input rate     : 592 bps (1 pps)
+  Output rate    : 1104 bps (2 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+---(more 21%)---
+                                        
+  Logical interface ge-0/0/13.0 (Index 72) (SNMP ifIndex 506)
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    Protocol aenet, AE bundle: ae2.0
+
+Physical interface: ge-0/0/14, Administratively down, Physical link is Down
+  Interface index: 151, SNMP ifIndex: 513
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d1, Hardware address: 54:e0:32:f4:4a:d1
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/15, Administratively down, Physical link is Down
+  Interface index: 152, SNMP ifIndex: 515
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d2, Hardware address: 54:e0:32:f4:4a:d2
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/16, Administratively down, Physical link is Down
+  Interface index: 153, SNMP ifIndex: 517
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d3, Hardware address: 54:e0:32:f4:4a:d3
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+---(more 25%)---
+                                        
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/17, Administratively down, Physical link is Down
+  Interface index: 154, SNMP ifIndex: 518
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d4, Hardware address: 54:e0:32:f4:4a:d4
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/18, Administratively down, Physical link is Down
+  Interface index: 155, SNMP ifIndex: 519
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d5, Hardware address: 54:e0:32:f4:4a:d5
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/19, Administratively down, Physical link is Down
+  Interface index: 156, SNMP ifIndex: 520
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d6, Hardware address: 54:e0:32:f4:4a:d6
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+---(more 29%)---
+                                        
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/20, Administratively down, Physical link is Down
+  Interface index: 157, SNMP ifIndex: 523
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d7, Hardware address: 54:e0:32:f4:4a:d7
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/21, Administratively down, Physical link is Down
+  Interface index: 158, SNMP ifIndex: 524
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d8, Hardware address: 54:e0:32:f4:4a:d8
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/22, Administratively down, Physical link is Down
+  Interface index: 159, SNMP ifIndex: 525
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:d9, Hardware address: 54:e0:32:f4:4a:d9
+  Last flapped   : Never
+  Statistics last cleared: Never
+---(more 33%)---
+                                        
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/23, Administratively down, Physical link is Down
+  Interface index: 160, SNMP ifIndex: 526
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:da, Hardware address: 54:e0:32:f4:4a:da
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/24, Administratively down, Physical link is Down
+  Interface index: 161, SNMP ifIndex: 527
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:db, Hardware address: 54:e0:32:f4:4a:db
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/25, Administratively down, Physical link is Down
+  Interface index: 162, SNMP ifIndex: 528
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:dc, Hardware address: 54:e0:32:f4:4a:dc
+  Last flapped   : Never
+---(more 37%)---
+                                        
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/26, Enabled, Physical link is Up
+  Interface index: 163, SNMP ifIndex: 529
+  Description: enaesxc01 IPMI
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:dd, Hardware address: 54:e0:32:f4:4a:dd
+  Last flapped   : 2022-05-17 21:33:53 NZST (17w5d 00:05 ago)
+  Statistics last cleared: Never
+  Input rate     : 2064 bps (2 pps)
+  Output rate    : 1952 bps (2 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/26.0 (Index 73) (SNMP ifIndex 576)
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    Input packets : 89186
+    Output packets: 6019336
+    Protocol eth-switch
+      Flags: None
+
+Physical interface: ge-0/0/27, Enabled, Physical link is Up
+  Interface index: 164, SNMP ifIndex: 530
+  Description: enaesxc02 IPMI
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:de, Hardware address: 54:e0:32:f4:4a:de
+  Last flapped   : 2022-05-17 21:33:53 NZST (17w5d 00:05 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+---(more 42%)---
+                                        
+  Logical interface ge-0/0/27.0 (Index 74) (SNMP ifIndex 577)
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    Input packets : 89190
+    Output packets: 6019350
+    Protocol eth-switch
+      Flags: None
+
+Physical interface: ge-0/0/28, Administratively down, Physical link is Down
+  Interface index: 165, SNMP ifIndex: 531
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:df, Hardware address: 54:e0:32:f4:4a:df
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/29, Administratively down, Physical link is Down
+  Interface index: 166, SNMP ifIndex: 532
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e0, Hardware address: 54:e0:32:f4:4a:e0
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/30, Administratively down, Physical link is Down
+  Interface index: 167, SNMP ifIndex: 535
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e1, Hardware address: 54:e0:32:f4:4a:e1
+  Last flapped   : Never
+---(more 46%)---
+                                        
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/31, Administratively down, Physical link is Down
+  Interface index: 168, SNMP ifIndex: 536
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e2, Hardware address: 54:e0:32:f4:4a:e2
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/32, Administratively down, Physical link is Down
+  Interface index: 169, SNMP ifIndex: 537
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e3, Hardware address: 54:e0:32:f4:4a:e3
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/33, Administratively down, Physical link is Down
+  Interface index: 170, SNMP ifIndex: 538
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e4, Hardware address: 54:e0:32:f4:4a:e4
+---(more 50%)---
+                                        
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/34, Administratively down, Physical link is Down
+  Interface index: 171, SNMP ifIndex: 539
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e5, Hardware address: 54:e0:32:f4:4a:e5
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/35, Administratively down, Physical link is Down
+  Interface index: 172, SNMP ifIndex: 540
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e6, Hardware address: 54:e0:32:f4:4a:e6
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/36, Administratively down, Physical link is Down
+  Interface index: 173, SNMP ifIndex: 541
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+---(more 54%)---
+                                        
+  Current address: 54:e0:32:f4:4a:e7, Hardware address: 54:e0:32:f4:4a:e7
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/37, Administratively down, Physical link is Down
+  Interface index: 174, SNMP ifIndex: 542
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e8, Hardware address: 54:e0:32:f4:4a:e8
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/38, Administratively down, Physical link is Down
+  Interface index: 175, SNMP ifIndex: 543
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:e9, Hardware address: 54:e0:32:f4:4a:e9
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/39, Administratively down, Physical link is Down
+  Interface index: 176, SNMP ifIndex: 544
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+---(more 58%)---
+                                        
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ea, Hardware address: 54:e0:32:f4:4a:ea
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/40, Administratively down, Physical link is Down
+  Interface index: 177, SNMP ifIndex: 547
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:eb, Hardware address: 54:e0:32:f4:4a:eb
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/41, Administratively down, Physical link is Down
+  Interface index: 178, SNMP ifIndex: 548
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ec, Hardware address: 54:e0:32:f4:4a:ec
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/42, Administratively down, Physical link is Down
+  Interface index: 179, SNMP ifIndex: 549
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+---(more 63%)---
+                                        
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ed, Hardware address: 54:e0:32:f4:4a:ed
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/43, Administratively down, Physical link is Down
+  Interface index: 180, SNMP ifIndex: 550
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ee, Hardware address: 54:e0:32:f4:4a:ee
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/44, Administratively down, Physical link is Down
+  Interface index: 181, SNMP ifIndex: 551
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: Hardware-Down Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:ef, Hardware address: 54:e0:32:f4:4a:ef
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+Physical interface: ge-0/0/45, Enabled, Physical link is Down
+  Interface index: 182, SNMP ifIndex: 552
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+---(more 67%)---
+                                        
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:f0, Hardware address: 54:e0:32:f4:4a:f0
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : LINK
+  Active defects : LINK
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/45.0 (Index 75) (SNMP ifIndex 595)
+    Flags: Device-Down SNMP-Traps 0x4000 Encapsulation: ENET2
+    Input packets : 0
+    Output packets: 0
+    Protocol eth-switch
+      Flags: None
+
+Physical interface: ge-0/0/46, Enabled, Physical link is Up
+  Interface index: 183, SNMP ifIndex: 553
+  Description: ena-wi-cen-01
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:f1, Hardware address: 54:e0:32:f4:4a:f1
+  Last flapped   : 2022-05-27 00:50:07 NZST (16w2d 20:49 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 504 bps (0 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/46.0 (Index 76) (SNMP ifIndex 596)
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Input packets : 591215
+    Output packets: 6203626
+    Protocol eth-switch
+      Flags: Trunk-Mode
+
+Physical interface: ge-0/0/47, Enabled, Physical link is Up
+  Interface index: 184, SNMP ifIndex: 554
+  Description: ena-cen-ntx-01
+  Link-level type: Ethernet, MTU: 1514, Speed: Auto, Duplex: Auto, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Copper, IEEE 802.3az Energy Efficient Ethernet: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+---(more 71%)---
+                                        
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:f2, Hardware address: 54:e0:32:f4:4a:f2
+  Last flapped   : 2022-05-17 21:34:13 NZST (17w5d 00:05 ago)
+  Statistics last cleared: Never
+  Input rate     : 6373016 bps (677 pps)
+  Output rate    : 198352 bps (357 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/0/47.0 (Index 77) (SNMP ifIndex 597)
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Input packets : 397584
+    Output packets: 6020148
+    Protocol eth-switch
+      Flags: Trunk-Mode
+
+Physical interface: ge-0/1/0, Enabled, Physical link is Up
+  Interface index: 185, SNMP ifIndex: 603
+  Link-level type: Ethernet, MTU: 1514, Speed: 1000mbps, Duplex: Full-Duplex, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Enabled,
+  Auto-negotiation: Enabled, Remote fault: Online, Media type: Fiber
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Link flags     : None
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Current address: 54:e0:32:f4:4a:f3, Hardware address: 54:e0:32:f4:4a:f3
+  Last flapped   : 2022-07-09 08:47:25 NZST (10w1d 12:52 ago)
+  Statistics last cleared: Never
+  Input rate     : 263496 bps (382 pps)
+  Output rate    : 6686776 bps (729 pps)
+  Input errors: 0, Output errors: 0
+  Active alarms  : None
+  Active defects : None
+  Interface transmit statistics: Disabled
+
+  Logical interface ge-0/1/0.0 (Index 78) (SNMP ifIndex 604)
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Input packets : 17044981
+    Output packets: 8910224
+    Protocol eth-switch
+      Flags: Trunk-Mode
+
+Physical interface: ae0, Enabled, Physical link is Down
+  Interface index: 128, SNMP ifIndex: 599
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c3, Hardware address: 54:e0:32:f4:4a:c3
+  Last flapped   : 2022-05-17 21:33:09 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+---(more 75%)---
+                                        
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: ae1, Enabled, Physical link is Up
+  Interface index: 129, SNMP ifIndex: 600
+  Description: enaesxc01 mgmt
+  Link-level type: Ethernet, MTU: 1514, Speed: 1Gbps, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled, Minimum links needed: 1,
+  Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c4, Hardware address: 54:e0:32:f4:4a:c4
+  Last flapped   : 2022-08-27 12:08:35 NZST (3w1d 09:31 ago)
+  Statistics last cleared: Never
+  Input rate     : 36544 bps (20 pps)
+  Output rate    : 3848 bps (5 pps)
+  Input errors: 0, Output errors: 0
+
+  Logical interface ae1.0 (Index 65) (SNMP ifIndex 611)
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Statistics        Packets        pps         Bytes          bps
+    Bundle:
+        Input :         16588          0       1388861            0
+        Output:       5633431          0     602759333            0
+    Adaptive Statistics:
+        Adaptive Adjusts:          0
+        Adaptive Scans  :          0
+        Adaptive Updates:          0
+    Protocol eth-switch
+      Flags: Is-Primary, Trunk-Mode
+
+Physical interface: ae2, Enabled, Physical link is Up
+  Interface index: 130, SNMP ifIndex: 605
+  Description: enaesxc02 mgmt
+  Link-level type: Ethernet, MTU: 1514, Speed: 1Gbps, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled, Minimum links needed: 1,
+  Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c5, Hardware address: 54:e0:32:f4:4a:c5
+  Last flapped   : 2022-07-19 19:21:40 NZST (8w5d 02:18 ago)
+  Statistics last cleared: Never
+  Input rate     : 34392 bps (6 pps)
+  Output rate    : 47216 bps (9 pps)
+  Input errors: 0, Output errors: 0
+
+  Logical interface ae2.0 (Index 66) (SNMP ifIndex 612)
+    Flags: Up SNMP-Traps 0x40004000 Encapsulation: ENET2
+    Statistics        Packets        pps         Bytes          bps
+    Bundle:
+        Input :         16343          0       1422543            0
+        Output:       5633233          0     602742422            0
+    Adaptive Statistics:
+        Adaptive Adjusts:          0
+---(more 79%)---
+                                        
+        Adaptive Scans  :          0
+        Adaptive Updates:          0
+    Protocol eth-switch
+      Flags: Trunk-Mode
+
+Physical interface: ae3, Enabled, Physical link is Down
+  Interface index: 131, SNMP ifIndex: 606
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c6, Hardware address: 54:e0:32:f4:4a:c6
+  Last flapped   : 2022-05-17 21:33:11 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: ae4, Enabled, Physical link is Down
+  Interface index: 132, SNMP ifIndex: 607
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c7, Hardware address: 54:e0:32:f4:4a:c7
+  Last flapped   : 2022-05-17 21:33:11 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: ae5, Enabled, Physical link is Down
+  Interface index: 133, SNMP ifIndex: 608
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c8, Hardware address: 54:e0:32:f4:4a:c8
+  Last flapped   : 2022-05-17 21:33:11 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: ae6, Enabled, Physical link is Down
+  Interface index: 134, SNMP ifIndex: 609
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:c9, Hardware address: 54:e0:32:f4:4a:c9
+  Last flapped   : 2022-05-17 21:33:11 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+---(more 84%)---
+                                        
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: ae7, Enabled, Physical link is Down
+  Interface index: 135, SNMP ifIndex: 610
+  Link-level type: Ethernet, MTU: 1514, Speed: Unspecified, BPDU Error: None, MAC-REWRITE Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled,
+  Minimum links needed: 1, Minimum bandwidth needed: 0
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps Internal: 0x4000
+  Current address: 54:e0:32:f4:4a:ca, Hardware address: 54:e0:32:f4:4a:ca
+  Last flapped   : 2022-05-17 21:33:11 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+  Input rate     : 0 bps (0 pps)
+  Output rate    : 0 bps (0 pps)
+  Input errors: 0, Output errors: 0
+
+Physical interface: bme0, Enabled, Physical link is Up
+  Interface index: 64, SNMP ifIndex: 37
+  Type: Ethernet, Link-level type: Ethernet, MTU: 1576
+  Device flags   : Present Running
+  Link flags     : None
+  Current address: 00:0b:ca:fe:00:00, Hardware address: 00:0b:ca:fe:00:00
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 45212136
+  Input errors: 0, Output errors: 0
+
+  Logical interface bme0.32768 (Index 3) (SNMP ifIndex 38)
+    Flags: Encapsulation: ENET2
+    Input packets : 18245087
+    Output packets: 3
+    Protocol inet, MTU: 1562
+      Flags: Is-Primary
+      Addresses, Flags: Primary Is-Default Is-Preferred Is-Primary
+        Destination: 128/2, Local: 128.0.0.1, Broadcast: 191.255.255.255
+      Addresses, Flags: Primary
+        Destination: 128/2, Local: 128.0.0.16, Broadcast: 191.255.255.255
+      Addresses
+        Destination: 128/2, Local: 128.0.0.32, Broadcast: 191.255.255.255
+    Protocol tnp, MTU: 1562
+      Flags: Is-Primary
+      Addresses, Flags: Primary
+        Local: 0x10
+
+Physical interface: dsc, Enabled, Physical link is Up
+  Interface index: 5, SNMP ifIndex: 5
+  Type: Software-Pseudo, MTU: Unlimited
+  Device flags   : Present Running
+  Interface flags: Point-To-Point SNMP-Traps
+  Link flags     : None
+  Last flapped   : Never
+---(more 88%)---
+                                        
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+  Input errors: 0, Output errors: 0
+
+Physical interface: gre, Enabled, Physical link is Up
+  Interface index: 10, SNMP ifIndex: 8
+  Type: GRE, Link-level type: GRE, MTU: Unlimited, Speed: Unlimited
+  Current address: Unspecified, Hardware address: Unspecified
+  Device flags   : Present Running
+  Interface flags: Point-To-Point SNMP-Traps
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+
+Physical interface: ipip, Enabled, Physical link is Up
+  Interface index: 11, SNMP ifIndex: 9
+  Type: IPIP, Link-level type: IP-over-IP, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+
+Physical interface: lo0, Enabled, Physical link is Up
+  Interface index: 6, SNMP ifIndex: 6
+  Type: Loopback, MTU: Unlimited
+  Device flags   : Present Running Loopback
+  Interface flags: SNMP-Traps
+  Link flags     : None
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 295925997
+    Output packets: 295925997
+  Input errors: 0, Output errors: 0
+
+  Logical interface lo0.16384 (Index 64) (SNMP ifIndex 21)
+    Flags: Encapsulation: Unspecified
+    Input packets : 0
+    Output packets: 0
+    Protocol inet, MTU: Unlimited
+      Flags: None
+      Addresses, Flags: Primary
+        Local: 127.0.0.1
+
+Physical interface: lsi, Enabled, Physical link is Up
+  Interface index: 4, SNMP ifIndex: 4
+  Type: Software-Pseudo, Link-level type: LSI, MTU: 1496, Speed: Unlimited
+  Device flags   : Present Running
+  Link flags     : None
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 0
+---(more 92%)---
+                                        
+    Output packets: 0
+  Input errors: 0, Output errors: 0
+
+Physical interface: me0, Administratively down, Physical link is Down
+  Interface index: 1, SNMP ifIndex: 33
+  Type: Ethernet, Link-level type: Ethernet, MTU: 1514
+  Device flags   : Present
+  Interface flags: Hardware-Down Down SNMP-Traps
+  Current address: 54:e0:32:f4:4a:c2, Hardware address: 54:e0:32:f4:4a:ff
+  Last flapped   : 2022-05-17 21:33:09 NZST (17w5d 00:06 ago)
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+  Input errors: 0, Output errors: 0
+
+  Logical interface me0.0 (Index 4) (SNMP ifIndex 34)
+    Flags: Device-Down SNMP-Traps Encapsulation: ENET2
+    Input packets : 0
+    Output packets: 0
+    Protocol eth-switch
+      Flags: Is-Primary
+
+Physical interface: mtun, Enabled, Physical link is Up
+  Interface index: 65, SNMP ifIndex: 12
+  Type: Multicast-GRE, Link-level type: GRE, MTU: Unlimited, Speed: Unlimited
+  Current address: Unspecified, Hardware address: Unspecified
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+
+Physical interface: pimd, Enabled, Physical link is Up
+  Interface index: 26, SNMP ifIndex: 11
+  Type: PIMD, Link-level type: PIM-Decapsulator, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+
+Physical interface: pime, Enabled, Physical link is Up
+  Interface index: 25, SNMP ifIndex: 10
+  Type: PIME, Link-level type: PIM-Encapsulator, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+
+Physical interface: tap, Enabled, Physical link is Up
+  Interface index: 12, SNMP ifIndex: 7
+  Type: Software-Pseudo, Link-level type: Interface-Specific, MTU: Unlimited, Speed: Unlimited
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps
+---(more 96%)---
+                                        
+  Link flags     : None
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+  Input errors: 0, Output errors: 0
+
+Physical interface: vlan, Enabled, Physical link is Up
+  Interface index: 136, SNMP ifIndex: 565
+  Type: VLAN, Link-level type: VLAN, MTU: 1518, Speed: 1000mbps
+  Device flags   : Present Running
+  Link type      : Full-Duplex
+  Link flags     : None
+  Current address: 54:e0:32:f4:4a:c1, Hardware address: 54:e0:32:f4:4a:c1
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 4315423
+    Output packets: 2887428
+  Input errors: 0, Output errors: 0
+
+  Logical interface vlan.1900 (Index 67) (SNMP ifIndex 601)
+    Flags: Up SNMP-Traps 0x4000 Encapsulation: ENET2
+    Input packets : 4315423
+    Output packets: 2887429
+    Protocol inet, MTU: 1500
+      Flags: Is-Primary
+      Addresses, Flags: Is-Default Is-Preferred Is-Primary
+        Destination: 10.130.160/24, Local: 10.130.160.47, Broadcast: 10.130.160.255
+
+Physical interface: vme, Enabled, Physical link is Down
+  Interface index: 66, SNMP ifIndex: 35
+  Type: Mgmt-VLAN, Link-level type: Mgmt-VLAN, MTU: 1518, Speed: 1000mbps
+  Device flags   : Present Running
+  Interface flags: Hardware-Down SNMP-Traps
+  Link type      : Full-Duplex
+  Link flags     : None
+  Current address: 54:e0:32:f4:4a:c2, Hardware address: 54:e0:32:f4:4a:c2
+  Last flapped   : Never
+  Statistics last cleared: Never
+    Input packets : 0
+    Output packets: 0
+  Input errors: 0, Output errors: 0
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> show ip
+                              ^
+'ip' is ambiguous.
+Possible completions:
+  ip-source-guard      Show IP source guard information
+  ipsec                Show IP Security information
+  ipv6                 Show IP version 6 information
+
+dsadmin@ena-sw-cen-01> show ip         route 
+
+inet.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 17w5d 00:05:45
+                    > to 10.130.160.1 via vlan.1900
+10.128.24.4/32     *[Static/5] 17w5d 00:05:45
+                    > to 10.130.160.1 via vlan.1900
+10.130.160.0/24    *[Direct/0] 17w5d 00:05:45
+                    > via vlan.1900
+10.130.160.47/32   *[Local/0] 17w5d 00:06:25
+                      Local via vlan.1900
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 
+
+{master:0}
+dsadmin@ena-sw-cen-01> 

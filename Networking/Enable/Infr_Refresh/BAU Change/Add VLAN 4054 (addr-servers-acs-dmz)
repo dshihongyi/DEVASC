@@ -1,0 +1,161 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-servers-acs-dmz vlan-id 4054
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-acs-dmz
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4054
+ vlan-name vlan-servers-acs-dmz
+ description vlan-servers-acs-dmz
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4054
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4054
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+
+set interfaces reth1 unit 4054 description "vlan-servers-acs-dmz"
+set interfaces reth1 unit 4054 vlan-id 4054
+set interfaces reth1 unit 4054 family inet address 10.130.54.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4054 passive
+set security zones security-zone zone-servers-acs-dmz interfaces reth1.4054 host-inbound-traffic system-services ping
+set security zones security-zone zone-servers-acs-dmz interfaces reth1.4054 host-inbound-traffic system-services dhcp
+set security address-book zone-servers-acs-dmz address addr-ENADMZHTTPLBP01 10.130.54.10/32
+set security address-book zone-servers-acs-dmz address addr-ENADMZDHCPP01 10.130.54.11/32
+set security address-book zone-servers-acs-dmz address addr-ENADMZDHCPP02 10.130.54.12/32
+set security address-book zone-servers-acs-dmz address-set addrs-servers-kea-dhcp address addr-ENADMZHTTPLBP01
+set security address-book zone-servers-acs-dmz address-set addrs-servers-kea-dhcp address addr-ENADMZDHCPP01
+set security address-book zone-servers-acs-dmz address-set addrs-servers-kea-dhcp address addr-ENADMZDHCPP02
+set security address-book zone-servers-acs-dmz attach zone zone-servers-acs-dmz
+
+set security address-book zone-itf address addr-itf-huawei-ont 10.232.0.0/14
+set security address-book zone-itf address addr-itf-nokia-ont  10.236.0.0/14
+
+set security nat source rule-set nat-servers-kea-to-internet from zone zone-servers-acs-dmz
+set security nat source rule-set nat-servers-kea-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-kea-to-internet rule rule-servers-kea-dhcp match source-address 10.130.54.0/24
+set security nat source rule-set nat-servers-kea-to-internet rule rule-servers-kea-dhcp then source-nat interface
+
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea match source-address addr-ssh-bastion-prod
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea match destination-address addrs-servers-kea-dhcp
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea match application junos-ssh
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea match application junos-icmp-all
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea then permit
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea then log session-init
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs-dmz policy policy-bastion-prod-servers-kea then log session-close
+
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match source-address addr-itf-huawei-ont
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match destination-address addr-ENADMZDHCPP01
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match destination-address addr-ENADMZDHCPP02
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match application junos-dhcp-relay
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match application junos-bootpc
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server match application junos-bootps
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server then permit
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server then log session-init
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-huawei-onts-dmz-dhcp-server then log session-close
+
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match source-address addr-itf-nokia-ont
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match destination-address addr-ENADMZDHCPP01
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match destination-address addr-ENADMZDHCPP01
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match application junos-dhcp-relay
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match application junos-bootpc
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server match application junos-bootps
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server then permit
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server then log session-init
+set security policies from-zone zone-itf to-zone zone-servers-acs-dmz policy policy-prod-nokia-onts-dmz-dhcp-server then log session-close
+
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server match source-address addr-enajump13
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server match destination-address addrs-servers-kea-dhcp
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server match application junos-ssh
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server match application junos-icmp-all
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server then permit
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server then log session-init
+set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-dmz-dhcp-server then log session-close
+
+
+delete set security policies from-zone zone-incognito-admin to-zone zone-servers-acs-dmz policy policy-incognito-jumphost-prod-servers-acs-dmz
+
+
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match source-address addrs-servers-kea-dhcp
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match destination-address any
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match application junos-http
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match application junos-https
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match application junos-dns-udp
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet match application junos-dns-tcp
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet then permit
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet then log session-init
+set security policies from-zone zone-servers-acs-dmz to-zone zone-internet policy policy-prod-servers-kea-dhcp-internet then log session-close
+
+
+
+
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match source-address addr-itf-huawei-onts
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match destination-address addr-enadmzhttplbt101
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match application junos-http
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match application junos-https
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match application junos-ssh
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb match application junos-telnet
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb then permit
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb then log session-init
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-dmz-http-lb then log session-close
+
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match source-address addrs-itf-huawei-ont-dhcp-relay
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match destination-address addrs-servers-test-itf-kea-dhcp
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match application junos-dhcp-server
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match application junos-bootpc
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match application junos-bootps
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server then permit
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server then log session-init
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server then log session-close
+
+
+
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb match source-address addr-itf-nokia-onts
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb match destination-address addr-enadmzhttplbt101
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb match application junos-http
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb then permit
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb then log session-init
+% set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-nokia-onts-dmz-http-lb then log session-
+
+
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match source-address addr-enajump13
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match destination-address addr-itf-servers-kea
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match application junos-ssh
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea match application junos-icmp-all
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then permit
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then log session-init
+% set security policies from-zone zone-incognito-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-incognito-jumphost-itf-servers-kea then log session-close
+
+
+
+
+
+
+set security policies from-zone vlan-servers-acs-dmz to-zone zone-servers-ad apply-groups allow-ad-dns-template
+set security policies from-zone vlan-servers-acs-dmz to-zone zone-servers-prod apply-groups allow-kms-template
+
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match source-address any
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match destination-address addr-enajump12
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application junos-ping
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application junos-ssh
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh match application app-mstsc
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then permit
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then log session-init
+set security policies from-zone zone-enable-lan to-zone vlan-servers-acs-dmz policy policy-enable-lan-accedian-admin-workstations-rdp-ssh then log session-close
+
+
+
+set security nat source rule-set nat-servers-accedian-to-internet from zone vlan-servers-acs-dmz
+set security nat source rule-set nat-servers-accedian-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-accedian-to-internet rule nat-servers-accedian-to-internet match source-address 10.130.61.10/32
+set security nat source rule-set nat-servers-accedian-to-internet rule nat-servers-accedian-to-internet then source-nat interface
+

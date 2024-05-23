@@ -1,0 +1,223 @@
+VLAN:
+
+  DELL Configure
+
+vlan 1900,3023-3024,3085,3199,4009-4013,4016,4046,4063,4085,4088
+
+vlan 3023 name "vlan-site-HWL-BMS"
+vlan 3024 name "vlan-site-HWL-CAM"
+
+vlan 3085 name "vlan-guest-stuff"
+vlan 3199 name "vlan-poc-nqa-npm"
+vlan 4009 name "vlan-netmgmt"
+vlan 4010 name "ena_4010_infra-esx-mgmt"
+vlan 4011 name "ena_4011_infra-san-mgmt"
+vlan 4012 name "vlan-infra-net-mgmt"
+vlan 4013 name "ena_4013_infra-ilo"
+vlan 4016 name "ena_4016_servers-mgmt"
+vlan 4046 name "ena_4046"
+
+interface Gi1/0/1
+description "enaesxh01 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/2
+description "enaesxh02 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/3
+description "enaesxh03 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/4
+description "enaesxh04 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/5
+description "enaesxh05 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/6
+description "enaesxh06 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+
+
+
+
+
+
+ Convert to JUNO Configure
+
+  --- VLAN Database --- 
+
+set vlans vlan-site-STA-CAM vlan-id 3084
+
+set vlans vlan-guest-stuff vlan-id 3085
+set vlans vlan-poc-nqa-npm vlan-id 3199
+set vlans ena_1900_vlan-netmgmt vlan-id 4009
+set vlans ena_4010_infra-esx-mgmt vlan-id 4010
+set vlans ena_4011_infra-san-mgmt vlan-id 4011
+set vlans vlan-infra-net-mgmt vlan-id 4012
+set vlans ena_4013_infra-ilo vlan-id 4013
+set vlans ena_4016_servers-mgmt vlan-id 4016
+set vlans ena-4046_aerohive-mgmt vlan-id 4046
+
+
+ --- TRUNK POORT ae0 --- 
+
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-site-STA-CAM
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_1900_vlan-netmgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4016_servers-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena-4046_aerohive-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+
+
+  --- Interface configure --- 
+
+(FPC 0)
+
+set interfaces ge-0/0/0 description "enaesxh01 mgmt - vmnic0"
+set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/1 description "enaesxh02 mgmt - vmnic0"
+set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/2 description "enaesxh03 mgmt - vmnic0"
+set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/3 description "enaesxh04 mgmt - vmnic0"
+set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/4 description "enaesxh05 mgmt - vmnic0"
+set interfaces ge-0/0/4 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/5 description "enaesxh06 mgmt - vmnic0"
+set interfaces ge-0/0/5 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/5 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/5 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+
+~~~
+
+set interfaces ge-0/0/6 description "enasanh mgmt - top controller"
+set interfaces ge-0/0/6 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-0/0/7 description "Spare"
+set interfaces ge-0/0/7 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-0/0/8 description "enaesxh01 idrac"
+set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/9 description "enaesxh02 idrac"
+set interfaces ge-0/0/9 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/10 description "enaesxh03 idrac"
+set interfaces ge-0/0/10 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/11 description "Spare"
+set interfaces ge-0/0/11 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+
+~~~~
+set interfaces ge-0/0/21 description "Smart PDU Mgmnt"
+set interfaces ge-0/0/21 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-0/0/21 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/21 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+
+(FPC 1)
+
+set interfaces ge-1/0/0 description "enaesxh01 mgmt - vmnic0"
+set interfaces ge-1/0/0 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/1 description "enaesxh02 mgmt - vmnic0"
+set interfaces ge-1/0/1 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/1 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/1 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/2 description "enaesxh03 mgmt - vmnic0"
+set interfaces ge-1/0/2 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/2 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/2 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/3 description "enaesxh04 mgmt - vmnic0"
+set interfaces ge-1/0/3 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/3 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/3 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/4 description "enaesxh05 mgmt - vmnic0"
+set interfaces ge-1/0/4 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/4 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/4 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/5 description "enaesxh06 mgmt - vmnic0"
+set interfaces ge-1/0/5 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/5 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/5 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+
+~~~
+
+set interfaces ge-1/0/6 description "enasanh mgmt - bottom controller"
+set interfaces ge-1/0/6 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+
+set interfaces ge-1/0/7 description "Spare"
+set interfaces ge-1/0/7 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/7 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/7 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+
+set interfaces ge-1/0/8 description "enaesxh01 idrac"
+set interfaces ge-1/0/8 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/8 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/8 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+set interfaces ge-1/0/9 description "enaesxh02 idrac"
+set interfaces ge-1/0/9 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/9 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/9 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+set interfaces ge-1/0/10 description "enaesxh03 idrac"
+set interfaces ge-1/0/10 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+set interfaces ge-1/0/11 description "Spare"
+set interfaces ge-1/0/11 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/11 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/11 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+
+~~
+set interfaces ge-1/0/21 description "Smart PDU Mgmnt"
+set interfaces ge-1/0/21 unit 0 family ethernet-switching interface-mode access
+delete interfaces ge-1/0/21 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/21 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+
+
+
+
+
+

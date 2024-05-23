@@ -1,0 +1,544 @@
+
+set system radius-server 10.128.24.4 port 1812 secret 1OPLW1e75WqOwRZILWN4 source-address 10.130.160.103 retry 3 timeout 300    
+set system authentication-order [radius password]
+
+
+set system radius-server 10.128.24.4 port 1812
+set system radius-server 10.128.24.4 secret "$9$cMpyvW4oZGjk698xN-wsaZUHfT69AIhyCteMX7Y25TznpOrlvX7dfTOIRhrl"
+set system radius-server 10.128.24.4 timeout 300
+set system radius-server 10.128.24.4 retry 3
+set system radius-server 10.128.24.4 source-address 10.130.160.203
+
+
+
+set groups phcd_user_script system scripts op allow-url-for-python
+set groups phcd_user_script system scripts language python
+set apply-groups phcd_user_script
+set system host-name ena-sw-cen-10
+set system root-authentication plain-test-password
+"KboFEnms8xeXWRQoCjhh"
+
+set system commit synchronize
+set system login retry-options tries-before-disconnect 5
+set system login retry-options backoff-threshold 1
+set system login retry-options backoff-factor 10
+set system login retry-options minimum-time 40
+
+set system login user pa-CraigReynolds full-name "Craig Reynolds"
+set system login user pa-CraigReynolds uid 2001
+set system login user pa-CraigReynolds class super-user
+set system login user pa-CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user pa-Peter.Fowler full-name "Peter Fowler (Admin)"
+set system login user pa-Peter.Fowler uid 2002
+set system login user pa-Peter.Fowler class super-user
+set system login user pa-Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user pa-mike.taylor full-name "Mike Taylor"
+set system login user pa-mike.taylor uid 2003
+set system login user pa-mike.taylor class super-user
+set system login user pa-mike.taylor authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"
+set system login user dsadmin full-name "Daniel Shi - CCL"
+set system login user dsadmin uid 2005
+set system login user dsadmin class super-user
+set system login user dsadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"
+
+set system services ssh root-login allow
+set system services ssh protocol-version v2
+set system auto-snapshot
+set system time-zone Pacific/Auckland
+
+set system syslog user * any emergency
+set system syslog host 10.130.37.16 any info
+set system syslog host 10.130.37.16 security any
+set system syslog host 10.130.37.16 firewall any
+set system syslog host 10.130.37.16 interactive-commands any
+set system syslog host 10.130.37.16 source-address 10.130.160.103
+set system syslog file interactive-commands interactive-commands any
+set system syslog file messages any notice
+set system syslog file messages authorization info
+
+set system ntp server 10.130.37.121
+set system ntp server 10.130.37.122
+set system ntp server 10.130.37.123
+
+set chassis redundancy graceful-switchover
+set chassis aggregated-devices ethernet device-count 2
+set chassis alarm management-ethernet link-down ignore
+
+
+~~~~~~~ Groups ~~~~~~~
+
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-BMS
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching vlan members vlan-building-security
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-mist-ap interfaces <*> native-vlan-id 4046
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-BMS
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-nda-lan
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching storm-control default
+
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-building-security
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-BMS
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-nda-lan
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching storm-control default
+
+
+~~~~~ Groups End ~~~~~
+
+
+
+
+<!-- ## Internface ge-0/0/0 to ge-0/0/7 = CO Cameras - VLAN 3074 ## -->
+
+set interfaces interface-range range-co-camera member-range ge-0/0/1 to ge-0/0/7
+set interfaces interface-range range-co-camera apply-groups group-interface-co-camera
+set interfaces interface-range range-co-camera description "CO Site Camera"
+
+
+<!-- ## Internface ge-0/0/8, ge-0/0/12 to ge-0/0/15, ge-0/0/17 to ge-0/0/31, ge-0/0/40 to ge-0/0/43 = Reserved ## -->
+
+set interfaces interface-range range-disabled-ports member-range ge-0/0/12 to ge-0/0/15
+set interfaces interface-range range-disabled-ports member-range mge-0/0/17 to mge-0/0/31
+set interfaces interface-range range-disabled-ports member-range ge-0/0/40 to ge-0/0/43
+set interfaces interface-range range-disabled-ports description "reserve disabled"
+set interfaces interface-range range-disabled-ports disable
+
+
+<!-- ## Internface ge-0/0/9 = CO UPS Management - VLAN XXXX -->
+set interfaces interface-range range-ups-mgmt member ge-0/0/9
+set interfaces interface-range range-ups-mgmt apply-groups group-interface-mgmt
+set interfaces interface-range range-ups-mgmt description "CO UPS Management"
+
+
+<!-- ## Internface ge-0/0/8, ge-0/0/10 = NQA/NPM - VLAN 4032 -->
+
+set interfaces interface-range range-nqa-npm member ge-0/0/8
+set interfaces interface-range range-nqa-npm member ge-0/0/10
+set interfaces interface-range range-nqa-npm apply-groups group-interface-nqa-npm
+set interfaces interface-range range-nqa-npm description "NQA/NPM-Layer2"
+
+
+<!-- ## Internface ge-0/0/11 = Building Security - VLAN 4074 -->
+
+set interfaces interface-range range-building-security member ge-0/0/11
+set interfaces interface-range range-building-security apply-groups group-interface-building-security
+set interfaces interface-range range-building-security description "Building Security"
+
+
+<!-- ## Internface ge-0/0/16 = ena-wi-cen-01 (Mist AP) - Trunk -->
+
+set interfaces interface-range range-co-wireless member ge-0/0/16
+set interfaces interface-range range-co-wireless apply-groups group-interface-mist-ap
+set interfaces interface-range range-co-wireless description "Mist Wireless"
+
+
+<!-- ## Internface ge-0/0/32 to ge-0/0/39 = BMS Network - Access -->
+
+set interfaces interface-range range-BMS-genset member ge-0/0/32
+set interfaces interface-range range-BMS-genset description "BMS Services - Generator"
+set interfaces interface-range range-BMS-genset apply-groups group-interface-BMS
+
+set interfaces interface-range range-BMS-reserve member ge-0/0/33
+set interfaces interface-range range-BMS-reserve member-range ge-0/0/38 to ge-0/0/39
+set interfaces interface-range range-BMS-reserve description "BMS Services - Reserved"
+set interfaces interface-range range-BMS-reserve apply-groups group-interface-BMS
+set interfaces interface-range range-BMS-reserve disable
+
+set interfaces interface-range range-BMS-rectifier member-range ge-0/0/34 to ge-0/0/35
+set interfaces interface-range range-BMS-rectifier description "BMS Services - Rectifier"
+set interfaces interface-range range-BMS-rectifier apply-groups group-interface-BMS
+
+set interfaces interface-range range-BMS-havc member-range ge-0/0/36 to ge-0/0/37
+set interfaces interface-range range-BMS-havc description "BMS Services - havc1/havc2"
+set interfaces interface-range range-BMS-havc apply-groups group-interface-BMS
+
+
+<!-- ## Internface ge-0/0/44 to ge-0/0/47 = City Wi-Fi - TBA -->
+
+
+    ~~~~~~~  Group  ~~~~~~~~
+
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-infra-ilo interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-vmotion
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-citywifi-mgmt-stub
+
+    ~~~~~  Group End  ~~~~~
+
+
+    ~~~~~ Interface ~~~~~
+
+set interfaces interface-range range-enaesxc-IPMI member-range ge-0/0/46 to ge-0/0/47
+set interfaces interface-range range-enaesxc-IPMI description "BMS Services - enaesxc01/enaesxc02"
+set interfaces interface-range range-enaesxc-IPMI apply-groups group-interface-infra-ilo
+
+
+set interfaces ge-0/0/44 description "enaesxc01 mgmt"
+set interfaces ge-0/0/44 ether-options 802.3ad ae1
+set interfaces ge-0/0/45 description "enaesxc02 mgmt"
+set interfaces ge-0/0/45 ether-options 802.3ad ae2
+
+set interfaces ae1 apply-groups group-interface-esx-mgmt
+set interfaces ae1 description "enaesxc01 mgmt"
+set interfaces ae2 apply-groups group-interface-esx-mgmt
+set interfaces ae2 description "enaesxc02 mgmt"
+
+    ~~~~~ Interface End ~~~~
+
+
+
+
+<!-- ## Internface xe-0/0/1 to xe-0/0/2 = Uplink to Core - Trunk -->
+
+set interfaces interface-range range-uplink member-range ge-0/1/0 to ge-0/1/1
+set interfaces interface-range range-uplink description "Uplink to Core Switch"
+set interfaces interface-range range-uplink apply-groups group-interface-uplink
+set interfaces interface-range range-uplink apply-groups group-interface-esx-mgmt
+
+
+set interfaces irb unit 1900 description "Network MGMT"
+set interfaces irb unit 1900 family inet address 10.130.160.103/24
+
+
+
+set snmp community readOnlyCacti authorization read-only
+set snmp trap-group trap-enanmsp03 version v2
+set snmp trap-group trap-enanmsp03 categories authentication
+set snmp trap-group trap-enanmsp03 categories chassis
+set snmp trap-group trap-enanmsp03 categories link
+set snmp trap-group trap-enanmsp03 categories remote-operations
+set snmp trap-group trap-enanmsp03 categories routing
+set snmp trap-group trap-enanmsp03 categories startup
+set snmp trap-group trap-enanmsp03 categories vrrp-events
+set snmp trap-group trap-enanmsp03 categories configuration
+set snmp trap-group trap-enanmsp03 categories services
+set snmp trap-group trap-enanmsp03 targets 10.130.160.40
+set snmp health-monitor
+
+set forwarding-options storm-control-profiles default all
+set forwarding-options storm-control-profiles sc all
+set routing-options static route 0.0.0.0/0 next-hop 10.130.160.1
+
+set protocols igmp-snooping vlan all
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+set protocols lldp-med interface all
+
+set poe interface range-co-wireless
+set poe interface range-co-camera
+
+
+
+<!-- set snmp v3 usm local-engine user BMS-Monitor authentication-sha authentication-password Mon1tor-BMS
+set snmp v3 usm local-engine user BMS-Monitor privacy-aes128 privacy-password Mon1tor-BMS
+set snmp v3 vacm security-to-group security-model usm security-name BMS-Monitor group BMS-MonitorGroup
+set snmp view BMS-MonitorView oid .1 include
+set snmp v3 vacm access group BMS-MonitorGroup default-context-prefix security-model usm security-level privacy read-view BMS-MonitorView
+ -->
+
+
+
+ <!-- ~~~ VLAN CAM VLAN need to change ~~~ -->
+
+set vlans vlan-site-HRB-BMS vlan-id 3013
+set vlans vlan-site-HWL-BMS vlan-id 3023
+set vlans vlan-site-PAP-BMS vlan-id 3033
+set vlans vlan-site-RIC-BMS vlan-id 3043
+set vlans vlan-site-RED-BMS vlan-id 3053
+set vlans vlan-site-ROL-BMS vlan-id 3063
+set vlans vlan-site-CEN-BMS vlan-id 3073
+set vlans vlan-site-STA-BMS vlan-id 3083
+set vlans vlan-site-KAI-BMS vlan-id 3093
+set vlans vlan-site-RNG-BMS vlan-id 3103
+set vlans vlan-site-BUR-BMS vlan-id 3113
+set vlans vlan-site-MTP-BMS vlan-id 3123
+
+set vlans vlan-site-CEN-CAM vlan-id 3074
+set vlans vlan-site-BUR-CAM vlan-id 3114
+set vlans vlan-site-HRB-CAM vlan-id 3014
+set vlans vlan-site-HWL-CAM vlan-id 3024
+set vlans vlan-site-KAI-CAM vlan-id 3094
+set vlans vlan-site-MTP-CAM vlan-id 3124
+set vlans vlan-site-PAP-CAM vlan-id 3034
+set vlans vlan-site-RED-CAM vlan-id 3054
+set vlans vlan-site-RIC-CAM vlan-id 3044
+set vlans vlan-site-RNG-CAM vlan-id 3104
+set vlans vlan-site-ROL-CAM vlan-id 3064
+set vlans vlan-site-STA-CAM vlan-id 3084
+
+ <!-- ~~~ Stantdard VLAN for BMS Switch ~~~ -->
+
+set vlans vlan-netmgmt vlan-id 1900
+set vlans vlan-netmgmt l3-interface irb.1900
+set vlans vlan-nqa-npm vlan-id 4032
+set vlans vlan-BMS-wifi vlan-id 4044
+set vlans vlan-wifi-mgmt vlan-id 4046
+set vlans vlan-building-security vlan-id 4074
+set vlans vlan-guest vlan-id 4085
+set vlans vlan-nda-lan vlan-id 4088
+
+
+ <!-- ~~~ Unique VLAN for CEN BMS Switch ~~~ -->
+
+set vlans vlan-infra-ilo vlan-id 4013
+set vlans vlan-infra-esx-mgmt vlan-id 4010
+set vlans vlan-infra-san-mgmt vlan-id 4011
+set vlans vlan-infra-vmotion vlan-id 4015
+set vlans vlan-servers-mgmt vlan-id 4016
+set vlans vlan-citywifi-mgmt-stub vlan-id 4075
+
+
+
+
+
+
+
+
+
+
+<!-- 
+# set protocols igmp-snooping vlan vlan-aerohive-mgmt
+# set protocols igmp-snooping vlan vlan-dcn-environmental
+# set protocols igmp-snooping vlan vlan-digitalsignage
+# set protocols igmp-snooping vlan vlan-enwr-l0-lan
+# set protocols igmp-snooping vlan vlan-enwr-l2-lan
+# set protocols igmp-snooping vlan vlan-guest
+# set protocols igmp-snooping vlan vlan-netmgmt
+# set protocols igmp-snooping vlan vlan-wireless-corporate
+# set poe interface all
+# set virtual-chassis preprovisioned
+# set virtual-chassis no-split-detection
+# set virtual-chassis member 0 role routing-engine
+# set virtual-chassis member 0 serial-number XP3721010055
+# set virtual-chassis member 1 role routing-engine
+# set virtual-chassis member 1 serial-number XP3721010013
+# set virtual-chassis member 2 role line-card
+# set virtual-chassis member 2 serial-number XP3721010008
+
+# set interfaces ge-0/0/22 description "NQA/NPM"
+# set interfaces ge-0/0/22 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-0/0/22 unit 0 family ethernet-switching vlan members vlan-nqa-npm
+
+# set interfaces ge-0/0/23 description ""Mist Wireless"
+# set interfaces ge-0/0/23 native-vlan-id 4046
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching interface-mode trunk
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-BMS
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-nqa-npm
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-guest
+# set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-vlan-nda-lan
+
+# set interfaces interface-range range-co-wireless member-range ge-0/0/22 to ge-0/0/23
+# set interfaces interface-range range-co-wireless description "Mist Wireless"
+# set interfaces interface-range range-co-wireless native-vlan-id 4046
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching interface-mode trunk
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-BMS
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-site-CEN-CAM
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-nqa-npm
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-guest
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-vlan-nda-lan
+# set interfaces interface-range range-co-wireless member-range mge-0/0/16 to mge-0/0/29
+# set interfaces interface-range range-co-wireless member-range mge-1/0/16 to mge-1/0/29
+# set interfaces interface-range range-co-wireless member-range mge-2/0/16 to mge-2/0/31
+# set interfaces interface-range range-co-wireless description "Mist Wireless"
+# set interfaces interface-range range-co-wireless native-vlan-id 4046
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching interface-mode trunk
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-lan
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-guest-stuff
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-digitalsignage
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-guest
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-null
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-nda-lan
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching vlan members vlan-enwr-l0-lan
+# set interfaces interface-range range-co-wireless unit 0 family ethernet-switching storm-control sc
+# set interfaces interface-range range-audiovisual member-range ge-0/0/32 to ge-0/0/47
+# set interfaces interface-range range-audiovisual member-range ge-1/0/32 to ge-1/0/47
+# set interfaces interface-range range-audiovisual member-range ge-0/0/8 to ge-0/0/15
+# set interfaces interface-range range-audiovisual member-range ge-1/0/8 to ge-1/0/15
+# set interfaces interface-range range-audiovisual member-range ge-2/0/32 to ge-2/0/47
+# set interfaces interface-range range-audiovisual member-range ge-2/0/8 to ge-2/0/15
+# set interfaces interface-range range-audiovisual description "Audio Visual Equipment"
+# set interfaces interface-range range-audiovisual unit 0 family ethernet-switching interface-mode access
+# set interfaces interface-range range-audiovisual unit 0 family ethernet-switching vlan members vlan-audiovisual
+# set interfaces interface-range range-iwikau-lan member-range ge-0/0/4 to ge-0/0/5
+# set interfaces interface-range range-iwikau-lan member-range ge-1/0/4 to ge-1/0/5
+# set interfaces interface-range range-iwikau-lan member-range ge-2/0/4 to ge-2/0/5
+# set interfaces interface-range range-iwikau-lan description "Iwikau LAN"
+# set interfaces interface-range range-iwikau-lan unit 0 family ethernet-switching interface-mode access
+# set interfaces interface-range range-iwikau-lan unit 0 family ethernet-switching vlan members vlan-enwr-l0-lan
+# set interfaces interface-range range-admin-workstation member-range ge-0/0/6 to ge-0/0/7
+# set interfaces interface-range range-admin-workstation member-range ge-1/0/6 to ge-1/0/7
+# set interfaces interface-range range-admin-workstation member-range ge-2/0/6 to ge-2/0/7
+# set interfaces interface-range range-admin-workstation description "Admin Workstations"
+# set interfaces interface-range range-admin-workstation unit 0 family ethernet-switching interface-mode access
+# set interfaces interface-range range-admin-workstation unit 0 family ethernet-switching vlan members vlan-workstation-admin
+# set interfaces interface-range range-itf-dcn2-firepower member-range mge-0/0/30 to mge-0/0/31
+# set interfaces interface-range range-itf-dcn2-firepower member-range mge-1/0/30 to mge-1/0/31
+# set interfaces interface-range range-itf-dcn2-firepower member-range mge-2/0/30 to mge-2/0/31
+# set interfaces interface-range range-itf-dcn2-firepower description "itf-dcn2-firepower Outside"
+# set interfaces interface-range range-itf-dcn2-firepower unit 0 family ethernet-switching interface-mode access
+# set interfaces interface-range range-itf-dcn2-firepower unit 0 family ethernet-switching vlan members vlan-itf-dcn2-cisco-firepower
+# set interfaces interface-range range-itf-dcn2-firepower unit 0 family ethernet-switching storm-control default
+# set interfaces ge-0/0/0 description "Protege Security System"
+# set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+# set interfaces ge-0/0/0 unit 0 family ethernet-switching storm-control default
+# set interfaces ge-0/0/1 description "NQA/NPN Probe"
+# set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+# set interfaces ge-0/0/2 description "NXWitness laptop on vlan-nx-witness"
+# set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members vlan-nx-witness
+# set interfaces ge-0/0/3 unit 0 description "NOC Wallboards - digitalsignage"
+# set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+# set interfaces xe-0/1/0 ether-options 802.3ad ae0
+# set interfaces ge-1/0/0 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-1/0/0 unit 0 family ethernet-switching vlan members vlan-rpa-app-dcn
+# set interfaces ge-1/0/0 unit 0 family ethernet-switching storm-control default
+# set interfaces ge-1/0/1 description "Eaton UPS"
+# set interfaces ge-1/0/1 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-1/0/1 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ge-1/0/2 description "DCN-ESLITFFWL002 ge-1/0/3"
+# set interfaces ge-1/0/2 unit 0 description "DCN uplink to ESLITFFWL002-2 Gi5/0/3"
+# set interfaces ge-1/0/2 unit 0 family ethernet-switching interface-mode trunk
+# set interfaces ge-1/0/2 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+# set interfaces ge-1/0/2 unit 0 family ethernet-switching storm-control sc
+# set interfaces ge-1/0/3 unit 0 description "NOC Wallboards - digitalsignage"
+# set interfaces ge-1/0/3 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-1/0/3 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+# set interfaces xe-1/1/0 ether-options 802.3ad ae0
+# set interfaces ge-2/0/0 description ntp2
+# set interfaces ge-2/0/0 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+# set interfaces ge-2/0/1 description "Guest WiFi Internet Connection"
+# set interfaces ge-2/0/1 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-2/0/1 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+# set interfaces ge-2/0/2 description test-srx
+# set interfaces ge-2/0/2 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-2/0/2 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ge-2/0/3 description test-srx
+# set interfaces ge-2/0/3 unit 0 family ethernet-switching interface-mode access
+# set interfaces ge-2/0/3 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ae0 description "Core uplink to ae10"
+# set interfaces ae0 aggregated-ether-options minimum-links 1
+# set interfaces ae0 aggregated-ether-options link-speed 10g
+# set interfaces ae0 aggregated-ether-options lacp active
+# set interfaces ae0 aggregated-ether-options lacp periodic fast
+# set interfaces ae0 unit 0 family ethernet-switching interface-mode trunk
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-lan
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-wireless-corporate
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-enwr-l0-lan
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-enwr-l2-lan
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-digitalsignage
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-workstation-admin
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-dcn-environmental
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-nda-lan
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-rpa-app-dcn
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-servers-dcnservices
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-internet-dmz
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-nx-witness
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-audiovisual
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-itf-dcn2-cisco-firepower
+# set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-itf-dcn-firewall
+# set interfaces ae0 unit 0 family ethernet-switching storm-control sc
+
+
+
+# set vlans vlan-aerohive-mgmt vlan-id 4046
+# set vlans vlan-audiovisual vlan-id 4076
+# set vlans vlan-dcn-environmental vlan-id 4063
+# set vlans vlan-dcn2-servers description "Servers for NextGen NMS EPNM"
+# set vlans vlan-dcn2-servers vlan-id 4064
+# set vlans vlan-digitalsignage vlan-id 4077
+# set vlans vlan-enwr-l0-lan vlan-id 4089
+# set vlans vlan-enwr-l2-lan vlan-id 4090
+# set vlans vlan-guest vlan-id 4085
+# set vlans vlan-guest-stuff vlan-id 3085
+# set vlans vlan-internet-dmz vlan-id 4083
+# set vlans vlan-itf-dcn-firewall vlan-id 3008
+# set vlans vlan-itf-dcn2-cisco-firepower vlan-id 3245
+# set vlans vlan-lan vlan-id 4081
+# set vlans vlan-nda-lan vlan-id 4088
+# set vlans vlan-netmgmt l3-interface irb.1900
+# set vlans vlan-null vlan-id 4086
+# set vlans vlan-nx-witness vlan-id 4068
+# set vlans vlan-poc-nqa-npm vlan-id 3199
+# set vlans vlan-rpa-app-dcn vlan-id 4072
+# set vlans vlan-servers-dcnservices vlan-id 4037
+# set vlans vlan-wireless-corporate vlan-id 4087
+# set vlans vlan-workstation-admin description "Admin Workstation VLAN"
+# set vlans vlan-workstation-admin vlan-id 4009
+
+{master:1}
+root@ena-sw-iwikau>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

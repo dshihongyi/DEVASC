@@ -1,0 +1,52 @@
+
+dsadmin@ena-fw-ric> show chassis hardware
+node0:
+--------------------------------------------------------------------------
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CZ2017AF0515      SRX345
+Routing Engine   REV 0x07 650-065042   CZ2017AF0515      RE-SRX345
+FPC 0                                                    FPC
+  PIC 0                                                  8xGE,8xGE SFP Base PIC
+    Xcvr 8                NON-JNPR     A0217022478       SFP-1000BASE-BX10-D
+    Xcvr 9                NON-JNPR     A0217023254       SFP-1000BASE-BX10-D
+    Xcvr 12               NON-JNPR     A0217022257       SFP-1000BASE-BX10-D
+Power Supply 0
+
+node1:
+--------------------------------------------------------------------------
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CZ1317AF0120      SRX345
+Routing Engine   REV 0x07 650-065042   CZ1317AF0120      RE-SRX345
+FPC 0                                                    FPC
+  PIC 0                                                  8xGE,8xGE SFP Base PIC
+    Xcvr 8                NON-JNPR     A0217023269       SFP-1000BASE-BX10-D
+    Xcvr 9                NON-JNPR     A0217022508       SFP-1000BASE-BX10-D
+    Xcvr 12               NON-JNPR     A0217023253       SFP-1000BASE-BX10-D
+Power Supply 0
+
+
+set chassis cluster redundancy-group 3 node 0 priority 100
+set chassis cluster redundancy-group 3 node 1 priority 50
+set chassis cluster redundancy-group 3 preempt
+set chassis cluster redundancy-group 3 interface-monitor reth3 weight 255
+
+
+set security zones security-zone zone-dcn interfaces reth3.4065 host-inbound-traffic system-services ping
+set security zones security-zone zone-dcn interfaces reth3.4065 host-inbound-traffic protocols ospf
+
+set interfaces ge-0/0/9 description "ESLRICLSW001 1/0/1 (patche)
+set interfaces ge-0/0/9 gigether-options redundant-parent reth3
+
+set interfaces ge-5/0/9 description "ESLRICLSW001 0/0/1 (patched)"
+set interfaces ge-5/0/9 gigether-options redundant-parent reth3
+
+set interfaces reth3 description ESLRICLSW001
+set interfaces reth3 vlan-tagging
+set interfaces reth3 redundant-ether-options redundancy-group 3
+set interfaces reth3 redundant-ether-options minimum-links 1
+set interfaces reth3 redundant-ether-options lacp active
+set interfaces reth3 unit 4065 vlan-id 4065
+set interfaces reth3 unit 4065 family inet address 10.128.1.158/30
+set protocols ospf area 0.0.0.0 interface reth3.4065 metric 5

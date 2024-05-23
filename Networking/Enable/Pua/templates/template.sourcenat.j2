@@ -1,0 +1,9 @@
+{% if delete_config %}
+delete security nat source rule-set nat-{{ name }}-to-internet
+{% else %}
+set security nat source rule-set nat-{{ name }}-to-internet from zone {{ zone }}
+set security nat source rule-set nat-{{ name }}-to-internet to zone zone-internet
+set security nat source rule-set nat-{{ name }}-to-internet rule rule-{{ name }} match source-address {{ prefix }}
+set security nat source rule-set nat-{{ name }}-to-internet rule rule-{{ name }} then source-nat interface
+
+{% endif %}

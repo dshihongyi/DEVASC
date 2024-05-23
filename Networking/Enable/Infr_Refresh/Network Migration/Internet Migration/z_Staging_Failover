@@ -1,0 +1,8 @@
+
+
+
+delete policy-options policy-statement policy-bgp-external-import term snap then as-path-prepend "131196 131196 131196 131196 131196 131196"
+delete policy-options policy-statement policy-bgp-external-export term snap then as-path-prepend "131196 131196 131196 131196 131196 131196"
+
+set policy-options policy-statement policy-bgp-external-import term snap then as-path-prepend "131196 131196 131196 131196 131196 131196"
+set policy-options policy-statement policy-bgp-external-export term snap then as-path-prepend "131196 131196 131196 131196 131196 131196"

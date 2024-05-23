@@ -1,0 +1,32 @@
+MD5 : 4fe83d4abbecdd47a5c2f391e4341105
+SHA1 : 215bacab335ba11a573b0ed6a84ef4825edd0866
+SHA256 : df9528c8c3f0e5af0fce1bedac8cd7b8191065baf9460a1bc45cbe8885ff456c
+SHA512 : 281e20c8c8edf2abba01dd721d16f1fa94c553d302849047514627c682d4174c626b2c9e9a602badfdfbbfc54b97854e3650881e1d4846a0d122df407d46fdfe
+
+How to log in to a member switch of the Virtual Chassis
+Switch>request session member <member-id>
+
+ls
+ls /dev/da*
+~~~ Insert USB Drive
+ls /dev/da*
+mkdir /var/tmp/usb
+mount_msdosfs /dev/da1s4 /var/tmp/usb
+
+~~ Optional ~~
+cp /var/tmp/usb/junos-arm-32-21.4R3-S4.18.tgz /var/tmp/
+ls /var/tmp
+umount /var/tmp/usb
+~~ Optional ~~
+
+
+cli
+file checksum sha-256 /var/tmp/usb/junos-arm-32-21.4R3-S4.18.tgz
+request system software add /var/tmp/usb/junos-arm-32-21.4R3-S4.18.tgz no-validate
+
+start shell user root 
+umount /var/tmp/usb
+
+cli
+request system reboot
+show version

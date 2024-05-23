@@ -1,0 +1,605 @@
+login as: harryoffer
+Pre-authentication banner message from server:
+| User Access Verification
+End of banner message from server
+Keyboard-interactive authentication prompts from server:
+End of keyboard-interactive prompts from server
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v23.0 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to harryoffer@192.133.31.17                            ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?                                             ¦
+    ¦   • SSH-browser     :  ?                                             ¦
+    ¦   • X11-forwarding  :  ?  (disabled or not supported by server)      ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2019, Cisco and/or its affiliates.
+All rights reserved.
+The copyrights to certain works contained in this software are
+owned by other third parties and used and distributed under their own
+licenses, such as open source.  This software is provided "as is," and unless
+otherwise stated, there is no warranty, express or implied, including but not
+limited to warranties of merchantability and fitness for a particular purpose.
+Certain components of this software are licensed under
+the GNU General Public License (GPL) version 2.0 or
+GNU General Public License (GPL) version 3.0  or the GNU
+Lesser General Public License (LGPL) Version 2.1 or
+Lesser General Public License (LGPL) Version 2.0.
+A copy of each such license is available at
+http://www.opensource.org/licenses/gpl-2.0.php and
+http://opensource.org/licenses/gpl-3.0.html and
+http://www.opensource.org/licenses/lgpl-2.1.php and
+http://www.gnu.org/licenses/old-licenses/library.txt.
+CHC_PERM_SW01# show running-config
+
+!Command: show running-config
+!Running configuration last done at: Mon Feb 13 11:43:44 2023
+!Time: Tue Mar 21 15:36:22 2023
+
+version 7.0(3)I7(6) Bios:version 07.59
+power redundancy-mode combined force
+
+hostname CHC_PERM_SW01
+policy-map type network-qos jumbo
+  class type network-qos class-default
+    mtu 9216
+vdc CHC_PERM_SW01 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature vrrp
+feature tacacs+
+cfs eth distribute
+feature interface-vlan
+feature lacp
+feature dhcp
+feature vpc
+feature lldp
+clock timezone NZST 12 0
+clock summer-time NZDT 5 sun sep 02:00 1 sun apr 03:00 60
+
+no password strength-check
+username admin password 5 $5$AudtCJ1.$NMEd2ScFjTIqfDHvZLot12.cAGYnB/VtQlQeZpc6ha6  role network-admin
+username chchswadmin password 5 $5$6oJHPXs2$Y0mtVFmeHLfRJBn/m/taSVejHNGa9QDW1Gv4FGuyQx9  role network-admin
+ip domain-lookup
+ip domain-name antnz.local
+ip name-server 192.133.31.89 192.133.31.82
+ip tacacs source-interface Vlan1
+tacacs-server host 192.168.50.225 key 7 "LpN1$Xu5Rk*qQiiu"
+aaa group server tacacs+ ISE
+    server 192.168.50.225
+spanning-tree mode mst
+system default switchport
+errdisable recovery interval 60
+errdisable recovery cause link-flap
+errdisable recovery cause bpduguard
+errdisable recovery cause security-violation
+errdisable recovery cause psecure-violation
+errdisable recovery cause vpc-peerlink
+system qos
+  service-policy type network-qos jumbo
+copp profile strict
+snmp-server user admin network-admin auth md5 0xb8d41bb8c6ad2f445a440d70df17ef49 priv 0xb8d41bb8c6ad2f445a440d70df17ef49 localizedkey
+snmp-server user chchswadmin network-admin auth md5 0xb8d41bb8c6ad2f445a440d70df17ef49 priv 0xb8d41bb8c6ad2f445a440d70df17ef49 localizedkey
+rmon event 1 description FATAL(1) owner PMON@FATAL
+rmon event 2 description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 description ERROR(3) owner PMON@ERROR
+rmon event 4 description WARNING(4) owner PMON@WARNING
+rmon event 5 description INFORMATION(5) owner PMON@INFO
+snmp-server community indaba7 group network-operator
+aaa authentication login default group ISE local
+aaa authorization config-commands default group ISE local
+aaa authorization config-commands console group ISE local
+aaa accounting default group ISE
+
+ip route 0.0.0.0/0 192.168.254.30
+ip route 192.133.31.128/25 192.168.254.30
+ip route 192.168.168.0/24 192.168.50.253
+vlan 1-2,4-6,10,15,20,30,200,620-621,650-652,666,999
+vlan 2
+  name CHCH_LAN
+vlan 4
+  name CHCHADSL
+vlan 5
+  name ANTNZ_Guest_Wireless
+vlan 6
+  name ANTNZ_Staff_Wireless
+vlan 15
+  name SERVERS|SAN
+vlan 30
+  name BACKUP
+vlan 620
+  name STARLINK
+vlan 621
+  name LAB-FW
+vlan 650
+  name GateSecurityIntercom
+vlan 651
+  name GateSecurityCamera
+vlan 652
+  name USAP_GATE
+vlan 999
+  name FakeSB-Network
+
+spanning-tree vlan 1-2,4-6,10,15,20,200,505-506,510,666,999 priority 24576
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context management
+hardware profile portmode 48x25G+4x100G
+
+vpc domain 48
+  peer-switch
+  role priority 10
+  peer-keepalive destination 169.254.255.4 source 169.254.255.3
+  delay restore 10
+  peer-gateway
+  auto-recovery
+  ipv6 nd synchronize
+  ip arp synchronize
+
+
+interface Vlan1
+  description Infrastructure VLAN
+  no shutdown
+  ip address 192.133.31.17/25
+  no ipv6 redirects
+  vrrp 1
+    priority 200
+    address 192.133.31.15
+    no shutdown
+
+interface Vlan2
+  description Workstation VLAN
+  no shutdown
+  no ip redirects
+  ip address 192.168.50.229/23
+  no ipv6 redirects
+  ip dhcp relay address 192.133.31.89
+  ip dhcp relay address 192.133.31.106
+  ip dhcp relay address 192.133.31.82
+  vrrp 2
+    priority 200
+    address 192.168.50.254
+    no shutdown
+
+interface Vlan10
+  no shutdown
+  no ip redirects
+  ip address 192.168.10.251/24
+  no ipv6 redirects
+  vrrp 10
+    priority 200
+    address 192.168.10.254
+    no shutdown
+
+interface Vlan15
+  description iSCSI_A VLAN
+  no shutdown
+  mtu 9216
+  no ip redirects
+  ip address 192.168.15.249/24
+  no ipv6 redirects
+  vrrp 15
+    priority 200
+    address 192.168.15.254
+    no shutdown
+
+interface Vlan20
+  description VMOTION VLAN
+  no shutdown
+  no ip redirects
+  ip address 192.168.20.251/24
+  no ipv6 redirects
+  vrrp 20
+    priority 200
+    address 192.168.20.254
+    no shutdown
+
+interface Vlan200
+  description Linknet to CHC FIREWALL
+  no shutdown
+  ip address 192.168.254.20/28
+  no ipv6 redirects
+  vrrp 201
+    priority 200
+    address 192.168.254.17
+    no shutdown
+
+interface port-channel3
+  description BACKUP
+  switchport access vlan 10
+  spanning-tree guard loop
+  mtu 9216
+  vpc 3
+
+interface port-channel6
+  description SWPERM2960x Uplink
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,620-621
+  spanning-tree guard loop
+  mtu 9216
+  vpc 6
+
+interface port-channel9
+  description VEEAMBR
+  switchport access vlan 15
+  mtu 9216
+  vpc 9
+
+interface port-channel10
+  description SPARE
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,5-6,200,666
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface port-channel11
+  description CHC Veeam Server NEW backup
+  switchport access vlan 30
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+  vpc 11
+
+interface port-channel12
+  description Apollo backup
+  switchport mode trunk
+  switchport trunk allowed vlan 10,30
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+  vpc 12
+
+interface port-channel48
+  description Uplink to CHC_OFFICE_SW1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,5-6,10,15,20,30,200,505,510,620-621,650-652,666,999
+  spanning-tree port type network
+  spanning-tree guard loop
+  mtu 9216
+  vpc 48
+
+interface port-channel50
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+  description CHCESX2Bp7-vmnic6-data
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,10,20,30,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/2
+  description CHCESX4Bp7-vmnic6-data
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,10,20,30,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/3
+  description BACKUP - CHCH VEEAM - Port-Channel 3
+  switchport access vlan 10
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+  channel-group 3 mode active
+
+interface Ethernet1/4
+  description CHCESX2Bp5-vmnic4-iSCSI-A
+  switchport access vlan 15
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/5
+  description CHCESX4Bp5-vmnic4-iSCSI-A
+  switchport access vlan 15
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/6
+  shutdown
+  mtu 9216
+
+interface Ethernet1/7
+  description CHCNODE2Bp1-lefhand
+  switchport access vlan 15
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/8
+  description CHCNODE4Bp1-lefthand
+  switchport access vlan 15
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/9
+  description CHCNODE6Bp1-lefthand
+  switchport access vlan 15
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/10
+  description WTCHGRD1p1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,5-6,200,651,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+
+interface Ethernet1/11
+  description CHC Veeam Server NEW iscsi1
+  switchport access vlan 15
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/12
+  description CHC Veeam Server NEW backup1
+  switchport access vlan 30
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+  channel-group 11 mode active
+
+interface Ethernet1/13
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/14
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/15
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/16
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/17
+  description CHCHPURE1-ct0e4
+  switchport access vlan 15
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  flowcontrol receive on
+  flowcontrol send on
+  mtu 9216
+
+interface Ethernet1/18
+  description CHCHPURE1-ct1e4
+  switchport access vlan 15
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  flowcontrol receive on
+  flowcontrol send on
+  mtu 9216
+
+interface Ethernet1/19
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/20
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/21
+  description CHCHESX1-iscsi1
+  switchport mode trunk
+  switchport trunk allowed vlan 15,20
+  spanning-tree port type edge
+  mtu 9216
+
+interface Ethernet1/22
+  description CHCHESX2-iscsi1
+  switchport mode trunk
+  switchport trunk allowed vlan 15,20
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/23
+  description CHCHESX3-iscsi1
+  switchport mode trunk
+  switchport trunk allowed vlan 15,20
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/24
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/25
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/26
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/27
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/28
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/29
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/30
+  description esx3-data1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,10,20,30,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/31
+  description esx1-data1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,10,20,30,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/32
+  description esx2-data1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,10,20,30,666,999
+  spanning-tree port type edge trunk
+  spanning-tree bpduguard enable
+  mtu 9216
+
+interface Ethernet1/33
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/34
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/35
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/36
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/37
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/38
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/39
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/40
+  description SPARE
+  shutdown
+  mtu 9216
+
+interface Ethernet1/41
+  description SPARE
+  shutdown
+
+interface Ethernet1/42
+  description SPARE
+  shutdown
+
+interface Ethernet1/43
+  description SPARE
+  shutdown
+
+interface Ethernet1/44
+  description AVH-GBSW1 Uplink Te1/0/1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,5-6,10,15,20,30,200,505-506,510,650,666,999
+
+interface Ethernet1/45
+  description SPARE
+  shutdown
+
+interface Ethernet1/46
+  description link to CHC_PERM_SW03 Gi1/0/26
+  switchport mode trunk
+  switchport trunk allowed vlan 1,10,620-621
+  mtu 9216
+  channel-group 6 mode active
+
+interface Ethernet1/47
+  description SPARE
+  shutdown
+
+interface Ethernet1/48
+  description Uplink to CHC_CORE_SW1 ETH 1/48
+  switchport mode trunk
+  switchport trunk allowed vlan 1-2,5-6,10,15,20,30,200,505,510,620-621,650-652,666,999
+  mtu 9216
+  channel-group 48
+
+interface Ethernet1/49
+  description Apollo backup
+  switchport mode trunk
+  switchport trunk allowed vlan 10,30
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  mtu 9216
+  channel-group 12 mode active
+
+interface Ethernet1/50
+  description Interchassis link to CH_PERM_SW1 Eth 1/50
+  switchport mode trunk
+  channel-group 50 mode active
+
+interface Ethernet1/51
+  description SPARE
+  shutdown
+
+interface Ethernet1/52
+  description Interchassis link to CH_PERM_SW1 Eth 1/52
+  switchport mode trunk
+  channel-group 50 mode active
+
+interface mgmt0
+  vrf member management
+  ip address 169.254.255.3/24
+cli alias name wr copy run start
+line console
+line vty
+boot nxos bootflash:/nxos.7.0.3.I7.6.bin
+no system default switchport shutdown
+
+logging monitor 6
+
+
+CHC_PERM_SW01#

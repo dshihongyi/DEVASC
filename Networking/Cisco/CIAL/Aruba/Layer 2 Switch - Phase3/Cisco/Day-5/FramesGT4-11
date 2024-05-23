@@ -1,0 +1,367 @@
+login as: cisco
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+FramesGT4-11>en
+Password:
+FramesGT4-11#ter len 0
+FramesGT4-11#sh run
+Building configuration...
+
+Current configuration : 8463 bytes
+!
+! Last configuration change at 14:24:27 NZST Thu Mar 21 2024 by cisco
+! NVRAM config last updated at 14:24:29 NZST Thu Mar 21 2024 by cisco
+!
+version 15.0
+no service pad
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname FramesGT4-11
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 16384
+enable secret 5 $1$uNAN$GZ9st1Sb3VV1qA4TDZvFh/
+enable password 7 091E5C1C175112040E1E
+!
+username cisco secret 5 $1$I2i/$.iMZIHQB6sfz9UomWDGq.1
+username cattools privilege 15 password 7 02110B52031156751F4F1A3C
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+!
+!
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+vtp mode transparent
+udld aggressive
+
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree portfast bpduguard default
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery interval 180
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 21
+ name Building_Management
+!
+vlan 50
+ name UPS_Management
+!
+vlan 111
+ name CCTV-camera
+!
+vlan 121
+ name BMS_ITP
+!
+vlan 224
+ name Clevertronics
+!
+vlan 240
+ name FIDS_240
+!
+vlan 888
+ name COREGWS_APs
+!
+vlan 999
+!
+vlan 1000
+ name Trunk
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description (GT4/1-01) CCTV Camera 525 192.168.234.90
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description (GT4/1-02) CCTV Camera 526 192.168.234.91
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description (GT4/1-08) in cabinet DB 2/13 - BMS Device PXC24 IP address 192.168.121.133 Name "104GHCDB213_BEPXC01"
+ switchport access vlan 121
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description (GT4/1-B10) CCTV Camera 586 (192.168.234.151)
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description (GT41-4)(1 x G3FCU 14 ) 192.168.21.215
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description (GT41-5)(3 x G3FCU 17 to 2021 ) 192.168.21.216 to 218
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ no cdp enable
+!
+interface FastEthernet0/7
+ description (GT41-6) (1 x G3FCU 2223) 192.168.21.219
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description (GT41-7)(1 x G3FCU 2425) 192.168.21.220
+ switchport access vlan 21
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description Em lighting controller Stand 22 192.168.224.24
+ switchport access vlan 224
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description (GT4/1-19) FIDS DDCXXX
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description (GT4/1-20) FIDS DDCXXX
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description (GT4/1-21) FIDS DDCXXX
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ description Fibre link to FramesGT41 G0/51
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport nonegotiate
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust dscp
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ description (GT4/1-22) FIDS DDCXXX
+ switchport access vlan 240
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.129 255.255.255.0
+ no ip route-cache
+ no ip mroute-cache
+!
+ip default-gateway 192.168.2.10
+ip http server
+ip http secure-server
+!
+!
+ip sla enable reaction-alerts
+logging facility local0
+logging host 192.168.2.253
+access-list 1 permit any
+snmp-server community crc981u RO
+snmp-server location Airside. Wall opposite Domestic Oversize belt
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps cluster
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps entity
+snmp-server enable traps hsrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+!
+!
+!
+no vstack
+banner motd ^C
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+^C
+!
+line con 0
+ exec-timeout 0 0
+line vty 0 4
+ password 7 01275709591E0D5D73
+ length 0
+line vty 5 15
+ password 7 073B70414C1C125745
+!
+ntp server 202.14.167.144
+ntp server 202.14.167.238
+end
+
+FramesGT4-11#

@@ -1,0 +1,487 @@
+login as: cisco
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+
+"*******************************************
+*                  {WARNING}               *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+*               is forbidden.              *
+*      Please Contact CIAL ITSUPPORT       *
+*             on Ext 37766                 *
+*******************************************"
+FramesSL21>en
+Password:
+% Access denied
+
+FramesSL21>en
+Password:
+FramesSL21#ter len 0
+FramesSL21#sh run
+Building configuration...
+
+Current configuration : 13140 bytes
+!
+! Last configuration change at 10:35:45 NZST Tue Mar 26 2024 by cisco
+! NVRAM config last updated at 10:35:46 NZST Tue Mar 26 2024 by cisco
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime show-timezone
+no service password-encryption
+service unsupported-transceiver
+!
+hostname FramesSL21
+!
+boot-start-marker
+boot-end-marker
+!
+enable password 7 06122F2A1F612F3F54
+!
+username cisco privilege 15 password 7 15342735243D0B3D79
+username cattools privilege 15 secret 5 $1$R0fC$jNs8o0bFsElGV/WKdOnGP.
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZST recurring last Sun Sep 2:00 1 Sun Apr 3:00
+system mtu routing 1500
+!
+!
+ip domain-list cial.co.nz
+ip domain-list net.cial.co.nz
+ip domain-name cial.co.nz
+ip name-server 202.14.167.144
+ip name-server 202.14.167.238
+login on-failure log
+login on-success log
+vtp domain cial
+vtp mode transparent
+udld aggressive
+
+!
+mls qos map policed-dscp  0 10 18 24 46 to 8
+mls qos map cos-dscp 0 8 16 24 32 46 48 56
+mls qos srr-queue input bandwidth 70 30
+mls qos srr-queue input threshold 1 80 90
+mls qos srr-queue input priority-queue 2 bandwidth 30
+mls qos srr-queue input cos-map queue 1 threshold 2 3
+mls qos srr-queue input cos-map queue 1 threshold 3 6 7
+mls qos srr-queue input cos-map queue 2 threshold 1 4
+mls qos srr-queue input dscp-map queue 1 threshold 2 24
+mls qos srr-queue input dscp-map queue 1 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue input dscp-map queue 1 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue input dscp-map queue 2 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue input dscp-map queue 2 threshold 3 46 47
+mls qos srr-queue output cos-map queue 1 threshold 3 4 5
+mls qos srr-queue output cos-map queue 2 threshold 1 2
+mls qos srr-queue output cos-map queue 2 threshold 2 3
+mls qos srr-queue output cos-map queue 2 threshold 3 6 7
+mls qos srr-queue output cos-map queue 3 threshold 3 0
+mls qos srr-queue output cos-map queue 4 threshold 3 1
+mls qos srr-queue output dscp-map queue 1 threshold 3 32 33 40 41 42 43 44 45
+mls qos srr-queue output dscp-map queue 1 threshold 3 46 47
+mls qos srr-queue output dscp-map queue 2 threshold 1 16 17 18 19 20 21 22 23
+mls qos srr-queue output dscp-map queue 2 threshold 1 26 27 28 29 30 31 34 35
+mls qos srr-queue output dscp-map queue 2 threshold 1 36 37 38 39
+mls qos srr-queue output dscp-map queue 2 threshold 2 24
+mls qos srr-queue output dscp-map queue 2 threshold 3 48 49 50 51 52 53 54 55
+mls qos srr-queue output dscp-map queue 2 threshold 3 56 57 58 59 60 61 62 63
+mls qos srr-queue output dscp-map queue 3 threshold 3 0 1 2 3 4 5 6 7
+mls qos srr-queue output dscp-map queue 4 threshold 1 8 9 11 13 15
+mls qos srr-queue output dscp-map queue 4 threshold 2 10 12 14
+mls qos queue-set output 1 threshold 1 100 100 50 200
+mls qos queue-set output 1 threshold 2 125 125 100 400
+mls qos queue-set output 1 threshold 3 100 100 100 400
+mls qos queue-set output 1 threshold 4 60 150 50 200
+mls qos queue-set output 1 buffers 15 25 40 20
+mls qos
+!
+crypto pki trustpoint TP-self-signed-1871237376
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1871237376
+ revocation-check none
+ rsakeypair TP-self-signed-1871237376
+!
+!
+crypto pki certificate chain TP-self-signed-1871237376
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 31383731 32333733 3736301E 170D3131 30333330 30313238
+  34395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 38373132
+  33373337 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281
+  8100BE00 A94911B1 AD25A7AD 0A09D44F 6A995112 DECA0E4F 052DCC45 7A3D48E0
+  5CE97E65 20BC29DF C60BA463 2CEBCA77 24EB89F1 463A8746 FFFF2D8D A24A5837
+  7B48D82F A0E37056 DA83F4B1 8E9B183D C14B310A 3D609006 B93C3392 96F97195
+  A05663CB C237CEA8 D0C98B3E 59F7E5AC DA42A2E5 427CCD39 A1264879 4F48B48E
+  3DF10203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603
+  551D2304 18301680 144F6EC5 C7F7CD42 25A15110 776C175D AA79C072 CF301D06
+  03551D0E 04160414 4F6EC5C7 F7CD4225 A1511077 6C175DAA 79C072CF 300D0609
+  2A864886 F70D0101 05050003 818100A8 88DBFD0B 1B5C563B 76129FF8 9FFAD3D9
+  EA8FE53A 6A7CB67F 7D3CB11C 1CA9E29F FD24D05D 6778A7CC E67061F8 5E041C01
+  93032CD6 6163C667 204F68CF 7C98E08A 45AADA58 20E9E306 C0817A18 C729FC42
+  72A5A276 665F4E2E 3BFE83F7 543D7CBB 10B62EAE 6BA05870 F2B70484 F19A1748
+  E1A7667C 954E65AF 00FDB78A 08B25F
+        quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+no errdisable detect cause gbic-invalid
+errdisable recovery cause udld
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name Network_Mgmt
+!
+vlan 8
+ name VoIP
+!
+vlan 23
+ name Carpark
+!
+vlan 50
+ name UPS_Management
+!
+vlan 103
+ name CCTV_LPR
+!
+vlan 111
+ name CCTV_camera
+!
+vlan 700
+ name RSPAN
+!
+vlan 888
+ name COREGWS_APs
+!
+vlan 999
+!
+vlan 1000
+ name Trunk
+!
+ip ssh version 2
+lldp run
+!
+class-map match-all AUTOQOS_VOIP_DATA_CLASS
+  match ip dscp ef
+class-map match-all AUTOQOS_DEFAULT_CLASS
+  match access-group name AUTOQOS-ACL-DEFAULT
+class-map match-all AUTOQOS_VOIP_SIGNAL_CLASS
+  match ip dscp cs3
+!
+policy-map AUTOQOS-SRND4-CISCOPHONE-POLICY
+ class AUTOQOS_VOIP_DATA_CLASS
+   set dscp ef
+  police 128000 8000 exceed-action policed-dscp-transmit
+ class AUTOQOS_VOIP_SIGNAL_CLASS
+   set dscp cs3
+  police 32000 8000 exceed-action policed-dscp-transmit
+ class AUTOQOS_DEFAULT_CLASS
+   set dscp default
+  police 10000000 8000 exceed-action policed-dscp-transmit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description Intercom SL2
+ switchport access vlan 8
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ srr-queue bandwidth share 1 30 35 5
+ srr-queue bandwidth shape 10 0 0 0
+ priority-queue out
+ mls qos trust device cisco-phone
+ mls qos trust cos
+ no lldp transmit
+ no lldp receive
+ service-policy input AUTOQOS-SRND4-CISCOPHONE-POLICY
+!
+interface FastEthernet0/2
+ description Intercom SL2 Upper
+ switchport access vlan 8
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ srr-queue bandwidth share 1 30 35 5
+ srr-queue bandwidth shape 10 0 0 0
+ priority-queue out
+ mls qos trust device cisco-phone
+ mls qos trust cos
+ no lldp transmit
+ no lldp receive
+ service-policy input AUTOQOS-SRND4-CISCOPHONE-POLICY
+!
+interface FastEthernet0/3
+ description SL2 Terminal
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description SL2 LPR Camera
+ switchport access vlan 23
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description CCTV Camera 611 (192.168.234.176)
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description UPS
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description CCTV 046 Service Lane 2 - 192.168.232.44
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description (SL2-11) CCTV Camera 51 (2 lens)
+ switchport access vlan 111
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description FREE
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ shutdown
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description Wap_097
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ no cdp enable
+ spanning-tree portfast
+ spanning-tree guard root
+!
+interface GigabitEthernet0/1
+ description TO-Coresw-G2/1/24
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 2,8,23,50,103,111,700,888
+ switchport mode trunk
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust cos
+ auto qos trust
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 1000
+ switchport trunk allowed vlan 999
+ shutdown
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust cos
+ auto qos trust
+ no lldp transmit
+ no lldp receive
+ spanning-tree link-type point-to-point
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan2
+ description Management Interface
+ ip address 192.168.2.108 255.255.255.0
+!
+ip default-gateway 192.168.2.10
+ip http server
+ip http authentication local
+ip http secure-server
+!
+!
+ip access-list extended AUTOQOS-ACL-DEFAULT
+ permit ip any any
+!
+logging facility local0
+logging host 202.14.167.171
+logging host 192.168.2.253
+snmp-server community crc981u RO
+snmp-server location Service Lane 2
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps entity
+snmp-server enable traps hsrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps port-security
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vlan-membership
+snmp-server host 192.168.2.253 version 2c crc981u
+!
+!
+!
+banner motd ^C
+"*******************************************
+*                  {WARNING}               *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+*               is forbidden.              *
+*      Please Contact CIAL ITSUPPORT       *
+*             on Ext 37766                 *
+*******************************************"
+^C
+!
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line vty 0 4
+ password 7 052D2A36015B6E1048
+ length 0
+line vty 5 15
+ password 7 096A62303912370B5A
+!
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+end
+
+FramesSL21#

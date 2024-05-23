@@ -1,0 +1,69 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-servers-sac vlan-id 4053
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-sac
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+@REM set protocols ospf area 0.0.0.0 interface reth1.4052 passive
+
+set interfaces reth1 unit 4052 description "vlan-servers-acs"
+set interfaces reth1 unit 4052 vlan-id 4052
+set interfaces reth1 unit 4052 family inet address 10.130.52.1/24
+set security zones security-zone zone-servers-acs interfaces reth1.4052 host-inbound-traffic system-services ping
+
+set security address-book zone-servers-acs address addr-enaacslbp101 10.130.52.10/32
+set security address-book zone-servers-acs address addr-enaacscwmp101 10.130.52.11/32
+set security address-book zone-servers-acs address addr-enaacscwmp102 10.130.52.12/32
+set security address-book zone-servers-acs address addr-acs_vip 10.130.52.20/32
+set security address-book zone-servers-acs address addr-enaacsacsp101 10.130.52.21/32
+set security address-book zone-servers-acs address addr-enaacsacsp102 10.130.52.22/32
+set security address-book zone-servers-acs address addr-enaacskfkp101 10.130.52.30/32
+set security address-book zone-servers-acs address addr-enaacskfkp102 10.130.52.31/32
+set security address-book zone-servers-acs address addr-enaacskfkp103 10.130.52.32/32
+set security address-book zone-servers-acs address addr-enaacssqlp101 10.130.52.40/32
+set security address-book zone-servers-acs address addr-enaacssqlp102 10.130.52.41/32
+set security address-book zone-servers-acs address addr-enaacssqlp103 10.130.52.42/32
+set security address-book zone-servers-acs address addr-cluster_mgmt 10.130.52.50/32
+set security address-book zone-servers-acs address addr-servers-acs 10.130.52.0/24
+set security address-book zone-servers-acs attach zone zone-servers-acs
+
+set security nat source rule-set nat-servers-acs-to-internet from zone zone-servers-acs
+set security nat source rule-set nat-servers-acs-to-internet to zone zone-internet
+set security nat source rule-set nat-servers-acs-to-internet rule rule-servers-acs match source-address 10.130.52.0/24
+set security nat source rule-set nat-servers-acs-to-internet rule rule-servers-acs then source-nat interface
+
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs apply-groups allow-nessus-scan-template
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs apply-groups allow-prtg-monitoring-template
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs match source-address addr-ssh-bastion-prod
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs match destination-address addr-servers-acs
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs match application junos-ssh
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs match application junos-icmp-all
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs then permit
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs then log session-init
+set security policies from-zone zone-servers-mgmt to-zone zone-servers-acs policy policy-bastion-prod-servers-acs then log session-close
+
+set security policies from-zone zone-servers-acs to-zone zone-internet apply-groups allow-ccl-manage-template
+set security policies from-zone zone-servers-acs to-zone zone-internet apply-groups allow-o365-smtp-relay
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out match source-address addr-servers-acs
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out match destination-address any
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out match application junos-http
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out match application junos-https
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out then permit
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out then log session-init
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-out then log session-close
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns match source-address addr-servers-acs
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns match destination-address any
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns match application junos-dns-udp
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns match application junos-dns-tcp
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns then permit
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns then log session-init
+set security policies from-zone zone-servers-acs to-zone zone-internet policy policy-servers-acs-dns then log session-close
+
+
+
+
+
+

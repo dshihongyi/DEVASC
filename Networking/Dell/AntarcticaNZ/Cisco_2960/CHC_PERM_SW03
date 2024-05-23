@@ -1,0 +1,584 @@
+login as: harryoffer
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v23.0 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to harryoffer@192.133.31.125                           ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?  (disabled or not supported by server)      ¦
+    ¦   • SSH-browser     :  ?  (disabled for Cisco compatibility)         ¦
+    ¦   • X11-forwarding  :  ?  (disabled for Cisco compatibility)         ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+CHC_PERM_SW03#show run
+CHC_PERM_SW03#show running-config
+Building configuration...
+
+Current configuration : 14101 bytes
+!
+! Last configuration change at 11:45:48 NZDT Mon Jan 23 2023 by MikeMahon
+! NVRAM config last updated at 12:00:53 NZDT Mon Jan 23 2023 by MikeMahon
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service sequence-numbers
+service unsupported-transceiver
+!
+hostname CHC_PERM_SW03
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$h5JT$xm4qbFgceVVnJmZeBTVUU1
+!
+username chchswadmin privilege 15 secret 5 $1$PaLF$OB3LdK.2YNqDNo4PsPELz1
+aaa new-model
+!
+!
+aaa group server tacacs+ ISE
+ server name CHCHISE
+!
+aaa authentication login default group ISE local
+aaa authentication enable default group ISE enable
+aaa authorization console
+aaa authorization config-commands
+aaa authorization exec default group ISE local if-authenticated
+aaa authorization commands 1 default group ISE local if-authenticated
+aaa authorization commands 15 default group ISE local if-authenticated
+aaa accounting exec default start-stop group ISE
+aaa accounting commands 1 default start-stop group ISE
+aaa accounting commands 15 default start-stop group ISE
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone NZST 12 0
+clock summer-time NZDT recurring last Sun Sep 2:00 1 Sun Apr 3:00
+switch 1 provision ws-c2960x-24td-l
+switch 2 provision ws-c2960x-24td-l
+!
+!
+!
+!
+!
+!
+ip domain-name antnz.local
+ip name-server 192.133.31.89
+ip name-server 192.133.31.82
+!
+!
+!
+!
+!
+mls qos
+!
+crypto pki trustpoint TP-self-signed-491491456
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-491491456
+ revocation-check none
+ rsakeypair TP-self-signed-491491456
+!
+!
+crypto pki certificate chain TP-self-signed-491491456
+ certificate self-signed 01
+  30820229 30820192 A0030201 02020101 300D0609 2A864886 F70D0101 05050030
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34393134 39313435 36301E17 0D313930 39323730 32313335
+  365A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3439 31343931
+  34353630 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100
+  BDF7B7F3 ACEBD882 94075F76 88D0A3C1 759BDC9D 1D94891E 46B95893 81BB9BD3
+  153B634C 3EB758DD 5865E036 160CDB9A 2AA4D1D2 25873D2C CBF40FDA D7A96E76
+  B5E1AC8E 961D05F2 B933CB0F 5BFBC70A 713F4B86 0323CE8C 232B6AAB BE65D29A
+  2C518AC7 D0AE3713 F6DDBED8 92769F6E F6459F49 8053C140 E1381EE3 D656A151
+  02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 0603551D
+  23041830 168014B1 2B90E136 1438F6AA 455ACA37 0CB47C91 52CA9530 1D060355
+  1D0E0416 0414B12B 90E13614 38F6AA45 5ACA370C B47C9152 CA95300D 06092A86
+  4886F70D 01010505 00038181 00798DDB 9DC3176E CAEE060D 7C93CC32 B913275E
+  827D244F 9945E8D9 8F1DCD88 A9B31A00 CF1C04F6 EB9F81A2 280613EC 81F85F0E
+  D43944C5 DA7736BD 80FDDF6E B6C80FC9 6352A58D E5F8284C 6E0B1154 8222A54C
+  6ADBC254 40794EE6 BBB3F282 5046A149 7F42F056 0A9CF2F4 21660A1F D6D1B829
+  D6F0D798 A120B7E6 5CC09815 4A
+        quit
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1,10,500,505-506,510 priority 61440
+auto qos srnd4
+no errdisable detect cause gbic-invalid
+errdisable recovery interval 60
+port-channel load-balance src-dst-mac
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+lldp run
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description Uplink to CHC_PERM_SW01 & SW02
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel2
+ description CHC Veeam Server NEW mgmt
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface Port-channel19
+ description Uplink to CHCH-PERM1 (Dell N1548 Stack)
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ description WG-N1-P2
+ switchport access vlan 500
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpdufilter enable
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/2
+ description WG-N1-P0
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpdufilter enable
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/3
+ description WG-N1-P3
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpdufilter enable
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/4
+ description CHC Veeam Server NEW idrac
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/5
+ description for on site PC
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/6
+ description CHC Veeam Server NEW mgmt1
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0/7
+ description CHCHVeeam-20-ilo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/8
+ description WG-N1-P7
+ switchport access vlan 621
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/9
+ description CHCHVBACKUP_ilo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/10
+ description CHCESX1A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/11
+ description CHCESX3A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/12
+ description CHCNODE1A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/13
+ description CHCNODE3A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/14
+ description CHCNODE6B_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/15
+ description SPARE
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+ description Riverbed_Mgmt
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/19
+ description WG-N1-P6
+ switchport access vlan 620
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/20
+ description Cisco1841 Outside 0/1
+ switchport access vlan 510
+ switchport mode access
+ switchport nonegotiate
+ speed 100
+ duplex full
+!
+interface GigabitEthernet1/0/21
+ description Primary  SB Data Link connection from Spark - CCT ID 120902630
+ switchport access vlan 510
+ switchport mode access
+ switchport nonegotiate
+ speed 100
+ duplex full
+ spanning-tree link-type point-to-point
+ spanning-tree cost 200000000
+!
+interface GigabitEthernet1/0/22
+ description RIVERBED_inLine
+ switchport access vlan 500
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/23
+ description CH19 - Uplink to CHCH-PERM1-1/0/22
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 19 mode active
+!
+interface GigabitEthernet1/0/24
+ description Uplink CHC_PERM_SW01
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/25
+ description Vocus Internet Uplink - standby port
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/26
+ description Uplink to CHC_PERM_SW01 Ethernet1/46
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet1/0/1
+!
+interface TenGigabitEthernet1/0/2
+ description Uplink CHC_PERM_SW01
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/0/1
+ description WG-N2-P2
+ switchport access vlan 500
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/2
+ description WG-N2-P0
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/3
+ description WG-N2-P3
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/4
+ description WG-N2-P3
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/5
+!
+interface GigabitEthernet2/0/6
+ description CHC Veeam Server NEW mgmt2
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ channel-group 2 mode active
+!
+interface GigabitEthernet2/0/7
+ description CHCHVeeam-20-iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/8
+ description WG-N2-P7
+ switchport access vlan 621
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/9
+!
+interface GigabitEthernet2/0/10
+ description CHCESX1A_iLo
+ switchport access vlan 10
+ switchport mode access
+ speed 100
+ duplex full
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/11
+ description CHCESX3A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/12
+ description CHCNODE1A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/13
+ description CHCNODE3A_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/14
+ description CHCESX2B_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/15
+ description CHCESX4B_iLo
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/16
+ description CHCNODE2B_iLo
+ switchport access vlan 10
+ switchport trunk allowed vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/17
+ description CHCNODE4B_iLo
+ switchport access vlan 10
+ switchport trunk allowed vlan 10
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/18
+ description Riverbed_Mgmt
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/19
+ description WG-N2-P6
+ switchport access vlan 620
+ switchport mode access
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/20
+ description SPARE
+ shutdown
+!
+interface GigabitEthernet2/0/21
+ description SPARE
+ shutdown
+!
+interface GigabitEthernet2/0/22
+ description RIVERBED_inLine
+ switchport access vlan 500
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/23
+ description CH19 - Uplink to CHCH-PERM1-2/0/22
+ switchport access vlan 505
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 19 mode active
+!
+interface GigabitEthernet2/0/24
+ description Uplink to CHC_PERM_SW02
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface GigabitEthernet2/0/25
+ description Vocus Internet Uplink
+ switchport access vlan 505
+ switchport mode access
+ switchport nonegotiate
+!
+interface GigabitEthernet2/0/26
+ description Uplink to CHC_PERM_SW02 Ethernet1/46
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet2/0/1
+!
+interface TenGigabitEthernet2/0/2
+ description Uplink CHC_PERM_SW02
+ switchport trunk allowed vlan 1,10,506,620,621
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 1 mode active
+!
+interface Vlan1
+ ip address 192.133.31.125 255.255.255.0
+!
+interface Vlan10
+ ip address 192.168.10.110 255.255.255.0
+!
+ip default-gateway 192.133.31.15
+!
+no ip http server
+no ip http secure-server
+ip tacacs source-interface Vlan1
+!
+!
+snmp-server community indaba7 RO
+snmp ifmib ifindex persist
+tacacs server CHCHISE
+ address ipv4 192.168.50.225
+ key 7 0816061A43324611451A5B0E133C31701C
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ transport input ssh
+line vty 5 15
+ transport input ssh
+!
+ntp server 192.168.254.14
+!
+end
+
+CHC_PERM_SW03#

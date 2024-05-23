@@ -1,0 +1,273 @@
+config firewall vip
+ edit "vip-192.168.91.100"
+  set extip 192.168.91.100
+  set mappedip 192.168.240.7
+  set extintf "VLAN91"
+  set portforward enable
+  set extport 80
+  set mappedport 80
+  set nat-source-vip enable
+ next
+ edit "vip-202.124.113.199"
+  set extip 202.124.113.199
+  set mappedip 172.20.1.43
+  set extintf "VLAN901"
+  set nat-source-vip enable
+ next
+ edit "vip-202.124.126.200"
+  set extip 202.124.126.200
+  set mappedip 172.20.1.61
+  set extintf "any"
+  set nat-source-vip enable
+ next
+ edit "vip-202.124.126.201"
+  set extip 202.124.126.201
+  set mappedip 172.20.1.62
+  set extintf "any"
+  set nat-source-vip enable
+ next
+ edit "vip-FIDSINT_NAT"
+  set extip 202.14.168.7
+  set mappedip 192.168.240.6
+  set extintf "any"
+ next
+ edit "vip-FIDSWEB_NAT"
+  set extip 202.14.168.12
+  set mappedip 192.168.240.7
+  set extintf "any"
+ next
+ edit "vip-Glidepath_GSS1_NAT"
+  set extip 57.236.210.58
+  set mappedip 192.168.24.101
+  set extintf "VLAN210"
+  set nat-source-vip enable
+ next
+ edit "vip-Glidepath_GSS2_NAT"
+  set extip 57.236.210.59
+  set mappedip 192.168.24.102
+  set extintf "VLAN210"
+  set nat-source-vip enable
+ next
+ edit "vip-Netscaler1_External_IP_http"
+  set extip 202.124.126.204
+  set mappedip 172.20.1.111
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-Netscaler1_External_IP_https"
+  set extip 202.124.126.204
+  set mappedip 172.20.1.111
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-Netscaler1_External_IP_smtp"
+  set extip 202.124.126.204
+  set mappedip 172.20.1.111
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 25
+  set mappedport 25
+ next
+ edit "vip-Netscaler_External_IP_http"
+  set extip 202.124.126.203
+  set mappedip 172.20.1.110
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-Netscaler_External_IP_https"
+  set extip 202.124.126.203
+  set mappedip 172.20.1.110
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-Netscaler_External_IP_tcp-9443"
+  set extip 202.124.126.203
+  set mappedip 172.20.1.110
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 9443
+  set mappedport 9443
+ next
+ edit "vip-SKYFii-Nat-3799_SKYFii-3799"
+  set extip 202.124.113.195
+  set mappedip 192.168.6.20
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol udp
+  set extport 3799
+  set mappedport 3799
+ next
+ edit "vip-TMG1_External_Hybrid_http"
+  set extip 202.124.113.203
+  set mappedip 172.20.1.42
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-TMG1_External_Hybrid_https"
+  set extip 202.124.113.203
+  set mappedip 172.20.1.42
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-TMG1_External_Hybrid_smtp"
+  set extip 202.124.113.203
+  set mappedip 172.20.1.42
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 25
+  set mappedport 25
+ next
+ edit "vip-TMG_External_FS_https"
+  set extip 202.124.113.202
+  set mappedip 172.20.1.41
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-TMG_External_IP_http"
+  set extip 202.124.113.196
+  set mappedip 172.20.1.25
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-TMG_External_IP_https"
+  set extip 202.124.113.196
+  set mappedip 172.20.1.25
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-corefw_OWA_194_http"
+  set extip 202.124.113.194
+  set mappedip 172.20.1.40
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-corefw_OWA_194_https"
+  set extip 202.124.113.194
+  set mappedip 172.20.1.40
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-corefw_mail_websites_195_ssh"
+  set extip 202.124.113.195
+  set mappedip 202.14.167.171
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 22
+  set mappedport 22
+ next
+ edit "vip-oServ-U-Gateway_Public"
+  set extip 202.124.113.198
+  set mappedip 172.20.1.12
+  set extintf "VLAN901"
+ next
+ edit "vip-obj_citrix-vpn-public-ip_http"
+  set extip 202.124.113.201
+  set mappedip 172.20.1.109
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 80
+  set mappedport 80
+ next
+ edit "vip-obj_citrix-vpn-public-ip_https"
+  set extip 202.124.113.201
+  set mappedip 172.20.1.109
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 443
+  set mappedport 443
+ next
+ edit "vip-202.124.126.205"
+  set extip 202.124.126.205
+  set mappedip 172.20.1.31
+  set extintf "VLAN901"
+  set nat-source-vip enable
+ next
+ edit "vip-EAS-Proxy-C2-External"
+  set extip 202.124.126.206
+  set mappedip 172.20.1.33
+  set extintf "VLAN210"
+ next
+ edit "vip-obj_citrix-vpn-public-ip_tcp-53"
+  set extip 202.124.113.201
+  set mappedip 172.20.1.100
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol tcp
+  set extport 53
+  set mappedport 53
+ next
+ edit "vip-obj_citrix-vpn-public-ip_udp-53"
+  set extip 202.124.113.201
+  set mappedip 172.20.1.100
+  set extintf "VLAN901"
+  set portforward enable
+  set protocol udp
+  set extport 53
+  set mappedport 53
+ next
+
+  <!-- # Warning: Public IP(202.124.126.206) confliction for below objects.
+ #  vip-EAS-Proxy-C2-External
+ edit "vip-202.124.126.206"
+  set extip 202.124.126.206
+  set mappedip 172.20.1.33
+  set extintf "VLAN901"
+  set nat-source-vip enable
+ next -->
+ <!-- # Warning: Public IP(202.124.126.205) confliction for below objects.
+ #  vip-202.124.126.205
+ edit "vip-EAS-Proxy-C1-External"
+  set extip 202.124.126.205
+  set mappedip 172.20.1.31
+  set extintf "VLAN210"
+ next -->
+
+~~~~~~ This VIP is Conflict with vip-obj_citrix-vpn-public-ip_udp-53 ~~~~~~~~~~~~~~~
+<!-- edit "vip-202.124.113.201"
+  set extip 202.124.113.201
+  set mappedip 172.20.1.105
+  set extintf "VLAN901"
+  set nat-source-vip enable
+ next -->
+
+
+end

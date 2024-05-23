@@ -1,0 +1,100 @@
+# ~~~ SAC to Altiplano (netconf) ~~~
+
+set applications application app-netconf-altiplano term 1 protocol tcp
+set applications application app-netconf-altiplano term 1 destination-port 6514
+set applications application app-netconf-altiplano term 2 protocol tcp
+set applications application app-netconf-altiplano term 2 destination-port 6515
+
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano match source-address addr-enaacslbt101
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano match destination-address addr-servers-altiplano
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano match application junos-https
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano match application app-netconf-altiplano
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano then permit
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano then log session-init
+set security policies from-zone zone-itf-servers-sac to-zone zone-itf-servers-altiplano policy policy-itf-servers-sac-altiplano then log session-close
+
+
+# ~~~ Altiplano to Nokia olts (webdav) ~~~
+
+set applications application app-nokia-webdav term 1 protocol tcp
+set applications application app-nokia-webdav term 1 destination-port 30080
+set applications application app-nokia-webdav term 2 protocol tcp
+set applications application app-nokia-webdav term 2 destination-port 30081
+
+set security address-book zone-itf address addr-ESLITFOLT101 172.16.43.10/32
+set security address-book zone-itf address addr-ESLITFOLT102 172.16.43.11/32
+set security address-book zone-itf address-set addrs-itf-nokia-olts address addr-ESLITFOLT101
+set security address-book zone-itf address-set addrs-itf-nokia-olts address addr-ESLITFOLT102
+
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav match source-address addr-servers-altiplano
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav match destination-address addrs-itf-nokia-olts
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav match application app-nokia-webdav
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav then permit
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav then log session-init
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-webdav then log session-close
+
+
+# ~~~  Nokia olts to Altiplano (ipfix) ~~~
+
+set applications application app-nokia-ipfix term 1 protocol tcp
+set applications application app-nokia-ipfix term 1 destination-port 30493
+set applications application app-nokia-ipfix term 2 protocol tcp
+set applications application app-nokia-ipfix term 2 destination-port 30494
+
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix match source-address addrs-itf-nokia-olts
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix match destination-address addr-servers-altiplano
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix match application app-nokia-ipfix 
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix then permit
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix then log session-init
+set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix then log session-close
+
+# set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix match source-address addrs-enaitffwl101
+# set security policies from-zone zone-itf to-zone zone-itf-servers-altiplano policy policy-nokia-olts-itf-servers-altiplano-ipfix match application junos-icmp-ping
+
+# ~~~  Nokia olts to Radius (Radius Service) ~~~
+
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius match source-address addrs-itf-nokia-olts
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius match destination-address addr-eslhrbsec002
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius match application junos-radius
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius match application junos-radacct
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius then permit
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius then log session-init
+set security policies from-zone zone-itf to-zone zone-dcn policy policy-itf-nokia-olts-radius then log session-close
+
+
+# ~~~  Nokia Jumphost to altiplano/nokia-olts (ssh) ~~~
+
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match source-address addr-enajump11
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match destination-address addr-servers-altiplano
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-ssh
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-icmp-all
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano match application junos-https
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then permit
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then log session-init
+set security policies from-zone zone-nokia-admin to-zone zone-itf-servers-altiplano policy policy-nokia-jumphost-itf-servers-altiplano then log session-close
+
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts match source-address addr-enajump11
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts match destination-address addrs-itf-nokia-olts
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts match application junos-ssh
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts then permit
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts then log session-init
+set security policies from-zone zone-nokia-admin to-zone zone-itf policy policy-nokia-jumphost-itf-nokia-olts then log session-close
+
+
+# ~~~  Altiplano to nokia-olts (netconf/cli/shell) ~~~
+
+set applications application app-nokia-netconf protocol tcp
+set applications application app-nokia-netconf destination-port 848-831
+set applications application app-nokia-cli protocol tcp
+set applications application app-nokia-cli destination-port 940-922
+
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli match source-address addr-servers-altiplano
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli match destination-address addrs-itf-nokia-olts
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli match application app-nokia-netconf
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli match application app-nokia-cli
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli then permit
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli then log session-init
+set security policies from-zone zone-itf-servers-altiplano to-zone zone-itf policy policy-itf-servers-altiplano-nokia-olts-netconf-cli then log session-close
+
+
+# commit confirm 5 comment "T20230419.0142 - Pua-Project Nokia ITF Firewall rules - Daniel Shi"

@@ -1,0 +1,221 @@
+
+@REM --- System Configure ---
+ 
+set system host-name ena-fw-ric
+set system host-name ena-fw-ric
+set system time-zone Pacific/Auckland
+set system name-server 10.130.22.21
+set system name-server 10.130.22.22
+
+
+@REM --- Group Node Configure ---
+
+set groups node1 interfaces fxp0 unit 0 family inet filter input filter-mgmt
+set groups node1 interfaces fxp0 unit 0 family inet address 10.130.12.3/24
+set groups node0 interfaces fxp0 unit 0 family inet filter input filter-mgmt
+set groups node0 interfaces fxp0 unit 0 family inet address 10.130.12.2/24
+set apply-groups "${node}"
+
+@REM --- Fabric Interface Configure ---
+
+   
+
+
+@REM --- Chassis Configure ---
+
+set chassis cluster reth-count 8
+set chassis alarm management-ethernet link-down ignore
+set chassis alarm ethernet link-down yellow
+set chassis cluster redundancy-group 0 node 0 priority 100
+set chassis cluster redundancy-group 0 node 1 priority 50
+set chassis cluster redundancy-group 1 node 0 priority 100
+set chassis cluster redundancy-group 1 node 1 priority 50g
+set chassis cluster redundancy-group 1 preempt
+set chassis cluster redundancy-group 1 interface-monitor reth1 weight 255
+set chassis cluster redundancy-group 2 node 0 priority 100
+set chassis cluster redundancy-group 2 node 1 priority 50
+set chassis cluster redundancy-group 2 preempt
+set chassis cluster redundancy-group 2 interface-monitor reth2 weight 255
+deactivate chassis cluster redundancy-group 2
+set chassis cluster redundancy-group 3 node 0 priority 100
+set chassis cluster redundancy-group 3 node 1 priority 50
+set chassis cluster redundancy-group 3 preempt
+set chassis cluster redundancy-group 3 interface-monitor reth3 weight 255
+set chassis cluster redundancy-group 4 node 0 priority 100
+set chassis cluster redundancy-group 4 node 1 priority 50
+set chassis cluster redundancy-group 4 preempt
+set chassis cluster redundancy-group 4 interface-monitor reth4 weight 255
+
+
+
+@REM --- Redundant interface Configure ---
+
+set interfaces ge-0/0/8 description "esl-sw-core ge-1/0/12"
+set interfaces ge-0/0/8 gigether-options no-auto-negotiation
+set interfaces ge-0/0/8 gigether-options redundant-parent reth1
+set interfaces ge-5/0/8 description "esl-sw-core ge-1/0/13"
+set interfaces ge-5/0/8 gigether-options no-auto-negotiation
+set interfaces ge-5/0/8 gigether-options redundant-parent reth1
+
+set interfaces ge-0/0/12 description "esl-sw-core ge-0/0/11 via C01 f19"
+set interfaces ge-0/0/12 gigether-options no-auto-negotiation
+set interfaces ge-0/0/12 gigether-options redundant-parent reth1
+set interfaces ge-5/0/12 description "esl-sw-core ge-0/0/12 via C01 f20"
+set interfaces ge-5/0/12 gigether-options no-auto-negotiation
+set interfaces ge-5/0/12 gigether-options redundant-parent reth1
+
+@REM --- Reth1 Configuration ---
+set interfaces reth1 description "esl-sw-core ae8"
+set interfaces reth1 vlan-tagging
+set interfaces reth1 redundant-ether-options redundancy-group 1
+set interfaces reth1 redundant-ether-options minimum-links 1
+set interfaces reth1 redundant-ether-options lacp active
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@REM dsadmin@ena-fw-ric> show chassis cluster status
+Monitor Failure codes:
+    CS  Cold Sync monitoring        FL  Fabric Connection monitoring
+    GR  GRES monitoring             HW  Hardware monitoring
+    IF  Interface monitoring        IP  IP monitoring
+    LB  Loopback monitoring         MB  Mbuf monitoring
+    NH  Nexthop monitoring          NP  NPC monitoring
+    SP  SPU monitoring              SM  Schedule monitoring
+    CF  Config Sync monitoring      RE  Relinquish monitoring
+    IS  IRQ storm
+
+Cluster ID: 1
+Node   Priority Status               Preempt Manual   Monitor-failures
+
+Redundancy group: 0 , Failover count: 1
+node0  255      primary              no      yes      None
+node1  50       secondary            no      yes      None
+
+Redundancy group: 1 , Failover count: 9
+node0  100      primary              yes     no       None
+node1  50       secondary            yes     no       None
+
+Redundancy group: 4 , Failover count: 2
+node0  0        secondary            yes     no       IF
+node1  0        primary              yes     no       IF
+
+
+
+@REM dsadmin@ena-fw-ric> show chassis cluster interfaces
+Control link status: Up
+
+Control interfaces:
+    Index   Interface   Monitored-Status   Internal-SA   Security
+    0       fxp1        Up                 Disabled      Disabled
+
+Fabric link status: Up
+
+Fabric interfaces:
+    Name    Child-interface    Status                    Security
+                               (Physical/Monitored)
+    fab0    ge-0/0/3           Up   / Up                 Disabled
+    fab0
+    fab1    ge-5/0/3           Up   / Up                 Disabled
+    fab1
+
+Redundant-ethernet Information:
+    Name         Status      Redundancy-group
+    reth0        Down        Not configured
+    reth1        Up          1
+    reth2        Down        Not configured
+    reth3        Down        Not configured
+    reth4        Down        4
+    reth5        Down        Not configured
+    reth6        Down        Not configured
+    reth7        Down        Not configured
+
+Redundant-pseudo-interface Information:
+    Name         Status      Redundancy-group
+    lo0          Up          0
+
+Interface Monitoring:
+    Interface         Weight    Status                    Redundancy-group
+                                (Physical/Monitored)
+    reth1             255       Up  /  Up                 1
+    reth4             255       Down  /  Down             4
+
+
+
+@REM dsadmin@ena-fw-ric> show chassis cluster control-plane statistics
+Control link statistics:
+    Control link 0:
+        Heartbeat packets sent: 13096935
+        Heartbeat packets received: 13096597
+        Heartbeat packet errors: 0
+Fabric link statistics:
+    Child link 0
+        Probes sent: 26221218
+        Probes received: 26220808
+    Child link 1
+        Probes sent: 0
+        Probes received: 0
+
+
+@REM dsadmin@ena-fw-ric> show chassis cluster data-plane interfaces
+fab0:
+
+    Name               Status
+                       (Physical/Monitored)
+    ge-0/0/3           Up   / Up
+fab1:
+
+    Name               Status
+                       (Physical/Monitored)
+    ge-5/0/3           Up   / Up
+
+
+
+@REM dsadmin@ena-fw-ric> show chassis cluster ethernet-switching status
+Monitor Failure codes:
+    CS  Cold Sync monitoring        FL  Fabric Connection monitoring
+    GR  GRES monitoring             HW  Hardware monitoring
+    IF  Interface monitoring        IP  IP monitoring
+    LB  Loopback monitoring         MB  Mbuf monitoring
+    NH  Nexthop monitoring          NP  NPC monitoring
+    SP  SPU monitoring              SM  Schedule monitoring
+    CF  Config Sync monitoring      RE  Relinquish monitoring
+    IS  IRQ storm
+
+Cluster ID: 1
+Node   Priority Status               Preempt Manual   Monitor-failures
+
+Redundancy group: 0 , Failover count: 1
+node0  255      primary              no      yes      None
+node1  50       secondary            no      yes      None
+
+Redundancy group: 1 , Failover count: 9
+node0  100      primary              yes     no       None
+node1  50       secondary            yes     no       None
+
+Redundancy group: 4 , Failover count: 2
+node0  0        secondary            yes     no       IF
+node1  0        primary              yes     no       IF
+
+Ethernet switching status:
+    Probe state is DOWN. Both nodes are in separate ethernet switching domain(s).
+
+
+
+
+
+
+
+
+
+
+
+
+user@host> request chassis cluster failover redundancy-group 0 node 1             
+{primary:node0}
+user@host> request chassis cluster failover redundancy-group 0 node 1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Initiated manual failover for redundancy group 0

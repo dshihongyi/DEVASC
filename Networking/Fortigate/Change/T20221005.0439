@@ -1,0 +1,58 @@
+Create new firewall address objects
+Add these objects to existing policies.
+
+config vdom
+    edit LPC
+        config firewall address
+            edit "LPC_Scribbler_192.168.1.98"
+                set uuid 75433e82-4ab1-51ed-6894-f4c731dc3410
+                set comment "T20221005.0439"
+                set subnet 192.168.1.98 255.255.255.255
+            next
+            edit "receiver.samservice.datacom.co.nz"
+                set uuid 57554cf8-4b4c-51ed-495e-37f31032f3a4
+                set type fqdn
+                set comment "T20221005.0439"
+                set fqdn "receiver.samservice.datacom.co.nz"
+            next
+        end
+        config firewall policy
+            edit 7
+                set srcaddr "LPC_Scribbler2012_192.168.1.65" "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 12
+                set dstaddr "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 20
+                set dstaddr "LPC_Scribbler2012_192.168.1.65" "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 252
+                set dstaddr "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 34
+                set srcaddr "LPC_CPRCopierL2_192.168.33.210" "LPC_CPRCopierL3_192.168.33.208" "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 108
+                set srcaddr "LPC_Scribbler2012_192.168.1.65" "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 251
+                set srcaddr "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set dstaddr "receiver.samservice.datacom.co.nz" "samportal.datacom.co.nz" "samreceiver.datacom.co.nz"
+                set comments "T20221005.0439"
+            next
+            edit 39
+                set srcaddr "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+            edit 41
+                set srcaddr "LPC_Scribbler_192.168.1.91" "LPC_Scribbler_192.168.1.98"
+                set comments "T20221005.0439"
+            next
+        end
+    end

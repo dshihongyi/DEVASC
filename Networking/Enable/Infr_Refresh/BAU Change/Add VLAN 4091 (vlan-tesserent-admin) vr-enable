@@ -1,0 +1,59 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-tesserent-admin vlan-id 4091
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-tesserent-admin
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4091
+ vlan-name vlan-tesserent-admin
+ description ena_4091_tesserent-admin
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4091
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4091
+
+
+
+
+
+
+# // ~~~~~ Core Switch ~~~~~~~
+
+set interfaces irb unit 4091 description "Tesserent Admin"
+set interfaces irb unit 4091 family inet address 10.130.91.1/24
+set routing-instances vr-enable-lan protocols ospf area 0.0.0.0 interface irb.4091 passive
+set routing-instances vr-enable-lan forwarding-options dhcp-relay group ESL-DHCP interface irb.4091
+set routing-instances vr-enable-lan interface irb.4091
+set vlans vlan-tesserent-admin vlan-id 4091
+set vlans vlan-tesserent-admin l3-interface irb.4091
+
+set interfaces ae10 unit 0 family ethernet-switching vlan members vlan-tesserent-admin
+
+
+# ~~~~~~~~ Iwikau Switch ~~~~~~~~
+
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-tesserent-admin
+set protocols igmp-snooping vlan vlan-tesserent-admin
+set vlans vlan-tesserent-admin vlan-id 4091
+
+
+
+# ~~~~~ Firewall RIC ~~~~~
+
+
+set security address-book zone-enable-lan address addr-tesserent-admin 10.130.91.30/32
+
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk match source-address addr-tesserent-admin
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk match destination-address addr-korimako
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk match application junos-ssh
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk then permit
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk then log session-init
+set security policies from-zone zone-enable-lan to-zone zone-servers-dcnservices policy policy-enable-tesserent-admin-splunk then log session-close

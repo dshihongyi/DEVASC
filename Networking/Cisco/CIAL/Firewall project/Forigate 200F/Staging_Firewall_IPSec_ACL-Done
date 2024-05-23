@@ -1,0 +1,29 @@
+~~~~ Convert Outside_map_002 to VPN-CIAL-ACL ~~~~
+
+config vpn ipsec phase1-interface
+ edit "VPN-CIAL-ACL"
+  set type static
+  set peertype any
+  set remote-gw 185.64.224.26
+  set authmethod psk
+  # Warning: please reset the pre-shared key.
+  set psksecret "123456"
+  set dhgrp 2
+  set proposal aes256-sha1 aes192-sha1 des-sha1 aes256-sha256 3des-sha1 aes128-sha1
+  set interface x3
+  set keylife 28800
+ next
+
+
+config vpn ipsec phase2-interface
+ edit "VM-DU-CHC"
+  set phase1name "VPN-CIAL-ACL"
+  set dhgrp 2
+  set encapsulation tunnel-mode
+  set keylife-type seconds
+  set keylifeseconds 1800
+  set proposal aes128-md5 aes128-sha1 aes192-md5 aes192-sha1 aes256-md5 aes256-sha1
+  set dst-addr-type subnet
+  set dst-subnet 10.243.1.71 255.255.255.255
+  set src-addr-type subnet
+  set src-subnet 192.168.240.0 255.255.252.0

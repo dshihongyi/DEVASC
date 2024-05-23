@@ -1,0 +1,90 @@
+// ~~~~~ FramesMSCPL4CR1 ~~~~~
+
+vlan 225
+ name LAN_TEST
+ 
+interface GigabitEthernet0/9
+switchport access vlan 225
+
+// ~~~~~ FramesMSCPL4CR2# ~~~~~
+
+vlan 225
+ name LAN_TEST
+
+interface GigabitEthernet0/9
+switchport access vlan 225
+
+// ~~~~~ FramesMSCPL41 ~~~~~
+
+vlan 225
+ name LAN_TEST
+
+interface GigabitEthernet0/49
+ switchport trunk allowed vlan add 225
+
+
+// ~~~~ CoreS-Stack-A_B ~~~~~
+
+vlan 225
+ name LAN_TEST
+
+vlan 226
+ name FWEXT_INT_TEST
+
+interface GigabitEthernet1/1/33
+ switchport trunk allowed vlan add 225
+
+interface Port-channel17
+ switchport trunk allowed vlan add 226
+
+interface Port-channel18
+ switchport trunk allowed vlan add 226
+
+interface Port-channel111
+ switchport trunk allowed vlan add 225,226
+ !
+interface Port-channel112
+ switchport trunk allowed vlan add 225,226
+
+
+
+~~~~ 2 Degree Ports ~~~~~
+
+default interface GigabitEthernet1/2/41
+ interface GigabitEthernet1/2/41
+ description BGP Primary 2D Router (SNAP-CHC-AIRPRT-SWC01 Gi0/2)
+ switchport
+ switchport mode access
+ switchport access vlan 600
+ switchport nonegotiate
+ mtu 9216
+ no cdp enable
+ spanning-tree portfast edge
+ spanning-tree bpduguard disable
+end
+
+!
+default interface GigabitEthernet2/7/41
+interface GigabitEthernet2/7/41
+ description BGP Secondary 2D Router (SNAP-CHC-EHN-SWC01)
+ switchport
+ switchport mode access
+ switchport access vlan 601
+ switchport nonegotiate
+ mtu 9216
+ no cdp enable
+ spanning-tree portfast edge
+ spanning-tree bpduguard disable
+end
+
+
+
+
+~~~~~ Firewall Failover - Check HA ~~~~~
+get system ha status
+
+
+~~~~~ Firewall Failover - Slave FW ~~~~~
+execute ha manage 1 admin
+config global
+diag sys ha reset-uptime  (Force Failover by reset the uptime)

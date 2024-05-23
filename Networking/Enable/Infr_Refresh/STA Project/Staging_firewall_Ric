@@ -1,0 +1,198 @@
+
+--- Firewall address book enaesxh01 ---
+
+set security address-book zone-infra-mgmt address addr-enaesxh01-idrac 10.130.13.51/32
+
+--- Firewall address set for enaesxh01 ---
+
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enaesxh01-idrac
+
+
+
+!--- Staging Configure ---  Create New Objects for STA Dell ESXi Hosts ---!
+set security address-book zone-infra-mgmt address addr-enaesxs01-idrac 10.130.13.71/32
+set security address-book zone-infra-mgmt address addr-enaesxs02-idrac 10.130.13.72/32
+set security address-book zone-infra-mgmt address addr-enaesxs03-idrac 10.130.13.73/32
+
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enaesxs01-idrac
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enaesxs02-idrac
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enaesxs03-idrac
+
+
+
+
+@REM ----------------------------------------------------------------------------------------------------------
+
+@REM --- Firewall address book enasanh"x" ---
+
+@REM set security address-book zone-infra-mgmt address addr-enasanhm dns-name ENASANHM.infra.enable.net.nz
+@REM set security address-book zone-infra-mgmt address addr-enasanh 10.130.11.50/32
+@REM set security address-book zone-infra-mgmt address addr-enasanh01 10.130.11.51/32
+@REM set security address-book zone-infra-mgmt address addr-enasanh02 10.130.11.52/32
+@REM set security address-book zone-infra-mgmt address addr-enasanh01-idrac 10.130.11.57/32
+@REM set security address-book zone-infra-mgmt address addr-enasanh02-idrac 10.130.11.58/32
+
+
+@REM set security address-book zone-infra-mgmt address-set addrs-ena-san-hwl address addr-enasanhm
+@REM set security address-book zone-infra-mgmt address-set addrs-ena-san-hwl address addr-enasanh
+@REM set security address-book zone-infra-mgmt address-set addrs-ena-san-hwl address addr-enasanh01
+@REM set security address-book zone-infra-mgmt address-set addrs-ena-san-hwl address addr-enasanh02
+
+@REM set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasanh
+@REM set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasanh01
+@REM set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasanh02
+
+
+
+
+!--- Staging Configure ---  Create New Objects for STA Dell SAN Hosts ---!
+@REM set security address-book zone-infra-mgmt address addr-enasansm dns-name ENASANSM.infra.enable.net.nz
+set security address-book zone-infra-mgmt address addr-enasans 10.130.11.60/32
+set security address-book zone-infra-mgmt address addr-enasans01 10.130.11.61/32
+set security address-book zone-infra-mgmt address addr-enasans02 10.130.11.62/32
+set security address-book zone-infra-mgmt address addr-enasans01-idrac 10.130.11.67/32
+set security address-book zone-infra-mgmt address addr-enasans02-idrac 10.130.11.68/32
+set security address-book zone-infra-mgmt address addr-enasans03-idrac 10.130.11.69/32
+set security address-book zone-infra-mgmt address addr-enasans04-idrac 10.130.11.70/32
+
+
+@REM set security address-book zone-infra-mgmt address-set addrs-ena-san-sta address addr-enasansm
+set security address-book zone-infra-mgmt address-set addrs-ena-san-sta address addr-enasans
+set security address-book zone-infra-mgmt address-set addrs-ena-san-sta address addr-enasans01
+set security address-book zone-infra-mgmt address-set addrs-ena-san-sta address addr-enasans02
+
+
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans01
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans02
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans01-idrac
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans02-idrac
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans03-idrac
+set security address-book zone-infra-mgmt address-set addrs-dell-infra-devices address addr-enasans04-idrac
+
+!--- Staging Configure ---  Create New Rules for STA Dell SAN Hosts ---!
+
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https match source-address addrs-ena-san-sta
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https match destination-address addrs-dell-emc
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https match application junos-https
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https match application app-alt-https-8443
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https then permit
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https then log session-init
+set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-emc-support-https then log session-close
+
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh match source-address addrs-ena-san-sta
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh match destination-address addr-es-mc-ssh-ssh1.compellent.com
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh match destination-address addr-es-mc-ssh-ssh2.compellent.com
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh match application junos-ssh
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh then permit
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh then log session-init
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-ssh then log session-close
+
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap match source-address addrs-ena-san-sta
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap match destination-address addr-sshdisp.g3.ph.dell.com
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap match application app-vcenter-soap
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap then permit
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap then log session-init
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-soap then log session-close
+
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console match source-address addrs-ena-san-sta
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console match destination-address addr-sshdisp.g3.ph.dell.com
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console match application app-compellent-secure-console
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console then permit
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console then log session-init
+@REM set security policies from-zone zone-infra-mgmt to-zone zone-internet policy policy-dell-compellent-support-sec-console then log session-close
+
+
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san match source-address addrs-admin-workstations
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san match destination-address addrs-ena-san-sta
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san match application junos-ping
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san then permit
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san then log session-init
+set security policies from-zone zone-admin to-zone zone-infra-mgmt policy policy-admin-workstation-sta-san then log session-close
+
+
+
+!--- Staging Configure ---  Create New Objects for Dell-EMC Server hosts ---!
+
+delete security address-book zone-internet address addr-esrs3-core.emc.com dns-name addr-esrs3-core.emc.com
+set security address-book zone-internet address addr-esrs3-core.emc.com dns-name esrs3-core.emc.com
+set security address-book zone-internet address addr-esrs3-coredr.emc.com dns-name esrs3-coredr.emc.com
+
+set security address-book zone-internet address addr-esr3gduprd01.emc.com dns-name esr3gduprd01.emc.com
+set security address-book zone-internet address addr-esr3gduprd02.emc.com dns-name esr3gduprd02.emc.com
+set security address-book zone-internet address addr-esr3gduprd03.emc.com dns-name esr3gduprd03.emc.com
+set security address-book zone-internet address addr-esr3gduprd04.emc.com dns-name esr3gduprd04.emc.com
+set security address-book zone-internet address addr-esr3gduprd05.emc.com dns-name esr3gduprd05.emc.com
+set security address-book zone-internet address addr-esr3gduprd06.emc.com dns-name esr3gduprd06.emc.com
+set security address-book zone-internet address addr-esr3ghoprd01.emc.com dns-name esr3ghoprd01.emc.com
+set security address-book zone-internet address addr-esr3ghoprd02.emc.com dns-name esr3ghoprd02.emc.com
+set security address-book zone-internet address addr-esr3ghoprd03.emc.com dns-name esr3ghoprd03.emc.com
+set security address-book zone-internet address addr-esr3ghoprd04.emc.com dns-name esr3ghoprd04.emc.com
+set security address-book zone-internet address addr-esr3ghoprd05.emc.com dns-name esr3ghoprd05.emc.com
+set security address-book zone-internet address addr-esr3ghoprd06.emc.com dns-name esr3ghoprd06.emc.com
+set security address-book zone-internet address addr-esr3gscprd01.emc.com dns-name esr3gscprd01.emc.com
+set security address-book zone-internet address addr-esr3gscprd02.emc.com dns-name esr3gscprd02.emc.com
+set security address-book zone-internet address addr-esr3gscprd03.emc.com dns-name esr3gscprd03.emc.com
+set security address-book zone-internet address addr-esr3gscprd04.emc.com dns-name esr3gscprd04.emc.com
+set security address-book zone-internet address addr-esr3gscprd05.emc.com dns-name esr3gscprd05.emc.com
+set security address-book zone-internet address addr-esr3gscprd06.emc.com dns-name esr3gscprd06.emc.com
+set security address-book zone-internet address addr-esr3gckprd01.emc.com dns-name esr3gckprd01.emc.com
+set security address-book zone-internet address addr-esr3gckprd02.emc.com dns-name esr3gckprd02.emc.com
+set security address-book zone-internet address addr-esr3gckprd03.emc.com dns-name esr3gckprd03.emc.com
+set security address-book zone-internet address addr-esr3gckprd04.emc.com dns-name esr3gckprd04.emc.com
+set security address-book zone-internet address addr-esr3gckprd05.emc.com dns-name esr3gckprd05.emc.com
+set security address-book zone-internet address addr-esr3gckprd06.emc.com dns-name esr3gckprd06.emc.com
+set security address-book zone-internet address addr-esr3gckprd07.emc.com dns-name esr3gckprd07.emc.com
+set security address-book zone-internet address addr-esr3gckprd08.emc.com dns-name esr3gckprd08.emc.com
+set security address-book zone-internet address addr-esr3gckprd09.emc.com dns-name esr3gckprd09.emc.com
+set security address-book zone-internet address addr-esr3gckprd10.emc.com dns-name esr3gckprd10.emc.com
+set security address-book zone-internet address addr-esr3gckprd11.emc.com dns-name esr3gckprd11.emc.com
+set security address-book zone-internet address addr-esr3gckprd12.emc.com dns-name esr3gckprd12.emc.com
+set security address-book zone-internet address addr-esr3gspprd01.emc.com dns-name esr3gspprd01.emc.com
+set security address-book zone-internet address addr-esr3gspprd02.emc.com dns-name esr3gspprd02.emc.com
+set security address-book zone-internet address addr-esr3gspprd03.emc.com dns-name esr3gspprd03.emc.com
+set security address-book zone-internet address addr-esr3gspprd04.emc.com dns-name esr3gspprd04.emc.com
+set security address-book zone-internet address addr-esr3gspprd05.emc.com dns-name esr3gspprd05.emc.com
+set security address-book zone-internet address addr-esr3gspprd06.emc.com dns-name esr3gspprd06.emc.com
+set security address-book zone-internet address addr-upload.dell.com dns-name upload.dell.com
+
+set security address-book zone-internet address-set addrs-dell-emc address addr-esrs3-core.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esrs3-coredr.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd01.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd02.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd03.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd04.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd05.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gduprd06.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd01.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd02.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd03.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd04.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd05.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3ghoprd06.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd01.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd02.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd03.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd04.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd05.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gscprd06.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd01.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd02.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd03.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd04.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd05.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd06.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd07.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd08.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd09.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd10.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd11.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gckprd12.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd01.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd02.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd03.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd04.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd05.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-esr3gspprd06.emc.com
+set security address-book zone-internet address-set addrs-dell-emc address addr-upload.dell.com
+

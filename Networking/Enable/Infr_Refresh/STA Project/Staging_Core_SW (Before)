@@ -1,0 +1,66 @@
+Core SW to HWL
+
+ -- VLAN --
+
+3024: vlan-site-HWL-CAM
+
+3085: vlan-guest-stuff
+3199: vlan-poc-nqa-npm
+1900: vlan-netmgmt
+4012: vlan-infra-net-mgmt
+4046: vlan-aerohive-mgmt
+4010, 4011, 4013, 4016: (vlan-infra-esx-mgmt, vlan-infra-san-mgmt, vlan-infra-ilo, vlan-servers-mgmt)
+4088: vlan-nda-lan
+4085: vlan-guest
+3024: vlan-site-HWL-CAM
+
+
+
+set interfaces xe-0/0/43 ether-options 802.3ad ae15
+set interfaces xe-1/0/43 ether-options 802.3ad ae15
+set interfaces xe-2/0/43 ether-options 802.3ad ae15
+set interfaces ae15 apply-groups group-interface-esx-mgmt
+set interfaces ae15 description "ena-sw-hwl-m01 Port-Channel5 MGMT"
+set interfaces ae15 aggregated-ether-options lacp active
+set interfaces ae15 aggregated-ether-options lacp periodic fast
+set interfaces ae15 unit 0 family ethernet-switching interface-mode trunk
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-netmgmt
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-guest
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-site-HWL-CAM
+# set interfaces ae15 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ae15 unit 0 family ethernet-switching storm-control sc
+
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-esx-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-san-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-mgmt
+set groups group-interface-esx-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-infra-ilo
+
+
+
+Core SW to STA
+
+set interfaces xe-0/0/45 ether-options 802.3ad ae22
+set interfaces xe-1/0/45 ether-options 802.3ad ae22
+set interfaces ae22 apply-groups group-interface-esx-mgmt
+set interfaces ae22 description "ena-sw-hwl-m01 ae0 MGMT"
+set interfaces ae22 aggregated-ether-options lacp active
+set interfaces ae22 aggregated-ether-options lacp periodic fast
+set interfaces ae22 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ae22 unit 0 family ethernet-switching storm-control sc
+
+~~~
+--- New Add ae22 ---
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-nda-lan
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-site-STA-CAM
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces ae22 unit 0 family ethernet-switching vlan members vlan-aerohive-mgmt
+
+~~~

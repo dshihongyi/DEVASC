@@ -1,0 +1,78 @@
+
+// ~~~~~ Core Switch ~~~~~~~
+
+set vlans vlan-servers-altiplano vlan-id 4055
+set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-altiplano
+
+
+~~~~~~~~ HWL & STA Dell Switch ~~~~~~~~
+
+interface vlan4055
+ vlan-name vlan-servers-altiplano
+ description ena_4055_altiplano-servers
+ mtu 9216
+ no shutdown
+
+interface port-channel1
+switchport trunk allowed vlan 4055
+
+
+interface range ethernet 1/1/1-1/1/12
+switchport trunk allowed vlan 4055
+
+
+// ~~~~~ Firewall HWL ~~~~~
+
+
+set interfaces reth1 unit 4055 description "vlan-servers-altiplano"
+set interfaces reth1 unit 4055 vlan-id 4055
+set interfaces reth1 unit 4055 family inet address 10.130.55.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4055 passive
+set security zones security-zone zone-servers-altiplano interfaces reth1.4055 host-inbound-traffic system-services ping
+set security address-book zone-servers-altiplano address addr-servers-altiplano 10.130.55.10/32
+set security address-book zone-servers-altiplano attach zone zone-servers-altiplano
+
+# set security policies from-zone zone-servers-altiplano to-zone zone-servers-ad apply-groups allow-ad-dns-template
+
+# ~~~~~~ PROD ~~~~~
+
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano match source-address addr-enajump11
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano match destination-address addr-servers-altiplano
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano match application junos-ssh
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano match application junos-icmp-all
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano match application junos-https
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano then permit
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano then log session-init
+set security policies from-zone zone-nokia-admin to-zone zone-servers-altiplano policy policy-nokia-jumphost-servers-altiplano then log session-close
+
+# ~~~~~~~~ Internet ~~~~~~~~
+
+# set security nat source rule-set nat-servers-altiplano-to-internet from zone zone-servers-altiplano
+# set security nat source rule-set nat-servers-altiplano-to-internet to zone zone-internet
+# set security nat source rule-set nat-servers-altiplano-to-internet rule rule-servers-sac match source-address 10.130.55.0/24
+# set security nat source rule-set nat-servers-altiplano-to-internet rule rule-servers-sac then source-nat interface
+
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet match source-address addr-servers-altiplano
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet match destination-address any
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet match application junos-ping
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet match application junos-http
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet match application junos-https
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet then permit
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet then log session-init
+# set security policies from-zone zone-servers-altiplano to-zone zone-internet policy policy-incognito-admin-internet then log session-close
+
+
+# ~~~~~ Tidy up ~~~~~
+
+# delete security address-book zone-admin address addr-enajump10 description "ITF Incognito Jumpbox"
+# delete security address-book zone-admin address addr-enajump10 10.130.9.70/32
+# delete security address-book zone-admin address-set addrs-admin-workstations address addr-enajump10
+
+# delete security policies from-zone zone-enable-lan to-zone zone-admin policy policy-lan-enajump10-mstsc
+# delete security policies from-zone zone-admin to-zone zone-servers-ad policy policy-enajump-ad-ldap match source-address addr-enajump10
+# delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs
+# delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs-lb
+# delete security policies from-zone zone-admin to-zone zone-itf-servers-acs policy policy-jumphost-itf-servers-acs-kafka
+# delete security policies from-zone zone-admin to-zone zone-itf-servers-sac policy policy-jumphost-itf-servers-sac
+# delete security policies from-zone zone-admin to-zone zone-itf-servers-sac policy policy-jumphost-itf-servers-sac-lb
+# delete security policies from-zone zone-admin to-zone zone-servers-test-itf-kea-dhcp policy policy-jumphost-itf-servers-kea

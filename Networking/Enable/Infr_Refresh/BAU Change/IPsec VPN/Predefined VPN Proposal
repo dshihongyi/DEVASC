@@ -1,0 +1,24 @@
+@REM ~~~~ Firewall SRX ~~~~~
+
+set groups group-ipsec-templates security ike proposal <pre-*> authentication-method pre-shared-keys
+set groups group-ipsec-templates security ike proposal <pre-*> lifetime-seconds 28800
+set groups group-ipsec-templates security ike proposal <*-g2-*> dh-group group2
+set groups group-ipsec-templates security ike proposal <*-g5-*> dh-group group5
+set groups group-ipsec-templates security ike proposal <*-aes128-*> encryption-algorithm aes-128-cbc
+set groups group-ipsec-templates security ike proposal <*-aes256-*> encryption-algorithm aes-256-cbc
+set groups group-ipsec-templates security ike proposal <*-sha1> authentication-algorithm sha1
+set groups group-ipsec-templates security ike proposal <*-sha256> authentication-algorithm sha-256
+set groups group-ipsec-templates security ike proposal <*-g20-*> dh-group group20
+set groups group-ipsec-templates security ike proposal <*-g14-*> dh-group group14
+set groups group-ipsec-templates security ipsec proposal <esp-*> protocol esp
+set groups group-ipsec-templates security ipsec proposal <esp-*> lifetime-seconds 3600
+set groups group-ipsec-templates security ipsec proposal <esp-*> lifetime-kilobytes 1048576
+set groups group-ipsec-templates security ipsec proposal <*-aes128-*> encryption-algorithm aes-128-cbc
+set groups group-ipsec-templates security ipsec proposal <*-aes256-*> encryption-algorithm aes-256-cbc
+set groups group-ipsec-templates security ipsec proposal <*-sha1> authentication-algorithm hmac-sha1-96
+set groups group-ipsec-templates security ipsec proposal <*-sha256> authentication-algorithm hmac-sha-256-128
+set groups group-ipsec-templates security ipsec policy <g2-*> perfect-forward-secrecy keys group2
+set groups group-ipsec-templates security ipsec policy <*-esp-aes128-sha1> proposals esp-aes128-sha1
+set groups group-ipsec-templates security ipsec policy <*-esp-aes256-sha1> proposals esp-aes256-sha1
+set groups group-ipsec-templates security ipsec policy <g20-*> perfect-forward-secrecy keys group20
+set groups group-ipsec-templates security ipsec policy <*-esp-aes256-sha256> proposals esp-aes256-sha256

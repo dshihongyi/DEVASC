@@ -1,0 +1,6 @@
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https match source-address addr-nginx-edge3
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https match destination-address addr-enagisp06
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https match application junos-https
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https then permit
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https then log session-init
+set security policies from-zone zone-internet to-zone zone-servers-edge policy policy-cloudflare-edge-https then log session-close

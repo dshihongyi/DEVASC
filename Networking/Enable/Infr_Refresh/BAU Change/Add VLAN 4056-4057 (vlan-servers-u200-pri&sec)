@@ -1,0 +1,160 @@
+# // ~~~~~ Core Switch ~~~~~~~
+
+# set vlans vlan-servers-u2000-pri vlan-id 4056
+# set vlans vlan-servers-u2000-sec vlan-id 4057
+# set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-u2000-pri
+# set groups group-interface-infra-switch interfaces <*> unit 0 family ethernet-switching vlan members vlan-servers-u2000-sec
+
+
+// ~~~~~ Firewall RIC ~~~~~
+
+set interfaces reth1 unit 4056 description "vlan-servers-u2000-pri"
+set interfaces reth1 unit 4056 vlan-id 4056
+set interfaces reth1 unit 4056 family inet address 10.130.56.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4056 passive
+
+set interfaces reth1 unit 4057 description "vlan-servers-u2000-pri"
+set interfaces reth1 unit 4057 vlan-id 4057
+set interfaces reth1 unit 4057 family inet address 10.130.57.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4057 passive
+
+
+set security zones security-zone zone-servers-u2000 interfaces reth1.4056 host-inbound-traffic system-services ping
+set security zones security-zone zone-servers-u2000 interfaces reth1.4057 host-inbound-traffic system-services ping
+
+set security address-book zone-servers-u2000 address addr-ESLD21U2K002 10.130.56.10/32
+set security address-book zone-servers-u2000 address addr-ESLRICU2K002 10.130.57.10/32
+set security address-book zone-servers-u2000 address-set address-u2000-v2r16 address addr-ESLD21U2K002
+set security address-book zone-servers-u2000 address-set address-u2000-v2r16 address addr-ESLRICU2K002
+set security address-book zone-servers-u2000 attach zone zone-servers-u2000
+
+
+# # set security address-book zone-dcn address addr-ne-inband 10.128.4.0/24
+# OLT and EAS ( Huawei )  IP address is 10.128.4.0/24 
+# Huawei BS04 ONU  IP address is 10.129.0.0/17 
+
+set security address-book zone-dcn address addr-huawei-OLT-EAS 10.128.4.0/24
+set security address-book zone-dcn address addr-huawei-BS04 10.129.0.0/17
+
+
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match source-address address-u2000-v2r16
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match destination-address addr-huawei-OLT-EAS
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match destination-address addr-huawei-BS04
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match application app-snmp-trap
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match application junos-ping
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match application junos-telnet
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match application junos-ftp
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 match application junos-ssh
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 then permit
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 then log session-init
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16 then log session-close
+
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-kuukupa
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-enactxp01
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-enactxp02
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-client
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application junos-ping
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-msuite
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-uFAD
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-tl1
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then log session-close
+
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match source-address addr-enasacprvp101
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match source-address addr-enasacprvp102
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match application app-u2000-tl1
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then permit
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then log session-init
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then log session-close
+
+
+# set security address-book zone-dcn address addr-ESLD21U2K002 10.130.56.10/32
+# set security address-book zone-dcn address addr-ESLRICU2K002 10.130.57.10/32
+# set security address-book zone-dcn address-set addrs-u2000 address addr-ESLD21U2K002
+# set security address-book zone-dcn address-set addrs-u2000 address addr-ESLRICU2K002
+# set security address-book zone-dcn address-set address-u2000-v2r16 address addr-ESLD21U2K002
+# set security address-book zone-dcn address-set address-u2000-v2r16 address addr-ESLRICU2K002
+# set security address-book zone-dcn attach zone zone-dcn
+
+
+OLT and EAS ( Huawei )  IP address is 10.128.4.0/24 
+Huawei BS04 ONU  IP address is 10.129.0.0/17 
+
+
+
+~~~~ BGP ~~~~
+
+set policy-options policy-statement policy-import-dcn2-itf-to-enable term 11 from route-filter 10.128.4.0/24 exact
+set policy-options policy-statement policy-import-dcn2-itf-to-enable term 11 then accept
+set policy-options policy-statement policy-import-dcn2-itf-to-enable term 12 from route-filter 10.129.0.0/17 exact
+set policy-options policy-statement policy-import-dcn2-itf-to-enable term 12 then accept
+
+   ## Import policy from Cisco ###
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 2 from route-filter 10.144.0.0/16 upto /28
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 2 then reject
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 3 from route-filter 172.16.41.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 3 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 4 from route-filter 172.16.43.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 4 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 5 from route-filter 172.16.45.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 5 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 6 from route-filter 172.16.11.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 6 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 7 from route-filter 172.17.1.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 7 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 8 from route-filter 172.16.6.0/24 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 8 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 9 from route-filter 10.232.0.0/14 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 9 then accept
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 10 from route-filter 10.236.0.0/14 exact
+# set policy-options policy-statement policy-import-dcn2-itf-to-enable term 10 then accept
+
+
+   ### bgp with HRB/RIC FW ###
+# set protocols bgp group bgp-enable-dcn type external
+# set protocols bgp group bgp-enable-dcn preference 8
+# set protocols bgp group bgp-enable-dcn import policy-import-dcn-to-enable
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.30 local-address 10.130.93.23
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.30 export policy-export-enable-to-dcn
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.30 peer-as 64701
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.31 local-address 10.130.93.23
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.31 export policy-export-enable-to-dcn-prepend
+# set protocols bgp group bgp-enable-dcn neighbor 10.130.93.31 peer-as 64701
+
+
+
+
+policy-noc-u2000
+policy-rpa-u2000
+policy-rpa-u2000-ftp
+policy-vdi-u2000-ssh
+policy-kuukuupa-u2000-ssh
+policy-slurm-u2000-ftp
+policy-borg-u2000-tl1
+policy-borg-test-u2000-sftp
+
+policy-rpa-u2000-v2r16
+policy-servers-sac-to-itf-u2000-tl1
+
+
+
+# ~~~~ ESLHRBFWL002 HRB ~~~~
+
+delete interfaces reth1 unit 4056 family inet address 10.130.56.1/24
+
+# set interfaces reth1 unit 4056 description "U2000 Pri (VM)"
+# set interfaces reth1 unit 4056 vlan-id 4056
+# set interfaces reth1 unit 4056 family inet address 10.130.56.1/24
+
+
+# ~~~~ ESLRICFWL002 RIC ~~~~
+
+delete interfaces reth1 unit 4057 family inet address 10.130.57.1/24
+
+# set interfaces reth1 unit 4057 description "U2000 Sec (VM)"
+# set interfaces reth1 unit 4057 vlan-id 4057
+# set interfaces reth1 unit 4057 family inet address 10.130.57.1/24

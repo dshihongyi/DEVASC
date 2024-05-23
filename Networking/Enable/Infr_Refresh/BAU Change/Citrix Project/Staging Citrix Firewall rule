@@ -1,0 +1,139 @@
+
+@REM Address-Book Citrix Server
+
+set security address-book zone-servers-rpa address addr-enactxddc01 10.130.70.15/32
+set security address-book zone-servers-rpa address addr-enactxddc02 10.130.70.16/32
+set security address-book zone-servers-rpa address addr-enactxsf01 10.130.70.17/32
+set security address-book zone-servers-rpa address addr-enactxsf02 10.130.70.18/32
+set security address-book zone-servers-rpa address addr-enactxlic01 10.130.70.19/32
+set security address-book zone-servers-rpa address addr-enactxlic02 10.130.70.20/32
+set security address-book zone-servers-rpa address addr-enactxfs01 10.130.70.21/32
+set security address-book zone-servers-rpa address addr-enactxfs02 10.130.70.22/32
+set security address-book zone-servers-rpa address addr-enactxdb01 10.130.70.23/32
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-controller-servers address addr-enactxddc01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-controller-servers address addr-enactxddc02
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-frontend-servers address addr-enactxsf01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-frontend-servers address addr-enactxsf02
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-license-servers address addr-enactxlic01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-license-servers address addr-enactxlic02
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-profile-servers address addr-enactxfs01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-profile-servers address addr-enactxfs02
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address-set addrs-rpa-ctx-vda
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address-set addrs-rpa-ctx-controller-servers
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address-set addrs-rpa-ctx-profile-servers
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address-set addrs-rpa-ctx-frontend-servers
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address-set addrs-rpa-ctx-license-servers
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-servers address addr-enactxdb01
+
+
+
+@REM Address-Book-Set VDA
+
+set security address-book zone-servers-rpa address addr-enactxstap01 dns-name enactxstap01.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxstap02 dns-name enactxstap02.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxstap03 dns-name enactxstap03.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxstap04 dns-name enactxstap04.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxstap05 dns-name enactxstap05.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxhwlp01 dns-name enactxhwlp01.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxhwlp02 dns-name enactxhwlp02.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxhwlp03 dns-name enactxhwlp03.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxhwlp04 dns-name enactxhwlp04.ad.enable.net.nz
+set security address-book zone-servers-rpa address addr-enactxhwlp05 dns-name enactxhwlp05.ad.enable.net.nz
+
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxstap01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxstap02
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxstap03
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxstap04
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxstap05
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxhwlp01
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxhwlp02
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxhwlp03
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxhwlp04
+set security address-book zone-servers-rpa address-set addrs-rpa-ctx-vda address addr-enactxhwlp05
+
+
+@REM RULES
+@REM Rules CTX Controller to mpp01 (Rule line 7)
+
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere match source-address addrs-rpa-ctx-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere match destination-address addr-enaimpp01
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere then permit
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-infra-mgmt policy policy-rpa-ctx-controller-vsphere then log session-close
+
+
+@REM Rules CTX Controller to VDA, VDA to Controller http,https (Rule line 8-9)
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller match source-address addrs-rpa-ctx-vda
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller match destination-address addrs-rpa-ctx-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-controller then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda match source-address addrs-rpa-ctx-controller-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda match destination-address addrs-rpa-ctx-vda
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-controller-vda then log session-close
+
+
+@REM Rules CTX VDA to Profile Storage smb (Rule line 10)
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile match source-address addrs-rpa-ctx-vda
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile match destination-address addrs-rpa-ctx-profile-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile match application junos-smb
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-rpa policy policy-rpa-ctx-vda-profile then log session-close
+
+
+@REM Rules VDA to kea (kea.ad.enable.net.nz) smb (Rule line 11)
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb match source-address addrs-rpa-ctx-vda
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb match destination-address addrs-file-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb match application junos-smb
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-rpa-ctx-vda-smb then log session-close
+
+
+@REM Rules VDA to kea (kea.ad.enable.net.nz) smb (Rule line 12-13)
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms match source-address addrs-rpa-ctx-servers
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms match destination-address addr-tui
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms match application app-kms
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-prod policy policy-ctx-services-kms then log session-close
+
+
+@REM Rules VDA to kea (kea.ad.enable.net.nz) smb (Rule line 17-18)
+
+set security address-book zone-servers-rpa address addr-citrxiapp dns-name citrix.app.enable.net.nz
+
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match source-address addr-enajump01
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match destination-address addrs-rpa-ctx-vda
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match destination-address addr-citrxiapp
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match application app-citrix-client
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match application junos-http
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test match application junos-https
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test then permit
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test then log session-init
+set security policies from-zone zone-admin to-zone zone-servers-rpa policy policy-admin-enajump01-rpa-ctx-test then log session-close
+
+
+
+@REM Rules VDA to kea (kea.ad.enable.net.nz) smb (Rule line 19)
+set security address-book zone-servers-rpa address addr-enactxsnip 10.130.70.53/32
+
+set security policies from-zone zone-enable-lan to-zone zone-servers-rpa policy policy-enable-rpa-access match destination-address addr-enactxsnip

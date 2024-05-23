@@ -1,0 +1,2127 @@
+config firewall address
+ edit "ACL_Remote_Peer_network"
+  set subnet 10.243.1.71 255.255.255.255
+ next
+ edit "ACL_S2S_VPN"
+  set subnet 185.64.224.26 255.255.255.255
+ next
+ edit "ADSL_Router"
+  set subnet 125.236.216.145 255.255.255.255
+ next
+ edit "APP2"
+  set subnet 202.14.167.171 255.255.255.255
+ next
+ edit "APP5"
+  set subnet 192.168.2.114 255.255.255.255
+ next
+ edit "APP6"
+  set subnet 202.14.167.42 255.255.255.255
+ next
+ edit "ARINC-DESTINATIONIP-FIDSWEB"
+  set subnet 192.168.91.100 255.255.255.255
+ next
+ edit "ARINC-SOURCEIP-FIDSWEB"
+  set subnet 192.168.91.200 255.255.255.255
+ next
+ edit "ARINC_Veripax_192.168.91.0"
+  set subnet 192.168.91.0 255.255.255.0
+ next
+ edit "AirNZ_AKL0mg288"
+  set subnet 10.65.27.12 255.255.255.255
+ next
+ edit "AirNZ_AKLDV087"
+  set subnet 10.65.27.46 255.255.255.255
+ next
+ edit "AirNZ_Baggage_10.201.4.0"
+  set subnet 10.201.4.0 255.255.255.0
+ next
+ edit "AirNZ_Baggage_10.202.4.0"
+  set subnet 10.202.4.0 255.255.255.0
+ next
+ edit "AirNZ_Baggage_10.248.0.0"
+  set subnet 10.248.0.0 255.255.0.0
+ next
+ edit "AirNZ_Baggage_10.65.12.0"
+  set subnet 10.65.12.0 255.255.255.0
+ next
+ edit "AirNZ_Baggage_10.65.27.0"
+  set subnet 10.65.27.0 255.255.255.0
+ next
+ edit "AirNZ_Baggage_10.66.0.0"
+  set subnet 10.66.0.0 255.255.0.0
+ next
+ edit "AirNZ_Baggage_RADIUS_Direct"
+  set subnet 10.65.19.0 255.255.255.0
+ next
+ edit "AirNZ_Baggage_RADIUS_Direct_ISE"
+  set subnet 162.112.14.0 255.255.255.0
+ next
+ edit "AirNZ_Carina_Prod"
+  set subnet 162.112.8.80 255.255.255.255
+ next
+ edit "AirNZ_Carina_Test"
+  set subnet 162.112.8.81 255.255.255.255
+ next
+ edit "AirNZ_DomBaggage_HH"
+  set subnet 192.168.191.0 255.255.255.0
+ next
+ edit "AirNZ_FidsLink_162.112.20.0"
+  set subnet 162.112.20.0 255.255.255.0
+ next
+ edit "AirNZ_FidsLink_162.112.8.0"
+  set subnet 162.112.8.0 255.255.255.0
+ next
+ edit "AirNZ_FidsLink_GDUs_10.90.0.0"
+  set subnet 10.90.0.0 255.255.192.0
+ next
+ edit "AirNZ_Fidslink_Router"
+  set subnet 192.168.193.49 255.255.255.255
+ next
+ edit "AirNZ_KingFish_Radius"
+  set subnet 10.248.80.25 255.255.255.255
+ next
+ edit "AirNZ_KingFish_Router"
+  set subnet 192.168.193.33 255.255.255.255
+ next
+ edit "AirNZ_Kingfish_RADIUS1"
+  set subnet 10.65.19.97 255.255.255.255
+ next
+ edit "AirNZ_Kingfish_RADIUS2"
+  set subnet 10.65.19.96 255.255.255.255
+ next
+ edit "Airways_Noise_Data"
+  set subnet 210.55.23.224 255.255.255.240
+ next
+ edit "Anna_PC"
+  set subnet 192.168.3.14 255.255.255.255
+ next
+ edit "Azure"
+  set subnet 192.168.64.0 255.255.240.0
+  set allow-routing enable
+ next
+ edit "Azure-13.75.149.87"
+  set subnet 13.75.149.87 255.255.255.255
+ next
+ edit "Azure-Dev"
+  set subnet 192.168.144.0 255.255.240.0
+  set allow-routing enable
+ next
+ edit "AzureHost"
+  set subnet 191.239.65.62 255.255.255.255
+ next
+ edit "BHS-Support-network"
+  set subnet 192.168.29.0 255.255.255.0
+ next
+ edit "Backup1"
+  set subnet 192.168.5.104 255.255.255.255
+ next
+ edit "CARDAX2"
+  set subnet 192.168.22.251 255.255.255.255
+ next
+ edit "CCTVFAILOVER"
+  set subnet 202.14.167.154 255.255.255.255
+ next
+ edit "CCTVLPR"
+  set subnet 202.14.167.236 255.255.255.255
+ next
+ edit "CCTVREC1"
+  set subnet 202.14.167.212 255.255.255.255
+ next
+ edit "CCTVREC2"
+  set subnet 202.14.167.213 255.255.255.255
+ next
+ edit "CCTVREC3"
+  set subnet 202.14.167.214 255.255.255.255
+ next
+ edit "CCTVREC4"
+  set subnet 202.14.167.231 255.255.255.255
+ next
+ edit "CCTVREC5"
+  set subnet 202.14.167.233 255.255.255.255
+ next
+ edit "CCTVREC6"
+  set subnet 202.14.167.239 255.255.255.255
+ next
+ edit "CCTV_111"
+  set subnet 192.168.232.0 255.255.248.0
+ next
+ edit "CCTVmgmt"
+  set subnet 202.14.167.153 255.255.255.255
+ next
+ edit "CIAERP2"
+  set subnet 202.14.167.198 255.255.255.255
+ next
+ edit "CIAL103_CctvLpr"
+  set subnet 192.168.103.0 255.255.255.0
+ next
+ edit "CIAL10_Cameras"
+  set subnet 192.168.10.0 255.255.255.0
+ next
+ edit "CIAL110_Cameras_ITP"
+  set subnet 192.168.110.0 255.255.255.0
+ next
+ edit "CIAL121_BMS_ITP"
+  set subnet 192.168.121.0 255.255.255.0
+ next
+ edit "CIAL12_RFID_network"
+  set subnet 192.168.12.0 255.255.255.0
+ next
+ edit "CIAL140_DDCs_ITP"
+  set subnet 192.168.140.0 255.255.255.0
+ next
+ edit "CIAL167"
+  set subnet 202.14.167.0 255.255.255.0
+ next
+ edit "CIAL168"
+  set subnet 202.14.168.0 255.255.255.0
+ next
+ edit "CIAL20_Honeywell"
+  set subnet 192.168.20.0 255.255.255.0
+ next
+ edit "CIAL21_BMS"
+  set subnet 192.168.21.0 255.255.255.0
+ next
+ edit "CIAL220_Vmotion"
+  set subnet 192.168.220.0 255.255.255.0
+ next
+ edit "CIAL221_iSCSI"
+  set subnet 192.168.221.0 255.255.255.0
+ next
+ edit "CIAL222_Serv-U"
+  set subnet 192.168.222.0 255.255.255.0
+ next
+ edit "CIAL223_CARPARK_DEV_EFTPOS"
+  set subnet 192.168.223.0 255.255.255.0
+ next
+ edit "CIAL22_CARDAX"
+  set subnet 192.168.22.0 255.255.255.0
+ next
+ edit "CIAL23_Carpark"
+  set subnet 192.168.23.0 255.255.255.0
+ next
+ edit "CIAL240_FIDS"
+  set subnet 192.168.240.0 255.255.252.0
+ next
+ edit "CIAL244_CorpGeneral"
+  set subnet 192.168.244.0 255.255.252.0
+ next
+ edit "CIAL248_Staff_WLAN_C-I"
+  set subnet 10.170.248.0 255.255.255.0
+ next
+ edit "CIAL24_Bagsort"
+  set subnet 192.168.24.0 255.255.255.0
+ next
+ edit "CIAL2_NetworkMgmt"
+  set subnet 192.168.2.0 255.255.255.0
+ next
+ edit "CIAL31_Telephony"
+  set subnet 192.168.31.0 255.255.255.0
+ next
+ edit "CIAL3_Workstation"
+  set subnet 192.168.3.0 255.255.255.0
+ next
+ edit "CIAL40_DDCs"
+  set subnet 192.168.40.0 255.255.255.0
+ next
+ edit "CIAL50_UPS_Management"
+  set subnet 192.168.50.0 255.255.255.0
+ next
+ edit "CIAL5_ServerMgmt"
+  set subnet 192.168.5.0 255.255.255.0
+ next
+ edit "CIAL8_VoIP"
+  set subnet 192.168.8.0 255.255.254.0
+ next
+ edit "CIAL90_TerminalServices"
+  set subnet 192.168.90.0 255.255.255.0
+ next
+ edit "CIAL_DMZ"
+  set subnet 172.20.1.0 255.255.255.0
+ next
+ edit "CIAL_VLAN167_Production"
+  set subnet 202.14.167.0 255.255.255.0
+ next
+ edit "CIAL_VLAN244_CorpGeneral"
+  set subnet 192.168.244.0 255.255.252.0
+ next
+ edit "CIAL_VLAN2_NetworkMgmt"
+  set subnet 192.168.2.0 255.255.255.0
+ next
+ edit "CIAL_VLAN3_Workstations"
+  set subnet 192.168.3.0 255.255.255.0
+ next
+ edit "CIAL_Wireless_AP"
+  set subnet 192.168.6.0 255.255.255.0
+ next
+ edit "CIAL_Wireless_APs"
+  set subnet 192.168.7.0 255.255.255.0
+ next
+ edit "CLEARSCADA1"
+  set subnet 202.14.167.54 255.255.255.255
+ next
+ edit "CNVSQLERP1"
+  set subnet 202.14.167.188 255.255.255.255
+ next
+ edit "CS-Wireless"
+  set subnet 192.168.11.0 255.255.255.0
+ next
+ edit "CUSP-M_Seismic"
+  set subnet 192.168.90.6 255.255.255.255
+ next
+ edit "Carpark1"
+  set subnet 192.168.23.200 255.255.255.255
+ next
+ edit "Carpark_ABACUS_Mcast"
+  set subnet 224.0.1.41 255.255.255.255
+ next
+ edit "Carpark_Dev_EFTPOS"
+  set subnet 192.168.223.140 255.255.255.252
+ next
+ edit "Chauntry_S2S_VPN"
+  set subnet 46.249.200.6 255.255.255.255
+ next
+ edit "Chauntry_VPN_LAN"
+  set subnet 192.168.98.0 255.255.255.0
+ next
+ edit "Cial.digiweb.net.nz"
+  set subnet 202.174.117.59 255.255.255.255
+ next
+ edit "CityCare_PublicIP"
+  set subnet 203.167.207.167 255.255.255.255
+ next
+ edit "ClassA_Private"
+  set subnet 10.0.0.0 255.0.0.0
+ next
+ edit "ClassB_Private"
+  set subnet 172.16.0.0 255.240.0.0
+ next
+ edit "ClassC_Private"
+  set subnet 192.168.0.0 255.255.0.0
+ next
+ edit "ClearSCADA1"
+  set subnet 192.168.30.10 255.255.255.255
+ next
+ edit "DESIGO1"
+  set subnet 192.168.21.10 255.255.255.255
+ next
+ edit "DEVERP1"
+  set subnet 202.14.167.178 255.255.255.255
+ next
+ edit "DEVSQLBI1"
+  set subnet 202.14.167.48 255.255.255.255
+ next
+ edit "DEVSQLBI2.net.cial.co.nz"
+  set subnet 202.14.167.150 255.255.255.255
+ next
+ edit "DEVSQLERP1"
+  set subnet 202.14.167.179 255.255.255.255
+ next
+ edit "DMZ"
+  set subnet 172.20.1.0 255.255.255.0
+ next
+ edit "EAS"
+  set subnet 202.14.167.7 255.255.255.255
+ next
+ edit "EAS-Proxy-C1-1-Internal"
+  set subnet 172.20.1.31 255.255.255.255
+ next
+ edit "EAS-Proxy-C1-2-Internal"
+  set subnet 172.20.1.32 255.255.255.255
+ next
+ edit "EAS-Proxy-C2-1-Internal"
+  set subnet 172.20.1.33 255.255.255.255
+ next
+ edit "EAS-Proxy-C2-2-Internal"
+  set subnet 172.20.1.34 255.255.255.255
+ next
+ edit "EAS-Server-E1"
+  set subnet 192.168.25.20 255.255.255.255
+ next
+ edit "EAS-Server-E2"
+  set subnet 192.168.25.21 255.255.255.255
+ next
+ edit "EAS_Ext1"
+  set subnet 202.37.106.8 255.255.255.255
+ next
+ edit "EAS_Ext2"
+  set subnet 202.37.106.9 255.255.255.255
+ next
+ edit "EAS_Ext2_OLD"
+  set subnet 210.86.110.213 255.255.255.255
+ next
+ edit "EAS_network"
+  set subnet 192.168.25.0 255.255.255.0
+ next
+ edit "EAS_server1"
+  set subnet 192.168.25.10 255.255.255.255
+ next
+ edit "EAS_server2"
+  set subnet 192.168.25.11 255.255.255.255
+ next
+ edit "EQmonitor"
+  set subnet 192.168.90.7 255.255.255.255
+ next
+ edit "EQmonitor-ag16"
+  set subnet 192.168.90.5 255.255.255.255
+ next
+ edit "EXCH2"
+  set subnet 202.14.167.165 255.255.255.255
+ next
+ edit "FIDSAODB"
+  set subnet 192.168.240.5 255.255.255.255
+ next
+ edit "FIDSAODB1"
+  set subnet 192.168.240.11 255.255.255.255
+ next
+ edit "FIDSDDC1"
+  set subnet 202.14.168.2 255.255.255.255
+ next
+ edit "FIDSDDC2"
+  set subnet 202.14.168.9 255.255.255.255
+ next
+ edit "FIDSDEVICE1"
+  set subnet 192.168.240.12 255.255.255.255
+ next
+ edit "FIDSINT"
+  set subnet 192.168.240.6 255.255.255.255
+ next
+ edit "FIDSINT1"
+  set subnet 192.168.240.14 255.255.255.255
+ next
+ edit "FIDSINT2"
+  set subnet 192.168.240.15 255.255.255.255
+ next
+ edit "FIDSLINK1"
+  set subnet 202.14.168.8 255.255.255.255
+ next
+ edit "FIDSWEB"
+  set subnet 192.168.240.7 255.255.255.255
+ next
+ edit "FIDSWEB1"
+  set subnet 192.168.240.13 255.255.255.255
+ next
+ edit "FMC"
+  set subnet 192.168.2.250 255.255.255.255
+ next
+ edit "FlyingSouth_Craddocks_VLAN323"
+  set subnet 10.168.223.0 255.255.255.0
+ next
+ edit "GLP01-printer"
+  set subnet 192.168.24.11 255.255.255.255
+ next
+ edit "GPMGMT1"
+  set subnet 192.168.24.219 255.255.255.255
+ next
+ edit "Glidepath_GSS1"
+  set subnet 192.168.24.101 255.255.255.255
+ next
+ edit "Glidepath_GSS2"
+  set subnet 192.168.24.102 255.255.255.255
+ next
+ edit "Glidepath_GSS3"
+  set subnet 192.168.24.103 255.255.255.255
+ next
+ edit "Glidepath_GSS4"
+  set subnet 192.168.24.104 255.255.255.255
+ next
+ edit "Glidepath_GVS03"
+  set subnet 192.168.24.105 255.255.255.255
+ next
+ edit "Glidepath_GVS04"
+  set subnet 192.168.24.106 255.255.255.255
+ next
+ edit "Glidepath_GVWS01"
+  set subnet 192.168.24.107 255.255.255.255
+ next
+ edit "Inde_Public_Azure_01"
+  set subnet 20.40.188.54 255.255.255.255
+ next
+ edit "Inde_Public_Azure_02"
+  set subnet 20.53.215.120 255.255.255.255
+ next
+ edit "Inde_Public_Fibre"
+  set subnet 103.11.124.74 255.255.255.255
+ next
+ edit "Justin_8A056718H"
+  set subnet 192.168.3.16 255.255.255.255
+ next
+ edit "KateP_Desktop"
+  set subnet 192.168.3.145 255.255.255.255
+ next
+ edit "Lee_PC"
+  set subnet 192.168.3.60 255.255.255.255
+ next
+ edit "Mailarchive1"
+  set subnet 202.14.167.200 255.255.255.255
+ next
+ edit "Microsoft_104.46.162.226"
+  set subnet 104.46.162.226 255.255.255.255
+ next
+ edit "Microsoft_20.189.173.11"
+  set subnet 20.189.173.11 255.255.255.255
+ next
+ edit "Microsoft_20.190.142.165"
+  set subnet 20.190.142.165 255.255.255.255
+ next
+ edit "Microsoft_20.190.167.149"
+  set subnet 20.190.167.149 255.255.255.255
+ next
+ edit "Microsoft_20.190.167.150"
+  set subnet 20.190.167.150 255.255.255.255
+ next
+ edit "Microsoft_20.190.167.18"
+  set subnet 20.190.167.18 255.255.255.255
+ next
+ edit "Microsoft_20.190.167.20"
+  set subnet 20.190.167.20 255.255.255.255
+ next
+ edit "Microsoft_20.190.167.74"
+  set subnet 20.190.167.74 255.255.255.255
+ next
+ edit "Microsoft_20.198.118.190"
+  set subnet 20.198.118.190 255.255.255.255
+ next
+ edit "Microsoft_20.37.195.65"
+  set subnet 20.37.195.65 255.255.255.255
+ next
+ edit "Microsoft_40.119.249.228"
+  set subnet 40.119.249.228 255.255.255.255
+ next
+ edit "Microsoft_40.126.14.160"
+  set subnet 40.126.14.160 255.255.255.255
+ next
+ edit "Microsoft_40.126.14.161"
+  set subnet 40.126.14.161 255.255.255.255
+ next
+ edit "Microsoft_40.126.14.163"
+  set subnet 40.126.14.163 255.255.255.255
+ next
+ edit "Microsoft_40.126.14.164"
+  set subnet 40.126.14.164 255.255.255.255
+ next
+ edit "Microsoft_51.11.168.232"
+  set subnet 51.11.168.232 255.255.255.255
+ next
+ edit "Microsoft_52.140.118.28"
+  set subnet 52.140.118.28 255.255.255.255
+ next
+ edit "NSVIP1_DMZ"
+  set subnet 172.20.1.111 255.255.255.255
+ next
+ edit "NSVIP_DMZ"
+  set subnet 172.20.1.110 255.255.255.255
+ next
+ edit "Net_57.236.210.48"
+  set subnet 57.236.210.48 255.255.255.255
+ next
+ edit "OBJ_203.207.60.30"
+  set subnet 203.207.60.30 255.255.255.255
+ next
+ edit "OBJ_HVAC_FMG"
+  set subnet 222.154.225.226 255.255.255.255
+ next
+ edit "OSCE1"
+  set subnet 202.14.167.252 255.255.255.255
+ next
+ edit "PaloAlto-TestServer"
+  set subnet 192.168.31.10 255.255.255.255
+ next
+ edit "RA_VPN_Network"
+  set subnet 192.168.252.0 255.255.255.0
+ next
+ edit "Recovery1"
+  set subnet 192.168.23.199 255.255.255.255
+ next
+ edit "S-dev-dbserver.database.windows.net"
+  set subnet 23.100.117.95 255.255.255.255
+ next
+ edit "S2SVPN_CIAL_Gentrack_Remote_N1"
+  set subnet 10.168.224.0 255.255.255.0
+ next
+ edit "SCCM1"
+  set subnet 202.14.167.193 255.255.255.255
+ next
+ edit "SITA_BSM_server_CHC1SAC"
+  set subnet 57.1.27.45 255.255.255.255
+ next
+ edit "SKYFii-52.62.73.96"
+  set subnet 52.62.73.96 255.255.255.255
+ next
+ edit "SKYFii-52.64.33.144"
+  set subnet 52.64.33.144 255.255.255.255
+ next
+ edit "SQLBI3"
+  set subnet 202.14.167.181 255.255.255.255
+ next
+ edit "SQLCARDAX1"
+  set subnet 192.168.22.252 255.255.255.255
+ next
+ edit "SQLDEV1"
+  set subnet 202.14.167.23 255.255.255.255
+ next
+ edit "SQLERP2"
+  set subnet 202.14.167.182 255.255.255.255
+ next
+ edit "SQLPROD2"
+  set subnet 202.14.167.10 255.255.255.255
+ next
+ edit "SQLPROD3"
+  set subnet 202.14.167.222 255.255.255.255
+ next
+ edit "SQLSC1"
+  set subnet 202.14.167.196 255.255.255.255
+ next
+ edit "SQLSERVICES1"
+  set subnet 202.14.167.184 255.255.255.255
+ next
+ edit "Secured_Workstations"
+  set subnet 192.168.169.0 255.255.255.0
+ next
+ edit "Serv-U-Gateway-Prod"
+  set subnet 172.20.1.12 255.255.255.255
+ next
+ edit "SurfacePro-DMT"
+  set subnet 202.14.167.126 255.255.255.255
+ next
+ edit "TMCM1"
+  set subnet 202.14.167.251 255.255.255.255
+ next
+ edit "TMG1_DMZ_FS"
+  set subnet 172.20.1.41 255.255.255.255
+ next
+ edit "TMG1_DMZ_Hybrid"
+  set subnet 172.20.1.42 255.255.255.255
+ next
+ edit "TMG1_DMZ_IP"
+  set subnet 172.20.1.25 255.255.255.255
+ next
+ edit "TMG1_DMZ_Lime"
+  set subnet 172.20.1.43 255.255.255.255
+ next
+ edit "TMG1_External_Hybrid"
+  set subnet 202.124.113.203 255.255.255.255
+ next
+ edit "TMG1_External_Lime"
+  set subnet 202.124.113.199 255.255.255.255
+ next
+ edit "TMG_External_FS"
+  set subnet 202.124.113.202 255.255.255.255
+ next
+ edit "TMG_External_IP"
+  set subnet 202.124.113.196 255.255.255.255
+ next
+ edit "Telephony-network"
+  set subnet 192.168.31.0 255.255.255.0
+ next
+ edit "UT1"
+  set subnet 202.14.167.224 255.255.255.255
+ next
+ edit "Webproxy1"
+  set subnet 172.20.1.35 255.255.255.255
+ next
+ edit "WiFiAMC01-ASI-VIP21"
+  set subnet 192.168.6.121 255.255.255.255
+ next
+ edit "WiFiAMC01-Mgmt-IP"
+  set subnet 192.168.6.21 255.255.255.255
+ next
+ edit "WiFiAMC01-Mgmt-VIP20"
+  set subnet 192.168.6.20 255.255.255.255
+ next
+ edit "WiFiAMC02-ASI-VIP22"
+  set subnet 192.168.6.122 255.255.255.255
+ next
+ edit "WiFiAMC02-Mgmt-IP"
+  set subnet 192.168.6.22 255.255.255.255
+ next
+ edit "cial-co-nz.mail.protection.outlook.com1"
+  set subnet 65.55.88.138 255.255.255.255
+ next
+ edit "cial-co-nz.mail.protection.outlook.com2"
+  set subnet 65.55.88.170 255.255.255.255
+ next
+ edit "cial-co-nz.mail.protection.outlook.com3"
+  set subnet 104.47.117.36 255.255.255.255
+ next
+ edit "cial-co-nz.mail.protection.outlook.com4"
+  set subnet 104.47.116.36 255.255.255.255
+ next
+ edit "cisco-dns1"
+  set subnet 208.67.222.222 255.255.255.255
+ next
+ edit "cisco-dns2"
+  set subnet 208.67.220.220 255.255.255.255
+ next
+ edit "corefw_OWA_194"
+  set subnet 202.124.113.194 255.255.255.255
+ next
+ edit "corefw_mail_websites_195"
+  set subnet 202.124.113.195 255.255.255.255
+ next
+ edit "dc1"
+  set subnet 202.14.167.144 255.255.255.255
+ next
+ edit "dc2"
+  set subnet 202.14.167.238 255.255.255.255
+ next
+ edit "dc3"
+  set subnet 202.14.167.207 255.255.255.255
+ next
+ edit "falcon-lfo-download_13.56.121.58"
+  set subnet 13.56.121.58 255.255.255.255
+ next
+ edit "falcon-lfo-download_50.18.198.237"
+  set subnet 50.18.198.237 255.255.255.255
+ next
+ edit "falcon-lfo-download_52.8.141.1"
+  set subnet 52.8.141.1 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.183.135.80"
+  set subnet 54.183.135.80 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.183.215.154"
+  set subnet 54.183.215.154 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.193.86.245"
+  set subnet 54.193.86.245 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.215.170.42"
+  set subnet 54.215.170.42 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.219.179.25"
+  set subnet 54.219.179.25 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.161.242"
+  set subnet 54.241.161.242 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.181.78"
+  set subnet 54.241.181.78 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.182.78"
+  set subnet 54.241.182.78 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.183.151"
+  set subnet 54.241.183.151 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.183.229"
+  set subnet 54.241.183.229 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.241.183.232"
+  set subnet 54.241.183.232 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.108.17"
+  set subnet 54.67.108.17 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.114.188"
+  set subnet 54.67.114.188 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.122.238"
+  set subnet 54.67.122.238 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.17.131"
+  set subnet 54.67.17.131 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.24.156"
+  set subnet 54.67.24.156 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.4.108"
+  set subnet 54.67.4.108 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.41.192"
+  set subnet 54.67.41.192 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.5.136"
+  set subnet 54.67.5.136 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.51.32"
+  set subnet 54.67.51.32 255.255.255.255
+ next
+ edit "falcon-lfo-download_54.67.72.218"
+  set subnet 54.67.72.218 255.255.255.255
+ next
+ edit "falcon-term-server_13.56.127.239"
+  set subnet 13.56.127.239 255.255.255.255
+ next
+ edit "falcon-term-server_13.57.54.63"
+  set subnet 13.57.54.63 255.255.255.255
+ next
+ edit "falcon-term-server_50.18.194.39"
+  set subnet 50.18.194.39 255.255.255.255
+ next
+ edit "falcon-term-server_52.52.117.52"
+  set subnet 52.52.117.52 255.255.255.255
+ next
+ edit "falcon-term-server_52.52.119.33"
+  set subnet 52.52.119.33 255.255.255.255
+ next
+ edit "falcon-term-server_52.52.149.168"
+  set subnet 52.52.149.168 255.255.255.255
+ next
+ edit "falcon-term-server_52.52.239.58"
+  set subnet 52.52.239.58 255.255.255.255
+ next
+ edit "falcon-term-server_52.53.77.89"
+  set subnet 52.53.77.89 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.134.130"
+  set subnet 52.8.134.130 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.160.82"
+  set subnet 52.8.160.82 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.172.89"
+  set subnet 52.8.172.89 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.173.58"
+  set subnet 52.8.173.58 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.19.75"
+  set subnet 52.8.19.75 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.32.113"
+  set subnet 52.8.32.113 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.45.162"
+  set subnet 52.8.45.162 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.5.240"
+  set subnet 52.8.5.240 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.54.244"
+  set subnet 52.8.54.244 255.255.255.255
+ next
+ edit "falcon-term-server_52.8.61.206"
+  set subnet 52.8.61.206 255.255.255.255
+ next
+ edit "falcon-term-server_52.9.104.148"
+  set subnet 52.9.104.148 255.255.255.255
+ next
+ edit "falcon-term-server_52.9.77.209"
+  set subnet 52.9.77.209 255.255.255.255
+ next
+ edit "falcon-term-server_52.9.82.94"
+  set subnet 52.9.82.94 255.255.255.255
+ next
+ edit "falcon-term-server_52.9.87.98"
+  set subnet 52.9.87.98 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.105.3"
+  set subnet 54.183.105.3 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.122.156"
+  set subnet 54.183.122.156 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.140.32"
+  set subnet 54.183.140.32 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.142.105"
+  set subnet 54.183.142.105 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.148.116"
+  set subnet 54.183.148.116 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.148.43"
+  set subnet 54.183.148.43 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.234.42"
+  set subnet 54.183.234.42 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.24.162"
+  set subnet 54.183.24.162 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.252.86"
+  set subnet 54.183.252.86 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.34.154"
+  set subnet 54.183.34.154 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.39.68"
+  set subnet 54.183.39.68 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.51.31"
+  set subnet 54.183.51.31 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.51.69"
+  set subnet 54.183.51.69 255.255.255.255
+ next
+ edit "falcon-term-server_54.183.52.221"
+  set subnet 54.183.52.221 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.117.199"
+  set subnet 54.193.117.199 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.27.226"
+  set subnet 54.193.27.226 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.29.47"
+  set subnet 54.193.29.47 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.67.98"
+  set subnet 54.193.67.98 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.87.57"
+  set subnet 54.193.87.57 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.90.171"
+  set subnet 54.193.90.171 255.255.255.255
+ next
+ edit "falcon-term-server_54.193.93.19"
+  set subnet 54.193.93.19 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.131.232"
+  set subnet 54.215.131.232 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.154.80"
+  set subnet 54.215.154.80 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.169.199"
+  set subnet 54.215.169.199 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.169.38"
+  set subnet 54.215.169.38 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.176.108"
+  set subnet 54.215.176.108 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.183.157"
+  set subnet 54.215.183.157 255.255.255.255
+ next
+ edit "falcon-term-server_54.215.226.55"
+  set subnet 54.215.226.55 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.112.243"
+  set subnet 54.219.112.243 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.115.12"
+  set subnet 54.219.115.12 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.137.54"
+  set subnet 54.219.137.54 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.140.50"
+  set subnet 54.219.140.50 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.141.250"
+  set subnet 54.219.141.250 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.145.181"
+  set subnet 54.219.145.181 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.147.253"
+  set subnet 54.219.147.253 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.148.161"
+  set subnet 54.219.148.161 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.149.89"
+  set subnet 54.219.149.89 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.149.92"
+  set subnet 54.219.149.92 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.151.1"
+  set subnet 54.219.151.1 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.151.27"
+  set subnet 54.219.151.27 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.153.248"
+  set subnet 54.219.153.248 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.158.53"
+  set subnet 54.219.158.53 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.159.84"
+  set subnet 54.219.159.84 255.255.255.255
+ next
+ edit "falcon-term-server_54.219.161.141"
+  set subnet 54.219.161.141 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.138.180"
+  set subnet 54.241.138.180 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.146.67"
+  set subnet 54.241.146.67 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.148.127"
+  set subnet 54.241.148.127 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.150.134"
+  set subnet 54.241.150.134 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.161.60"
+  set subnet 54.241.161.60 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.162.180"
+  set subnet 54.241.162.180 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.162.64"
+  set subnet 54.241.162.64 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.164.212"
+  set subnet 54.241.164.212 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.175.140"
+  set subnet 54.241.175.140 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.175.52"
+  set subnet 54.241.175.52 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.179.52"
+  set subnet 54.241.179.52 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.181.242"
+  set subnet 54.241.181.242 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.184.161"
+  set subnet 54.241.184.161 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.185.201"
+  set subnet 54.241.185.201 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.186.124"
+  set subnet 54.241.186.124 255.255.255.255
+ next
+ edit "falcon-term-server_54.241.197.58"
+  set subnet 54.241.197.58 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.105.202"
+  set subnet 54.67.105.202 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.119.89"
+  set subnet 54.67.119.89 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.123.150"
+  set subnet 54.67.123.150 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.123.234"
+  set subnet 54.67.123.234 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.26.184"
+  set subnet 54.67.26.184 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.33.233"
+  set subnet 54.67.33.233 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.48.56"
+  set subnet 54.67.48.56 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.54.116"
+  set subnet 54.67.54.116 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.6.201"
+  set subnet 54.67.6.201 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.68.88"
+  set subnet 54.67.68.88 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.92.206"
+  set subnet 54.67.92.206 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.96.255"
+  set subnet 54.67.96.255 255.255.255.255
+ next
+ edit "falcon-term-server_54.67.99.247"
+  set subnet 54.67.99.247 255.255.255.255
+ next
+ edit "h-104.18.30.176"
+  set subnet 104.18.30.176 255.255.255.255
+ next
+ edit "h-124.150.160.25"
+  set subnet 124.150.160.25 255.255.255.255
+ next
+ edit "h-124.157.75.195"
+  set subnet 124.157.75.195 255.255.255.255
+ next
+ edit "h-165.1.228.235"
+  set subnet 165.1.228.235 255.255.255.255
+ next
+ edit "h-165.1.231.245"
+  set subnet 165.1.231.245 255.255.255.255
+ next
+ edit "h-192.168.210.254"
+  set subnet 192.168.210.254 255.255.255.255
+ next
+ edit "h-202.124.113.206"
+  set subnet 202.124.113.206 255.255.255.255
+ next
+ edit "h-202.124.121.252"
+  set subnet 202.124.121.252 255.255.255.255
+ next
+ edit "h-203.109.202.180"
+  set subnet 203.109.202.180 255.255.255.255
+ next
+ edit "h-216.191.234.91"
+  set subnet 216.191.234.91 255.255.255.255
+ next
+ edit "h-66.159.211.5"
+  set subnet 66.159.211.5 255.255.255.255
+ next
+ edit "h-66.159.211.65"
+  set subnet 66.159.211.65 255.255.255.255
+ next
+ edit "host_TRBOnet-public-IP"
+  set subnet 27.110.123.23 255.255.255.255
+ next
+ edit "host_iocop1"
+  set subnet 192.168.3.199 255.255.255.255
+ next
+ edit "host_iocop2"
+  set subnet 192.168.3.197 255.255.255.255
+ next
+ edit "host_iocop3"
+  set subnet 192.168.3.65 255.255.255.255
+ next
+ edit "host_iocop4"
+  set subnet 192.168.3.44 255.255.255.255
+ next
+ edit "host_iocop5"
+  set subnet 192.168.3.168 255.255.255.255
+ next
+ edit "host_iocop8"
+  set subnet 192.168.3.51 255.255.255.255
+ next
+ edit "host_iocsenior"
+  set subnet 192.168.3.56 255.255.255.255
+ next
+ edit "host_iocsenior1"
+  set subnet 192.168.3.42 255.255.255.255
+ next
+ edit "iMac-Kerry"
+  set subnet 192.168.244.24 255.255.255.255
+ next
+ edit "n-10.0.0.0_8"
+  set subnet 10.0.0.0 255.0.0.0
+ next
+ edit "n-10.168.223.0_24"
+  set subnet 10.168.223.0 255.255.255.0
+ next
+ edit "n-10.170.248.0_24"
+  set subnet 10.170.248.0 255.255.255.0
+ next
+ edit "n-103.232.204.0_23"
+  set subnet 103.232.204.0 255.255.254.0
+ next
+ edit "n-17.0.0.0_8"
+  set subnet 17.0.0.0 255.0.0.0
+ next
+ edit "n-172.16.0.0_12"
+  set subnet 172.16.0.0 255.240.0.0
+ next
+ edit "n-172.20.1.0_24"
+  set subnet 172.20.1.0 255.255.255.0
+ next
+ edit "n-192.168.0.0_16"
+  set subnet 192.168.0.0 255.255.0.0
+ next
+ edit "n-192.168.14.0_24"
+  set subnet 192.168.14.0 255.255.255.0
+ next
+ edit "n-192.168.169.0_24"
+  set subnet 192.168.169.0 255.255.255.0
+ next
+ edit "n-192.168.172.0_24"
+  set subnet 192.168.172.0 255.255.255.0
+ next
+ edit "n-192.168.223.0_24"
+  set subnet 192.168.223.0 255.255.255.0
+ next
+ edit "n-192.168.232.0_21"
+  set subnet 192.168.232.0 255.255.248.0
+ next
+ edit "n-192.168.29.0_24"
+  set subnet 192.168.29.0 255.255.255.0
+ next
+ edit "n-192.168.30.0_24"
+  set subnet 192.168.30.0 255.255.255.0
+ next
+ edit "n-192.168.35.0_24"
+  set subnet 192.168.35.0 255.255.255.0
+ next
+ edit "n-202.14.167.0_24"
+  set subnet 202.14.167.0 255.255.255.0
+ next
+ edit "n-202.14.168.0_24"
+  set subnet 202.14.168.0 255.255.255.0
+ next
+ edit "n-202.167.253.112_28"
+  set subnet 202.167.253.112 255.255.255.240
+ next
+ edit "n-202.37.106.0_24"
+  set subnet 202.37.106.0 255.255.255.0
+ next
+ edit "n-203.207.60.0_23"
+  set subnet 203.207.60.0 255.255.254.0
+ next
+ edit "net_microsoft-13.65.0.0-16"
+  set subnet 13.65.0.0 255.255.0.0
+ next
+ edit "net_microsoft-40.126.0.0-18"
+  set subnet 40.126.0.0 255.255.192.0
+ next
+ edit "netmon1"
+  set subnet 192.168.2.253 255.255.255.255
+ next
+ edit "oChauntry_Prod"
+  set subnet 46.249.200.6 255.255.255.255
+ next
+ edit "obj-8.8.8.8"
+  set subnet 8.8.8.8 255.255.255.255
+ next
+ edit "obj_13.107.140.6"
+  set subnet 13.107.140.6 255.255.255.255
+ next
+ edit "obj_13.107.18.15"
+  set subnet 13.107.18.15 255.255.255.255
+ next
+ edit "obj_13.107.6.171"
+  set subnet 13.107.6.171 255.255.255.255
+ next
+ edit "obj_192.168.247.30"
+  set subnet 192.168.247.30 255.255.255.255
+ next
+ edit "obj_192.168.9.183"
+  set subnet 192.168.9.183 255.255.255.255
+ next
+ edit "obj_202.124.107.82"
+  set subnet 202.124.107.82 255.255.255.255
+ next
+ edit "obj_202.124.107.88"
+  set subnet 202.124.107.88 255.255.255.255
+ next
+ edit "obj_202.212.182.182"
+  set subnet 202.212.182.182 255.255.255.255
+ next
+ edit "obj_216.191.234.231"
+  set subnet 216.191.234.231 255.255.255.255
+ next
+ edit "obj_4.2.2.2"
+  set subnet 4.2.2.2 255.255.255.255
+ next
+ edit "obj_40.112.242.1"
+  set subnet 40.112.242.1 255.255.255.255
+ next
+ edit "obj_52.238.106.116"
+  set subnet 52.238.106.116 255.255.255.255
+ next
+ edit "obj_52.239.161.42"
+  set subnet 52.239.161.42 255.255.255.255
+ next
+ edit "obj_52.244.203.72"
+  set subnet 52.244.203.72 255.255.255.255
+ next
+ edit "obj_52.244.207.172"
+  set subnet 52.244.207.172 255.255.255.255
+ next
+ edit "obj_52.244.223.198"
+  set subnet 52.244.223.198 255.255.255.255
+ next
+ edit "obj_52.244.37.168"
+  set subnet 52.244.37.168 255.255.255.255
+ next
+ edit "obj_52.247.150.191"
+  set subnet 52.247.150.191 255.255.255.255
+ next
+ edit "obj_83.136.254.59"
+  set subnet 83.136.254.59 255.255.255.255
+ next
+ edit "obj_ADC-INT-SNIP"
+  set subnet 202.14.167.100 255.255.255.255
+ next
+ edit "obj_ADC-INT-SNIP-101"
+  set subnet 202.14.167.101 255.255.255.255
+ next
+ edit "obj_Airways_Prod"
+  set subnet 103.115.234.67 255.255.255.255
+ next
+ edit "obj_Airways_Test_Lab"
+  set subnet 122.56.42.71 255.255.255.255
+ next
+ edit "obj_DEVERP3"
+  set subnet 202.14.167.215 255.255.255.255
+ next
+ edit "obj_DEVERP4"
+  set subnet 202.14.167.216 255.255.255.255
+ next
+ edit "obj_DEVSQLBI2"
+  set subnet 202.14.167.150 255.255.255.255
+ next
+ edit "obj_ERP2"
+  set subnet 202.14.167.209 255.255.255.255
+ next
+ edit "obj_ERP3"
+  set subnet 202.14.167.217 255.255.255.255
+ next
+ edit "obj_FTPMGT01"
+  set subnet 192.168.222.12 255.255.255.255
+ next
+ edit "obj_MBG01-External"
+  set subnet 202.124.126.200 255.255.255.255
+ next
+ edit "obj_MBG03-External"
+  set subnet 202.124.126.201 255.255.255.255
+ next
+ edit "obj_MITEL-Simon"
+  set subnet 163.47.166.182 255.255.255.255
+ next
+ edit "obj_RAND-iLO"
+  set subnet 192.168.2.38 255.255.255.255
+ next
+ edit "obj_RDS2"
+  set subnet 202.14.167.237 255.255.255.255
+ next
+ edit "obj_Simon-PC"
+  set subnet 192.168.244.212 255.255.255.255
+ next
+ edit "obj_adc-public-snip"
+  set subnet 172.20.1.100 255.255.255.255
+ next
+ edit "obj_ciaerp1"
+  set subnet 202.14.167.219 255.255.255.255
+ next
+ edit "obj_citrix-adm-agent"
+  set subnet 202.14.167.49 255.255.255.255
+ next
+ edit "obj_citrix-vpn-endpoints"
+  set subnet 172.20.1.109 255.255.255.255
+ next
+ edit "obj_citrix-vpn-public-ip"
+  set subnet 202.124.113.201 255.255.255.255
+ next
+ edit "obj_devciaerp2"
+  set subnet 202.14.167.199 255.255.255.255
+ next
+ edit "obj_host-APEX1"
+  set subnet 202.14.167.254 255.255.255.255
+ next
+ edit "obj_host-Mahesh-DT"
+  set subnet 192.168.3.19 255.255.255.255
+ next
+ edit "obj_host-PA01"
+  set subnet 192.168.2.198 255.255.255.255
+ next
+ edit "obj_host-PA02"
+  set subnet 192.168.2.199 255.255.255.255
+ next
+ edit "obj_host-datasentinel-jumphost"
+  set subnet 192.168.39.10 255.255.255.255
+ next
+ edit "obj_host-netmon2"
+  set subnet 192.168.2.240 255.255.255.255
+ next
+ edit "obj_lv01"
+  set subnet 192.168.31.18 255.255.255.255
+ next
+ edit "obj_mbg01"
+  set subnet 172.20.1.61 255.255.255.255
+ next
+ edit "obj_mbg02"
+  set subnet 192.168.31.12 255.255.255.255
+ next
+ edit "obj_mbg03"
+  set subnet 172.20.1.62 255.255.255.255
+ next
+ edit "obj_mbg04"
+  set subnet 192.168.31.14 255.255.255.255
+ next
+ edit "obj_micc01"
+  set subnet 192.168.31.17 255.255.255.255
+ next
+ edit "obj_mico01"
+  set subnet 192.168.31.16 255.255.255.255
+ next
+ edit "obj_mivb01"
+  set subnet 192.168.31.15 255.255.255.255
+ next
+ edit "obj_mivbax01"
+  set subnet 192.168.31.19 255.255.255.255
+ next
+ edit "obj_papercut1"
+  set subnet 202.14.167.174 255.255.255.255
+ next
+ edit "obj_serv-u-gateway-prod"
+  set subnet 172.20.1.12 255.255.255.255
+ next
+ edit "obj_siem-ext-srv01"
+  set subnet 110.173.161.24 255.255.255.255
+ next
+ edit "obj_siem-ext-srv02"
+  set subnet 110.173.161.22 255.255.255.255
+ next
+ edit "obj_siem-siemaggregator1"
+  set subnet 202.14.167.162 255.255.255.255
+ next
+ edit "obj_skyspark-srv-ip1"
+  set subnet 192.168.21.9 255.255.255.255
+ next
+ edit "obj_skyspark-srv-ip2"
+  set subnet 192.168.121.9 255.255.255.255
+ next
+ edit "obj_windcave-103.232.204.55"
+  set subnet 103.232.204.55 255.255.255.255
+ next
+ edit "obj_windcave-203.207.60.31"
+  set subnet 203.207.60.31 255.255.255.255
+ next
+ edit "obj_windcave-203.207.60.55"
+  set subnet 203.207.60.55 255.255.255.255
+ next
+ edit "secured-pax-network"
+  set subnet 192.168.171.0 255.255.255.0
+ next
+ edit "swarm-sftp-destination"
+  set subnet 125.236.193.253 255.255.255.255
+ next
+ edit "tmg_dmz_40"
+  set subnet 172.20.1.40 255.255.255.255
+ next
+ edit "38.125.44.1-38.125.44.254"
+  set type iprange
+  set start-ip 38.125.44.1
+  set end-ip 38.125.44.254
+ next
+ edit "4.15.244.193-4.15.244.222"
+  set type iprange
+  set start-ip 4.15.244.193
+  set end-ip 4.15.244.222
+ next
+ edit "45.75.195.1-45.75.195.3"
+  set type iprange
+  set start-ip 45.75.195.1
+  set end-ip 45.75.195.3
+ next
+ edit "CIAL_VPN_POOL"
+  set type iprange
+  set start-ip 192.168.252.1
+  set end-ip 192.168.252.254
+ next
+ edit "obj_192.168.247.31-45"
+  set type iprange
+  set start-ip 192.168.247.31
+  set end-ip 192.168.247.45
+ next
+ edit "Azure-sqlsvr"
+  set type fqdn
+  set fqdn "sqlsvr-devtest-01.database.windows.net"
+ next
+ edit "FQDN-wave.scorch.co.nz"
+  set type fqdn
+  set fqdn "wave.scorch.co.nz"
+ next
+ edit "FQDN.apps.technologyonecorp.com"
+  set type fqdn
+  set fqdn "apps.technologyonecorp.com"
+ next
+ edit "FQDN.d5pyglw5yz5ku.cloudfront.net"
+  set type fqdn
+  set fqdn "d5pyglw5yz5ku.cloudfront.net"
+ next
+ edit "FQDN_cial.nz.wateroutlook.com"
+  set type fqdn
+  set fqdn "cial.nz.wateroutlook.com"
+ next
+ edit "GmapAPIs"
+  set type fqdn
+  set fqdn "maps.googleapis.com"
+ next
+ edit "Inde_Public_Mask"
+  set type fqdn
+  set fqdn "mask.inde.nz"
+ next
+ edit "OBJ_scr.windcave.com"
+  set type fqdn
+  set fqdn "scr.windcave.com"
+ next
+ edit "OBJ_sec.windcave.com"
+  set type fqdn
+  set fqdn "sec.windcave.com"
+ next
+ edit "OBJ_uat.windcave.com"
+  set type fqdn
+  set fqdn "uat.windcave.com"
+ next
+ edit "activation.sls.microsoft.com"
+  set type fqdn
+  set fqdn "activation.sls.microsoft.com"
+ next
+ edit "cdn.odc.officeapps.live.com"
+  set type fqdn
+  set fqdn "cdn.odc.officeapps.live.com"
+ next
+ edit "chcinternational.mail.protection.FQDN1"
+  set type fqdn
+  set fqdn "chcinternational.mail.protection.outlook.com"
+ next
+ edit "chcinternational.mail.protection.FQDN2"
+  set type fqdn
+  set fqdn "chcinternational-mail-onmicrosoft-com.mail.protection.outlook.com"
+ next
+ edit "cloudconnect.vbridge.co.nz"
+  set type fqdn
+  set fqdn "cloudconnect.vbridge.co.nz"
+ next
+ edit "crl.microsoft.com"
+  set type fqdn
+  set fqdn "crl.microsoft.com"
+ next
+ edit "fqdn_aadcdn.msauth.net"
+  set type fqdn
+  set fqdn "aadcdn.msauth.net"
+ next
+ edit "fqdn_aadcdn.msftauth.net"
+  set type fqdn
+  set fqdn "aadcdn.msftauth.net"
+ next
+ edit "fqdn_aadcdn.msftauthimages.net"
+  set type fqdn
+  set fqdn "aadcdn.msftauthimages.net"
+ next
+ edit "fqdn_aadconnecthealth.azure.com"
+  set type fqdn
+  set fqdn "aadconnecthealth.azure.com"
+ next
+ edit "fqdn_account.activedirectory.windowsazure.com"
+  set type fqdn
+  set fqdn "account.activedirectory.windowsazure.com"
+ next
+ edit "fqdn_account.office.net"
+  set type fqdn
+  set fqdn "account.office.net"
+ next
+ edit "fqdn_accounts.accesscontrol.windows.net"
+  set type fqdn
+  set fqdn "accounts.accesscontrol.windows.net"
+ next
+ edit "fqdn_adds.aadconnecthealth.azure.com"
+  set type fqdn
+  set fqdn "adds.aadconnecthealth.azure.com"
+ next
+ edit "fqdn_adhybridhealth.azure.com"
+  set type fqdn
+  set fqdn "adhybridhealth.azure.com"
+ next
+ edit "fqdn_adminwebservice.microsoftonline.com"
+  set type fqdn
+  set fqdn "adminwebservice.microsoftonline.com"
+ next
+ edit "fqdn_adnotifications.windowsazure.com"
+  set type fqdn
+  set fqdn "adnotifications.windowsazure.com"
+ next
+ edit "fqdn_analytics-nz.nv5.com"
+  set type fqdn
+  set fqdn "analytics-nz.nv5.com"
+ next
+ edit "fqdn_analytics.nv5.com"
+  set type fqdn
+  set fqdn "analytics.nv5.com"
+ next
+ edit "fqdn_api.passwordreset.microsoftonline.com"
+  set type fqdn
+  set fqdn "api.passwordreset.microsoftonline.com"
+ next
+ edit "fqdn_autologon.microsoftazuread-sso.com"
+  set type fqdn
+  set fqdn "autologon.microsoftazuread-sso.com"
+ next
+ edit "fqdn_bbedge3-ex.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "bbedge3-ex.fujixerox.co.jp"
+ next
+ edit "fqdn_bbedge3p-a-ex.iotconnectup.com"
+  set type fqdn
+  set fqdn "bbedge3p-a-ex.iotconnectup.com"
+ next
+ edit "fqdn_bbedge3p-ex.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "bbedge3p-ex.fujixerox.co.jp"
+ next
+ edit "fqdn_bbedge3p-ex.iotconnectup.com"
+  set type fqdn
+  set fqdn "bbedge3p-ex.iotconnectup.com"
+ next
+ edit "fqdn_bbedge3s-ex.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "bbedge3s-ex.fujixerox.co.jp"
+ next
+ edit "fqdn_bbedge4d-ex.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "bbedge4d-ex.fujixerox.co.jp"
+ next
+ edit "fqdn_bbedge4sd-ex.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "bbedge4sd-ex.fujixerox.co.jp"
+ next
+ edit "fqdn_becws.microsoftonline.com"
+  set type fqdn
+  set fqdn "becws.microsoftonline.com"
+ next
+ edit "fqdn_blob.core.windows.net"
+  set type fqdn
+  set fqdn "blob.core.windows.net"
+ next
+ edit "fqdn_broadcast.officeapps.live.com"
+  set type fqdn
+  set fqdn "broadcast.officeapps.live.com"
+ next
+ edit "fqdn_broadcast.skype.com"
+  set type fqdn
+  set fqdn "broadcast.skype.com"
+ next
+ edit "fqdn_broker.au.multiverse.papercut.com"
+  set type fqdn
+  set fqdn "broker.au.multiverse.papercut.com"
+ next
+ edit "fqdn_broker.multiverse.papercut.com"
+  set type fqdn
+  set fqdn "broker.multiverse.papercut.com"
+ next
+ edit "fqdn_caps03.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "caps03.fujixerox.co.jp"
+ next
+ edit "fqdn_caps04.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "caps04.fujixerox.co.jp"
+ next
+ edit "fqdn_caps04.iotconnectup.com"
+  set type fqdn
+  set fqdn "caps04.iotconnectup.com"
+ next
+ edit "fqdn_caps05.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "caps05.fujixerox.co.jp"
+ next
+ edit "fqdn_caps06.fujixerox.co.jp"
+  set type fqdn
+  set fqdn "caps06.fujixerox.co.jp"
+ next
+ edit "fqdn_cdn.uci.officeapps.live.com"
+  set type fqdn
+  set fqdn "cdn.uci.officeapps.live.com"
+ next
+ edit "fqdn_chcinternational-my.sharepoint.com"
+  set type fqdn
+  set fqdn "chcinternational-my.sharepoint.com"
+ next
+ edit "fqdn_chcinternational.sharepoint.com"
+  set type fqdn
+  set fqdn "chcinternational.sharepoint.com"
+ next
+ edit "fqdn_chcinternational.visualstudio.com"
+  set type fqdn
+  set fqdn "chcinternational.visualstudio.com"
+ next
+ edit "fqdn_clientconfig.microsoftonline-p.net"
+  set type fqdn
+  set fqdn "clientconfig.microsoftonline-p.net"
+ next
+ edit "fqdn_cloudconnect.vbridge.co.nz"
+  set type fqdn
+  set fqdn "cloudconnect.vbridge.co.nz"
+ next
+ edit "fqdn_companymanager.microsoftonline.com"
+  set type fqdn
+  set fqdn "companymanager.microsoftonline.com"
+ next
+ edit "fqdn_compliance.microsoft.com"
+  set type fqdn
+  set fqdn "compliance.microsoft.com"
+ next
+ edit "fqdn_credentials.azure.com"
+  set type fqdn
+  set fqdn "credentials.azure.com"
+ next
+ edit "fqdn_crl.microsoft.com"
+  set type fqdn
+  set fqdn "crl.microsoft.com"
+ next
+ edit "fqdn_crl3.digicert.com"
+  set type fqdn
+  set fqdn "microsoftonline.com"
+ next
+ edit "fqdn_crl4.digicert.com"
+  set type fqdn
+  set fqdn "crl4.digicert.com"
+ next
+ edit "fqdn_crt.sectigo.com"
+  set type fqdn
+  set fqdn "crt.sectigo.com"
+ next
+ edit "fqdn_device.login.microsoftonline.com"
+  set type fqdn
+  set fqdn "device.login.microsoftonline.com"
+ next
+ edit "fqdn_go.microsoft.com"
+  set type fqdn
+  set fqdn "go.microsoft.com"
+ next
+ edit "fqdn_graph.microsoft.com"
+  set type fqdn
+  set fqdn "graph.microsoft.com"
+ next
+ edit "fqdn_graph.windows.net"
+  set type fqdn
+  set fqdn "graph.windows.net"
+ next
+ edit "fqdn_iocop1"
+  set type fqdn
+  set fqdn "iocop1.net.cial.co.nz"
+ next
+ edit "fqdn_iocop2"
+  set type fqdn
+  set fqdn "iocop2.net.cial.co.nz"
+ next
+ edit "fqdn_iocop3"
+  set type fqdn
+  set fqdn "iocop3.net.cial.co.nz"
+ next
+ edit "fqdn_iocop4"
+  set type fqdn
+  set fqdn "iocop4.net.cial.co.nz"
+ next
+ edit "fqdn_iocop5"
+  set type fqdn
+  set fqdn "iocop5.net.cial.co.nz"
+ next
+ edit "fqdn_iocop8"
+  set type fqdn
+  set fqdn "iocop8.net.cial.co.nz"
+ next
+ edit "fqdn_iocopsenior"
+  set type fqdn
+  set fqdn "iocopsenior.net.cial.co.nz"
+ next
+ edit "fqdn_iocopsenior1"
+  set type fqdn
+  set fqdn "iocopsenior1.net.cial.co.nz"
+ next
+ edit "fqdn_ipscanner"
+  set type fqdn
+  set fqdn "ipscanner.net.cial.co.nz"
+ next
+ edit "fqdn_lfodown01-b.cloudsink.net"
+  set type fqdn
+  set fqdn "lfodown01-b.cloudsink.net"
+ next
+ edit "fqdn_login-us.microsoftonline.com"
+  set type fqdn
+  set fqdn "login-us.microsoftonline.com"
+ next
+ edit "fqdn_login.microsoft.com"
+  set type fqdn
+  set fqdn "login.microsoft.com"
+ next
+ edit "fqdn_login.microsoftonline-p.com"
+  set type fqdn
+  set fqdn "login.microsoftonline-p.com"
+ next
+ edit "fqdn_login.microsoftonline.com"
+  set type fqdn
+  set fqdn "login.microsoftonline.com"
+ next
+ edit "fqdn_login.windows.net"
+  set type fqdn
+  set fqdn "login.windows.net"
+ next
+ edit "fqdn_logincert.microsoftonline.com"
+  set type fqdn
+  set fqdn "logincert.microsoftonline.com"
+ next
+ edit "fqdn_loginex.microsoftonline.com"
+  set type fqdn
+  set fqdn "loginex.microsoftonline.com"
+ next
+ edit "fqdn_lync.xom"
+  set type fqdn
+  set fqdn "lync.com"
+ next
+ edit "fqdn_mail.protection.outlook.com"
+  set type fqdn
+  set fqdn "mail.protection.outlook.com"
+ next
+ edit "fqdn_management.azure.com"
+  set type fqdn
+  set fqdn "management.azure.com"
+ next
+ edit "fqdn_management.core.windows.net"
+  set type fqdn
+  set fqdn "management.core.windows.net"
+ next
+ edit "fqdn_mfdhelp.fujixerox.com"
+  set type fqdn
+  set fqdn "mfdhelp.fujixerox.com"
+ next
+ edit "fqdn_mfdhelp.iotconnectup.com"
+  set type fqdn
+  set fqdn "mfdhelp.iotconnectup.com"
+ next
+ edit "fqdn_mfdhelpsearch.fujixerox.com"
+  set type fqdn
+  set fqdn "mfdhelpsearch.fujixerox.com"
+ next
+ edit "fqdn_microsoftonline.com"
+  set type fqdn
+  set fqdn "microsoftonline.com"
+ next
+ edit "fqdn_mobility-print-standalone.papercut.com"
+  set type fqdn
+  set fqdn "mobility-print-standalone.papercut.com"
+ next
+ edit "fqdn_mobility-print.papercut.com"
+  set type fqdn
+  set fqdn "mobility-print.papercut.com"
+ next
+ edit "fqdn_mrodevicemgr.officeapps.live.com"
+  set type fqdn
+  set fqdn "mrodevicemgr.officeapps.live.com"
+ next
+ edit "fqdn_mscrl.microsoft.com"
+  set type fqdn
+  set fqdn "mscrl.microsoft.com"
+ next
+ edit "fqdn_msftidentity.com"
+  set type fqdn
+  set fqdn "msftidentity.com"
+ next
+ edit "fqdn_msidentity.com"
+  set type fqdn
+  set fqdn "msidentity.com"
+ next
+ edit "fqdn_multiverse.au.cloud.papercut.com"
+  set type fqdn
+  set fqdn "multiverse.au.cloud.papercut.com"
+ next
+ edit "fqdn_multiverse.us.cloud.papercut.com"
+  set type fqdn
+  set fqdn "multiverse.us.cloud.papercut.com"
+ next
+ edit "fqdn_nexus.microsoftonline-p.com"
+  set type fqdn
+  set fqdn "nexus.microsoftonline-p.com"
+ next
+ edit "fqdn_nexus.microsoftonline-p.comoffice.live.com"
+  set type fqdn
+  set fqdn "nexus.microsoftonline-p.comoffice.live.com"
+ next
+ edit "fqdn_ocr.au.cloud.papercut.com"
+  set type fqdn
+  set fqdn "ocr.au.cloud.papercut.com"
+ next
+ edit "fqdn_ocr.cloud.papercut.com"
+  set type fqdn
+  set fqdn "ocr.cloud.papercut.com"
+ next
+ edit "fqdn_ocsa.officeapps.live.com"
+  set type fqdn
+  set fqdn "ocsa.officeapps.live.com"
+ next
+ edit "fqdn_ocsp.digicert.com"
+  set type fqdn
+  set fqdn "ocsp.digicert.com"
+ next
+ edit "fqdn_ocsp.msocsp.com"
+  set type fqdn
+  set fqdn "ocsp.msocsp.com"
+ next
+ edit "fqdn_ocsp.sectigo.com"
+  set type fqdn
+  set fqdn "ocsp.sectigo.com"
+ next
+ edit "fqdn_officeapps.live.com"
+  set type fqdn
+  set fqdn "officeapps.live.com"
+ next
+ edit "fqdn_ols.officeapps.live.com"
+  set type fqdn
+  set fqdn "ols.officeapps.live.com"
+ next
+ edit "fqdn_onegetcdn.azureedge.net"
+  set type fqdn
+  set fqdn "onegetcdn.azureedge.net"
+ next
+ edit "fqdn_oneocsp.microsoft.com"
+  set type fqdn
+  set fqdn "oneocsp.microsoft.com"
+ next
+ edit "fqdn_online.office.com"
+  set type fqdn
+  set fqdn "online.office.com"
+ next
+ edit "fqdn_outlook.office.com"
+  set type fqdn
+  set fqdn "outlook.office.com"
+ next
+ edit "fqdn_outlook.office365.com"
+  set type fqdn
+  set fqdn "outlook.office365.com"
+ next
+ edit "fqdn_papercut-ios-profile"
+  set type fqdn
+  set fqdn "ios-profile-signing-dot-pc-mobility-print.appspot.com"
+ next
+ edit "fqdn_papercut.com"
+  set type fqdn
+  set fqdn "papercut.com"
+ next
+ edit "fqdn_parking.christchurchairport.co.nz"
+  set type fqdn
+  set fqdn "parking.christchurchairport.co.nz"
+ next
+ edit "fqdn_parking.presto.co.nz"
+  set type fqdn
+  set fqdn "parking.presto.co.nz"
+ next
+ edit "fqdn_passwordreset.microsoftonline.com"
+  set type fqdn
+  set fqdn "passwordreset.microsoftonline.com"
+ next
+ edit "fqdn_pc-mobility-print.appspot.com"
+  set type fqdn
+  set fqdn "pc-mobility-print.appspot.com"
+ next
+ edit "fqdn_policykeyservice.dc.ad.msft.net"
+  set type fqdn
+  set fqdn "policykeyservice.dc.ad.msft.net"
+ next
+ edit "fqdn_prod.christchurchairport.co.nz"
+  set type fqdn
+  set fqdn "prod.christchurchairport.co.nz"
+ next
+ edit "fqdn_proditpdownloads.paloaltonetworks.com"
+  set type fqdn
+  set fqdn "proditpdownloads.paloaltonetworks.com"
+ next
+ edit "fqdn_protection.office.com"
+  set type fqdn
+  set fqdn "protection.office.com"
+ next
+ edit "fqdn_protection.outlook.com"
+  set type fqdn
+  set fqdn "protection.outlook.com"
+ next
+ edit "fqdn_provisioningapi.microsoftonline.com"
+  set type fqdn
+  set fqdn "provisioningapi.microsoftonline.com"
+ next
+ edit "fqdn_randomcharacters.registration.msappproxy.net"
+  set type fqdn
+  set fqdn "723f3c49-ae47-4473-96ce-e86c514ad991.registration.msappproxy.net"
+ next
+ edit "fqdn_s1.adhybridhealth.azure.com"
+  set type fqdn
+  set fqdn "s1.adhybridhealth.azure.com"
+ next
+ edit "fqdn_scan.au.cloud.papercut.com"
+  set type fqdn
+  set fqdn "scan.au.cloud.papercut.com"
+ next
+ edit "fqdn_scan.cloud.papercut.com"
+  set type fqdn
+  set fqdn "scan.cloud.papercut.com"
+ next
+ edit "fqdn_scan.papercut.com"
+  set type fqdn
+  set fqdn "scan.papercut.com"
+ next
+ edit "fqdn_sched-noam.broadcast.skype.com"
+  set type fqdn
+  set fqdn "sched-noam.broadcast.skype.com"
+ next
+ edit "fqdn_secure.aadcdn.microsoftonline-p.com"
+  set type fqdn
+  set fqdn "secure.aadcdn.microsoftonline-p.com"
+ next
+ edit "fqdn_security.microsoft.com"
+  set type fqdn
+  set fqdn "security.microsoft.com"
+ next
+ edit "fqdn_servicebus.windows.net"
+  set type fqdn
+  set fqdn "servicebus.windows.net"
+ next
+ edit "fqdn_skyfoundry.com"
+  set type fqdn
+  set fqdn "skyfoundry.com"
+ next
+ edit "fqdn_skypeforbusiness.com"
+  set type fqdn
+  set fqdn "skypeforbusiness.com"
+ next
+ edit "fqdn_smtp.office365.com"
+  set type fqdn
+  set fqdn "smtp.office365.com"
+ next
+ edit "fqdn_smtpauth.cial.co.nz"
+  set type fqdn
+  set fqdn "smtpauth.cial.co.nz"
+ next
+ edit "fqdn_ssl.google-analytics.com"
+  set type fqdn
+  set fqdn "ssl.google-analytics.com"
+ next
+ edit "fqdn_ssprdedicatedsbprodncu.servicebus.windows.net"
+  set type fqdn
+  set fqdn "ssprdedicatedsbprodncu.servicebus.windows.net"
+ next
+ edit "fqdn_stackhub.org"
+  set type fqdn
+  set fqdn "stackhub.org"
+ next
+ edit "fqdn_statics.teams.cdn.office.net"
+  set type fqdn
+  set fqdn "statics.teams.cdn.office.net"
+ next
+ edit "fqdn_status.geotrust.com"
+  set type fqdn
+  set fqdn "status.geotrust.com"
+ next
+ edit "fqdn_storage.googleapis.com"
+  set type fqdn
+  set fqdn "storage.googleapis.com"
+ next
+ edit "fqdn_swupdate-ex.iotconnectup.com"
+  set type fqdn
+  set fqdn "swupdate-ex.iotconnectup.com"
+ next
+ edit "fqdn_teams.events.data.microsoft.com"
+  set type fqdn
+  set fqdn "teams.events.data.microsoft.com"
+ next
+ edit "fqdn_teams.microsoft.com"
+  set type fqdn
+  set fqdn "teams.microsoft.com"
+ next
+ edit "fqdn_ts01-b.cloudsink.net"
+  set type fqdn
+  set fqdn "ts01-b.cloudsink.net"
+ next
+ edit "fqdn_update.multiverse.au.cloud.papercut.com"
+  set type fqdn
+  set fqdn "update.multiverse.au.cloud.papercut.com"
+ next
+ edit "fqdn_update.multiverse.us.cloud.papercut.com"
+  set type fqdn
+  set fqdn "update.multiverse.us.cloud.papercut.com"
+ next
+ edit "fqdn_updates.paloaltonetworks.com"
+  set type fqdn
+  set fqdn "updates.paloaltonetworks.com"
+ next
+ edit "fqdn_vstsagentpackage.azureedge.net"
+  set type fqdn
+  set fqdn "vstsagentpackage.azureedge.net"
+ next
+ edit "fqdn_weather.skyfoundry.com"
+  set type fqdn
+  set fqdn "weather.skyfoundry.com"
+ next
+ edit "fqdn_webdir.online.lync.com"
+  set type fqdn
+  set fqdn "webdir.online.lync.com"
+ next
+ edit "fqdn_webservice.datasentinel.co.nz"
+  set type fqdn
+  set fqdn "webservice.datasentinel.co.nz"
+ next
+ edit "fqdn_webservicev2.datasentinel.co.nz"
+  set type fqdn
+  set fqdn "webservicev2.datasentinel.co.nz"
+ next
+ edit "fqdn_wofonline.landtransport.govt.nz"
+  set type fqdn
+  set fqdn "wofonline.landtransport.govt.nz"
+ next
+ edit "fqdn_wofonline.nzta.govt.nz"
+  set type fqdn
+  set fqdn "wofonline.nzta.govt.nz"
+ next
+ edit "fqdn_worldaz.tr.teams.microsoft.com"
+  set type fqdn
+  set fqdn "worldaz.tr.teams.microsoft.com"
+ next
+ edit "fqdn_worldweatheronline.com"
+  set type fqdn
+  set fqdn "worldweatheronline.com"
+ next
+ edit "fqdn_www.msftconnecttest.com"
+  set type fqdn
+  set fqdn "www.msftconnecttest.com"
+ next
+ edit "fqdn_www.msftncsi.com"
+  set type fqdn
+  set fqdn "www.msftncsi.com"
+ next
+ edit "fqdn_www.office.com"
+  set type fqdn
+  set fqdn "www.office.com"
+ next
+ edit "ftp.pmplimited.co.nz"
+  set type fqdn
+  set fqdn "ftp.pmplimited.co.nz"
+ next
+ edit "github.com"
+  set type fqdn
+  set fqdn "github.com"
+ next
+ edit "lms-simens"
+  set type fqdn
+  set fqdn "lms.bt.siemens.com"
+ next
+ edit "o15.officeredir.microsoft.com"
+  set type fqdn
+  set fqdn "o15.officeredir.microsoft.com"
+ next
+ edit "oPaymentExpressServer"
+  set type fqdn
+  set fqdn "scr.paymentexpress.com"
+ next
+ edit "obj_FQDN-cial-co-nz.mail.protection.outlook.com"
+  set type fqdn
+  set fqdn "cial-co-nz.mail.protection.outlook.com"
+ next
+ edit "ocsredir.officeapps.live.com"
+  set type fqdn
+  set fqdn "ocsredir.officeapps.live.com"
+ next
+ edit "ocws.officeapps.live.com"
+  set type fqdn
+  set fqdn "ocws.officeapps.live.com"
+ next
+ edit "odc.officeapps.live.com"
+  set type fqdn
+  set fqdn "odc.officeapps.live.com"
+ next
+ edit "office15client.microsoft.com"
+  set type fqdn
+  set fqdn "office15client.microsoft.com"
+ next
+ edit "officeclient.microsoft.com"
+  set type fqdn
+  set fqdn "officeclient.microsoft.com"
+ next
+ edit "officepreviewredir.microsoft.com"
+  set type fqdn
+  set fqdn "officepreviewredir.microsoft.com"
+ next
+ edit "officeredir.microsoft.com"
+  set type fqdn
+  set fqdn "officeredir.microsoft.com"
+ next
+ edit "ols.officeapps.live.com"
+  set type fqdn
+  set fqdn "ols.officeapps.live.com"
+ next
+ edit "outlook.office365.com"
+  set type fqdn
+  set fqdn "outlook.office365.com"
+ next
+ edit "r.office.microsoft.com"
+  set type fqdn
+  set fqdn "r.office.microsoft.com"
+ next
+ edit "smtp.gmail.com"
+  set type fqdn
+  set fqdn "smtp.gmail.com"
+ next
+end

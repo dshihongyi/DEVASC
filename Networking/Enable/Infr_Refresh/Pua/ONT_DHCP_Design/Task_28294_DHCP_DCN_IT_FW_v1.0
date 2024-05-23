@@ -1,0 +1,148 @@
+~~~~ Current Configure ~~~~
+
+~~~ DCN FW	Comments ~~~
+
+set interfaces reth4 unit 4003 description "ITF Test DHCP"	Source Interface
+set interfaces reth4 unit 4003 vlan-id 4003	
+set interfaces reth4 unit 4003 family inet sampling input	
+set interfaces reth4 unit 4003 family inet sampling output	
+set interfaces reth4 unit 4003 family inet address 10.232.0.1/13	
+!	
+set interfaces ge-0/0/3 description "ENA-SW-IWIKAU ge-1/0/2"	Destination Interface
+set interfaces ge-0/0/3 vlan-tagging	
+set interfaces ge-0/0/3 unit 3008 vlan-id 3008	
+set interfaces ge-0/0/3 unit 3008 family inet address 172.16.8.2/24	
+!	
+set security address-book zone-itf-huawei-ont-dhcp address addr-itf-huawei-onts 10.232.0.0/13	Security Policy
+set security address-book zone-itf-huawei-ont-dhcp attach zone zone-itf-huawei-ont-dhcp	
+!	
+set security address-book zone-dcn address addr-servers-test-itf-kea-dhcp-node1 10.131.54.11/32	
+set security address-book zone-dcn address addr-servers-test-itf-kea-dhcp-node2 10.131.54.12/32	
+!	
+set security address-book zone-dcn address-set addrs-servers-test-itf-kea-dhcp address addr-servers-test-itf-kea-dhcp-node1	
+set security address-book zone-dcn address-set addrs-servers-test-itf-kea-dhcp address addr-servers-test-itf-kea-dhcp-node2	
+!	
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp match destination-address addrs-servers-test-itf-kea-dhcp	
+set security policies from-zone zone-dcn to-zone zone-itf-huawei-ont-dhcp policy policy-itf-acs-servers-huawei-onts match source-address addrs-servers-test-itf-kea-dhcp	
+set security policies from-zone zone-dcn to-zone zone-itf-huawei-ont-dhcp policy policy-itf-acs-servers-huawei-onts match destination-address addr-itf-huawei-onts	
+!	
+set system services dhcp-local-server group group-huawei-ont interface reth4.4003	DHCP Config
+!	
+set security zones security-zone zone-itf-huawei-ont-dhcp interfaces reth4.4003 host-inbound-traffic system-services dhcp	
+!	
+set access address-assignment pool pool-huawei-ont family inet network 10.232.0.0/13	
+set access address-assignment pool pool-huawei-ont family inet range r1 low 10.232.0.100	
+set access address-assignment pool pool-huawei-ont family inet range r1 high 10.232.0.200	
+set access address-assignment pool pool-huawei-ont family inet dhcp-attributes name-server 10.232.0.1	
+set access address-assignment pool pool-huawei-ont family inet dhcp-attributes router 10.232.0.1	
+set access address-assignment pool pool-huawei-ont family inet dhcp-attributes option 43 hex-string 687474703a2f2f31302e3133312e35342e31302f736572766963652f63776d70	
+set access address-assignment pool pool-huawei-ont family inet dhcp-attributes option 42 array ip-address 10.131.54.11	
+set access address-assignment pool pool-huawei-ont family inet dhcp-attributes option 42 array ip-address 10.131.54.12	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing1 hardware-address 1c:43:63:3d:66:94	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing1 ip-address 10.232.0.100	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing2 hardware-address f0:2f:a7:91:21:22	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing2 ip-address 10.232.0.101	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing3 hardware-address 38:90:52:83:40:fa	
+set access address-assignment pool pool-huawei-ont family inet host ACS_DHCP_Testing3 ip-address 10.232.0.102	
+
+
+
+~~~ IT_FW Comments ~~~
+
+set interfaces reth1 unit 3008 description vlan-itf-dcn-firewall	Source Interface
+set interfaces reth1 unit 3008 vlan-id 3008	
+set interfaces reth1 unit 3008 family inet address 172.16.8.1/24	
+!	
+set interfaces reth1 unit 3954 description "vlan-itf-servers-acs-dmz - ITF ACS DMZ"	Destination interface
+set interfaces reth1 unit 3954 vlan-id 3954	
+set interfaces reth1 unit 3954 family inet address 10.131.54.1/24	
+!	
+set security zones security-zone zone-itf interfaces reth1.3008 host-inbound-traffic system-services ping	Policy Config
+set security zones security-zone zone-servers-test-itf-kea-dhcp interfaces reth1.3954 host-inbound-traffic system-services ping	
+!	
+set security address-book zone-itf address addr-fw-itf-internal 172.16.8.1/32	
+set security address-book zone-itf address addr-eslitffwl002 172.16.8.2/32	
+set security address-book zone-itf address addr-itf-huawei-ont-dhcp-relay 10.232.0.1/32	
+!	
+set security address-book zone-servers-test-itf-kea-dhcp address addr-enadmzdhcpt101 10.131.54.11/32	
+set security address-book zone-servers-test-itf-kea-dhcp address addr-enadmzdhcpt102 10.131.54.12/32	
+!	
+set security address-book zone-servers-test-itf-kea-dhcp address-set addrs-servers-test-itf-kea-dhcp address addr-enadmzdhcpt101	
+set security address-book zone-servers-test-itf-kea-dhcp address-set addrs-servers-test-itf-kea-dhcp address addr-enadmzdhcpt102	
+!	
+set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match source-address addr-itf-huawei-ont-dhcp-relay	
+set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match destination-address addrs-servers-test-itf-kea-dhcp	
+
+
+########################################################################################################################
+
+~~~~ Need too Remove ~~~~
+
+~~~ DCN FW ~~~
+
+run clear dhcp server binding all
+
+delete system services dhcp-local-server group group-huawei-ont interface reth4.4003
+delete access address-assignment pool pool-huawei-ont 
+
+
+
+~~~~ Need too Add ~~~~
+
+~~~ DCN FW ~~~
+
+set forwarding-options dhcp-relay server-group DHCPD 10.131.54.11
+set forwarding-options dhcp-relay server-group DHCPD 10.131.54.12
+set forwarding-options dhcp-relay active-server-group DHCPD
+set forwarding-options dhcp-relay group DHCPD interface ge-0/0/3.3008
+set forwarding-options dhcp-relay group ONTs active-server-group DHCPD
+set forwarding-options dhcp-relay group ONTs interface reth4.4003
+set forwarding-options dhcp-relay group ONTs interface ge-0/0/3.3008
+set security zones security-zone zone-itf-huawei-ont-dhcp interfaces reth4.4003 host-inbound-traffic system-services dhcp
+set security zones security-zone zone-dcn interfaces ge-0/0/3.3008 host-inbound-traffic system-services dhcp
+
+
+~~~ IT FW ~~~
+
+set security address-book zone-itf address-set addrs-itf-huawei-ont-dhcp-relay address addr-eslitffwl002
+set security address-book zone-itf address-set addrs-itf-huawei-ont-dhcp-relay address addr-itf-huawei-onts
+
+delete security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match source-address addr-itf-huawei-ont-dhcp-relay
+set security policies from-zone zone-itf to-zone zone-servers-test-itf-kea-dhcp policy policy-itf-huawei-onts-to-kea-dhcp-server match source-address addrs-itf-huawei-ont-dhcp-relay
+delete security policies from-zone zone-servers-test-itf-kea-dhcp to-zone zone-itf policy policy-servers-test-itf-kea-dhcp-to-ont match destination-address addr-itf-huawei-ont-dhcp-relay
+set security policies from-zone zone-servers-test-itf-kea-dhcp to-zone zone-itf policy policy-servers-test-itf-kea-dhcp-to-ont match destination-address addrs-itf-huawei-ont-dhcp-relay
+
+
+
+~~~~~~~~~~~~~~~ Verifying DHCP Relay ~~~~~~~~~~~~~~~~~~~~~~~
+
+show system services dhcp relay-statistics
+
+
+
+
+
+
+~~~~~~~~~~~~ DCN Policy
+
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp match source-address addr-itf-huawei-onts
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp match destination-address addrs-servers-test-itf-kea-dhcp
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp match application junos-http
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp match application junos-ntp
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp then permit
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp then log session-init
+set security policies from-zone zone-itf-huawei-ont-dhcp to-zone zone-dcn policy policy-itf-huawei-onts-to-servers-itf-ntp then log session-close
+
+~~~~~~~~
+                                                                    
+
+set interfaces reth4 unit 4003 family inet filter input PCAP
+set interfaces reth4 unit 4003 family inet filter output PCAP
+
+delete interfaces reth4 unit 4003 family inet filter input PCAP
+delete interfaces reth4 unit 4003 family inet filter output PCAP
+
+set interfaces reth4 unit 4003 family inet filter input PCAP
+set interfaces reth4 unit 4003 family inet filter output PCAP
+
+file list /var/tmp/

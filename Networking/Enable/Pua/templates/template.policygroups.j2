@@ -1,0 +1,17 @@
+{% for end_zone in end_zones %}
+{% if delete_config %}
+{% if type=="from_zone" %}
+delete security policies from-zone {{ zone }} to-zone {{ end_zone }} apply-groups {{ policy_groupname }}
+{% else %}
+delete security policies from-zone {{ end_zone }} to-zone {{ zone }} apply-groups {{ policy_groupname }}
+{% endif %}
+{% else %}
+{% if type=="from_zone" %}
+set security policies from-zone {{ zone }} to-zone {{ end_zone }} apply-groups {{ policy_groupname }}
+{% else %}
+set security policies from-zone {{ end_zone }} to-zone {{ zone }} apply-groups {{ policy_groupname }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+

@@ -1,0 +1,4 @@
+set vlans vlan-guest-stuff vlan-id 3085
+
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest-stuff

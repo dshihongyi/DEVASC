@@ -1,0 +1,216 @@
+set interfaces reth1 unit 4056 description "vlan-servers-u2000-pri"
+set interfaces reth1 unit 4056 vlan-id 4056
+set interfaces reth1 unit 4056 family inet address 10.130.56.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4056 passive
+ 
+set interfaces reth1 unit 4057 description "vlan-servers-u2000-sec"
+set interfaces reth1 unit 4057 vlan-id 4057
+set interfaces reth1 unit 4057 family inet address 10.130.57.1/24
+set protocols ospf area 0.0.0.0 interface reth1.4057 passive
+ 
+set security zones security-zone zone-servers-u2000 interfaces reth1.4056 host-inbound-traffic system-services ping
+set security zones security-zone zone-servers-u2000 interfaces reth1.4057 host-inbound-traffic system-services ping
+ 
+set security address-book zone-servers-u2000 address addr-ESLD21U2K002 10.130.56.10/32
+set security address-book zone-servers-u2000 address addr-ESLRICU2K002 10.130.57.10/32
+set security address-book zone-servers-u2000 address-set address-u2000-v2r16 address addr-ESLD21U2K002
+set security address-book zone-servers-u2000 address-set address-u2000-v2r16 address addr-ESLRICU2K002
+set security address-book zone-servers-u2000 attach zone zone-servers-u2000
+ 
+set policy-options policy-statement policy-import-dcn2-to-enable term 3 from route-filter 10.128.4.0/24 exact
+set policy-options policy-statement policy-import-dcn2-to-enable term 3 then accept
+set policy-options policy-statement policy-import-dcn2-to-enable term 4 from route-filter 10.129.0.0/17 exact
+set policy-options policy-statement policy-import-dcn2-to-enable term 4 then accept
+set policy-options policy-statement policy-import-dcn2-to-enable term 5 from route-filter 10.128.2.0/24 exact
+set policy-options policy-statement policy-import-dcn2-to-enable term 5 then accept
+
+
+
+
+ 
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-kuukupa
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-enactxp01
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match source-address addr-enactxp02
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-client
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application junos-ping
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-msuite
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-uFAD
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 match application app-u2000-tl1
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-rpa-u2000-v2r16 then log session-close
+
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh match source-address addr-kuukupa
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh match application junos-ssh
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh then permit
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-servers-u2000 policy policy-kuukuupa-u2000-v2r16-ssh then log session-close
+
+
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any match source-address any
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any match destination-address any
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any match application any
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any then permit
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any then log session-init
+set security policies from-zone zone-servers-u2000 to-zone zone-servers-u2000 policy policy-u2000-to-u2000-any then log session-close
+
+
+
+
+
+set security address-book zone-dcn2-cisco address addr-huawei-OLT-EAS 10.128.4.0/24
+set security address-book zone-dcn2-cisco address addr-huawei-BS04 10.129.0.0/17
+set security address-book zone-dcn2-cisco address addr-huawei-OLT-MGMT 10.128.2.0/24
+
+ 
+
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match source-address address-u2000-v2r16
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match destination-address addr-huawei-OLT-MGMT
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match destination-address addr-huawei-OLT-EAS
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match destination-address addr-huawei-BS04
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application app-snmp
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application junos-icmp-ping
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application junos-telnet
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application junos-ftp
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application junos-ftp-data
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application junos-ssh
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT match application app-u2000-ont
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT then permit
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT then log session-init
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn2-cisco policy policy-u2000-v2r16-to-huawei-OLT then log session-close
+
+ 
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match source-address addr-enasacprvp101
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match source-address addr-enasacprvp102
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 match application app-u2000-tl1
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then permit
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then log session-init
+set security policies from-zone zone-servers-sac to-zone zone-servers-u2000 policy policy-servers-sac-to-prod-u2000-tl1 then log session-close
+
+
+set applications application app-u2000-ont term 1 protocol tcp
+set applications application app-u2000-ont term 1 destination-port 3081
+set applications application app-u2000-ont term 2 protocol tcp
+set applications application app-u2000-ont term 2 destination-port 3300
+set applications application app-u2000-ont term 3 protocol tcp
+set applications application app-u2000-ont term 3 destination-port 3303
+set applications application app-u2000-ont term 4 protocol tcp
+set applications application app-u2000-ont term 4 destination-port 5432
+set applications application app-u2000-ont term 5 protocol tcp
+set applications application app-u2000-ont term 5 destination-port 8443
+set applications application app-u2000-ont term 6 protocol tcp
+set applications application app-u2000-ont term 6 destination-port 10443
+set applications application app-u2000-ont term 7 protocol tcp
+set applications application app-u2000-ont term 7 destination-port 1400
+set applications application app-u2000-ont term 8 protocol udp
+set applications application app-u2000-ont term 8 destination-port 35600-35655
+set applications application app-u2000-ont term 9 protocol udp
+set applications application app-u2000-ont term 9 destination-port 80002
+set applications application app-u2000-ont term 10 protocol udp
+set applications application app-u2000-ont term 10 destination-port 15000
+
+udp 80002
+udp 15000
+
+
+
+
+
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp match source-address addr-kakapo
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp match destination-address addr-huawei-OLT-EAS
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp match application junos-icmp-ping
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp match application app-snmp
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp then permit
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp then log session-init
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-cacti-dcn2-cisco-snmp then log session-close
+
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet match source-address addr-slurm
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet match destination-address addr-huawei-OLT-EAS
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet match application junos-telnet
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet then permit
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet then log session-init
+set security policies from-zone zone-servers-dcnservices to-zone zone-dcn2-cisco policy policy-slurm-dcn2-cisco-telnet then log session-close
+
+
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match source-address addr-huawei-BS04
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match source-address addr-huawei-OLT-EAS
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match source-address addr-huawei-OLT-MGMT
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match destination-address address-u2000-v2r16
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application app-snmp-trap
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-syslog
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-telnet
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-ftp
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-ftp-data
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-ssh
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-tftp
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application junos-bootps
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 match application app-u2000-service
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 then permit
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 then log session-init
+set security policies from-zone zone-dcn2-cisco to-zone zone-servers-u2000 policy policy-dcn2-huawei-OLT-to-u2000-v2r16 then log session-close
+
+
+set applications application app-u2000-service term 1 protocol udp
+set applications application app-u2000-service term 1 destination-port 14368
+set applications application app-u2000-service term 2 protocol tcp
+set applications application app-u2000-service term 2 destination-port 16100-17099
+set applications application app-u2000-service term 3 protocol udp
+set applications application app-u2000-service term 3 destination-port 31000-31005
+set applications application app-u2000-service term 4 protocol udp
+set applications application app-u2000-service term 4 destination-port 31800-31803
+set applications application app-u2000-service term 5 protocol tcp
+set applications application app-u2000-service term 5 destination-port 6514
+set applications application app-u2000-service term 6 protocol udp
+set applications application app-u2000-service term 6 destination-port 8001
+
+
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius match source-address addr-huawei-OLT-MGMT
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius match source-address addr-huawei-OLT-EAS
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius match destination-address addr-eslhrbsec002
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius match application junos-radius
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius then permit
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius then log session-init
+set security policies from-zone zone-dcn2-cisco to-zone zone-dcn policy policy-dcn2-huawei-OLT-to-radius then log session-close
+
+
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet match source-address address-u2000-v2r16
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet match destination-address addr-ESLHRBLSW001
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet match destination-address addr-ESLRICLSW001
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet match application junos-telnet
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet match application app-snmp
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet then permit
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet then log session-init
+set security policies from-zone zone-servers-u2000 to-zone zone-dcn policy policy-u2000-v2r16-to-dcn-telnet then log session-close
+
+
+set policy-options policy-statement policy-export-bgp-to-ospf term 1 from route-filter 10.128.2.0/24 exact
+set policy-options policy-statement policy-export-bgp-to-ospf term 1 from route-filter 10.128.4.0/24 exact
+
+
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 match source-address addr-borg
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 match destination-address address-u2000-v2r16
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 match application app-u2000-tl1
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 match application junos-ping
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 then permit
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 then log session-init
+set security policies from-zone zone-servers-prod to-zone zone-servers-u2000 policy policy-borg-u2000-v2r16-tl1 then log session-close
+
+
+
+
+
+
+56.10
+
+
+10.1
+
+delete interfaces reth1 unit 4056 family inet address 10.130.56.1/24
+delete interfaces reth1 unit 4057 family inet address 10.130.57.1/24
+
+commit comment "DCN Migration - Juniper to Huawei - Daniel"
+
+commit confirmed 10 comment "DCN Migration - Juniper to Huawei - Daniel"

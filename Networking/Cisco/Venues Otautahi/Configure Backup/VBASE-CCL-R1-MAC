@@ -1,0 +1,1101 @@
+login as: tim
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#ter len 0
+VBASE-CCL-R1#sh run
+Building configuration...
+
+Current configuration : 13410 bytes
+!
+! Last configuration change at 17:38:37 NZDT Mon Mar 20 2023 by tim
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+no service password-encryption
+service compress-config
+service unsupported-transceiver
+!
+hostname VBASE-CCL-R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+username tim privilege 15 password 0 que0bix
+username admin privilege 15 password 0 armageddon
+no aaa new-model
+clock timezone NZST 12 0
+clock summer-time NZDT recurring last Sun Sep 2:00 1 Sun Apr 2:00
+switch 1 provision ws-c3850-24t
+switch 2 provision ws-c3850-24t
+!
+!
+!
+!
+!
+ip routing
+!
+ip domain-name nccnz.local
+!
+!
+qos queue-softmax-multiplier 100
+!
+table-map AutoQos-4.0-Trust-Cos-Table
+ default copy
+!
+!
+!
+no errdisable detect cause gbic-invalid
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 16 priority 61440
+spanning-tree vlan 122 priority 8192
+hw-switch switch 1 logging onboard message level 3
+hw-switch switch 2 logging onboard message level 3
+!
+redundancy
+ mode sso
+!
+lldp run
+!
+!
+class-map match-any AutoQos-4.0-Output-Multimedia-Conf-Queue
+ match dscp af41  af42  af43
+ match cos  4
+class-map match-any AutoQos-4.0-Output-Bulk-Data-Queue
+ match dscp af11  af12  af13
+ match cos  1
+class-map match-any AutoQos-4.0-Output-Priority-Queue
+ match dscp cs4  cs5  ef
+ match cos  5
+class-map match-any AutoQos-4.0-Output-Multimedia-Strm-Queue
+ match dscp af31  af32  af33
+class-map match-any non-client-nrt-class
+class-map match-any AutoQos-4.0-Output-Trans-Data-Queue
+ match dscp af21  af22  af23
+ match cos  2
+class-map match-any AutoQos-4.0-Output-Scavenger-Queue
+ match dscp cs1
+class-map match-any AutoQos-4.0-Output-Control-Mgmt-Queue
+ match dscp cs2  cs3  cs6  cs7
+ match cos  3
+!
+policy-map port_child_policy
+ class non-client-nrt-class
+  bandwidth remaining ratio 10
+policy-map AutoQos-4.0-Output-Policy
+ class AutoQos-4.0-Output-Priority-Queue
+  priority level 1 percent 30
+ class AutoQos-4.0-Output-Control-Mgmt-Queue
+  bandwidth remaining percent 10
+  queue-limit dscp cs2 percent 80
+  queue-limit dscp cs3 percent 90
+  queue-limit dscp cs6 percent 100
+  queue-limit dscp cs7 percent 100
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Multimedia-Conf-Queue
+  bandwidth remaining percent 10
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Trans-Data-Queue
+  bandwidth remaining percent 10
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Bulk-Data-Queue
+  bandwidth remaining percent 4
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Scavenger-Queue
+  bandwidth remaining percent 1
+  queue-buffers ratio 10
+ class AutoQos-4.0-Output-Multimedia-Strm-Queue
+  bandwidth remaining percent 10
+  queue-buffers ratio 10
+ class class-default
+  bandwidth remaining percent 25
+  queue-buffers ratio 25
+policy-map AutoQos-4.0-Trust-Cos-Input-Policy
+ class class-default
+  set cos cos table AutoQos-4.0-Trust-Cos-Table
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback9
+ description Mngt IP
+ ip address 172.28.0.1 255.255.255.255
+!
+interface Loopback99
+ ip address 153.111.96.234 255.255.255.255
+!
+interface Port-channel127
+ description LAG to VBASE-5508 WLC
+ switchport trunk allowed vlan 16,21,25,31,114,122
+ switchport mode trunk
+!
+interface Port-channel128
+ description LINK to Nexus
+ switchport trunk allowed vlan 26,613
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ description LINK TO WLC
+ switchport trunk allowed vlan 16,21,25,31,114,122
+ switchport mode trunk
+ channel-group 127 mode on
+!
+interface GigabitEthernet1/0/2
+ description LINK TO WLC
+ switchport trunk allowed vlan 16,21,25,31,114,122
+ switchport mode trunk
+ channel-group 127 mode on
+!
+interface GigabitEthernet1/0/3
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/4
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/5
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/6
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/7
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/8
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/9
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/10
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/11
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/12
+ description PORT NOT IN USE
+ switchport access vlan 237
+ switchport mode access
+ switchport nonegotiate
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/13
+ description PORT NOT IN USE
+ switchport trunk allowed vlan 26,237
+ switchport mode trunk
+ auto qos trust
+ service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+ service-policy output AutoQos-4.0-Output-Policy
+!
+interface GigabitEthernet1/0/14
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/15
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/16
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/17
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/18
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/19
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/20
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/21
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/22
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/23
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/0/24
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet1/1/1
+ description pRIMARY LINK to Town Hall
+ switchport trunk allowed vlan 31,50
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface TenGigabitEthernet1/1/1
+ description PORT NOT IN USE
+ switchport trunk allowed vlan 10,20,30
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/2
+ description PORT NOT IN USE
+ shutdown
+!
+interface TenGigabitEthernet1/1/3
+ description Primary LINK to Carrier Ethernet Platform
+ switchport trunk allowed vlan 10,16,20,30,31,40,114,250-253
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/4
+ description LINK TO DC
+ switchport trunk allowed vlan 26,613
+ switchport mode trunk
+ channel-group 128 mode active
+!
+interface GigabitEthernet2/0/1
+ description LINK TO WLC
+ switchport trunk allowed vlan 16,21,25,31,114,122
+ switchport mode trunk
+ channel-group 127 mode on
+!
+interface GigabitEthernet2/0/2
+ description LINK TO WLC
+ switchport trunk allowed vlan 16,21,25,31,114,122
+ switchport mode trunk
+ channel-group 127 mode on
+!
+interface GigabitEthernet2/0/3
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/4
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/5
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/6
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/7
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/8
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/9
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/10
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/11
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/12
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/13
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/14
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/15
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/16
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/17
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/18
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/19
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/20
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/21
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/22
+ description PORT NOT IN USE
+ shutdown
+!
+interface GigabitEthernet2/0/23
+ description Backup LINK to Carrier Etrhernet Platform
+ switchport trunk allowed vlan 110,120,130,140
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/24
+ description PORT NOT IN USE
+ switchport access vlan 26
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/1/1
+ description Secondary LINK to Town Hall
+ switchport trunk allowed vlan 31,150
+ switchport mode trunk
+!
+interface GigabitEthernet2/1/2
+!
+interface GigabitEthernet2/1/3
+!
+interface GigabitEthernet2/1/4
+!
+interface TenGigabitEthernet2/1/1
+ description PORT NOT IN USE
+ switchport trunk allowed vlan 110,120,130
+ switchport mode trunk
+!
+interface TenGigabitEthernet2/1/2
+ description PORT NOT IN USE
+ shutdown
+!
+interface TenGigabitEthernet2/1/3
+ description PORT NOT IN USE
+ switchport trunk allowed vlan 10,20,30
+ switchport mode trunk
+!
+interface TenGigabitEthernet2/1/4
+ description LINK TO DC
+ switchport trunk allowed vlan 26,613
+ switchport mode trunk
+ channel-group 128 mode active
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan10
+ description Primary LINK to ARENA
+ ip address 172.17.10.1 255.255.255.252
+!
+interface Vlan20
+ description Primary LINK to HAGLEY
+ ip address 172.17.20.1 255.255.255.252
+!
+interface Vlan21
+ description CCC-TEMP Wireless
+ ip address 153.111.21.1 255.255.255.0
+ ip helper-address 153.111.97.102
+!
+interface Vlan25
+ description VBASE Wirless Data Corporate
+ ip address 153.111.25.1 255.255.255.0
+ ip helper-address 153.111.26.11
+ ip helper-address 153.111.26.13
+ ip helper-address 153.111.26.14
+!
+interface Vlan26
+ description Primary VBASE Server VLAN
+ ip address 153.111.26.1 255.255.255.0
+!
+interface Vlan30
+ description Primary LINK to WIGRAM
+ ip address 172.17.30.1 255.255.255.252
+!
+interface Vlan31
+ ip address 10.11.114.6 255.255.255.128
+!
+interface Vlan40
+ description Primary LINK to Stadium
+ ip address 172.17.40.1 255.255.255.252
+!
+interface Vlan50
+ description Town Hall Primary SVI
+ ip address 172.17.50.1 255.255.255.252
+ ip mtu 1486
+!
+interface Vlan110
+ description Secondary LINK to ARENA
+ ip address 172.17.110.1 255.255.255.252
+ ip ospf cost 250
+!
+interface Vlan120
+ description Secondary LINK to HAGLEY
+ ip address 172.17.120.1 255.255.255.252
+ ip ospf cost 250
+!
+interface Vlan122
+ description WiFi CAPWAP
+ ip address 10.122.0.1 255.255.255.0
+!
+interface Vlan130
+ description Secondary LINK to WIGRAM
+ ip address 172.17.130.1 255.255.255.252
+ ip ospf cost 250
+!
+interface Vlan140
+ description Secondary LINK to Stadium
+ ip address 172.17.140.1 255.255.255.252
+ ip ospf cost 250
+!
+interface Vlan150
+ description Town Hall Secondary SVI
+ ip address 172.17.150.1 255.255.255.252
+ ip mtu 1486
+ ip ospf cost 250
+!
+interface Vlan237
+ description VoIP Server
+ ip address 153.111.237.1 255.255.255.0
+!
+interface Vlan613
+ description Interconnect to ESP Firewall
+ ip address 172.28.0.100 255.255.255.254
+!
+router ospf 1
+ router-id 172.28.0.1
+ redistribute connected subnets
+ redistribute static subnets route-map STATIC-ROUTES
+ network 172.17.10.0 0.0.0.3 area 0
+ network 172.17.20.0 0.0.0.3 area 0
+ network 172.17.30.0 0.0.0.3 area 0
+ network 172.17.40.0 0.0.0.3 area 0
+ network 172.17.50.0 0.0.0.3 area 0
+ network 172.17.110.0 0.0.0.3 area 0
+ network 172.17.120.0 0.0.0.3 area 0
+ network 172.17.130.0 0.0.0.3 area 0
+ network 172.17.140.0 0.0.0.3 area 0
+ network 172.17.150.0 0.0.0.3 area 0
+ network 172.28.0.1 0.0.0.0 area 0
+ default-information originate
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 172.28.0.101 name CCL_FW
+ip route 10.130.0.0 255.255.0.0 153.111.26.2
+ip route 122.56.56.51 255.255.255.255 153.111.26.2 name Server_monitoring
+ip route 153.111.0.0 255.255.0.0 153.111.26.2
+ip route 153.111.30.0 255.255.255.0 172.28.0.101 name Remote-Access
+ip route 153.111.96.234 255.255.255.255 153.111.26.2 name MNGT
+ip route 153.111.96.234 255.255.255.255 Null0
+ip route 153.111.98.56 255.255.255.255 Null0
+ip route 153.111.100.12 255.255.255.255 Null0
+ip route 153.111.100.252 255.255.255.255 Null0
+ip route 153.111.226.0 255.255.255.0 172.28.0.101 name CCC_EXT
+ip route 155.32.4.0 255.255.255.0 153.111.26.2
+ip route 155.32.4.20 255.255.255.255 172.28.0.101 name TT-DMZ
+ip route 155.32.4.80 255.255.255.255 172.28.0.101 name TTONLINE
+ip ssh source-interface Loopback99
+!
+!
+!
+ip prefix-list STATIC seq 10 permit 153.111.30.0/24
+!
+route-map STATIC-ROUTES permit 10
+ match ip address prefix-list STATIC
+!
+!
+!
+!
+line con 0
+ login local
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login local
+line vty 5 15
+ login local
+!
+ntp source Vlan26
+ntp server 130.217.226.50 minpoll 10
+ntp server 153.111.26.2 prefer
+wsma agent exec
+ profile httplistener
+ profile httpslistener
+!
+wsma agent config
+ profile httplistener
+ profile httpslistener
+!
+wsma agent filesys
+ profile httplistener
+ profile httpslistener
+!
+wsma agent notify
+ profile httplistener
+ profile httpslistener
+!
+!
+wsma profile listener httplistener
+ transport http
+!
+wsma profile listener httpslistener
+ transport https
+!
+ap group default-group
+end
+
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#sh int des
+Interface                      Status         Protocol Description
+Vl1                            up             down
+Vl10                           up             up       Primary LINK to ARENA
+Vl20                           up             up       Primary LINK to HAGLEY
+Vl21                           up             up       CCC-TEMP Wireless
+Vl25                           up             up       VBASE Wirless Data Corpor                                                                             ate
+Vl26                           up             up       Primary VBASE Server VLAN
+Vl30                           up             up       Primary LINK to WIGRAM
+Vl31                           up             up
+Vl40                           up             up       Primary LINK to Stadium
+Vl50                           up             up       Town Hall Primary SVI
+Vl110                          up             up       Secondary LINK to ARENA
+Vl120                          up             up       Secondary LINK to HAGLEY
+Vl122                          up             up       WiFi CAPWAP
+Vl130                          up             up       Secondary LINK to WIGRAM
+Vl140                          up             up       Secondary LINK to Stadium
+Vl150                          up             up       Town Hall Secondary SVI
+Vl237                          up             up       VoIP Server
+Vl613                          up             up       Interconnect to ESP Firew                                                                             all
+Gi0/0                          down           down
+Gi1/0/1                        up             up       LINK TO WLC
+Gi1/0/2                        up             up       LINK TO WLC
+Gi1/0/3                        admin down     down     PORT NOT IN USE
+Gi1/0/4                        admin down     down     PORT NOT IN USE
+Gi1/0/5                        admin down     down     PORT NOT IN USE
+Gi1/0/6                        admin down     down     PORT NOT IN USE
+Gi1/0/7                        admin down     down     PORT NOT IN USE
+Gi1/0/8                        admin down     down     PORT NOT IN USE
+Gi1/0/9                        admin down     down     PORT NOT IN USE
+Gi1/0/10                       admin down     down     PORT NOT IN USE
+Gi1/0/11                       admin down     down     PORT NOT IN USE
+Gi1/0/12                       down           down     PORT NOT IN USE
+Gi1/0/13                       up             up       PORT NOT IN USE
+Gi1/0/14                       admin down     down     PORT NOT IN USE
+Gi1/0/15                       admin down     down     PORT NOT IN USE
+Gi1/0/16                       admin down     down     PORT NOT IN USE
+Gi1/0/17                       admin down     down     PORT NOT IN USE
+Gi1/0/18                       admin down     down     PORT NOT IN USE
+Gi1/0/19                       admin down     down     PORT NOT IN USE
+Gi1/0/20                       admin down     down     PORT NOT IN USE
+Gi1/0/21                       admin down     down     PORT NOT IN USE
+Gi1/0/22                       admin down     down     PORT NOT IN USE
+Gi1/0/23                       admin down     down     PORT NOT IN USE
+Gi1/0/24                       admin down     down     PORT NOT IN USE
+Gi1/1/1                        up             up       pRIMARY LINK to Town Hall
+Gi1/1/2                        down           down
+Gi1/1/3                        down           down
+Gi1/1/4                        down           down
+Te1/1/1                        down           down     PORT NOT IN USE
+Te1/1/2                        admin down     down     PORT NOT IN USE
+Te1/1/3                        up             up       Primary LINK to Carrier E                                                                             thernet Platform
+Te1/1/4                        up             up       LINK TO DC
+Gi2/0/1                        up             up       LINK TO WLC
+Gi2/0/2                        up             up       LINK TO WLC
+Gi2/0/3                        admin down     down     PORT NOT IN USE
+Gi2/0/4                        admin down     down     PORT NOT IN USE
+Gi2/0/5                        admin down     down     PORT NOT IN USE
+Gi2/0/6                        admin down     down     PORT NOT IN USE
+Gi2/0/7                        admin down     down     PORT NOT IN USE
+Gi2/0/8                        admin down     down     PORT NOT IN USE
+Gi2/0/9                        admin down     down     PORT NOT IN USE
+Gi2/0/10                       admin down     down     PORT NOT IN USE
+Gi2/0/11                       admin down     down     PORT NOT IN USE
+Gi2/0/12                       admin down     down     PORT NOT IN USE
+Gi2/0/13                       admin down     down     PORT NOT IN USE
+Gi2/0/14                       admin down     down     PORT NOT IN USE
+Gi2/0/15                       admin down     down     PORT NOT IN USE
+Gi2/0/16                       admin down     down     PORT NOT IN USE
+Gi2/0/17                       admin down     down     PORT NOT IN USE
+Gi2/0/18                       admin down     down     PORT NOT IN USE
+Gi2/0/19                       admin down     down     PORT NOT IN USE
+Gi2/0/20                       admin down     down     PORT NOT IN USE
+Gi2/0/21                       admin down     down     PORT NOT IN USE
+Gi2/0/22                       admin down     down     PORT NOT IN USE
+Gi2/0/23                       up             up       Backup LINK to Carrier Et                                                                             rhernet Platform
+Gi2/0/24                       up             up       PORT NOT IN USE
+Gi2/1/1                        up             up       Secondary LINK to Town Ha                                                                             ll
+Gi2/1/2                        down           down
+Gi2/1/3                        down           down
+Gi2/1/4                        down           down
+Te2/1/1                        down           down     PORT NOT IN USE
+Te2/1/2                        admin down     down     PORT NOT IN USE
+Te2/1/3                        down           down     PORT NOT IN USE
+Te2/1/4                        up             up       LINK TO DC
+Po127                          up             up       LAG to VBASE-5508 WLC
+Po128                          up             up       LINK to Nexus
+Lo9                            up             up       Mngt IP
+Lo99                           up             up
+VBASE-CCL-R1#
+VBASE-CCL-R1#sh int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1   LINK TO WLC        connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/2   LINK TO WLC        connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/3   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/4   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/5   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/6   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/7   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/8   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/9   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/10  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/11  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/12  PORT NOT IN USE    notconnect   237          auto   auto 10/100/1000BaseTX
+Gi1/0/13  PORT NOT IN USE    connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/14  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/15  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/16  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/17  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/18  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/19  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/20  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/21  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/22  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/23  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/0/24  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi1/1/1   pRIMARY LINK to To connected    trunk        full   1000 DWDM-4931 SFP
+Gi1/1/2                      notconnect   1            auto   auto unknown
+Te1/1/3   Primary LINK to Ca connected    trunk        full    10G SFP-10GBase-LR
+Te1/1/4   LINK TO DC         connected    trunk        full    10G SFP-10GBase-SR
+Gi2/0/1   LINK TO WLC        connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi2/0/2   LINK TO WLC        connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi2/0/3   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/4   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/5   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/6   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/7   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/8   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/9   PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/10  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/11  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/12  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/13  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/14  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/15  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/16  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/17  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/18  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/19  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/20  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/21  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/22  PORT NOT IN USE    disabled     1            auto   auto 10/100/1000BaseTX
+Gi2/0/23  Backup LINK to Car connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi2/0/24  PORT NOT IN USE    connected    26         a-full a-1000 10/100/1000BaseTX
+Gi2/1/1   Secondary LINK to  connected    trunk        full   1000 DWDM-4931 SFP
+Gi2/1/2                      notconnect   1            auto   auto unknown
+Te2/1/3   PORT NOT IN USE    notconnect   1            auto   auto unknown
+Te2/1/4   LINK TO DC         connected    trunk        full    10G SFP-10GBase-SR
+Po127     LAG to VBASE-5508  connected    trunk      a-full a-1000
+Po128     LINK to Nexus      connected    trunk      a-full    10G
+VBASE-CCL-R1#sh mac add
+VBASE-CCL-R1#sh mac address-table interface gi1/0/1
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#sh mac address-table interface gi1/0/2
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#sh mac address-table interface gi1/0/13
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+ 237    000c.2928.f17a    DYNAMIC     Gi1/0/13
+ 237    000c.294a.7f2e    DYNAMIC     Gi1/0/13
+Total Mac Addresses for this criterion: 2
+VBASE-CCL-R1#sh mac address-table interface gi1/1/1
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+  50    2c21.3185.e389    DYNAMIC     Gi1/1/1
+Total Mac Addresses for this criterion: 1
+VBASE-CCL-R1#sh mac address-table interface Te1/1/3
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+  10    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+  10    08cc.a7e0.a7c1    DYNAMIC     Te1/1/3
+  20    08cc.a7e1.0802    DYNAMIC     Te1/1/3
+  20    08cc.a7e1.0841    DYNAMIC     Te1/1/3
+  30    08cc.a7e1.e982    DYNAMIC     Te1/1/3
+  30    08cc.a7e1.e9c2    DYNAMIC     Te1/1/3
+  31    00f8.2c0f.1950    DYNAMIC     Te1/1/3
+  31    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+  31    08cc.a7e1.0802    DYNAMIC     Te1/1/3
+  31    7cd3.0a10.16aa    DYNAMIC     Te1/1/3
+  31    7cd3.0a10.963e    DYNAMIC     Te1/1/3
+  31    7cd3.0a22.a605    DYNAMIC     Te1/1/3
+  40    a055.4f77.4282    DYNAMIC     Te1/1/3
+  40    a055.4f77.42c1    DYNAMIC     Te1/1/3
+  16    001b.0ca7.c6c2    DYNAMIC     Te1/1/3
+  16    0028.f893.37d5    DYNAMIC     Te1/1/3
+  16    06e0.c426.320f    DYNAMIC     Te1/1/3
+  16    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+  16    1635.5733.e7f4    DYNAMIC     Te1/1/3
+  16    164c.0e98.7c73    DYNAMIC     Te1/1/3
+  16    1a23.26bd.50ea    DYNAMIC     Te1/1/3
+  16    3656.7949.61d7    DYNAMIC     Te1/1/3
+  16    42e5.3fc3.0164    DYNAMIC     Te1/1/3
+  16    465c.9b9d.9e7f    DYNAMIC     Te1/1/3
+  16    4a79.6742.1600    DYNAMIC     Te1/1/3
+  16    4e26.b89f.b474    DYNAMIC     Te1/1/3
+  16    5229.1f67.10cd    DYNAMIC     Te1/1/3
+  16    5663.e57a.35e8    DYNAMIC     Te1/1/3
+  16    624e.e555.6dd8    DYNAMIC     Te1/1/3
+  16    66a0.08d3.98f4    DYNAMIC     Te1/1/3
+  16    66a9.21cf.c7f4    DYNAMIC     Te1/1/3
+  16    6a18.3b6e.2a01    DYNAMIC     Te1/1/3
+  16    6a1a.47f0.3888    DYNAMIC     Te1/1/3
+  16    764b.2758.bf57    DYNAMIC     Te1/1/3
+  16    8613.5df9.6388    DYNAMIC     Te1/1/3
+  16    c25a.026a.958e    DYNAMIC     Te1/1/3
+  16    c64c.60a4.1e6c    DYNAMIC     Te1/1/3
+  16    ce3a.d6d3.9559    DYNAMIC     Te1/1/3
+  16    f079.e8f3.b1ab    DYNAMIC     Te1/1/3
+  16    f2c6.3bf6.a64b    DYNAMIC     Te1/1/3
+ 114    000f.d405.74ce    DYNAMIC     Te1/1/3
+ 114    000f.d405.74e8    DYNAMIC     Te1/1/3
+ 114    000f.d40b.95bc    DYNAMIC     Te1/1/3
+ 114    000f.d40c.0305    DYNAMIC     Te1/1/3
+ 114    000f.d40c.0389    DYNAMIC     Te1/1/3
+ 114    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+ 250    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+ 250    08cc.a7e0.a7ce    DYNAMIC     Te1/1/3
+ 250    500b.9180.2658    DYNAMIC     Te1/1/3
+ 250    500b.9180.2e38    DYNAMIC     Te1/1/3
+ 250    500b.9180.2ef8    DYNAMIC     Te1/1/3
+ 250    500b.9180.2f68    DYNAMIC     Te1/1/3
+ 250    500b.9180.2f90    DYNAMIC     Te1/1/3
+ 250    500b.9180.2fb0    DYNAMIC     Te1/1/3
+ 250    500b.9180.2ff0    DYNAMIC     Te1/1/3
+ 250    500b.9180.3020    DYNAMIC     Te1/1/3
+ 250    500b.9180.3138    DYNAMIC     Te1/1/3
+ 250    500b.9180.31e0    DYNAMIC     Te1/1/3
+ 250    500b.9180.32a8    DYNAMIC     Te1/1/3
+ 250    500b.9180.3368    DYNAMIC     Te1/1/3
+ 250    500b.9180.4e5c    DYNAMIC     Te1/1/3
+ 250    500b.9180.4f1c    DYNAMIC     Te1/1/3
+ 250    500b.9180.506c    DYNAMIC     Te1/1/3
+ 250    500b.9180.57cc    DYNAMIC     Te1/1/3
+ 250    500b.9180.586c    DYNAMIC     Te1/1/3
+ 250    500b.9180.59dc    DYNAMIC     Te1/1/3
+ 250    500b.9180.5a74    DYNAMIC     Te1/1/3
+ 250    500b.9180.5b6c    DYNAMIC     Te1/1/3
+ 250    500b.9180.5b7c    DYNAMIC     Te1/1/3
+ 250    500b.9180.6368    DYNAMIC     Te1/1/3
+ 250    500b.9180.6bfc    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c08    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c0e    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c20    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c26    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c2c    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c32    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c74    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c7a    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c86    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c8c    DYNAMIC     Te1/1/3
+ 250    500b.9180.6c92    DYNAMIC     Te1/1/3
+ 250    500b.9180.6ca4    DYNAMIC     Te1/1/3
+ 250    500b.9180.7a40    DYNAMIC     Te1/1/3
+ 250    500b.9180.7a58    DYNAMIC     Te1/1/3
+ 250    500b.9180.7a80    DYNAMIC     Te1/1/3
+ 250    500b.9180.7bf8    DYNAMIC     Te1/1/3
+ 250    500b.9180.7c98    DYNAMIC     Te1/1/3
+ 250    500b.9180.7d50    DYNAMIC     Te1/1/3
+ 250    500b.9180.7dd8    DYNAMIC     Te1/1/3
+ 250    500b.9180.7de0    DYNAMIC     Te1/1/3
+ 250    500b.9180.7df0    DYNAMIC     Te1/1/3
+ 250    f0de.f124.dcdb    DYNAMIC     Te1/1/3
+ 251    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+ 251    08cc.a7e0.a7cf    DYNAMIC     Te1/1/3
+ 251    7483.c249.5559    DYNAMIC     Te1/1/3
+ 251    7483.c249.5b50    DYNAMIC     Te1/1/3
+ 252    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+ 252    08cc.a7e0.a7d0    DYNAMIC     Te1/1/3
+ 253    08cc.a7e0.a782    DYNAMIC     Te1/1/3
+ 253    08cc.a7e0.a7d1    DYNAMIC     Te1/1/3
+ 253    18e8.295f.2c9e    DYNAMIC     Te1/1/3
+Total Mac Addresses for this criterion: 102
+VBASE-CCL-R1#sh mac address-table interface Te1/1/4
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#sh mac address-table interface gi2/0/1
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#sh mac address-table interface gi2/0/2
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#sh mac address-table interface gi2/0/23
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+ 110    08cc.a7e0.a782    DYNAMIC     Gi2/0/23
+ 110    08cc.a7e0.a7c5    DYNAMIC     Gi2/0/23
+ 120    08cc.a7e1.0802    DYNAMIC     Gi2/0/23
+ 120    08cc.a7e1.0845    DYNAMIC     Gi2/0/23
+ 130    08cc.a7e1.e982    DYNAMIC     Gi2/0/23
+ 130    08cc.a7e1.e9c5    DYNAMIC     Gi2/0/23
+ 140    a055.4f77.4282    DYNAMIC     Gi2/0/23
+ 140    a055.4f77.42c2    DYNAMIC     Gi2/0/23
+Total Mac Addresses for this criterion: 8
+VBASE-CCL-R1#sh mac address-table interface gi2/0/24
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+  26    0056.2b5a.4e41    DYNAMIC     Gi2/0/24
+Total Mac Addresses for this criterion: 1
+VBASE-CCL-R1#sh mac address-table interface Gi2/1/1
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+  31    0023.eb53.5a3c    DYNAMIC     Gi2/1/1
+  31    7cd3.0a21.5277    DYNAMIC     Gi2/1/1
+ 150    2c21.3185.c586    DYNAMIC     Gi2/1/1
+Total Mac Addresses for this criterion: 3
+VBASE-CCL-R1#sh mac address-table interface Gi2/1/4
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#
+VBASE-CCL-R1#sh sw
+VBASE-CCL-R1#sh switch
+Switch/Stack Mac Address : f8a5.c57d.e580 - Local Mac Address
+Mac persistency wait time: Indefinite
+                                             H/W   Current
+Switch#   Role    Mac Address     Priority Version  State
+------------------------------------------------------------
+*1       Active   f8a5.c57d.e580     1      V07     Ready
+ 2       Standby  f8a5.c57d.e080     1      V07     Ready
+
+
+
+VBASE-CCL-R1#
+
+
+
+
+
+
+VBASE-CCL-R1#sh int des
+Interface                      Status         Protocol Description
+Vl1                            up             down
+Vl10                           up             up       Primary LINK to ARENA
+Vl20                           up             up       Primary LINK to HAGLEY
+Vl21                           up             up       CCC-TEMP Wireless
+Vl25                           up             up       VBASE Wirless Data Corporate
+Vl26                           up             up       Primary VBASE Server VLAN
+Vl30                           up             up       Primary LINK to WIGRAM
+Vl31                           up             up
+Vl40                           up             up       Primary LINK to Stadium
+Vl50                           up             up       Town Hall Primary SVI
+Vl110                          up             up       Secondary LINK to ARENA
+Vl120                          up             up       Secondary LINK to HAGLEY
+Vl122                          up             up       WiFi CAPWAP
+Vl130                          up             up       Secondary LINK to WIGRAM
+Vl140                          up             up       Secondary LINK to Stadium
+Vl150                          up             up       Town Hall Secondary SVI
+Vl237                          up             up       VoIP Server
+Vl613                          up             up       Interconnect to ESP Firewall
+Gi0/0                          down           down
+Gi1/0/1                        up             up       LINK TO WLC
+Gi1/0/2                        up             up       LINK TO WLC
+Gi1/0/3                        admin down     down     PORT NOT IN USE
+Gi1/0/4                        admin down     down     PORT NOT IN USE
+Gi1/0/5                        admin down     down     PORT NOT IN USE
+Gi1/0/6                        admin down     down     PORT NOT IN USE
+Gi1/0/7                        admin down     down     PORT NOT IN USE
+Gi1/0/8                        admin down     down     PORT NOT IN USE
+Gi1/0/9                        admin down     down     PORT NOT IN USE
+Gi1/0/10                       admin down     down     PORT NOT IN USE
+Gi1/0/11                       admin down     down     PORT NOT IN USE
+Gi1/0/12                       down           down     PORT NOT IN USE
+Gi1/0/13                       up             up       PORT NOT IN USE
+Gi1/0/14                       admin down     down     PORT NOT IN USE
+Gi1/0/15                       admin down     down     PORT NOT IN USE
+Gi1/0/16                       admin down     down     PORT NOT IN USE
+Gi1/0/17                       admin down     down     PORT NOT IN USE
+Gi1/0/18                       admin down     down     PORT NOT IN USE
+Gi1/0/19                       admin down     down     PORT NOT IN USE
+Gi1/0/20                       admin down     down     PORT NOT IN USE
+Gi1/0/21                       admin down     down     PORT NOT IN USE
+Gi1/0/22                       admin down     down     PORT NOT IN USE
+Gi1/0/23                       admin down     down     PORT NOT IN USE
+Gi1/0/24                       admin down     down     PORT NOT IN USE
+Gi1/1/1                        up             up       pRIMARY LINK to Town Hall
+Gi1/1/2                        down           down
+Gi1/1/3                        down           down
+Gi1/1/4                        down           down
+Te1/1/1                        down           down     PORT NOT IN USE
+Te1/1/2                        admin down     down     PORT NOT IN USE
+Te1/1/3                        up             up       Primary LINK to Carrier Ethernet Platform
+Te1/1/4                        up             up       LINK TO DC
+Gi2/0/1                        up             up       LINK TO WLC
+Gi2/0/2                        up             up       LINK TO WLC
+Gi2/0/3                        admin down     down     PORT NOT IN USE
+Gi2/0/4                        admin down     down     PORT NOT IN USE
+Gi2/0/5                        admin down     down     PORT NOT IN USE
+Gi2/0/6                        admin down     down     PORT NOT IN USE
+Gi2/0/7                        admin down     down     PORT NOT IN USE
+Gi2/0/8                        admin down     down     PORT NOT IN USE
+Gi2/0/9                        admin down     down     PORT NOT IN USE
+Gi2/0/10                       admin down     down     PORT NOT IN USE
+Gi2/0/11                       admin down     down     PORT NOT IN USE
+Gi2/0/12                       admin down     down     PORT NOT IN USE
+Gi2/0/13                       admin down     down     PORT NOT IN USE
+Gi2/0/14                       admin down     down     PORT NOT IN USE
+Gi2/0/15                       admin down     down     PORT NOT IN USE
+Gi2/0/16                       admin down     down     PORT NOT IN USE
+Gi2/0/17                       admin down     down     PORT NOT IN USE
+Gi2/0/18                       admin down     down     PORT NOT IN USE
+Gi2/0/19                       admin down     down     PORT NOT IN USE
+Gi2/0/20                       admin down     down     PORT NOT IN USE
+Gi2/0/21                       admin down     down     PORT NOT IN USE
+Gi2/0/22                       admin down     down     PORT NOT IN USE
+Gi2/0/23                       up             up       Backup LINK to Carrier Etrhernet Platform
+Gi2/0/24                       up             up       PORT NOT IN USE
+Gi2/1/1                        up             up       Secondary LINK to Town Hall
+Gi2/1/2                        down           down
+Gi2/1/3                        down           down
+Gi2/1/4                        down           down
+Te2/1/1                        down           down     PORT NOT IN USE
+Te2/1/2                        admin down     down     PORT NOT IN USE
+Te2/1/3                        down           down     PORT NOT IN USE
+Te2/1/4                        up             up       LINK TO DC
+Po127                          up             up       LAG to VBASE-5508 WLC
+Po128                          up             up       LINK to Nexus
+Lo9                            up             up       Mngt IP
+Lo99                           up             up
+

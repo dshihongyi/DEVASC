@@ -1,0 +1,340 @@
+title: Juniper SRX Firewall Config for ITF
+new_zones: 
+  - itf-servers-acs
+  - itf-servers-sac
+new_addressbook:
+  zone-itf-servers-acs:
+    addr:
+      itf-servers-acs: 10.131.52.0/24
+      enaacslbt101: 10.131.52.10/32
+      enaacscwmt101: 10.131.52.11/32
+      enaacscwmt102: 10.131.52.12/32
+      acs_vip: 10.131.52.20/32
+      enaacsacst101: 10.131.52.21/32
+      enaacsacst102: 10.131.52.22/32
+      enaacskfkt101: 10.131.52.30/32
+      enaacskfkt102: 10.131.52.31/32
+      enaacskfkt103: 10.131.52.32/32
+      enaacssqlt101: 10.131.52.40/32
+      enaacssqlt102: 10.131.52.41/32
+      enaacssqlt103: 10.131.52.42/32
+      cluster_mgmt: 10.131.52.50/32
+    addr_set:
+  zone-itf-servers-sac:
+    addr:
+      itf-servers-sac: 10.131.53.0/24
+      enaacslbt101: 10.131.53.10/32
+      enasacprvt101: 10.131.53.11/32
+      enasacprvt102: 10.131.53.12/32
+      enasacsqlt101: 10.131.53.40/32
+      enasacsqlt102: 10.131.53.41/32
+      enasacsqlt103: 10.131.53.42/32
+      cluster_mgmt: 10.131.53.50/32
+    addr_set:
+interfaces:
+  zone-itf-servers-acs:
+    3952:
+      description: ITF Servers ACS
+      inet_addr: 10.131.52.1/24
+      host_inbound:
+        services:
+          - ping
+        protocols:
+  zone-itf-servers-sac:
+    3953:
+      description: ITF Servers SAC
+      inet_addr: 10.131.53.1/24
+      host_inbound:
+        services:
+          - ping
+        protocols:
+sourcenat:
+  zone-itf-servers-acs:
+    name: itf-servers-acs
+    prefix: 10.131.52.0/24
+  zone-itf-servers-sac:
+    name: itf-servers-sac
+    prefix: 10.131.53.0/24
+policygroups:
+  allow-nessus-scan-template:
+    type: from_zone
+    zone: zone-servers-mgmt
+    end_zones:
+      - zone-itf-servers-sac
+      - zone-itf-servers-acs
+  allow-prtg-monitoring-template:
+    type: from_zone
+    zone: zone-servers-mgmt
+    end_zones:
+      - zone-itf-servers-sac
+      - zone-itf-servers-acs
+  allow-ccl-manage-template:
+    type: to_zone
+    zone: zone-internet
+    end_zones:
+      - zone-itf-servers-sac
+      - zone-itf-servers-acs
+  allow-o365-smtp-relay:
+    type: to_zone
+    zone: zone-internet
+    end_zones:
+      - zone-itf-servers-sac
+      - zone-itf-servers-acs
+policies:
+  itf-servers-acs-out:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-internet
+    source_addresses: 
+      - addr-itf-servers-acs
+    destination_addresses: 
+      - any
+    apps:
+      - junos-http
+      - junos-https
+    action: permit
+  itf-servers-acs-dns:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-internet
+    source_addresses: 
+      - addr-itf-servers-acs
+    destination_addresses: 
+      - any
+    apps:
+      - junos-dns-udp
+      - junos-dns-tcp
+    action: permit
+  itf-servers-sac-out:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-internet
+    source_addresses: 
+      - addr-itf-servers-sac
+    destination_addresses: 
+      - any
+    apps:
+      - junos-http
+      - junos-https
+    action: permit
+  itf-servers-sac-dns:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-internet
+    source_addresses: 
+      - addr-itf-servers-sac
+    destination_addresses: 
+      - any
+    apps:
+      - junos-dns-udp
+      - junos-dns-tcp
+    action: permit
+  ibss-itf-acs-lb:
+    from_zone: zone-servers-test
+    to_zone: zone-itf-servers-acs
+    source_addresses: 
+      - addr-docker-test3-test
+    destination_addresses: 
+      - addr-enaacslbt101
+    apps:
+      - junos-dns-udp
+      - junos-dns-tcp
+    action: permit
+  # ibss-itf-sac-servers:
+  #   from_zone: zone-itf-servers-sac
+  #   to_zone: zone-servers-test
+  #   source_addresses: 
+  #     - addr-enasacprvt101
+  #     - addr-enasacprvt102
+  #   destination_addresses: 
+  #     - addr-docker-test3-test
+  #   apps:
+  #     - junos-https
+  #   action: permit
+  itf-sac-servers-acsvip:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-itf-servers-acs
+    source_addresses: 
+      - addr-enasacprvt101
+      - addr-enasacprvt102
+    destination_addresses: 
+      - addr-acs_vip
+    apps:
+      - app-http-alt
+      - app-vcenter-soap
+      - app-pidgey-aviarc
+    action: permit
+  itf-acs-servers-sac:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-itf-servers-sac
+    source_addresses: 
+      - addr-enaacsacst101
+      - addr-enaacsacst102
+    destination_addresses:
+      - addr-enasacprvt101
+      - addr-enasacprvt102
+    apps:
+      - junos-https
+    action: permit
+  itf-sac-servers-epnm:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-nextgen-l2poc-servers
+    source_addresses: 
+      - addr-enasacprvt101
+      - addr-enasacprvt102
+    destination_addresses:
+      - addr-itf-cisco_epnm
+      - addr-itf-cisco-epnm-secondary
+    apps:
+      - junos-https
+    action: permit
+  epnm-itf-sac-lb:
+    from_zone: zone-nextgen-l2poc-servers
+    to_zone: zone-itf-servers-sac
+    source_addresses: 
+      - addr-itf-cisco_epnm
+      - addr-itf-cisco-epnm-secondary
+    destination_addresses:
+      - addr-enaacslbt101
+    apps:
+      - junos-https
+      - app-snmp-trap
+    action: permit
+  itf-sac-servers-spunk:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-servers-dcnservices
+    source_addresses: 
+      - addr-itf-servers-sac
+    destination_addresses:
+      - addr-pukeko
+    apps:
+      - junos-syslog
+    action: permit
+  itf-acs-servers-spunk:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-servers-dcnservices
+    source_addresses: 
+      - addr-itf-servers-acs
+    destination_addresses:
+      - addr-pukeko
+    apps:
+      - junos-syslog
+    action: permit
+  itf-acs-servers-snmptrap:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-servers-mgmt
+    source_addresses: 
+      - addr-itf-servers-acs
+    destination_addresses:
+      - addrs-prtg-probes
+    apps:
+      - app-snmp-trap
+      - app-snmp
+    action: permit
+  itf-sac-servers-snmptrap:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-servers-mgmt
+    source_addresses: 
+      - addr-itf-servers-sac
+    destination_addresses:
+      - addrs-prtg-probes
+    apps:
+      - app-snmp-trap
+      - app-snmp
+    action: permit
+  bastion-prod-itf-servers-acs:
+    from_zone: zone-servers-mgmt
+    to_zone: zone-itf-servers-acs
+    source_addresses: 
+      - addr-ssh-bastion-prod
+    destination_addresses:
+      - addr-itf-servers-acs
+    apps:
+      - junos-ssh
+      - junos-icmp-all
+    action: permit
+  bastion-prod-itf-servers-sac:
+    from_zone: zone-servers-mgmt
+    to_zone: zone-itf-servers-sac
+    source_addresses: 
+      - addr-ssh-bastion-prod
+    destination_addresses:
+      - addr-itf-servers-sac
+    apps:
+      - junos-ssh
+      - junos-icmp-all
+    action: permit
+  jumphost-itf-servers-acs:
+    from_zone: zone-admin
+    to_zone: zone-itf-servers-acs
+    source_addresses: 
+      - addr-enajump10
+    destination_addresses:
+      - addr-itf-servers-acs
+    apps:
+      - junos-https
+      - junos-ssh
+      - junos-icmp-all
+      - app-http-alt
+      - app-alt-https-8443
+    action: permit
+  jumphost-itf-servers-sac:
+    from_zone: zone-admin
+    to_zone: zone-itf-servers-sac
+    source_addresses: 
+      - addr-enajump10
+    destination_addresses:
+      - addr-itf-servers-sac
+    apps:
+      - junos-https
+      - junos-ssh
+      - junos-icmp-all
+      - app-http-alt
+      - app-alt-https-8443
+    action: permit
+  rpa-itf-acs-servers:
+    from_zone: zone-servers-rpa
+    to_zone: zone-itf-servers-acs
+    source_addresses: 
+      - addr-enactxp07
+    destination_addresses:
+      - addr-acs_vip
+    apps:
+      - junos-http
+      - junos-https
+      - junos-ssh
+      - junos-icmp-all
+      - app-http-alt
+      - app-alt-https-8443
+    action: permit
+  rpa-itf-sac-servers:
+    from_zone: zone-servers-rpa
+    to_zone: zone-itf-servers-sac
+    source_addresses: 
+      - addr-enactxp07
+    destination_addresses:
+      - addr-enaacslbt101
+    apps:
+      - junos-http
+      - junos-https
+      - junos-ssh
+      - junos-icmp-all
+      - app-http-alt
+      - app-alt-https-8443
+    action: permit
+  itf-sac-servers-nessue:
+    from_zone: zone-itf-servers-sac
+    to_zone: zone-servers-mgmt
+    source_addresses: 
+      - addr-itf-servers-sac
+    destination_addresses:
+      - addr-pateke
+    apps:
+      - junos-https
+    action: permit
+  itf-acs-servers-nessue:
+    from_zone: zone-itf-servers-acs
+    to_zone: zone-servers-mgmt
+    source_addresses: 
+      - addr-itf-servers-acs
+    destination_addresses:
+      - addr-pateke
+    apps:
+      - junos-https
+    action: permit

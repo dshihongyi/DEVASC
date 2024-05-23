@@ -1,0 +1,30 @@
+config user radius
+ edit "CIAL_RADIUS-202.14.167.144"
+  set radius-port 1645
+  set auth-type auto
+  set secret "*****"
+  set server "202.14.167.144"
+  set secondary-secret "*****"
+  set secondary-server "202.14.167.238"
+  next
+end
+config user ldap
+ edit "CIAL_LDAP-202.14.167.144"
+  set server "202.14.167.144"
+  set port 389
+  set cnid "sAMAccountName"
+  set dn "OU=Users,OU=Prod,DC=net,DC=cial,DC=co,DC=nz"
+  set type regular
+  set username "CN=ASA User,OU=Service Accounts,OU=Admin,DC=net,DC=cial,DC=co,DC=nz"
+  set password "123456"
+ next
+ edit "CIAL_LDAP-202.14.167.238"
+  set server "202.14.167.238"
+  set port 389
+  set cnid "sAMAccountName"
+  set dn "OU=Users,OU=Prod,DC=net,DC=cial,DC=co,DC=nz"
+  set type regular
+  set username "CN=ASA User,OU=Service Accounts,OU=Admin,DC=net,DC=cial,DC=co,DC=nz"
+  set password "123456"
+ next
+end

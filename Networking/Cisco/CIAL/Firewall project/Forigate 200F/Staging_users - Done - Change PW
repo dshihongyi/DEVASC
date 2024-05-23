@@ -1,0 +1,46 @@
+config user local
+ <!-- edit "CIAL-RO"
+  set type password
+  set passwd "*****"
+  set status enable
+ next
+ edit "Indeadmin"
+  set type password
+  set passwd "*****"
+  set status enable
+ next
+ edit "TomAdmin"
+  set type password
+  set passwd "*****"
+  set status enable
+ next
+ edit "cattools"
+  set type password
+  set passwd "*****"
+  set status enable
+ next
+ edit "cisco"
+  set type password
+  set passwd "*****"
+  set status enable
+ next
+ edit "dcladmin"
+  set type password
+  set passwd "*****"
+  set status enable
+ next -->
+end
+config user group
+ edit "CIAL_LDAP"
+  set group-type firewall
+  set member "CIAL_LDAP-202.14.167.144" "CIAL_LDAP-202.14.167.238" 
+ next
+ edit "CIAL_RADIUS"
+  set group-type firewall
+  set member "CIAL_RADIUS-202.14.167.144" 
+ next
+ edit "local_usrgrp"
+  set group-type firewall
+  set member "CIAL-RO" "Indeadmin" "TomAdmin" "cattools" "cisco" "dcladmin" 
+ next
+end

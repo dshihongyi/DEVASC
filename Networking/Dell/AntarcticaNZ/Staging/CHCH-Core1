@@ -1,0 +1,596 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2023.03.22 14:51:40 =~=~=~=~=~=~=~=~=~=~=~=
+CHCH-Core1# show running-configuration terminal length 0
+CHCH-Core1# show running-configuration 
+! Version 10.5.2.10
+! Last configuration change at Mar  21 03:48:18 2023
+!
+ip vrf default
+!
+iscsi target port 860
+iscsi target port 3260
+clock timezone standard-timezone NZ
+hostname CHCH-Core1
+no service obscure-password
+system-user linuxadmin password m0nd@y123
+no switchport port-security
+allow unsupported-transceiver
+unlock third-party transceiver
+username admin password m0nd@y123 role sysadmin priv-lvl 15
+username dsadmin password m0nd@y123 role sysadmin priv-lvl 15
+username hoadmin password m0nd@y123 role sysadmin priv-lvl 15
+aaa authentication login default group tacacs+ local
+aaa authentication login console local
+!
+ip domain-name antnz.local
+ip name-server 192.133.31.89 192.133.31.82
+tacacs-server host 192.168.50.225 key LpN1$Xu5Rk*qQiiu
+ip tacacs source-interface Vlan 1
+# ip ssh server
+# ip ssh pubkey-auth
+# ip ssh protocol 2
+spanning-tree mode rapid-pvst
+!
+errdisable recovery interval 60
+errdisable recovery cause bpduguard
+!
+class-map type application class-iscsi
+!
+policy-map type application policy-iscsi
+# !
+# port-group 1/1/1
+#  mode Eth 25g-4x
+# !
+# port-group 1/1/13
+#  mode Eth 100g-2x
+!
+interface vlan1
+ description Infrastructure_VLAN
+ no shutdown
+ ip address 192.133.31.17/25
+ vrrp-group 1
+ priority 200
+ virtual-address 192.133.31.15
+ exit
+!
+interface vlan2
+ description Workstation_VLAN
+ no shutdown
+ ip address 192.168.50.229/23
+ ip helper-address 192.133.31.89
+ ip helper-address 192.133.31.106
+ ip helper-address 192.133.31.82
+ vrrp-group 2
+ priority 200
+ virtual-address 192.168.50.254
+ exit
+!
+interface vlan4
+ description CHCHADSL
+ no shutdown
+ mtu 9216
+ exit
+!
+interface vlan5
+ description ANTNZ_Guest_Wireless
+ no shutdown
+ mtu 9216
+ exit
+!
+interface vlan6
+ description ANTNZ_Staff_Wireless
+ no shutdown
+ mtu 9216
+ exit
+!
+interface vlan10
+ description vlan-netmgmt
+ no shutdown
+ ip address 192.168.10.251/24
+ vrrp-group 10
+ priority 200
+ virtual-address 192.168.10.254
+ exit
+!
+interface vlan15
+ description iSCSI_A_VLAN
+ no shutdown
+ mtu 9216
+ ip address 192.168.15.249/24
+ vrrp-group 15
+ priority 200
+ virtual-address 192.168.15.254
+!
+interface vlan20
+ description VMOTION_VLAN
+ no shutdown
+ ip address 192.168.20.251/24
+ vrrp-group 20
+ priority 200
+ virtual-address 192.168.20.254
+!
+interface vlan30
+ description BACKUP
+ no shutdown
+ mtu 9216
+!
+interface vlan200
+ description Linknet to CHC_FIREWALL
+ no shutdown
+ ip address 192.168.254.20/28
+ vrrp-group 200
+ priority 200
+ virtual-address 192.168.254.17
+!
+interface vlan505
+ no shutdown
+ mtu 9216
+!
+interface vlan506
+ no shutdown
+ mtu 9216
+!
+interface vlan510
+ no shutdown
+ mtu 9216
+!
+interface vlan620
+ description STARLINK
+ no shutdown
+ mtu 9216
+!
+interface vlan621
+ description LAB-FW
+ no shutdown
+ mtu 9216
+!
+interface vlan650
+ description GateSecurityIntercom
+ no shutdown
+ mtu 9216
+!
+interface vlan651
+ description GateSecurityCamera
+ no shutdown
+ mtu 9216
+!
+interface vlan652
+ description USAP_GATE
+ no shutdown
+ mtu 9216
+!
+interface vlan666
+ no shutdown
+ mtu 9216
+!
+interface vlan999
+ description FakeSB-Network
+ no shutdown
+ mtu 9216
+!
+spanning-tree vlan 2,4-6,10,15,20,200,505-506,510,666,999 priority 24576
+!
+!
+interface port-channel11
+ description "CHC Veeam Server NEW backup"
+ no shutdown
+ switchport access vlan 30
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ vlt-port-channel 11
+!
+interface port-channel12
+ description "Apollo Archive"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 10,30
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ vlt-port-channel 12
+!
+interface port-channel21
+ description "Uplink to CHCH-Mgmt1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 1,10,620-621
+ spanning-tree guard loop
+ mtu 9216
+ vlt-port-channel 21
+!
+interface port-channel48
+ description "Uplink to CHC_OFFICE_SW1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 2,5-6,10,15,20,30,200,505,510,620-621,650-652,666,999
+ spanning-tree port type network
+ spanning-tree guard loop
+ mtu 9216
+ vlt-port-channel 48
+!
+interface mgmt1/1/1
+ description "VLT Peer Backup Link"
+ no shutdown
+ no ip address dhcp
+ ip address 169.254.255.1/29
+ ipv6 address autoconfig
+!
+interface ethernet1/1/1
+ description "esx1-data1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 2,10,20,30,666,999
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/2
+ description "esx2-data1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 2,10,20,30,666,999
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/3
+ description "esx3-data1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 2,10,20,30,666,999
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/4
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/5
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/6
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/7
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/8
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/9
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/10
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/11
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/12
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/13
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/14
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/15
+ description "CHC Veeam Server NEW iscsi1"
+ no shutdown
+ switchport access vlan 15
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/16
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/17
+ description "CHCHESX1-iscsi1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 15,20
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/18
+ description "CHCHESX2-iscsi1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 15,20
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/19
+ description "CHCHESX3-iscsi1"
+ no shutdown
+ switchport mode trunk
+ switchport trunk allowed vlan 15,20
+ spanning-tree port type edge
+ spanning-tree bpduguard enable
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/20
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/21
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/22
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/23
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/24
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/25
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/26
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/27
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/28
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/29
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/30
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/31
+ description CHCHPURE1-ct0e4
+ no shutdown
+ switchport access vlan 15
+ mtu 9216
+ flowcontrol receive off
+ spanning-tree bpduguard enable
+ spanning-tree port type edge
+!
+interface ethernet1/1/32
+ description CHCHPURE1-ct1e4
+ no shutdown
+ switchport access vlan 15
+ mtu 9216
+ flowcontrol receive off
+ spanning-tree bpduguard enable
+ spanning-tree port type edge
+!
+interface ethernet1/1/33
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/34
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/35
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/36
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/37
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/38
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/39
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/40
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/41
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/42
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/43
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/44
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/45
+ description "Veeam Backup-1"
+ no shutdown
+ channel-group 11 mode active
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/46
+ description "Apollo backup"
+ no shutdown
+ channel-group 12 mode active
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/47
+ description "Uplink to CHC_OFFICE_SW1"
+ no shutdown
+ channel-group 48 mode active
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/48
+ description "Uplink to CHCH-Mgmt1"
+ no shutdown
+ channel-group 21 mode active
+ mtu 9216
+ flowcontrol receive off
+!
+interface ethernet1/1/49
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/50
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/51
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/52
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/53
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/54
+ description SPARE
+ shutdown
+ mtu 9216
+!
+interface ethernet1/1/55
+ description "VLTi Peer-Link to CHCH-Core2-eth55"
+ no shutdown
+ no switchport
+ mtu 9216
+ flowcontrol receive on
+!
+interface ethernet1/1/56
+ description "VLTi Peer-Link to CHCH-Core2-eth56"
+ no shutdown
+ no switchport
+ mtu 9216
+ flowcontrol receive off
+!
+logging server 10.130.37.17
+!
+ip route 0.0.0.0/0 192.168.254.30
+ip route 192.168.168.0/24 192.168.50.253
+!
+!
+line vty
+!
+snmp-server community indaba7 group network-operator
+snmp-server contact "Contact Support"
+# snmp-server host 10.130.37.17 traps version 2c readOnlyCacti 
+snmp-server user admin network-admin auth md5 0x473ade38ec5c716da69586695b7745db priv 0x473ade38ec5c716da69586695b7745db localizedkey
+snmp-server user chchswadmin network-admin auth md5 0x473ade38ec5c716da69586695b7745db priv 0x473ade38ec5c716da69586695b7745db localizedkey
+!
+telemetry
+enable password m0nd@y123 priv-lvl 15
+ntp server 10.128.24.4
+CHCH-Core1# 
+
+
+
+
+
+CHCH-Core1# show license status
+  
+System Information
+---------------------------------------------------------
+Vendor Name          :   Dell EMC
+Product Name         :   S5248F-ON
+Hardware Version     :   A03
+Platform Name        :   X86_64-dellemc_s5248f_c3538-r0
+PPID                 :   TH04JXCVCET0033463HM
+Service Tag          :   5PX3SR3
+Product Base         :   
+Product Serial Number:   
+Product Part Number  :   
+License Details
+----------------
+Software        :        OS10-Enterprise
+Version         :        10.5.4.3
+License Type    :        PERPETUAL
+License Duration:        Unlimited
+License Status  :        Active
+License location:        /mnt/license/5PX3SR3.lic
+---------------------------------------------------------

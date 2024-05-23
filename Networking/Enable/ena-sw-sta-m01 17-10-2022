@@ -1,0 +1,1238 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.17 12:27:34 =~=~=~=~=~=~=~=~=~=~=~=
+show configuration | display set | no-more 
+set version 20.4R3-S3.4
+set system host-name ena-sw-sta-m01
+set system root-authentication encrypted-password "$1$5L.DDY7n$MbZeFBY5QdDHT0T2DnPz4."
+set system login class cfg-view permissions secret
+set system login class cfg-view permissions view-configuration
+set system login class cfg-view allow-commands "(show)|(set cli screen-length)|(set cli screen-width)"
+set system login class cfg-view deny-commands "(clear)|(file)|(file show)|(help)|(load)|(monitor)|(op)|(request)|(save)|(set)|(start)|(test)"
+set system login class cfg-view deny-configuration all
+set system login user CraigReynolds full-name "Craig Reynolds"
+set system login user CraigReynolds uid 2000
+set system login user CraigReynolds class operator
+set system login user CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user DavidRichards full-name "David Richards"
+set system login user DavidRichards uid 2001
+set system login user DavidRichards class operator
+set system login user DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user Jeremy.Crestani full-name "Jeremy Crestani (Read Only)"
+set system login user Jeremy.Crestani uid 2011
+set system login user Jeremy.Crestani class cfg-view
+set system login user Jeremy.Crestani authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNFzTgHHVVWgrJdLSxGq8Ux4wZImCXqL+6mGxUnozLFW1TuD4EttsIrX53m3cj8NczVQqOIoSENQjIkDOsY0U++BuDHL7CZQVesp45C/xLRhe4Zjp2SeIdi+yx0poHkoKadKgzgKBgfIkh/+cmQx7jjy6J91SCzBOuxq28z8zpCf5G5v23WTARTn2xV0fkQfLTfza2RkkTXZhRsu3Xw9rnYYyHK8dLmxwqprWO5BqBrHCmeaTvMMoqumMoGylMuSkrHmSc2SSUQod8LgTuNmXKg/iAEe72EHNa1LkEq+ZzLRFGbrC+WAPlOkYlPDtYSjMCkMUT9fkq/LiE3U+PahI7"
+set system login user Peter.Fowler full-name "Peter Fowler"
+set system login user Peter.Fowler uid 2201
+set system login user Peter.Fowler class operator
+set system login user Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user acadmin full-name "Aaron Christensen - CCL"
+set system login user acadmin uid 2012
+set system login user acadmin class super-user
+set system login user acadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWljKUH9LJKqdYriT8UNtIyYjp/HXH+qQtDGe6i0hazmkUIwtLD3bNuCeHkDCQjel1OST51QgZ97hmbLvRbVmpXMFnsmjFbMrw8PYfXut5iSahYIodjTnR4jpX1LBW2m5rsu+ChsgcOKcbcfLt2/+O+6u4iryCoDLShMnDhKMO0uvCCZaEdpcZTB23n12DuOL/4mTUNXScrYli/3r5EfFf6/QGJgI9eXSbj8/+62mXmlcvi8gO/eP/7GCC2ZMi7B3h2YgWpfek9HzIRIL4Sh+0GWmyhETYFs9CGZgTzMXE9U6HwxrFBMpo3MUASM4yalMVTakCSDS5snMejfXJcKTn"
+set system login user asadmin full-name "CCL Aaron Sixtus"
+set system login user asadmin uid 2103
+set system login user asadmin class super-user
+set system login user asadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbOUAljwEUpjIvquRy7dNp/z15lC27+tPl/2zw5k7Tq9ds78V01G6uAOBpGV9cjZ9ZUWN2tizfMXUPtdOuKMlcdbfAMuIdnQMcsQig5ReJnN5GqR361LffW+YZWY4d3vLZ2xcWgP6OwUARSZjrLUZSoZMn36Pq8NvPZKdaeUlPJbAzhLZvTiyQ0C8Ya94Ceoz8Pb842Uj09l30UkrUjecUG1HNgtOgUdHFVLow06F0WJF7UNr/MSdljmSgZ2hgR4KBt/+rkwyi2H3blCRu72s1eL/bqTTNOTR7LKiPTOTsuSYsP1ZvZUSXEal7uuQf3hb7p4A3dGaksbGOTCGfcEbj cclchc\asixtus@WSJDK8HR2"
+set system login user azadmin full-name "Alin Zahn - CCL"
+set system login user azadmin uid 2008
+set system login user azadmin class super-user
+set system login user azadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA5pJiqXVQJGqQhWIGf/bavCWfMZJOdBuwna4S4cVtHqO9UPIdbVY/cDivAU+kI0f4m8+qmnFF0pyTOAGXoO9UddPAs+yqkrT+QeAJTortvMoY1xi573gDpFKo5hQjzBmfJ7x1KAebmzTSmRzlVRs22uB163KFqZxbhc3GQxAbBa5MjqiHwOH1PAgHnqjr6071gQvn2HH1aEx7G767/uLWVYrhj9gRv3t2/kNOLrkYyw4hOD2yt5GwXXi1GwzlwyRTAxlsxeFT36wcxo78crQ1m/0qRrgux7GDaJTF6HkF0iUN5J4CuB3MTFYiiFNlKkZzdkoRals0jU/YxlSumwCc9Q=="
+set system login user cclrecover uid 2010
+set system login user cclrecover class super-user
+set system login user cclrecover authentication encrypted-password "$6$cDkPh2Oq$9bGxVWQEXMs1qTRTyEhUB/h6BRRzk8oz0ar8jqJi14.v/FdrP3o6XSbEvnHdHq.CV4nHIajzVCxEp.Wddc.Pk1"
+set system login user dsadmin full-name "Daniel Shi - CCL"
+set system login user dsadmin uid 2009
+set system login user dsadmin class super-user
+set system login user dsadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"
+set system login user jlaundry full-name "Jed Laundry"
+set system login user jlaundry uid 2002
+set system login user jlaundry class operator
+set system login user jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"
+set system login user lbadmin full-name "CCL Leon Broadbent"
+set system login user lbadmin uid 2105
+set system login user lbadmin class super-user
+set system login user lbadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA2aC7Zyv2v6eBiuLONOQCN1AsXIJaYtDs/ePRY2ByCK2sDYtiQKSjOuYT03ZBCXyPlsgIegxbVCtJqItbuAh6VZEcpbQAoDg0hUOUApm74qj2K5HN9WiZydS8aFMYBmSwPyJf6cLqaz7o1rjSR67p+iCQvbZwkHpYAKBT0EJNedIPgKSApqfFsaH91JBqKnKwUBuNfSx5ypbGu3gfjOhojTZMS7iVF7C6NELAnUYECgTkcS4TWFQw5gZ5DtbgmKye1JCWatZqLBs89yuMAF7P1Nbj7U/zPIDAZrd3VLuv7MdV/aOM5Vh/DN+MMR6o3aXLX/0nG0CTnv4zymyP/r7KgQ=="
+set system login user mtadmin full-name "CCL Mike Taylor"
+set system login user mtadmin uid 2101
+set system login user mtadmin class super-user
+set system login user mtadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Mqj1haDez2+piqiq0tvWYWREHU+V0TskA81bmSP7M2R0qD30AAA1aFEI45mHM8+nc0anGOnFXa2XLs9nQEGhNZ8wN9LCkisxq/OzAUTy9fJ8l7AvyfOGLlkMg/jmopHkCZFJW42PTr4I1alZIY5QnB6tvf1/sTVR9ULStRpJq36aq0+KbplRUQ2moPEWgD+zH2CShBkKPXCPvR6ZmodtS2D0FIwCajfm5PjPZ2WnIOSKB0qF64Rsrp8Wmudmqy/CJu4d6JPY6t0P2uPbLTCbXpzJ/ZS7227QgrZAQDHJ2FkT7hfqt5m3rzXVDp4Rq33Lz8TNPdg7phTMrxKZ0A5D cclchc\mtaylor2@WS6S8SYW2-W"
+set system login user mtadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAnJExDB0JgopHhosc7784s74o9WRMVSDtEHGZQOx10HEeCKS2VHlNBVMrZHrgQwbGIo4x8oK3j9lrw1piRcOWSe17s2+c2RB3Up0b4gvh/tVZhC6Vu7c1TfQZ6jRXQ+4d2yzb3vuGrXiKJEkIZg8ADXDKJrIuvNJfxtRNGU28Zzj08kK2d6JI8HnA9/bWaIUOeRSFFkGuQpG2YlqSfo0Rr+QNTJ6Vv6BGYrdHMGRHhi++bW1AHNhATwECfi54MuNOJViDLowB4JJPWykfM8/bc8aYBggbl5HmrhxnFSUIls4c9WTz++kdbRNqc+HsCGQ9ZPuNxRJeQVJiucfdClJm5Q== enable\mtadmin@enajump01-rsa-key-20191213"
+set system login user oxidized uid 2006
+set system login user oxidized class cfg-view
+set system login user oxidized authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu1PhVHugQvH19ZYL12XerKkTl4Z75GZCvOxy7XDKCtc/hxE1QcB7FKKw/uWatst6Mm3pSeJh8dJsrNK/nseF7zoxXtI0jH/acy9VAGNgV1/v79TOkvuG8sWb/7eHubiWNo/yecrZ3T0Vg3Hb1VDU45Pep1x19gEhFoTz0JwagbM5uwSb68cDQObbey35maD3wlTymrsnpjnQnbKgHRn5rj6xoh61VjSmRzvsZ1YGM2m8gApDdhfocNGHJ0xZZq55mBKa6r0Bp1rM4iBdbUk9UVXyjnXOu7uWSFlna3nug0hZE0eZbZYZJ2wISA9BNuC940hBW1wQ4P6+r+k2CKoQyG2gDA7EcA5Hl3MarX7tKNnMug5HHMg7qgc6EOgBGe1NFxbQtqWolkoze0L0u7Oe5nIXItKItBJtxDCqD7o919NhiXOsIfPaaKnDa6C2dhzKwHtyeok/DUzLb8LBwqVS5u1PM9Ap7MYlp11kHC4l/D0GB0WyAo5DzTWMrv4xooN8= oxidised@d11-netback"
+set system login user pa-CraigReynolds full-name "Craig Reynolds"
+set system login user pa-CraigReynolds uid 2003
+set system login user pa-CraigReynolds class super-user
+set system login user pa-CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user pa-DavidRichards full-name "David Richards"
+set system login user pa-DavidRichards uid 2004
+set system login user pa-DavidRichards class super-user
+set system login user pa-DavidRichards authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"
+set system login user pa-Peter.Fowler full-name "Peter Fowler (Admin)"
+set system login user pa-Peter.Fowler uid 2200
+set system login user pa-Peter.Fowler class super-user
+set system login user pa-Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user pa-jlaundry full-name "Jed Laundry"
+set system login user pa-jlaundry uid 2005
+set system login user pa-jlaundry class super-user
+set system login user pa-jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"
+set system login user pa-jlaundry authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAueYhY1iRfeXi9CCM694lq9q62s4+5imRYMMbq0OztU9dP8EH9jGk9Og8tmvwf4HA8+nT/VE1eK42WtSrqlYhkVOAi9CsYTMm2R0a0TW9Imh90XHCrQ0oizUOhFD+q+y96XBTi30pFNrNkea8rhuZ7aD7SxtT+lEwL8J94OEaKOQrTgr2xwkB23EuRc9bJVM8EP3EmyIkFARp3uZGF+I7Cff1/p4Sc5grRosiBLdrE90mSve2x+5sMP64bX+/u/G/L6SS8fjxYt4cT4Id1qREbUnPUAcusQQxUnJnzS5YgWxjSPsv6RcTmGU/TBjxWNHmaPTy5lGNf6J6nbFn9WDJlw== jlaundry@aqua"
+set system login user pa-jlaundry authentication ssh-ecdsa "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBBE39BXdLmjqhRScczU9NUHPkT4d8lDNh6S3OoS/WMCyjky2eKszC1GxfODXGHCR8hwIXs+nVuOjlGLd3NB/jrvKoGwp6LH/nOWg5kXSs08apBS7PY5oHNLwY4hJ4RnpRw== jlaundry@orange"
+set system login user pa-mike.taylor full-name "Mike Taylor"
+set system login user pa-mike.taylor uid 2007
+set system login user pa-mike.taylor class super-user
+set system login user pa-mike.taylor authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"
+set system login user pmadmin full-name "CCL Patrick McGirr"
+set system login user pmadmin uid 2100
+set system login user pmadmin class super-user
+set system login user pmadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDElzQ5wKTAdwZKukG/eUppXwDNPIgZHbp2gi1fw0B4pEGQuXBQmoTGWs1YxXGaNB6DK3MzR+r/lGxMG6JiumMuR60JAOP2GBZjNV4RjqkLe4u1fCEhFZNyUKYzjRKb4nwVQLs4lQVVgyGBbhCyUgprqK8sLvFmErf0u5YLCnqduilcRn+xNHtMJ+NBFNob6KpY2tf0dNgTIxhzdjYm+ivbYmWoV7gKfzCN2sSTH+t19PHAOg5RudPzxn7EPr6bUZ2O+MiikI7ipfAw387TwEJFva4TMkoCti3ZdSRIfL/U5Yy40fnbFJI5TWcNqqGF+mqfSqQBf7gSHOGHku2GByuJ cclchc\pmcgirr@PMCLAPTOP"
+set system login user rk2admin full-name "CCL Rohan Kaminski"
+set system login user rk2admin uid 2104
+set system login user rk2admin class super-user
+set system login user rk2admin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsu12z/mqXHsNV13b5+DHFyaRpBGXjrpd1IdvrPJnYrH/IvgRDxBpMQzodQeS+Mz0E5AVAeB1Zqhw8dNvQ6tThJt1SVzMfe96UP1fCyDxHTzGpbLqq78dTeIwcOow4xLm0Ncs9Av301IA6PwW5ZXHzF/8XSb8UgosYcuU1qrI14m8e9JO7pOrqudXVbFRVXoB+9SDo34kTrS8XVbKjv3T/d14PXfpLzxN4ZOb5s7hHy5SGIMv661nPOZL4bhT8lkJybckP81mZrvXOcamKhZP8OnN52ALPv79zKKGm8fDTOyl0mxGUO3omqS9kXf2fxhhEKpP7+WIMEbehPxLHYI61 cclchc\rkaminski@WSFQ0VF2"
+set system login user taadmin full-name "CCL Trevor Alder"
+set system login user taadmin uid 2102
+set system login user taadmin class super-user
+set system login user taadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCp1UOnKuMImnGW/+pbiIYO2h0evMAeF68WrAYMu4oLanLrhKGPjARaoObl/fbsJnzX67eyquEGL57OWHRlJFi0+VO1qMyvWL4vtX4tgoOfu+Hwe3uRkx82Y2v0zz8XCxPvr0/Wi1H3OpOpzjDc8rFsxTl2B9SRf/MkEWhCCaWFAk6is8diwILpPslRHIEwv0/40pPhsS1rQlgpLCv/0iww+HtCIOI2wlbL8Tc5SmlztehAnBsNGrzzwwlfqE3uAJAvZJXOK5cl7EMcyB8FwU3Erjj1joOy40XFLdiheEamJJwaPvbhS5VDsofCEa9n52/MWS7dgv5J9JQhE3SLEsNz cclchc\talder@CHC-LAPT0P-TA-1"
+set system services ssh
+set system services dhcp traceoptions file dhcp_logfile
+set system services dhcp traceoptions level all
+set system services dhcp traceoptions flag all
+set system time-zone Pacific/Auckland
+set system syslog user * any emergency
+set system syslog host 10.130.37.16 any info
+set system syslog host 10.130.37.16 security any
+set system syslog host 10.130.37.16 firewall any
+set system syslog host 10.130.37.16 interactive-commands any
+set system syslog host 10.130.37.16 source-address 10.130.160.91
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system ntp server 10.130.37.121
+set system ntp server 10.130.37.122
+set system ntp server 10.130.37.123
+set chassis aggregated-devices ethernet device-count 2
+set chassis alarm management-ethernet link-down ignore
+set chassis auto-image-upgrade
+set interfaces ge-0/0/0 description "enaesxh01 mgmt - vmnic0"
+set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/1 description "enaesxh02 mgmt - vmnic0"
+set interfaces ge-0/0/1 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/2 description "enaesxh03 mgmt - vmnic0"
+set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/3 description "enaesxh04 mgmt - vmnic0"
+set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/4 description "enaesxh05 mgmt - vmnic0"
+set interfaces ge-0/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/5 description "enaesxh06 mgmt - vmnic0"
+set interfaces ge-0/0/5 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/5 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-0/0/6 description "enasanh mgmt - top controller"
+set interfaces ge-0/0/6 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/6 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-0/0/7 description Spare
+set interfaces ge-0/0/7 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/7 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-0/0/8 description "enaesxh01 idrac"
+set interfaces ge-0/0/8 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/8 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/9 description "enaesxh02 idrac"
+set interfaces ge-0/0/9 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/9 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/10 description "enaesxh03 idrac"
+set interfaces ge-0/0/10 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/10 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/11 description Spare
+set interfaces ge-0/0/11 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/11 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/12 description MGMT
+set interfaces ge-0/0/12 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/12 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/13 description MGMT
+set interfaces ge-0/0/13 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/13 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/14 description MGMT
+set interfaces ge-0/0/14 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/14 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/15 description MGMT
+set interfaces ge-0/0/15 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/15 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/16 description MGMT
+set interfaces ge-0/0/16 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/16 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/17 description MGMT
+set interfaces ge-0/0/17 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/17 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/18 description MGMT
+set interfaces ge-0/0/18 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/18 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/19 description MGMT
+set interfaces ge-0/0/19 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/19 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/20 description MGMT
+set interfaces ge-0/0/20 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/20 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/21 description "Smart PDU Mgmnt"
+set interfaces ge-0/0/21 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/21 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-0/0/22 description MGMT
+set interfaces ge-0/0/22 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/22 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-0/0/23 description MGMT
+set interfaces ge-0/0/23 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/23 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces xe-0/2/0 description "esl-sw-core xe-0/0/45"
+set interfaces xe-0/2/0 ether-options 802.3ad ae0
+set interfaces ge-1/0/0 description "enaesxh01 mgmt - vmnic0"
+set interfaces ge-1/0/0 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/1 description "enaesxh02 mgmt - vmnic0"
+set interfaces ge-1/0/1 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/1 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/2 description "enaesxh03 mgmt - vmnic0"
+set interfaces ge-1/0/2 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/2 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/3 description "enaesxh04 mgmt - vmnic0"
+set interfaces ge-1/0/3 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/3 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/4 description "enaesxh05 mgmt - vmnic0"
+set interfaces ge-1/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/4 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/5 description "enaesxh06 mgmt - vmnic0"
+set interfaces ge-1/0/5 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/5 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ge-1/0/6 description "enasanh mgmt - bottom controller"
+set interfaces ge-1/0/6 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/6 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-1/0/7 description Spare
+set interfaces ge-1/0/7 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/7 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces ge-1/0/8 description "enaesxh01 idrac"
+set interfaces ge-1/0/8 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/8 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-1/0/9 description "enaesxh02 idrac"
+set interfaces ge-1/0/9 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/9 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-1/0/10 description "enaesxh03 idrac"
+set interfaces ge-1/0/10 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/10 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-1/0/11 description Spare
+set interfaces ge-1/0/11 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/11 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-1/0/12 description MGMT
+set interfaces ge-1/0/12 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/12 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/13 description MGMT
+set interfaces ge-1/0/13 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/13 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/14 description MGMT
+set interfaces ge-1/0/14 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/14 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/15 description MGMT
+set interfaces ge-1/0/15 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/15 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/16 description MGMT
+set interfaces ge-1/0/16 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/16 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/17 description MGMT
+set interfaces ge-1/0/17 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/17 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/18 description MGMT
+set interfaces ge-1/0/18 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/18 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/19 description MGMT
+set interfaces ge-1/0/19 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/19 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/20 description MGMT
+set interfaces ge-1/0/20 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/20 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/21 description "Smart PDU Mgmnt"
+set interfaces ge-1/0/21 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/21 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ge-1/0/22 description MGMT
+set interfaces ge-1/0/22 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/22 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ge-1/0/23 description MGMT
+set interfaces ge-1/0/23 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-1/0/23 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces xe-1/2/0 description "esl-sw-core xe-1/0/45"
+set interfaces xe-1/2/0 ether-options 802.3ad ae0
+set interfaces ae0 description "esl-sw-core ae22"
+set interfaces ae0 aggregated-ether-options lacp active
+set interfaces ae0 aggregated-ether-options lacp periodic fast
+set interfaces ae0 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-netmgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-site-STA-CAM
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-poc-nqa-npm
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_1900_vlan-netmgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4010_infra-esx-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members vlan-infra-net-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4013_infra-ilo
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4016_servers-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena-4046_aerohive-mgmt
+set interfaces ae0 unit 0 family ethernet-switching vlan members ena_4011_infra-san-mgmt
+set interfaces irb unit 1900 family inet address 10.130.160.91/24
+set snmp community readOnlyCacti authorization read-only
+set snmp trap-group trap-enanmsp03 version v2
+set snmp trap-group trap-enanmsp03 categories authentication
+set snmp trap-group trap-enanmsp03 categories chassis
+set snmp trap-group trap-enanmsp03 categories link
+set snmp trap-group trap-enanmsp03 categories remote-operations
+set snmp trap-group trap-enanmsp03 categories routing
+set snmp trap-group trap-enanmsp03 categories startup
+set snmp trap-group trap-enanmsp03 categories vrrp-events
+set snmp trap-group trap-enanmsp03 categories configuration
+set snmp trap-group trap-enanmsp03 categories services
+set snmp trap-group trap-enanmsp03 targets 10.130.160.40
+set snmp health-monitor
+set routing-options static route 0.0.0.0/0 next-hop 10.130.160.1
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+set protocols lldp-med interface all
+set protocols igmp-snooping vlan all
+set virtual-chassis preprovisioned
+set virtual-chassis no-split-detection
+set virtual-chassis member 0 role routing-engine
+set virtual-chassis member 0 serial-number NW0217310070
+set virtual-chassis member 1 role routing-engine
+set virtual-chassis member 1 serial-number NW0217310178
+set vlans ena-4046_aerohive-mgmt vlan-id 4046
+set vlans ena_1900_vlan-netmgmt vlan-id 4009
+set vlans ena_4010_infra-esx-mgmt vlan-id 4010
+set vlans ena_4011_infra-san-mgmt vlan-id 4011
+set vlans ena_4013_infra-ilo vlan-id 4013
+set vlans ena_4016_servers-mgmt vlan-id 4016
+set vlans vlan-guest-stuff vlan-id 3085
+set vlans vlan-infra-net-mgmt vlan-id 4012
+set vlans vlan-netmgmt vlan-id 1900
+set vlans vlan-netmgmt l3-interface irb.1900
+set vlans vlan-poc-nqa-npm vlan-id 3199
+set vlans vlan-site-STA-CAM vlan-id 3084
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> dsadmin@ena-sw-sta-m01> show configuration | display set | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more     | no-more    
+## Last commit: 2022-10-14 14:10:24 NZDT by dsadmin
+version 20.4R3-S3.4;
+system {
+    host-name ena-sw-sta-m01;
+    root-authentication {
+        encrypted-password "$1$5L.DDY7n$MbZeFBY5QdDHT0T2DnPz4."; ## SECRET-DATA
+    }
+    login {
+        class cfg-view {
+            permissions [ secret view-configuration ];
+            allow-commands "(show)|(set cli screen-length)|(set cli screen-width)";
+            deny-commands "(clear)|(file)|(file show)|(help)|(load)|(monitor)|(op)|(request)|(save)|(set)|(start)|(test)";
+            deny-configuration all;
+        }
+        user CraigReynolds {
+            full-name "Craig Reynolds";
+            uid 2000;
+            class operator;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"; ## SECRET-DATA
+            }
+        }
+        user DavidRichards {
+            full-name "David Richards";
+            uid 2001;
+            class operator;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"; ## SECRET-DATA
+            }
+        }
+        user Jeremy.Crestani {
+            full-name "Jeremy Crestani (Read Only)";
+            uid 2011;
+            class cfg-view;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCNFzTgHHVVWgrJdLSxGq8Ux4wZImCXqL+6mGxUnozLFW1TuD4EttsIrX53m3cj8NczVQqOIoSENQjIkDOsY0U++BuDHL7CZQVesp45C/xLRhe4Zjp2SeIdi+yx0poHkoKadKgzgKBgfIkh/+cmQx7jjy6J91SCzBOuxq28z8zpCf5G5v23WTARTn2xV0fkQfLTfza2RkkTXZhRsu3Xw9rnYYyHK8dLmxwqprWO5BqBrHCmeaTvMMoqumMoGylMuSkrHmSc2SSUQod8LgTuNmXKg/iAEe72EHNa1LkEq+ZzLRFGbrC+WAPlOkYlPDtYSjMCkMUT9fkq/LiE3U+PahI7"; ## SECRET-DATA
+            }
+        }
+        user Peter.Fowler {
+            full-name "Peter Fowler";
+            uid 2201;
+            class operator;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"; ## SECRET-DATA
+            }
+        }
+        user acadmin {
+            full-name "Aaron Christensen - CCL";
+            uid 2012;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCWljKUH9LJKqdYriT8UNtIyYjp/HXH+qQtDGe6i0hazmkUIwtLD3bNuCeHkDCQjel1OST51QgZ97hmbLvRbVmpXMFnsmjFbMrw8PYfXut5iSahYIodjTnR4jpX1LBW2m5rsu+ChsgcOKcbcfLt2/+O+6u4iryCoDLShMnDhKMO0uvCCZaEdpcZTB23n12DuOL/4mTUNXScrYli/3r5EfFf6/QGJgI9eXSbj8/+62mXmlcvi8gO/eP/7GCC2ZMi7B3h2YgWpfek9HzIRIL4Sh+0GWmyhETYFs9CGZgTzMXE9U6HwxrFBMpo3MUASM4yalMVTakCSDS5snMejfXJcKTn"; ## SECRET-DATA
+            }
+        }
+        user asadmin {
+            full-name "CCL Aaron Sixtus";
+            uid 2103;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbOUAljwEUpjIvquRy7dNp/z15lC27+tPl/2zw5k7Tq9ds78V01G6uAOBpGV9cjZ9ZUWN2tizfMXUPtdOuKMlcdbfAMuIdnQMcsQig5ReJnN5GqR361LffW+YZWY4d3vLZ2xcWgP6OwUARSZjrLUZSoZMn36Pq8NvPZKdaeUlPJbAzhLZvTiyQ0C8Ya94Ceoz8Pb842Uj09l30UkrUjecUG1HNgtOgUdHFVLow06F0WJF7UNr/MSdljmSgZ2hgR4KBt/+rkwyi2H3blCRu72s1eL/bqTTNOTR7LKiPTOTsuSYsP1ZvZUSXEal7uuQf3hb7p4A3dGaksbGOTCGfcEbj cclchc\asixtus@WSJDK8HR2"; ## SECRET-DATA
+            }
+        }
+        user azadmin {
+            full-name "Alin Zahn - CCL";
+            uid 2008;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA5pJiqXVQJGqQhWIGf/bavCWfMZJOdBuwna4S4cVtHqO9UPIdbVY/cDivAU+kI0f4m8+qmnFF0pyTOAGXoO9UddPAs+yqkrT+QeAJTortvMoY1xi573gDpFKo5hQjzBmfJ7x1KAebmzTSmRzlVRs22uB163KFqZxbhc3GQxAbBa5MjqiHwOH1PAgHnqjr6071gQvn2HH1aEx7G767/uLWVYrhj9gRv3t2/kNOLrkYyw4hOD2yt5GwXXi1GwzlwyRTAxlsxeFT36wcxo78crQ1m/0qRrgux7GDaJTF6HkF0iUN5J4CuB3MTFYiiFNlKkZzdkoRals0jU/YxlSumwCc9Q=="; ## SECRET-DATA
+            }
+        }
+        user cclrecover {
+            uid 2010;
+            class super-user;
+            authentication {
+                encrypted-password "$6$cDkPh2Oq$9bGxVWQEXMs1qTRTyEhUB/h6BRRzk8oz0ar8jqJi14.v/FdrP3o6XSbEvnHdHq.CV4nHIajzVCxEp.Wddc.Pk1"; ## SECRET-DATA
+            }
+        }
+        user dsadmin {
+            full-name "Daniel Shi - CCL";
+            uid 2009;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"; ## SECRET-DATA
+            }
+        }
+        user jlaundry {
+            full-name "Jed Laundry";
+            uid 2002;
+            class operator;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"; ## SECRET-DATA
+            }
+        }
+        user lbadmin {
+            full-name "CCL Leon Broadbent";
+            uid 2105;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA2aC7Zyv2v6eBiuLONOQCN1AsXIJaYtDs/ePRY2ByCK2sDYtiQKSjOuYT03ZBCXyPlsgIegxbVCtJqItbuAh6VZEcpbQAoDg0hUOUApm74qj2K5HN9WiZydS8aFMYBmSwPyJf6cLqaz7o1rjSR67p+iCQvbZwkHpYAKBT0EJNedIPgKSApqfFsaH91JBqKnKwUBuNfSx5ypbGu3gfjOhojTZMS7iVF7C6NELAnUYECgTkcS4TWFQw5gZ5DtbgmKye1JCWatZqLBs89yuMAF7P1Nbj7U/zPIDAZrd3VLuv7MdV/aOM5Vh/DN+MMR6o3aXLX/0nG0CTnv4zymyP/r7KgQ=="; ## SECRET-DATA
+            }
+        }
+        user mtadmin {
+            full-name "CCL Mike Taylor";
+            uid 2101;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Mqj1haDez2+piqiq0tvWYWREHU+V0TskA81bmSP7M2R0qD30AAA1aFEI45mHM8+nc0anGOnFXa2XLs9nQEGhNZ8wN9LCkisxq/OzAUTy9fJ8l7AvyfOGLlkMg/jmopHkCZFJW42PTr4I1alZIY5QnB6tvf1/sTVR9ULStRpJq36aq0+KbplRUQ2moPEWgD+zH2CShBkKPXCPvR6ZmodtS2D0FIwCajfm5PjPZ2WnIOSKB0qF64Rsrp8Wmudmqy/CJu4d6JPY6t0P2uPbLTCbXpzJ/ZS7227QgrZAQDHJ2FkT7hfqt5m3rzXVDp4Rq33Lz8TNPdg7phTMrxKZ0A5D cclchc\mtaylor2@WS6S8SYW2-W"; ## SECRET-DATA
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAnJExDB0JgopHhosc7784s74o9WRMVSDtEHGZQOx10HEeCKS2VHlNBVMrZHrgQwbGIo4x8oK3j9lrw1piRcOWSe17s2+c2RB3Up0b4gvh/tVZhC6Vu7c1TfQZ6jRXQ+4d2yzb3vuGrXiKJEkIZg8ADXDKJrIuvNJfxtRNGU28Zzj08kK2d6JI8HnA9/bWaIUOeRSFFkGuQpG2YlqSfo0Rr+QNTJ6Vv6BGYrdHMGRHhi++bW1AHNhATwECfi54MuNOJViDLowB4JJPWykfM8/bc8aYBggbl5HmrhxnFSUIls4c9WTz++kdbRNqc+HsCGQ9ZPuNxRJeQVJiucfdClJm5Q== enable\mtadmin@enajump01-rsa-key-20191213"; ## SECRET-DATA
+            }
+        }
+        user oxidized {
+            uid 2006;
+            class cfg-view;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu1PhVHugQvH19ZYL12XerKkTl4Z75GZCvOxy7XDKCtc/hxE1QcB7FKKw/uWatst6Mm3pSeJh8dJsrNK/nseF7zoxXtI0jH/acy9VAGNgV1/v79TOkvuG8sWb/7eHubiWNo/yecrZ3T0Vg3Hb1VDU45Pep1x19gEhFoTz0JwagbM5uwSb68cDQObbey35maD3wlTymrsnpjnQnbKgHRn5rj6xoh61VjSmRzvsZ1YGM2m8gApDdhfocNGHJ0xZZq55mBKa6r0Bp1rM4iBdbUk9UVXyjnXOu7uWSFlna3nug0hZE0eZbZYZJ2wISA9BNuC940hBW1wQ4P6+r+k2CKoQyG2gDA7EcA5Hl3MarX7tKNnMug5HHMg7qgc6EOgBGe1NFxbQtqWolkoze0L0u7Oe5nIXItKItBJtxDCqD7o919NhiXOsIfPaaKnDa6C2dhzKwHtyeok/DUzLb8LBwqVS5u1PM9Ap7MYlp11kHC4l/D0GB0WyAo5DzTWMrv4xooN8= oxidised@d11-netback"; ## SECRET-DATA
+            }
+        }
+        user pa-CraigReynolds {
+            full-name "Craig Reynolds";
+            uid 2003;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"; ## SECRET-DATA
+            }
+        }
+        user pa-DavidRichards {
+            full-name "David Richards";
+            uid 2004;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsJswov5v1ZiiVCghFzozNiu3vF59r+Xo4lEV58Emmf8FT+Q0n8svyRu14rToglhNt1wQvFwgKtTUuKs+/1ehDy+XSoiS3wCdq2iRBPyJxL4OLoMbIhCVfh9Ojm0Mi4Oaps4CE4F1AGCEfR+LrlrKh99R7xfS3NaN5QkTz5vLNmyQvilIehKnJw334ZcZPl7MeQpme8p1QflLw2nIFmtHs7zPZ5twe/CsHeyp+PMcH3770fwXHPunyvsbL23xA+wp/qD1eIgHaBljKKQW23kyav3W/dNWHY5m31y46gDn7kVadAEO1OJtzqw+4S8VdI3tF82EzaPc6+AxT7uOE04ghw== David.Richards@LTCNU327B36C"; ## SECRET-DATA
+            }
+        }
+        user pa-Peter.Fowler {
+            full-name "Peter Fowler (Admin)";
+            uid 2200;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"; ## SECRET-DATA
+            }
+        }
+        user pa-jlaundry {
+            full-name "Jed Laundry";
+            uid 2005;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO3I/ya6L3NyXRT6KBdY/0soZZX3GfHrws4RDDVuBfQ3pjY+k28PGNwxmUKc+vKcX34ZNcqErCXr03diZorxSHPnHg0S8IsyKBLk8/tyA4YqR/xJxGaX/6hfC8/85S6aMsFI94dksXB41f/IBBI9xxl8q5+FJr70CtKWTLoKQwFKc33QyEO3QruPe32BZlg+uOcO7rR7OxVm0HzdoQ1uGhAs13VwwvfyhtIkq8/RGbxUizZGErojITL/ITtHiBGvP0wepN2pBwzbZUeK9wkAeKyFgRdsVus3zgQh5kQVMyzILQLDpyv5bRS9tvyfd0o+zKigUdjBOyTkPOgaUGvjiV jlaundry@tragedie"; ## SECRET-DATA
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAueYhY1iRfeXi9CCM694lq9q62s4+5imRYMMbq0OztU9dP8EH9jGk9Og8tmvwf4HA8+nT/VE1eK42WtSrqlYhkVOAi9CsYTMm2R0a0TW9Imh90XHCrQ0oizUOhFD+q+y96XBTi30pFNrNkea8rhuZ7aD7SxtT+lEwL8J94OEaKOQrTgr2xwkB23EuRc9bJVM8EP3EmyIkFARp3uZGF+I7Cff1/p4Sc5grRosiBLdrE90mSve2x+5sMP64bX+/u/G/L6SS8fjxYt4cT4Id1qREbUnPUAcusQQxUnJnzS5YgWxjSPsv6RcTmGU/TBjxWNHmaPTy5lGNf6J6nbFn9WDJlw== jlaundry@aqua"; ## SECRET-DATA
+                ssh-ecdsa "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBBE39BXdLmjqhRScczU9NUHPkT4d8lDNh6S3OoS/WMCyjky2eKszC1GxfODXGHCR8hwIXs+nVuOjlGLd3NB/jrvKoGwp6LH/nOWg5kXSs08apBS7PY5oHNLwY4hJ4RnpRw== jlaundry@orange"; ## SECRET-DATA
+            }
+        }
+        user pa-mike.taylor {
+            full-name "Mike Taylor";
+            uid 2007;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"; ## SECRET-DATA
+            }
+        }
+        user pmadmin {
+            full-name "CCL Patrick McGirr";
+            uid 2100;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDElzQ5wKTAdwZKukG/eUppXwDNPIgZHbp2gi1fw0B4pEGQuXBQmoTGWs1YxXGaNB6DK3MzR+r/lGxMG6JiumMuR60JAOP2GBZjNV4RjqkLe4u1fCEhFZNyUKYzjRKb4nwVQLs4lQVVgyGBbhCyUgprqK8sLvFmErf0u5YLCnqduilcRn+xNHtMJ+NBFNob6KpY2tf0dNgTIxhzdjYm+ivbYmWoV7gKfzCN2sSTH+t19PHAOg5RudPzxn7EPr6bUZ2O+MiikI7ipfAw387TwEJFva4TMkoCti3ZdSRIfL/U5Yy40fnbFJI5TWcNqqGF+mqfSqQBf7gSHOGHku2GByuJ cclchc\pmcgirr@PMCLAPTOP"; ## SECRET-DATA
+            }
+        }
+        user rk2admin {
+            full-name "CCL Rohan Kaminski";
+            uid 2104;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsu12z/mqXHsNV13b5+DHFyaRpBGXjrpd1IdvrPJnYrH/IvgRDxBpMQzodQeS+Mz0E5AVAeB1Zqhw8dNvQ6tThJt1SVzMfe96UP1fCyDxHTzGpbLqq78dTeIwcOow4xLm0Ncs9Av301IA6PwW5ZXHzF/8XSb8UgosYcuU1qrI14m8e9JO7pOrqudXVbFRVXoB+9SDo34kTrS8XVbKjv3T/d14PXfpLzxN4ZOb5s7hHy5SGIMv661nPOZL4bhT8lkJybckP81mZrvXOcamKhZP8OnN52ALPv79zKKGm8fDTOyl0mxGUO3omqS9kXf2fxhhEKpP7+WIMEbehPxLHYI61 cclchc\rkaminski@WSFQ0VF2"; ## SECRET-DATA
+            }
+        }
+        user taadmin {
+            full-name "CCL Trevor Alder";
+            uid 2102;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCp1UOnKuMImnGW/+pbiIYO2h0evMAeF68WrAYMu4oLanLrhKGPjARaoObl/fbsJnzX67eyquEGL57OWHRlJFi0+VO1qMyvWL4vtX4tgoOfu+Hwe3uRkx82Y2v0zz8XCxPvr0/Wi1H3OpOpzjDc8rFsxTl2B9SRf/MkEWhCCaWFAk6is8diwILpPslRHIEwv0/40pPhsS1rQlgpLCv/0iww+HtCIOI2wlbL8Tc5SmlztehAnBsNGrzzwwlfqE3uAJAvZJXOK5cl7EMcyB8FwU3Erjj1joOy40XFLdiheEamJJwaPvbhS5VDsofCEa9n52/MWS7dgv5J9JQhE3SLEsNz cclchc\talder@CHC-LAPT0P-TA-1"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh;
+        ##
+        ## Warning: configuration block ignored: unsupported platform (ex3400-24p)
+        ##
+        dhcp {
+            traceoptions {
+                file dhcp_logfile;
+                level all;
+                flag all;
+            }
+        }
+    }
+    time-zone Pacific/Auckland;
+    syslog {
+        user * {
+            any emergency;
+        }
+        host 10.130.37.16 {
+            any info;
+            security any;
+            firewall any;
+            interactive-commands any;
+            source-address 10.130.160.91;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    ntp {
+        server 10.130.37.121;
+        server 10.130.37.122;
+        server 10.130.37.123;
+    }
+}
+chassis {
+    aggregated-devices {
+        ethernet {
+            device-count 2;
+        }
+    }
+    alarm {
+        management-ethernet {
+            link-down ignore;
+        }
+    }
+    auto-image-upgrade;
+}
+interfaces {
+    ge-0/0/0 {
+        description "enaesxh01 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/1 {
+        description "enaesxh02 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/2 {
+        description "enaesxh03 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/3 {
+        description "enaesxh04 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/4 {
+        description "enaesxh05 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/5 {
+        description "enaesxh06 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/6 {
+        description "enasanh mgmt - top controller";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4011_infra-san-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/7 {
+        description Spare;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4011_infra-san-mgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/8 {
+        description "enaesxh01 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-0/0/9 {
+        description "enaesxh02 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-0/0/10 {
+        description "enaesxh03 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-0/0/11 {
+        description Spare;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-0/0/12 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/13 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/14 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/15 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/16 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/17 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/18 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/19 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/20 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/21 {
+        description "Smart PDU Mgmnt";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-0/0/22 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-0/0/23 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    xe-0/2/0 {
+        description "esl-sw-core xe-0/0/45";
+        ether-options {
+            802.3ad ae0;
+        }
+    }
+    ge-1/0/0 {
+        description "enaesxh01 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/1 {
+        description "enaesxh02 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/2 {
+        description "enaesxh03 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/3 {
+        description "enaesxh04 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/4 {
+        description "enaesxh05 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/5 {
+        description "enaesxh06 mgmt - vmnic0";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4010_infra-esx-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/6 {
+        description "enasanh mgmt - bottom controller";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4011_infra-san-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/7 {
+        description Spare;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4011_infra-san-mgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/8 {
+        description "enaesxh01 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-1/0/9 {
+        description "enaesxh02 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-1/0/10 {
+        description "enaesxh03 idrac";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-1/0/11 {
+        description Spare;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-1/0/12 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/13 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/14 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/15 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/16 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/17 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/18 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/19 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/20 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/21 {
+        description "Smart PDU Mgmnt";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members ena_4013_infra-ilo;
+                }
+            }
+        }
+    }
+    ge-1/0/22 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    ge-1/0/23 {
+        description MGMT;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members vlan-netmgmt;
+                }
+            }
+        }
+    }
+    xe-1/2/0 {
+        description "esl-sw-core xe-1/0/45";
+        ether-options {
+            802.3ad ae0;
+        }
+    }
+    ae0 {
+        description "esl-sw-core ae22";
+        aggregated-ether-options {
+            lacp {
+                active;
+                periodic fast;
+            }
+        }
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members [ vlan-netmgmt vlan-site-STA-CAM vlan-guest-stuff vlan-poc-nqa-npm ena_1900_vlan-netmgmt ena_4010_infra-esx-mgmt vlan-infra-net-mgmt ena_4013_infra-ilo ena_4016_servers-mgmt ena-4046_aerohive-mgmt ena_4011_infra-san-mgmt ];
+                }
+            }
+        }
+    }
+    irb {
+        unit 1900 {
+            family inet {
+                address 10.130.160.91/24;
+            }
+        }
+    }
+}
+snmp {
+    community readOnlyCacti {
+        authorization read-only;
+    }
+    trap-group trap-enanmsp03 {
+        version v2;
+        categories {
+            authentication;
+            chassis;
+            link;
+            remote-operations;
+            routing;
+            startup;
+            vrrp-events;
+            configuration;
+            services;
+        }
+        targets {
+            10.130.160.40;
+        }
+    }
+    health-monitor;
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 10.130.160.1;
+    }
+}
+protocols {
+    lldp {
+        port-id-subtype interface-name;
+        interface all;
+    }
+    lldp-med {
+        interface all;
+    }
+    igmp-snooping {
+        vlan all;
+    }
+}
+virtual-chassis {
+    preprovisioned;
+    no-split-detection;
+    member 0 {
+        role routing-engine;
+        serial-number NW0217310070;
+    }
+    member 1 {
+        role routing-engine;
+        serial-number NW0217310178;
+    }
+}
+vlans {
+    ena-4046_aerohive-mgmt {
+        vlan-id 4046;
+    }
+    ena_1900_vlan-netmgmt {
+        vlan-id 4009;
+    }
+    ena_4010_infra-esx-mgmt {
+        vlan-id 4010;
+    }
+    ena_4011_infra-san-mgmt {
+        vlan-id 4011;
+    }
+    ena_4013_infra-ilo {
+        vlan-id 4013;
+    }
+    ena_4016_servers-mgmt {
+        vlan-id 4016;
+    }
+    vlan-guest-stuff {
+        vlan-id 3085;
+    }
+    vlan-infra-net-mgmt {
+        vlan-id 4012;
+    }
+    vlan-netmgmt {
+        vlan-id 1900;
+        l3-interface irb.1900;
+    }
+    vlan-poc-nqa-npm {
+        vlan-id 3199;
+    }
+    vlan-site-STA-CAM {
+        vlan-id 3084;
+    }
+}
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> 
+
+{master:0}
+dsadmin@ena-sw-sta-m01> dsadmin@ena-sw-sta-m01> show configuration  | no-more    dsadmin@ena-sw-sta-m01>                                 

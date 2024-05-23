@@ -1,0 +1,37 @@
+
+
+
+--- Debug flow (low level packet capture) ----
+diag debug flow filter addr 192.168.2.253
+diag debug flow show console enable
+diag debug flow trace start 100
+diag debug enable
+
+
+--- Packet capture for troubleshooting ----
+    diagnose sniffer packet any ip 8.8.8.8 4 99
+    diagnose sniffer packet any 'udp port 67 or udp port 68'
+
+
+--- IPsec for troubleshooting ----
+    diagnose vpn ike status detailed 
+    diagnose vpn tunnel list 
+    diagnose vpn ike gateway
+    diagnose vpn ipsec status
+
+--- Debug IKE application ---
+    diagnose debug application ike -1
+    diagnose debug enable
+    diagnose debug disable
+
+ --- Show Route for troubleshooting ----
+    get router info routing-table all 
+    get router info bgp summary 
+    get router info bgp neighbors 111.69.64.26 received-routes
+    get router info bgp neighbors 111.69.64.26 advertised-routes
+
+    get router info bgp neighbors 111.69.64.20 received-routes
+    get router info bgp neighbors 111.69.64.20 advertised-routes
+
+    execute router clear bgp all soft
+

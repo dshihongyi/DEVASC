@@ -1,0 +1,88 @@
+Implementation Plan
+1.	# Core Switch
+
+vlan 15
+ name Q-SYS-PA-Failover
+
+
+spanning-tree vlan add 15 priority 4096
+
+
+interface Port-channel34
+ description Frames2T6-PA - Aruba Lag1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,15
+ switchport nonegotiate
+ spanning-tree guard root
+ spanning-tree link-type point-to-point
+ service-policy input CIAL-QoS-Input-Policy
+ service-policy type lan-queuing output CIAL-QoS-Output-Policy
+
+
+interface Port-channel35
+ description FramesTB1-PA - Aruba Lag1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,15
+ switchport nonegotiate
+ spanning-tree guard root
+ spanning-tree link-type point-to-point
+ service-policy input CIAL-QoS-Input-Policy
+ service-policy type lan-queuing output CIAL-QoS-Output-Policy
+
+
+interface Gi1/1/36
+ description Frames2T6-PA - Lag1-P15
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ channel-group 34 mode active
+ no shutdown
+
+interface Gi2/1/14
+ description Frames2T6-PA - Lag1-P16
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ channel-group 34 mode active
+ no shutdown
+
+
+interface Gi1/1/37
+ description FramesTB-PA - Lag1-P15
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ channel-group 35 mode active
+
+interface Gi2/2/9
+ description FramesTB-PA - Lag1-P16
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ channel-group 35 mode active
+
+2.	Physically install the Aruba switch to B23 and 2T6 Rack once the uplink ready for us.
+
+Planned Outage Time (minutes)
+0
+Rollback Procedure
+Shutdown the uplink interface
+no configuration rollback required.
+
+Estimated Rollback Time (minutes)
+15
+Test Plan
+Test the switch management IP
+
+Hostname: Frames2T6-PA.cial.co.nz
+mgmt IP: 192.168.2.145
+Hostname: FramesTB1-PA.cial.co.nz
+mgmt IP: 192.168.2.147
+
+Functional test required to be done by 3rd party.
+Change Notification Sent
+Yes

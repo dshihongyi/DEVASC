@@ -1,0 +1,44 @@
+~~~~ Disable ASA Auto-Failover ~~~~
+
+Secondary Firewall: 192.168.210.254 (Failover Status: Active)
+CoreFW/sec/act# sho failover
+Failover On
+Failover unit Secondary
+Failover LAN Interface: folink GigabitEthernet0/6 (up)
+Serial Number: Ours FCH200871LH, Mate FCH200871MS
+Last Failover at: 01:07:44 NZST Oct 26 2022
+        This host: Secondary - Active
+                Active time: 12132635 (sec)
+                slot 0: ASA5525 hw/sw rev (1.0/9.14(3)15) status (Up Sys)
+                  Interface Inside (192.168.210.254): Normal (Monitored)
+        Other host: Primary - Standby Ready
+                Active time: 518419 (sec)
+                slot 0: ASA5525 hw/sw rev (1.0/9.14(3)15) status (Up Sys)
+                  Interface Inside (192.168.210.253): Normal (Monitored)
+
+Primary Firewall: 192.168.210.253 (Failover Status: Standby)
+
+CoreFW/pri/stby# sh failover 
+Failover On
+Failover unit Primary
+Failover LAN Interface: folink GigabitEthernet0/6 (up)
+Serial Number: Ours FCH200871MS, Mate FCH200871LH
+Last Failover at: 01:07:44 NZST Oct 26 2022
+        This host: Primary - Standby Ready
+                Active time: 518419 (sec)
+                slot 0: ASA5525 hw/sw rev (1.0/9.14(3)15) status (Up Sys)
+                  Interface Inside (192.168.210.253): Normal (Monitored)
+        Other host: Secondary - Active
+                Active time: 12132333 (sec)
+                slot 0: ASA5525 hw/sw rev (1.0/9.14(3)15) status (Up Sys)
+                  Interface Inside (192.168.210.254): Normal (Monitored)
+
+
+
+
+~~~~ Login to Primary ASA 192.168.210.253 ~~~~~
+config t
+no failover
+
+~~~~ Login to Secondary ASA 192.168.210.254 ~~~~~
+show failover

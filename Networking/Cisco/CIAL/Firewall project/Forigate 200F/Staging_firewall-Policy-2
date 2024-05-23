@@ -1,0 +1,1323 @@
+config firewall policy
+ edit 173
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "Carpark1" 
+  set dstaddr "Carpark_ABACUS_Mcast" 
+  set service "UDP-1718" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 328
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CityCare_PublicIP" 
+  set dstaddr "vip-oServ-U-Gateway_Public" 
+  set service "CIAL_Carpark_Serv-U-Gateway" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 174
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "ADSL_Router" "CityCare_PublicIP" "obj_MITEL-Simon" 
+  set dstaddr "Serv-U-Gateway-Prod" 
+  set service "CIAL_Carpark_Serv-U-Gateway" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 175
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "Backup1" "grp_monitoring-servers" 
+  set dstaddr "cloudconnect.vbridge.co.nz" 
+  set service "TCP-UDP-6180" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 176
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "OSCE1" 
+  set service "TrendMicro_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 177
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "OSCE1" 
+  set dstaddr "Secured_Workstations" 
+  set service "OSCE_ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 178
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_monitoring-servers" 
+  set dstaddr "n-192.168.169.0_24" 
+  set service "SNMP-SecuredWorkstations-In" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 179
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "n-192.168.169.0_24" 
+  set dstaddr "grp_monitoring-servers" 
+  set service "SNMP-SecuredWorkstations-Out" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 180
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "FIDSAODB" 
+  set service "FIDS_5590" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 329
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_FidsLink_162.112.20.0" 
+  set dstaddr "vip-FIDSINT_NAT" 
+  set service "AirNZ_Fidslink_MQL_1414" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 181
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_FidsLink_162.112.20.0" 
+  set dstaddr "FIDSINT" 
+  set service "AirNZ_Fidslink_MQL_1414" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 182
+  set srcintf "TRUST" 
+  set dstintf "AIRNZ" 
+  set srcaddr "FIDSINT" 
+  set dstaddr "AirNZ_Carina_Prod" 
+  set service "AirNZ_Fidslink_MQ_1700_Prod" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 183
+  set srcintf "TRUST" 
+  set dstintf "AIRNZ" 
+  set srcaddr "FIDSINT" 
+  set dstaddr "AirNZ_Carina_Test" 
+  set service "AirNZ_Fidslink_MQ_1701_1705" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 330
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_FidsLink_GDUs_10.90.0.0" 
+  set dstaddr "vip-FIDSWEB_NAT" 
+  set service "AirNZ_FIDS_Client4444-4448" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 184
+  set srcintf "AIRNZ" 
+  set dstintf "TRUST" 
+  set srcaddr "AirNZ_FidsLink_GDUs_10.90.0.0" 
+  set dstaddr "FIDSWEB" 
+  set service "AirNZ_FIDS_Client4444-4448" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 185
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "Secured_Workstations" 
+  set dstaddr "FIDSWEB" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 186
+  set srcintf "ARINC" 
+  set dstintf "TRUST" 
+  set srcaddr "ARINC-SOURCEIP-FIDSWEB" 
+  set dstaddr "vip-192.168.91.100" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 187
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "SQLServices_Kaseya_SQL_Servers" 
+  set dstaddr "h-202.124.121.252" 
+  set service "TCP-UDP-5721" 
+  set schedule "always"
+  set logtraffic disable
+  set status disable
+  set action accept
+ next
+ edit 188
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_ERP-servers" 
+  set dstaddr "outlook.office365.com" 
+  set service "IMAP_993" "POP_995" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 189
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL244_CorpGeneral" 
+  set dstaddr "RA_VPN_Network" 
+  set service "SCCM-Remote-Manage" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 190
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CCTV_cameras" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DNS" "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 331
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "Webproxy1" 
+  set dstaddr "OBJ_HVAC_FMG" 
+  set service "TCP-8888" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-corefw_mail_websites_195" 
+ next
+ edit 191
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" "CIAL_VLAN3_Workstations" 
+  set dstaddr "OBJ_HVAC_FMG" 
+  set service "TCP-8888" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 192
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_VLAN3_Workstations" 
+  set dstaddr "CCTV_cameras" 
+  set service "TCP-UDP-80" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 193
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" "CIAL_VLAN3_Workstations" 
+  set dstaddr "CCTV_cameras" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 194
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL_VLAN244_CorpGeneral" 
+  set dstaddr "CCTV_cameras" 
+  set service "TCP-UDP-80" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 195
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "WiFiMgmtRange" 
+  set dstaddr "RA_VPN_Network" 
+  set service "FTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 196
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CLEARSCADA1" 
+  set dstaddr "FQDN_cial.nz.wateroutlook.com" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 197
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "DESIGO1" 
+  set dstaddr "h-202.124.121.252" 
+  set service "TCP-5721" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 198
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "DESIGO1" 
+  set dstaddr "lms-simens" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 332
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-obj_citrix-vpn-public-ip_http" "vip-obj_citrix-vpn-public-ip_https" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+@REM  edit 333
+@REM   set srcintf "any" 
+@REM   set dstintf "DMZ" "UNTRUST" 
+@REM   set srcaddr "all" 
+@REM   set dstaddr "vip-202.124.113.201" 
+@REM   set service "CIAL_Web_Ports" 
+@REM   set schedule "always"
+@REM   set logtraffic disable
+@REM   set status enable
+@REM   set action accept
+@REM  next
+ edit 199
+  set srcintf "any" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "obj_citrix-vpn-endpoints" "obj_citrix-vpn-public-ip" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 334
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-obj_citrix-vpn-public-ip_tcp-53" "vip-obj_citrix-vpn-public-ip_udp-53" 
+  set service "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+@REM  edit 200
+@REM   set srcintf "any" 
+@REM   set dstintf "DMZ" 
+@REM   set srcaddr "all" 
+@REM   set dstaddr "vip-202.124.113.201" 
+@REM   set service "DNS" 
+@REM   set schedule "always"
+@REM   set logtraffic disable
+@REM   set status enable
+@REM   set action accept
+@REM  next
+ edit 201
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_host-datasentinel-jumphost" 
+  set dstaddr "fqdn_webservice.datasentinel.co.nz" "fqdn_webservicev2.datasentinel.co.nz" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 202
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_host-datasentinel-jumphost" 
+  set dstaddr "fqdn_crt.sectigo.com" "fqdn_ocsp.sectigo.com" "fqdn_status.geotrust.com" 
+  set service "HTTP" "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 203
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_host-APEX1" 
+  set dstaddr "obj_FQDN-cial-co-nz.mail.protection.outlook.com" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 335
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "obj_ADC-INT-SNIP" 
+  set service "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 204
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "CIAL31_Telephony" "grp_Mitel-Internal-LAN-Access" "grp_MitelGateways" 
+  set dstaddr "obj_ADC-INT-SNIP" 
+  set service "DNS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 336
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_ADC-INT-SNIP" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "tcp-5060" "tcp-5061" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 205
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "obj_ADC-INT-SNIP" 
+  set dstaddr "grp_MitelGateways" 
+  set service "tcp-5060" "tcp-5061" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 337
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DNS" "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 206
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "CIAL_Domain_Controllers" 
+  set service "DNS" "NTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 207
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "all" 
+  set service "NTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 338
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "obj_216.191.234.231" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 208
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "obj_216.191.234.231" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 339
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "h-216.191.234.91" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 209
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_MitelGateways" "grp_telephony-srv" 
+  set dstaddr "h-216.191.234.91" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 340
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "h-124.150.160.25" "h-124.157.75.195" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 210
+  set srcintf "DMZ" "TRUST" "UNTRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_MitelGateways" "grp_telephony-srv" 
+  set dstaddr "h-124.150.160.25" "h-124.157.75.195" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 341
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "all" 
+  set service "UDP-1024-65535" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 211
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "all" 
+  set service "UDP-1024-65535" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 342
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_telephony-srv" 
+  set service "TCP-1433" "TCP-18100" "TCP-20001" "TCP-36008" "TCP-42440" "TCP-4443" "TCP-5024-5026" "TCP-5030" "TCP-5065" "TCP-6809" "TCP-6815" "TCP-7001" "TCP-7003" "TCP-8083-8084" "TCP-8188" "UDP-33000-33500" "UDP-35000-35999" "UDP-5064" "UDP-5066" "http" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 212
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_telephony-srv" 
+  set service "TCP-1433" "TCP-18100" "TCP-20001" "TCP-36008" "TCP-42440" "TCP-4443" "TCP-5024-5026" "TCP-5030" "TCP-5065" "TCP-6809" "TCP-6815" "TCP-7001" "TCP-7003" "TCP-8083-8084" "TCP-8188" "UDP-33000-33500" "UDP-35000-35999" "UDP-5064" "UDP-5066" "http" "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 343
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 213
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 214
+  set srcintf "DMZ" "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "RA_VPN_Network" "obj_citrix-vpn-endpoints" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 215
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "RA_VPN_Network" 
+  set dstaddr "obj_ADC-INT-SNIP" "obj_ADC-INT-SNIP-101" 
+  set service "HTTPS" "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 344
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "tcp-1606" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 216
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "tcp-1606" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 345
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set service "tcp-6800-6802" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 217
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set service "tcp-6800-6802" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 346
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "tcp-36008" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 218
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" 
+  set service "tcp-36008" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 347
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "tcp-6800-6802" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 348
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" 
+  set dstaddr "grp_MitelGateways" 
+  set service "tcp-6800-6802" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 219
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "grp_MitelGateways" 
+  set service "tcp-6800-6802" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 349
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "UDP-1024-65535" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 350
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" 
+  set dstaddr "grp_MitelGateways" 
+  set service "UDP-1024-65535" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 220
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "grp_MitelGateways" 
+  set service "UDP-1024-65535" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 221
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "obj_202.124.107.82" "obj_202.124.107.88" "obj_216.191.234.231" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 222
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "h-124.150.160.25" "h-124.157.75.195" "h-216.191.234.91" 
+  set service "SSH" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 351
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 223
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "grp_MitelGateways" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 224
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "all" 
+  set service "HTTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action deny
+ next
+ edit 225
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "all" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 226
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "obj_FQDN-cial-co-nz.mail.protection.outlook.com" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 227
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL31_Telephony" 
+  set dstaddr "fqdn_smtpauth.cial.co.nz" "obj_FQDN-cial-co-nz.mail.protection.outlook.com" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 352
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "obj_FQDN-cial-co-nz.mail.protection.outlook.com" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 228
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "obj_FQDN-cial-co-nz.mail.protection.outlook.com" 
+  set service "SMTP" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 229
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "all" 
+  set service "udp-443" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 353
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "SIP" "SSH" "TCP-5060" "tcp-5061" "tcp-6809" "tcp-6810" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 354
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_Mitel-Internal-LAN-Access" 
+  set dstaddr "grp_MitelGateways" 
+  set service "SIP" "SSH" "TCP-5060" "tcp-5061" "tcp-6809" "tcp-6810" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 230
+  set srcintf "TRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "grp_telephony-srv" 
+  set dstaddr "grp_MitelGateways" 
+  set service "SIP" "SSH" "TCP-5060" "tcp-5061" "tcp-6809" "tcp-6810" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 355
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_mbg01" "obj_mbg03" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set service "SIP" "SSH" "TCP-5060" "tcp-5061" "tcp-6809" "tcp-6810" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 231
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "grp_MitelGateways" 
+  set dstaddr "grp_Mitel-Internal-LAN-Access" "grp_telephony-srv" 
+  set service "SIP" "SSH" "TCP-5060" "tcp-5061" "tcp-6809" "tcp-6810" 
+  set schedule "always"
+  set logtraffic all
+  set status enable
+  set action accept
+ next
+ edit 356
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "obj_mbg01" 
+  set dstaddr "obj_MBG03-External" "obj_mbg03" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 357
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_MBG01-External" "obj_mbg01" 
+  set dstaddr "vip-202.124.126.201" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 232
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "obj_MBG01-External" 
+  set dstaddr "obj_MBG03-External" "obj_mbg03" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 358
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "obj_MBG03-External" "obj_mbg03" 
+  set dstaddr "vip-202.124.126.200" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 359
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "obj_mbg03" 
+  set dstaddr "obj_MBG01-External" "obj_mbg01" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 233
+  set srcintf "DMZ" "UNTRUST" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "obj_MBG03-External" 
+  set dstaddr "obj_MBG01-External" "obj_mbg01" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 360
+  set srcintf "any" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-202.124.126.200" "vip-202.124.126.201" 
+  set service "HTTP" "HTTPS" "SIP" "TCP-35001-35008" "TCP-36000-36004" "TCP-36005-36008" "TCP-5060" "TCP-5063" "TCP-6801-6802" "TCP-6806-6807" "TFTP" "UDP-20000-31000" "UDP-32000-32500" "tcp-5061" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 234
+  set srcintf "any" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "grp_MitelGateways" 
+  set service "HTTP" "HTTPS" "SIP" "TCP-35001-35008" "TCP-36000-36004" "TCP-36005-36008" "TCP-5060" "TCP-5063" "TCP-6801-6802" "TCP-6806-6807" "TFTP" "UDP-20000-31000" "UDP-32000-32500" "tcp-5061" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 235
+  set srcintf "TRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "NSVIP_DMZ" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 236
+  set srcintf "TRUST" 
+  set dstintf "Outside_map_001" "Outside_map_002" "Outside_map_004" "SERVICES" "CARPARK" "AIRNZ" "DMZ" "ARINC" "TRUST" "UNTRUST" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "CIAL_Internal_Networks" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action deny
+ next
+ edit 237
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL248_Staff_WLAN_C-I" 
+  set dstaddr "all" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 238
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "CIAL244_CorpGeneral" "CIAL3_Workstation" "CS-Wireless" 
+  set dstaddr "grp_bypass-proxy-urls" 
+  set service "HTTP" "HTTPS" "udp-3478" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+  set ippool enable
+  set poolname "ippool-Internet_Public_IP" 
+ next
+ edit 239
+  set srcintf "any" 
+  set dstintf "any" 
+  set srcaddr "all" 
+  set dstaddr "all" 
+  set service "ALL_ICMP" 
+  set schedule "always"
+  set logtraffic disable
+  set status disable
+  set action accept
+ next
+ edit 240
+  set srcintf "DMZ" 
+  set dstintf "any" 
+  set srcaddr "obj_adc-public-snip" 
+  set dstaddr "fqdn_prod.christchurchairport.co.nz" 
+  set service "HTTPS" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+  set nat enable
+ next
+ edit 361
+  set srcintf "UNTRUST" 
+  set dstintf "DMZ" 
+  set srcaddr "all" 
+  set dstaddr "vip-202.124.113.199" "vip-Netscaler1_External_IP_http" "vip-Netscaler1_External_IP_https" "vip-Netscaler_External_IP_http" "vip-Netscaler_External_IP_https" "vip-TMG1_External_Hybrid_http" "vip-TMG1_External_Hybrid_https" "vip-TMG_External_FS_https" "vip-TMG_External_IP_http" "vip-TMG_External_IP_https" "vip-corefw_OWA_194_http" "vip-corefw_OWA_194_https" "vip-obj_citrix-vpn-public-ip_http" "vip-obj_citrix-vpn-public-ip_https" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 241
+  set srcintf "any" 
+  set dstintf "DMZ" "UNTRUST" 
+  set srcaddr "all" 
+  set dstaddr "CIAL_Web_Allow_Inbound" 
+  set service "CIAL_Web_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 242
+  set srcintf "TRUST" 
+  set dstintf "UNTRUST" 
+  set srcaddr "DEVSQLBI2.net.cial.co.nz" 
+  set dstaddr "Microsoft_PowerBI_Temp_ranges" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 243
+  set srcintf "TRUST" 
+  set dstintf "TRUST" 
+  set srcaddr "obj_papercut1" 
+  set dstaddr "obj_192.168.247.30" 
+  set service "https" 
+  set schedule "always"
+  set logtraffic disable
+  set status disable
+  set action accept
+ next
+ edit 244
+  set srcintf "TRUST" 
+  set dstintf "any" 
+  set srcaddr "APP2" "Mailarchive1" "obj_DEVERP4" "obj_devciaerp2" 
+  set dstaddr "all" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 245
+  set srcintf "DMZ" 
+  set dstintf "TRUST" 
+  set srcaddr "Serv-U-Gateway-Prod" 
+  set dstaddr "SCCM1" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 246
+  set srcintf "CARPARK" 
+  set dstintf "Outside_map_001" 
+  set srcaddr "n-10.168.223.0_24" 
+  set dstaddr "Chauntry_VPN_LAN" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 247
+  set srcintf "Outside_map_001" 
+  set dstintf "CARPARK" 
+  set srcaddr "Chauntry_VPN_LAN" 
+  set dstaddr "FlyingSouth_Craddocks_VLAN323" 
+  set service "ALL_ICMP" "Printer-PDL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 248
+  set srcintf "TRUST" 
+  set dstintf "Outside_map_002" 
+  set srcaddr "CIAL240_FIDS" 
+  set dstaddr "ACL_Remote_Peer_network" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 249
+  set srcintf "Outside_map_002" 
+  set dstintf "TRUST" 
+  set srcaddr "ACL_Remote_Peer_network" 
+  set dstaddr "CIAL240_FIDS" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 250
+  set srcintf "TRUST" 
+  set dstintf "Outside_map_003" 
+  set srcaddr "CIAL_Azure_Access" 
+  set dstaddr "Azure-Group" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 251
+  set srcintf "Outside_map_003" 
+  set dstintf "TRUST" 
+  set srcaddr "Azure-Group" 
+  set dstaddr "CIAL_Azure_Access" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 252
+  set srcintf "TRUST" 
+  set dstintf "Outside_map_004" 
+  set srcaddr "S2SVPN_CIAL_Gentrack_Local_Networks" 
+  set dstaddr "S2SVPN_CIAL_Gentrack_Remote_Networks" 
+  set service "ALL" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+ edit 253
+  set srcintf "Outside_map_004" 
+  set dstintf "TRUST" 
+  set srcaddr "S2SVPN_CIAL_Gentrack_Remote_Networks" 
+  set dstaddr "S2SVPN_Gentrack_FIDS" 
+  set service "ALL_ICMP" "S2SVPN_Gentrack_FIDS_Ports" 
+  set schedule "always"
+  set logtraffic disable
+  set status enable
+  set action accept
+ next
+@REM  edit 254
+@REM   set srcintf "ssl.root" 
+@REM   set dstintf "any" 
+@REM   set srcaddr "all" 
+@REM   set logtraffic disable
+@REM   set status enable
+@REM   set action accept
+@REM   set nat enable
+@REM   set groups "CIAL_LDAP" 
+@REM   set dstaddr "split-tunnel_Split_Tunnel" 
+@REM   set service "ALL" 
+@REM   set schedule "always"
+@REM  next
+end

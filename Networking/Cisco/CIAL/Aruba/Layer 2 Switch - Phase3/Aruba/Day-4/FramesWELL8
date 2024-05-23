@@ -1,0 +1,428 @@
+
+hostname FramesWELL8
+domain-name cial.co.nz
+banner motd ~
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+~C
+!
+user admin group administrators password plaintext vanc4brszz
+user cattools group administrators password plaintext woihw943asE
+clock timezone pacific/auckland
+snmp-server trap configuration-changes
+ntp server 202.14.167.144 prefer
+ntp server 202.14.167.238
+ntp enable
+snmp-server trap aaa-server-reachability-status
+!
+!
+!
+!
+radius-server host radius.cial.co.nz key plaintext wimC8yPqb5Nupz%gIf0FLj6#2J7
+!
+aaa authentication allow-fail-through
+!
+!
+aaa group server radius CIAL-Radius
+    server radius.cial.co.nz
+!
+aaa authentication login default group CIAL-Radius local
+aaa accounting all-mgmt default start-stop group CIAL-Radius radius
+!
+ssh server vrf default
+ssh server vrf mgmt
+!
+vsf member 1
+    type jl725a
+    link 1 1/1/13
+    link 2 1/1/14
+!
+!
+vlan 1
+vlan 2
+    name Network_Mgmt
+vlan 21
+    name name Building_Management_System
+vlan 30
+    name Water_treatment
+vlan 50
+    name UPS_Management
+vlan 700
+    name Remote_SPAN_VLAN
+vlan 999
+    name Disabled_Access_Ports
+vlan 1000
+    name Trunk_Native
+
+!
+spanning-tree mode rpvst
+spanning-tree
+spanning-tree priority 13
+spanning-tree bpdu-guard timeout 600
+spanning-tree vlan 2,21,30,50,700,1000
+interface mgmt
+    shutdown
+    ip dhcp
+qos queue-profile ef_priority
+    map queue 0 local-priority 0
+    map queue 1 local-priority 1
+    map queue 2 local-priority 2
+    map queue 3 local-priority 3
+    map queue 4 local-priority 4
+    map queue 5 local-priority 6
+    map queue 6 local-priority 7
+    map queue 7 local-priority 5
+    name queue 7 Voice_Priority_Queue
+qos schedule-profile voip
+    dwrr queue 0 weight 1 
+    dwrr queue 1 weight 1 
+    dwrr queue 2 weight 1 
+    dwrr queue 3 weight 1 
+    dwrr queue 4 weight 1 
+    dwrr queue 5 weight 1 
+    dwrr queue 6 weight 1 
+    strict queue 7 max-bandwidth 100000 
+apply qos queue-profile ef_priority schedule-profile voip
+qos dscp-map 26 local-priority 4 color green 
+qos dscp-map 40 local-priority 6 color green name CS5 
+qos dscp-map 41 local-priority 6 color green 
+qos dscp-map 42 local-priority 6 color green 
+qos dscp-map 43 local-priority 6 color green 
+qos dscp-map 44 local-priority 6 color green 
+qos dscp-map 45 local-priority 6 color green 
+qos dscp-map 47 local-priority 5 color green name Audio 
+qos dscp-map 49 local-priority 5 color green name PTPv2 
+interface lag 1
+    description Uplink To CoreS-Stack-A_B LAG31
+    no shutdown
+    no routing
+    vlan trunk native 1000
+    vlan trunk allowed 2,21,30,50,700
+    lacp mode active
+    qos trust dscp
+interface 1/1/1
+    description Potable Well 8 - Peter Leeming Drive - IP 192.168.21.53
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 21
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/2
+    description Well 8 dosing monitoring/management device
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 30
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/3
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/4
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/5
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/6
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/7
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/8
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/9
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/10
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/11
+    description Spare-Port (Not_In_Use)
+    shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 999
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/12
+    description FrameUWaterplant1 - 192.168.50.44
+    no shutdown
+    no lldp transmit
+    no lldp receive
+    no cdp
+    no routing
+    vlan access 50
+    spanning-tree bpdu-guard
+    spanning-tree loop-guard
+    spanning-tree port-type admin-edge
+    port-access port-security
+        enable
+interface 1/1/13
+    no shutdown
+interface 1/1/14
+    no shutdown
+interface 1/1/15
+    description Uplink to CoreS-Stack-A_B - Gi1/1/30
+    no shutdown
+    lag 1
+interface 1/1/16
+    description Uplink to CoreS-Stack-A_B - Gi2/1/30
+    no shutdown
+    lag 1
+!
+interface vlan 1
+    shutdown
+    no ip dhcp
+interface vlan 2
+    ip address 192.168.2.181/24
+snmp-server vrf default
+snmp-server trap snmp authentication coldstart warmstart vrf default
+snmp-server system-location WELL8
+snmp-server community crc981u
+ip route 0.0.0.0/0 192.168.2.10
+ip dns domain-name cial.co.nz
+ip dns domain-list cial.co.nz
+ip dns domain-list net.cial.co.nz
+ip dns server-address 202.14.167.144
+ip dns server-address 202.14.167.238
+!
+!
+!
+!
+!
+no https-server vrf default
+no https-server vrf mgmt
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Core (No changes)
+
+CoreS-Stack-A_B#sh run int g1/1/30
+Building configuration...
+
+Current configuration : 334 bytes
+!
+interface GigabitEthernet1/1/30
+ description FramesWaterPlant1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,30,50,700
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 31 mode active
+end
+
+CoreS-Stack-A_B#sh run int g2/1/30
+Building configuration...
+
+Current configuration : 250 bytes
+!
+interface GigabitEthernet2/1/30
+ description FramesWaterPlant1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,30,50,700
+ switchport nonegotiate
+ mtu 9216
+ channel-group 31 mode active
+end
+
+CoreS-Stack-A_B#sh int g1/1/30
+GigabitEthernet1/1/30 is up, line protocol is up (connected)
+  Hardware is C6k 1000Mb 802.3, address is 0042.68f6.b421 (bia 0042.68f6.b421)
+  Description: FramesWaterPlant1
+  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full-duplex, 1000Mb/s, media type is 1000BaseLH
+  input flow-control is off, output flow-control is off
+  Clock mode is auto
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters 6y28w
+  Input queue: 0/2000/21/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 19000 bits/sec, 30 packets/sec
+     22178514762 packets input, 26408478260835 bytes, 0 no buffer
+     Received 54885017 broadcasts (27826322 multicasts)
+     1 runts, 0 giants, 0 throttles
+     7 input errors, 3 CRC, 3 frame, 21 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+
+CoreS-Stack-A_B#sh run int g2/1/30
+Building configuration...
+
+Current configuration : 250 bytes
+!
+interface GigabitEthernet2/1/30
+ description FramesWaterPlant1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,30,50,700
+ switchport nonegotiate
+ mtu 9216
+ channel-group 31 mode active
+end
+
+CoreS-Stack-A_B#sh int g2/1/30
+GigabitEthernet2/1/30 is up, line protocol is up (connected)
+  Hardware is C6k 1000Mb 802.3, address is 58ac.7898.fc61 (bia 58ac.7898.fc61)
+  Description: FramesWaterPlant1
+  MTU 9216 bytes, BW 1000000 Kbit/sec, DLY 10 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full-duplex, 1000Mb/s, media type is 1000BaseLH
+  input flow-control is off, output flow-control is off
+  Clock mode is auto
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters 7y45w
+  Input queue: 0/2000/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 8000 bits/sec, 11 packets/sec
+  5 minute output rate 2000 bits/sec, 3 packets/sec
+     1275199450 packets input, 112883881910 bytes, 0 no buffer
+     Received 43725862 broadcasts (14950374 multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     0 input packets with dribble condition detected
+     1849467243 packets output, 377662209720 bytes, 0 underruns
+     0 output errors, 0 collisions, 5 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+CoreS-Stack-A_B#
+CoreS-Stack-A_B#sh run int po 31
+Building configuration...
+
+Current configuration : 288 bytes
+!
+interface Port-channel31
+ description FramesWaterPlant1 ---  Po1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,30,50,700
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root

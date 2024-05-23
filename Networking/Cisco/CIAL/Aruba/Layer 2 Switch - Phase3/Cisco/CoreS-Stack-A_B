@@ -1,0 +1,2190 @@
+62
+ switchport trunk allowed vlan add 306,314,317,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 24 mode active
+!
+interface GigabitEthernet2/1/23
+ description Frames1T71 Gi0/49
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,21,22,30,40,50,90,111,121,140,166-169,240
+ switchport trunk allowed vlan add 244,262,309,314,317,319,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 25 mode active
+!
+interface GigabitEthernet2/1/24
+ description RSVD-FramesSL2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,8,23,50,111,700,888
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/1/25
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/26
+ description FramesMT60 - Aruba Port 1/1/25
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,21,22,24,27,29,50,111,121,140,167-169,171
+ switchport trunk allowed vlan add 240,262,888,1000
+ switchport nonegotiate
+ channel-group 33 mode active
+!
+interface GigabitEthernet2/1/27
+ description FramesAG5 Gi1/1/2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,20-23,25,50,90,111,121,140,167-169,240,309
+ switchport trunk allowed vlan add 319,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 27 mode active
+!
+interface GigabitEthernet2/1/28
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/29
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/30
+ description FramesWaterPlant1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,30,50,700
+ switchport nonegotiate
+ mtu 9216
+ channel-group 31 mode active
+!
+interface GigabitEthernet2/1/31
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/32
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/33
+ description Link to FramesMSCPLG2 G0/49
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,21-23,25,40,50,81,90,111,121,123,140
+ switchport trunk allowed vlan add 167-169,191,223,240,244,305,319,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ platform qos trust cos
+ wrr-queue bandwidth 20 100 200
+ priority-queue queue-limit 5
+ wrr-queue queue-limit 65 15 15
+ wrr-queue random-detect min-threshold 1 70 100 100 100 100 100 100 100
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100
+ wrr-queue random-detect min-threshold 3 40 40 50 50 60 60 70 70
+ wrr-queue random-detect max-threshold 1 100 100 100 100 100 100 100 100
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100
+ wrr-queue random-detect max-threshold 3 70 70 80 80 90 90 100 100
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ auto qos voip trust
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/1/34
+ description FramesMSCPL3 - Gi1/1/27
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,23,25,50,111,121,123,223,240,262,320,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 63 mode active
+!
+interface GigabitEthernet2/1/35
+ no switchport
+ no ip address
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+!
+interface GigabitEthernet2/1/36
+ no switchport
+ no ip address
+!
+interface GigabitEthernet2/1/37
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode access
+ switchport trunk allowed vlan 2,27,1000
+ switchport access vlan 999
+ switchport nonegotiate
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+!
+interface GigabitEthernet2/1/38
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/39
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/40
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/41
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/42
+ description FortGate_100F ExternalFwB AE-19
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901,904,905
+ mtu 9216
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ channel-group 18 mode active
+!
+interface GigabitEthernet2/1/43
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/44
+ description PaloAlto InternalFwA port 10 AE3
+ switchport
+ switchport mode access
+ switchport access vlan 210
+ switchport nonegotiate
+ channel-group 103 mode active
+!
+interface GigabitEthernet2/1/45
+ description PaloAlto InternalFwA port 7 AE2
+ switchport
+ switchport trunk native vlan 214
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,5,8,11,14,20-25,27,29-31,35,36,39,40,48,50
+ switchport trunk allowed vlan add 60,90,111,112,121,140,167-171,192,214
+ switchport trunk allowed vlan add 220-224,240,244,248,319,407,417,888,889
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 101 mode active
+!
+interface GigabitEthernet2/1/46
+ description PaloAlto InternalFwB port 7 AE2
+ switchport
+ switchport trunk native vlan 214
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,5,8,11,14,20-25,27,29-31,35,36,39,40,48,50
+ switchport trunk allowed vlan add 60,90,111,121,140,167-171,192,214,220
+ switchport trunk allowed vlan add 222-224,240,244,248,319,407,417,888,889
+ channel-group 102 mode active
+!
+interface GigabitEthernet2/1/47
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/1/48
+ no switchport
+ no ip address
+ no cdp enable
+ dual-active fast-hello
+!
+interface GigabitEthernet2/2/1
+ description to framesRGCP1 - gi2/0/28
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,8,21-23,50,111,121,123,140,240
+ switchport nonegotiate
+ channel-group 132 mode active
+!
+interface GigabitEthernet2/2/2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 1-5,8,10,20-22,40,50,110,121,140,167-169
+ switchport nonegotiate
+ mtu 9216
+ shutdown
+ platform qos trust cos
+ auto qos voip trust
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/3
+ description FramesGT6 - Gi2/1/52
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,24,25,27,29,40,50,90,111,121,140
+ switchport trunk allowed vlan add 166-169,171,240,306,307,315,317,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 42 mode active
+!
+interface GigabitEthernet2/2/4
+ description FramesGT7 - Gi2/1/52 - (QinQ)
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,317
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/5
+ description FramesGT81 0/50
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,24,25,40,50,111,121,140,167-169
+ switchport trunk allowed vlan add 240,244,306,307,314,320,459,460,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 22 mode active
+!
+interface GigabitEthernet2/2/6
+ description FramesGT9 - Gi2/1/52
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21-24,27,29,40,50,90,111,121,140
+ switchport trunk allowed vlan add 166-169,171,224,240,244,262,307,309,412,700
+ switchport trunk allowed vlan add 888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 44 mode active
+!
+interface GigabitEthernet2/2/7
+ description Frames2T6 - Gi2/1/51
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,31,32,40,50,90,111,121,140
+ switchport trunk allowed vlan add 167-169,240,262,306,309,320,407,455-457,459
+ switchport trunk allowed vlan add 460,700,801,888,902
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 45 mode active
+!
+interface GigabitEthernet2/2/8
+ description FrameS1T5 - Int2/1/51
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,40,50,90,111,121,140,167-169,240
+ switchport trunk allowed vlan add 244,262,314,317-319,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 47 mode active
+!
+interface GigabitEthernet2/2/9
+ description FramesTB-PA - Lag1-P16
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,15
+ switchport nonegotiate
+ mtu 9216
+ channel-group 35 mode active
+!
+interface GigabitEthernet2/2/10
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/11
+ description FramesSRLT12 gi0/49
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,40,50,111,121,140,168,169,240,262
+ switchport trunk allowed vlan add 314,317,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ service-policy input CIAL-QoS-Input-Policy
+!
+interface GigabitEthernet2/2/12
+ description FramesMT5 - Gi2/1/25
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,24,27,40,50,90,111,121,140
+ switchport trunk allowed vlan add 167-169,240,306,314,319,666,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 36 mode active
+!
+interface GigabitEthernet2/2/13
+ description FramesTF41 Gi1/1/4
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,10,21,22,25,40,50,111,121,140,166-169,192
+ switchport trunk allowed vlan add 224,240,314,317,666,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 29 mode active
+!
+interface GigabitEthernet2/2/14
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/15
+ description FramesSpitFire1 Gi1/1/1
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,50,111,121,240
+ switchport nonegotiate
+ mtu 9216
+ platform qos trust cos
+ auto qos voip trust
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/16
+ description vBridge Tertiary Connection to NCHCSW0 Ge 5/0/2
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan 2,4,5,8,10,21-24,26,27,90,103,110,121,123,167
+ switchport trunk allowed vlan add 168,170,221,240,319,902
+ switchport nonegotiate
+ mtu 9216
+ platform qos trust cos
+ auto qos voip trust
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/17
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/18
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/19
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/20
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/21
+ description FramesHotel1 Gi2/0/27
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,21,50,111,121,240,700
+ switchport nonegotiate
+ mtu 9216
+ channel-group 30 mode active
+!
+interface GigabitEthernet2/2/22
+ description FrameS1T61 0/50
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,14,21,22,40,50,111,121,140,167-169,240,262
+ switchport trunk allowed vlan add 306,314,317,320,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 24 mode active
+!
+interface GigabitEthernet2/2/23
+ description Frames1T71 Gi0/50
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,8,21,22,30,40,50,90,111,121,140,166-169,240
+ switchport trunk allowed vlan add 244,262,309,314,317,319,700,888
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 25 mode active
+!
+interface GigabitEthernet2/2/24
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,4,5,8,10,12,20-24,26,27,50,90,103,110,112,121
+ switchport trunk allowed vlan add 123,160,167,168,220,221,223,240,319,902
+ switchport nonegotiate
+ mtu 9216
+ shutdown
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/25
+ description framesag81 Gi0/15
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 2,8,21-23,50,111
+ switchport nonegotiate
+ mtu 9216
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/2/26
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/27
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/28
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/29
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/30
+ description to SRX300 Ge-0/0/7
+ switchport
+ switchport trunk native vlan 260
+ switchport mode trunk
+ switchport trunk allowed vlan 2,260-262,906
+ switchport nonegotiate
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 61 mode active
+!
+interface GigabitEthernet2/2/31
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/32
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/33
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/34
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/35
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/36
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/37
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/38
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/39
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/40
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/41
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/42
+ description FortGate_100F ExternalFwB AE-20
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 600,601,901,904,905
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ channel-group 18 mode active
+!
+interface GigabitEthernet2/2/43
+ description Uplink to Spark SIP gateway (R216)
+ switchport
+ switchport mode access
+ switchport access vlan 32
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/44
+ description PaloAlto InternalFwB port 10 AE3
+ switchport
+ switchport mode access
+ switchport access vlan 210
+ switchport nonegotiate
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 104 mode active
+!
+interface GigabitEthernet2/2/45
+ description PaloAlto InternalFwA port 8 AE2
+ switchport
+ switchport trunk native vlan 214
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,5,8,11,14,20-25,27,29-31,35,36,39,40,48,50
+ switchport trunk allowed vlan add 60,90,111,112,121,140,167-171,192,214
+ switchport trunk allowed vlan add 220-224,240,244,248,319,407,417,888,889
+ channel-group 101 mode active
+!
+interface GigabitEthernet2/2/46
+ description PaloAlto InternalFwB port 8 AE2
+ switchport
+ switchport trunk native vlan 214
+ switchport mode trunk
+ switchport trunk allowed vlan 2,3,5,8,11,14,20-25,27,29-31,35,36,39,40,48,50
+ switchport trunk allowed vlan add 60,90,111,121,140,167-171,192,214,220
+ switchport trunk allowed vlan add 222-224,240,244,248,319,407,417,888,889
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ channel-group 102 mode active
+!
+interface GigabitEthernet2/2/47
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/2/48
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface TenGigabitEthernet2/3/1
+ no switchport
+ no ip address
+ no cdp enable
+ channel-group 2 mode on
+!
+interface TenGigabitEthernet2/3/2
+ no switchport
+ no ip address
+ no cdp enable
+ channel-group 2 mode on
+!
+interface TenGigabitEthernet2/3/3
+ description FortGate_200F InternalFwA AE-X2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,166,191,193,210,225,417,901,902,904-906
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ channel-group 111 mode active
+!
+interface TenGigabitEthernet2/3/4
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/3/5
+ description vBridge NCHC2SW3 Xe 0/0/32
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan 2,5,8,21-24,26,27,30-32,35,36,39,48,60,90,111
+ switchport trunk allowed vlan add 121,123,167,168,222,224,240,319,889,902
+ no cdp enable
+ no vtp
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ channel-group 5 mode active
+!
+interface TenGigabitEthernet2/3/6
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/3/7
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/3/8
+ no switchport
+ no ip address
+ shutdown
+!
+interface FortyGigabitEthernet2/3/9
+ no switchport
+ no ip address
+ shutdown
+!
+interface FortyGigabitEthernet2/3/10
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/4/1
+ no switchport
+ no ip address
+ no cdp enable
+ channel-group 2 mode on
+!
+interface TenGigabitEthernet2/4/2
+ no switchport
+ no ip address
+ no cdp enable
+ channel-group 2 mode on
+!
+interface TenGigabitEthernet2/4/3
+ description FortGate_200F InternalFwB AE-X2
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 29,35,166,191,193,210,225,417,901,902,904-906
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ spanning-tree portfast edge trunk
+ spanning-tree guard root
+ channel-group 112 mode active
+!
+interface TenGigabitEthernet2/4/4
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/4/5
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/4/6
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/4/7
+ no switchport
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet2/4/8
+ no switchport
+ no ip address
+ shutdown
+!
+interface FortyGigabitEthernet2/4/9
+ no switchport
+ no ip address
+ shutdown
+!
+interface FortyGigabitEthernet2/4/10
+ no switchport
+ no ip address
+ shutdown
+!
+interface mgmt0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/1
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/2
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/3
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/4
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/5
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/6
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/7
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/8
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/9
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/10
+ description COREGWS2 GE1 - Access Ports
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/11
+ description COREGWS2 GE2 - SSIDs to VLANs
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/12
+ description COREGWS2 GE3 SITA Auth Traffic
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/13
+ description Aruba_Wlan_Controller
+ switchport
+ switchport trunk native vlan 889
+ switchport mode trunk
+ switchport trunk allowed vlan 2,11,22,24,29,111,191,248,262,314,501,801,887
+ switchport trunk allowed vlan add 889,1013
+ switchport nonegotiate
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ spanning-tree portfast disable
+ spanning-tree guard root
+!
+interface GigabitEthernet2/7/14
+ description Aruba_Wlan_Controller
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/15
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/16
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/17
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7/18
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 410,411
+ switchport nonegotiate
+ mtu 9216
+ logging event link-status
+ logging event trunk-status
+ logging event bundle-status
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ no vtp
+ spanning-tree guard root
+ channel-group 26 mode active
+!
+interface GigabitEthernet2/7/19
+ switchport
+ switchport mode access
+ switchport access vlan 91
+ switchport nonegotiate
+ mtu 9216
+ logging event link-status
+ logging event bundle-status
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree guard root
+!
+interface GigabitEthernet2/7/20
+ switchport
+ switchport mode access
+ switchport access vlan 311
+ switchport nonegotiate
+ mtu 9216
+ logging event link-status
+ logging event bundle-status
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ no vtp
+ spanning-tree guard root
+!
+interface GigabitEthernet2/7/21
+ switchport
+ switchport mode access
+ switchport access vlan 412
+ switchport nonegotiate
+ mtu 9216
+ logging event link-status
+ logging event bundle-status
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ no vtp
+ spanning-tree guard root
+!
+interface GigabitEthernet2/7/22
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 410,411
+ switchport nonegotiate
+ mtu 9216
+ logging event link-status
+ logging event trunk-status
+ logging event bundle-status
+ shutdown
+ storm-control broadcast level 5.00
+ storm-control action trap
+ no cdp enable
+ no vtp
+ spanning-tree guard root
+ channel-group 26 mode active
+!
+interface GigabitEthernet2/7/23
+ description (Retain) PA_system_testport - Strawberry -  192.168.90.19
+ switchport
+ switchport mode access
+ switchport access vlan 90
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/24
+ description PA_system_ITP - Strawberry -  192.168.90.21
+ switchport
+ switchport mode access
+ switchport access vlan 90
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/25
+ no switchport
+ no ip address
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+!
+interface GigabitEthernet2/7/26
+ description CGVision_USB Anywhere 192.168.121.99
+ switchport
+ switchport mode access
+ switchport access vlan 121
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/27
+ no switchport
+ no ip address
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+!
+interface GigabitEthernet2/7/28
+ description 2T6PC
+ switchport
+ switchport mode access
+ switchport access vlan 3
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/29
+ switchport
+ switchport trunk native vlan 1000
+ switchport mode trunk
+ switchport trunk allowed vlan 1,2,5,50,999,1000
+ switchport nonegotiate
+ mtu 9216
+ shutdown
+ platform qos trust cos
+ wrr-queue bandwidth 20 100 200
+ priority-queue queue-limit 5
+ wrr-queue queue-limit 65 15 15
+ wrr-queue random-detect min-threshold 1 70 100 100 100 100 100 100 100
+ wrr-queue random-detect min-threshold 2 70 100 100 100 100 100 100 100
+ wrr-queue random-detect min-threshold 3 40 40 50 50 60 60 70 70
+ wrr-queue random-detect max-threshold 1 100 100 100 100 100 100 100 100
+ wrr-queue random-detect max-threshold 2 100 100 100 100 100 100 100 100
+ wrr-queue random-detect max-threshold 3 70 70 80 80 90 90 100 100
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ auto qos voip trust
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+!
+interface GigabitEthernet2/7/30
+ description Mitel AX Controller Interface 1 (192.168.31.19)
+ switchport
+ switchport mode access
+ switchport access vlan 31
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/31
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/32
+ description FREE
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+!
+interface GigabitEthernet2/7/33
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/34
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/35
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/36
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ wrr-queue cos-map 2 1 1 2
+ wrr-queue cos-map 3 5 3 4
+ wrr-queue cos-map 3 7 6 7
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/37
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/38
+ description FortGate_100F Secondary mgmt 192.168.2.202
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 94ff.3ca4.2954
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/39
+ description EAS Proxy Comm 1 EM/0 - IP 172.20.1.31
+ switchport
+ switchport mode access
+ switchport access vlan 902
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/40
+ description EAS Proxy Comm 1 EM/1 - IP 172.20.1.32
+ switchport
+ switchport mode access
+ switchport access vlan 902
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+ no cdp enable
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/41
+ description BGP Secondary 2D Router (SNAP-CHC-EHN-SWC01)
+ switchport
+ switchport mode access
+ switchport access vlan 601
+ switchport nonegotiate
+ mtu 9216
+ load-interval 30
+ no cdp enable
+ spanning-tree portfast edge
+ spanning-tree bpduguard disable
+!
+interface GigabitEthernet2/7/42
+ description FortGate_200F Secondary mgmt 192.168.2.204
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 94ff.3cfb.ccd6
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/43
+ switchport
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security aging time 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ mtu 9216
+ shutdown
+ storm-control broadcast level 50.00
+ storm-control multicast level 50.00
+ storm-control action trap
+!
+interface GigabitEthernet2/7/44
+ description PaloAlto (216) Ethernet1/4
+ switchport
+ switchport trunk native vlan 260
+ switchport mode trunk
+ switchport trunk allowed vlan 2,260,261
+ switchport nonegotiate
+ mtu 9216
+ spanning-tree link-type point-to-point
+ channel-group 60 mode active
+!
+interface GigabitEthernet2/7/45
+ description Test Palo Sec Mgmt
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ shutdown
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/46
+ description PaloAlto Secondary mgmt 192.168.2.199
+ switchport
+ switchport mode access
+ switchport access vlan 2
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9456.415f.7800
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/47
+ description Secondary PaloAlto - HA2
+ switchport
+ switchport mode access
+ switchport access vlan 213
+ switchport nonegotiate
+ spanning-tree portfast edge
+!
+interface GigabitEthernet2/7/48
+ description Secondary PaloAlto - HA1
+ switchport
+ switchport mode access
+ switchport access vlan 212
+ switchport nonegotiate
+ spanning-tree portfast edge
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan210
+ description Interconnect FortiGate 200F
+ ip address 192.168.210.1 255.255.255.0
+ no ip redirects
+ ip pim sparse-dense-mode
+!
+interface Vlan214
+ description Interconnect PaloAlto
+ ip address 192.168.214.1 255.255.255.0
+ ip pim sparse-dense-mode
+!
+interface Vlan260
+ description Interconnect UFB-internet
+ ip address 10.168.160.3 255.255.255.0
+ ip helper-address 10.168.160.2
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+ip pim rp-address 192.168.209.1
+ip route 0.0.0.0 0.0.0.0 192.168.210.254
+ip route 10.168.161.0 255.255.255.0 10.168.160.2
+ip route 10.170.248.0 255.255.255.0 192.168.214.2
+ip route 57.1.27.45 255.255.255.255 192.168.214.2
+ip route 57.236.210.56 255.255.255.248 192.168.214.2
+ip route 57.236.220.160 255.255.255.248 192.168.214.2
+ip route 192.168.2.0 255.255.255.0 192.168.214.2
+ip route 192.168.3.0 255.255.255.0 192.168.214.2
+ip route 192.168.6.0 255.255.255.0 192.168.214.2
+ip route 192.168.7.0 255.255.255.0 192.168.214.2
+ip route 192.168.8.0 255.255.254.0 192.168.214.2
+ip route 192.168.11.0 255.255.255.0 192.168.214.2
+ip route 192.168.14.0 255.255.255.0 192.168.214.2
+ip route 192.168.21.0 255.255.255.0 192.168.214.2
+ip route 192.168.22.0 255.255.255.0 192.168.214.2
+ip route 192.168.23.0 255.255.255.0 192.168.214.2
+ip route 192.168.24.0 255.255.255.0 192.168.214.2
+ip route 192.168.25.0 255.255.255.0 192.168.214.2
+ip route 192.168.27.0 255.255.255.0 192.168.214.2
+ip route 192.168.30.0 255.255.255.0 192.168.214.2
+ip route 192.168.31.0 255.255.255.0 192.168.214.2
+ip route 192.168.39.0 255.255.255.0 192.168.214.2
+ip route 192.168.48.0 255.255.255.0 192.168.214.2
+ip route 192.168.50.0 255.255.255.0 192.168.214.2
+ip route 192.168.60.0 255.255.255.0 192.168.214.2
+ip route 192.168.90.0 255.255.255.0 192.168.214.2
+ip route 192.168.121.0 255.255.255.0 192.168.214.2
+ip route 192.168.140.0 255.255.255.0 192.168.214.2
+ip route 192.168.169.0 255.255.255.0 192.168.214.2
+ip route 192.168.171.0 255.255.255.0 192.168.214.2
+ip route 192.168.222.0 255.255.255.0 192.168.214.2
+ip route 192.168.223.0 255.255.255.0 192.168.214.2
+ip route 192.168.224.0 255.255.255.0 192.168.214.2
+ip route 192.168.232.0 255.255.248.0 192.168.214.2
+ip route 192.168.240.0 255.255.252.0 192.168.214.2
+ip route 192.168.244.0 255.255.252.0 192.168.214.2
+ip route 192.168.249.0 255.255.255.0 192.168.214.2
+ip route 202.14.167.0 255.255.255.0 192.168.214.2
+ip route 202.14.168.0 255.255.255.0 192.168.214.2
+!
+ip access-list extended acl-copp-match-igmp
+ permit igmp any any
+ip access-list extended acl-copp-match-pim-data
+ deny   pim any host 224.0.0.13
+ permit pim any any
+!
+logging facility local0
+logging host 192.168.2.253
+logging host 202.14.167.171
+!
+snmp-server community crc981u RO
+snmp-server ifindex persist
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps flowmon
+snmp-server enable traps chassis
+snmp-server enable traps module
+snmp-server enable traps transceiver all
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps eigrp
+snmp-server enable traps casa
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps aaa_server
+snmp-server enable traps atm subif
+snmp-server enable traps bfd
+snmp-server enable traps bgp cbgp2
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dhcp-snooping bindings
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps isis
+snmp-server enable traps mac-notification move threshold change
+snmp-server enable traps msdp
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps ipsla
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps ether-oam
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps flex-links status
+snmp-server enable traps sonet
+snmp-server enable traps dial
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps energywise
+snmp-server enable traps fru-ctrl ps-output-change status
+snmp-server enable traps entity
+snmp-server enable traps l2tc threshold sys-threshold
+snmp-server enable traps module-auto-shutdown auto-shutdown sys-action
+snmp-server enable traps cpu threshold
+snmp-server enable traps rsvp
+snmp-server enable traps vstack
+snmp-server enable traps srp
+snmp-server enable traps switch-netflow thresh-exceeded
+snmp-server enable traps udld link-fail-rpt
+snmp-server enable traps udld status-change
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps c6kxbar intbus-crcexcd intbus-crcrcvrd swbus tm-channel tm-swbus
+snmp-server enable traps entity-diag boot-up-fail hm-test-recover hm-thresh-reached scheduled-test-fail
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps port-security
+snmp-server enable traps vswitch dual-active vsl
+snmp-server enable traps trustsec-sxp conn-srcaddr-err msg-parse-err conn-config-err binding-err conn-up conn-down binding-expn-fail oper-nodeid-change binding-conflict
+snmp-server enable traps trustsec-server radius-server provision-secret
+snmp-server enable traps trustsec authz-file-error cache-file-error keystore-file-error keystore-sync-fail random-number-fail src-entropy-fail
+snmp-server enable traps trustsec-interface unauthorized sap-fail authc-fail supplicant-fail authz-fail
+snmp-server enable traps trustsec-policy peer-policy-updated authz-sgacl-fail
+snmp-server enable traps pki
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps alarms informational
+snmp-server enable traps vlan-mac-limit
+snmp-server enable traps rf
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server enable traps errdisable
+snmp-server host 192.168.2.253 version 2c crc981u
+snmp ifmib ifindex persist
+!
+!
+ipv6 access-list acl-copp-match-mld
+ permit icmp any any mld-report
+ permit icmp any any mld-query
+ permit icmp any any mld-reduction
+ permit icmp any any 143
+!
+ipv6 access-list acl-copp-match-ndv6
+ permit icmp any any nd-na
+ permit icmp any any nd-ns
+ permit icmp any any router-advertisement
+ permit icmp any any router-solicitation
+ permit icmp any any redirect
+!
+ipv6 access-list acl-copp-match-pimv6-data
+ deny 103 any host FF02::D
+ permit 103 any any
+!
+control-plane
+ service-policy input policy-default-autocopp
+!
+!
+banner motd ^CC
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+^C
+!
+line con 0
+ login local
+line aux 0
+line vty 0 4
+ exec-timeout 45 0
+ password 7 02050D480809
+ login local
+ transport input telnet ssh
+!
+ntp server 202.14.167.144
+mac address-table aging-time 14400
+diagnostic bootup level minimal
+no event manager policy Mandatory.go_switchbus.tcl type system
+!
+!
+module provision switch 1
+ slot 1 slot-type 152 port-type 31 number 48  virtual-slot 17
+ slot 2 slot-type 152 port-type 31 number 48  virtual-slot 18
+ slot 3 slot-type 400 port-type 60 number 8 port-type 113 number 2 port-type 60 number 8 port-type 113 number 2  virtual-slot 19
+ slot 4 slot-type 400 port-type 60 number 8 port-type 113 number 2 port-type 60 number 8 port-type 113 number 2  virtual-slot 20
+ slot 7 slot-type 147 port-type 61 number 48  virtual-slot 23
+ !
+module provision switch 2
+ slot 1 slot-type 152 port-type 31 number 48  virtual-slot 33
+ slot 2 slot-type 152 port-type 31 number 48  virtual-slot 34
+ slot 3 slot-type 400 port-type 60 number 8 port-type 113 number 2 port-type 60 number 8 port-type 113 number 2  virtual-slot 35
+ slot 4 slot-type 400 port-type 60 number 8 port-type 113 number 2 port-type 60 number 8 port-type 113 number 2  virtual-slot 36
+ slot 7 slot-type 147 port-type 61 number 48  virtual-slot 39
+
+!
+
+end
+
+CoreS-Stack-A_B#
+
+
+
+
+
+
+
+
+
+
+login as: cisco
+Keyboard-interactive authentication prompts from server:
+| Password:
+End of keyboard-interactive prompts from server
+C
+"*******************************************
+* {WARNING}                                *
+*                                          *
+* This system is owned by CIAL. If you are *
+* not authorised to access this system,    *
+* exit immediately.  Unauthorised access   *
+* is forbidden.                            *
+*******************************************"
+
+CoreS-Stack-A_B>en
+Password:
+CoreS-Stack-A_B#sh vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi1/1/18, Gi1/1/24, Gi1/1/39
+                                                Gi1/1/40, Gi1/2/24, Gi1/2/40
+                                                Gi1/7/19, Gi1/7/25, Gi1/7/37
+                                                Gi2/2/2, Gi2/2/16, Gi2/2/24
+                                                Gi2/2/30, Gi2/7/18, Gi2/7/22
+                                                Gi2/7/29, Gi2/7/44
+2    Network_Mgmt                     active    Gi1/7/22, Gi1/7/26, Gi1/7/38
+                                                Gi1/7/42, Gi1/7/46, Gi2/7/38
+                                                Gi2/7/42, Gi2/7/45, Gi2/7/46
+3    Workstations                     active    Gi1/7/43, Gi2/7/28
+5    glidepathTest                    active
+8    VoIP                             active
+11   CIALStaffWireless                active
+14   Q-SYS-PA                         active
+15   Q-SYS-PA-Failover                active
+20   Honeywell                        active
+21   Building_Management_System       active    Gi1/7/33
+22   Cardax                           active    Gi1/7/21
+23   Carpark                          active    Gi1/7/24
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+24   Bagsort                          active
+25   EAS                              active
+26   BagSort_HA                       active
+27   BagSort_Control                  active
+29   BHS-Support-Network              active
+30   Water_treatment                  active
+31   Telephony                        active    Gi2/7/30
+32   SIP_Gateways                     active    Gi1/2/43, Gi1/7/23, Gi2/2/43
+35   Carpark_DMZ                      active
+36   RDS                              active
+39   DataSentinel                     active
+40   SCCMBuild                        active
+48   CarPark_RDS                      active
+50   UPS_Management                   active
+60   Smartgraphics                    active
+80   CDHB                             active    Gi1/7/45
+82   Qantas                           active
+90   Terminal_Services                active    Gi1/7/35, Gi2/7/23, Gi2/7/24
+111  CCTV_camera                      active
+121  BMS_ITP                          active    Gi2/7/26
+123  DevCarPark                       active
+140  FIDS_ITP_DDCs                    active
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+166  ACUS                             active
+167  Production                       active    Gi1/7/17, Gi1/7/41
+168  FIDS                             active
+169  Secure_Workstations              active
+170  Corporate_AV                     active
+171  Secured-Pax                      active
+191  AirNZ_KingFish_HandHelds         active
+193  AirNZ_KingFish_TransitNetwork    active
+210  CIAL_FW_Inside                   active    Po103, Po104
+211  CIAL_FW_Failover                 active
+212  PaloAlto_HA1                     active    Gi1/7/48, Gi2/7/48
+213  PaloAlto_HA2                     active    Gi1/7/47, Gi2/7/47
+214  PaloAlto-CORE_TmpRtg             active
+222  CIAL_Serv-U                      active
+223  Carpark_Dev_EFTPOS               active
+224  Clevertronics                    active
+225  LAN_TEST                         active
+240  FIDS_240                         active
+244  CorpGeneral                      active
+248  CIAL_Staff_WLAN_C-I              active
+260  INTERNET-UFB                     active
+261  internet-UFB                     active
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+262  UFB-INTERNET                     active
+304  AirNZ                            active
+305  China_Sth_Airlines               active
+306  Jetstar                          active
+307  Skystar                          active
+308  AntarcticCenter                  active
+309  Aviation-Security                active
+311  Jetstar_ARINC                    active    Gi2/7/20
+314  HMS                              active
+316  Virgin                           active
+317  Lagardere                        active
+319  Exit_Race                        active
+320  Seismic_Sensors                  active    Gi1/7/36
+407  SITA_L3_Interconnect             active
+412  ARINC_DSL                        active    Gi2/7/21
+417  AirNZ_FidsLink                   active
+455  SITA-SQ-Voice                    active
+456  SITA-SQ-Data                     active
+457  Sita-Emirates                    active
+459  SITA-UA-Tenancy                  active
+460  SITA-UA-AirNZHut                 active
+600  2D_BGP_Primary                   active
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+601  2D_BGP_Secondary                 active    Gi2/7/41
+700  RSPAN_VoIP                       active
+801  Public_Wifi_2Deg                 active
+887  COREGWS_WLAN_PEPPER              active
+888  COREGWS_APs                      active
+889  COREGWS_WLANs                    active
+901  FWEXT                            active
+902  FWDMZ                            active    Gi1/7/39, Gi1/7/40, Gi2/7/39
+                                                Gi2/7/40
+904  FWEXT_PRI                        active
+905  FWEXT_SEC                        active
+906  FWEXT_UFB                        active
+999  Disabled_Access_Ports            active    Gi1/1/37, Gi1/1/38, Gi1/1/41
+                                                Gi1/1/43, Gi1/1/47, Gi1/2/16
+                                                Gi1/2/19, Gi1/2/20, Gi1/2/25
+                                                Gi1/2/26, Gi1/2/27, Gi1/2/28
+                                                Gi1/2/29, Gi1/2/31, Gi1/2/32
+                                                Gi1/2/33, Gi1/2/34, Gi1/2/35
+                                                Gi1/2/36, Gi1/2/37, Gi1/2/38
+                                                Gi1/2/39, Gi1/2/47, Gi1/2/48
+                                                Gi1/7/10, Gi1/7/11, Gi1/7/12
+                                                Gi1/7/14, Gi2/1/16, Gi2/1/18
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+                                                Gi2/1/21, Gi2/1/25, Gi2/1/28
+                                                Gi2/1/29, Gi2/1/31, Gi2/1/32
+                                                Gi2/1/37, Gi2/1/38, Gi2/1/39
+                                                Gi2/1/40, Gi2/1/41, Gi2/1/43
+                                                Gi2/1/47, Gi2/2/10, Gi2/2/14
+                                                Gi2/2/17, Gi2/2/18, Gi2/2/19
+                                                Gi2/2/20, Gi2/2/26, Gi2/2/27
+                                                Gi2/2/28, Gi2/2/29, Gi2/2/31
+                                                Gi2/2/32, Gi2/2/33, Gi2/2/34
+                                                Gi2/2/35, Gi2/2/36, Gi2/2/37
+                                                Gi2/2/38, Gi2/2/39, Gi2/2/40
+                                                Gi2/2/41, Gi2/2/47, Gi2/2/48
+                                                Gi2/7/10, Gi2/7/11, Gi2/7/12
+                                                Gi2/7/14, Gi2/7/31, Gi2/7/32
+                                                Gi2/7/33, Gi2/7/34, Gi2/7/35
+                                                Gi2/7/36, Gi2/7/37, Gi2/7/43
+1000 Trunk_Native                     active
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+1013 2Degrees_Public_Int              active
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+2    enet  100002     1500  -      -      -        -    -        0      0
+3    enet  100003     1500  -      -      -        -    -        0      0
+5    enet  100005     1500  -      -      -        -    -        0      0
+8    enet  100008     1500  -      -      -        -    -        0      0
+11   enet  100011     1500  -      -      -        -    -        0      0
+14   enet  100014     1500  -      -      -        -    -        0      0
+15   enet  100015     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+21   enet  100021     1500  -      -      -        -    -        0      0
+22   enet  100022     1500  -      -      -        -    -        0      0
+23   enet  100023     1500  -      -      -        -    -        0      0
+24   enet  100024     1500  -      -      -        -    -        0      0
+25   enet  100025     1500  -      -      -        -    -        0      0
+26   enet  100026     1500  -      -      -        -    -        0      0
+27   enet  100027     1500  -      -      -        -    -        0      0
+29   enet  100029     1500  -      -      -        -    -        0      0
+30   enet  100030     1500  -      -      -        -    -        0      0
+ --More--

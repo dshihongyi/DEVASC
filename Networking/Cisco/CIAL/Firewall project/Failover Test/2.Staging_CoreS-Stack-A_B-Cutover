@@ -1,0 +1,84 @@
+
+# ~~~~ Login to Primary ASA 192.168.210.253 ~~~~~
+config t
+no failover
+
+# ~~~~ Login to Secondary ASA 192.168.210.254 ~~~~~
+show failover
+
+
+# ~~~~ To Primary ASA ~~~~
+
+interface GigabitEthernet1/7/1
+shutdown
+interface GigabitEthernet1/7/2
+shutdown
+interface GigabitEthernet1/7/3
+shutdown
+interface GigabitEthernet1/7/4
+shutdown
+interface GigabitEthernet1/7/5
+shutdown
+interface GigabitEthernet1/7/6
+shutdown
+interface GigabitEthernet1/7/8
+shutdown
+
+# ~~~~ To Secondary ASA ~~~~
+
+interface GigabitEthernet2/7/1
+shutdown
+interface GigabitEthernet2/7/2
+shutdown
+interface GigabitEthernet2/7/3
+shutdown
+interface GigabitEthernet2/7/4
+shutdown
+interface GigabitEthernet2/7/5
+shutdown
+interface GigabitEthernet2/7/6
+shutdown
+interface GigabitEthernet2/7/8
+shutdown
+
+# ~~~~ To Secondary CoreBGP ~~~~
+
+interface GigabitEthernet2/7/15
+shutdown
+interface GigabitEthernet2/7/16
+shutdown
+
+# ~~~~ To Primary CoreBGP ~~~~
+
+interface GigabitEthernet1/7/15
+shutdown
+interface GigabitEthernet1/7/16
+shutdown
+
+# ~~~~ To Secondary 2D ~~~~
+
+interface GigabitEthernet2/7/17
+shutdown
+
+# ~~~~ To Primary 2D ~~~~
+
+interface GigabitEthernet1/7/17
+shutdown
+
+
+# ~~~~ Enable All VLAN from 100F ~~~~
+# ~~~~ Enable All VLAN from 200F ~~~~
+
+~~~ Re-add to the F100-BGP- Advertize ~~~~~~~~~
+202.124.113.192 255.255.255.240
+202.124.126.200 255.255.255.248
+~~~ Re-add to the F100-BGP- Advertize ~~~~~~~~~
+
+
+
+# ~~~~~~~ Clear ARP Table ~~~~~~~
+# ping 192.168.210.254
+clear arp 192.168.210.254
+clear mac address-table dynamic 0078.8847.8ae2
+ping 192.168.210.254
+

@@ -1,0 +1,176 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2023.09.12 12:45:36 =~=~=~=~=~=~=~=~=~=~=~=
+configure                               show configuration | ids         display set | no-more 
+set version 21.4R3-S3.4
+set groups phcd_user_script system scripts op allow-url-for-python
+set groups phcd_user_script system scripts language python
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-CAM
+set groups group-interface-co-camera interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-BMS
+set groups group-interface-BMS interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-nqa-npm interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-mgmt interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching interface-mode access
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching vlan members vlan-building-security
+set groups group-interface-building-security interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-mist-ap interfaces <*> native-vlan-id 4046
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-BMS
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-CAM
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-nda-lan
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set groups group-interface-mist-ap interfaces <*> unit 0 family ethernet-switching storm-control default
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching interface-mode trunk
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-netmgmt
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-BMS
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-site-HWL-CAM
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-nqa-npm
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-BMS-wifi
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-wifi-mgmt
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-nda-lan
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-building-security
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching vlan members vlan-guest-stuff
+set groups group-interface-uplink interfaces <*> unit 0 family ethernet-switching storm-control default
+set apply-groups phcd_user_script
+set system host-name ena-sw-hwl-10
+set system root-authentication encrypted-password "$6$4Is/DIiF$Vg8uHCLZi6Pdtq605lQNk22ZkRpN3.CdX73M2x0dXA6XQay.qtRtKopGLIe8iFEnebHcJl27u4P.b.tXcNFPI/"
+set system commit synchronize
+set system login retry-options tries-before-disconnect 5
+set system login retry-options backoff-threshold 1
+set system login retry-options backoff-factor 10
+set system login retry-options minimum-time 40
+set system login user dsadmin full-name "Daniel Shi - CCL"
+set system login user dsadmin uid 2005
+set system login user dsadmin class super-user
+set system login user dsadmin authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmMdZeuVb/azwRF7pk2zTd1oLCVygDzDsBsw/PQEQ76LPuOJBn/+Ah7MINd6dZDDFKDgwe6QnIdnYQNOqEo0hFt9/pScaCOHBeQu0eC56v2AezMJwzA+KjzZxci1lQkMRCaKZrLIA/ib/IHZggp7rVg3Sx7+ha65pCFEyuySv9jYKjo3WGwqd3fFCEfE3SomKvbnuuiBrpHFEncsfOD4jyKKgABAId6rfKrRL+vc2HEYZbBPkpIgPKH7pAU2bxRH9GOUPr1ztctWhSreOVu8hG1Sr38xJ4q1hhPbSFugnqlN4k84GOsULH/k8cSSc9d3yYNGaktkbs7+Ht7mL6GMyt"
+set system login user pa-CraigReynolds full-name "Craig Reynolds"
+set system login user pa-CraigReynolds uid 2001
+set system login user pa-CraigReynolds class super-user
+set system login user pa-CraigReynolds authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q== ESL-CGR-KEY"
+set system login user pa-Peter.Fowler full-name "Peter Fowler (Admin)"
+set system login user pa-Peter.Fowler uid 2002
+set system login user pa-Peter.Fowler class super-user
+set system login user pa-Peter.Fowler authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1Uv4BQmCEVxiICaN5JdFUDFgqXae91dcG84DMSqzVAJH+HURW5SyVZJs2UrG6HEwXqEituR98cLZViwQXFwo8Z54bt42mZLk6UlXGXMBJbqFAHnG1MWqAFtXdLDkilT3lu0tmXRlxDbwr51eB10aa1d1f0k4I9uCRSgb1WUlbi118tam6JdJe41qRSgcm7a5FC4N223iJLCEzALwvIgoDRefdSuHW8OHUaUubCLDk8ZpIwioBkMMaGZAfM5uXORfacKj/8Rjbg5IPcv40nFSD/Gi/qEovLqPb7Ucd9bdaWuifOHzts4BfOAAEF3A+6Mq8S5YGej+NMXv7i/2hMLGwQ== Peter.Fowler"
+set system login user pa-mike.taylor full-name "Mike Taylor"
+set system login user pa-mike.taylor uid 2003
+set system login user pa-mike.taylor class super-user
+set system login user pa-mike.taylor authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrJ5pM/6hnxcjYbjccqt/wsXZlV3Mr0vM73gUsh+jI2C3iah+gRYBmIqFl+N37gk82S9lYu22sEkdZ3jAxaQo2+d1a4j66ez/uk1Vl+zIwbyjbHndsdXsY4PcwDRVwfCe7N1zv/T2HMFylnHUJk13roX2KZO+NM/87HofpwF+ml9AFKPL8pa6ZHHJpWksHDueT5fGcIpJxRFBPRRhp1AXPEKw7EF+KS3A6fHUtfG2En09+PYn7djg5H7SBjxsxYQ4gX9hkk4Juj0E8iCeaD9I5mddX31T24LTvI7WWm/M/r2oCUluhq1mxftzeeoiCWJE7uxc3GxBNF48OOXUIztYb mtadmin-ena-fw-rsa-key-20220824"
+set system services ssh root-login allow
+set system services ssh protocol-version v2
+set system auto-snapshot
+set system time-zone Pacific/Auckland
+set system authentication-order radius
+set system authentication-order password
+set system radius-server 10.128.24.4 port 1812
+set system radius-server 10.128.24.4 secret "$9$cMpyvW4oZGjk698xN-wsaZUHfT69AIhyCteMX7Y25TznpOrlvX7dfTOIRhrl"
+set system radius-server 10.128.24.4 timeout 300
+set system radius-server 10.128.24.4 retry 3
+set system radius-server 10.128.24.4 source-address 10.130.160.210
+set system syslog user * any emergency
+set system syslog host 10.130.37.16 any info
+set system syslog host 10.130.37.16 security any
+set system syslog host 10.130.37.16 firewall any
+set system syslog host 10.130.37.16 interactive-commands any
+set system syslog host 10.130.37.16 source-address 10.130.160.210
+set system syslog file interactive-commands interactive-commands any
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag packet
+set system ntp server 10.130.37.121
+set system ntp server 10.130.37.122
+set system ntp server 10.130.37.123
+set chassis redundancy graceful-switchover
+set chassis aggregated-devices ethernet device-count 2
+set chassis alarm management-ethernet link-down ignore
+set interfaces interface-range range-co-camera member-range ge-0/0/0 to ge-0/0/7
+set interfaces interface-range range-co-camera apply-groups group-interface-co-camera
+set interfaces interface-range range-co-camera description "CO Site Camera"
+set interfaces interface-range range-disabled-ports member-range ge-0/0/18 to ge-0/0/22
+set interfaces interface-range range-disabled-ports description "reserve disabled"
+set interfaces interface-range range-disabled-ports disable
+set interfaces interface-range range-ups-mgmt member ge-0/0/9
+set interfaces interface-range range-ups-mgmt apply-groups group-interface-mgmt
+set interfaces interface-range range-ups-mgmt description "CO UPS Management"
+set interfaces interface-range range-nqa-npm member ge-0/0/8
+set interfaces interface-range range-nqa-npm member ge-0/0/10
+set interfaces interface-range range-nqa-npm apply-groups group-interface-nqa-npm
+set interfaces interface-range range-nqa-npm description NQA/NPM-Layer2
+set interfaces interface-range range-building-security member ge-0/0/11
+set interfaces interface-range range-building-security apply-groups group-interface-building-security
+set interfaces interface-range range-building-security description "Building Security"
+set interfaces interface-range range-co-wireless member ge-0/0/23
+set interfaces interface-range range-co-wireless apply-groups group-interface-mist-ap
+set interfaces interface-range range-co-wireless description "Mist Wireless"
+set interfaces interface-range range-BMS-genset member ge-0/0/12
+set interfaces interface-range range-BMS-genset apply-groups group-interface-BMS
+set interfaces interface-range range-BMS-genset description "BMS Services - Generator"
+set interfaces interface-range range-BMS-reserve member ge-0/0/13
+set interfaces interface-range range-BMS-reserve apply-groups group-interface-BMS
+set interfaces interface-range range-BMS-reserve description "BMS Services - Reserved"
+set interfaces interface-range range-BMS-reserve disable
+set interfaces interface-range range-BMS-rectifier member-range ge-0/0/14 to ge-0/0/15
+set interfaces interface-range range-BMS-rectifier apply-groups group-interface-BMS
+set interfaces interface-range range-BMS-rectifier description "BMS Services - Rectifier"
+set interfaces interface-range range-BMS-havc member-range ge-0/0/16 to ge-0/0/17
+set interfaces interface-range range-BMS-havc apply-groups group-interface-BMS
+set interfaces interface-range range-BMS-havc description "BMS Services - havc1/havc2"
+set interfaces interface-range range-uplink member-range ge-0/1/0 to ge-0/1/1
+set interfaces interface-range range-uplink apply-groups group-interface-uplink
+set interfaces interface-range range-uplink description "Uplink to Core ge-0/1/0(HWL) -> ge-0/0/x(HWL), ge-0/1/1(HWL) -> ge-1/0/x(STA)"
+set interfaces interface-range range-uplink speed 1g
+set interfaces interface-range range-uplink link-mode full-duplex
+set interfaces interface-range range-uplink ether-options no-auto-negotiation
+set interfaces irb unit 1900 description "Network MGMT"
+set interfaces irb unit 1900 family inet address 10.130.160.210/24
+set snmp community readOnlyCacti authorization read-only
+set snmp trap-group trap-enanmsp03 version v2
+set snmp trap-group trap-enanmsp03 categories authentication
+set snmp trap-group trap-enanmsp03 categories chassis
+set snmp trap-group trap-enanmsp03 categories link
+set snmp trap-group trap-enanmsp03 categories remote-operations
+set snmp trap-group trap-enanmsp03 categories routing
+set snmp trap-group trap-enanmsp03 categories startup
+set snmp trap-group trap-enanmsp03 categories vrrp-events
+set snmp trap-group trap-enanmsp03 categories configuration
+set snmp trap-group trap-enanmsp03 categories services
+set snmp trap-group trap-enanmsp03 targets 10.130.160.40
+set snmp health-monitor
+set forwarding-options storm-control-profiles default all
+set forwarding-options storm-control-profiles sc all
+set routing-options static route 0.0.0.0/0 next-hop 10.130.160.1
+set protocols lldp port-id-subtype interface-name
+set protocols lldp interface all
+set protocols lldp-med interface all
+set protocols igmp-snooping vlan default
+set protocols igmp-snooping vlan all
+set protocols rstp interface all
+set poe interface range-co-wireless
+set poe interface range-co-camera
+set vlans vlan-BMS-wifi vlan-id 4044
+set vlans vlan-building-security vlan-id 4074
+set vlans vlan-guest vlan-id 4085
+set vlans vlan-guest-stuff vlan-id 3085
+set vlans vlan-nda-lan vlan-id 4088
+set vlans vlan-netmgmt vlan-id 1900
+set vlans vlan-netmgmt l3-interface irb.1900
+set vlans vlan-nqa-npm vlan-id 4032
+set vlans vlan-site-HWL-BMS vlan-id 3023
+set vlans vlan-site-HWL-CAM vlan-id 3024
+set vlans vlan-wifi-mgmt vlan-id 4046
+
+{master:0}
+dsadmin@ena-sw-hwl-10> 

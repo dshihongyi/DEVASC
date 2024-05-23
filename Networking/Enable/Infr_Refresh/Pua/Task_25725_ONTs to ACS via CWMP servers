@@ -1,0 +1,27 @@
+
+
+firewall
+
+~~~ Task_25725_ONTs to ACS via CWMP servers ~~~
+
+
+set applications application app-cwmp-7547 protocol tcp
+set applications application app-cwmp-7547 destination-port 7547
+
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts match source-address addr-enaacscwmt101
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts match source-address addr-enaacscwmt102
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts match destination-address addrs-itf-huawei-onts
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts match application app-cwmp-7547
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts then permit
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts then log session-init
+set security policies from-zone zone-itf-servers-acs to-zone zone-itf policy policy-itf-acs-servers-huawei-onts then log session-close
+
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb match source-address addrs-itf-huawei-onts
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb match destination-address addr-enaacslbt101
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb match application app-cwmp-7547
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb then permit
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb then log session-init
+set security policies from-zone zone-itf to-zone zone-itf-servers-acs policy policy-itf-huawei-onts-acs-lb then log session-close
+
+
+

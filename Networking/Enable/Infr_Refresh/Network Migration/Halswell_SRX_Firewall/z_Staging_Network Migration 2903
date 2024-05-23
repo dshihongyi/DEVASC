@@ -1,0 +1,29 @@
+
+~~~~ Currrent link configuration eslricfwl002(node 1) ~~~~
+
+@REM dsadmin@ena-sw-core> show configuration interfaces ge-2/0/22 | display set
+@REM set interfaces ge-2/0/22 description "ESLRICFWL002 ge-5/0/7"
+@REM set interfaces ge-2/0/22 ether-options 802.3ad ae14
+
+~~~~ Proposed Configure for new link eslricfwl002(node 1) ~~~~~
+set interfaces ge-1/0/22 description "ESLRICFWL002 ge-5/0/10"
+set interfaces ge-1/0/22 ether-options 802.3ad ae14
+
+
+
+
+@REM ~~~~ Currrent link configuration eslriclsw001 (node 0/1)  ~~~~
+
+@REM set interfaces ge-2/0/17 description "ESLRICLSW001 Gi-0/0/1  Huawei/1490T/1310R"
+@REM set interfaces ge-2/0/17 ether-options 802.3ad ae23
+@REM set interfaces ge-2/0/19 description "ESLRICLSW001 Gi-1/0/1  Huawei/1490T/1310R"
+@REM set interfaces ge-2/0/19 ether-options 802.3ad ae23
+
+~~~~ Proposed link configuration eslriclsw001 (node 0/1)  ~~~~
+
+set interfaces ge-1/0/5 description "ESLRICLSW001 Gi-0/0/8  Huawei/1490T/1310R"
+set interfaces ge-1/0/5 ether-options 802.3ad ae23
+set interfaces ge-0/0/19 description "ESLRICLSW001 Gi-1/0/8  Huawei/1490T/1310R"
+set interfaces ge-0/0/19 ether-options 802.3ad ae23
+
+

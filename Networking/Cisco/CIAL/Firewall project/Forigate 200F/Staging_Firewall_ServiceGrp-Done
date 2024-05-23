@@ -1,0 +1,167 @@
+config firewall service group
+ edit "AirNZ_Airflow_App_Ports_TCP"
+  set member "TCP-26502" "TCP-26516" "TCP-26519" 
+ next
+ edit "AirNZ_DNS"
+  set member "DNS" 
+ next
+ edit "AirNZ_FIDS_Client4444-4448"
+  set member "TCP-4444-4448" 
+ next
+ edit "AirNZ_Fidslink_MQL_1414"
+  set member "TCP-1414" 
+ next
+ edit "AirNZ_Fidslink_MQ_1700_Prod"
+  set member "TCP-1700" 
+ next
+ edit "AirNZ_Fidslink_MQ_1701_1705"
+  set member "L2TP" "TCP-1705" 
+ next
+ edit "AirNZ_HH_MGMT_Ports_TCP"
+  set member "TCP-1901" "TCP-52316" "TCP-62241" "TCP-8789" 
+ next
+ edit "AirNZ_HH_MGMT_Ports_UDP"
+  set member "UDP-1758-1768" "UDP-1901" "UDP-49111" "UDP-52316" "UDP-8791" "UDP-8792" "UDP-161" "UDP-162" 
+ next
+ edit "AirNZ_Wavelink_Ports_AirNZDomHH"
+  set member "TCP-UDP-1778" "TCP-UDP-1899" "TCP-UDP-1903" 
+ next
+ edit "Azure_Database_Ports"
+  set member "TCP-1433" 
+ next
+ edit "CIAL_Carpark_Serv-U-Gateway"
+  set member "TCP-21-22" "TCP-50000-50009" "TCP-990" 
+ next
+ edit "CIAL_FTP_SSH_TCP"
+  set member "FTP" "SSH" 
+ next
+ edit "CIAL_Monitoring_TCP_Out"
+  set member "DNS" "HTTP" "HTTPS" "DCE-RPC" "SMB" "TCP-24158" "TCP-32137" 
+ next
+ edit "CIAL_Monitoring_UDP_Out"
+  set member "DNS" 
+ next
+ edit "CIAL_ProxyManagement_TCP"
+  set member "SSH" "TCP-8443" 
+ next
+ edit "CIAL_Proxy_Ports_TCP"
+  set member "SQUID" "TCP-9091" "TCP-8081" "TCP-8080" "FTP" "TCP-1817" 
+ next
+ edit "CIAL_RPC_Ports_TCP"
+  set member "DCE-RPC" 
+ next
+ edit "CIAL_Web_Ports"
+  set member "HTTP" "HTTPS" "TCP-8080" 
+ next
+ edit "CarPark-tcp-udp-49154"
+  set member "TCP-UDP-49154" 
+ next
+ edit "DHCP_PORTS"
+  set member "UDP-68" "UDP-67" 
+ next
+ edit "EAS-Proxy-Client-Ports"
+  set member "TCP-UDP-13909" "TCP-UDP-18155" "TCP-UDP-22016" 
+ next
+ edit "EAS_EQ_Ports_TCP"
+  set member "HTTP" "HTTPS" "SSH" 
+ next
+ edit "EAS_EQ_Ports_UDP"
+  set member "UDP-7778" 
+ next
+ edit "EAS_Monitor"
+  set member "TCP-12000" 
+ next
+ edit "EAS_SSH"
+  set member "TCP-1122" "TCP-1123" "TCP-1121" "SSH" 
+ next
+ edit "FIDS_5590"
+  set member "TCP-5590" 
+ next
+ edit "FW_Management_Ports"
+  set member "HTTPS" "SSH" 
+ next
+ edit "IMAP_993"
+  set member "TCP-UDP-993" 
+ next
+ edit "KMS"
+  set member "TCP-1688" 
+ next
+ edit "Milestone-Port-Group"
+  set member "TCP-22331" "TCP-7563" "http" "https" 
+ next
+ edit "OSCE_ports"
+  set member "TCP-137" "TCP-31264" "TCP-4118" "TCP-4123" "SMB" "SAMBA" 
+ next
+ edit "POP_995"
+  set member "TCP-UDP-995" 
+ next
+ edit "Printer-PDL"
+  set member "TCP-9100" 
+ next
+ edit "S2SVPN_Gentrack_FIDS_Ports"
+  set member "HTTPS" "TELNET" "TCP-5590" "TCP-5996" "TCP-4444" "RDP" "HTTP" 
+ next
+ edit "SCCM-Remote-Manage"
+  set member "TCP-SRC-135" "TCP-SRC-2701" "TCP-SRC-2702" "TCP-SRC-3389" 
+ next
+ edit "SITA_BSM_Ports"
+  set member "TCP-8662" "TCP-8663" 
+ next
+ edit "SKYFii-UDP"
+  set member "UDP-1812" "UDP-1813" "UDP-3799" 
+ next
+ edit "SNMP-SecuredWorkstations-In"
+  set member "UDP-161" 
+ next
+ edit "SNMP-SecuredWorkstations-Out"
+  set member "UDP-162" 
+ next
+ edit "SkyFii-TCP"
+  set member "TCP-2083" "HTTP" "HTTPS" 
+ next
+ edit "Swarm_file_transfer"
+  set member "Swarm_FTP-SSH-990" "Swarm_FTP-PASV" "Swarm_FTP-data" "FTP" "TCP-20" 
+ next
+ edit "TCP-UDP_PA-MIGRATION"
+  set member "TCP-UDP-1-5000" 
+ next
+ edit "TCP587"
+  set member "TCP-587" 
+ next
+ edit "TCP_1899"
+  set member "TCP-1899" 
+ next
+ edit "TCP_UDP-RDP"
+  set member "TCP-UDP-3389" 
+ next
+ edit "TrendMicro_Ports"
+  set member "TCP-137" "TCP-4343" "TCP-4344" "TCP-4345" "SMB" "TCP-5274" "TCP-60162" "TCP-60163" "TCP-8080" "TCP-8081" "TCP-8082" "HTTP" "HTTPS" "Internet-Locator-Service" "SAMBA" "TCP-4120" 
+ next
+ edit "UDP_1777"
+  set member "UDP-1777" 
+ next
+ edit "VNC-1"
+  set member "TCP-1777" 
+ next
+ edit "WSUS_Updates"
+  set member "TCP-8530" 
+ next
+ edit "Wave_Scorch"
+  set member "HTTPS" "TCP-25021-25022" "TCP-4502" "TCP-4504" "TCP-8080" 
+ next
+ edit "rdp"
+  set member "RDP" 
+ next
+ edit "tcp-9003"
+  set member "TCP-9003" 
+ next
+ edit "AirNZ_Wavelink_Ports_AirNZ_AKL0MG288_Ports_TCP"
+  set member "TCP_1899" "VNC-1" 
+ next
+ edit "AirNZ_Wavelink_Ports_AirNZ_AKL0MG288_Ports_UDP"
+  set member "UDP_1777" 
+ next
+ edit "CIAL_Secured_Workstations_RA"
+  set member "VNC" "rdp" "SMB" 
+ next
+end

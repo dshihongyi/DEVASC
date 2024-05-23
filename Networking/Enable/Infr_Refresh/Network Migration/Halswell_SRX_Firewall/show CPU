@@ -1,0 +1,82 @@
+1.	BGP configure should fixed. I can see the peering to primary neighbour Established and running stable. The MED still showed 200 from Primary link maybe need check the Configure from remote end.
+
+dsadmin@ena-fw-hwl# 
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+169.254.118.121       64512     118164     129103       0      37 1w6d 16:16:01 Establ
+169.254.198.229       64512         41         44       0  105193        6:05 Establ
+
+inet.0: 317 destinations, 328 routes (316 active, 0 holddown, 1 hidden)
+  Prefix                                      Nexthop              MED     Lclpref    AS path
+* 10.141.0.0/16           169.254.198.229      200                64512 I
+
+inet.0: 317 destinations, 328 routes (316 active, 0 holddown, 1 hidden)
+  Prefix                                       Nexthop              MED     Lclpref    AS path
+  10.141.0.0/16           169.254.118.121      100                64512 I
+
+2.	I have conducted a bit of search about the process flowd_octeon_hm that taken a lot of CPU, the JTAC state that the flowd_octeon thread usually runs at high percentage over 200% or higher
+Flowd is responsible for packet handling on SRX. Not recommend resetting the process 
+Check into the control and data panel CPU actual usage, which is running on a reasonable level. 
+We probably can run a software update, reboot the hardware, or failover the RG for another check. Alternatively, I can log a JTAC case for a deeper analyse the CPU usage. 
+
+
+dsadmin@ena-fw-hwl# run show chassis routing-engine
+node0:
+--------------------------------------------------------------------------
+Routing Engine status:
+    5 sec CPU utilization:
+      User                      23 percent
+      Background                 0 percent
+      Kernel                    19 percent
+      Interrupt                  0 percent
+      Idle                      58 percent
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.76       0.77       0.75
+
+node1:
+--------------------------------------------------------------------------
+Routing Engine status:
+    5 sec CPU utilization:
+      User                      16 percent
+      Background                 0 percent
+      Kernel                     5 percent
+      Interrupt                  0 percent
+      Idle                      79 percent
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.19       0.20       0.17
+
+
+
+dsadmin@ena-fw-hwl# run show chassis forwarding
+node0:
+--------------------------------------------------------------------------
+FWDD status:
+  State                                 Online
+  Microkernel CPU utilization        17 percent
+  Real-time threads CPU utilization  19 percent
+  Heap utilization                   49 percent
+  Buffer utilization                  2 percent
+
+node1:
+--------------------------------------------------------------------------
+FWDD status:
+  State                                 Online
+  Microkernel CPU utilization        19 percent
+  Real-time threads CPU utilization   1 percent
+
+
+
+
+dsadmin@ena-fw-hwl# run show security monitoring fpc 0
+node0:
+--------------------------------------------------------------------------
+FPC 0
+  PIC 0
+    CPU utilization          :   31 %
+    Memory utilization       :   56 %
+
+node1:
+--------------------------------------------------------------------------
+FPC 0
+  PIC 0
+    CPU utilization          :    3 %
+    Memory utilization       :   54 %

@@ -1,0 +1,46 @@
+firewall
+
+~~~ 25842 Update Citrix firewall rules to only allow traffic to SAC/ACS load balancer ~~~
+
+set security address-book zone-servers-rpa address addr-enactxp07 10.130.72.24/32
+set security address-book zone-itf-servers-acs address addr-itf-servers-acs 10.131.52.0/24
+set security address-book zone-itf-servers-sac address addr-itf-servers-sac 10.131.53.0/24
+
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match source-address addr-enactxp07
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match destination-address addr-itf-servers-acs
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application junos-ssh
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application junos-icmp-all
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application app-http-alt
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match application app-alt-https-8443
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers then permit
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers then log session-close
+
+
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match source-address addr-enactxp07
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match destination-address addr-itf-servers-sac
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application junos-http
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application junos-https
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application junos-ssh
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application junos-icmp-all
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application app-http-alt
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match application app-alt-https-8443
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers then permit
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers then log session-init
+set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers then log session-close
+
+
+~~~~~~~~~~~~~
+
+set security address-book zone-itf-servers-acs address addr-acs_vip 10.131.52.20/32
+set security address-book zone-itf-servers-sac address addr-enaacslbt101 10.131.53.10/32
+
+
+
+ @@@@@@@@@@@@@@@@@@@@@@@
+ delete security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match destination-address addr-itf-servers-acs
+ set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-acs policy policy-rpa-itf-acs-servers match destination-address addr-acs_vip
+ delete security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match destination-address addr-itf-servers-sac
+ set security policies from-zone zone-servers-rpa to-zone zone-itf-servers-sac policy policy-rpa-itf-sac-servers match destination-address addr-enaacslbt101

@@ -1,0 +1,284 @@
+--- VPN Proposed Assurity ---
+
+IPSec Tunnel #1
+================================================================================
+#1: Internet Key Exchange Configuration
+<!-- Configure the IKE SA -->
+
+  - IKE version              : IKEv1
+  - Authentication Method    : Pre-Shared Key
+  - Pre-Shared Key           : 1zw8_Mu5SNcluw10LDeGf.eQEkh9XKmz
+  - Authentication Algorithm : sha1
+  - Encryption Algorithm     : aes-128-cbc
+  - Lifetime                 : 28800 seconds
+  - Phase 1 Negotiation Mode : main
+  - Diffie-Hellman           : Group 2
+
+
+#2: IPSec Configuration
+  - Protocol                 : esp
+  - Authentication Algorithm : hmac-sha1-96
+  - Encryption Algorithm     : aes-128-cbc
+  - Lifetime                 : 3600 seconds
+  - Mode                     : tunnel
+  - Perfect Forward Secrecy  : Diffie-Hellman Group 2
+
+<!-- IPSec Dead Peer Detection (DPD) will be enabled on the AWS Endpoint. We
+recommend configuring DPD on your endpoint as follows: -->
+  - DPD Interval             : 10
+  - DPD Retries              : 3
+
+<!-- configuration on your Customer Gateway: -->
+  - TCP MSS Adjustment       : 1379 bytes    ????? 1350
+  - Clear Don't Fragment Bit : enabled
+  - Fragmentation            : Before encryption
+
+
+#3: Tunnel Interface Configuration
+
+
+<!-- Outside IP Addresses: -->
+  - Customer Gateway 		        : 202.36.221.23
+  - Virtual Private Gateway	        : 3.25.33.121
+
+<!-- Inside IP Addresses -->
+  - Customer Gateway         		: 169.254.23.30/30
+  - Virtual Private Gateway             : 169.254.23.29/30
+
+Configure your tunnel to fragment at the optimal size:
+  - Tunnel interface MTU     : 1436 bytes
+
+
+#4: Border Gateway Protocol (BGP) Configuration:
+
+<!-- BGP Configuration Options: -->
+  - Customer Gateway ASN	          : 64526
+  - Virtual Private  Gateway ASN          : 65430
+  - Neighbor IP Address     		  : 169.254.23.29
+  - Neighbor Hold Time       : 30
+
+
+
+
+
+
+================================================================================
+
+
+
+--- Interface LAG 4083 ---
+set interfaces reth1 unit 4083 description vlan-internet-dmz
+set interfaces reth1 unit 4083 vlan-id 4083
+set interfaces reth1 unit 4083 family inet filter input filter-inet
+set interfaces reth1 unit 4083 family inet address 202.36.221.23/24
+
+---Interface St0.25/26
+set interfaces st0 unit 25 description "AWS ASSURITY/PRIMARY VPN 0"
+set interfaces st0 unit 25 family inet mtu 1436
+set interfaces st0 unit 25 family inet address 169.254.23.30/30
+
+set interfaces st0 unit 26 description "AWS ASSURITY/SECONDARY VPN 1"
+set interfaces st0 unit 26 family inet mtu 1436
+set interfaces st0 unit 26 family inet address 169.254.23.34/30
+
+
+<!-- --- Static Routing to Azure ---
+set routing-options static route 10.143.0.0/16 next-hop st0.23 -->
+
+--- Dynamic Routing to Azure ---
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 local-address 169.254.23.30
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 hold-time 30
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 import policy-import-aws-ac-prod
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 export policy-export-aws-ac-prod
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 peer-as 65430
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.29 local-as 64526
+
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 local-address 169.254.23.34
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 hold-time 30
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 import policy-import-aws-ac-prod
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 export policy-export-aws-ac-prod-prepend
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 peer-as 65430
+set protocols bgp group vpn-aws-ac-prod neighbor 169.254.23.33 local-as 64526
+
+
+--- Policy Statement (Route Map in BGP) ---
+set policy-options policy-statement policy-import-aws-ac-prod term 1 from route-filter 172.29.112.0/20 exact
+set policy-options policy-statement policy-import-aws-ac-prod term 1 then accept
+set policy-options policy-statement policy-import-aws-ac-prod then reject
+
+set policy-options policy-statement policy-export-aws-ac-prod term 1 from route-filter 10.130.22.0/24 exact
+set policy-options policy-statement policy-export-aws-ac-prod term 1 from route-filter 172.21.96.0/24 exact
+set policy-options policy-statement policy-export-aws-ac-prod term 1 then accept
+set policy-options policy-statement policy-export-aws-ac-prod then reject
+
+set policy-options policy-statement policy-export-aws-ac-prod-prepend term 1 from route-filter 10.130.22.0/24 exact
+set policy-options policy-statement policy-export-aws-ac-prod-prepend term 1 from route-filter 172.21.96.0/24 exact
+set policy-options policy-statement policy-export-aws-ac-prod-prepend term 1 then as-path-prepend "64526 64526 64526"
+set policy-options policy-statement policy-export-aws-ac-prod-prepend term 1 then accept
+set policy-options policy-statement policy-export-aws-ac-prod-prepend then reject
+
+
+--- SECURITY ZONE ---
+set security zones security-zone zone-aws-vpn-assurity host-inbound-traffic system-services ike
+set security zones security-zone zone-aws-vpn-assurity host-inbound-traffic protocols bgp
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.25 host-inbound-traffic system-services ike
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.25 host-inbound-traffic system-services ping
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.25 host-inbound-traffic protocols bgp
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.26 host-inbound-traffic system-services ike
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.26 host-inbound-traffic system-services ping
+set security zones security-zone zone-aws-vpn-assurity interfaces st0.26 host-inbound-traffic protocols bgp
+
+
+--- ADDRESS Book ---
+set security address-book zone-aws-vpn-assurity address subnet-aws-vpn-assurity 172.29.112.0/20
+set security address-book zone-aws-vpn-assurity attach zone zone-aws-vpn-assurity
+
+
+--- SECURITY Policy ---
+_(PROD To AZURE)_
+<!-- set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac match source-address addrs-vlan-servers-nav
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac match destination-address addr-aws-vpn-ac
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac match application junos-http
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac match application junos-https
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac match application junos-ping
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac then permit
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac then log session-init
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-ac then log session-close -->
+
+
+_(AZURE To PROD)_
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity match source-address subnet-aws-vpn-assurity
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity match destination-address addrs-vlan-servers-nav
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity match application junos-http
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity match application junos-https
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity match application junos-ping
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity then permit
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity then log session-init
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-prod policy policy-prod-aws-assurity then log session-close
+	
+
+_(PROD DNS To AZURE)_
+<!-- set security policies from-zone zone-servers-ad to-zone zone-aws-vpn-ac policy policy-prod-aws-dns match source-address addr-dns1
+set security policies from-zone zone-servers-ad to-zone zone-aws-vpn-ac policy policy-prod-aws-dns match source-address addr-dns2
+set security policies from-zone zone-servers-ad to-zone zone-aws-vpn-ac policy policy-prod-aws-dns match destination-address addr-aws-vpn-ac
+set security policies from-zone zone-servers-ad to-zone zone-aws-vpn-ac policy policy-prod-aws-dns match application junos-dns-udp
+set security policies from-zone zone-servers-ad to-zone zone-aws-vpn-ac policy policy-prod-aws-dns match application junos-dns-tcp
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-dns then permit
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-dns then log session-init
+set security policies from-zone zone-servers-prod to-zone zone-aws-vpn-ac policy policy-prod-aws-dns then log session-close -->
+
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns match source-address subnet-aws-vpn-assurity
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns match destination-address addr-dns1
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns match destination-address addr-dns2
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns match application junos-dns-udp
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns match application junos-dns-tcp
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns then permit
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns then log session-init
+set security policies from-zone zone-aws-vpn-assurity to-zone zone-servers-ad policy policy-prod-aws-dns then log session-close
+
+
+~~~~~~ PHASE 1 ~~~~~~~~~ 
+
+--- IKE Proposal ---
+<!-- set security ike proposal vpn-ike-prop-aws-ac authentication-method pre-shared-keys
+set security ike proposal vpn-ike-prop-aws-ac dh-group group14
+set security ike proposal vpn-ike-prop-aws-ac authentication-algorithm sha2
+set security ike proposal vpn-ike-prop-aws-ac encryption-algorithm aes-256-cbc
+set security ike proposal vpn-ike-prop-aws-ac lifetime-seconds 28800 -->
+
+--- IKE Policy ---
+set security ike policy vpn-ike-pol-aws-ac-1 mode main
+set security ike policy vpn-ike-pol-aws-ac-1 proposals pre-g14-aes256-sha256
+set security ike policy vpn-ike-pol-aws-ac-1 pre-shared-key ascii-text 1zw8_Mu5SNcluw10LDeGf.eQEkh9XKmz
+
+set security ike policy vpn-ike-pol-aws-ac-2 mode main
+set security ike policy vpn-ike-pol-aws-ac-2 proposals pre-g14-aes256-sha256
+set security ike policy vpn-ike-pol-aws-ac-2 pre-shared-key ascii-text SDOr2eS3COzf7eqOmDaNS94mC4yBte4b
+
+--- IKE Gateway ---
+set security ike gateway vpn-ike-gw-aws-ac-1 ike-policy vpn-ike-pol-aws-ac-1
+set security ike gateway vpn-ike-gw-aws-ac-1 address 3.25.33.121
+set security ike gateway vpn-ike-gw-aws-ac-1 dead-peer-detection interval 10
+set security ike gateway vpn-ike-gw-aws-ac-1 dead-peer-detection threshold 3
+set security ike gateway vpn-ike-gw-aws-ac-1 local-identity inet 202.36.221.23
+set security ike gateway vpn-ike-gw-aws-ac-1 external-interface reth1.4083
+set security ike gateway vpn-ike-gw-aws-ac-1 version v2-only
+
+set security ike gateway vpn-ike-gw-aws-ac-2 ike-policy vpn-ike-pol-aws-ac-2
+set security ike gateway vpn-ike-gw-aws-ac-2 address 54.206.114.2
+set security ike gateway vpn-ike-gw-aws-ac-2 dead-peer-detection interval 10
+set security ike gateway vpn-ike-gw-aws-ac-2 dead-peer-detection threshold 3
+set security ike gateway vpn-ike-gw-aws-ac-2 local-identity inet 202.36.221.23
+set security ike gateway vpn-ike-gw-aws-ac-2 external-interface reth1.4083
+set security ike gateway vpn-ike-gw-aws-ac-2 version v2-only
+
+
+
+~~~~~~ PHASE 2 ~~~~~~~~~ 
+
+--- IPsec Proposal ---
+set security ipsec proposal vpn-ipsec-prop-aws-ac protocol esp
+set security ipsec proposal vpn-ipsec-prop-aws-ac authentication-algorithm hmac-sha-256-128
+set security ipsec proposal vpn-ipsec-prop-aws-ac encryption-algorithm aes-256-cbc
+set security ipsec proposal vpn-ipsec-prop-aws-ac lifetime-seconds 3600
+
+--- IPsec Policy ---
+set security ipsec policy vpn-ipsec-pol-aws-ac proposals vpn-ipsec-prop-aws-ac
+set security ipsec policy vpn-ipsec-pol-aws-ac perfect-forward-secrecy keys group14
+
+--- IPsec VPN ---
+set security ipsec vpn vpn-ipsec-aws-ac-1 bind-interface st0.25
+set security ipsec vpn vpn-ipsec-aws-ac-1 df-bit clear
+set security ipsec vpn vpn-ipsec-aws-ac-1 vpn-monitor optimized
+set security ipsec vpn vpn-ipsec-aws-ac-1 vpn-monitor source-interface st0.25
+set security ipsec vpn vpn-ipsec-aws-ac-1 vpn-monitor destination-ip 169.254.23.29
+set security ipsec vpn vpn-ipsec-aws-ac-1 ike gateway vpn-ike-gw-aws-ac-1
+set security ipsec vpn vpn-ipsec-aws-ac-1 ike proxy-identity local 0.0.0.0/0
+set security ipsec vpn vpn-ipsec-aws-ac-1 ike proxy-identity remote 0.0.0.0/0
+set security ipsec vpn vpn-ipsec-aws-ac-1 ike proxy-identity service any
+set security ipsec vpn vpn-ipsec-aws-ac-1 ike ipsec-policy vpn-ipsec-pol-aws-ac
+set security ipsec vpn vpn-ipsec-aws-ac-1 establish-tunnels immediately
+
+
+set security ipsec vpn vpn-ipsec-aws-ac-2 bind-interface st0.26
+set security ipsec vpn vpn-ipsec-aws-ac-2 df-bit clear
+set security ipsec vpn vpn-ipsec-aws-ac-2 vpn-monitor optimized
+set security ipsec vpn vpn-ipsec-aws-ac-2 vpn-monitor source-interface st0.26
+set security ipsec vpn vpn-ipsec-aws-ac-2 vpn-monitor destination-ip 169.254.23.33
+set security ipsec vpn vpn-ipsec-aws-ac-2 ike gateway vpn-ike-gw-aws-ac-2
+set security ipsec vpn vpn-ipsec-aws-ac-2 ike proxy-identity local 0.0.0.0/0
+set security ipsec vpn vpn-ipsec-aws-ac-2 ike proxy-identity remote 0.0.0.0/0
+set security ipsec vpn vpn-ipsec-aws-ac-2 ike proxy-identity service any
+set security ipsec vpn vpn-ipsec-aws-ac-2 ike ipsec-policy vpn-ipsec-pol-aws-ac
+set security ipsec vpn vpn-ipsec-aws-ac-2 establish-tunnels immediately
+
+
+
+
+<!-- ~~~~~~~~~ DNS Capture  ~~~~~~~~~~~
+
+set firewall filter filter-bypass-flowd-pcap term capture from address 10.130.22.21/32
+set firewall filter filter-bypass-flowd-pcap term capture from address 10.130.22.22/32
+set firewall filter filter-bypass-flowd-pcap term capture then sample
+set firewall filter filter-bypass-flowd-pcap term capture then accept
+
+set firewall filter filter-bypass-flowd-pcap term dns-request from source-address 10.130.9.43/32
+set firewall filter filter-bypass-flowd-pcap term dns-request from source-address 10.130.16.12/32
+set firewall filter filter-bypass-flowd-pcap term dns-request from destination-address 10.130.22.21/32
+set firewall filter filter-bypass-flowd-pcap term dns-request from destination-address 10.130.22.22/32
+set firewall filter filter-bypass-flowd-pcap term dns-request from protocol udp
+set firewall filter filter-bypass-flowd-pcap term dns-request from destination-port 53
+set firewall filter filter-bypass-flowd-pcap term dns-request then count dns-request
+set firewall filter filter-bypass-flowd-pcap term dns-request then packet-mode
+set firewall filter filter-bypass-flowd-pcap term dns-reply from source-address 10.130.22.21/32
+set firewall filter filter-bypass-flowd-pcap term dns-reply from source-address 10.130.22.22/32
+set firewall filter filter-bypass-flowd-pcap term dns-reply from destination-address 10.130.9.43/32
+set firewall filter filter-bypass-flowd-pcap term dns-reply from destination-address 10.130.16.12/32
+set firewall filter filter-bypass-flowd-pcap term dns-reply from protocol udp
+set firewall filter filter-bypass-flowd-pcap term dns-reply from source-port 53
+set firewall filter filter-bypass-flowd-pcap term dns-reply then count dns-reply
+set firewall filter filter-bypass-flowd-pcap term dns-reply then packet-mode
+set firewall filter filter-bypass-flowd-pcap term default-accept then accept
+
+set interfaces reth1 unit 4022 family inet filter input filter-bypass-flowd-pcap
+set interfaces reth1 unit 4022 family inet filter output filter-pcap -->

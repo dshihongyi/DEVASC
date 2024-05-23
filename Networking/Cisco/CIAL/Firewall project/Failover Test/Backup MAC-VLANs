@@ -1,0 +1,142 @@
+CoreS-Stack-A_B#sh mac address-table vlan 902
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+      902 0050.56af.c655  dynamic  Yes     9000     Po5
+      902 0050.56af.e72b  dynamic  Yes     9000     Po5
+      902 0078.8847.8ade  dynamic  Yes      360     Gi2/7/2
+      902 0050.56af.7be3  dynamic  Yes     9000     Po5
+      902 000c.291e.955f  dynamic  Yes      420     Gi2/1/7
+      902 0050.56af.da61  dynamic  Yes      360     Po5
+ S    902 0014.b700.8899   static   No       -      Gi1/7/39
+      902 0078.8847.8b02  dynamic  Yes    10680     Gi1/7/2
+      902 0050.56af.f506  dynamic  Yes     9000     Po5
+
+
+CoreS-Stack-A_B#sh mac address-table vlan 29
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+       29 0078.8847.8ae3  dynamic  Yes     9240     Gi2/7/3
+       29 f0b6.1e9b.514f  dynamic  Yes      120     Gi1/7/13
+       29 12ca.4b40.09e9  dynamic  Yes       60     Gi2/7/13
+       29 40a3.cca8.339c  dynamic  Yes      360     Gi1/7/13
+
+
+
+CoreS-Stack-A_B#sh mac address-table vlan 417
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+      417 78ba.f985.2a3f  dynamic  Yes      360     Gi1/7/28
+      417 0078.8847.8b08  dynamic  Yes     2280     Gi1/7/5
+      417 0078.8847.8ae4  dynamic  Yes      420     Gi2/7/5
+      417 0000.0c9f.f1a1  dynamic  Yes      360     Gi1/7/28
+      417 78ba.f985.30bf  dynamic  Yes      360     Gi1/7/28
+
+
+Displaying entries from DFC switch [1] linecard [2]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+      417 78ba.f985.2a3f  dynamic  Yes      540     Gi1/7/28
+      417 0078.8847.8b08  dynamic  Yes     2340     Gi1/7/5
+      417 0078.8847.8ae4  dynamic  Yes      300     Gi2/7/5
+      417 0000.0c9f.f1a1  dynamic  Yes      540     Gi1/7/28
+      417 78ba.f985.30bf  dynamic  Yes      540     Gi1/7/28
+
+
+CoreS-Stack-A_B#sh mac address-table vlan 91
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+       91 84b2.6127.c693  dynamic  Yes     9300     Gi2/7/19
+       91 0078.8847.8b04  dynamic  Yes    11340     Gi1/7/6
+       91 0078.8847.8ae0  dynamic  Yes     9300     Gi2/7/6
+       91 e865.4905.8701  dynamic  Yes     9300     Gi2/7/19
+       91 881d.fccd.4621  dynamic  Yes     9300     Gi2/7/19
+       91 0000.0c07.acbf  dynamic  Yes     9300     Gi2/7/19
+
+CoreS-Stack-A_B#sh mac address-table vlan 191
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+      191 0010.40c7.b01c  dynamic  Yes      420     Gi1/7/13
+      191 0010.40ca.eb96  dynamic  Yes      420     Gi1/7/13
+      191 0010.40b5.b336  dynamic  Yes      480     Gi2/7/13
+      191 0078.8847.8ae0  dynamic  Yes     9300     Gi2/7/6
+      191 0010.40a8.6cc3  dynamic  Yes      420     Gi1/7/13
+      191 0010.40a8.902a  dynamic  Yes    11400     Gi2/7/13
+      191 0010.40a8.905d  dynamic  Yes      420     Gi1/7/13
+      191 0010.40c7.8eb0  dynamic  Yes      420     Gi1/7/13
+      191 0010.40c7.aff2  dynamic  Yes      480     Gi2/7/13
+      191 0010.40b7.0ebf  dynamic  Yes      480     Gi2/7/13
+      191 0010.40aa.08a0  dynamic  Yes      480     Gi2/7/13
+      191 0010.40ca.c53e  dynamic  Yes      420     Gi1/7/13
+      191 0010.40a8.90f0  dynamic  Yes     9300     Gi2/7/13
+      191 0010.40d6.35ca  dynamic  Yes      420     Gi1/7/13
+      191 0010.40a8.6d2c  dynamic  Yes      420     Gi1/7/13
+
+CoreS-Stack-A_B#sh mac address-table vlan 193
+
+Legend: * - primary entry
+        age - seconds since last seen
+        n/a - not available
+        S - secure entry
+        R - router's gateway mac address entry
+        D - Duplicate mac address entry
+
+Displaying entries from DFC switch [1] linecard [1]:
+
+     vlan   mac address    type   learn    age                 ports
+----+----+---------------+-------+-----+----------+-----------------------------
+      193 0000.0c9f.f0c1  dynamic  Yes      480     Gi1/7/28
+      193 0078.8847.8ae0  dynamic  Yes      540     Gi2/7/6
+      193 78ba.f985.30bf  dynamic  Yes      480     Gi1/7/28
+      193 0078.8847.8b04  dynamic  Yes     8640     Gi1/7/6
+      193 78ba.f985.2a3f  dynamic  Yes      480     Gi1/7/28

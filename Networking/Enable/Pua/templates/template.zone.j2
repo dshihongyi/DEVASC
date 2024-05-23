@@ -1,0 +1,8 @@
+{% for zone in new_zones %}
+{% if delete_config %}
+delete security zones security-zone zone-{{ zone }}
+{% else %}
+set security zones security-zone zone-{{ zone }} host-inbound-traffic system-services ping
+{% endif %}
+{% endfor %}
+

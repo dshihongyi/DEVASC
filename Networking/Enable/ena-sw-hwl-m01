@@ -1,0 +1,1816 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.09.19 11:51:20 =~=~=~=~=~=~=~=~=~=~=~=
+terminal length 0
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show run
+
+!Current Configuration:
+!System Description "Dell EMC Networking N1524, 6.7.1.10, Linux 3.6.5, Not Available"
+!System Software Version 6.7.1.10
+!
+configure
+vlan 1900,3023-3024,3085,3199,4009-4013,4016,4046,4063,4085,4088
+exit
+vlan 3023
+name "vlan-site-HWL-BMS"
+exit
+vlan 3024
+name "vlan-site-HWL-CAM"
+exit
+vlan 3085
+name "vlan-guest-stuff"
+exit
+vlan 3199
+name "vlan-poc-nqa-npm"
+exit
+vlan 4009
+name "ena_1900_vlan-netmgmt"
+exit
+vlan 4010
+name "ena_4010_infra-esx-mgmt"
+exit
+vlan 4011
+name "ena_4011_infra-san-mgmt"
+exit
+vlan 4012
+name "vlan-infra-net-mgmt"
+exit
+vlan 4013
+name "ena_4013_infra-ilo"
+exit
+vlan 4016
+name "ena_4016_servers-mgmt"
+exit
+vlan 4046
+name "ena_4046"
+exit
+ip telnet server disable
+snmp-server location "HWL"
+snmp-server contact "ITOps@enable.net.nz"
+hostname "ena-sw-hwl-m01"
+slot 1/0 1    ! Dell EMC Networking N1524
+slot 2/0 1    ! Dell EMC Networking N1524
+sntp unicast client enable
+sntp server 10.128.24.4
+sntp server 10.130.37.121
+sntp server 10.130.37.122
+sntp server 10.130.37.123
+clock summer-time recurring 4 sun Sep 02:00 1 sun Apr 03:00 zone "NZDT"
+clock timezone 12 minutes 0 zone "NZST"
+stack
+member 1 1    ! N1524
+member 2 1    ! N1524
+exit
+logging monitor informational
+logging 10.130.37.16
+description "pukeko splunk"
+exit
+interface vlan 1
+ip address dhcp
+exit
+interface vlan 1900
+ip address 10.130.160.71 255.255.255.0
+exit
+interface vlan 4009
+exit
+ip route 0.0.0.0 0.0.0.0 10.130.160.1
+no passwords min-length
+username "ccladmin" password 0f695a51536cb4c6f77da2609a6b73c8 privilege 15 encrypted
+username "admin" password b039b7aa0e9d16e68732736a37a8317a privilege 15 encrypted
+username "mtadmin" password b039b7aa0e9d16e68732736a37a8317a privilege 15 encrypted
+username "pa-CraigReynolds" password 2688864d5eb5f2007e9e0441fd77c4da privilege 15 encrypted
+username "JeremyCrestani" password 224fb0dd27a7ac6a509df1e3f78e5308 privilege 15 encrypted
+username "taadmin" password @!#%%YTROIHJRT$#@_(%#^TJ) privilege 15 encrypted
+username "oxidized" password 5eb082f28620455eb91506583dea0118 privilege 1 encrypted
+aaa authentication login "defaultList" local
+line console
+password 05a671c66aefea124cc08b76ea6d30bb encrypted
+exit
+crypto key pubkey-chain ssh user-key "mtadmin" rsa
+key-string row "AAAAB3NzaC1yc2EAAAABJQAAAQEAnJExDB0JgopHhosc7784s74o9WRMVSDtEHGZQOx10HEeCKS2VHlNBVMrZHrgQwbGIo4x8oK3j9lrw1piRcOWSe17s2+c2RB3Up0b4gvh/tVZhC6Vu7c1TfQZ6jRXQ+4d2yzb3vuGrXiKJEkIZg8ADXDKJrIuvNJfxtRNGU28Zzj08kK2d6JI8HnA9/bWaIUOeRSFFkGuQpG2YlqSfo0Rr+QNTJ6Vv6BGYrdHMGRHhi++bW1AHNhATwECfi54MuNOJViDLowB4JJPWykfM8/bc8aYBggbl5HmrhxnFSUIls4c9WTz++kdbRNqc+HsCGQ9ZPuNxRJeQVJiucfdClJm5Q=="
+exit
+crypto key pubkey-chain ssh user-key "pa-BoyeOlowoyeye" rsa
+key-string row "AAAAB3NzaC1yc2EAAAADAQABAAABgQCkFgw+t35dz64mqxPayvTha8bbdrE1GnKVtsX+/tG5rWCX8RewDYuY01vSAPYxQkJ89wEfGyKx4gJqt8XpTUo5iWIgZ0ttPFVLFh0grx4Nq3VltkVkeWFYMt2CX/giVzPKiv4n1JJX987mt1cUHULLqJsuNWkswo63GsDjBn/kNODQrxx/wuKB4eaWRNXGdsYhDOdZKANWJIzCla2P0Jj62eOit4xhAHJ1/JQ+o3kogJNBFHM0GzN3zrZy8V70zLGb7ftUeHavYDrheosUY1DLbYlswthVBGqnIkHvHthc7h2vGw7OyEeSn9pWThpKkRc+OHTLYgXrMrGcUVUV/kyD6BwSTNVv3XfIeKQwn1RWaOn7AvHCBJ7TIpEqWq/DKSOoKB5KX1QuHKziD0I/WRN72d5BhC+krVYN99l8DHM81jSYYPLu+Cb/vsKAbRcu3UMk7ewk3UpQWNRSPFFfN/WjF1MpZsPSO8mUSLL5oYoMaBmFuHx8oyGolS91jTHTb7c="
+exit
+crypto key pubkey-chain ssh user-key "pa-CraigReynolds" rsa
+key-string row "AAAAB3NzaC1yc2EAAAABJQAAAQEAlCduyibDDBxIQj/KXRODTdqWE0UTBp0ypNOaSHu6IQQUXsSSSzQrBPQLwnm40fkpmL6Usv6Qad8vSj1M5/rEaLzzKia0nTun2xAZE5tfPYbAqlhcaBIHZsVm9QziyXV9P3C6YAz/FbZc+y7RxSFqWOhGCPRjLiD+DxZXkqHl1sBuuoP0bDavREeb4ojiWufkPP5U4dl8RvZbX3qkbM4PyMkCBeeT3103AEbdGJ3yQN4rh9A7iIYK+H31epuvUec9dgvPo4OD+pFT/ajyrOxneEz3u/H1lOk9G64vsOt+7jbjV/e1oW7CGhLMIFH+VnkDRuPrhiuHaEPFyLSI7Mif8Q=="
+exit
+crypto key pubkey-chain ssh user-key "pm2admin" rsa
+key-string row "AAAAB3NzaC1yc2EAAAADAQABAAACAQDHRl8qXDx4SM3yqXtGFqlDCiZQP5AFExSUrSEaLjni3zVjEEYqoatcu06Fsn33WQct+eE5Zn1P16KBEAslI5DsXe4OJQuw1TZY2sFMcaBnparbj+o6txY3oLDEVg2vOdggqcCfgAe0c6binxN6+KFzkEhig/fmaq/nAK8v6c4mCcDWKehX3OLccRTsS6S8IhXSfMCK4kVgiQ+PmDIZcpmOacGl0UHhPjtSq01C6bZyGZLPFAWFIQbOzWmpucbjbZ5RwI+oWlvX0saC6VAfD9cAQgpdmh2CSXeBPgK5hBm+iHegdYLcZ28/E/aYTlE3EfJgchjkKALljRx+LQbVIq/1Hm2EvQv1X+j7NQvpyVsjYhvF8U/AsU+lswj6VrgY2bCdv12PtZaQCP6FxJhsYpyx3JwPkCLsaGeFdKLGxD/uCkOoNWGrcfqmPQiSvjMtSLtepZ0bJUFY7dMY4mpoPPizMPg+GTzg3eUeiF8wOi/2ZCHEWAhNSdYn2DgRC8V0GqF8DOOXSf7+elDNbmRRcmLU6NC1PjAc3qBmM/Ge6/wjK1o1Bk8enArg1d6H/MWqPX9BQux29ZtIq0Uv2xsscULgqzbT7IhT5H9+9Q3BrxnENAPlMEr2FXKd+TMkdKraL0H8lL2tGvJB+ProsRyW7gHjUXwMm3Gk5/E8nnsU4htpgQ== pm2admin"
+exit
+crypto key pubkey-chain ssh user-key "taadmin" rsa
+key-string row "AAAAB3NzaC1yc2EAAAADAQABAAABAQCp1UOnKuMImnGW/+pbiIYO2h0evMAeF68WrAYMu4oLanLrhKGPjARaoObl/fbsJnzX67eyquEGL57OWHRlJFi0+VO1qMyvWL4vtX4tgoOfu+Hwe3uRkx82Y2v0zz8XCxPvr0/Wi1H3OpOpzjDc8rFsxTl2B9SRf/MkEWhCCaWFAk6is8diwILpPslRHIEwv0/40pPhsS1rQlgpLCv/0iww+HtCIOI2wlbL8Tc5SmlztehAnBsNGrzzwwlfqE3uAJAvZJXOK5cl7EMcyB8FwU3Erjj1joOy40XFLdiheEamJJwaPvbhS5VDsofCEa9n52/MWS7dgv5J9JQhE3SLEsNz"
+exit
+line ssh
+login authentication defaultList
+exit
+ip ssh server
+ip ssh pubkey-auth
+no spanning-tree
+no spanning-tree vlan 1900,4010-4011,4013,4016
+application install SupportAssist auto-restart start-on-boot
+!
+interface Gi1/0/1
+description "enaesxh01 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/2
+description "enaesxh02 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/3
+description "enaesxh03 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/4
+description "enaesxh04 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/5
+description "enaesxh05 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/6
+description "enaesxh06 mgmt - vmnic0"
+switchport access vlan 4010
+exit
+!
+interface Gi1/0/7
+description "enasanh mgmt - top controller"
+switchport access vlan 4011
+exit
+!
+interface Gi1/0/8
+description "Spare"
+switchport access vlan 4011
+exit
+!
+interface Gi1/0/9
+description "enaesxh01 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi1/0/10
+description "enaesxh02 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi1/0/11
+description "enaesxh04 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi1/0/12
+switchport access vlan 4013
+exit
+!
+interface Gi1/0/13
+description "ena-sw-ntx-hwl-01"
+switchport mode trunk
+switchport trunk allowed vlan 1900,3023-3024,3085,4046,4085,4088
+exit
+!
+interface Gi1/0/14
+description "Uplink to ena-sw-ntx-hwl-01"
+switchport access vlan 3199
+switchport trunk allowed vlan 1900,3023-3024,3085,4046,4085,4088
+exit
+!
+interface Gi1/0/15
+description "ena-fw-ric-2 node1 fxp0 mgmt"
+switchport access vlan 1900
+exit
+!
+interface Gi1/0/16
+description "NQAtest - port"
+switchport access vlan 3199
+exit
+!
+interface Gi1/0/17
+shutdown
+description "Spare"
+exit
+!
+interface Gi1/0/18
+shutdown
+description "Spare"
+exit
+!
+interface Gi1/0/19
+shutdown
+description "Spare"
+exit
+!
+interface Gi1/0/20
+shutdown
+description "Spare"
+exit
+!
+interface Gi1/0/21
+shutdown
+description "Spare"
+exit
+!
+interface Gi1/0/22
+description "Smart PDU Mgmnt"
+spanning-tree portfast
+spanning-tree guard loop
+switchport access vlan 4013
+exit
+!
+interface Gi1/0/23
+shutdown
+description "PDU-B Mgmt"
+switchport access vlan 1900
+exit
+!
+interface Gi1/0/24
+description "Aerohive"
+switchport mode trunk
+switchport trunk allowed vlan 3085,4046,4085,4088
+exit
+!
+interface Te1/0/4
+channel-group 1 mode active
+description "Uplink to esl-sw-core"
+exit
+!
+interface Gi2/0/1
+description "enaesxh01 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/2
+description "enaesxh02 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/3
+description "enaesxh03 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/4
+description "enaesxh04 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/5
+description "enaesxh05 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/6
+description "enaesxh06 mgmt - vmnic1"
+switchport access vlan 4010
+exit
+!
+interface Gi2/0/7
+description "enasanh mgmt - bottom controller"
+switchport access vlan 4011
+exit
+!
+interface Gi2/0/8
+description "Spare"
+switchport access vlan 4011
+exit
+!
+interface Gi2/0/9
+description "enaesxh03 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi2/0/10
+description "enaesxh04 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi2/0/11
+description "enaesxh06 idrac"
+switchport access vlan 4013
+exit
+!
+interface Gi2/0/12
+switchport access vlan 4013
+exit
+!
+interface Gi2/0/13
+description "AirConsole TS"
+switchport access vlan 1900
+switchport trunk allowed vlan 1900
+exit
+!
+interface Gi2/0/15
+description "ena-fw-ric-2 node0 fxp0 mgmt"
+switchport access vlan 1900
+exit
+!
+interface Gi2/0/16
+description "NQAtest - port"
+switchport access vlan 3199
+exit
+!
+interface Gi2/0/17
+shutdown
+description "Spare"
+exit
+!
+interface Gi2/0/18
+shutdown
+description "Spare"
+exit
+!
+interface Gi2/0/19
+shutdown
+description "Spare"
+exit
+!
+interface Gi2/0/20
+shutdown
+description "Spare"
+exit
+!
+interface Gi2/0/21
+shutdown
+description "Spare"
+exit
+!
+interface Gi2/0/22
+description "Smart PDU Mgmnt"
+spanning-tree portfast
+spanning-tree guard loop
+switchport access vlan 4013
+exit
+!
+interface Gi2/0/23
+description "PDU-A Mgmt"
+switchport access vlan 1900
+exit
+!
+interface Gi2/0/24
+description "Aerohive"
+switchport mode trunk
+switchport trunk allowed vlan 3085,4046,4085,4088
+exit
+!
+interface Te2/0/4
+channel-group 1 mode active
+description "Uplink to esl-sw-core"
+exit
+!
+interface port-channel 1
+description "Uplink to esl-sw-core"
+switchport mode trunk
+switchport trunk allowed vlan 1900,3023-3024,3085,3199,4009-4013,4016,4046,4063,4085,4088
+exit
+snmp-server engineid local 800002a203684f6493b538
+snmp-server community "readOnlyCacti" ro
+snmp-server host 10.130.16.17 informs "readOnlyCacti"
+snmp-server host 10.130.16.17 traps version 2 "readOnlyCacti"
+enable password 54a8ad02ec23d30b229e526f810f8089 encrypted
+exit
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show vlan 
+
+VLAN   Name                             Ports          Type
+-----  ---------------                  -------------  --------------
+1      default                          Po2-64,        Default
+                                        Gi1/0/17-21,
+                                        Te1/0/3,
+                                        Gi2/0/14,
+                                        Gi2/0/17-21,
+                                        Te2/0/3
+1900   VLAN1900                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/15,
+                                        Gi1/0/23,
+                                        Gi2/0/13,
+                                        Gi2/0/15,
+                                        Gi2/0/23
+3023   vlan-site-HWL-BMS                Po1,Gi1/0/13   Static
+3024   vlan-site-HWL-CAM                Po1,Gi1/0/13   Static
+3085   vlan-guest-stuff                 Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+3199   vlan-poc-nqa-npm                 Po1,Gi1/0/14,  Static
+                                        Gi1/0/16,
+                                        Gi2/0/16
+4009   ena_1900_vlan-netmgmt            Po1            Static
+4010   ena_4010_infra-esx-mgmt          Po1,Gi1/0/1-6, Static
+                                        Gi2/0/1-6
+4011   ena_4011_infra-san-mgmt          Po1,Gi1/0/7-8, Static
+                                        Gi2/0/7-8
+4012   vlan-infra-net-mgmt              Po1            Static
+4013   ena_4013_infra-ilo               Po1,           Static
+                                        Gi1/0/9-12,
+                                        Gi1/0/22,
+                                        Gi2/0/9-12,
+                                        Gi2/0/22
+4016   ena_4016_servers-mgmt            Po1            Static
+4046   ena_4046                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+4063   VLAN4063                         Po1            Static
+4085   VLAN4085                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+4088   VLAN4088                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show c switch
+
+    Management Standby   Preconfig     Plugged-in    Switch        Code
+SW  Status     Status    Model ID      Model ID      Status        Version
+--- ---------- --------- ------------- ------------- ------------- -----------
+1   Stack Mbr  Oper Stby N1524         N1524         OK            6.7.1.10
+2   Mgmt Sw              N1524         N1524         OK            6.7.1.10
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show switch= -po    sw  ?
+
+<cr>                     Press enter to execute the command.
+|                        Output filter options.
+<stack-member-number>    Enter switch ID in the range of 1 to 4.
+stack-ports              Display summary stack-port information for all
+                         interfaces.
+stack-standby            Display the configured or automatically selected
+                         standby unit number.
+
+ena-sw-hwl-m01#show switch stack-ports 
+
+          Configured Running    Link         Link         Admin
+Interface Stack Mode Stack Mode Status       Speed (Gb/s) Status
+--------- ---------- ---------- ------------ ------------ ------------
+Te1/0/1   Stack      Stack      Link Up      10           Enabled
+Te1/0/2   Stack      Stack      Link Down    Unknown      Enabled
+Te1/0/3   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te1/0/4   Ethernet   Ethernet   Link Up      10           Disabled
+Te2/0/1   Stack      Stack      Link Up      10           Enabled
+Te2/0/2   Stack      Stack      Link Down    10           Enabled
+Te2/0/3   Ethernet   Ethernet   Link Down    Unknown      Disabled
+Te2/0/4   Ethernet   Ethernet   Link Up      10           Disabled
+
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show inve
+                      ^
+% Invalid input detected at '^' marker.
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show inven     inventory
+                      ^
+% Invalid input detected at '^' marker.
+
+ena-sw-hwl-m01#show sys   version 
+
+Machine Description............... Dell EMC Networking Switch
+System Model ID................... N1524
+Machine Type...................... Dell EMC Networking N1524
+Serial Number..................... CN0G62KT2829899A0187A04
+Manufacturer...................... 0xbc00
+Burned In MAC Address............. 684F.6493.B4D4
+System Object ID.................. 1.3.6.1.4.1.674.10895.3063
+SOC Version....................... BCM56150_A0
+HW Version........................ 2
+CPLD Version...................... 16
+Image File........................ N1500v6.7.1.10
+Software Capability............... Stack Limit = 4, VLAN Limit = 512
+
+unit active      backup      current-active next-active
+---- ----------- ----------- -------------- --------------
+1    6.7.1.10    6.7.0.4     6.7.1.10       6.7.1.10
+2    6.7.1.10    6.7.0.4     6.7.1.10       6.7.1.10
+
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show harw    a hardware?
+
+ena-sw-hwl-m01#show hardware ?
+% Unrecognized command
+
+
+ena-sw-hwl-m01#show hardware          inv?
+
+ena-sw-hwl-m01#show inv   ?
+
+aaa                      Display IAS user and RADIUS server status.
+access-lists             Display access list information.
+accounting               Display methods attached to the accounting lists.
+admin-profiles           Display administrative profiles configured on the
+                         switch.
+application              Displays information about installed applications.
+arp                      Display Address Resolution Protocol (ARP) cache.
+authentication           Display authentication settings.
+authorization            Display ordered methods for authorization lists.
+auto-copy-sw             Display stack firmware synchronization configuration.
+backup-config            Display the backup configuration script.
+banner                   Display exec, login, and MOTD banner configuration.
+boot                     Display auto-install configuration and status.
+bootvar                  Display the active and standby firmware versions.
+buffers                  Display Mbuf information
+captive-portal           Display captive portal configuration and statistics.
+checkpoint               Display stack synchronization checkpoint statistics.
+class-map                Display DiffServ class information.
+classofservice           Display class of service information.
+cli                      Display all possible cli modes.
+clock                    Display the time and date from the system clock.
+copper-ports             Perform copper cable length probe and display results.
+crypto                   Display crypto certificates and public keys.
+debugging                Display debugging configuration.
+dhcp                     Display DHCP relay agent or client lease information.
+diffserv                 Display DiffServ policy and class usage.
+dos-control              Display denial of service configuration.
+dot1q-tunnel             Display QinQ tunneling configuration.
+dot1x                    Display dot1x information.
+errdisable               Display the current status of the D-Disable
+                         auto-recovery process.
+ethernet                 Display ethernet CFM status and configuration.
+eula-consent             Show EULA consent.
+exception                Display coredump configuration.
+fiber-ports              Display fiber port power and fault status.
+gmrp                     Display GARP multicast registration protocol status.
+green-mode               Display EEE (green mode) configuration and status.
+gvrp                     Display GARP VLAN registration protocol status.
+hosts                    Display default domain, name server and address cache.
+idprom                   Display the optical transceiver EEPROM content.
+interfaces               Display all interfaces information.
+ip                       Display IP routing and host configuration and status.
+ipv6                     Display IPv6 routing and host configuration and
+                         status.
+isdp                     Display ISDP configuration and neighbor status.
+keepalive                Display keepalive information.
+lacp                     Display dynamic LACP actor and partner status.
+line                     Display CLI access methods configuration and status.
+link-dependency          Display link dependency group configuration.
+lldp                     Display LLDP configuration.
+logging                  Display logging parameters.
+mab                      Show mab information
+mac                      Display MAC address table and access-list information.
+mail-server              Display SMTP server configuration.
+management               Display in-band management access control status.
+memory                   Display the system memory usage.
+monitor                  Display packet monitoring configuration and status.
+msg-queue                Display Message Queue
+mvr                      Display MVR configuration and status.
+nsf                      Display nonstop forwarding status.
+parser                   Display all configured macros.
+passwords                Display information about passwords.
+policy-map               Display DiffServ policy information.
+port                     Display protocol based VLAN status.
+port-security            Display port-security (port MAC locking) information
+                         for system.
+power-usage-history      Display power usage measurement history.
+process                  Display process information.
+radius                   Display RADIUS configuration information.
+rmon                     Display RMON alarms, events, history or statistics.
+route-map                Display route-map information.
+routing                  Display a routing specific information.
+running-config           Display the running configuration.
+sdm                      Display the switch default and available templates.
+service-policy           Display DiffServ statistics.
+sessions                 Display status of user connections.
+sflow                    Display sFlow configuration and status.
+slot                     Display slot pre-configuration and installed cards.
+snmp                     Display SNMP configuration.
+sntp                     Display SNTP server configuration and client status.
+spanning-tree            Display spanning tree information.
+ssh                      Display Outbound SSH config information.
+startup-config           Display the startup configuration script.
+statistics               Display RMON port or switch statistics.
+storm-control            Display storm-control information.
+support-assist           Show support-assist configuration.
+supported                Display supported switch and card types.
+switch                   Display switch and stack management information.
+switchport               Display auto-VoIP and protected port configuration.
+swreset                  Display software reset status.
+syslog-servers           Display configured syslog servers.
+system                   Display system environmental status.
+tacacs                   Display configured TACACS+ servers.
+tech-support             Display switch diagnostic information.
+terminal                 Display terminal page length configuration.
+time-range               Display time-range information.
+track                    Display tracking information.
+trapflags                Display SNMP traps configuration.
+udld                     Display UDLD parameters.
+usb                      Display USB device status and details.
+users                    Display user account information.
+version                  Display system hardware and software status.
+vlan                     Display VLAN configuration.
+voice                    Display the voice VLAN configuration.
+vrrp                     Display virtual router redundancy protocol status.
+
+ena-sw-hwl-m01#show   sys?
+
+syslog-servers           system
+
+ena-sw-hwl-m01#show system ?
+
+<cr>                     Press enter to execute the command.
+|                        Output filter options.
+<unit>                   Enter switch ID in the range of 1 to 4.
+fan                      Display system fan information
+id                       Display system identity information
+internal                 Display CPU COS queue rate-limit.
+mtu                      Display maximum transmission unit (MTU) for forwarded
+                         and system generated frames.
+power                    Display system power consumption
+temperature              Display system temperature information
+
+ena-sw-hwl-m01#show system power  
+
+Power Supplies:
+Unit  Description    Status      Average     Current          Since
+                                  Power       Power         Date/Time
+                                 (Watts)     (Watts)
+----  -----------  ------------  ----------  --------  -------------------
+1     System       OK            0.3         14.4
+1     Main         OK            N/A         N/A       Jun 21 08:00:29 2022
+1     RPS          No Power
+2     System       OK            0.0         14.4
+2     Main         OK            N/A         N/A       Jun 21 08:00:09 2022
+2     RPS          No Power
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show mac address-table 
+
+Aging time is 300 Sec
+
+Vlan     Mac Address           Type        Port
+-------- --------------------- ----------- ---------------------
+1        684F.6493.B4D7        Management  Vl1
+1900     0000.3F11.A2C6        Dynamic     Po1
+1900     0000.3F11.A2ED        Dynamic     Po1
+1900     0000.4011.1B02        Dynamic     Po1
+1900     0000.4011.6200        Dynamic     Po1
+1900     0000.4011.83BD        Dynamic     Po1
+1900     0000.4011.9778        Dynamic     Po1
+1900     0010.DBFF.1001        Dynamic     Po1
+1900     0013.C602.4BFF        Dynamic     Po1
+1900     0020.85EA.0C40        Dynamic     Po1
+1900     0023.E954.EE01        Dynamic     Po1
+1900     0023.E978.A701        Dynamic     Po1
+1900     00E0.4C36.BDE7        Dynamic     Po1
+1900     3C8C.9387.7E40        Dynamic     Po1
+1900     3C8C.9387.7F0E        Dynamic     Po1
+1900     544B.8C18.996D        Dynamic     Po1
+1900     544B.8C18.99A2        Dynamic     Po1
+1900     544B.8CDE.C101        Dynamic     Po1
+1900     544B.8CDE.C11B        Dynamic     Po1
+1900     54E0.32F4.4AC1        Dynamic     Po1
+1900     684F.6493.B4D7        Management  Vl1900
+1900     788A.2045.966F        Dynamic     Po1
+1900     788A.2045.99F0        Dynamic     Po1
+1900     7CE2.CA71.4B30        Dynamic     Gi1/0/15
+1900     84B5.9C36.A6C1        Dynamic     Po1
+1900     84B5.9C3B.D5C1        Dynamic     Po1
+1900     84B5.9C3B.D681        Dynamic     Po1
+1900     8C04.BAEA.D0E1        Dynamic     Po1
+1900     8C04.BAEA.D0E6        Dynamic     Po1
+1900     8C04.BAEA.FAE1        Dynamic     Po1
+1900     8C04.BAEA.FAE6        Dynamic     Po1
+1900     B48A.5F01.3EA5        Dynamic     Po1
+1900     B827.EB98.7255        Dynamic     Gi2/0/13
+1900     EC13.B211.5D70        Dynamic     Po1
+1900     EC13.B211.5E40        Dynamic     Po1
+1900     EC13.B211.6062        Dynamic     Po1
+1900     EC13.B211.6576        Dynamic     Po1
+1900     EC13.B211.A3EC        Dynamic     Po1
+1900     EC13.B211.A4BC        Dynamic     Po1
+1900     EC13.B211.A5DA        Dynamic     Po1
+1900     EC13.B211.A676        Dynamic     Po1
+1900     EC13.B211.CEC8        Dynamic     Po1
+1900     EC13.B211.D256        Dynamic     Po1
+1900     EC13.B211.D28A        Dynamic     Po1
+1900     EC13.B211.DD4E        Dynamic     Gi1/0/13
+3024     3C8C.9387.7E40        Dynamic     Po1
+3024     3C8C.9387.7F0E        Dynamic     Po1
+3024     4CBD.8F6E.959A        Dynamic     Gi1/0/13
+3024     4CBD.8F6E.9856        Dynamic     Gi1/0/13
+3024     B4A3.823E.083A        Dynamic     Gi1/0/13
+3024     B4A3.823E.0846        Dynamic     Gi1/0/13
+3024     B4A3.8240.D869        Dynamic     Gi1/0/13
+3085     0010.DBFF.1001        Dynamic     Po1
+3085     0028.F8B4.92A4        Dynamic     Po1
+3085     0028.F8B4.92EA        Dynamic     Po1
+3085     0042.38F1.8858        Dynamic     Po1
+3085     021C.591C.B2FE        Dynamic     Po1
+3085     02EA.F960.312C        Dynamic     Po1
+3085     04D3.B027.F998        Dynamic     Po1
+3085     04D6.AAC4.C720        Dynamic     Po1
+3085     04EA.56F9.5137        Dynamic     Po1
+3085     04ED.3336.259A        Dynamic     Po1
+3085     0644.8D9C.B8AB        Dynamic     Po1
+3085     0655.78C9.466A        Dynamic     Po1
+3085     065E.4ED4.211C        Dynamic     Po1
+3085     06A5.8E1A.22FE        Dynamic     Po1
+3085     086A.C5AE.4859        Dynamic     Po1
+3085     086A.C5AE.4EFD        Dynamic     Po1
+3085     08BE.AC15.0303        Dynamic     Po1
+3085     08C5.E156.1B08        Dynamic     Po1
+3085     0A37.CFCE.95E7        Dynamic     Po1
+3085     0AB4.50D9.CBBB        Dynamic     Po1
+3085     0C7A.15DB.4CE1        Dynamic     Po1
+3085     0C7A.15F8.BBB9        Dynamic     Po1
+3085     0C81.2669.CDE9        Dynamic     Po1
+3085     0C84.DC7F.C114        Dynamic     Po1
+3085     0C9A.3C07.E9F5        Dynamic     Po1
+3085     0E1F.CF50.3538        Dynamic     Po1
+3085     0E5A.9525.5B5B        Dynamic     Po1
+3085     0E5D.3D12.6344        Dynamic     Po1
+3085     0EED.3E8C.B50C        Dynamic     Po1
+3085     100B.A9AB.C958        Dynamic     Po1
+3085     103D.1C05.4B5A        Dynamic     Po1
+3085     1044.00F7.DB4F        Dynamic     Po1
+3085     1094.BBCF.41E2        Dynamic     Po1
+3085     1212.D2F9.6C4D        Dynamic     Po1
+3085     1223.5D14.2484        Dynamic     Po1
+3085     1239.6413.5F55        Dynamic     Po1
+3085     1418.C374.2624        Dynamic     Po1
+3085     1418.C3E8.EA95        Dynamic     Po1
+3085     1676.A60B.E29C        Dynamic     Po1
+3085     16A6.F69B.106A        Dynamic     Po1
+3085     16DA.9E67.6FAF        Dynamic     Po1
+3085     18CC.18D4.0E72        Dynamic     Po1
+3085     1A51.E46C.5A9D        Dynamic     Po1
+3085     1A72.5ADF.9149        Dynamic     Po1
+3085     1A9F.3247.E1B8        Dynamic     Po1
+3085     1AB5.08C4.1475        Dynamic     Po1
+3085     1AD0.49FF.A1E0        Dynamic     Po1
+3085     1C57.DC27.73BC        Dynamic     Po1
+3085     1CE6.1D41.673A        Dynamic     Po1
+3085     1E34.8CBB.FE6C        Dynamic     Po1
+3085     1E40.8F8C.4EEC        Dynamic     Po1
+3085     1E45.F357.222C        Dynamic     Po1
+3085     1EC3.115A.08E3        Dynamic     Po1
+3085     1EDD.2C88.9AB0        Dynamic     Po1
+3085     20C1.9B39.2F6A        Dynamic     Po1
+3085     220B.CA2F.05A3        Dynamic     Po1
+3085     2239.D74B.DDCC        Dynamic     Po1
+3085     2249.6151.CE91        Dynamic     Po1
+3085     2288.AB9A.E397        Dynamic     Po1
+3085     2418.1D7B.9D54        Dynamic     Po1
+3085     2629.9091.4C24        Dynamic     Po1
+3085     2816.A86F.DF18        Dynamic     Po1
+3085     28C6.3FE8.B610        Dynamic     Po1
+3085     28DF.EB51.B698        Dynamic     Po1
+3085     28DF.EBE7.C507        Dynamic     Po1
+3085     28DF.EBE8.01F2        Dynamic     Po1
+3085     2A08.9705.33B5        Dynamic     Po1
+3085     2A90.8CCD.9665        Dynamic     Po1
+3085     2AF7.A5DC.05C8        Dynamic     Po1
+3085     2C33.5872.7C98        Dynamic     Po1
+3085     2C8D.B144.7D34        Dynamic     Po1
+3085     2C8D.B144.7D61        Dynamic     Po1
+3085     2C8D.B144.7D7F        Dynamic     Po1
+3085     2C8D.B144.7D84        Dynamic     Po1
+3085     2E82.70E4.ECA1        Dynamic     Po1
+3085     2EC0.13FF.91A6        Dynamic     Po1
+3085     2EC6.B196.1827        Dynamic     Po1
+3085     3216.7C9C.95B2        Dynamic     Po1
+3085     323F.CB7C.551E        Dynamic     Po1
+3085     3296.1FCF.639E        Dynamic     Po1
+3085     32AC.F1AD.9A29        Dynamic     Po1
+3085     342E.B74C.4FE1        Dynamic     Po1
+3085     3661.1470.B03F        Dynamic     Po1
+3085     3692.ACBD.86AA        Dynamic     Po1
+3085     36BB.7352.8A80        Dynamic     Po1
+3085     3800.2549.4E59        Dynamic     Po1
+3085     3868.93B9.F8E3        Dynamic     Po1
+3085     3878.620F.6F49        Dynamic     Po1
+3085     38CA.DA7F.CE1A        Dynamic     Po1
+3085     38F9.D3BE.108C        Dynamic     Po1
+3085     3A2B.0166.F622        Dynamic     Po1
+3085     3A81.BC38.0B16        Dynamic     Po1
+3085     3AE5.BC4C.3F6C        Dynamic     Po1
+3085     3C8C.9387.7F0E        Dynamic     Po1
+3085     3CA9.F40D.28D0        Dynamic     Po1
+3085     3EA8.29C9.B093        Dynamic     Po1
+3085     4026.19A5.2454        Dynamic     Po1
+3085     4074.E03D.2813        Dynamic     Po1
+3085     425E.C1F3.C582        Dynamic     Po1
+3085     426F.6DEB.709D        Dynamic     Po1
+3085     42E9.E639.257A        Dynamic     Po1
+3085     42EC.6619.C0F9        Dynamic     Po1
+3085     4615.0B49.DC1B        Dynamic     Po1
+3085     4639.2C02.69E4        Dynamic     Po1
+3085     4640.F806.50D8        Dynamic     Po1
+3085     4665.C53F.E841        Dynamic     Po1
+3085     466B.0776.6791        Dynamic     Po1
+3085     46B5.079D.84EB        Dynamic     Po1
+3085     4883.B407.CC8B        Dynamic     Po1
+3085     48C7.968B.A493        Dynamic     Po1
+3085     48E7.DACD.2DC5        Dynamic     Po1
+3085     48E9.F19D.8A74        Dynamic     Po1
+3085     4A0C.56C1.CABE        Dynamic     Po1
+3085     4A7C.2D14.5695        Dynamic     Po1
+3085     4AD3.0718.8E31        Dynamic     Po1
+3085     4CDD.31EC.9AA2        Dynamic     Po1
+3085     4E11.5FBC.4B0F        Dynamic     Po1
+3085     4E2D.DA9E.57BB        Dynamic     Po1
+3085     4E87.FBA0.8AD6        Dynamic     Po1
+3085     4EB0.43E5.5B10        Dynamic     Po1
+3085     4EE3.24DA.8B91        Dynamic     Po1
+3085     50C2.E8EE.3683        Dynamic     Po1
+3085     50F4.EB3E.6C39        Dynamic     Po1
+3085     5207.4001.9CA6        Dynamic     Po1
+3085     5217.352A.71AE        Dynamic     Po1
+3085     522A.A1F4.812C        Dynamic     Po1
+3085     524A.6E6E.2C46        Dynamic     Po1
+3085     527F.C18E.3A4D        Dynamic     Po1
+3085     52DD.1A8A.256D        Dynamic     Po1
+3085     52E4.7072.BEE8        Dynamic     Po1
+3085     5414.F39A.3E09        Dynamic     Po1
+3085     563B.0FCC.E1C9        Dynamic     Po1
+3085     5658.EC71.9D4E        Dynamic     Po1
+3085     56C1.BC8F.5796        Dynamic     Po1
+3085     56C3.D8B5.1EC8        Dynamic     Po1
+3085     56DD.8345.B1AE        Dynamic     Po1
+3085     56DF.FED3.4921        Dynamic     Po1
+3085     5864.C458.B738        Dynamic     Po1
+3085     58B1.0F5B.B708        Dynamic     Po1
+3085     58CE.2A35.7D2F        Dynamic     Po1
+3085     5A2F.AEF2.9604        Dynamic     Po1
+3085     5C5F.6765.ED11        Dynamic     Po1
+3085     5C5F.6766.8442        Dynamic     Po1
+3085     5CF5.DA0D.87C4        Dynamic     Po1
+3085     5E50.89EC.727F        Dynamic     Po1
+3085     5EC0.4831.74AF        Dynamic     Po1
+3085     60A4.D0B6.7AB6        Dynamic     Po1
+3085     60F2.62D9.D68B        Dynamic     Po1
+3085     60F6.77BA.0FDB        Dynamic     Po1
+3085     627E.50DD.8243        Dynamic     Po1
+3085     62D5.B3E5.99E6        Dynamic     Po1
+3085     62EB.E2FA.97B9        Dynamic     Po1
+3085     66C2.4FC5.2FF4        Dynamic     Po1
+3085     66EB.B893.BFB4        Dynamic     Po1
+3085     6A2E.88ED.7FA3        Dynamic     Po1
+3085     6A5E.68DA.3335        Dynamic     Po1
+3085     6A67.D58D.E027        Dynamic     Po1
+3085     6A6F.9861.590B        Dynamic     Po1
+3085     6C88.14BF.55A0        Dynamic     Po1
+3085     6C94.665D.1385        Dynamic     Po1
+3085     6CC7.EC0C.3EB8        Dynamic     Po1
+3085     6E32.1D06.FAAC        Dynamic     Po1
+3085     6E3D.3B94.55CC        Dynamic     Po1
+3085     6E48.FAFF.EEE5        Dynamic     Po1
+3085     6E79.3F5F.9E62        Dynamic     Po1
+3085     6EBB.B204.372F        Dynamic     Po1
+3085     6EFA.60D2.1E67        Dynamic     Po1
+3085     70A8.D3AE.1280        Dynamic     Po1
+3085     70BC.105F.8DBB        Dynamic     Po1
+3085     70CF.49F7.6C1E        Dynamic     Po1
+3085     7205.4237.4632        Dynamic     Po1
+3085     725C.CC20.01E3        Dynamic     Po1
+3085     7263.2AF6.A5B4        Dynamic     Po1
+3085     728E.4AC3.95B5        Dynamic     Po1
+3085     72AE.6401.FD21        Dynamic     Po1
+3085     72C2.67F9.7323        Dynamic     Po1
+3085     72E4.0362.0558        Dynamic     Po1
+3085     74E5.F984.11D8        Dynamic     Po1
+3085     74E5.F9F3.E9E5        Dynamic     Po1
+3085     7639.DF8A.BBC2        Dynamic     Po1
+3085     764E.1731.AD92        Dynamic     Po1
+3085     7650.FECD.AE77        Dynamic     Po1
+3085     76EE.BFB7.4855        Dynamic     Po1
+3085     784F.438A.BC5B        Dynamic     Po1
+3085     7A06.B399.3B50        Dynamic     Po1
+3085     7A90.CDA1.6428        Dynamic     Po1
+3085     7E7E.6AC6.95AD        Dynamic     Po1
+3085     7EBF.350E.99AC        Dynamic     Po1
+3085     7EC0.E001.0FB8        Dynamic     Po1
+3085     7EEF.9FB6.7E75        Dynamic     Po1
+3085     8004.5FB5.B25A        Dynamic     Po1
+3085     804E.7096.2A74        Dynamic     Po1
+3085     80B6.5584.F7B0        Dynamic     Po1
+3085     80B6.558E.0094        Dynamic     Po1
+3085     80B6.5596.3C14        Dynamic     Po1
+3085     80F3.EF69.66F0        Dynamic     Po1
+3085     8229.92F2.C205        Dynamic     Po1
+3085     8270.9FEE.18E5        Dynamic     Po1
+3085     82B4.2C19.EBE4        Dynamic     Po1
+3085     82F3.C536.0464        Dynamic     Po1
+3085     841B.77F3.7CBC        Dynamic     Po1
+3085     84C5.A65F.41A5        Dynamic     Po1
+3085     865F.DEA1.A47F        Dynamic     Po1
+3085     86A7.A117.A091        Dynamic     Po1
+3085     86F1.0BC8.E05B        Dynamic     Po1
+3085     8844.7714.27BA        Dynamic     Po1
+3085     88B1.1138.0919        Dynamic     Po1
+3085     8A1A.534E.8941        Dynamic     Po1
+3085     8A76.5AAA.64ED        Dynamic     Po1
+3085     8C04.BAEA.D092        Dynamic     Po1
+3085     8C04.BAEA.D0E1        Dynamic     Po1
+3085     8C04.BAEA.D0E6        Dynamic     Po1
+3085     8C04.BAEA.FA92        Dynamic     Po1
+3085     8C04.BAEA.FAE1        Dynamic     Po1
+3085     8C04.BAEA.FAE6        Dynamic     Po1
+3085     8C85.909F.99B6        Dynamic     Po1
+3085     8CF5.A3DF.E984        Dynamic     Po1
+3085     8CF8.C5FA.FCE9        Dynamic     Po1
+3085     8E13.846A.1FA0        Dynamic     Po1
+3085     8E38.3D0B.BF54        Dynamic     Po1
+3085     8E53.7727.D8CB        Dynamic     Po1
+3085     8EDE.F597.7747        Dynamic     Po1
+3085     9061.AE37.8390        Dynamic     Po1
+3085     9287.DFBA.7E8B        Dynamic     Po1
+3085     92A3.25C8.E7F2        Dynamic     Po1
+3085     92AB.CE23.1EB6        Dynamic     Po1
+3085     92D3.B52B.EE8C        Dynamic     Po1
+3085     92F8.B3C8.B81E        Dynamic     Po1
+3085     92FD.07A0.17C8        Dynamic     Po1
+3085     965A.CB00.CCA3        Dynamic     Po1
+3085     98AF.655E.9E53        Dynamic     Po1
+3085     9E11.0BCD.C44A        Dynamic     Po1
+3085     9E15.67D6.B03E        Dynamic     Po1
+3085     9E23.1D33.4D21        Dynamic     Po1
+3085     9E3C.90E4.3856        Dynamic     Po1
+3085     9E5E.8FA6.8BE7        Dynamic     Po1
+3085     9E7C.3956.7BF5        Dynamic     Po1
+3085     9E8B.8D57.8BA5        Dynamic     Po1
+3085     A051.0B1B.FE95        Dynamic     Po1
+3085     A059.5019.2C83        Dynamic     Po1
+3085     A22B.9AD8.5651        Dynamic     Po1
+3085     A230.9B23.2F09        Dynamic     Po1
+3085     A231.791E.4DAD        Dynamic     Po1
+3085     A238.566F.47A5        Dynamic     Po1
+3085     A243.5384.296E        Dynamic     Po1
+3085     A278.96FB.E69B        Dynamic     Po1
+3085     A284.1C0D.1AB0        Dynamic     Po1
+3085     A2C3.F222.95CB        Dynamic     Po1
+3085     A2F1.6737.294B        Dynamic     Po1
+3085     A442.3B3A.6D58        Dynamic     Po1
+3085     A46C.F1DB.C0D7        Dynamic     Po1
+3085     A6AE.E6A6.F13A        Dynamic     Po1
+3085     A6CF.A5D8.0478        Dynamic     Po1
+3085     A6DA.63A8.4A29        Dynamic     Po1
+3085     A864.F1B6.72F9        Dynamic     Po1
+3085     A864.F1B6.97ED        Dynamic     Po1
+3085     A86B.AD63.4435        Dynamic     Po1
+3085     AA08.ED10.DE28        Dynamic     Po1
+3085     AA70.72A9.80EE        Dynamic     Po1
+3085     AA71.56B4.F8CA        Dynamic     Po1
+3085     AAC9.C6C5.1120        Dynamic     Po1
+3085     AAF1.221D.CB4E        Dynamic     Po1
+3085     AC67.5D89.4090        Dynamic     Po1
+3085     AC67.5D89.40B8        Dynamic     Po1
+3085     AC67.5D8D.1206        Dynamic     Po1
+3085     AC67.5D8D.1E72        Dynamic     Po1
+3085     AC67.5D8E.1471        Dynamic     Po1
+3085     AC92.32D5.E1CF        Dynamic     Po1
+3085     ACBC.32CC.31EB        Dynamic     Po1
+3085     ACF6.F7B7.A692        Dynamic     Po1
+3085     AE12.758E.EC65        Dynamic     Po1
+3085     AE7D.F7DA.C151        Dynamic     Po1
+3085     AEFF.AB5A.E99A        Dynamic     Po1
+3085     B200.8D82.85E1        Dynamic     Po1
+3085     B232.5D7B.E28B        Dynamic     Po1
+3085     B233.EAF0.BAD9        Dynamic     Po1
+3085     B252.F24F.545D        Dynamic     Po1
+3085     B297.9E85.AEFB        Dynamic     Po1
+3085     B46B.FCDE.309B        Dynamic     Po1
+3085     B678.8FB1.C912        Dynamic     Po1
+3085     B69C.04D1.4410        Dynamic     Po1
+3085     B6F0.E46C.6573        Dynamic     Po1
+3085     B827.EB0A.856C        Dynamic     Po1
+3085     B89A.2A2F.8AD7        Dynamic     Po1
+3085     BA1E.EB3D.9A62        Dynamic     Po1
+3085     BA91.9B39.5CF1        Dynamic     Po1
+3085     BAEC.7BB7.01E5        Dynamic     Po1
+3085     BC09.6387.6E2A        Dynamic     Po1
+3085     BC54.2FC6.86B7        Dynamic     Po1
+3085     BC83.850B.CB9B        Dynamic     Po1
+3085     BE29.F076.81BC        Dynamic     Po1
+3085     BE8B.87FF.9B8C        Dynamic     Po1
+3085     BEA4.BE0E.2ACE        Dynamic     Po1
+3085     BEBB.8C1F.5068        Dynamic     Po1
+3085     BEE8.73D8.1368        Dynamic     Po1
+3085     BEF8.537C.EC97        Dynamic     Po1
+3085     C0B6.F928.BD1F        Dynamic     Po1
+3085     C0B6.F93E.433D        Dynamic     Po1
+3085     C208.DA73.534C        Dynamic     Po1
+3085     C217.BED7.1903        Dynamic     Po1
+3085     C403.A89D.7196        Dynamic     Po1
+3085     C414.11BF.B775        Dynamic     Po1
+3085     C49D.ED01.4498        Dynamic     Po1
+3085     C615.B52D.7DF1        Dynamic     Po1
+3085     C619.EC02.0B9D        Dynamic     Po1
+3085     C628.117C.5DBE        Dynamic     Po1
+3085     C643.119D.6B5A        Dynamic     Po1
+3085     C68F.2931.2061        Dynamic     Po1
+3085     C6F8.BFD8.ED76        Dynamic     Po1
+3085     C834.8E3E.B258        Dynamic     Po1
+3085     CAB2.931F.F802        Dynamic     Po1
+3085     CE1F.ABB0.4997        Dynamic     Po1
+3085     CEA6.DF5D.7A17        Dynamic     Po1
+3085     CEE3.18D7.FEB8        Dynamic     Po1
+3085     CEF5.8F74.106D        Dynamic     Po1
+3085     D053.4943.CE59        Dynamic     Po1
+3085     D088.0C37.5FDA        Dynamic     Po1
+3085     D088.0C38.9842        Dynamic     Po1
+3085     D2D9.2943.42E9        Dynamic     Po1
+3085     D2F4.33E4.5D16        Dynamic     Po1
+3085     D420.B07F.5B21        Dynamic     Po1
+3085     D420.B07F.5B22        Dynamic     Po1
+3085     D420.B07F.5B41        Dynamic     Po1
+3085     D420.B07F.5B42        Dynamic     Po1
+3085     D420.B07F.5B51        Dynamic     Po1
+3085     D420.B07F.5B71        Dynamic     Po1
+3085     D420.B07F.5B73        Dynamic     Po1
+3085     D420.B07F.6151        Dynamic     Po1
+3085     D420.B07F.6171        Dynamic     Po1
+3085     D420.B07F.6173        Dynamic     Po1
+3085     D420.B07F.6211        Dynamic     Po1
+3085     D420.B07F.6231        Dynamic     Po1
+3085     D420.B07F.6233        Dynamic     Po1
+3085     D420.B07F.6271        Dynamic     Po1
+3085     D420.B07F.6272        Dynamic     Po1
+3085     D420.B07F.6291        Dynamic     Po1
+3085     D420.B07F.6292        Dynamic     Po1
+3085     D420.B07F.6391        Dynamic     Po1
+3085     D420.B07F.63B1        Dynamic     Po1
+3085     D420.B07F.63B3        Dynamic     Po1
+3085     D420.B07F.6931        Dynamic     Po1
+3085     D420.B07F.6951        Dynamic     Po1
+3085     D420.B07F.6953        Dynamic     Po1
+3085     D420.B07F.6961        Dynamic     Po1
+3085     D420.B07F.6962        Dynamic     Po1
+3085     D420.B07F.6981        Dynamic     Po1
+3085     D420.B07F.6982        Dynamic     Po1
+3085     D420.B07F.6991        Dynamic     Po1
+3085     D420.B07F.6992        Dynamic     Po1
+3085     D420.B07F.69B1        Dynamic     Po1
+3085     D420.B07F.69B2        Dynamic     Po1
+3085     D420.B07F.6A51        Dynamic     Po1
+3085     D420.B07F.6A52        Dynamic     Po1
+3085     D420.B07F.6A71        Dynamic     Po1
+3085     D420.B07F.6A72        Dynamic     Po1
+3085     D420.B07F.6AE1        Dynamic     Po1
+3085     D420.B07F.6AE2        Dynamic     Po1
+3085     D420.B07F.6B01        Dynamic     Po1
+3085     D420.B07F.6B02        Dynamic     Po1
+3085     D420.B07F.6B41        Dynamic     Po1
+3085     D420.B07F.6B42        Dynamic     Po1
+3085     D420.B07F.6B61        Dynamic     Po1
+3085     D420.B07F.6B62        Dynamic     Po1
+3085     D420.B07F.6B71        Dynamic     Po1
+3085     D420.B07F.6B91        Dynamic     Po1
+3085     D420.B07F.6B93        Dynamic     Po1
+3085     D420.B07F.6BD1        Dynamic     Po1
+3085     D420.B07F.6BD2        Dynamic     Po1
+3085     D420.B07F.6BF1        Dynamic     Po1
+3085     D420.B07F.6BF2        Dynamic     Po1
+3085     D420.B07F.6C61        Dynamic     Po1
+3085     D420.B07F.6C62        Dynamic     Po1
+3085     D420.B07F.6C81        Dynamic     Po1
+3085     D420.B07F.6C82        Dynamic     Po1
+3085     D420.B07F.6E71        Dynamic     Po1
+3085     D420.B07F.6E91        Dynamic     Po1
+3085     D420.B07F.6E93        Dynamic     Po1
+3085     D420.B07F.70E1        Dynamic     Po1
+3085     D420.B07F.7101        Dynamic     Po1
+3085     D420.B07F.7102        Dynamic     Po1
+3085     D420.B07F.7111        Dynamic     Po1
+3085     D420.B07F.7112        Dynamic     Po1
+3085     D420.B07F.7131        Dynamic     Po1
+3085     D420.B07F.7132        Dynamic     Po1
+3085     D420.B07F.71D1        Dynamic     Po1
+3085     D420.B07F.71D2        Dynamic     Po1
+3085     D420.B07F.71F1        Dynamic     Po1
+3085     D420.B07F.71F2        Dynamic     Po1
+3085     D420.B07F.7261        Dynamic     Po1
+3085     D420.B07F.7281        Dynamic     Po1
+3085     D420.B07F.7283        Dynamic     Po1
+3085     D420.B07F.72F1        Dynamic     Po1
+3085     D420.B07F.72F2        Dynamic     Po1
+3085     D420.B07F.7312        Dynamic     Po1
+3085     D420.B07F.7351        Dynamic     Po1
+3085     D420.B07F.7371        Dynamic     Po1
+3085     D420.B07F.7373        Dynamic     Po1
+3085     D425.8B68.4E8F        Dynamic     Po1
+3085     D425.8B68.4F5C        Dynamic     Po1
+3085     D454.8B6C.5930        Dynamic     Po1
+3085     D46D.6D29.7093        Dynamic     Po1
+3085     D4CF.F959.D9D2        Dynamic     Po1
+3085     D4D2.5221.7451        Dynamic     Po1
+3085     D4D2.5221.74E2        Dynamic     Po1
+3085     D4DC.0920.4268        Dynamic     Po1
+3085     D4DC.0920.426D        Dynamic     Po1
+3085     D4DC.0920.430D        Dynamic     Po1
+3085     D4DC.0920.4321        Dynamic     Po1
+3085     D4DC.0920.432B        Dynamic     Po1
+3085     D4DC.0920.4349        Dynamic     Po1
+3085     D4DC.0920.43DF        Dynamic     Po1
+3085     D4DC.0920.43E4        Dynamic     Po1
+3085     D4DC.0920.43E9        Dynamic     Po1
+3085     D4DC.0920.43FD        Dynamic     Po1
+3085     D4DC.0920.440C        Dynamic     Po1
+3085     D4DC.0920.4416        Dynamic     Po1
+3085     D4DC.0920.441B        Dynamic     Po1
+3085     D4DC.0920.4425        Dynamic     Po1
+3085     D4DC.0920.4434        Dynamic     Po1
+3085     D4DC.0920.446B        Dynamic     Po1
+3085     D4DC.0920.44AC        Dynamic     Po1
+3085     D4DC.0920.44B1        Dynamic     Po1
+3085     D4DC.0920.44C5        Dynamic     Po1
+3085     D4DC.0920.44D4        Dynamic     Po1
+3085     D4DC.0920.44E3        Dynamic     Po1
+3085     D4DC.0920.44ED        Dynamic     Po1
+3085     D60A.7723.FB56        Dynamic     Po1
+3085     D612.E089.172A        Dynamic     Po1
+3085     D622.7BEE.ACB1        Dynamic     Po1
+3085     D633.B71D.CEDB        Dynamic     Po1
+3085     D63B.F8F6.66A5        Dynamic     Po1
+3085     D667.B534.2FE1        Dynamic     Po1
+3085     D690.8462.4E8D        Dynamic     Po1
+3085     D6CF.E4F5.4FA4        Dynamic     Po1
+3085     D6DE.B85F.57D6        Dynamic     Po1
+3085     D8F8.83DC.F352        Dynamic     Po1
+3085     D8F8.83E3.6985        Dynamic     Po1
+3085     DA33.6099.EADF        Dynamic     Po1
+3085     DA70.6AEE.FBB9        Dynamic     Po1
+3085     DA74.7330.1486        Dynamic     Po1
+3085     DAC5.505A.A5C0        Dynamic     Po1
+3085     DAEF.1D96.41FD        Dynamic     Po1
+3085     DAF7.3F6A.24CE        Dynamic     Po1
+3085     DAF9.9A26.F75C        Dynamic     Po1
+3085     DC21.48F7.3D89        Dynamic     Po1
+3085     DC21.48FB.A9C8        Dynamic     Po1
+3085     DC21.48FE.647E        Dynamic     Po1
+3085     DC21.5CBD.1325        Dynamic     Po1
+3085     DC21.5CBE.F4FB        Dynamic     Po1
+3085     DC21.5CBF.3D49        Dynamic     Po1
+3085     DC21.5CC1.D964        Dynamic     Po1
+3085     DC71.9612.00D4        Dynamic     Po1
+3085     DCFB.486F.7AE8        Dynamic     Po1
+3085     DCFB.489E.1501        Dynamic     Po1
+3085     DCFB.489F.FCBD        Dynamic     Po1
+3085     DCFB.48CF.22B3        Dynamic     Po1
+3085     DE88.8C24.A99D        Dynamic     Po1
+3085     DEA5.7197.7590        Dynamic     Po1
+3085     DEB0.5E87.A36A        Dynamic     Po1
+3085     E211.DD7B.F933        Dynamic     Po1
+3085     E26D.3634.F213        Dynamic     Po1
+3085     E297.C8C7.98B7        Dynamic     Po1
+3085     E2B2.5DB9.5C26        Dynamic     Po1
+3085     E2C2.800F.16BC        Dynamic     Po1
+3085     E2CC.9E60.EDA7        Dynamic     Po1
+3085     E4B3.1871.B2E0        Dynamic     Po1
+3085     E63B.8180.7962        Dynamic     Po1
+3085     E646.3F8B.9611        Dynamic     Po1
+3085     E884.A591.5E2E        Dynamic     Po1
+3085     E884.A591.7AB7        Dynamic     Po1
+3085     E884.A592.2214        Dynamic     Po1
+3085     EA10.7227.BF81        Dynamic     Po1
+3085     EA21.54F0.BD62        Dynamic     Po1
+3085     EE1B.010C.705F        Dynamic     Po1
+3085     EE2E.7E65.6DCF        Dynamic     Po1
+3085     F02F.4B00.FE0F        Dynamic     Po1
+3085     F057.A6C4.745D        Dynamic     Po1
+3085     F057.A6FA.592E        Dynamic     Po1
+3085     F06E.0BE1.4ADB        Dynamic     Po1
+3085     F09E.4A24.A414        Dynamic     Po1
+3085     F09F.C210.50EA        Dynamic     Po1
+3085     F24A.3A50.5A46        Dynamic     Po1
+3085     F263.7E43.9604        Dynamic     Po1
+3085     F26F.F4E2.B811        Dynamic     Po1
+3085     F29F.5AD8.8BB6        Dynamic     Po1
+3085     F2CA.C6D0.30DE        Dynamic     Po1
+3085     F2CD.A8F8.1742        Dynamic     Po1
+3085     F2F9.3F96.072F        Dynamic     Po1
+3085     F4A4.7597.8565        Dynamic     Po1
+3085     F4BF.8096.1C99        Dynamic     Po1
+3085     F687.5025.8444        Dynamic     Po1
+3085     F693.3B03.1AE1        Dynamic     Po1
+3085     F6B6.17F5.79C6        Dynamic     Po1
+3085     F6BF.1193.A95A        Dynamic     Po1
+3085     F6EF.3FDD.5606        Dynamic     Po1
+3085     F859.7139.0FC6        Dynamic     Po1
+3085     F859.718B.15AA        Dynamic     Po1
+3085     F859.71A8.5BA6        Dynamic     Po1
+3085     F8B5.4D57.B534        Dynamic     Po1
+3085     F8B5.4D5D.1614        Dynamic     Po1
+3085     F8C3.9E6A.BE2F        Dynamic     Po1
+3085     FA09.7449.9214        Dynamic     Po1
+3085     FA38.253B.8F21        Dynamic     Po1
+3085     FA5C.93AA.4DA9        Dynamic     Po1
+3085     FA63.6B00.BE3F        Dynamic     Po1
+3085     FA83.3488.34FB        Dynamic     Po1
+3085     FAA7.FCE2.E90F        Dynamic     Po1
+3085     FAE7.BF45.5C58        Dynamic     Po1
+3085     FAEB.BCF2.43C7        Dynamic     Po1
+3085     FC4E.A4EA.A816        Dynamic     Po1
+3085     FC4E.A4EC.1215        Dynamic     Po1
+3085     FC77.7419.6D24        Dynamic     Po1
+3085     FE2B.F48D.F470        Dynamic     Po1
+3085     FE3E.4505.6BA5        Dynamic     Po1
+3085     FE59.8DBF.CAF9        Dynamic     Po1
+3085     FE64.CA9B.AEC6        Dynamic     Po1
+3085     FEB7.DAFD.139D        Dynamic     Po1
+3085     FEE3.2992.9044        Dynamic     Po1
+3085     FEE8.FC0D.B71E        Dynamic     Po1
+3199     0010.DBFF.1001        Dynamic     Po1
+3199     3C8C.9387.7F0E        Dynamic     Po1
+3199     8C04.BAEA.D0E6        Dynamic     Po1
+3199     8C04.BAEA.FAE1        Dynamic     Po1
+3199     8C04.BAEA.FAE6        Dynamic     Po1
+4009     684F.6493.B4D7        Management  Vl4009
+4010     000C.2908.F8E6        Dynamic     Po1
+4010     000C.29BE.9EE6        Dynamic     Po1
+4010     000C.29CE.6503        Dynamic     Po1
+4010     0010.DBFF.1001        Dynamic     Po1
+4010     0025.B5E5.0000        Dynamic     Po1
+4010     0025.B5E5.018D        Dynamic     Po1
+4010     0025.B5E5.0193        Dynamic     Po1
+4010     0050.5685.339E        Dynamic     Po1
+4010     0050.568D.116C        Dynamic     Po1
+4010     0050.568D.2212        Dynamic     Po1
+4010     0050.568D.95AD        Dynamic     Po1
+4010     0050.568D.AA24        Dynamic     Po1
+4010     0050.568D.C631        Dynamic     Po1
+4010     0050.568D.EB5B        Dynamic     Po1
+4010     0050.568D.F219        Dynamic     Po1
+4010     0050.56B7.35E3        Dynamic     Po1
+4010     0050.56B7.7960        Dynamic     Po1
+4010     0050.56B7.EE0B        Dynamic     Po1
+4010     0050.56B7.F9BC        Dynamic     Po1
+4010     3448.EDE5.74B6        Dynamic     Gi1/0/3
+4010     3448.EDE5.7DCE        Dynamic     Gi1/0/1
+4010     3448.EDE5.803E        Dynamic     Gi1/0/2
+4010     3C8C.9387.7F0E        Dynamic     Po1
+4010     3CEC.EFC7.1793        Dynamic     Po1
+4010     3CEC.EFC7.1B93        Dynamic     Po1
+4010     8C04.BAEA.D092        Dynamic     Po1
+4010     8C04.BAEA.D0E1        Dynamic     Po1
+4010     8C04.BAEA.D0E6        Dynamic     Po1
+4010     8C04.BAEA.FA92        Dynamic     Po1
+4010     8C04.BAEA.FAE1        Dynamic     Po1
+4010     8C04.BAEA.FAE6        Dynamic     Po1
+4010     D08E.79BE.5C7E        Dynamic     Gi1/0/4
+4011     0010.DBFF.1001        Dynamic     Po1
+4011     0050.568D.9434        Dynamic     Po1
+4011     0050.568D.F2B7        Dynamic     Po1
+4011     3C8C.9387.7F0E        Dynamic     Po1
+4011     4CD9.8FA6.E5ED        Dynamic     Gi1/0/7
+4011     4CD9.8FA6.E5EF        Dynamic     Gi1/0/7
+4011     4CD9.8FAF.1E41        Dynamic     Gi2/0/7
+4011     4CD9.8FAF.1E43        Dynamic     Gi2/0/7
+4011     8C04.BAEA.D0E1        Dynamic     Po1
+4011     8C04.BAEA.D0E6        Dynamic     Po1
+4011     8C04.BAEA.FAE1        Dynamic     Po1
+4011     8C04.BAEA.FAE6        Dynamic     Po1
+4012     0010.DBFF.1001        Dynamic     Po1
+4012     3C8C.9387.7F0E        Dynamic     Po1
+4012     8C04.BAEA.D0E6        Dynamic     Po1
+4012     8C04.BAEA.FAE6        Dynamic     Po1
+4013     0010.DBFF.1001        Dynamic     Po1
+4013     3448.EDE5.74B0        Dynamic     Gi2/0/9
+4013     3448.EDE5.7DC8        Dynamic     Gi1/0/9
+4013     3448.EDE5.8038        Dynamic     Gi1/0/10
+4013     3C8C.9387.7F0E        Dynamic     Po1
+4013     3CEC.EFC7.220E        Dynamic     Po1
+4013     3CEC.EFC7.23B2        Dynamic     Po1
+4013     8C04.BAEA.D0E1        Dynamic     Po1
+4013     8C04.BAEA.D0E6        Dynamic     Po1
+4013     8C04.BAEA.FAE1        Dynamic     Po1
+4013     8C04.BAEA.FAE6        Dynamic     Po1
+4013     C845.4430.5A62        Dynamic     Gi2/0/22
+4013     C845.4430.5A7A        Dynamic     Gi1/0/22
+4013     D08E.79BC.8542        Dynamic     Po1
+4013     D08E.79BE.5C78        Dynamic     Gi2/0/10
+4016     0010.DBFF.1001        Dynamic     Po1
+4016     0050.5601.3D01        Dynamic     Po1
+4016     0050.568D.1152        Dynamic     Po1
+4016     0050.568D.186F        Dynamic     Po1
+4016     0050.568D.1C3D        Dynamic     Po1
+4016     0050.568D.3F55        Dynamic     Po1
+4016     0050.568D.3F5B        Dynamic     Po1
+4016     0050.568D.D917        Dynamic     Po1
+4016     0050.568D.E4CB        Dynamic     Po1
+4016     0050.56B7.BF7B        Dynamic     Po1
+4016     0050.56B7.EAF9        Dynamic     Po1
+4016     0050.56B7.F31A        Dynamic     Po1
+4016     3C8C.9387.7F0E        Dynamic     Po1
+4016     8C04.BAEA.D0E1        Dynamic     Po1
+4016     8C04.BAEA.D0E6        Dynamic     Po1
+4016     8C04.BAEA.FAE1        Dynamic     Po1
+4016     8C04.BAEA.FAE6        Dynamic     Po1
+4046     0010.DBFF.1001        Dynamic     Po1
+4046     0050.56BD.704D        Dynamic     Po1
+4046     08EA.448C.8140        Dynamic     Po1
+4046     3C8C.9387.7F0E        Dynamic     Po1
+4046     8C04.BAEA.D0E1        Dynamic     Po1
+4046     8C04.BAEA.D0E6        Dynamic     Po1
+4046     8C04.BAEA.FAE1        Dynamic     Po1
+4046     8C04.BAEA.FAE6        Dynamic     Po1
+4046     D4DC.0920.4268        Dynamic     Po1
+4046     D4DC.0920.426D        Dynamic     Po1
+4046     D4DC.0920.430D        Dynamic     Po1
+4046     D4DC.0920.4321        Dynamic     Po1
+4046     D4DC.0920.432B        Dynamic     Po1
+4046     D4DC.0920.4349        Dynamic     Po1
+4046     D4DC.0920.43CB        Dynamic     Po1
+4046     D4DC.0920.43DF        Dynamic     Po1
+4046     D4DC.0920.43E4        Dynamic     Po1
+4046     D4DC.0920.43E9        Dynamic     Po1
+4046     D4DC.0920.43FD        Dynamic     Po1
+4046     D4DC.0920.440C        Dynamic     Po1
+4046     D4DC.0920.4411        Dynamic     Gi1/0/13
+4046     D4DC.0920.4416        Dynamic     Po1
+4046     D4DC.0920.441B        Dynamic     Po1
+4046     D4DC.0920.4425        Dynamic     Po1
+4046     D4DC.0920.4434        Dynamic     Po1
+4046     D4DC.0920.446B        Dynamic     Po1
+4046     D4DC.0920.4484        Dynamic     Po1
+4046     D4DC.0920.44AC        Dynamic     Po1
+4046     D4DC.0920.44B1        Dynamic     Po1
+4046     D4DC.0920.44C5        Dynamic     Po1
+4046     D4DC.0920.44D4        Dynamic     Po1
+4046     D4DC.0920.44E3        Dynamic     Po1
+4046     D4DC.0920.44ED        Dynamic     Po1
+4085     086A.C5AE.4D36        Dynamic     Po1
+4085     0E7A.581B.65FF        Dynamic     Po1
+4085     1044.00F7.DB4F        Dynamic     Po1
+4085     1E34.8CBB.FE6C        Dynamic     Po1
+4085     3692.ACBD.86AA        Dynamic     Po1
+4085     3C8C.9387.7F0E        Dynamic     Po1
+4085     48E7.DACD.2DC5        Dynamic     Po1
+4085     4E87.FBA0.8AD6        Dynamic     Po1
+4085     5C78.F8C2.86DF        Dynamic     Po1
+4085     6E79.3F5F.9E62        Dynamic     Po1
+4085     72C2.67F9.7323        Dynamic     Po1
+4085     76EE.BFB7.4855        Dynamic     Po1
+4085     92F8.B3C8.B81E        Dynamic     Po1
+4085     98AF.655E.9E53        Dynamic     Po1
+4085     A243.5384.296E        Dynamic     Po1
+4085     A6AE.E6A6.F13A        Dynamic     Po1
+4085     A6DA.63A8.4A29        Dynamic     Po1
+4085     ACF6.F7B7.A692        Dynamic     Po1
+4085     B252.F24F.545D        Dynamic     Po1
+4085     C49D.ED01.4498        Dynamic     Po1
+4085     C49F.4CEF.93B3        Dynamic     Po1
+4085     C68F.2931.2061        Dynamic     Po1
+4085     CEA6.DF5D.7A17        Dynamic     Po1
+4085     CEF5.8F74.106D        Dynamic     Po1
+4085     D2F4.33E4.5D16        Dynamic     Po1
+4085     D612.E089.172A        Dynamic     Po1
+4085     E404.39A5.3086        Dynamic     Po1
+4085     E646.3F8B.9611        Dynamic     Po1
+4085     F2F9.3F96.072F        Dynamic     Po1
+4085     FA38.253B.8F21        Dynamic     Po1
+4085     FA83.3488.34FB        Dynamic     Po1
+4088     04EA.56F9.5137        Dynamic     Po1
+4088     08BE.AC15.0303        Dynamic     Po1
+4088     1C4D.700E.FF10        Dynamic     Po1
+4088     2C33.5871.6673        Dynamic     Po1
+4088     3C8C.9387.7E40        Dynamic     Po1
+4088     3C8C.9387.7F0E        Dynamic     Po1
+4088     586C.2517.3991        Dynamic     Po1
+4088     841B.77F3.7CBC        Dynamic     Po1
+4088     D420.B07F.5B52        Dynamic     Po1
+4088     D420.B07F.70E2        Dynamic     Po1
+4088     D420.B07F.7262        Dynamic     Po1
+4088     D420.B07F.7352        Dynamic     Po1
+4088     D4DC.0920.426D        Dynamic     Po1
+4088     D4DC.0920.44AC        Dynamic     Po1
+4088     D4DC.0920.44ED        Dynamic     Po1
+4088     DCFB.486F.7AE8        Dynamic     Po1
+
+Total MAC Addresses in use: 735
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show ip arp 
+
+Command not found / Incomplete command. Use ? to list commands.
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show arp 
+
+Static ARP entries are only active
+when the IP address is reachable on a local subnet
+
+
+Age Time (seconds)............................. 1200
+Response Time (seconds)........................ 1
+Retries........................................ 4
+Cache Size..................................... 893
+Dynamic Renew Mode ............................ Enable
+Total Entry Count Current / Peak .............. 3 / 3
+Static Entry Count Configured / Active / Max .. 0 / 0 / 128
+
+IP Address       MAC Address        Interface       Type      Age
+---------------  -----------------  --------------  --------  -----------
+10.130.160.1     0010.DBFF.1001     Vl1900          Gateway    0h  0m  6s
+10.130.160.7     3C8C.9387.7E40     Vl1900          Dynamic    0h  2m  7s
+10.130.160.71    684F.6493.B4D7     Vl1900          Local         n/a
+250.251.252.254  0202.BC80.0002     Management      Dynamic   n/a
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show vrrp 
+
+Admin Mode..................................... Disable
+Router Checksum Errors......................... 0
+Router Version Errors.......................... 0
+Router VRID Errors............................. 0
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show vlan 
+
+VLAN   Name                             Ports          Type
+-----  ---------------                  -------------  --------------
+1      default                          Po2-64,        Default
+                                        Gi1/0/17-21,
+                                        Te1/0/3,
+                                        Gi2/0/14,
+                                        Gi2/0/17-21,
+                                        Te2/0/3
+1900   VLAN1900                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/15,
+                                        Gi1/0/23,
+                                        Gi2/0/13,
+                                        Gi2/0/15,
+                                        Gi2/0/23
+3023   vlan-site-HWL-BMS                Po1,Gi1/0/13   Static
+3024   vlan-site-HWL-CAM                Po1,Gi1/0/13   Static
+3085   vlan-guest-stuff                 Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+3199   vlan-poc-nqa-npm                 Po1,Gi1/0/14,  Static
+                                        Gi1/0/16,
+                                        Gi2/0/16
+4009   ena_1900_vlan-netmgmt            Po1            Static
+4010   ena_4010_infra-esx-mgmt          Po1,Gi1/0/1-6, Static
+                                        Gi2/0/1-6
+4011   ena_4011_infra-san-mgmt          Po1,Gi1/0/7-8, Static
+                                        Gi2/0/7-8
+4012   vlan-infra-net-mgmt              Po1            Static
+4013   ena_4013_infra-ilo               Po1,           Static
+                                        Gi1/0/9-12,
+                                        Gi1/0/22,
+                                        Gi2/0/9-12,
+                                        Gi2/0/22
+4016   ena_4016_servers-mgmt            Po1            Static
+4046   ena_4046                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+4063   VLAN4063                         Po1            Static
+4085   VLAN4085                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+4088   VLAN4088                         Po1,Gi1/0/13,  Static
+                                        Gi1/0/24,
+                                        Gi2/0/24
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show vp tp   spanning-tree ?
+
+<cr>                     Press enter to execute the command.
+|                        Output filter options.
+Gigabitethernet          Enter a GigabitEthernet port.
+Tengigabitethernet       Enter a TenGigabitEthernet port.
+active                   Display spanning tree values on active ports.
+backbonefast             Display spanning tree indirectlink rapid convergence
+                         statistics.
+blockedports             Display spanning tree values on blocked ports.
+detail                   Display detailed spanning tree values.
+instance                 Display settings for an MST instance.
+mst-configuration        Display MST configuration.
+port-channel             Display spanning tree information for a port channel.
+summary                  Display summarized spanning tree settings.
+uplinkfast               Displays spanning tree directlink rapid convergence
+                         statistics.
+vlan                     Display spanning tree settings for a VLAN.
+
+ena-sw-hwl-m01#show spanning-tree   summary 
+
+Spanning Tree Admin Mode.......... Disabled
+Spanning Tree Version............. IEEE 802.1w
+BPDU Guard Mode................... Disabled
+BPDU Flood Mode................... Disabled
+IndirectLink Rapid Convergence.... Disabled
+DirectLink Rapid Convergence...... Disabled
+
+BPDU Filter Mode.................. Disabled
+Configuration Name................ 68-4F-64-93-B4-D4
+Configuration Revision Level...... 0
+Configuration Digest Key.......... 0xac36177f50283cd4b83821d8ab26de62
+Configuration Format Selector..... 0
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show interfaces description 
+
+Port       Description
+---------  --------------------------------------------------------------------------
+Gi1/0/1    enaesxh01 mgmt - vmnic0
+Gi1/0/2    enaesxh02 mgmt - vmnic0
+Gi1/0/3    enaesxh03 mgmt - vmnic0
+Gi1/0/4    enaesxh04 mgmt - vmnic0
+Gi1/0/5    enaesxh05 mgmt - vmnic0
+Gi1/0/6    enaesxh06 mgmt - vmnic0
+Gi1/0/7    enasanh mgmt - top controller
+Gi1/0/8    Spare
+Gi1/0/9    enaesxh01 idrac
+Gi1/0/10   enaesxh02 idrac
+Gi1/0/11   enaesxh04 idrac
+Gi1/0/12
+Gi1/0/13   ena-sw-ntx-hwl-01
+Gi1/0/14   Uplink to ena-sw-ntx-hwl-01
+Gi1/0/15   ena-fw-ric-2 node1 fxp0 mgmt
+Gi1/0/16   NQAtest - port
+Gi1/0/17   Spare
+Gi1/0/18   Spare
+Gi1/0/19   Spare
+Gi1/0/20   Spare
+Gi1/0/21   Spare
+Gi1/0/22   Smart PDU Mgmnt
+Gi1/0/23   PDU-B Mgmt
+Gi1/0/24   Aerohive
+Te1/0/1
+Te1/0/2
+Te1/0/3
+Te1/0/4    Uplink to esl-sw-core
+Gi2/0/1    enaesxh01 mgmt - vmnic1
+Gi2/0/2    enaesxh02 mgmt - vmnic1
+Gi2/0/3    enaesxh03 mgmt - vmnic1
+Gi2/0/4    enaesxh04 mgmt - vmnic1
+Gi2/0/5    enaesxh05 mgmt - vmnic1
+Gi2/0/6    enaesxh06 mgmt - vmnic1
+Gi2/0/7    enasanh mgmt - bottom controller
+Gi2/0/8    Spare
+Gi2/0/9    enaesxh03 idrac
+Gi2/0/10   enaesxh04 idrac
+Gi2/0/11   enaesxh06 idrac
+Gi2/0/12
+Gi2/0/13   AirConsole TS
+Gi2/0/14
+Gi2/0/15   ena-fw-ric-2 node0 fxp0 mgmt
+Gi2/0/16   NQAtest - port
+Gi2/0/17   Spare
+Gi2/0/18   Spare
+Gi2/0/19   Spare
+Gi2/0/20   Spare
+Gi2/0/21   Spare
+Gi2/0/22   Smart PDU Mgmnt
+Gi2/0/23   PDU-A Mgmt
+Gi2/0/24   Aerohive
+Te2/0/1
+Te2/0/2
+Te2/0/3
+Te2/0/4    Uplink to esl-sw-core
+
+Port  Description
+----- --------------------------------------------------------------------------
+Po1   Uplink to esl-sw-core
+Po2
+Po3
+Po4
+Po5
+Po6
+Po7
+Po8
+Po9
+Po10
+Po11
+Po12
+Po13
+Po14
+Po15
+Po16
+Po17
+Po18
+Po19
+Po20
+Po21
+Po22
+Po23
+Po24
+Po25
+Po26
+Po27
+Po28
+Po29
+Po30
+Po31
+Po32
+Po33
+Po34
+Po35
+Po36
+Po37
+Po38
+Po39
+Po40
+Po41
+Po42
+Po43
+Po44
+Po45
+Po46
+Po47
+Po48
+Po49
+Po50
+Po51
+Po52
+Po53
+Po54
+Po55
+Po56
+Po57
+Po58
+Po59
+Po60
+Po61
+Po62
+Po63
+Po64
+
+ena-sw-hwl-m01#show ethernet ch  p          port-c ?
+
+port-security
+
+ena-sw-hwl-m01#show port-security 
+
+Port Security Administration Mode: Disabled
+
+ena-sw-hwl-m01#show port    eh th?
+
+ethernet
+
+ena-sw-hwl-m01#show ethernet ?
+
+cfm                      Display Ethernet CFM parameters.
+ring                     Displays Ethenet Ring Protection information.
+
+ena-sw-hwl-m01#show ethernet               show port-ch   ?
+
+port                     port-security
+
+ena-sw-hwl-m01#show port ?
+
+protocol                 Display protocol based VLAN information.
+
+ena-sw-hwl-m01#show port po            
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show interfaces   s status 
+
+Port      Description     Duplex Speed   Neg  Link    Flow  M  VLAN
+                                              State   Ctrl
+--------- --------------- ------ ------- ---- ------- ----- -- -------------------
+Gi1/0/1   enaesxh01 mgmt  Full   1000    Auto Up      On    A  4010
+Gi1/0/2   enaesxh02 mgmt  Full   1000    Auto Up      On    A  4010
+Gi1/0/3   enaesxh03 mgmt  Full   1000    Auto Up      On    A  4010
+Gi1/0/4   enaesxh04 mgmt  Full   1000    Auto Up      On    A  4010
+Gi1/0/5   enaesxh05 mgmt  N/A    Unknown Auto Down    On    A  4010
+Gi1/0/6   enaesxh06 mgmt  N/A    Unknown Auto Down    On    A  4010
+Gi1/0/7   enasanh mgmt -  Full   1000    Auto Up      On    A  4011
+Gi1/0/8   Spare           N/A    Unknown Auto Down    On    A  4011
+Gi1/0/9   enaesxh01 idrac Full   1000    Auto Up      On    A  4013
+Gi1/0/10  enaesxh02 idrac Full   1000    Auto Up      On    A  4013
+Gi1/0/11  enaesxh04 idrac N/A    Unknown Auto Down    On    A  4013
+Gi1/0/12                  N/A    Unknown Auto Down    On    A  4013
+Gi1/0/13  ena-sw-ntx-hwl- Full   1000    Auto Up      On    T  (1),1900,
+                                                              3023-3024,3085,
+                                                              4046,4085,4088
+Gi1/0/14  Uplink to ena-s N/A    Unknown Auto Down    On    A  3199
+Gi1/0/15  ena-fw-ric-2 no Full   1000    Auto Up      On    A  1900
+Gi1/0/16  NQAtest - port  N/A    Unknown Auto Down    On    A  3199
+Gi1/0/17  Spare           N/A    Unknown Auto Disable On    A  1
+Gi1/0/18  Spare           N/A    Unknown Auto Disable On    A  1
+Gi1/0/19  Spare           N/A    Unknown Auto Disable On    A  1
+Gi1/0/20  Spare           N/A    Unknown Auto Disable On    A  1
+Gi1/0/21  Spare           N/A    Unknown Auto Disable On    A  1
+Gi1/0/22  Smart PDU Mgmnt Full   100     Auto Up      On    A  4013
+Gi1/0/23  PDU-B Mgmt      N/A    Unknown Auto Disable On    A  1900
+Gi1/0/24  Aerohive        N/A    Unknown Auto Down    On    T  (1),3085,4046,
+                                                              4085,4088
+Te1/0/1                   N/A    N/A     N/A  Detach  N/A
+Te1/0/2                   N/A    N/A     N/A  Detach  N/A
+Te1/0/3                   Full   10000   Off  Down    On    A  1
+Te1/0/4   Uplink to esl-s Full   10000   Off  Up      On    T  (1),1900,
+                                                              3023-3024,3085,
+                                                              3199,4009-4013,
+                                                              4016,4046,4063,
+                                                              4085,4088
+Gi2/0/1   enaesxh01 mgmt  Full   1000    Auto Up      On    A  4010
+Gi2/0/2   enaesxh02 mgmt  Full   1000    Auto Up      On    A  4010
+Gi2/0/3   enaesxh03 mgmt  Full   1000    Auto Up      On    A  4010
+Gi2/0/4   enaesxh04 mgmt  Full   1000    Auto Up      On    A  4010
+Gi2/0/5   enaesxh05 mgmt  N/A    Unknown Auto Down    On    A  4010
+Gi2/0/6   enaesxh06 mgmt  N/A    Unknown Auto Down    On    A  4010
+Gi2/0/7   enasanh mgmt -  Full   1000    Auto Up      On    A  4011
+Gi2/0/8   Spare           N/A    Unknown Auto Down    On    A  4011
+Gi2/0/9   enaesxh03 idrac Full   1000    Auto Up      On    A  4013
+Gi2/0/10  enaesxh04 idrac Full   1000    Auto Up      On    A  4013
+Gi2/0/11  enaesxh06 idrac N/A    Unknown Auto Down    On    A  4013
+Gi2/0/12                  N/A    Unknown Auto Down    On    A  4013
+Gi2/0/13  AirConsole TS   Full   100     Auto Up      On    A  1900
+Gi2/0/14                  N/A    Unknown Auto Down    On    A  1
+Gi2/0/15  ena-fw-ric-2 no Full   1000    Auto Up      On    A  1900
+Gi2/0/16  NQAtest - port  N/A    Unknown Auto Down    On    A  3199
+Gi2/0/17  Spare           N/A    Unknown Auto Disable On    A  1
+Gi2/0/18  Spare           N/A    Unknown Auto Disable On    A  1
+Gi2/0/19  Spare           N/A    Unknown Auto Disable On    A  1
+Gi2/0/20  Spare           N/A    Unknown Auto Disable On    A  1
+Gi2/0/21  Spare           N/A    Unknown Auto Disable On    A  1
+Gi2/0/22  Smart PDU Mgmnt Full   100     Auto Up      On    A  4013
+Gi2/0/23  PDU-A Mgmt      N/A    Unknown Auto Down    On    A  1900
+Gi2/0/24  Aerohive        N/A    Unknown Auto Down    On    T  (1),3085,4046,
+                                                              4085,4088
+Te2/0/1                   N/A    N/A     N/A  Detach  N/A
+Te2/0/2                   N/A    N/A     N/A  Detach  N/A
+Te2/0/3                   Full   10000   Off  Down    On    A  1
+Te2/0/4   Uplink to esl-s Full   10000   Off  Up      On    T  (1),1900,
+                                                              3023-3024,3085,
+                                                              3199,4009-4013,
+                                                              4016,4046,4063,
+                                                              4085,4088
+
+
+Port    Description                    Link    M  VLAN
+Channel                                State
+------- ------------------------------ ------- -- -------------------
+Po1     Uplink to esl-sw-core          Up      T  (1),1900,3023-3024,
+                                                 3085,3199,
+                                                 4009-4013,4016,
+                                                 4046,4063,4085,4088
+
+ena-sw-hwl-m01#show running-config interface po1
+
+description "Uplink to esl-sw-core"
+switchport mode trunk
+switchport trunk allowed vlan 1900,3023-3024,3085,3199,4009-4013,4016,4046,4063,4085,4088
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show por   interfaces port-channel 1
+
+Channel   Ports                         Ch-Type  Hash Type Min-links Local Prf Rx Util   Tx Util
+-------   ----------------------------- -------- --------- --------- --------- --------- ---------
+Po1       Active: Te1/0/4, Te2/0/4      Dynamic  5         1         Disabled  121       30
+
+Hash Algorithm Type
+1 - Source MAC, VLAN, EtherType, source module and port Id
+2 - Destination MAC, VLAN, EtherType, source module and port Id
+3 - Source IP and source TCP/UDP port
+4 - Destination IP and destination TCP/UDP port
+5 - Source/Destination MAC, VLAN, EtherType, source MODID/port
+6 - Source/Destination IP and source/destination TCP/UDP port
+
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#
+ena-sw-hwl-m01#show running-config interface te1/0/4
+
+channel-group 1 mode active
+description "Uplink to esl-sw-core"
+
+ena-sw-hwl-m01#show running-config interface te1/0/42/0/4/0/4 /0/4 2/0/4
+
+channel-group 1 mode active
+description "Uplink to esl-sw-core"
+
+ena-sw-hwl-m01#
+*** IDLE TIMEOUT ***
