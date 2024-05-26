@@ -65,7 +65,6 @@ vlan 999
     name Disabled_Access_Ports
 vlan 1000
     name Trunk_Native
-
 !
 spanning-tree mode rpvst
 spanning-tree
